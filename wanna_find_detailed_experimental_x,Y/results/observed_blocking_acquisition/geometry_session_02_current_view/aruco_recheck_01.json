@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T07:10:53+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "FLOOR_ARUCO_OPTIONAL_REFERENCE_UNAVAILABLE",
+  "camera_stability_dependency": {
+    "artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/camera_stability_recheck.json",
+    "required_status": "CAMERA_SESSION_STABLE",
+    "observed_status": "CAMERA_SESSION_STABLE",
+    "pass": true
+  },
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+    "coordinate_domain": "RAW_IMAGE_PX",
+    "width": 1920,
+    "height": 1080
+  },
+  "detector": {
+    "implementation": "OpenCV cv2.aruco.detectMarkers",
+    "opencv_version": "4.5.4",
+    "dictionary": "DICT_4X4_50",
+    "parameters": "DetectorParameters_create defaults",
+    "parameter_tuning_performed": false
+  },
+  "detected_ids_sorted": [0],
+  "detected_marker_count": 1,
+  "rejected_candidate_count": 25,
+  "expected_floor_ids_not_detected": [1, 2, 3, 4],
+  "markers": [
+    {
+      "marker_id": 0,
+      "role": "ROBOT_MARKER_ELEVATED_EXCLUDED_FROM_FLOOR_HOMOGRAPHY",
+      "corners_raw_px": [[984, 867], [1060, 867], [1058, 919], [978, 920]],
+      "center_raw_px": [1020.0, 893.25],
+      "floor_homography_applied": false
+    }
+  ],
+  "floor_marker_metric_branch": {
+    "status": "NOT_AVAILABLE",
+    "reason": "None of floor IDs 1-4 was decoded by the unchanged detector in the fresh frame.",
+    "homography_application_count": 0,
+    "world_coordinates_created": false,
+    "expected_side_length_m": 0.175,
+    "side_length_sanity_check": "NOT_AVAILABLE_NO_DETECTED_FLOOR_MARKER",
+    "systematic_metric_error_claim": "NOT_EVALUATED"
+  },
+  "geometry_provenance": {
+    "existing_homography_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+    "existing_homography_sha256": "070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da",
+    "selected_branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+    "homography_recomputed": false,
+    "fit_points_changed": false,
+    "holdout_points_changed": false,
+    "floor_marker_pixels_mapped": false
+  },
+  "policy": "Floor ArUco is an optional geometric cross-check. Failure to decode IDs 1-4 is reported and does not invalidate the independently validated tile-grid geometry."
+}

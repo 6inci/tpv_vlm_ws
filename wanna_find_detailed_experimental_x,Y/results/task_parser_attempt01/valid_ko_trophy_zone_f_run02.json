@@ -1,0 +1,32 @@
+{
+  "case_id": "valid_ko_trophy_zone_f",
+  "category": "valid",
+  "run": 2,
+  "instruction": "금색 트로피를 F구역으로 가져다 놔",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"金色奖杯\",\"destination_phrase\":\"F区\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "金色奖杯",
+    "destination_phrase": "F区"
+  },
+  "validated": {
+    "status": "DESTINATION_NOT_RESOLVED",
+    "raw_instruction": "금색 트로피를 F구역으로 가져다 놔",
+    "error_code": "ZONE_NOT_RESOLVED",
+    "reason": "destination is not a configured zone alias: F区",
+    "parsed_fields": {
+      "action": "reposition",
+      "target_phrase": "金色奖杯",
+      "destination_phrase": "F区"
+    }
+  },
+  "integrated": null,
+  "inference_sec": 6.223208597999474,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "gold trophy-like object",
+    "zone_id": "zone_F"
+  },
+  "matches_expected": false
+}

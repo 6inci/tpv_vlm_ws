@@ -1,0 +1,77 @@
+{
+  "purpose": "Move a red cube from the conveyor belt area to the unloading area",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [110, 350, 207, 620]
+  },
+  "source_relation": "on",
+  "destination_meaning": "unloading area for trucks",
+  "destination_reference": {
+    "name_en": "truck unloading zone",
+    "bbox_2d": [745, 0, 880, 150],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Pedestrian walkway",
+      "visual_evidence": [
+        "green floor with footprints",
+        "no robot body allowed"
+      ],
+      "bbox_2d": [305, 50, 560, 280],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Robot travel zone",
+      "visual_evidence": [
+        "yellow border",
+        "black floor"
+      ],
+      "bbox_2d": [100, 270, 970, 750],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Conveyor belt work cell",
+      "visual_evidence": [
+        "white border",
+        "robot arms"
+      ],
+      "bbox_2d": [100, 270, 260, 720],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Cargo storage area",
+      "visual_evidence": [
+        "yellow border",
+        "stacked boxes and barrels"
+      ],
+      "bbox_2d": [610, 430, 960, 550],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Truck unloading zone",
+      "visual_evidence": [
+        "white truck",
+        "white dashed lines"
+      ],
+      "bbox_2d": [745, 0, 880, 150],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+        "orange cones",
+        "white lines"
+      ],
+      "bbox_2d": [280, 180, 900, 280],
+      "robot_body_access": "forbidden"
+    }
+  ],
+  "uncertainty": [
+    "The reach of the gripper is not confirmed, so whether the robot can pick up the red cube is uncertain."
+  ]
+}

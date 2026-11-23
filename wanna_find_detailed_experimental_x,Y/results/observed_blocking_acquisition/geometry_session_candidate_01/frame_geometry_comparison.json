@@ -1,0 +1,161 @@
+{
+  "schema_version": "0.1",
+  "analysis_time": "2026-09-21T05:58:12+09:00",
+  "result": "PHYSICAL_POSE_CHANGE_LIKELY",
+  "evidence_strength": "HIGH_WITH_HISTORICAL_UVC_CONTROL_LIMITATION",
+  "camera_identity": {
+    "same_physical_camera_confirmed_by_serial": true,
+    "serial": "Ucamera001",
+    "first_node": "/dev/video6",
+    "repeat_and_current_node": "/dev/video7",
+    "node_number_change_is_not_camera_identity_change": true
+  },
+  "first_frame": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_raw.png",
+    "sha256": "d485d1ecaf2ad3bb89b3528b80622e3ec73f6bd2c6e22f2e50784aec24bcd088",
+    "format": "1920x1080 decoded from native MJPG",
+    "software_transforms": []
+  },
+  "repeat_frame": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_raw_repeat_01.png",
+    "sha256": "9dce0a2c360c9c21840345222a69931d33441e1556ea18027a5fd58550766476",
+    "format": "1920x1080 decoded from native MJPG",
+    "software_transforms": []
+  },
+  "uvc_audit_summary": {
+    "current_geometry_controls_exposed": false,
+    "historical_control_comparison_available": false,
+    "current_crop_is_full_frame": true,
+    "uvc_framing_change_supported_by_direct_control_evidence": false
+  },
+  "background_registration_summary": {
+    "ratio_pass_matches": 1933,
+    "projective_inliers": 959,
+    "projective_rmse_px": 1.387159115909216,
+    "translation_rmse_same_points_px": 25.60026262292132,
+    "similarity_rmse_same_points_px": 5.064608584446718,
+    "affine_rmse_same_points_px": 2.4731813575850143,
+    "approximate_robust_scale_repeat_over_first": 0.9534699949989157,
+    "approximate_rotation_degrees": 0.6045548736943652,
+    "projective_center_displacement_px": [
+      38.7314453125,
+      -35.826873779296875
+    ],
+    "projective_lower_center_displacement_px": [
+      35.36126708984375,
+      -63.43414306640625
+    ],
+    "classification": "PROJECTIVE_CAMERA_POSE_CHANGE"
+  },
+  "id0_displacement": {
+    "center_vector_px": [
+      52.0,
+      -67.75
+    ],
+    "center_magnitude_px": 85.40528379438827,
+    "mean_corner_displacement_px": 85.47062619474593,
+    "maximum_corner_displacement_px": 90.21086409075129,
+    "role": "SUPPORTING_ONLY_BECAUSE_ID0_IS_RAISED_AND_NOT_STATIC_BACKGROUND"
+  },
+  "floor_marker_visibility": {
+    "1": {
+      "status": "VISIBLE_FULLY_INSIDE_IMAGE",
+      "approximate_repeat_roi_px": [
+        1120,
+        470,
+        1240,
+        580
+      ],
+      "near_image_edge": false,
+      "blur": "NO_SEVERE_BLUR_VISUALLY",
+      "perspective": "FAR_MARKER_COMPRESSED",
+      "contrast": "BLACK_WHITE_STRUCTURE_VISIBLE",
+      "physically_absent": false,
+      "assessment": "VISIBLE_BUT_NOT_DECODED"
+    },
+    "2": {
+      "status": "VISIBLE_FULLY_INSIDE_IMAGE",
+      "approximate_repeat_roi_px": [
+        1140,
+        740,
+        1300,
+        880
+      ],
+      "near_image_edge": false,
+      "blur": "NO_SEVERE_BLUR_VISUALLY",
+      "perspective": "MODERATE",
+      "contrast": "BLACK_WHITE_STRUCTURE_VISIBLE",
+      "physically_absent": false,
+      "assessment": "VISIBLE_BUT_NOT_DECODED"
+    },
+    "3": {
+      "status": "VISIBLE_FULLY_INSIDE_IMAGE",
+      "approximate_repeat_roi_px": [
+        840,
+        470,
+        980,
+        580
+      ],
+      "near_image_edge": false,
+      "blur": "NO_SEVERE_BLUR_VISUALLY",
+      "perspective": "FAR_MARKER_COMPRESSED",
+      "contrast": "BLACK_WHITE_STRUCTURE_VISIBLE",
+      "physically_absent": false,
+      "assessment": "VISIBLE_BUT_NOT_DECODED"
+    },
+    "4": {
+      "status": "VISIBLE_FULLY_INSIDE_IMAGE",
+      "approximate_repeat_roi_px": [
+        790,
+        740,
+        930,
+        870
+      ],
+      "near_image_edge": false,
+      "blur": "NO_SEVERE_BLUR_VISUALLY",
+      "perspective": "MODERATE",
+      "contrast": "BLACK_WHITE_STRUCTURE_VISIBLE",
+      "physically_absent": false,
+      "assessment": "VISIBLE_BUT_NOT_DECODED"
+    }
+  },
+  "floor_marker_detection_failure_assessment": {
+    "same_detector_result": "DICT_4X4_50 defaults detected only ID0",
+    "markers_physically_absent": false,
+    "markers_outside_or_too_close_to_edge": false,
+    "severe_blur_or_low_contrast_clearly_established": false,
+    "assessment": "VISIBLE_MARKERS_FAILED_DECODING_AFTER_A_LARGE_PROJECTIVE_REFRAME; EXACT_DECODE_FAILURE_MECHANISM_REMAINS_UNKNOWN",
+    "detector_parameters_modified": false
+  },
+  "most_likely_framing_cause": "Physical optical-pose change, likely including a small roll/yaw/tilt component and a scale/FOV effect. Pure detector failure is ruled out as the cause of the frame mismatch; direct evidence for UVC zoom/pan/tilt is absent.",
+  "causal_boundary": "LIKELY does not mean mechanically proven. Historical UVC controls were not recorded, so an internal unexposed camera-state contribution cannot be completely excluded.",
+  "geometry_session_status": "UNSTABLE_DO_NOT_MERGE_FRAMES",
+  "geometry_policy": {
+    "first_candidate_h": "REJECTED",
+    "corrected_candidate_h": "REJECTED",
+    "repeat_frame_metric_grounding_allowed": false,
+    "merge_frames_into_one_geometry_session": false
+  },
+  "operations_not_run": {
+    "new_capture": true,
+    "uvc_control_changes": true,
+    "metric_homography": true,
+    "hypothesis_search": true,
+    "qwen": true,
+    "step24n": true,
+    "step25n": true,
+    "path_validity": true,
+    "step19": true,
+    "step18": true,
+    "a_star": true,
+    "ros_nav2": true,
+    "step32": true
+  },
+  "remaining_unknowns": [
+    "Historical UVC control values for the first frame",
+    "Whether reconnection mechanically disturbed the mount or changed an unexposed internal camera state",
+    "Exact image-processing reason IDs 1-4 failed dictionary decoding despite remaining visible"
+  ],
+  "minimal_human_action": "Do not move or tighten anything yet. Visually inspect the camera mount and cable strain, then report whether reconnection could have mechanically changed camera aim; no new capture is requested in this audit.",
+  "recommended_continuation": "First decide whether to restore the original first-frame view or declare a new geometry session. Only after that decision should a separately authorized capture and fresh marker/grid validation occur."
+}

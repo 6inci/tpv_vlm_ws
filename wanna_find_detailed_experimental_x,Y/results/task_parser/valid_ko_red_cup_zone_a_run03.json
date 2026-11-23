@@ -1,0 +1,36 @@
+{
+  "case_id": "valid_ko_red_cup_zone_a",
+  "category": "valid",
+  "run": 3,
+  "instruction": "빨간 컵을 A구역으로 옮겨",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"빨간 컵\",\"destination_phrase\":\"A구역\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "빨간 컵",
+    "destination_phrase": "A구역"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "빨간 컵을 A구역으로 옮겨",
+    "action": "reposition",
+    "target": {
+      "phrase": "빨간 컵"
+    },
+    "destination": {
+      "phrase": "A구역",
+      "zone_id": "zone_A"
+    }
+  },
+  "integrated": {
+    "status": "TARGET_GROUNDING_NOT_AVAILABLE",
+    "target_phrase": "빨간 컵"
+  },
+  "inference_sec": 7.919023267000739,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "red cup",
+    "zone_id": "zone_A"
+  },
+  "matches_expected": false
+}

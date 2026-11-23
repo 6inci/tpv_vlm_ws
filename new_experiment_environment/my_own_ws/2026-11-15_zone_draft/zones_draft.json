@@ -1,0 +1,88 @@
+{
+  "schema_version": "1.0",
+  "status": "DRAFT - user must confirm",
+  "image": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP110_word_grounding/data/pilot/P01_cheese_2026-11-14-181534.jpg",
+  "image_sha256": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+  "annotation": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP110_word_grounding/annotations/pilot/P01_cheese_2026-11-14-181534.json",
+  "annotation_sha256": "cb8781219e4ce52a23d37638fc4c0d21cca179b70ecf070472f3d2159c51ce5d",
+  "coordinate_system": {
+    "name": "raw_distorted_camera_pixels",
+    "width": 1920,
+    "height": 1080,
+    "origin": "top_left",
+    "x_direction": "right",
+    "y_direction": "down",
+    "units": "pixels",
+    "undistorted": false
+  },
+  "polygon_convention": "Ordered outer-boundary vertices, last point connected to first; visible line center estimated by eye. Interiors can overlap and do not yet imply access rules.",
+  "zones": [
+    {
+      "id": "Z01",
+      "type": "green_walkway",
+      "description": "상단 중앙의 발자국이 그려진 초록색 L자 통로",
+      "polygon_xy": [[1002, 102], [1086, 102], [1103, 310], [636, 314], [648, 241], [997, 233]],
+      "label_anchor_xy": [710, 221],
+      "confidence": "medium",
+      "evidence": "초록색 채움과 흰 발자국 무늬가 이어짐; 경계 일부는 원근과 라바콘에 가림",
+      "access_rule": "UNKNOWN - user must confirm"
+    },
+    {
+      "id": "Z02",
+      "type": "yellow_area",
+      "description": "가운데 넓은 검은 바닥을 둘러싼 노란 선",
+      "polygon_xy": [[558, 323], [1693, 344], [1804, 825], [457, 824]],
+      "label_anchor_xy": [600, 745],
+      "confidence": "medium",
+      "evidence": "상단 가로선, 오른쪽 사선, 하단 가로선, 왼쪽 사선이 보임",
+      "access_rule": "UNKNOWN - user must confirm"
+    },
+    {
+      "id": "Z03",
+      "type": "yellow_area",
+      "description": "가운데 박스 더미 아래 적재 구역의 노란 테두리",
+      "polygon_xy": [[816, 477], [998, 479], [1001, 625], [804, 623]],
+      "label_anchor_xy": [810, 670],
+      "confidence": "medium",
+      "evidence": "박스 더미를 둘러싼 작은 노란 직사각형; 물체가 내부 경계를 가림",
+      "access_rule": "UNKNOWN - user must confirm"
+    },
+    {
+      "id": "Z04",
+      "type": "yellow_area",
+      "description": "오른쪽 카트·IBC·드럼통 적치대의 노란 테두리",
+      "polygon_xy": [[1222, 495], [1756, 503], [1769, 630], [1227, 625]],
+      "label_anchor_xy": [1440, 675],
+      "confidence": "medium",
+      "evidence": "길게 이어진 노란 외곽선; 내부 물체와 팔레트가 일부 선을 가림",
+      "access_rule": "UNKNOWN - user must confirm"
+    },
+    {
+      "id": "Z05",
+      "type": "other",
+      "description": "오른쪽 아래 번개 표시가 있는 흰 테두리 패드; 충전 구역으로 추정",
+      "polygon_xy": [[1299, 853], [1516, 851], [1525, 1018], [1314, 1025]],
+      "label_anchor_xy": [1320, 945],
+      "confidence": "medium",
+      "evidence": "흰 경계와 번개 아이콘, 경계 옆 충전기 모형 두 개",
+      "access_rule": "UNKNOWN - user must confirm"
+    }
+  ],
+  "unconfirmed_markings": [
+    {
+      "id": "M01",
+      "kind": "fire_extinguisher_area",
+      "status": "INFERRED",
+      "point_xy": [1662, 918],
+      "polygon_xy": null,
+      "evidence": "소화기 물체는 보이지만 별도의 바닥 경계는 확인되지 않음"
+    },
+    {
+      "id": "M02",
+      "kind": "no_entry_area",
+      "status": "UNKNOWN",
+      "polygon_xy": null,
+      "evidence": "P01에서 명시적 진입 금지 표식은 확인되지 않음"
+    }
+  ]
+}

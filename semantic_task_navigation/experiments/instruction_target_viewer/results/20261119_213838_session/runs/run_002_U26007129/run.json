@@ -1,0 +1,1887 @@
+{
+ "run_id": "run_002_U26007129",
+ "created": "2026-11-19T21:40:03",
+ "instruction": "트럭 주변의 물건을 컨베이어 옆으로 가져와.",
+ "rules": "R1",
+ "photo": {
+  "photo_id": "U26007129",
+  "path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+  "sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "detection_reused": "fresh DINO this session (vocabulary; full image + verified conveyor / truck ROIs), IoU merge 0.5",
+ "cube_candidates": "stored red-cube candidates (candidate_retention_policy, HSV + DINO)",
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "policy": {
+  "config": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml",
+  "prompt_ids": [
+   "task_context_v1",
+   "source_roles_v2",
+   "destination_roles_v2"
+  ],
+  "rules_text": "이 작업장의 운영 규칙(사용자 초안, 확인 전):\n- 초록색 바닥에 발자국 표시가 있는 통로는 보행자 통로이며 로봇 본체가 들어갈 수 없다.\n- 노란 외곽선 안의 넓은 검은 바닥은 로봇 주행 구역이다. 로봇 본체는 이 구역 안에서만 움직인다.\n- 흰 테두리 안의 컨베이어·로봇 팔 작업셀에는 로봇 본체가 들어갈 수 없다.\n- 노란 테두리 안의 화물 적치 구역과 자재 보관 구역에는 로봇 본체가 들어가지 않고 접근만 한다.\n- 트럭과 흰색 점선 구획은 트럭 하역장이다.\n- 안전 콘과 바닥 경계선은 작업공간을 나누는 표시일 수 있다.\n- 로봇은 주행 구역에 정차한 채 인접한 구역의 물체를 집거나 놓을 수 있다(그리퍼 도달 거리는 확인되지 않았다).\n",
+  "viewer_config": {
+   "photo_dir": "/home/binci/Pictures/Calibration",
+   "results_dir": "results",
+   "reuse": {
+    "task_context_config": "../task_context_2d_navigation/config.yaml"
+   },
+   "whole_image_when_no_reference": true,
+   "max_role_calls_per_side": 3,
+   "goal_region": {
+    "region_words": [
+     "floor",
+     "area",
+     "zone",
+     "marking",
+     "road",
+     "ground",
+     "lane",
+     "region",
+     "space",
+     "surface",
+     "mat",
+     "dock",
+     "bay",
+     "path",
+     "walkway",
+     "aisle"
+    ],
+    "min_image_frac": 0.03
+   },
+   "default_rules": "R1"
+  }
+ },
+ "model_called": true,
+ "source": {
+  "status": "SELECTED",
+  "numbers": [
+   7
+  ],
+  "why": "exactly one candidate rated object_to_move",
+  "ids": [
+   "m4"
+  ],
+  "boxes": [
+   [
+    1583.68,
+    12.89,
+    1677.06,
+    59.03
+   ]
+  ],
+  "ratings": {
+   "m96": {
+    "id": 1,
+    "appearance": [
+     "a small green box"
+    ],
+    "role": "other",
+    "reason": "It is located in a non-travel area and not adjacent to the truck."
+   },
+   "m15": {
+    "id": 2,
+    "appearance": [
+     "a white truck"
+    ],
+    "role": "other",
+    "reason": "It is the target vehicle, not an object to be moved."
+   },
+   "m78": {
+    "id": 4,
+    "appearance": [
+     "a gray textured surface"
+    ],
+    "role": "other",
+    "reason": "It is part of the background surface, not an object to be moved."
+   },
+   "m77": {
+    "id": 5,
+    "appearance": [
+     "a black vertical object"
+    ],
+    "role": "other",
+    "reason": "It is part of the truck's structure, not an object to be moved."
+   },
+   "m41": {
+    "id": 6,
+    "appearance": [
+     "a white truck"
+    ],
+    "role": "other",
+    "reason": "It is the target vehicle, not an object to be moved."
+   },
+   "m4": {
+    "id": 7,
+    "appearance": [
+     "a yellowish rectangular object"
+    ],
+    "role": "object_to_move",
+    "reason": "It is located on the truck and should be moved according to the instruction."
+   },
+   "m63": {
+    "id": 8,
+    "appearance": [
+     "a small green box"
+    ],
+    "role": "other",
+    "reason": "It is located in a non-travel area and not adjacent to the truck."
+   },
+   "m68": {
+    "id": 9,
+    "appearance": [
+     "a white dashed line"
+    ],
+    "role": "other",
+    "reason": "It is part of the truck unloading area, not an object to be moved."
+   },
+   "m80": {
+    "id": 12,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m39": {
+    "id": 13,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m86": {
+    "id": 14,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m69": {
+    "id": 15,
+    "appearance": [
+     "a gray textured surface"
+    ],
+    "role": "other",
+    "reason": "It is part of the background surface, not an object to be moved."
+   },
+   "m84": {
+    "id": 16,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m33": {
+    "id": 17,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m75": {
+    "id": 18,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m43": {
+    "id": 19,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m28": {
+    "id": 20,
+    "appearance": [
+     "an orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "It is a safety cone, not an object to be moved."
+   },
+   "m20": {
+    "id": 21,
+    "appearance": [
+     "orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "Traffic cone is not the object to be moved."
+   },
+   "m54": {
+    "id": 22,
+    "appearance": [
+     "orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "Traffic cone is not the object to be moved."
+   },
+   "m51": {
+    "id": 23,
+    "appearance": [
+     "orange traffic cone"
+    ],
+    "role": "other",
+    "reason": "Traffic cone is not the object to be moved."
+   }
+  },
+  "numbering": {
+   "1": "m96",
+   "2": "m15",
+   "3": "m57",
+   "4": "m78",
+   "5": "m77",
+   "6": "m41",
+   "7": "m4",
+   "8": "m63",
+   "9": "m68",
+   "10": "m85",
+   "11": "m30",
+   "12": "m80",
+   "13": "m39",
+   "14": "m86",
+   "15": "m69",
+   "16": "m84",
+   "17": "m33",
+   "18": "m75",
+   "19": "m43",
+   "20": "m28",
+   "21": "m20",
+   "22": "m54",
+   "23": "m51"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/inputs/source_1.png",
+    "view_rect": [
+     1302,
+     0,
+     1832,
+     295
+    ],
+    "numbers": [
+     1,
+     20
+    ],
+    "error": null
+   },
+   {
+    "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/inputs/source_2.png",
+    "view_rect": [
+     1302,
+     0,
+     1832,
+     295
+    ],
+    "numbers": [
+     21,
+     23
+    ],
+    "error": null
+   }
+  ],
+  "reply_reason": "The yellowish rectangular object on the truck is the only item that needs to be moved according to the instruction. | No object to be moved is indicated in the image.",
+  "candidates": [
+   {
+    "id": "m96",
+    "bbox_xyxy": [
+     1302.0,
+     0.0,
+     1324.8,
+     42.85
+    ]
+   },
+   {
+    "id": "m15",
+    "bbox_xyxy": [
+     1549.24,
+     0.0,
+     1687.5,
+     112.07
+    ]
+   },
+   {
+    "id": "m57",
+    "bbox_xyxy": [
+     1789.82,
+     0.0,
+     1832.0,
+     117.39
+    ]
+   },
+   {
+    "id": "m78",
+    "bbox_xyxy": [
+     1790.36,
+     0.0,
+     1832.0,
+     293.86
+    ]
+   },
+   {
+    "id": "m77",
+    "bbox_xyxy": [
+     1487.63,
+     0.91,
+     1513.02,
+     50.95
+    ]
+   },
+   {
+    "id": "m41",
+    "bbox_xyxy": [
+     1448.69,
+     0.92,
+     1566.21,
+     143.77
+    ]
+   },
+   {
+    "id": "m4",
+    "bbox_xyxy": [
+     1583.68,
+     12.89,
+     1677.06,
+     59.03
+    ]
+   },
+   {
+    "id": "m63",
+    "bbox_xyxy": [
+     1302.02,
+     15.43,
+     1313.1,
+     114.06
+    ]
+   },
+   {
+    "id": "m68",
+    "bbox_xyxy": [
+     1392.2,
+     55.47,
+     1687.37,
+     181.81
+    ]
+   },
+   {
+    "id": "m85",
+    "bbox_xyxy": [
+     1302.04,
+     65.57,
+     1317.37,
+     201.62
+    ]
+   },
+   {
+    "id": "m30",
+    "bbox_xyxy": [
+     1302.02,
+     67.18,
+     1312.57,
+     112.46
+    ]
+   },
+   {
+    "id": "m80",
+    "bbox_xyxy": [
+     1302.0,
+     67.96,
+     1307.72,
+     99.72
+    ]
+   },
+   {
+    "id": "m39",
+    "bbox_xyxy": [
+     1302.01,
+     153.63,
+     1316.43,
+     200.32
+    ]
+   },
+   {
+    "id": "m86",
+    "bbox_xyxy": [
+     1302.0,
+     176.75,
+     1315.93,
+     200.1
+    ]
+   },
+   {
+    "id": "m69",
+    "bbox_xyxy": [
+     1711.72,
+     228.76,
+     1831.98,
+     294.1
+    ]
+   },
+   {
+    "id": "m84",
+    "bbox_xyxy": [
+     1308.15,
+     237.81,
+     1717.73,
+     292.99
+    ]
+   },
+   {
+    "id": "m33",
+    "bbox_xyxy": [
+     1676.45,
+     239.29,
+     1713.23,
+     283.5
+    ]
+   },
+   {
+    "id": "m75",
+    "bbox_xyxy": [
+     1687.71,
+     240.21,
+     1712.14,
+     271.4
+    ]
+   },
+   {
+    "id": "m43",
+    "bbox_xyxy": [
+     1523.85,
+     242.15,
+     1561.04,
+     287.91
+    ]
+   },
+   {
+    "id": "m28",
+    "bbox_xyxy": [
+     1414.63,
+     246.75,
+     1450.41,
+     291.44
+    ]
+   },
+   {
+    "id": "m20",
+    "bbox_xyxy": [
+     1309.9,
+     249.9,
+     1343.05,
+     293.53
+    ]
+   },
+   {
+    "id": "m54",
+    "bbox_xyxy": [
+     1525.16,
+     261.67,
+     1558.16,
+     287.29
+    ]
+   },
+   {
+    "id": "m51",
+    "bbox_xyxy": [
+     1302.0,
+     284.15,
+     1732.97,
+     294.1
+    ]
+   }
+  ]
+ },
+ "destination": {
+  "status": "AMBIGUOUS",
+  "number": null,
+  "kind": null,
+  "why": "Qwen best None is null; 3 accessible suitable candidates [20, 30, 31]",
+  "id": null,
+  "bbox_xyxy": null,
+  "ratings": {
+   "m46": {
+    "id": 1,
+    "appearance": [
+     "a gray object with a circular detail"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is outside the robot's operational area and not adjacent to the conveyor belt."
+   },
+   "m34": {
+    "id": 3,
+    "appearance": [
+     "a robotic arm with a gripper"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a robotic arm, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m40": {
+    "id": 4,
+    "appearance": [
+     "a robotic arm with a gripper"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a robotic arm, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m9": {
+    "id": 5,
+    "appearance": [
+     "a white rectangular object with a grid pattern"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is adjacent to the conveyor belt and within the robot's operational area."
+   },
+   "m29": {
+    "id": 6,
+    "appearance": [
+     "a robotic arm with a gripper"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a robotic arm, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m44": {
+    "id": 7,
+    "appearance": [
+     "a small orange object"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is adjacent to the conveyor belt and within the robot's operational area."
+   },
+   "m106": {
+    "id": 8,
+    "appearance": [
+     "a small orange object"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is adjacent to the conveyor belt and within the robot's operational area."
+   },
+   "m19": {
+    "id": 9,
+    "appearance": [
+     "a small orange object"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is adjacent to the conveyor belt and within the robot's operational area."
+   },
+   "m83": {
+    "id": 10,
+    "appearance": [
+     "a small orange object"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is adjacent to the conveyor belt and within the robot's operational area."
+   },
+   "m55": {
+    "id": 12,
+    "appearance": [
+     "a safety cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a safety cone, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m101": {
+    "id": 13,
+    "appearance": [
+     "a white symbol on a green surface"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a safety symbol, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m74": {
+    "id": 15,
+    "appearance": [
+     "a red button"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a button, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m10": {
+    "id": 16,
+    "appearance": [
+     "a robotic arm with a gripper"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a robotic arm, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m105": {
+    "id": 18,
+    "appearance": [
+     "a robotic arm with a gripper"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a robotic arm, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m94": {
+    "id": 19,
+    "appearance": [
+     "a robotic arm with a gripper"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "It is a robotic arm, not a conveyor belt, and is not adjacent to the conveyor belt."
+   },
+   "m64": {
+    "id": 20,
+    "appearance": [
+     "a large black area with yellow border"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "It is the robot's operational area and adjacent to the conveyor belt."
+   },
+   "m76": {
+    "id": 21,
+    "appearance": [
+     "a purple object"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Occupied by another object, not suitable for placing new items."
+   },
+   "m90": {
+    "id": 22,
+    "appearance": [
+     "a purple object"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Occupied by another object, not suitable for placing new items."
+   },
+   "m53": {
+    "id": 23,
+    "appearance": [
+     "a large black area"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is a robot travel area, allowing robot to move and place objects."
+   },
+   "m98": {
+    "id": 24,
+    "appearance": [
+     "a purple object"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Occupied by another object, not suitable for placing new items."
+   },
+   "m21": {
+    "id": 25,
+    "appearance": [
+     "a large area with objects"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Occupied by multiple objects, not suitable for placing new items."
+   },
+   "m82": {
+    "id": 26,
+    "appearance": [
+     "an orange object"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Occupied by another object, not suitable for placing new items."
+   },
+   "m89": {
+    "id": 27,
+    "appearance": [
+     "a yellow object"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Occupied by another object, not suitable for placing new items."
+   },
+   "m38": {
+    "id": 28,
+    "appearance": [
+     "a white object"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Occupied by another object, not suitable for placing new items."
+   },
+   "m17": {
+    "id": 30,
+    "appearance": [
+     "a gray truck"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "Truck unloading area, suitable for placing objects."
+   },
+   "m26": {
+    "id": 31,
+    "appearance": [
+     "a green rack"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "Truck unloading area, suitable for placing objects."
+   }
+  },
+  "numbering": {
+   "1": "m46",
+   "2": "m11",
+   "3": "m34",
+   "4": "m40",
+   "5": "m9",
+   "6": "m29",
+   "7": "m44",
+   "8": "m106",
+   "9": "m19",
+   "10": "m83",
+   "11": "m79",
+   "12": "m55",
+   "13": "m101",
+   "14": "m45",
+   "15": "m74",
+   "16": "m10",
+   "17": "m16",
+   "18": "m105",
+   "19": "m94",
+   "20": "m64",
+   "21": "m76",
+   "22": "m90",
+   "23": "m53",
+   "24": "m98",
+   "25": "m21",
+   "26": "m82",
+   "27": "m89",
+   "28": "m38",
+   "29": "m66",
+   "30": "m17",
+   "31": "m26"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/inputs/destination_1.png",
+    "view_rect": [
+     0,
+     0,
+     818,
+     1076
+    ],
+    "numbers": [
+     1,
+     20
+    ],
+    "error": null
+   },
+   {
+    "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/inputs/destination_2.png",
+    "view_rect": [
+     0,
+     0,
+     740,
+     1076
+    ],
+    "numbers": [
+     21,
+     31
+    ],
+    "error": null
+   }
+  ],
+  "reply_reason": "It is a white rectangular object with a grid pattern, adjacent to the conveyor belt, and within the robot's operational area. | Green rack is in the truck unloading area and is empty, suitable for placing objects.",
+  "candidates": [
+   {
+    "id": "m46",
+    "bbox_xyxy": [
+     0.31,
+     0.05,
+     89.01,
+     173.3
+    ],
+    "phrases": [
+     "cart"
+    ]
+   },
+   {
+    "id": "m11",
+    "bbox_xyxy": [
+     432.98,
+     17.07,
+     817.22,
+     184.3
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "conveyor belt",
+     "objects",
+     "pallet",
+     "shelf",
+     "table",
+     "truck",
+     "truck bed",
+     "truck unloading zone"
+    ]
+   },
+   {
+    "id": "m34",
+    "bbox_xyxy": [
+     667.49,
+     17.25,
+     807.48,
+     165.97
+    ],
+    "phrases": [
+     "cart",
+     "objects",
+     "pallet",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m40",
+    "bbox_xyxy": [
+     431.73,
+     25.86,
+     571.67,
+     168.72
+    ],
+    "phrases": [
+     "cart",
+     "objects",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m9",
+    "bbox_xyxy": [
+     340.79,
+     43.51,
+     447.1,
+     142.59
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "conveyor belt",
+     "objects",
+     "pallet",
+     "shelf",
+     "table",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m29",
+    "bbox_xyxy": [
+     449.2,
+     77.66,
+     538.7,
+     167.94
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "objects",
+     "pallet",
+     "shelf",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m44",
+    "bbox_xyxy": [
+     266.71,
+     89.18,
+     332.83,
+     193.7
+    ],
+    "phrases": [
+     "cart",
+     "objects",
+     "pallet",
+     "shelf",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m106",
+    "bbox_xyxy": [
+     292.51,
+     93.15,
+     332.6,
+     164.67
+    ],
+    "phrases": [
+     "objects"
+    ]
+   },
+   {
+    "id": "m19",
+    "bbox_xyxy": [
+     227.05,
+     156.24,
+     324.14,
+     290.63
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "objects",
+     "pallet",
+     "red cube",
+     "shelf",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m83",
+    "bbox_xyxy": [
+     243.66,
+     159.92,
+     283.57,
+     219.84
+    ],
+    "phrases": [
+     "objects",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m79",
+    "bbox_xyxy": [
+     551.08,
+     204.54,
+     570.09,
+     228.59
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m55",
+    "bbox_xyxy": [
+     549.78,
+     205.37,
+     582.31,
+     241.83
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "objects",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m101",
+    "bbox_xyxy": [
+     623.82,
+     232.79,
+     672.29,
+     285.7
+    ],
+    "phrases": [
+     "objects"
+    ]
+   },
+   {
+    "id": "m45",
+    "bbox_xyxy": [
+     521.44,
+     271.97,
+     568.15,
+     311.69
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "objects",
+     "pallet",
+     "red cube",
+     "truck"
+    ]
+   },
+   {
+    "id": "m74",
+    "bbox_xyxy": [
+     529.82,
+     275.42,
+     551.21,
+     298.55
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m10",
+    "bbox_xyxy": [
+     227.1,
+     280.45,
+     429.86,
+     764.04
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "conveyor belt",
+     "floor marking",
+     "objects",
+     "pallet",
+     "red cube",
+     "shelf",
+     "table",
+     "truck",
+     "truck bed",
+     "truck unloading zone"
+    ]
+   },
+   {
+    "id": "m16",
+    "bbox_xyxy": [
+     268.27,
+     280.76,
+     429.83,
+     474.94
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "objects",
+     "pallet",
+     "shelf",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m105",
+    "bbox_xyxy": [
+     325.15,
+     281.84,
+     419.86,
+     360.22
+    ],
+    "phrases": [
+     "objects"
+    ]
+   },
+   {
+    "id": "m94",
+    "bbox_xyxy": [
+     268.96,
+     283.56,
+     332.34,
+     442.84
+    ],
+    "phrases": [
+     "objects"
+    ]
+   },
+   {
+    "id": "m64",
+    "bbox_xyxy": [
+     489.98,
+     315.46,
+     701.13,
+     477.27
+    ],
+    "phrases": [
+     "shelf"
+    ]
+   },
+   {
+    "id": "m76",
+    "bbox_xyxy": [
+     328.39,
+     381.81,
+     365.1,
+     444.49
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m90",
+    "bbox_xyxy": [
+     315.76,
+     461.69,
+     366.87,
+     591.7
+    ],
+    "phrases": [
+     "objects"
+    ]
+   },
+   {
+    "id": "m53",
+    "bbox_xyxy": [
+     418.03,
+     472.78,
+     682.74,
+     827.57
+    ],
+    "phrases": [
+     "shelf"
+    ]
+   },
+   {
+    "id": "m98",
+    "bbox_xyxy": [
+     320.57,
+     535.25,
+     374.59,
+     663.16
+    ],
+    "phrases": [
+     "objects"
+    ]
+   },
+   {
+    "id": "m21",
+    "bbox_xyxy": [
+     228.04,
+     537.47,
+     394.61,
+     763.72
+    ],
+    "phrases": [
+     "cart",
+     "objects",
+     "pallet",
+     "shelf",
+     "truck",
+     "truck bed",
+     "truck unloading zone"
+    ]
+   },
+   {
+    "id": "m82",
+    "bbox_xyxy": [
+     294.13,
+     580.31,
+     330.39,
+     656.68
+    ],
+    "phrases": [
+     "objects",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m89",
+    "bbox_xyxy": [
+     231.63,
+     599.01,
+     348.05,
+     732.98
+    ],
+    "phrases": [
+     "objects"
+    ]
+   },
+   {
+    "id": "m38",
+    "bbox_xyxy": [
+     274.32,
+     662.19,
+     394.66,
+     763.95
+    ],
+    "phrases": [
+     "cart",
+     "objects",
+     "pallet",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m66",
+    "bbox_xyxy": [
+     111.02,
+     775.4,
+     319.08,
+     970.31
+    ],
+    "phrases": [
+     "cardboard box"
+    ]
+   },
+   {
+    "id": "m17",
+    "bbox_xyxy": [
+     110.06,
+     775.58,
+     509.74,
+     987.28
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "conveyor belt",
+     "objects",
+     "pallet",
+     "shelf",
+     "truck",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m26",
+    "bbox_xyxy": [
+     293.63,
+     800.09,
+     508.83,
+     986.19
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "objects",
+     "pallet",
+     "shelf",
+     "truck bed"
+    ]
+   }
+  ],
+  "accessibility": {
+   "m9": {
+    "gap_to_drivable_cm": 50.3,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     83.0,
+     87.0
+    ],
+    "approach_goal_image_px": [
+     597.2,
+     398.5
+    ],
+    "body_gap_cm": 62.0,
+    "floor_polygon_cm": [
+     [
+      10.5,
+      -12.7
+     ],
+     [
+      36.1,
+      -11.7
+     ],
+     [
+      40.7,
+      18.1
+     ],
+     [
+      16.1,
+      17.2
+     ]
+    ],
+    "accessible": false,
+    "why": "50.3 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m44": {
+    "gap_to_drivable_cm": 54.6,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     83.0,
+     89.0
+    ],
+    "approach_goal_image_px": [
+     596.1,
+     406.8
+    ],
+    "body_gap_cm": 66.2,
+    "floor_polygon_cm": [
+     [
+      -4.5,
+      0.7
+     ],
+     [
+      11.3,
+      1.3
+     ],
+     [
+      17.0,
+      31.8
+     ],
+     [
+      1.8,
+      31.4
+     ]
+    ],
+    "accessible": false,
+    "why": "54.6 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m106": {
+    "gap_to_drivable_cm": 60.9,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     83.0,
+     87.0
+    ],
+    "approach_goal_image_px": [
+     597.2,
+     398.5
+    ],
+    "body_gap_cm": 71.8,
+    "floor_polygon_cm": [
+     [
+      1.9,
+      2.1
+     ],
+     [
+      11.4,
+      2.5
+     ],
+     [
+      15.4,
+      23.6
+     ],
+     [
+      6.1,
+      23.3
+     ]
+    ],
+    "accessible": false,
+    "why": "60.9 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m19": {
+    "gap_to_drivable_cm": 41.4,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     83.0,
+     95.0
+    ],
+    "approach_goal_image_px": [
+     592.7,
+     431.9
+    ],
+    "body_gap_cm": 51.7,
+    "floor_polygon_cm": [
+     [
+      -9.6,
+      20.3
+     ],
+     [
+      13.0,
+      21.1
+     ],
+     [
+      20.1,
+      58.2
+     ],
+     [
+      -1.5,
+      57.6
+     ]
+    ],
+    "accessible": false,
+    "why": "41.4 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m83": {
+    "gap_to_drivable_cm": 59.4,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     83.0,
+     91.0
+    ],
+    "approach_goal_image_px": [
+     594.9,
+     415.1
+    ],
+    "body_gap_cm": 70.8,
+    "floor_polygon_cm": [
+     [
+      -5.5,
+      21.5
+     ],
+     [
+      3.8,
+      21.8
+     ],
+     [
+      7.2,
+      38.8
+     ],
+     [
+      -1.9,
+      38.5
+     ]
+    ],
+    "accessible": false,
+    "why": "59.4 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m64": {
+    "gap_to_drivable_cm": 0.0,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     97.0,
+     107.0
+    ],
+    "approach_goal_image_px": [
+     654.8,
+     482.1
+    ],
+    "body_gap_cm": 0.0,
+    "floor_polygon_cm": [
+     [
+      57.5,
+      65.7
+     ],
+     [
+      102.8,
+      66.8
+     ],
+     [
+      106.3,
+      106.1
+     ],
+     [
+      63.2,
+      105.3
+     ]
+    ],
+    "accessible": true,
+    "why": "0.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m53": {
+    "gap_to_drivable_cm": 0.0,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     109.0,
+     157.0
+    ],
+    "approach_goal_image_px": [
+     691.8,
+     714.6
+    ],
+    "body_gap_cm": 0.0,
+    "floor_polygon_cm": [
+     [
+      48.2,
+      103.9
+     ],
+     [
+      102.5,
+      105.0
+     ],
+     [
+      109.3,
+      178.9
+     ],
+     [
+      60.5,
+      178.6
+     ]
+    ],
+    "accessible": true,
+    "why": "0.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m17": {
+    "gap_to_drivable_cm": 0.0,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     85.0,
+     157.0
+    ],
+    "approach_goal_image_px": [
+     564.9,
+     715.7
+    ],
+    "body_gap_cm": 0.0,
+    "floor_polygon_cm": [
+     [
+      0.1,
+      168.2
+     ],
+     [
+      76.1,
+      168.8
+     ],
+     [
+      81.6,
+      207.6
+     ],
+     [
+      10.0,
+      207.6
+     ]
+    ],
+    "accessible": true,
+    "why": "0.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m26": {
+    "gap_to_drivable_cm": 0.0,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     89.0,
+     159.0
+    ],
+    "approach_goal_image_px": [
+     584.8,
+     725.5
+    ],
+    "body_gap_cm": 2.6,
+    "floor_polygon_cm": [
+     [
+      36.3,
+      173.2
+     ],
+     [
+      76.6,
+      173.5
+     ],
+     [
+      81.4,
+      207.4
+     ],
+     [
+      43.1,
+      207.4
+     ]
+    ],
+    "accessible": true,
+    "why": "0.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   }
+  },
+  "tied_ids": [
+   "m64",
+   "m17",
+   "m26"
+  ]
+ },
+ "interpretation": {
+  "parsed": {
+   "purpose": "Move objects from truck area to conveyor belt area",
+   "source_object": {
+    "name_en": "objects"
+   },
+   "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [
+     752,
+     0,
+     880,
+     142
+    ],
+    "bbox_image_px": [
+     1443.8,
+     0.0,
+     1689.6,
+     153.4
+    ]
+   },
+   "source_relation": "from",
+   "destination_meaning": "Conveyor belt area for object transfer",
+   "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [
+     110,
+     260,
+     230,
+     720
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     211.2,
+     280.8,
+     441.6,
+     777.6
+    ]
+   },
+   "destination_relation": "next_to",
+   "zones_seen": [
+    {
+     "description": "Pedestrian walkway",
+     "visual_evidence": [
+      "green floor with footprints",
+      "no robot body allowed"
+     ],
+     "bbox_2d": [
+      305,
+      58,
+      560,
+      280
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Robot travel zone",
+     "visual_evidence": [
+      "yellow border",
+      "black floor"
+     ],
+     "bbox_2d": [
+      100,
+      260,
+      970,
+      750
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "Conveyor belt and robot arm workstation",
+     "visual_evidence": [
+      "white border",
+      "robot arms"
+     ],
+     "bbox_2d": [
+      110,
+      260,
+      230,
+      720
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Cargo storage area",
+     "visual_evidence": [
+      "yellow border",
+      "stacked objects"
+     ],
+     "bbox_2d": [
+      620,
+      430,
+      960,
+      550
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Truck unloading zone",
+     "visual_evidence": [
+      "white dashed lines",
+      "truck"
+     ],
+     "bbox_2d": [
+      620,
+      0,
+      960,
+      280
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "Safety cones and boundary lines",
+     "visual_evidence": [
+      "orange cones",
+      "yellow lines"
+     ],
+     "bbox_2d": [
+      280,
+      180,
+      960,
+      280
+     ],
+     "robot_body_access": "forbidden"
+    }
+   ],
+   "uncertainty": [
+    "Grasp range of gripper not confirmed"
+   ]
+  },
+  "error": null,
+  "raw_file": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/qwen/interpretation.txt"
+ },
+ "references": {
+  "source": {
+   "name": "truck",
+   "class": "truck",
+   "box": [
+    1447.05,
+    0.21,
+    1687.37,
+    149.31
+   ],
+   "how": "class 'truck' -> fresh DINO + Qwen crop yes",
+   "relation": "from",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     1302,
+     0,
+     1832,
+     294
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  },
+  "destination": {
+   "name": "conveyor belt",
+   "class": "conveyor",
+   "box": [
+    211.2,
+    280.8,
+    441.6,
+    777.6
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "next_to",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     0,
+     0,
+     740,
+     1076
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  }
+ },
+ "stages": [
+  {
+   "name": "interpretation",
+   "status": "OK",
+   "summary": "move 'objects' | source: from 'truck' | destination: next_to 'conveyor belt' | purpose: Move objects from truck area to conveyor belt area"
+  },
+  {
+   "name": "detection",
+   "status": "OK",
+   "summary": "new phrases ['objects', 'truck']: 20 new candidates; 106 detector candidates on this photo"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "'truck' [from] -> vicinity [1302, 0, 1832, 294] (class 'truck' -> fresh DINO + Qwen crop yes)"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "'conveyor belt' [next_to] -> vicinity [0, 0, 740, 1076] (Qwen box (no stored object with enough overlap))"
+  },
+  {
+   "name": "source_candidates",
+   "status": "OK",
+   "summary": "23 of 91 detector candidates in the region (task_context rule) inside the region"
+  },
+  {
+   "name": "source_roles",
+   "status": "OK",
+   "summary": "Qwen reply valid"
+  },
+  {
+   "name": "source_decision",
+   "status": "OK",
+   "summary": "SELECTED ['m4']: exactly one candidate rated object_to_move"
+  },
+  {
+   "name": "destination_candidates",
+   "status": "OK",
+   "summary": "31 detector candidates inside the region (0 region-scale boxes not numbered; the object to move excluded)"
+  },
+  {
+   "name": "destination_roles",
+   "status": "OK",
+   "summary": "Qwen reply valid"
+  },
+  {
+   "name": "accessibility",
+   "status": "OK",
+   "summary": "4 of 9 suitable/possible candidates accessible"
+  },
+  {
+   "name": "destination_decision",
+   "status": "UNCERTAIN",
+   "summary": "AMBIGUOUS  : Qwen best None is null; 3 accessible suitable candidates [20, 30, 31]"
+  }
+ ],
+ "first_failure": "destination_decision",
+ "wall_s": 104.7,
+ "model_calls": {
+  "n_qwen": 5,
+  "n_dino": 2,
+  "models": [
+   "IDEA-Research/grounding-dino-tiny @ a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "Qwen/Qwen3-VL-4B-Instruct @ ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  ],
+  "file": "model_calls.json"
+ },
+ "handoff": {
+  "photo_id": "U26007129",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": {
+   "id": "m4",
+   "bbox_xyxy": [
+    1583.68,
+    12.89,
+    1677.06,
+    59.03
+   ],
+   "floor_polygon_cm": [
+    [
+     296.3,
+     -10.4
+    ],
+    [
+     316.7,
+     -9.5
+    ],
+    [
+     314.5,
+     4.0
+    ],
+    [
+     294.4,
+     3.2
+    ]
+   ]
+  },
+  "destination": null
+ },
+ "files": {
+  "overlay": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_002_U26007129/run.json"
+ }
+}

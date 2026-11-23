@@ -1,0 +1,1617 @@
+{
+  "scope": "READ_ONLY_IMAGE_ONLY_CORNER_RELOCALIZATION_DIAGNOSTIC",
+  "source_image": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+  "source_coordinate_domain": "RAW_IMAGE_PX",
+  "source_image_size": [
+    1920,
+    1080
+  ],
+  "physical_feature_definition": "OUTER_BLACK_SQUARE_CORNER: intersection of the exterior boundaries of the full 6x6 ArUco black square. It excludes the white paper perimeter, payload-grid boundaries, and inner border intersections.",
+  "method_summary": {
+    "A": "OpenCV LSD_REFINE_ADV grayscale boundary segments; nearest orientation-compatible line per side; subpixel line intersections.",
+    "B": "Fixed local adaptive threshold plus contour quad plus cornerSubPix stability audit; rejected rather than forced.",
+    "C": "Full decoded DICT_4X4_50 6x6 canonical marker photometric NCC registration; local 8-corner homography optimization.",
+    "world_geometry_used_for_corner_optimization": false,
+    "pnp_used_for_corner_optimization": false,
+    "homography_used_for_corner_optimization": false
+  },
+  "markers": {
+    "3": {
+      "spatial_identity": "FAR_LEFT_FLOOR_MARKER",
+      "source_height_approx_px": 21.560666149939202,
+      "original_corners_raw_px": [
+        [
+          911.0,
+          521.0
+        ],
+        [
+          954.0,
+          522.0
+        ],
+        [
+          947.0,
+          542.0
+        ],
+        [
+          902.0,
+          541.0
+        ]
+      ],
+      "method_a_edge_line_fit": {
+        "status": "LIMITED_NOT_PRIMARY",
+        "physical_feature": "GRAYSCALE_OUTER_DARK_BOUNDARY_LINE",
+        "corners_raw_px": [
+          [
+            908.1154142959907,
+            520.8312243202937
+          ],
+          [
+            953.3938265883346,
+            521.4013373603996
+          ],
+          [
+            947.7878209725245,
+            541.6844739117323
+          ],
+          [
+            903.1128756550486,
+            540.9807869112375
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            -2.8845857040092824,
+            -0.16877567970630025
+          ],
+          [
+            -0.6061734116653952,
+            -0.598662639600434
+          ],
+          [
+            0.7878209725245142,
+            -0.31552608826768846
+          ],
+          [
+            1.1128756550485832,
+            -0.019213088762512598
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          2.8895189762026225,
+          0.8519642956506005,
+          0.8486569372408268,
+          1.1130414935570054
+        ],
+        "side_line_evidence": [
+          {
+            "side_index_tl_tr_br_bl": 0,
+            "segment_start_raw_px": [
+              911.3844757080078,
+              520.8723859786987
+            ],
+            "segment_end_raw_px": [
+              952.6122016906738,
+              521.3914957046509
+            ],
+            "segment_length_px": 41.23099398037079,
+            "distance_to_initial_side_px": 0.3562962811005802,
+            "angle_difference_deg": 0.6108309333888826,
+            "overlap_fraction": 0.9585466632327517
+          },
+          {
+            "side_index_tl_tr_br_bl": 1,
+            "segment_start_raw_px": [
+              953.3705444335938,
+              521.48557472229
+            ],
+            "segment_end_raw_px": [
+              948.1125030517578,
+              540.5097389221191
+            ],
+            "segment_length_px": 19.737421885219923,
+            "distance_to_initial_side_px": 0.10316029172270148,
+            "angle_difference_deg": 3.8399121037777575,
+            "overlap_fraction": 0.9162745146549622
+          },
+          {
+            "side_index_tl_tr_br_bl": 2,
+            "segment_start_raw_px": [
+              947.6437873840332,
+              541.6822052001953
+            ],
+            "segment_end_raw_px": [
+              908.8640308380127,
+              541.0713748931885
+            ],
+            "segment_length_px": 38.78456692335985,
+            "distance_to_initial_side_px": 0.20657915487217887,
+            "angle_difference_deg": 0.37062351276672306,
+            "overlap_fraction": 0.8475060401758341
+          },
+          {
+            "side_index_tl_tr_br_bl": 3,
+            "segment_start_raw_px": [
+              904.1757507324219,
+              536.6996669769287
+            ],
+            "segment_end_raw_px": [
+              910.4575939178467,
+              511.39723524451256
+            ],
+            "segment_length_px": 26.070569717208866,
+            "distance_to_initial_side_px": 2.107929060913186,
+            "angle_difference_deg": 10.28481272506264,
+            "overlap_fraction": 0.7804814614278116
+          }
+        ],
+        "limitation": "Far-marker vertical sides are only about 20 px long; the selected segment requires substantial extrapolation."
+      },
+      "method_b_adaptive_threshold_contour": {
+        "status": "NO_QUALIFYING_CONVEX_QUADRILATERAL",
+        "candidate_count": 0
+      },
+      "method_c_canonical_registration": {
+        "status": "VALID_IMAGE_ONLY_DIAGNOSTIC",
+        "physical_feature": "OUTER_BLACK_SQUARE_CORNERS_EXTRAPOLATED_FROM_FULL_6X6_CANONICAL_MARKER_REGISTRATION",
+        "objective": "zero-mean normalized photometric correlation; no world/PnP/Homography terms",
+        "selected_template_blur_sigma_normalized_px": 3.0,
+        "selected_ncc": 0.9042074680328369,
+        "function_evaluations": 1805,
+        "sigma_trials": [
+          {
+            "sigma_normalized_px": 1.5,
+            "ncc": 0.8958488702774048
+          },
+          {
+            "sigma_normalized_px": 2.0,
+            "ncc": 0.9004737734794617
+          },
+          {
+            "sigma_normalized_px": 2.5,
+            "ncc": 0.9034141302108765
+          },
+          {
+            "sigma_normalized_px": 3.0,
+            "ncc": 0.904194712638855
+          },
+          {
+            "sigma_normalized_px": 3.5,
+            "ncc": 0.9033704996109009
+          },
+          {
+            "sigma_normalized_px": 4.0,
+            "ncc": 0.9012178182601929
+          }
+        ],
+        "multistart_count": 5,
+        "multistart_corner_coordinate_range_px": [
+          [
+            0.2761960185069938,
+            0.10478200616182676
+          ],
+          [
+            0.2678333760522946,
+            0.18218588221748178
+          ],
+          [
+            0.1854446384890025,
+            0.15127729643143084
+          ],
+          [
+            0.4834303204485195,
+            0.22203626087161865
+          ]
+        ],
+        "maximum_multistart_coordinate_range_px": 0.4834303204485195,
+        "bound_hit": false,
+        "limitations": [
+          "Outer corners are inferred from the decoded full marker pattern, not four independently sharp corner pixels.",
+          "Far markers are only about 20 px high in the source image, so subpixel precision is limited by blur/compression."
+        ],
+        "corners_raw_px": [
+          [
+            910.2731293695475,
+            520.9921524290089
+          ],
+          [
+            953.0315154263301,
+            521.5963226429641
+          ],
+          [
+            949.2298355046987,
+            541.7385812158881
+          ],
+          [
+            903.1353532908156,
+            540.9843108778796
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            -0.7268706304524812,
+            -0.007847570991089015
+          ],
+          [
+            -0.9684845736699117,
+            -0.40367735703591734
+          ],
+          [
+            2.2298355046987126,
+            -0.26141878411192465
+          ],
+          [
+            1.1353532908156012,
+            -0.015689122120420507
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          0.7269129918943861,
+          1.0492462904485744,
+          2.2451071597368175,
+          1.1354616873847945
+        ]
+      },
+      "method_a_vs_c_corner_spread_px": [
+        2.1637079735557863,
+        0.41144700573685966,
+        1.4430292829199887,
+        0.022752196609762864
+      ]
+    },
+    "1": {
+      "spatial_identity": "FAR_RIGHT_FLOOR_MARKER",
+      "source_height_approx_px": 20.638345536096118,
+      "original_corners_raw_px": [
+        [
+          1165.0,
+          522.0
+        ],
+        [
+          1209.0,
+          523.0
+        ],
+        [
+          1215.0,
+          543.0
+        ],
+        [
+          1169.0,
+          542.0
+        ]
+      ],
+      "method_a_edge_line_fit": {
+        "status": "LIMITED_NOT_PRIMARY",
+        "physical_feature": "GRAYSCALE_OUTER_DARK_BOUNDARY_LINE",
+        "corners_raw_px": [
+          [
+            1167.3237765464592,
+            522.0848883759796
+          ],
+          [
+            1210.3749429673587,
+            522.6117181657389
+          ],
+          [
+            1212.5586299522074,
+            543.7222368409354
+          ],
+          [
+            1169.1454019318787,
+            541.7013542809486
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            2.3237765464591575,
+            0.08488837597963084
+          ],
+          [
+            1.3749429673587201,
+            -0.388281834261079
+          ],
+          [
+            -2.4413700477925886,
+            0.7222368409353521
+          ],
+          [
+            0.1454019318787232,
+            -0.2986457190513647
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          2.325326530672651,
+          1.428716538123063,
+          2.5459602834025246,
+          0.3321610863749267
+        ],
+        "side_line_evidence": [
+          {
+            "side_index_tl_tr_br_bl": 0,
+            "segment_start_raw_px": [
+              1168.1161937713623,
+              522.0945854187012
+            ],
+            "segment_end_raw_px": [
+              1209.3753128051758,
+              522.5994853973389
+            ],
+            "segment_length_px": 41.26220822295891,
+            "distance_to_initial_side_px": 0.19259107006905601,
+            "angle_difference_deg": 0.6008423574551194,
+            "overlap_fraction": 0.9291651464333286
+          },
+          {
+            "side_index_tl_tr_br_bl": 1,
+            "segment_start_raw_px": [
+              1211.146541595459,
+              530.0710506439209
+            ],
+            "segment_end_raw_px": [
+              1212.1964645385742,
+              540.2210483551025
+            ],
+            "segment_length_px": 10.20415561050851,
+            "distance_to_initial_side_px": 0.9313057830314362,
+            "angle_difference_deg": 10.793532171325186,
+            "overlap_fraction": 0.48004470615211975
+          },
+          {
+            "side_index_tl_tr_br_bl": 2,
+            "segment_start_raw_px": [
+              1211.941635131836,
+              543.6935157775879
+            ],
+            "segment_end_raw_px": [
+              1186.8215065002441,
+              542.5241756439209
+            ],
+            "segment_length_px": 25.147330252253862,
+            "distance_to_initial_side_px": 0.44827086836438984,
+            "angle_difference_deg": 1.419826088531297,
+            "overlap_fraction": 0.5463841554968775
+          },
+          {
+            "side_index_tl_tr_br_bl": 3,
+            "segment_start_raw_px": [
+              1169.1173181533813,
+              541.3989295959473
+            ],
+            "segment_end_raw_px": [
+              1167.4740648269653,
+              523.7032918930054
+            ],
+            "segment_length_px": 17.771771864632857,
+            "distance_to_initial_side_px": 1.162448327681326,
+            "angle_difference_deg": 6.004543685113609,
+            "overlap_fraction": 0.8665523253954375
+          }
+        ],
+        "limitation": "Far-marker vertical sides are only about 20 px long; the selected segment requires substantial extrapolation."
+      },
+      "method_b_adaptive_threshold_contour": {
+        "status": "NO_QUALIFYING_CONVEX_QUADRILATERAL",
+        "candidate_count": 0
+      },
+      "method_c_canonical_registration": {
+        "status": "VALID_IMAGE_ONLY_DIAGNOSTIC",
+        "physical_feature": "OUTER_BLACK_SQUARE_CORNERS_EXTRAPOLATED_FROM_FULL_6X6_CANONICAL_MARKER_REGISTRATION",
+        "objective": "zero-mean normalized photometric correlation; no world/PnP/Homography terms",
+        "selected_template_blur_sigma_normalized_px": 3.0,
+        "selected_ncc": 0.9215956330299377,
+        "function_evaluations": 1955,
+        "sigma_trials": [
+          {
+            "sigma_normalized_px": 1.5,
+            "ncc": 0.9128491878509521
+          },
+          {
+            "sigma_normalized_px": 2.0,
+            "ncc": 0.9176652431488037
+          },
+          {
+            "sigma_normalized_px": 2.5,
+            "ncc": 0.9204729795455933
+          },
+          {
+            "sigma_normalized_px": 3.0,
+            "ncc": 0.921471893787384
+          },
+          {
+            "sigma_normalized_px": 3.5,
+            "ncc": 0.9213785529136658
+          },
+          {
+            "sigma_normalized_px": 4.0,
+            "ncc": 0.9201575517654419
+          }
+        ],
+        "multistart_count": 5,
+        "multistart_corner_coordinate_range_px": [
+          [
+            0.08669911376273376,
+            0.07062999457048136
+          ],
+          [
+            0.1298382686820787,
+            0.11322928964807488
+          ],
+          [
+            0.1185036840875,
+            0.05173917559716301
+          ],
+          [
+            0.1412761486915315,
+            0.07153938594774445
+          ]
+        ],
+        "maximum_multistart_coordinate_range_px": 0.1412761486915315,
+        "bound_hit": false,
+        "limitations": [
+          "Outer corners are inferred from the decoded full marker pattern, not four independently sharp corner pixels.",
+          "Far markers are only about 20 px high in the source image, so subpixel precision is limited by blur/compression."
+        ],
+        "corners_raw_px": [
+          [
+            1167.0282569194972,
+            522.25447469817
+          ],
+          [
+            1210.297076007817,
+            522.5514164935017
+          ],
+          [
+            1214.8825237221479,
+            543.0793511515324
+          ],
+          [
+            1169.2911936696837,
+            542.3512547804897
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            2.028256919497153,
+            0.25447469817004276
+          ],
+          [
+            1.2970760078169405,
+            -0.4485835064982666
+          ],
+          [
+            -0.11747627785211989,
+            0.07935115153236438
+          ],
+          [
+            0.2911936696837074,
+            0.35125478048973946
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          2.044158385129884,
+          1.3724552205287472,
+          0.14176487966876963,
+          0.45626053311760284
+        ]
+      },
+      "method_a_vs_c_corner_spread_px": [
+        0.3407218375652382,
+        0.09848631916607678,
+        2.4111790194025993,
+        0.6660524679903034
+      ]
+    },
+    "4": {
+      "spatial_identity": "NEAR_LEFT_FLOOR_MARKER",
+      "source_height_approx_px": 38.619938151980435,
+      "original_corners_raw_px": [
+        [
+          831.0,
+          800.0
+        ],
+        [
+          893.0,
+          803.0
+        ],
+        [
+          886.0,
+          841.0
+        ],
+        [
+          820.0,
+          837.0
+        ]
+      ],
+      "method_a_edge_line_fit": {
+        "status": "LIMITED_NOT_PRIMARY",
+        "physical_feature": "GRAYSCALE_OUTER_DARK_BOUNDARY_LINE",
+        "corners_raw_px": [
+          [
+            831.1310512913292,
+            799.5671870653276
+          ],
+          [
+            890.1151924134184,
+            802.2474579946896
+          ],
+          [
+            881.0692509904302,
+            840.0891766213739
+          ],
+          [
+            820.0883116651172,
+            837.3781350779476
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            0.13105129132918591,
+            -0.4328129346723699
+          ],
+          [
+            -2.884807586581587,
+            -0.7525420053103744
+          ],
+          [
+            -4.9307490095698085,
+            -0.9108233786261053
+          ],
+          [
+            0.08831166511720312,
+            0.37813507794760426
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          0.45221839566602806,
+          2.9813477290237786,
+          5.014168427807897,
+          0.38831055531650666
+        ],
+        "side_line_evidence": [
+          {
+            "side_index_tl_tr_br_bl": 0,
+            "segment_start_raw_px": [
+              831.8647518157959,
+              799.6005268096924
+            ],
+            "segment_end_raw_px": [
+              893.1019058227539,
+              802.3831758499146
+            ],
+            "segment_length_px": 61.30034393502978,
+            "distance_to_initial_side_px": 0.5309143940239546,
+            "angle_difference_deg": 0.1684546797387191,
+            "overlap_fraction": 0.9863960049290365
+          },
+          {
+            "side_index_tl_tr_br_bl": 1,
+            "segment_start_raw_px": [
+              889.8767471313477,
+              803.2449417114258
+            ],
+            "segment_end_raw_px": [
+              882.9702377319336,
+              832.1368141174316
+            ],
+            "segment_length_px": 29.7058944186018,
+            "distance_to_initial_side_px": 3.8062522037562525,
+            "angle_difference_deg": 3.006606431086363,
+            "overlap_fraction": 0.7677406009538655
+          },
+          {
+            "side_index_tl_tr_br_bl": 2,
+            "segment_start_raw_px": [
+              879.4021148681641,
+              840.0150604248047
+            ],
+            "segment_end_raw_px": [
+              821.8491516113281,
+              837.4564170837402
+            ],
+            "segment_length_px": 57.609810235666295,
+            "distance_to_initial_side_px": 0.12013978978794258,
+            "angle_difference_deg": 0.9226957361897954,
+            "overlap_fraction": 0.8711642608223762
+          },
+          {
+            "side_index_tl_tr_br_bl": 3,
+            "segment_start_raw_px": [
+              820.9386310577393,
+              834.4665946960449
+            ],
+            "segment_end_raw_px": [
+              830.1338768005371,
+              802.9815673828125
+            ],
+            "segment_length_px": 32.800297089895906,
+            "distance_to_initial_side_px": 0.09860714301522203,
+            "angle_difference_deg": 0.2765543347410259,
+            "overlap_fraction": 0.8497273246713932
+          }
+        ],
+        "limitation": "Some outer black edges touch dark grout/floor, so line identity is less direct than canonical payload registration."
+      },
+      "method_b_adaptive_threshold_contour": {
+        "status": "CANDIDATE_REJECTED_UNSTABLE_OR_WRONG_BOUNDARY",
+        "candidate_count": 1,
+        "score": 25.328286775700864,
+        "contour_area_patch_px2": 49510.0,
+        "expected_black_square_area_patch_px2": 57600,
+        "area_ratio": 0.8595486111111111,
+        "quad_patch_px": [
+          [
+            61.0,
+            67.0
+          ],
+          [
+            279.0,
+            74.0
+          ],
+          [
+            271.0,
+            300.0
+          ],
+          [
+            65.0,
+            302.0
+          ]
+        ],
+        "corner_displacement_from_initial_patch_px": [
+          7.0710678118654755,
+          25.238858928247925,
+          29.0,
+          5.385164807134504
+        ],
+        "quad_raw_px_before_subpixel": [
+          [
+            830.9524536132812,
+            801.0256958007812
+          ],
+          [
+            887.0719604492188,
+            804.8106689453125
+          ],
+          [
+            877.874755859375,
+            840.507568359375
+          ],
+          [
+            821.24951171875,
+            837.4109497070312
+          ]
+        ],
+        "movement_from_original_raw_px": [
+          1.02679722176791,
+          6.1984009990598254,
+          8.140152410455809,
+          1.315355160024337
+        ],
+        "corner_subpix_by_window_raw_px": {
+          "2": [
+            [
+              830.9524536132812,
+              801.0256958007812
+            ],
+            [
+              887.0719604492188,
+              804.8106689453125
+            ],
+            [
+              877.874755859375,
+              840.507568359375
+            ],
+            [
+              821.24951171875,
+              837.4109497070312
+            ]
+          ],
+          "3": [
+            [
+              830.9524536132812,
+              801.0256958007812
+            ],
+            [
+              887.0719604492188,
+              804.8106689453125
+            ],
+            [
+              877.874755859375,
+              840.507568359375
+            ],
+            [
+              820.2273559570312,
+              839.8818359375
+            ]
+          ],
+          "4": [
+            [
+              829.5842895507812,
+              798.0375366210938
+            ],
+            [
+              890.8279418945312,
+              801.78173828125
+            ],
+            [
+              880.8793334960938,
+              841.6298217773438
+            ],
+            [
+              819.43798828125,
+              839.4264526367188
+            ]
+          ],
+          "5": [
+            [
+              829.6587524414062,
+              797.9052734375
+            ],
+            [
+              891.0548706054688,
+              801.7465209960938
+            ],
+            [
+              880.7281494140625,
+              841.6966552734375
+            ],
+            [
+              819.4677124023438,
+              839.3607788085938
+            ]
+          ]
+        },
+        "subpixel_coordinate_range_across_windows_px": [
+          [
+            1.3681640625,
+            3.12042236328125
+          ],
+          [
+            3.98291015625,
+            3.06414794921875
+          ],
+          [
+            3.00457763671875,
+            1.1890869140625
+          ],
+          [
+            1.8115234375,
+            2.47088623046875
+          ]
+        ],
+        "reason": "The only qualifying contour does not stably trace the same outer black-square boundary: it is incomplete/merged with grout and its cornerSubPix result changes materially with window size."
+      },
+      "method_c_canonical_registration": {
+        "status": "VALID_IMAGE_ONLY_DIAGNOSTIC",
+        "physical_feature": "OUTER_BLACK_SQUARE_CORNERS_EXTRAPOLATED_FROM_FULL_6X6_CANONICAL_MARKER_REGISTRATION",
+        "objective": "zero-mean normalized photometric correlation; no world/PnP/Homography terms",
+        "selected_template_blur_sigma_normalized_px": 2.0,
+        "selected_ncc": 0.8980533480644226,
+        "function_evaluations": 2106,
+        "sigma_trials": [
+          {
+            "sigma_normalized_px": 1.5,
+            "ncc": 0.8974722027778625
+          },
+          {
+            "sigma_normalized_px": 2.0,
+            "ncc": 0.8979856371879578
+          },
+          {
+            "sigma_normalized_px": 2.5,
+            "ncc": 0.895211398601532
+          },
+          {
+            "sigma_normalized_px": 3.0,
+            "ncc": 0.8898991942405701
+          },
+          {
+            "sigma_normalized_px": 3.5,
+            "ncc": 0.882826566696167
+          },
+          {
+            "sigma_normalized_px": 4.0,
+            "ncc": 0.8745170831680298
+          }
+        ],
+        "multistart_count": 5,
+        "multistart_corner_coordinate_range_px": [
+          [
+            0.2865880725092893,
+            0.2893138784565963
+          ],
+          [
+            0.15442216142344023,
+            0.0805421790910259
+          ],
+          [
+            0.49945800403907015,
+            0.35555281273252604
+          ],
+          [
+            0.2390396650355342,
+            0.19443486447721625
+          ]
+        ],
+        "maximum_multistart_coordinate_range_px": 0.49945800403907015,
+        "bound_hit": false,
+        "limitations": [
+          "Outer corners are inferred from the decoded full marker pattern, not four independently sharp corner pixels.",
+          "Far markers are only about 20 px high in the source image, so subpixel precision is limited by blur/compression."
+        ],
+        "corners_raw_px": [
+          [
+            831.4489246697153,
+            799.6784893619853
+          ],
+          [
+            890.7887775058354,
+            802.0533677259896
+          ],
+          [
+            881.8002043047934,
+            841.8465132085906
+          ],
+          [
+            819.5702758477088,
+            837.7815229816705
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            0.44892466971532485,
+            -0.321510638014729
+          ],
+          [
+            -2.2112224941646446,
+            -0.946632274010426
+          ],
+          [
+            -4.199795695206603,
+            0.8465132085906362
+          ],
+          [
+            -0.4297241522912145,
+            0.7815229816704914
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          0.5521797256651602,
+          2.4053310751116697,
+          4.284258219784882,
+          0.8918750012986899
+        ]
+      },
+      "method_a_vs_c_corner_spread_px": [
+        0.33679620830389845,
+        0.7009906626556444,
+        1.90329310106172,
+        0.6565690435803021
+      ]
+    },
+    "2": {
+      "spatial_identity": "NEAR_RIGHT_FLOOR_MARKER",
+      "source_height_approx_px": 38.63978313992168,
+      "original_corners_raw_px": [
+        [
+          1185.0,
+          808.0
+        ],
+        [
+          1251.0,
+          810.0
+        ],
+        [
+          1258.0,
+          847.0
+        ],
+        [
+          1192.0,
+          847.0
+        ]
+      ],
+      "method_a_edge_line_fit": {
+        "status": "VALID_WITH_LIMITATION",
+        "physical_feature": "GRAYSCALE_OUTER_DARK_BOUNDARY_LINE",
+        "corners_raw_px": [
+          [
+            1187.4682669258302,
+            808.0767922715198
+          ],
+          [
+            1252.2184375556697,
+            807.3204183461645
+          ],
+          [
+            1256.7468585518257,
+            845.7479144610958
+          ],
+          [
+            1191.0298393372088,
+            846.2194118925103
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            2.4682669258302212,
+            0.07679227151982104
+          ],
+          [
+            1.2184375556696523,
+            -2.6795816538354984
+          ],
+          [
+            -1.2531414481743468,
+            -1.2520855389042254
+          ],
+          [
+            -0.9701606627911588,
+            -0.7805881074897343
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          2.4694612104895564,
+          2.943594387248016,
+          1.7714631483227596,
+          1.2452025960388073
+        ],
+        "side_line_evidence": [
+          {
+            "side_index_tl_tr_br_bl": 0,
+            "segment_start_raw_px": [
+              1188.1331071853638,
+              808.0690259933472
+            ],
+            "segment_end_raw_px": [
+              1246.8896942138672,
+              807.3826656341553
+            ],
+            "segment_length_px": 58.76059572350136,
+            "distance_to_initial_side_px": 1.2587703316501908,
+            "angle_difference_deg": 2.404970201717548,
+            "overlap_fraction": 0.8891197300832205
+          },
+          {
+            "side_index_tl_tr_br_bl": 1,
+            "segment_start_raw_px": [
+              1251.1859512329102,
+              798.5588954687119
+            ],
+            "segment_end_raw_px": [
+              1256.6471557617188,
+              844.9018516540527
+            ],
+            "segment_length_px": 46.66362976560979,
+            "distance_to_initial_side_px": 0.685139977626512,
+            "angle_difference_deg": 3.9921990529867895,
+            "overlap_fraction": 0.938574472166419
+          },
+          {
+            "side_index_tl_tr_br_bl": 2,
+            "segment_start_raw_px": [
+              1251.8815155029297,
+              845.7828216552734
+            ],
+            "segment_end_raw_px": [
+              1194.3755054473877,
+              846.1954078674316
+            ],
+            "segment_length_px": 57.507490119901426,
+            "distance_to_initial_side_px": 1.010885238647461,
+            "angle_difference_deg": 0.4110708256749929,
+            "overlap_fraction": 0.8713031826597272
+          },
+          {
+            "side_index_tl_tr_br_bl": 3,
+            "segment_start_raw_px": [
+              1190.9126949310303,
+              844.9648551940918
+            ],
+            "segment_end_raw_px": [
+              1187.5138854980469,
+              808.5653438568115
+            ],
+            "segment_length_px": 36.557849104597665,
+            "distance_to_initial_side_px": 0.8319015239835912,
+            "angle_difference_deg": 4.840977364099592,
+            "overlap_fraction": 0.9193456103087989
+          }
+        ],
+        "limitation": "Some outer black edges touch dark grout/floor, so line identity is less direct than canonical payload registration."
+      },
+      "method_b_adaptive_threshold_contour": {
+        "status": "NO_QUALIFYING_CONVEX_QUADRILATERAL",
+        "candidate_count": 0
+      },
+      "method_c_canonical_registration": {
+        "status": "VALID_IMAGE_ONLY_DIAGNOSTIC",
+        "physical_feature": "OUTER_BLACK_SQUARE_CORNERS_EXTRAPOLATED_FROM_FULL_6X6_CANONICAL_MARKER_REGISTRATION",
+        "objective": "zero-mean normalized photometric correlation; no world/PnP/Homography terms",
+        "selected_template_blur_sigma_normalized_px": 1.5,
+        "selected_ncc": 0.9029555916786194,
+        "function_evaluations": 1731,
+        "sigma_trials": [
+          {
+            "sigma_normalized_px": 1.5,
+            "ncc": 0.9028957486152649
+          },
+          {
+            "sigma_normalized_px": 2.0,
+            "ncc": 0.9020327925682068
+          },
+          {
+            "sigma_normalized_px": 2.5,
+            "ncc": 0.8984026908874512
+          },
+          {
+            "sigma_normalized_px": 3.0,
+            "ncc": 0.8927274942398071
+          },
+          {
+            "sigma_normalized_px": 3.5,
+            "ncc": 0.8853537440299988
+          },
+          {
+            "sigma_normalized_px": 4.0,
+            "ncc": 0.8771624565124512
+          }
+        ],
+        "multistart_count": 5,
+        "multistart_corner_coordinate_range_px": [
+          [
+            1.7443803819087407,
+            1.0647012869933405
+          ],
+          [
+            0.4423710616581502,
+            0.41770538969262816
+          ],
+          [
+            0.9276242407831887,
+            0.4877944734552102
+          ],
+          [
+            0.40806107113417056,
+            0.29486451137472613
+          ]
+        ],
+        "maximum_multistart_coordinate_range_px": 1.7443803819087407,
+        "bound_hit": false,
+        "limitations": [
+          "Outer corners are inferred from the decoded full marker pattern, not four independently sharp corner pixels.",
+          "Far markers are only about 20 px high in the source image, so subpixel precision is limited by blur/compression."
+        ],
+        "corners_raw_px": [
+          [
+            1188.139247390612,
+            807.5334617527266
+          ],
+          [
+            1248.231999602834,
+            806.992560822438
+          ],
+          [
+            1254.6919562472922,
+            847.4582346069005
+          ],
+          [
+            1190.95295284206,
+            847.2301887688008
+          ]
+        ],
+        "movement_vectors_from_original_px": [
+          [
+            3.1392473906118994,
+            -0.4665382472734336
+          ],
+          [
+            -2.768000397165906,
+            -3.0074391775619915
+          ],
+          [
+            -3.3080437527078175,
+            0.4582346069005325
+          ],
+          [
+            -1.0470471579399145,
+            0.23018876880075823
+          ]
+        ],
+        "movement_magnitudes_from_original_px": [
+          3.1737252741270137,
+          4.087360591560936,
+          3.3396305820839682,
+          1.0720515940159137
+        ]
+      },
+      "method_a_vs_c_corner_spread_px": [
+        0.8633787331008241,
+        3.9998972621395947,
+        2.6735404396273075,
+        1.013696910708435
+      ]
+    }
+  },
+  "global_corner_displacement": {
+    "method_a_from_original": {
+      "corner_count": 16,
+      "mean_px": 1.8500695369460982,
+      "median_px": 1.6000898432229114,
+      "maximum_px": 5.014168427807897
+    },
+    "method_c_from_original": {
+      "corner_count": 16,
+      "mean_px": 1.811111200722363,
+      "median_px": 1.2539584539567707,
+      "maximum_px": 4.284258219784882
+    },
+    "method_a_vs_c": {
+      "corner_count": 16,
+      "mean_px": 1.2315961540077713,
+      "median_px": 0.7821846978782343,
+      "maximum_px": 3.9998972621395947
+    }
+  },
+  "homography_mapped_side_diagnostic": {
+    "mapping_only_not_refit": true,
+    "pipeline": "RAW_IMAGE_PX -> cv2.undistortPoints(P=K) -> accepted UNDISTORTED_IMAGE_PX_TO_WORLD_XY H",
+    "reference_black_square_side_m": 0.175,
+    "original": {
+      "1": {
+        "world_corners_xy_m": [
+          [
+            1.0173133276066568,
+            2.5775403259975347
+          ],
+          [
+            1.1910059841502425,
+            2.5735933827778594
+          ],
+          [
+            1.2030962895504098,
+            2.402348082959323
+          ],
+          [
+            1.0264519425727212,
+            2.4056754664482267
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.17373749537145788,
+          0.17167157072331396,
+          0.17667568253740037,
+          0.17210765302972825
+        ],
+        "mean_side_m": 0.17354810041547514,
+        "mean_bias_vs_0_175_m": -0.0014518995845248517
+      },
+      "2": {
+        "world_corners_xy_m": [
+          [
+            1.015041609220326,
+            0.771972056075331
+          ],
+          [
+            1.2019155558636971,
+            0.7683215703628767
+          ],
+          [
+            1.2083742592801632,
+            0.606718853699905
+          ],
+          [
+            1.0274953410300889,
+            0.6014124913314658
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.18690959841593566,
+          0.16173173121770076,
+          0.1809567366773126,
+          0.17101362683016302
+        ],
+        "mean_side_m": 0.17515292328527798,
+        "mean_bias_vs_0_175_m": 0.00015292328527799492
+      },
+      "3": {
+        "world_corners_xy_m": [
+          [
+            0.00842394148735659,
+            2.5733782340221123
+          ],
+          [
+            0.18187723758251603,
+            2.564895716516018
+          ],
+          [
+            0.17163495417935354,
+            2.3914083596115763
+          ],
+          [
+            -0.004976803774213647,
+            2.398875479080648
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.17366058571108256,
+          0.17378943401426866,
+          0.1767695418351668,
+          0.17501654623413831
+        ],
+        "mean_side_m": 0.1748090269486641,
+        "mean_bias_vs_0_175_m": -0.00019097305133589093
+      },
+      "4": {
+        "world_corners_xy_m": [
+          [
+            0.00026077960088962163,
+            0.7714291635349281
+          ],
+          [
+            0.1824618314084876,
+            0.7653289991323685
+          ],
+          [
+            0.1859262085777748,
+            0.5950326990959728
+          ],
+          [
+            -0.0019223511228417887,
+            0.6033864988649716
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.18230314118394464,
+          0.1703315347058706,
+          0.1880342185671976,
+          0.16805684517191297
+        ],
+        "mean_side_m": 0.17718143490723146,
+        "mean_bias_vs_0_175_m": 0.0021814349072314665
+      },
+      "global": {
+        "edge_count": 16,
+        "mean_m": 0.17517287138916215,
+        "sample_std_m": 0.006793363960913515,
+        "bias_vs_0_175_m": 0.00017287138916216582,
+        "x_oriented_mean_m": 0.17988087503743727,
+        "x_oriented_sample_std_m": 0.005597085732519073,
+        "x_oriented_bias_m": 0.004880875037437282,
+        "y_oriented_mean_m": 0.17046486774088707,
+        "y_oriented_sample_std_m": 0.0041111443326411505,
+        "y_oriented_bias_m": -0.004535132259112923,
+        "x_minus_y_mean_m": 0.009416007296550205
+      }
+    },
+    "method_a": {
+      "1": {
+        "world_corners_xy_m": [
+          [
+            1.0264748562441586,
+            2.577026679466428
+          ],
+          [
+            1.1966785488352008,
+            2.5771964889174273
+          ],
+          [
+            1.1932887334987312,
+            2.3960309541610654
+          ],
+          [
+            1.0271076768128704,
+            2.408191776755834
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.1702037772990824,
+          0.1811972456511796,
+          0.166625415850676,
+          0.1688360886634371
+        ],
+        "mean_side_m": 0.1717156318660938,
+        "mean_bias_vs_0_175_m": -0.0032843681339062014
+      },
+      "2": {
+        "world_corners_xy_m": [
+          [
+            1.0220287602815374,
+            0.7718312893115934
+          ],
+          [
+            1.206358961298824,
+            0.7806052825928743
+          ],
+          [
+            1.2053641578865533,
+            0.6119296556614886
+          ],
+          [
+            1.024981187179298,
+            0.6046379615705549
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.18453890095362877,
+          0.16867856044715665,
+          0.180530288106706,
+          0.16721939380857986
+        ],
+        "mean_side_m": 0.1752417858290178,
+        "mean_bias_vs_0_175_m": 0.00024178582901782097
+      },
+      "3": {
+        "world_corners_xy_m": [
+          [
+            -0.003394967270455418,
+            2.5748888329618866
+          ],
+          [
+            0.17893234880921488,
+            2.5702261305706635
+          ],
+          [
+            0.1744250317079983,
+            2.3940904765152746
+          ],
+          [
+            -0.0006341106550167154,
+            2.3990546886360287
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.18238692656658567,
+          0.1761933158124069,
+          0.1751295141512538,
+          0.17585581776005496
+        ],
+        "mean_side_m": 0.17739139357257533,
+        "mean_bias_vs_0_175_m": 0.00239139357257534
+      },
+      "4": {
+        "world_corners_xy_m": [
+          [
+            0.0002936944256251182,
+            0.7734642909098224
+          ],
+          [
+            0.17365775064365496,
+            0.7684573989204433
+          ],
+          [
+            0.17163156978650315,
+            0.5983142281827378
+          ],
+          [
+            -0.0013773427896313307,
+            0.6017555189277264
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.17343634266139699,
+          0.17015523488140435,
+          0.17304313425492526,
+          0.17171690289827093
+        ],
+        "mean_side_m": 0.17208790367399937,
+        "mean_bias_vs_0_175_m": -0.0029120963260006183
+      },
+      "global": {
+        "edge_count": 16,
+        "mean_m": 0.1741091787354216,
+        "sample_std_m": 0.005634287443237376,
+        "bias_vs_0_175_m": -0.0008908212645784008,
+        "x_oriented_mean_m": 0.17573678748053184,
+        "x_oriented_sample_std_m": 0.006224686903403138,
+        "x_oriented_bias_m": 0.0007367874805318531,
+        "y_oriented_mean_m": 0.1724815699903113,
+        "y_oriented_sample_std_m": 0.004819085152406213,
+        "y_oriented_bias_m": -0.0025184300096886825,
+        "x_minus_y_mean_m": 0.0032552174902205355
+      }
+    },
+    "method_c": {
+      "1": {
+        "world_corners_xy_m": [
+          [
+            1.025249390897564,
+            2.575494095735123
+          ],
+          [
+            1.1964047174087447,
+            2.5777210502734116
+          ],
+          [
+            1.2025986867305416,
+            2.4016710435511985
+          ],
+          [
+            1.0274582693805403,
+            2.402765357842764
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.17116981369290696,
+          0.17615893426917245,
+          0.17514383606996098,
+          0.17274286103350206
+        ],
+        "mean_side_m": 0.17380386126638558,
+        "mean_bias_vs_0_175_m": -0.0011961387336144047
+      },
+      "2": {
+        "world_corners_xy_m": [
+          [
+            1.024034954010272,
+            0.774361187860808
+          ],
+          [
+            1.1951094642389697,
+            0.7817789543790395
+          ],
+          [
+            1.199131534259306,
+            0.6045213630092169
+          ],
+          [
+            1.0245909834482259,
+            0.6003510295863019
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.1712352513652133,
+          0.17730321696314344,
+          0.17459036502136524,
+          0.1740110466362826
+        ],
+        "mean_side_m": 0.17428496999650117,
+        "mean_bias_vs_0_175_m": -0.0007150300034988177
+      },
+      "3": {
+        "world_corners_xy_m": [
+          [
+            0.005486116815678491,
+            2.573447224642357
+          ],
+          [
+            0.1776553277965695,
+            2.568478439712576
+          ],
+          [
+            0.18007478316529388,
+            2.3936767926246625
+          ],
+          [
+            -0.0005420793519688138,
+            2.3990251471712774
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.17224089535723214,
+          0.17481839030527851,
+          0.18069603183782446,
+          0.1745262165359776
+        ],
+        "mean_side_m": 0.17557038350907817,
+        "mean_bias_vs_0_175_m": 0.0005703835090781761
+      },
+      "4": {
+        "world_corners_xy_m": [
+          [
+            0.0013134671573117667,
+            0.7729867095654182
+          ],
+          [
+            0.1754806240650217,
+            0.7694375747118175
+          ],
+          [
+            0.1747450731620303,
+            0.5908457737955758
+          ],
+          [
+            -0.002525054665258537,
+            0.5999302202754063
+          ]
+        ],
+        "edge_order": [
+          "TOP_X",
+          "RIGHT_Y",
+          "BOTTOM_X",
+          "LEFT_Y"
+        ],
+        "edge_lengths_m": [
+          0.17420331484654333,
+          0.17859331563537703,
+          0.1775027475498569,
+          0.17309905469171785
+        ],
+        "mean_side_m": 0.17584960818087378,
+        "mean_bias_vs_0_175_m": 0.0008496081808737899
+      },
+      "global": {
+        "edge_count": 16,
+        "mean_m": 0.17487720573820967,
+        "sample_std_m": 0.002648904038658885,
+        "bias_vs_0_175_m": -0.00012279426179032105,
+        "x_oriented_mean_m": 0.17459778196761291,
+        "x_oriented_sample_std_m": 0.0032665797743555544,
+        "x_oriented_bias_m": -0.000402218032387075,
+        "y_oriented_mean_m": 0.17515662950880645,
+        "y_oriented_sample_std_m": 0.002046158171429589,
+        "y_oriented_bias_m": 0.00015662950880646065,
+        "x_minus_y_mean_m": -0.0005588475411935356
+      }
+    }
+  },
+  "interpretation": {
+    "method_b": "No marker produced a stable defensible threshold/contour outer-black-square quad; ID4 produced one rejected candidate only.",
+    "method_a": "Near-marker line fits are usable with limitations; far-marker vertical-edge fits are not primary evidence because the source edge is only about 20 px high.",
+    "method_c": "All four decoded payloads yield high-correlation, bounded, multi-start-stable image-only registration and are the strongest refined-corner set.",
+    "corner_localization_root_cause_signal": "Several original corners move multiple pixels and A-vs-C spread is non-negligible, especially on near-marker right/bottom boundaries. Corner localization remains a plausible contributor; it cannot be declared the sole cause from image evidence alone."
+  }
+}

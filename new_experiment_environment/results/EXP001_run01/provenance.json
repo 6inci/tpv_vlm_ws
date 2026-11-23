@@ -1,0 +1,45 @@
+{
+  "created_at": "2026-09-27T12:49:11.826909+09:00",
+  "experiment_id": "EXP001",
+  "run_id": "run01",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "raw_model_output": "/home/binci/vlm_ws/new_experiment_environment/results/EXP001_run01/qwen_raw_output.txt",
+  "semantic_model_output": "/home/binci/vlm_ws/new_experiment_environment/results/EXP001_run01/qwen_semantics_raw_output.txt",
+  "result_source": "HYBRID_QWEN_OBJECTS_RELATIONS_MANUAL_REGIONS",
+  "parse_error": "primary response truncated/invalid: Expecting value: line 123 column 1 (char 3052); semantics response invalid: Invalid control character at: line 15 column 184 (char 1581)",
+  "component_sources": {
+    "scene_context": "MODEL_OUTPUT",
+    "object_labels_and_bbox": "MODEL_OUTPUT",
+    "object_pixel_coordinates": "POSTPROCESSED",
+    "relations": "POSTPROCESSED",
+    "semantic_regions": "MANUAL_OR_AGENT_INFERENCE",
+    "traversability": "MANUAL_OR_AGENT_INFERENCE",
+    "semantic_map": "POSTPROCESSED",
+    "traversability_map": "POSTPROCESSED",
+    "integrated_map": "POSTPROCESSED",
+    "natural_language_grounding": "HEURISTIC"
+  },
+  "facts": [
+    "input dimensions and hashes",
+    "raw response preserved",
+    "no robot motion executed"
+  ],
+  "inferences": [
+    "object labels/bboxes",
+    "relations",
+    "semantic regions",
+    "traversability"
+  ],
+  "unknown": [
+    "metric scale",
+    "camera pose",
+    "object footprints",
+    "collision clearance"
+  ],
+  "allowed_source_types": [
+    "MODEL_OUTPUT",
+    "POSTPROCESSED",
+    "HEURISTIC",
+    "MANUAL_OR_AGENT_INFERENCE"
+  ]
+}

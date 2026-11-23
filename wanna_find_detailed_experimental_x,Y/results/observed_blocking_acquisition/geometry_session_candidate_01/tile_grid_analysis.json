@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "analysis_time": "2026-09-21T02:10:07+09:00",
+  "status": "PARTIAL_RELATIVE_GRID_RECOVERED",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_raw.png",
+    "sha256": "d485d1ecaf2ad3bb89b3528b80622e3ec73f6bd2c6e22f2e50784aec24bcd088",
+    "width": 1920,
+    "height": 1080,
+    "coordinate_frame": "RAW_IMAGE_PX",
+    "resized": false
+  },
+  "confirmed_user_measurements": {
+    "aruco_black_encoded_square_side_m": 0.175,
+    "floor_tile_grid_pitch_m": 0.6,
+    "tile_pitch_definition": "CENTER_OF_BLACK_TILE_LINE_TO_CENTER_OF_NEXT_BLACK_TILE_LINE",
+    "marker_edge_alignment": "ALIGNED_WITH_TILE_GRID_DIRECTIONS",
+    "one_marker_corner_at_grid_intersection": true
+  },
+  "user_world_frame": {
+    "origin": "SELECTED_LOWER_LEFT_WORKSPACE_BLACK_TILE_GRID_INTERSECTION",
+    "positive_x": "RIGHT_ALONG_FLOOR_GRID",
+    "positive_y": "AWAY_FROM_CAMERA_ALONG_FLOOR_GRID"
+  },
+  "analysis_methods": [
+    "Full-resolution visual inspection",
+    "Grayscale and dark-line inspection",
+    "Hough line diagnostics",
+    "Perspective-aware integer-grid consistency comparison",
+    "Existing 1920x1080 calibration used only as a line-interpretation diagnostic"
+  ],
+  "calibration_diagnostic": {
+    "path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "role": "DIAGNOSTIC_ONLY_NOT_A_NEW_SESSION_GEOMETRY",
+    "limitation": "Calibration was reconstructed from screenshots and is not promoted here as independently validated current-session geometry."
+  },
+  "visible_grid_evidence": {
+    "floor_region": "CENTRAL_VISIBLE_FLOOR",
+    "horizontal_line_centers_near_image_x_1000_undistorted_px_approx": [576.4, 663.5, 773.3, 913.8, 1024.3],
+    "vertical_structure": "LEFT_CENTER_RIGHT GRID-LINE FAMILIES VISIBLE WITH PERSPECTIVE CONVERGENCE",
+    "relative_marker_anchor_span_tiles_candidate": {
+      "x": 2,
+      "y": 4
+    },
+    "relative_span_m_candidate": {
+      "x": 1.2,
+      "y": 2.4
+    },
+    "assessment": "A 2-by-4 tile relative layout is the strongest image-supported interpretation, but marker white borders occlude the exact grout intersections."
+  },
+  "absolute_origin_identification": "NOT_UNIQUELY_CONFIRMED_FROM_IMAGE",
+  "metric_correspondence_readiness": "BLOCKED_BY_MARKER_CORNER_AND_ORIGIN_CONFIRMATION",
+  "qwen_inference_runs": 0,
+  "navigation": "NOT_RUN"
+}

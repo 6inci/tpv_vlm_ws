@@ -1,0 +1,422 @@
+{
+  "method": "v0.2: candidates from geometric_bands+grounded_structure; per-candidate VLM judgement",
+  "truck_object": "truck_1",
+  "loading_area_candidates": [
+    {
+      "candidate_id": 1,
+      "side_of_truck_box": "below",
+      "source": "geometric_band:below",
+      "polygon_xy": [
+        [
+          1424.3,
+          204.3
+        ],
+        [
+          1623.4,
+          204.3
+        ],
+        [
+          1623.4,
+          323.8
+        ],
+        [
+          1424.3,
+          323.8
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box",
+      "judgement": {
+        "answer": "no",
+        "reason": "The green outline is a walkway with cones, not the truck's loading/unloading zone.",
+        "input_image": "analysis/region_judge_cand1.png",
+        "input_crop": {
+          "crop_xyxy_raw": [
+            1304,
+            0,
+            1743,
+            443
+          ],
+          "scale": 2.0226,
+          "markers": "white box T = truck, green outline = candidate"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "region_judge_v1",
+          "prompt_sha256": "cee41976e018ff960a0b0c322ff3fdaa358f8c86703c0b03810e1dce543dec9a",
+          "image_path": "analysis/region_judge_cand1.png",
+          "raw_response": "{\"answer\": \"no\", \"reason\": \"The green outline is a walkway with cones, not the truck's loading/unloading zone.\"}",
+          "latency_s": 1.164,
+          "n_output_tokens": 31,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.536,
+          "error": null
+        }
+      },
+      "vlm_plausible": "no",
+      "vlm_reason": "The green outline is a walkway with cones, not the truck's loading/unloading zone."
+    },
+    {
+      "candidate_id": 2,
+      "side_of_truck_box": "above",
+      "source": "geometric_band:above",
+      "polygon_xy": [
+        [
+          1424.3,
+          0
+        ],
+        [
+          1623.4,
+          0
+        ],
+        [
+          1623.4,
+          72.5
+        ],
+        [
+          1424.3,
+          72.5
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box",
+      "judgement": {
+        "answer": "no",
+        "reason": "The green outline is above the truck's cab, not its cargo bed or loading zone.",
+        "input_image": "analysis/region_judge_cand2.png",
+        "input_crop": {
+          "crop_xyxy_raw": [
+            1304,
+            0,
+            1743,
+            324
+          ],
+          "scale": 2.041,
+          "markers": "white box T = truck, green outline = candidate"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "region_judge_v1",
+          "prompt_sha256": "cee41976e018ff960a0b0c322ff3fdaa358f8c86703c0b03810e1dce543dec9a",
+          "image_path": "analysis/region_judge_cand2.png",
+          "raw_response": "{\"answer\": \"no\", \"reason\": \"The green outline is above the truck's cab, not its cargo bed or loading zone.\"}",
+          "latency_s": 1.059,
+          "n_output_tokens": 30,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.484,
+          "error": null
+        }
+      },
+      "vlm_plausible": "no",
+      "vlm_reason": "The green outline is above the truck's cab, not its cargo bed or loading zone."
+    },
+    {
+      "candidate_id": 3,
+      "side_of_truck_box": "left",
+      "source": "geometric_band:left",
+      "polygon_xy": [
+        [
+          1304.8,
+          72.5
+        ],
+        [
+          1424.3,
+          72.5
+        ],
+        [
+          1424.3,
+          204.3
+        ],
+        [
+          1304.8,
+          204.3
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box",
+      "judgement": {
+        "answer": "no",
+        "reason": "The green outline is a walkway, not the truck's loading/unloading area.",
+        "input_image": "analysis/region_judge_cand3.png",
+        "input_crop": {
+          "crop_xyxy_raw": [
+            1184,
+            0,
+            1743,
+            324
+          ],
+          "scale": 1.6029,
+          "markers": "white box T = truck, green outline = candidate"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "region_judge_v1",
+          "prompt_sha256": "cee41976e018ff960a0b0c322ff3fdaa358f8c86703c0b03810e1dce543dec9a",
+          "image_path": "analysis/region_judge_cand3.png",
+          "raw_response": "{\"answer\": \"no\", \"reason\": \"The green outline is a walkway, not the truck's loading/unloading area.\"}",
+          "latency_s": 0.978,
+          "n_output_tokens": 29,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.446,
+          "error": null
+        }
+      },
+      "vlm_plausible": "no",
+      "vlm_reason": "The green outline is a walkway, not the truck's loading/unloading area."
+    },
+    {
+      "candidate_id": 4,
+      "side_of_truck_box": "right",
+      "source": "geometric_band:right",
+      "polygon_xy": [
+        [
+          1623.4,
+          72.5
+        ],
+        [
+          1742.9,
+          72.5
+        ],
+        [
+          1742.9,
+          204.3
+        ],
+        [
+          1623.4,
+          204.3
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box",
+      "judgement": {
+        "answer": "no",
+        "reason": "The green area is adjacent to the truck but not its loading/unloading zone, as it lacks visual cues like designated markings or equipment typically found there.",
+        "input_image": "analysis/region_judge_cand4.png",
+        "input_crop": {
+          "crop_xyxy_raw": [
+            1304,
+            0,
+            1862,
+            324
+          ],
+          "scale": 1.6057,
+          "markers": "white box T = truck, green outline = candidate"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "region_judge_v1",
+          "prompt_sha256": "cee41976e018ff960a0b0c322ff3fdaa358f8c86703c0b03810e1dce543dec9a",
+          "image_path": "analysis/region_judge_cand4.png",
+          "raw_response": "{\"answer\": \"no\", \"reason\": \"The green area is adjacent to the truck but not its loading/unloading zone, as it lacks visual cues like designated markings or equipment typically found there.\"}",
+          "latency_s": 1.301,
+          "n_output_tokens": 42,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.446,
+          "error": null
+        }
+      },
+      "vlm_plausible": "no",
+      "vlm_reason": "The green area is adjacent to the truck but not its loading/unloading zone, as it lacks visual cues like designated markings or equipment typically found there."
+    },
+    {
+      "source": "grounded_structure:parking space of the truck",
+      "side_of_truck_box": "structure",
+      "polygon_xy": [
+        [
+          1397.8,
+          72.4
+        ],
+        [
+          1651.2,
+          72.4
+        ],
+        [
+          1651.2,
+          226.8
+        ],
+        [
+          1397.8,
+          226.8
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "association": {
+        "truck_containment": 1.0,
+        "gap_to_truck_px": 0.0,
+        "area_ratio_to_truck": 1.492,
+        "iou_with_truck": 0.67
+      },
+      "generation": "Qwen3-VL grounding box for 'parking space of the truck' (0-1000 -> raw px), checked against the truck box",
+      "candidate_id": 5,
+      "judgement": {
+        "answer": "yes",
+        "reason": "The green outline encompasses the truck's cargo bed and surrounding floor markings, indicating a designated loading/unloading zone.",
+        "input_image": "analysis/region_judge_cand5.png",
+        "input_crop": {
+          "crop_xyxy_raw": [
+            1277,
+            0,
+            1771,
+            346
+          ],
+          "scale": 1.8138,
+          "markers": "white box T = truck, green outline = candidate"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "region_judge_v1",
+          "prompt_sha256": "cee41976e018ff960a0b0c322ff3fdaa358f8c86703c0b03810e1dce543dec9a",
+          "image_path": "analysis/region_judge_cand5.png",
+          "raw_response": "{\"answer\": \"yes\", \"reason\": \"The green outline encompasses the truck's cargo bed and surrounding floor markings, indicating a designated loading/unloading zone.\"}",
+          "latency_s": 1.142,
+          "n_output_tokens": 34,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.476,
+          "error": null
+        }
+      },
+      "vlm_plausible": "yes",
+      "vlm_reason": "The green outline encompasses the truck's cargo bed and surrounding floor markings, indicating a designated loading/unloading zone."
+    }
+  ],
+  "structure_grounding": [
+    {
+      "query": "loading area of the truck",
+      "call": {
+        "model": "Qwen/Qwen3-VL-4B-Instruct",
+        "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "prompt_id": "grounding_fallback_v1",
+        "prompt_sha256": "8edc2bcafbb1f24303fe92bc927239b13e9fb859476513ca00562bcbe6c26583",
+        "image_path": "input/raw_frame.png",
+        "raw_response": "{\"objects\": []}",
+        "latency_s": 1.096,
+        "n_output_tokens": 6,
+        "hit_max_new_tokens": false,
+        "peak_vram_gib": 8.858,
+        "error": null
+      },
+      "boxes": []
+    },
+    {
+      "query": "parking space of the truck",
+      "call": {
+        "model": "Qwen/Qwen3-VL-4B-Instruct",
+        "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "prompt_id": "grounding_fallback_v1",
+        "prompt_sha256": "17fdebcae8ac8c25bed46f4cd80b4caa0fad256ba5354ce493f099803579d51d",
+        "image_path": "input/raw_frame.png",
+        "raw_response": "{\"objects\": [{\"bbox_2d\": [728, 67, 860, 210]}]}",
+        "latency_s": 1.725,
+        "n_output_tokens": 30,
+        "hit_max_new_tokens": false,
+        "peak_vram_gib": 8.858,
+        "error": null
+      },
+      "boxes": [
+        {
+          "bbox_xyxy": [
+            1397.8,
+            72.4,
+            1651.2,
+            226.8
+          ],
+          "bbox_norm1000": [
+            728,
+            67,
+            860,
+            210
+          ],
+          "association": {
+            "truck_containment": 1.0,
+            "gap_to_truck_px": 0.0,
+            "area_ratio_to_truck": 1.492,
+            "iou_with_truck": 0.67
+          },
+          "accepted": true,
+          "reject_reason": null
+        }
+      ]
+    }
+  ],
+  "semantic_regions": [
+    {
+      "region_id": "loading_area_candidate_5",
+      "region_type": "loading_area",
+      "polygon_xy": [
+        [
+          1397.8,
+          72.4
+        ],
+        [
+          1651.2,
+          72.4
+        ],
+        [
+          1651.2,
+          226.8
+        ],
+        [
+          1397.8,
+          226.8
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "reference_objects": [
+        "truck_1"
+      ],
+      "evidence": [
+        "The green outline encompasses the truck's cargo bed and surrounding floor markings, indicating a designated loading/unloading zone."
+      ],
+      "verification_status": "unverified",
+      "source": "grounded_structure:parking space of the truck+vlm_judgement"
+    }
+  ],
+  "selected_loading_region": {
+    "region_id": "loading_area_candidate_5",
+    "region_type": "loading_area",
+    "polygon_xy": [
+      [
+        1397.8,
+        72.4
+      ],
+      [
+        1651.2,
+        72.4
+      ],
+      [
+        1651.2,
+        226.8
+      ],
+      [
+        1397.8,
+        226.8
+      ]
+    ],
+    "coordinate_frame": "raw_image_px",
+    "reference_objects": [
+      "truck_1"
+    ],
+    "evidence": [
+      "The green outline encompasses the truck's cargo bed and surrounding floor markings, indicating a designated loading/unloading zone."
+    ],
+    "verification_status": "unverified",
+    "source": "grounded_structure:parking space of the truck+vlm_judgement"
+  },
+  "validated_loading_region": null,
+  "prior_zone_consistency": [
+    {
+      "region_id": "loading_area_candidate_5",
+      "zone_id": "Z06",
+      "role": "loading_bay",
+      "confirmed": false,
+      "iou": 0.722
+    }
+  ],
+  "note": "semantic stage only; placement, approach and path are evaluated later (destination chain)",
+  "status": "SEMANTIC_REGION_FOUND"
+}

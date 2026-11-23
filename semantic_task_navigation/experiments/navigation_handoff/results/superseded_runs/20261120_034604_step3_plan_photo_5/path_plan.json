@@ -1,0 +1,440 @@
+{
+ "photo": {
+  "name": "photo_5",
+  "path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "earlier_id": "U25070552"
+ },
+ "object_positions_file": "/home/binci/vlm_ws/semantic_task_navigation/experiments/navigation_handoff/config/object_positions/photo_5.yaml",
+ "object_positions": {
+  "robot": {
+   "image_px": [
+    1709.0,
+    697.0
+   ],
+   "floor_cm": [
+    294.8,
+    155.3
+   ],
+   "map_m": [
+    2.9477,
+    0.5468
+   ],
+   "projection": "z = 0 (height parallax not corrected)",
+   "candidate_id": "R_WHEELS"
+  },
+  "cube": {
+   "image_px": [
+    442.5,
+    424.5
+   ],
+   "floor_cm": [
+    51.5,
+    92.6
+   ],
+   "map_m": [
+    0.5147,
+    1.1742
+   ],
+   "projection": "z = 0 (height parallax not corrected)",
+   "candidate_id": "C1"
+  },
+  "placement": {
+   "image_px": [
+    1616.5,
+    269.5
+   ],
+   "floor_cm": [
+    292.8,
+    60.3
+   ],
+   "map_m": [
+    2.9282,
+    1.4968
+   ],
+   "projection": "z = 0 (height parallax not corrected)",
+   "candidate_id": "P_DST"
+  }
+ },
+ "start_yaw_map_deg": 180.0,
+ "map": {
+  "run": "/home/binci/vlm_ws/semantic_task_navigation/experiments/navigation_handoff/results/20261120_000114_step2_map",
+  "files_sha256": {
+   "map.pgm": "3737df031a7f62b51d30d2463bf6e7d68a332e5330488c2544e811f9fe6c3c20",
+   "map.yaml": "d5be0853955ed14d0fa77c53d8eb9641bfbcf3dd992cef28edab1cfd25b7c461",
+   "map_layers.npy": "f8d5ff1f63f3215f559e3694621e6cfc1449db54945d2f5b17a8898595b31f2b"
+  },
+  "planning_occupancy": "STEP 2 map.pgm cells (no per-photo obstacle added)"
+ },
+ "body": {
+  "nominal_cm": [
+   35,
+   24
+  ],
+  "margin_cm_per_side": 3.5,
+  "planning_body_cm": [
+   42.0,
+   31.0
+  ]
+ },
+ "gripper": {
+  "offset_x_m": null,
+  "offset_y_m": null,
+  "pickup_height_m": null,
+  "placement_height_m": null,
+  "may_cross_drivable_boundary": true,
+  "offset_y_m_assumed": 0.0
+ },
+ "grasp": {
+  "candidates": [
+   {
+    "yaw_map_deg": 0,
+    "facing": "+x_map",
+    "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+    "searched_cm": 150
+   },
+   {
+    "yaw_map_deg": 90,
+    "facing": "+y_map",
+    "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+    "searched_cm": 150
+   },
+   {
+    "yaw_map_deg": 180,
+    "facing": "-x_map",
+    "status": "FEASIBLE_PLAN_GRASP_UNVERIFIED",
+    "searched_cm": 150,
+    "cell": [
+     51,
+     46
+    ],
+    "centre_floor_cm": [
+     83.0,
+     93.0
+    ],
+    "pose_map": {
+     "x_m": 0.83,
+     "y_m": 1.17,
+     "yaw_deg": 180.0
+    },
+    "centre_to_target_along_heading_cm": 31.5,
+    "lateral_offset_cm": 0.4,
+    "front_to_target_gap_cm": 14.0,
+    "required_gripper_offset_if_dy0": {
+     "dx_m": 0.315,
+     "dy_m": 0.0,
+     "status": "DERIVED, not a measurement"
+    },
+    "margin_body_free": false,
+    "nominal_body_free": true,
+    "gripper_corridor": {
+     "samples": 30,
+     "layers_crossed": {
+      "FREE": 8,
+      "NOT_DRIVABLE": 4,
+      "NO_GO": 18
+     },
+     "static_obstacle_under_gripper_path": false,
+     "rule": "gripper may cross NOT_DRIVABLE / NO_GO (user decision 2026-11-19); the body may not. Gripper width/height UNKNOWN."
+    },
+    "gripper_alignment_error_cm": null,
+    "gripper_alignment_status": "UNVERIFIED: gripper offset not measured (dx, dy = null)",
+    "leg_attempts": [
+     {
+      "leg": "A",
+      "strategy": "no_rotation",
+      "start_yaw_map_deg": 180.0,
+      "travel_yaw_map_deg": 180.0,
+      "goal_yaw_map_deg": 180,
+      "start_cell": [
+       82,
+       152
+      ],
+      "goal_cell": [
+       51,
+       46
+      ],
+      "events": [
+       {
+        "type": "start_escape",
+        "from_index": 0,
+        "to_index": 2,
+        "body_yaw_map_deg": 180.0,
+        "check": "nominal body swept cell by cell; margin body fits at the end"
+       }
+      ],
+      "status": "PATH_FOUND",
+      "nodes_expanded": 1549,
+      "n_escape_cells": 2,
+      "astar_cost": 1813.98,
+      "baseline_v02_astar_4neighbours": {
+       "status": "PATH_FOUND",
+       "n_turns": 15,
+       "length_cm": 274.0
+      }
+     }
+    ],
+    "leg_length_cm": 274.0
+   },
+   {
+    "yaw_map_deg": 270,
+    "facing": "-y_map",
+    "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+    "searched_cm": 150
+   }
+  ],
+  "selected_yaw_map_deg": 180
+ },
+ "place": {
+  "candidates": [
+   {
+    "yaw_map_deg": 0,
+    "facing": "+x_map",
+    "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+    "searched_cm": 150
+   },
+   {
+    "yaw_map_deg": 90,
+    "facing": "+y_map",
+    "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+    "searched_cm": 150
+   },
+   {
+    "yaw_map_deg": 180,
+    "facing": "-x_map",
+    "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+    "searched_cm": 150
+   },
+   {
+    "yaw_map_deg": 270,
+    "facing": "-y_map",
+    "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+    "searched_cm": 150
+   }
+  ],
+  "selected_yaw_map_deg": null
+ },
+ "path_A": {
+  "strategy": "no_rotation",
+  "start_yaw_map_deg": 180.0,
+  "travel_yaw_map_deg": 180.0,
+  "goal_yaw_map_deg": 180,
+  "length_cm": 274.0,
+  "n_raw_points": 138,
+  "n_turns": 2,
+  "n_escape_cells": 2,
+  "events": [
+   {
+    "type": "start_escape",
+    "from_index": 0,
+    "to_index": 2,
+    "body_yaw_map_deg": 180.0,
+    "check": "nominal body swept cell by cell; margin body fits at the end"
+   }
+  ],
+  "segments": [
+   {
+    "from_index": 0,
+    "to_index": 100,
+    "move": "-x_map",
+    "move_yaw_map_deg": 180.0,
+    "length_cm": 200.0,
+    "body_yaw_map_deg": 180.0,
+    "body_vs_move": "forward"
+   },
+   {
+    "from_index": 100,
+    "to_index": 131,
+    "move": "+y_map",
+    "move_yaw_map_deg": 90.0,
+    "length_cm": 62.0,
+    "body_yaw_map_deg": 180.0,
+    "body_vs_move": "lateral"
+   },
+   {
+    "from_index": 131,
+    "to_index": 137,
+    "move": "-x_map",
+    "move_yaw_map_deg": 180.0,
+    "length_cm": 12.0,
+    "body_yaw_map_deg": 180.0,
+    "body_vs_move": "forward"
+   }
+  ],
+  "waypoint_indices": [
+   0,
+   2,
+   100,
+   131,
+   137
+  ],
+  "poses": [
+   {
+    "kind": "start",
+    "index": 0,
+    "x_m": 2.95,
+    "y_m": 0.55,
+    "yaw_deg": 180.0,
+    "seq": 0,
+    "yaw_rad": 3.141593
+   },
+   {
+    "kind": "escape_end",
+    "index": 2,
+    "x_m": 2.91,
+    "y_m": 0.55,
+    "yaw_deg": 180.0,
+    "seq": 1,
+    "yaw_rad": 3.141593
+   },
+   {
+    "kind": "turn",
+    "index": 100,
+    "x_m": 0.95,
+    "y_m": 0.55,
+    "yaw_deg": 180.0,
+    "seq": 2,
+    "yaw_rad": 3.141593
+   },
+   {
+    "kind": "turn",
+    "index": 131,
+    "x_m": 0.95,
+    "y_m": 1.17,
+    "yaw_deg": 180.0,
+    "seq": 3,
+    "yaw_rad": 3.141593
+   },
+   {
+    "kind": "goal",
+    "index": 137,
+    "x_m": 0.83,
+    "y_m": 1.17,
+    "yaw_deg": 180.0,
+    "seq": 4,
+    "yaw_rad": 3.141593
+   }
+  ],
+  "checks": {
+   "orthogonal_4_connected": true,
+   "no_diagonal_segment_between_waypoints": true,
+   "astar_cells_in_margin_cspace": true,
+   "whole_body_sweep_generic": {
+    "ok": false,
+    "n_samples": 1100,
+    "first_violation": {
+     "floor_cm": [
+      83.0,
+      93.0
+     ],
+     "non_free_px": 127,
+     "body": [
+      42.0,
+      31.0
+     ],
+     "yaw": 180.0
+    },
+    "body": "margin body 42.0 x 31.0 cm (escape cells: nominal 35 x 24)"
+   },
+   "whole_body_sweep_reused_footprint_nav": {
+    "ok": true,
+    "n_samples": 1083,
+    "first_violation": null
+   },
+   "v02_validate_path_inscribed_disc": {
+    "valid": true,
+    "min_clearance_px": 69.0,
+    "required_px": 60.0,
+    "note": "necessary condition only"
+   },
+   "rotation_events_ok": true
+  },
+  "collision_checks_passed": false,
+  "baseline_v02_astar_4neighbours": {
+   "status": "PATH_FOUND",
+   "n_turns": 15,
+   "length_cm": 274.0
+  },
+  "raw_path_file": "path_A.csv"
+ },
+ "path_B": null,
+ "sensitivity": {
+  "margin_0cm": {
+   "role": "SENSITIVITY (diagnostic, not a hand-off result)",
+   "grasp": [
+    {
+     "yaw_map_deg": 0,
+     "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+     "front_to_target_gap_cm": null,
+     "leg_length_cm": null
+    },
+    {
+     "yaw_map_deg": 90,
+     "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+     "front_to_target_gap_cm": null,
+     "leg_length_cm": null
+    },
+    {
+     "yaw_map_deg": 180,
+     "status": "FEASIBLE_PLAN_GRASP_UNVERIFIED",
+     "front_to_target_gap_cm": 12.0,
+     "leg_length_cm": 276.0
+    },
+    {
+     "yaw_map_deg": 270,
+     "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+     "front_to_target_gap_cm": null,
+     "leg_length_cm": null
+    }
+   ],
+   "place": [
+    {
+     "yaw_map_deg": 0,
+     "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+     "front_to_target_gap_cm": null,
+     "leg_length_cm": null
+    },
+    {
+     "yaw_map_deg": 90,
+     "status": "NO_FEASIBLE_LEG",
+     "front_to_target_gap_cm": 9.2,
+     "leg_length_cm": null
+    },
+    {
+     "yaw_map_deg": 180,
+     "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+     "front_to_target_gap_cm": null,
+     "leg_length_cm": null
+    },
+    {
+     "yaw_map_deg": 270,
+     "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+     "front_to_target_gap_cm": null,
+     "leg_length_cm": null
+    }
+   ],
+   "selected": {
+    "grasp_yaw": 180,
+    "place_yaw": null
+   }
+  }
+ },
+ "selection_rule": "per target: among approach candidates whose pose, rotation and path all pass, the smallest front-to-target gap first, then the shortest path",
+ "unverified": [
+  "gripper offset (dx, dy) not measured: grasp and placement alignment UNVERIFIED (dy = 0 is a temporary assumption)",
+  "a stop pose closest to the target on the map is NOT evidence that the gripper can reach / grasp / place",
+  "floor transform PROVISIONAL: independent seam error up to 3.5 cm, mat-node residual up to 5.2 cm (bottom row 4-5 cm)",
+  "object points are box centres projected at z = 0: height parallax of the cube (on a pad) and of the pallet not corrected",
+  "robot start = AI reading of the wheel centres, confirmed by the user; heading confirmed by the user from the photo only",
+  "rotation check is static (rasterised rectangle); mecanum dynamics, slip and controller tracking not modelled",
+  "gripper / payload geometry unknown: interference above obstacles and payload overhang during Path B UNVERIFIED",
+  "DRAFT zone polygons not human-confirmed; per-photo movable obstacles: none entered for this photo",
+  "Nav2 map_server load test not run (format validation only, user decision)",
+  "whether the ROS2 controller executes the lateral (mecanum) moves and the heading commands is not verified"
+ ],
+ "claims": {
+  "grasp_success": "NOT_CLAIMED",
+  "placement_success": "NOT_CLAIMED",
+  "robot_motion": "NONE (offline)"
+ }
+}

@@ -1,0 +1,36 @@
+{
+  "case_id": "valid_ko_trophy_zone_f",
+  "category": "valid",
+  "run": 2,
+  "instruction": "금색 트로피를 F구역으로 가져다 놔",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"금색 트로피\",\"destination_phrase\":\"F구역\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "금색 트로피",
+    "destination_phrase": "F구역"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "금색 트로피를 F구역으로 가져다 놔",
+    "action": "reposition",
+    "target": {
+      "phrase": "금색 트로피"
+    },
+    "destination": {
+      "phrase": "F구역",
+      "zone_id": "zone_F"
+    }
+  },
+  "integrated": {
+    "status": "TARGET_GROUNDING_NOT_AVAILABLE",
+    "target_phrase": "금색 트로피"
+  },
+  "inference_sec": 6.752912034000474,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "gold trophy-like object",
+    "zone_id": "zone_F"
+  },
+  "matches_expected": false
+}

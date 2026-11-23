@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:36:36+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "PASS",
+  "result": "FLOOR_MARKER_WORLD_CORNERS_RECONSTRUCTED",
+  "world_frame": {
+    "frame_id": "GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+    "ground_plane_z_m": 0.0,
+    "origin": "G00",
+    "x_axis": "right along floor grid",
+    "y_axis": "away from camera along floor grid",
+    "z_axis": "upward",
+    "tile_pitch_m": 0.6
+  },
+  "source": {
+    "image_path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "image_sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+    "recovery_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/floor_aruco_recovery_audit.json",
+    "recovery_artifact_sha256": "3e2e0c6bf7563ace39068183ba18e6040123dc965733bcefe49742b69bb9615e",
+    "coordinate_domain": "RAW_IMAGE_PX"
+  },
+  "physical_marker": {
+    "dictionary": "DICT_4X4_50",
+    "marker_ids": [1, 2, 3, 4],
+    "black_square_side_m": 0.175,
+    "side_provenance": "CONFIRMED_PHYSICAL_USER_MEASUREMENT",
+    "id0_length_reused": false
+  },
+  "orientation_resolution": {
+    "canonical_raw_corner_order": ["TOP_LEFT", "TOP_RIGHT", "BOTTOM_RIGHT", "BOTTOM_LEFT"],
+    "canonical_corner_indices": [0, 1, 2, 3],
+    "rotation_ccw_quarters_by_marker": {"1": 0, "2": 0, "3": 0, "4": 0},
+    "payload_best_hamming_by_marker": {"1": 0, "2": 0, "3": 0, "4": 0},
+    "payload_second_best_margin_bits_by_marker": {"1": 6, "2": 6, "3": 7, "4": 6},
+    "marker_x_axis_alignment": "WORLD_POSITIVE_X",
+    "marker_y_axis_alignment": "WORLD_POSITIVE_Y",
+    "marker_normal_alignment": "WORLD_POSITIVE_Z",
+    "discrete_orientation_ambiguous": false,
+    "reason": "Each recovered 4x4 payload matched one canonical ID at rotation 0 with zero bit errors; the known touch corner then fixes translation in the tile frame."
+  },
+  "markers": [
+    {
+      "marker_id": 1,
+      "spatial_identity": "FAR_RIGHT_FLOOR_MARKER",
+      "touch": {"canonical_corner_index": 2, "canonical_corner_name": "BOTTOM_RIGHT", "grid_id": "G24", "world_xyz_m": [1.2, 2.4, 0.0]},
+      "corners": [
+        {"canonical_corner_index": 0, "canonical_corner_name": "TOP_LEFT", "raw_image_px": [1165, 522], "world_xyz_m": [1.025, 2.575, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G24_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 1, "canonical_corner_name": "TOP_RIGHT", "raw_image_px": [1209, 523], "world_xyz_m": [1.2, 2.575, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G24_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 2, "canonical_corner_name": "BOTTOM_RIGHT", "raw_image_px": [1215, 543], "world_xyz_m": [1.2, 2.4, 0.0], "provenance": "KNOWN_G24_TOUCH_CORNER"},
+        {"canonical_corner_index": 3, "canonical_corner_name": "BOTTOM_LEFT", "raw_image_px": [1169, 542], "world_xyz_m": [1.025, 2.4, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G24_TOUCH_PLUS_0.175_M_SIDE"}
+      ]
+    },
+    {
+      "marker_id": 2,
+      "spatial_identity": "NEAR_RIGHT_FLOOR_MARKER",
+      "touch": {"canonical_corner_index": 2, "canonical_corner_name": "BOTTOM_RIGHT", "grid_id": "G21", "world_xyz_m": [1.2, 0.6, 0.0]},
+      "corners": [
+        {"canonical_corner_index": 0, "canonical_corner_name": "TOP_LEFT", "raw_image_px": [1185, 808], "world_xyz_m": [1.025, 0.775, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G21_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 1, "canonical_corner_name": "TOP_RIGHT", "raw_image_px": [1251, 810], "world_xyz_m": [1.2, 0.775, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G21_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 2, "canonical_corner_name": "BOTTOM_RIGHT", "raw_image_px": [1258, 847], "world_xyz_m": [1.2, 0.6, 0.0], "provenance": "KNOWN_G21_TOUCH_CORNER"},
+        {"canonical_corner_index": 3, "canonical_corner_name": "BOTTOM_LEFT", "raw_image_px": [1192, 847], "world_xyz_m": [1.025, 0.6, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G21_TOUCH_PLUS_0.175_M_SIDE"}
+      ]
+    },
+    {
+      "marker_id": 3,
+      "spatial_identity": "FAR_LEFT_FLOOR_MARKER",
+      "touch": {"canonical_corner_index": 3, "canonical_corner_name": "BOTTOM_LEFT", "grid_id": "G04", "world_xyz_m": [0.0, 2.4, 0.0]},
+      "corners": [
+        {"canonical_corner_index": 0, "canonical_corner_name": "TOP_LEFT", "raw_image_px": [911, 521], "world_xyz_m": [0.0, 2.575, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G04_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 1, "canonical_corner_name": "TOP_RIGHT", "raw_image_px": [954, 522], "world_xyz_m": [0.175, 2.575, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G04_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 2, "canonical_corner_name": "BOTTOM_RIGHT", "raw_image_px": [947, 542], "world_xyz_m": [0.175, 2.4, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G04_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 3, "canonical_corner_name": "BOTTOM_LEFT", "raw_image_px": [902, 541], "world_xyz_m": [0.0, 2.4, 0.0], "provenance": "KNOWN_G04_TOUCH_CORNER"}
+      ]
+    },
+    {
+      "marker_id": 4,
+      "spatial_identity": "NEAR_LEFT_FLOOR_MARKER",
+      "touch": {"canonical_corner_index": 3, "canonical_corner_name": "BOTTOM_LEFT", "grid_id": "G01", "world_xyz_m": [0.0, 0.6, 0.0]},
+      "corners": [
+        {"canonical_corner_index": 0, "canonical_corner_name": "TOP_LEFT", "raw_image_px": [831, 800], "world_xyz_m": [0.0, 0.775, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G01_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 1, "canonical_corner_name": "TOP_RIGHT", "raw_image_px": [893, 803], "world_xyz_m": [0.175, 0.775, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G01_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 2, "canonical_corner_name": "BOTTOM_RIGHT", "raw_image_px": [886, 841], "world_xyz_m": [0.175, 0.6, 0.0], "provenance": "RECOVERED_RAW_QUAD_PLUS_CANONICAL_PAYLOAD_ORIENTATION_PLUS_G01_TOUCH_PLUS_0.175_M_SIDE"},
+        {"canonical_corner_index": 3, "canonical_corner_name": "BOTTOM_LEFT", "raw_image_px": [820, 837], "world_xyz_m": [0.0, 0.6, 0.0], "provenance": "KNOWN_G01_TOUCH_CORNER"}
+      ]
+    }
+  ],
+  "correspondence_count": 16,
+  "limitations": [
+    "Floor marker quadrilaterals were image-bounded in the existing focused diagnostic after the unchanged primary ArUco detector did not decode IDs 1-4.",
+    "Touch-to-grid projection distances in the validated planar geometry range from 0.810 to 3.245 px; these localization uncertainties are preserved rather than hidden."
+  ],
+  "execution_boundaries": {"homography_recomputed": false, "qwen_inference_runs": 0, "planner_runs": 0, "robot_motion_commands": 0}
+}

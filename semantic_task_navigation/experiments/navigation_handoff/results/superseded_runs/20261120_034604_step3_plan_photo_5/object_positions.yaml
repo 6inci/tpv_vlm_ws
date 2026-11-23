@@ -1,0 +1,20 @@
+# Object positions CONFIRMED by the user for photo_5 (= E1, 5calibration.png). The only planning input for this photo.
+# Chosen from results/20261120_001427_step3_candidates_photo_5/candidates.png (answers in the chat, 2026-11-20).
+# Image points are undistorted_px of this photo, projected to the floor at z = 0 (height parallax NOT corrected).
+photo: photo_5
+photo_sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605
+status: USER_CONFIRMED
+confirmed: {by: user, how: "chat answer to 4 candidate questions", date: 2026-11-20, candidates_run: results/20261120_001427_step3_candidates_photo_5}
+robot:
+  candidate_id: R_WHEELS
+  base_link_image_px: [1709, 697]     # mean of the 4 wheel image centres (AI reading); URDF base_link = wheel centre at floor level
+  yaw_map_deg: 180                    # front (gripper side) towards image left = -x_map (candidate H180)
+  heading_basis: "AI visual (claw-like parts beyond the left wheels), confirmed by the user"
+cube:
+  candidate_id: C1
+  bbox_image_px: [434.0, 417.0, 451.0, 432.0]
+  target_image_px: [442.5, 424.5]     # box centre = grasp target (gripper centre over it), floor projection z = 0
+placement:
+  candidate_id: P_DST
+  bbox_image_px: [1593, 252, 1640, 287]
+  target_image_px: [1616.5, 269.5]    # pallet box centre = placement target

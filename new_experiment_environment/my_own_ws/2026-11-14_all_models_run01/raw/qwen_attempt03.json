@@ -1,0 +1,23 @@
+{
+  "stage": "qwen_attempt03",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "torch": "2.13.0+cu130",
+  "timestamp": "2026-11-14T13:08:06.335589+09:00",
+  "input_image": "/home/binci/vlm_ws/new_experiment_environment/final_experiment_picture.png",
+  "input_sha256": "a543977af78ef4c92d9ed62f7c5058d14eb96913efeeb16805e6d6cf645d7a74",
+  "coordinate_system": "pixels of the input screenshot (x right, y down, origin top-left). Undistortion state as displayed in that window; not usable for homography.",
+  "latency_s": 59.4664,
+  "peak_vram_gib": 9.001,
+  "prompt": "Detect every distinct physical object visible in this top-down photo of a miniature warehouse workspace. Do not include surfaces such as the floor, floor mats, painted zones, or tape lines. List each object instance separately and list each instance only once. Return JSON only, no prose: {\"objects\": [{\"label\": \"<short noun phrase>\", \"bbox_2d\": [x1, y1, x2, y2]}]} where coordinates are integers normalized to 0-1000 relative to image width and height.",
+  "repetition_penalty": 1.05,
+  "input_tokens": 2216,
+  "generated_tokens": 2048,
+  "hit_max_new_tokens": true,
+  "raw_response_file": "qwen_attempt03_raw.txt",
+  "parse_error": "JSONDecodeError: Expecting value: line 213 column 19 (char 4033)",
+  "rejected": [],
+  "panels": {
+    "qwen_attempt03": []
+  }
+}

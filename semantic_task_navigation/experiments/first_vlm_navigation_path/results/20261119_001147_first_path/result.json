@@ -1,0 +1,4842 @@
+{
+  "experiment_id": "first_vlm_navigation_path",
+  "created": "2026-11-19T00:12:00",
+  "claims": {
+    "robot_task_success": "NOT_CLAIMABLE",
+    "shipping_success": "NOT_CLAIMABLE",
+    "scope": "current robot position -> approach point of the loading bay only (no pickup, grasp or placement)",
+    "metric_valid": false,
+    "map_mode": "IMAGE_SPACE (raw_image_px of the undistorted E1 photo; not metric)"
+  },
+  "image": {
+    "path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+    "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+    "size": [
+      1920,
+      1080
+    ]
+  },
+  "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "success_criteria": {
+    "1_stored_qwen_result_used": true,
+    "2_approach_goal_computed": true,
+    "3_robot_start_confirmed_by_detection": true,
+    "4_drivable_area_and_obstacles_in_same_frame": true,
+    "5_astar_path_generated": true,
+    "6_path_validated_independently": true,
+    "7_visualised_on_original_photo": true
+  },
+  "all_criteria_met": true,
+  "stages": {
+    "1_qwen_destination": {
+      "source": "STORED Qwen3-VL L2 reply (no new semantic inference)",
+      "run": "20261118_203058_46d8",
+      "raw_response_sha256_16": "d4635d4a54f5806c",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_area_id": "area_5",
+      "function_name": "loading dock",
+      "box_px": [
+        1248.0,
+        0.0,
+        1824.0,
+        280.8
+      ],
+      "observed_evidence": [
+        "truck",
+        "cones",
+        "barriers"
+      ],
+      "reason": "The truck is the only vehicle visible that can receive outgoing shipments, and area_5 is the designated loading dock for vehicles.",
+      "decision": "proposed",
+      "qwen_confidence": "high",
+      "also_listed_by_qwen": [
+        {
+          "id": "area_1",
+          "function_name": "loading/unloading zone",
+          "bbox_2d": [
+            0,
+            0,
+            1000,
+            1000
+          ]
+        },
+        {
+          "id": "area_2",
+          "function_name": "conveyor belt processing area",
+          "bbox_2d": [
+            75,
+            260,
+            270,
+            730
+          ]
+        },
+        {
+          "id": "area_3",
+          "function_name": "storage zone",
+          "bbox_2d": [
+            320,
+            400,
+            650,
+            750
+          ]
+        },
+        {
+          "id": "area_4",
+          "function_name": "charging station",
+          "bbox_2d": [
+            650,
+            750,
+            1000,
+            950
+          ]
+        },
+        {
+          "id": "area_6",
+          "function_name": "material staging area",
+          "bbox_2d": [
+            650,
+            400,
+            950,
+            750
+          ]
+        }
+      ],
+      "ok": true
+    },
+    "2_bay_and_objects": {
+      "bay_source": "STORED Python localization 20261118_231429_bay_localization: FLOOR_MARKING_ESTABLISHED",
+      "bay_polygon_xy": [
+        [
+          1426.7,
+          172.5
+        ],
+        [
+          1680.3,
+          168.0
+        ],
+        [
+          1653.4,
+          56.2
+        ],
+        [
+          1399.7,
+          60.7
+        ]
+      ],
+      "bay_matches_stored_qwen_box": true,
+      "objects_reused": [
+        {
+          "object_id": "conveyor_1",
+          "class": "conveyor",
+          "bbox_xyxy": [
+            225.6,
+            273.0,
+            461.8,
+            766.7
+          ]
+        },
+        {
+          "object_id": "truck_1",
+          "class": "truck",
+          "bbox_xyxy": [
+            1447.3,
+            0.2,
+            1687.4,
+            149.6
+          ]
+        },
+        {
+          "object_id": "traffic_cone_1",
+          "class": "traffic_cone",
+          "bbox_xyxy": [
+            1284.1,
+            155.3,
+            1316.4,
+            200.1
+          ]
+        },
+        {
+          "object_id": "traffic_cone_2",
+          "class": "traffic_cone",
+          "bbox_xyxy": [
+            1309.3,
+            250.9,
+            1341.6,
+            294.0
+          ]
+        },
+        {
+          "object_id": "traffic_cone_3",
+          "class": "traffic_cone",
+          "bbox_xyxy": [
+            1280.8,
+            68.6,
+            1312.5,
+            114.1
+          ]
+        },
+        {
+          "object_id": "traffic_cone_4",
+          "class": "traffic_cone",
+          "bbox_xyxy": [
+            1416.0,
+            249.4,
+            1450.0,
+            292.7
+          ]
+        },
+        {
+          "object_id": "traffic_cone_5",
+          "class": "traffic_cone",
+          "bbox_xyxy": [
+            1676.6,
+            240.6,
+            1712.5,
+            284.6
+          ]
+        },
+        {
+          "object_id": "traffic_cone_6",
+          "class": "traffic_cone",
+          "bbox_xyxy": [
+            1524.7,
+            243.8,
+            1560.5,
+            288.8
+          ]
+        }
+      ],
+      "ok": true
+    },
+    "3_robot_start": {
+      "search_window_xyxy": [
+        960,
+        540,
+        1920,
+        1080
+      ],
+      "window_source": "coarse region from the task text ('lower right'); not a coordinate of the answer",
+      "stored_candidates_in_window": [
+        {
+          "object_id": "mobile_robot_cand4",
+          "bbox_xyxy": [
+            1585.03,
+            619.74,
+            1814.01,
+            784.4
+          ],
+          "score": 0.3559,
+          "v02_status": "not_run"
+        },
+        {
+          "object_id": "mobile_robot_cand8",
+          "bbox_xyxy": [
+            1588.4,
+            623.07,
+            1693.4,
+            782.67
+          ],
+          "score": 0.1857,
+          "v02_status": "not_run"
+        }
+      ],
+      "verification": {
+        "model_call_made_in_this_run": true,
+        "model": "Qwen/Qwen3-VL-4B-Instruct",
+        "checks": [
+          {
+            "candidate_id": "mobile_robot_cand4",
+            "bbox_xyxy": [
+              1585.03,
+              619.74,
+              1814.01,
+              784.4
+            ],
+            "detector_score": 0.3559,
+            "detector_prompt": "mobile robot.",
+            "status": "yes",
+            "answer": {
+              "answer": "yes",
+              "observed_color": "black",
+              "observed_object": "wheeled mobile robot",
+              "reason": "The object is a small, mobile robot with wheels and a chassis designed for movement on the floor."
+            },
+            "crop": {
+              "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/first_vlm_navigation_path/results/20261119_001147_first_path/robot_crops/verify_robot_mobile_robot_cand4.png",
+              "crop_xyxy_raw": [
+                1241,
+                276,
+                1920,
+                1080
+              ],
+              "scale": 1.0,
+              "marker": "green rectangle = candidate box"
+            },
+            "call": {
+              "model": "Qwen/Qwen3-VL-4B-Instruct",
+              "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+              "prompt_id": "verify_object_v1",
+              "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+              "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/first_vlm_navigation_path/results/20261119_001147_first_path/robot_crops/verify_robot_mobile_robot_cand4.png",
+              "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"black\", \"observed_object\": \"wheeled mobile robot\", \"reason\": \"The object is a small, mobile robot with wheels and a chassis designed for movement on the floor.\"}",
+              "latency_s": 2.832,
+              "n_output_tokens": 52,
+              "hit_max_new_tokens": false,
+              "peak_vram_gib": 8.463,
+              "error": null
+            },
+            "stored_verification_in_v02_run": {
+              "status": "not_run",
+              "reason": "outside verify_top_k=3"
+            }
+          }
+        ]
+      },
+      "status": "ROBOT_DETECTED",
+      "robot": {
+        "object_id": "mobile_robot_cand4",
+        "bbox_xyxy": [
+          1585.03,
+          619.74,
+          1814.01,
+          784.4
+        ],
+        "detector_score": 0.3559,
+        "source": "grounding_dino 'mobile robot.' + Qwen crop check yes"
+      },
+      "start_candidates": [
+        {
+          "shift_px": 0,
+          "xy": [
+            1699.5,
+            702.1
+          ],
+          "method": "outline centre"
+        },
+        {
+          "shift_px": 20,
+          "xy": [
+            1680.1,
+            697.4
+          ],
+          "method": "outline centre moved 20 px towards the principal point"
+        },
+        {
+          "shift_px": 40,
+          "xy": [
+            1660.6,
+            692.8
+          ],
+          "method": "outline centre moved 40 px towards the principal point"
+        }
+      ],
+      "direction_to_principal_point_unit": [
+        -0.973,
+        -0.232
+      ],
+      "principal_point_px": [
+        905.5,
+        513.0
+      ],
+      "footprint": {
+        "observed_outline_box_xyxy": [
+          1585.0,
+          619.7,
+          1814.0,
+          784.4
+        ],
+        "outline_size_wh_px": [
+          229.0,
+          164.7
+        ],
+        "occupancy_upper_bound": "the outline box (the floor footprint lies inside the visible outline up to parallax)",
+        "planning_discs": {
+          "assumed_v02_radius_px": {
+            "radius_px": 35,
+            "status": "ASSUMED",
+            "note": "planning.yaml default; not measured; smaller than the robot's visible outline"
+          },
+          "image_inscribed_radius_px": {
+            "radius_px": 82,
+            "status": "ESTIMATED_FROM_IMAGE_OUTLINE",
+            "note": "circle inscribed in the verified outline box: stress test only, still not a rectangle-aware footprint"
+          }
+        },
+        "floor_position": "NOT CONFIRMED: no validated ground-plane transform; start is an estimate with the listed uncertainty"
+      },
+      "separate_from_stack": "box lies below the yellow storage-row line; verified box does not overlap the stored goods row polygon (see start_checks)"
+    },
+    "4_map": {
+      "source_map": {
+        "file": "/home/binci/vlm_ws/semantic_task_navigation/config/maps/reference_scene_map.json",
+        "sha256": "46a2f76cd1ed5099d8e2c025f15527b74e9e3d367e7ef857f99644ca50fbbf3c",
+        "map_id": "reference_scene_2026-11-14_zone_draft_v2",
+        "review_status": "DRAFT_UNCONFIRMED"
+      },
+      "reference_image": {
+        "file": "/home/binci/vlm_ws/semantic_task_navigation/config/maps/reference_scene_map.reference_P01.jpg",
+        "sha256": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+        "note": "raw frame of the 2026-11-14 session; zone polygons were drawn on it"
+      },
+      "calibration": {
+        "file": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+        "sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+        "rms_reprojection_px": 0.20571622922708746,
+        "read_only": true,
+        "intrinsics_validated_for_current_install": false
+      },
+      "homography": {
+        "method": "SIFT + ratio test + RANSAC homography",
+        "n_keypoints": [
+          8000,
+          8000
+        ],
+        "n_matches": 2218,
+        "ransac_threshold_px": 2.0,
+        "seed": 0,
+        "status": "ESTIMATED",
+        "H_ref_undistorted_to_frame": [
+          [
+            1.0113993325862418,
+            0.01885930021729161,
+            -47.449740633635116
+          ],
+          [
+            -0.0104620054247589,
+            1.0149693661927122,
+            -1.728919322119211
+          ],
+          [
+            3.0753700658512986e-06,
+            6.1742926577571495e-06,
+            1.0
+          ]
+        ],
+        "n_inliers": 1535,
+        "inlier_residual": {
+          "n": 1535,
+          "median_px": 0.669,
+          "rms_px": 0.859,
+          "p95_px": 1.559,
+          "max_px": 1.998
+        },
+        "holdout": {
+          "fit_left_test_right": {
+            "n": 864,
+            "median_px": 1.558,
+            "rms_px": 2.837,
+            "p95_px": 5.535,
+            "max_px": 6.531
+          },
+          "fit_right_test_left": {
+            "n": 671,
+            "median_px": 1.644,
+            "rms_px": 1.89,
+            "p95_px": 3.29,
+            "max_px": 4.106
+          },
+          "fit_top_test_bottom": {
+            "n": 920,
+            "median_px": 2.071,
+            "rms_px": 2.536,
+            "p95_px": 4.967,
+            "max_px": 6.105
+          },
+          "fit_bottom_test_top": {
+            "n": 615,
+            "median_px": 1.706,
+            "rms_px": 1.763,
+            "p95_px": 2.66,
+            "max_px": 3.395
+          }
+        },
+        "inlier_x_range_px": [
+          6,
+          1883
+        ],
+        "inlier_y_range_px": [
+          5,
+          1077
+        ]
+      },
+      "v02_check_alignment": {
+        "status": "ALIGNED",
+        "shift_px": [
+          -0.468,
+          -0.079
+        ],
+        "response": 0.5378,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/vlm_ws/semantic_task_navigation/experiments/first_vlm_navigation_path/results/20261119_001147_first_path/reference_P01_warped_to_E1.png"
+      },
+      "decision": {
+        "accepted": true,
+        "checks": [
+          {
+            "check": "inliers",
+            "ok": true,
+            "detail": "1535 >= 300"
+          },
+          {
+            "check": "inlier RMS",
+            "ok": true,
+            "detail": "RMS 0.859 px (limit 2.0), median 0.669, p95 1.559"
+          },
+          {
+            "check": "hold-out medians",
+            "ok": true,
+            "detail": [
+              1.558,
+              1.644,
+              2.071,
+              1.706
+            ]
+          },
+          {
+            "check": "hold-out p95",
+            "ok": true,
+            "detail": [
+              5.535,
+              3.29,
+              4.967,
+              2.66
+            ]
+          },
+          {
+            "check": "v0.2 check_alignment on the warped reference",
+            "ok": true,
+            "detail": {
+              "status": "ALIGNED",
+              "shift_px": [
+                -0.468,
+                -0.079
+              ],
+              "response": 0.5378,
+              "thresholds": {
+                "max_shift_px": 3.0,
+                "min_response": 0.3
+              }
+            }
+          }
+        ]
+      },
+      "edge_offsets_informational": [
+        {
+          "zone": "Z02",
+          "edge": "0->1",
+          "length_px": 1222,
+          "samples": 61,
+          "yellow_found_fraction": 0.93,
+          "median_abs_offset_px": 2.0,
+          "p95_abs_offset_px": 8.0
+        },
+        {
+          "zone": "Z02",
+          "edge": "1->2",
+          "length_px": 532,
+          "samples": 27,
+          "yellow_found_fraction": 0.15,
+          "median_abs_offset_px": 9.5,
+          "p95_abs_offset_px": 20.8
+        },
+        {
+          "zone": "Z02",
+          "edge": "2->3",
+          "length_px": 1437,
+          "samples": 72,
+          "yellow_found_fraction": 0.97,
+          "median_abs_offset_px": 12.0,
+          "p95_abs_offset_px": 19.0
+        },
+        {
+          "zone": "Z02",
+          "edge": "3->0",
+          "length_px": 526,
+          "samples": 26,
+          "yellow_found_fraction": 0.96,
+          "median_abs_offset_px": 2.0,
+          "p95_abs_offset_px": 7.8
+        },
+        {
+          "zone": "Z03",
+          "edge": "0->1",
+          "length_px": 183,
+          "samples": 9,
+          "yellow_found_fraction": 1.0,
+          "median_abs_offset_px": 2.0,
+          "p95_abs_offset_px": 18.8
+        },
+        {
+          "zone": "Z03",
+          "edge": "1->2",
+          "length_px": 146,
+          "samples": 7,
+          "yellow_found_fraction": 0.86,
+          "median_abs_offset_px": 1.0,
+          "p95_abs_offset_px": 4.5
+        },
+        {
+          "zone": "Z03",
+          "edge": "2->3",
+          "length_px": 197,
+          "samples": 10,
+          "yellow_found_fraction": 1.0,
+          "median_abs_offset_px": 1.0,
+          "p95_abs_offset_px": 4.2
+        },
+        {
+          "zone": "Z03",
+          "edge": "3->0",
+          "length_px": 147,
+          "samples": 7,
+          "yellow_found_fraction": 1.0,
+          "median_abs_offset_px": 2.0,
+          "p95_abs_offset_px": 2.0
+        },
+        {
+          "zone": "Z04",
+          "edge": "0->1",
+          "length_px": 604,
+          "samples": 30,
+          "yellow_found_fraction": 0.63,
+          "median_abs_offset_px": 5.0,
+          "p95_abs_offset_px": 8.0
+        },
+        {
+          "zone": "Z04",
+          "edge": "1->2",
+          "length_px": 138,
+          "samples": 7,
+          "yellow_found_fraction": 0.29,
+          "median_abs_offset_px": 15.0,
+          "p95_abs_offset_px": 25.8
+        },
+        {
+          "zone": "Z04",
+          "edge": "2->3",
+          "length_px": 610,
+          "samples": 30,
+          "yellow_found_fraction": 1.0,
+          "median_abs_offset_px": 2.0,
+          "p95_abs_offset_px": 6.5
+        },
+        {
+          "zone": "Z04",
+          "edge": "3->0",
+          "length_px": 132,
+          "samples": 7,
+          "yellow_found_fraction": 1.0,
+          "median_abs_offset_px": 2.0,
+          "p95_abs_offset_px": 12.0
+        }
+      ]
+    },
+    "5_planning": {
+      "blocked_by": [],
+      "primary": "primary_assumed_r35_start_shift0",
+      "variants": {
+        "primary_assumed_r35_start_shift0": {
+          "label": "primary_assumed_r35_start_shift0",
+          "robot_radius_px": 35,
+          "robot_radius_status": "ASSUMED (image-space, not measured)",
+          "start_xy": [
+            1699.5,
+            702.1
+          ],
+          "n_dynamic_obstacles_in_map": 1,
+          "dynamic_obstacle_ids": [
+            "conveyor_1"
+          ],
+          "map_summary": {
+            "coordinate_frame": "raw_image_px",
+            "map_mode_note": "image space; not metric",
+            "cell_px": 8,
+            "rows": 135,
+            "cols": 240,
+            "robot_radius_px": 35,
+            "robot_footprint": "disc (assumed, image space)",
+            "safety_margin_px": 40,
+            "cell_counts": {
+              "traversable": 10789,
+              "static_obstacle": 1714,
+              "no_go": 2905,
+              "dynamic_obstacle": 1860,
+              "free": 9042,
+              "valid_robot_center": 6077
+            },
+            "layer_sha256": {
+              "traversable": "2f9922e6269a10a9888c1f36a0c211e2c3f11d59f9d20eaf8d3c0fefbf37eb20",
+              "static_obstacle": "b4010d512cad060a7a6879c7d9175b7ee71cb168ac088fb9ec210ddaaf953937",
+              "no_go": "cec052227dfd9a4cf818af01afc6a02fb5100e53da2f43f1f7971a0fad12ce76",
+              "dynamic_obstacle": "aec073c25a0e35ce3ad9826a30169ab9851cd2d26b4fd334b77ea77e93f8c6e6",
+              "valid": "5e5be1433108666febc0553d060aaf474267c2aa7c54feec34ae4f5c9f75dcb2"
+            },
+            "dynamic_obstacles": [
+              {
+                "id": "conveyor_1",
+                "bbox_xyxy": [
+                  225.57,
+                  272.97,
+                  461.76,
+                  766.68
+                ],
+                "source": "grounding_dino",
+                "knowledge": "observed_by_model"
+              }
+            ]
+          },
+          "goal": {
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay_candidate",
+            "anchor_polygon_xy": [
+              [
+                1426.7,
+                172.5
+              ],
+              [
+                1680.3,
+                168.0
+              ],
+              [
+                1653.4,
+                56.2
+              ],
+              [
+                1399.7,
+                60.7
+              ]
+            ],
+            "coordinate_frame": "raw_image_px",
+            "params": {
+              "max_dist_px": 180,
+              "min_dist_px": 0,
+              "distance_weight": 1.5,
+              "top_k_report": 5
+            },
+            "reach": {
+              "reach_px": 180,
+              "status": "PROVISIONAL",
+              "basis": "goal_selection.dropoff.max_dist_px = 180 px (dev assumption; gripper reach and on-board camera view not measured)"
+            },
+            "pose": {
+              "purpose": "dropoff_approach",
+              "xy": [
+                1348.0,
+                332.0
+              ],
+              "cell": [
+                41,
+                168
+              ],
+              "heading_deg": -48.6,
+              "heading_note": "image-frame direction towards the anchor centroid (x right, y down); mecanum base does not need to rotate along the path",
+              "coordinate_frame": "raw_image_px",
+              "anchor": "loading_bay_candidate",
+              "path_cost": 1107.25,
+              "metric_valid": false
+            },
+            "candidates_top_k": [
+              {
+                "cell": [
+                  41,
+                  168
+                ],
+                "xy": [
+                  1348.0,
+                  332.0
+                ],
+                "path_cost": 1107.25,
+                "distance_to_anchor_px": 178.44,
+                "score": 1374.91
+              },
+              {
+                "cell": [
+                  42,
+                  170
+                ],
+                "xy": [
+                  1364.0,
+                  340.0
+                ],
+                "path_cost": 1108.38,
+                "distance_to_anchor_px": 179.42,
+                "score": 1377.51
+              },
+              {
+                "cell": [
+                  41,
+                  169
+                ],
+                "xy": [
+                  1356.0,
+                  332.0
+                ],
+                "path_cost": 1114.98,
+                "distance_to_anchor_px": 175.05,
+                "score": 1377.55
+              },
+              {
+                "cell": [
+                  41,
+                  170
+                ],
+                "xy": [
+                  1364.0,
+                  332.0
+                ],
+                "path_cost": 1122.71,
+                "distance_to_anchor_px": 171.96,
+                "score": 1380.65
+              },
+              {
+                "cell": [
+                  42,
+                  171
+                ],
+                "xy": [
+                  1372.0,
+                  340.0
+                ],
+                "path_cost": 1116.17,
+                "distance_to_anchor_px": 176.77,
+                "score": 1381.33
+              }
+            ],
+            "stats": {
+              "cells_in_reach": 3150,
+              "cells_in_reach_traversable": 355,
+              "cells_accessible_collision_free": 124,
+              "cells_reachable_from_start": 124,
+              "nearest_valid_cell_to_anchor_px": 160.0
+            },
+            "status": "GOAL_SELECTED",
+            "accessible_cells_count": 124
+          },
+          "path": {
+            "path_id": "A_start_to_goal",
+            "coordinate_frame": "raw_image_px",
+            "planner": "SAFETY_COST_ASTAR",
+            "simplification": "line_of_sight",
+            "start_xy": [
+              1699.5,
+              702.1
+            ],
+            "goal_xy": [
+              1348.0,
+              332.0
+            ],
+            "waypoints_xy": [
+              [
+                1700.0,
+                700.0
+              ],
+              [
+                1132.0,
+                652.0
+              ],
+              [
+                1156.0,
+                420.0
+              ],
+              [
+                1348.0,
+                332.0
+              ]
+            ],
+            "raw_cells": [
+              [
+                87,
+                212
+              ],
+              [
+                86,
+                211
+              ],
+              [
+                86,
+                210
+              ],
+              [
+                86,
+                209
+              ],
+              [
+                86,
+                208
+              ],
+              [
+                86,
+                207
+              ],
+              [
+                86,
+                206
+              ],
+              [
+                86,
+                205
+              ],
+              [
+                86,
+                204
+              ],
+              [
+                86,
+                203
+              ],
+              [
+                86,
+                202
+              ],
+              [
+                86,
+                201
+              ],
+              [
+                86,
+                200
+              ],
+              [
+                86,
+                199
+              ],
+              [
+                86,
+                198
+              ],
+              [
+                86,
+                197
+              ],
+              [
+                86,
+                196
+              ],
+              [
+                86,
+                195
+              ],
+              [
+                86,
+                194
+              ],
+              [
+                86,
+                193
+              ],
+              [
+                86,
+                192
+              ],
+              [
+                86,
+                191
+              ],
+              [
+                86,
+                190
+              ],
+              [
+                86,
+                189
+              ],
+              [
+                86,
+                188
+              ],
+              [
+                86,
+                187
+              ],
+              [
+                86,
+                186
+              ],
+              [
+                86,
+                185
+              ],
+              [
+                86,
+                184
+              ],
+              [
+                86,
+                183
+              ],
+              [
+                86,
+                182
+              ],
+              [
+                86,
+                181
+              ],
+              [
+                86,
+                180
+              ],
+              [
+                86,
+                179
+              ],
+              [
+                86,
+                178
+              ],
+              [
+                86,
+                177
+              ],
+              [
+                86,
+                176
+              ],
+              [
+                86,
+                175
+              ],
+              [
+                86,
+                174
+              ],
+              [
+                86,
+                173
+              ],
+              [
+                86,
+                172
+              ],
+              [
+                86,
+                171
+              ],
+              [
+                86,
+                170
+              ],
+              [
+                86,
+                169
+              ],
+              [
+                86,
+                168
+              ],
+              [
+                86,
+                167
+              ],
+              [
+                86,
+                166
+              ],
+              [
+                86,
+                165
+              ],
+              [
+                86,
+                164
+              ],
+              [
+                86,
+                163
+              ],
+              [
+                86,
+                162
+              ],
+              [
+                86,
+                161
+              ],
+              [
+                86,
+                160
+              ],
+              [
+                86,
+                159
+              ],
+              [
+                86,
+                158
+              ],
+              [
+                86,
+                157
+              ],
+              [
+                86,
+                156
+              ],
+              [
+                86,
+                155
+              ],
+              [
+                86,
+                154
+              ],
+              [
+                86,
+                153
+              ],
+              [
+                86,
+                152
+              ],
+              [
+                86,
+                151
+              ],
+              [
+                86,
+                150
+              ],
+              [
+                86,
+                149
+              ],
+              [
+                86,
+                148
+              ],
+              [
+                86,
+                147
+              ],
+              [
+                85,
+                146
+              ],
+              [
+                85,
+                145
+              ],
+              [
+                84,
+                144
+              ],
+              [
+                83,
+                143
+              ],
+              [
+                82,
+                142
+              ],
+              [
+                81,
+                141
+              ],
+              [
+                80,
+                140
+              ],
+              [
+                79,
+                140
+              ],
+              [
+                78,
+                140
+              ],
+              [
+                77,
+                140
+              ],
+              [
+                76,
+                140
+              ],
+              [
+                75,
+                139
+              ],
+              [
+                74,
+                139
+              ],
+              [
+                73,
+                139
+              ],
+              [
+                72,
+                139
+              ],
+              [
+                71,
+                139
+              ],
+              [
+                70,
+                139
+              ],
+              [
+                69,
+                139
+              ],
+              [
+                68,
+                139
+              ],
+              [
+                67,
+                139
+              ],
+              [
+                66,
+                139
+              ],
+              [
+                65,
+                139
+              ],
+              [
+                64,
+                139
+              ],
+              [
+                63,
+                139
+              ],
+              [
+                62,
+                139
+              ],
+              [
+                61,
+                139
+              ],
+              [
+                60,
+                139
+              ],
+              [
+                59,
+                139
+              ],
+              [
+                58,
+                139
+              ],
+              [
+                57,
+                139
+              ],
+              [
+                56,
+                140
+              ],
+              [
+                55,
+                141
+              ],
+              [
+                54,
+                142
+              ],
+              [
+                53,
+                143
+              ],
+              [
+                52,
+                144
+              ],
+              [
+                51,
+                145
+              ],
+              [
+                50,
+                146
+              ],
+              [
+                50,
+                147
+              ],
+              [
+                50,
+                148
+              ],
+              [
+                50,
+                149
+              ],
+              [
+                49,
+                150
+              ],
+              [
+                49,
+                151
+              ],
+              [
+                48,
+                152
+              ],
+              [
+                48,
+                153
+              ],
+              [
+                47,
+                154
+              ],
+              [
+                47,
+                155
+              ],
+              [
+                46,
+                156
+              ],
+              [
+                46,
+                157
+              ],
+              [
+                46,
+                158
+              ],
+              [
+                46,
+                159
+              ],
+              [
+                46,
+                160
+              ],
+              [
+                46,
+                161
+              ],
+              [
+                46,
+                162
+              ],
+              [
+                46,
+                163
+              ],
+              [
+                45,
+                164
+              ],
+              [
+                44,
+                165
+              ],
+              [
+                43,
+                166
+              ],
+              [
+                42,
+                167
+              ],
+              [
+                41,
+                168
+              ]
+            ],
+            "raw_waypoints_xy": [
+              [
+                1700.0,
+                700.0
+              ],
+              [
+                1692.0,
+                692.0
+              ],
+              [
+                1684.0,
+                692.0
+              ],
+              [
+                1676.0,
+                692.0
+              ],
+              [
+                1668.0,
+                692.0
+              ],
+              [
+                1660.0,
+                692.0
+              ],
+              [
+                1652.0,
+                692.0
+              ],
+              [
+                1644.0,
+                692.0
+              ],
+              [
+                1636.0,
+                692.0
+              ],
+              [
+                1628.0,
+                692.0
+              ],
+              [
+                1620.0,
+                692.0
+              ],
+              [
+                1612.0,
+                692.0
+              ],
+              [
+                1604.0,
+                692.0
+              ],
+              [
+                1596.0,
+                692.0
+              ],
+              [
+                1588.0,
+                692.0
+              ],
+              [
+                1580.0,
+                692.0
+              ],
+              [
+                1572.0,
+                692.0
+              ],
+              [
+                1564.0,
+                692.0
+              ],
+              [
+                1556.0,
+                692.0
+              ],
+              [
+                1548.0,
+                692.0
+              ],
+              [
+                1540.0,
+                692.0
+              ],
+              [
+                1532.0,
+                692.0
+              ],
+              [
+                1524.0,
+                692.0
+              ],
+              [
+                1516.0,
+                692.0
+              ],
+              [
+                1508.0,
+                692.0
+              ],
+              [
+                1500.0,
+                692.0
+              ],
+              [
+                1492.0,
+                692.0
+              ],
+              [
+                1484.0,
+                692.0
+              ],
+              [
+                1476.0,
+                692.0
+              ],
+              [
+                1468.0,
+                692.0
+              ],
+              [
+                1460.0,
+                692.0
+              ],
+              [
+                1452.0,
+                692.0
+              ],
+              [
+                1444.0,
+                692.0
+              ],
+              [
+                1436.0,
+                692.0
+              ],
+              [
+                1428.0,
+                692.0
+              ],
+              [
+                1420.0,
+                692.0
+              ],
+              [
+                1412.0,
+                692.0
+              ],
+              [
+                1404.0,
+                692.0
+              ],
+              [
+                1396.0,
+                692.0
+              ],
+              [
+                1388.0,
+                692.0
+              ],
+              [
+                1380.0,
+                692.0
+              ],
+              [
+                1372.0,
+                692.0
+              ],
+              [
+                1364.0,
+                692.0
+              ],
+              [
+                1356.0,
+                692.0
+              ],
+              [
+                1348.0,
+                692.0
+              ],
+              [
+                1340.0,
+                692.0
+              ],
+              [
+                1332.0,
+                692.0
+              ],
+              [
+                1324.0,
+                692.0
+              ],
+              [
+                1316.0,
+                692.0
+              ],
+              [
+                1308.0,
+                692.0
+              ],
+              [
+                1300.0,
+                692.0
+              ],
+              [
+                1292.0,
+                692.0
+              ],
+              [
+                1284.0,
+                692.0
+              ],
+              [
+                1276.0,
+                692.0
+              ],
+              [
+                1268.0,
+                692.0
+              ],
+              [
+                1260.0,
+                692.0
+              ],
+              [
+                1252.0,
+                692.0
+              ],
+              [
+                1244.0,
+                692.0
+              ],
+              [
+                1236.0,
+                692.0
+              ],
+              [
+                1228.0,
+                692.0
+              ],
+              [
+                1220.0,
+                692.0
+              ],
+              [
+                1212.0,
+                692.0
+              ],
+              [
+                1204.0,
+                692.0
+              ],
+              [
+                1196.0,
+                692.0
+              ],
+              [
+                1188.0,
+                692.0
+              ],
+              [
+                1180.0,
+                692.0
+              ],
+              [
+                1172.0,
+                684.0
+              ],
+              [
+                1164.0,
+                684.0
+              ],
+              [
+                1156.0,
+                676.0
+              ],
+              [
+                1148.0,
+                668.0
+              ],
+              [
+                1140.0,
+                660.0
+              ],
+              [
+                1132.0,
+                652.0
+              ],
+              [
+                1124.0,
+                644.0
+              ],
+              [
+                1124.0,
+                636.0
+              ],
+              [
+                1124.0,
+                628.0
+              ],
+              [
+                1124.0,
+                620.0
+              ],
+              [
+                1124.0,
+                612.0
+              ],
+              [
+                1116.0,
+                604.0
+              ],
+              [
+                1116.0,
+                596.0
+              ],
+              [
+                1116.0,
+                588.0
+              ],
+              [
+                1116.0,
+                580.0
+              ],
+              [
+                1116.0,
+                572.0
+              ],
+              [
+                1116.0,
+                564.0
+              ],
+              [
+                1116.0,
+                556.0
+              ],
+              [
+                1116.0,
+                548.0
+              ],
+              [
+                1116.0,
+                540.0
+              ],
+              [
+                1116.0,
+                532.0
+              ],
+              [
+                1116.0,
+                524.0
+              ],
+              [
+                1116.0,
+                516.0
+              ],
+              [
+                1116.0,
+                508.0
+              ],
+              [
+                1116.0,
+                500.0
+              ],
+              [
+                1116.0,
+                492.0
+              ],
+              [
+                1116.0,
+                484.0
+              ],
+              [
+                1116.0,
+                476.0
+              ],
+              [
+                1116.0,
+                468.0
+              ],
+              [
+                1116.0,
+                460.0
+              ],
+              [
+                1124.0,
+                452.0
+              ],
+              [
+                1132.0,
+                444.0
+              ],
+              [
+                1140.0,
+                436.0
+              ],
+              [
+                1148.0,
+                428.0
+              ],
+              [
+                1156.0,
+                420.0
+              ],
+              [
+                1164.0,
+                412.0
+              ],
+              [
+                1172.0,
+                404.0
+              ],
+              [
+                1180.0,
+                404.0
+              ],
+              [
+                1188.0,
+                404.0
+              ],
+              [
+                1196.0,
+                404.0
+              ],
+              [
+                1204.0,
+                396.0
+              ],
+              [
+                1212.0,
+                396.0
+              ],
+              [
+                1220.0,
+                388.0
+              ],
+              [
+                1228.0,
+                388.0
+              ],
+              [
+                1236.0,
+                380.0
+              ],
+              [
+                1244.0,
+                380.0
+              ],
+              [
+                1252.0,
+                372.0
+              ],
+              [
+                1260.0,
+                372.0
+              ],
+              [
+                1268.0,
+                372.0
+              ],
+              [
+                1276.0,
+                372.0
+              ],
+              [
+                1284.0,
+                372.0
+              ],
+              [
+                1292.0,
+                372.0
+              ],
+              [
+                1300.0,
+                372.0
+              ],
+              [
+                1308.0,
+                372.0
+              ],
+              [
+                1316.0,
+                364.0
+              ],
+              [
+                1324.0,
+                356.0
+              ],
+              [
+                1332.0,
+                348.0
+              ],
+              [
+                1340.0,
+                340.0
+              ],
+              [
+                1348.0,
+                332.0
+              ]
+            ],
+            "length_px": 1014.47,
+            "raw_length_px": 1071.53,
+            "error": null,
+            "status": "PATH_FOUND",
+            "simplified_cells": [
+              [
+                87,
+                212
+              ],
+              [
+                81,
+                141
+              ],
+              [
+                52,
+                144
+              ],
+              [
+                41,
+                168
+              ]
+            ],
+            "astar_cost": 1107.247,
+            "nodes_expanded": 2224,
+            "planning_time_ms": 15.01,
+            "n_raw_waypoints": 125,
+            "n_waypoints": 4,
+            "start_cell": [
+              87,
+              212
+            ],
+            "goal_cell": [
+              41,
+              168
+            ],
+            "endpoint_snapping": "start/goal are snapped to their cell centres (<= cell_px/sqrt(2) px)"
+          },
+          "v02_validation": {
+            "valid": true,
+            "checks": [
+              {
+                "check": "non_empty",
+                "ok": true,
+                "detail": "4 waypoints"
+              },
+              {
+                "check": "starts_at_start",
+                "ok": true,
+                "detail": "2.16px (limit 5.66)"
+              },
+              {
+                "check": "ends_at_goal",
+                "ok": true,
+                "detail": "0.00px (limit 5.66)"
+              },
+              {
+                "check": "collision_free_footprint",
+                "ok": true,
+                "detail": "min clearance 37.00px, required >= 27.00px over 512 samples"
+              }
+            ],
+            "min_clearance_px": 37.0,
+            "required_clearance_px": 27,
+            "first_violation": null,
+            "n_samples": 512,
+            "raw_path_check": true,
+            "raw_vs_simplified": {
+              "raw_length_px": 1071.53,
+              "simplified_length_px": 1014.47,
+              "length_reduction_pct": 5.33,
+              "raw_waypoints": 125,
+              "simplified_waypoints": 4
+            }
+          },
+          "independent_checks": {
+            "swept_disc_at_radius_minus_tolerance": {
+              "radius_px": 27,
+              "swept_area_px": 57636,
+              "on_static_obstacle_px": 0,
+              "on_no_go_px": 0,
+              "on_dynamic_obstacle_px": 0,
+              "outside_traversable_px": 0
+            },
+            "swept_disc_at_full_radius_informational": {
+              "radius_px": 35,
+              "swept_area_px": 75255,
+              "on_static_obstacle_px": 0,
+              "on_no_go_px": 0,
+              "on_dynamic_obstacle_px": 0,
+              "outside_traversable_px": 0
+            },
+            "tolerance_px": 8,
+            "tolerance_note": "v0.2 validation_tolerance_px (grid discretisation); the same convention as path_validator",
+            "yellow_tape": {
+              "centre_line_samples_on_tape": 0,
+              "first_hit_xy": null,
+              "min_distance_to_tape_px": 32.4
+            },
+            "tape_overlap_of_footprint": {
+              "radius_px": 35,
+              "swept_pixels_on_tape": 48
+            },
+            "goal": {
+              "goal_xy": [
+                1348.0,
+                332.0
+              ],
+              "cell": [
+                41,
+                168
+              ],
+              "in_valid_robot_cell": true,
+              "clearance_px": 37.0,
+              "inside_bay_polygon": false,
+              "distance_to_bay_polygon_px": 177.9,
+              "inside_detected_object_boxes": [],
+              "ok": true
+            },
+            "pass": true
+          },
+          "start_checks": {
+            "robot_in_obstacle_classes": false,
+            "robot_box_overlap_px": {
+              "traversable": 37453,
+              "static_obstacle": 0,
+              "no_go": 0,
+              "dynamic_obstacle": 0
+            },
+            "cell": [
+              87,
+              212
+            ],
+            "in_traversable": true,
+            "valid_robot_cell": true,
+            "clearance_px": 99.0
+          },
+          "goal_checks": {
+            "goal_xy": [
+              1348.0,
+              332.0
+            ],
+            "cell": [
+              41,
+              168
+            ],
+            "in_valid_robot_cell": true,
+            "clearance_px": 37.0,
+            "inside_bay_polygon": false,
+            "distance_to_bay_polygon_px": 177.9,
+            "inside_detected_object_boxes": [],
+            "ok": true
+          },
+          "verdict": {
+            "goal_selected": true,
+            "path_found": true,
+            "v02_validator": true,
+            "independent": true
+          },
+          "start_shift_px": 0
+        },
+        "start_shift20_r35": {
+          "label": "start_shift20_r35",
+          "robot_radius_px": 35,
+          "robot_radius_status": "ASSUMED (image-space, not measured)",
+          "start_xy": [
+            1680.1,
+            697.4
+          ],
+          "n_dynamic_obstacles_in_map": 1,
+          "dynamic_obstacle_ids": [
+            "conveyor_1"
+          ],
+          "map_summary": {
+            "coordinate_frame": "raw_image_px",
+            "map_mode_note": "image space; not metric",
+            "cell_px": 8,
+            "rows": 135,
+            "cols": 240,
+            "robot_radius_px": 35,
+            "robot_footprint": "disc (assumed, image space)",
+            "safety_margin_px": 40,
+            "cell_counts": {
+              "traversable": 10789,
+              "static_obstacle": 1714,
+              "no_go": 2905,
+              "dynamic_obstacle": 1860,
+              "free": 9042,
+              "valid_robot_center": 6077
+            },
+            "layer_sha256": {
+              "traversable": "2f9922e6269a10a9888c1f36a0c211e2c3f11d59f9d20eaf8d3c0fefbf37eb20",
+              "static_obstacle": "b4010d512cad060a7a6879c7d9175b7ee71cb168ac088fb9ec210ddaaf953937",
+              "no_go": "cec052227dfd9a4cf818af01afc6a02fb5100e53da2f43f1f7971a0fad12ce76",
+              "dynamic_obstacle": "aec073c25a0e35ce3ad9826a30169ab9851cd2d26b4fd334b77ea77e93f8c6e6",
+              "valid": "5e5be1433108666febc0553d060aaf474267c2aa7c54feec34ae4f5c9f75dcb2"
+            },
+            "dynamic_obstacles": [
+              {
+                "id": "conveyor_1",
+                "bbox_xyxy": [
+                  225.57,
+                  272.97,
+                  461.76,
+                  766.68
+                ],
+                "source": "grounding_dino",
+                "knowledge": "observed_by_model"
+              }
+            ]
+          },
+          "goal": {
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay_candidate",
+            "anchor_polygon_xy": [
+              [
+                1426.7,
+                172.5
+              ],
+              [
+                1680.3,
+                168.0
+              ],
+              [
+                1653.4,
+                56.2
+              ],
+              [
+                1399.7,
+                60.7
+              ]
+            ],
+            "coordinate_frame": "raw_image_px",
+            "params": {
+              "max_dist_px": 180,
+              "min_dist_px": 0,
+              "distance_weight": 1.5,
+              "top_k_report": 5
+            },
+            "reach": {
+              "reach_px": 180,
+              "status": "PROVISIONAL",
+              "basis": "goal_selection.dropoff.max_dist_px = 180 px (dev assumption; gripper reach and on-board camera view not measured)"
+            },
+            "pose": {
+              "purpose": "dropoff_approach",
+              "xy": [
+                1348.0,
+                332.0
+              ],
+              "cell": [
+                41,
+                168
+              ],
+              "heading_deg": -48.6,
+              "heading_note": "image-frame direction towards the anchor centroid (x right, y down); mecanum base does not need to rotate along the path",
+              "coordinate_frame": "raw_image_px",
+              "anchor": "loading_bay_candidate",
+              "path_cost": 1091.25,
+              "metric_valid": false
+            },
+            "candidates_top_k": [
+              {
+                "cell": [
+                  41,
+                  168
+                ],
+                "xy": [
+                  1348.0,
+                  332.0
+                ],
+                "path_cost": 1091.25,
+                "distance_to_anchor_px": 178.44,
+                "score": 1358.91
+              },
+              {
+                "cell": [
+                  42,
+                  170
+                ],
+                "xy": [
+                  1364.0,
+                  340.0
+                ],
+                "path_cost": 1092.38,
+                "distance_to_anchor_px": 179.42,
+                "score": 1361.51
+              },
+              {
+                "cell": [
+                  41,
+                  169
+                ],
+                "xy": [
+                  1356.0,
+                  332.0
+                ],
+                "path_cost": 1098.98,
+                "distance_to_anchor_px": 175.05,
+                "score": 1361.55
+              },
+              {
+                "cell": [
+                  41,
+                  170
+                ],
+                "xy": [
+                  1364.0,
+                  332.0
+                ],
+                "path_cost": 1106.71,
+                "distance_to_anchor_px": 171.96,
+                "score": 1364.65
+              },
+              {
+                "cell": [
+                  42,
+                  171
+                ],
+                "xy": [
+                  1372.0,
+                  340.0
+                ],
+                "path_cost": 1100.17,
+                "distance_to_anchor_px": 176.77,
+                "score": 1365.33
+              }
+            ],
+            "stats": {
+              "cells_in_reach": 3150,
+              "cells_in_reach_traversable": 355,
+              "cells_accessible_collision_free": 124,
+              "cells_reachable_from_start": 124,
+              "nearest_valid_cell_to_anchor_px": 160.0
+            },
+            "status": "GOAL_SELECTED",
+            "accessible_cells_count": 124
+          },
+          "path": {
+            "path_id": "A_start_to_goal",
+            "coordinate_frame": "raw_image_px",
+            "planner": "SAFETY_COST_ASTAR",
+            "simplification": "line_of_sight",
+            "start_xy": [
+              1680.1,
+              697.4
+            ],
+            "goal_xy": [
+              1348.0,
+              332.0
+            ],
+            "waypoints_xy": [
+              [
+                1684.0,
+                700.0
+              ],
+              [
+                1132.0,
+                652.0
+              ],
+              [
+                1156.0,
+                420.0
+              ],
+              [
+                1348.0,
+                332.0
+              ]
+            ],
+            "raw_cells": [
+              [
+                87,
+                210
+              ],
+              [
+                86,
+                209
+              ],
+              [
+                86,
+                208
+              ],
+              [
+                86,
+                207
+              ],
+              [
+                86,
+                206
+              ],
+              [
+                86,
+                205
+              ],
+              [
+                86,
+                204
+              ],
+              [
+                86,
+                203
+              ],
+              [
+                86,
+                202
+              ],
+              [
+                86,
+                201
+              ],
+              [
+                86,
+                200
+              ],
+              [
+                86,
+                199
+              ],
+              [
+                86,
+                198
+              ],
+              [
+                86,
+                197
+              ],
+              [
+                86,
+                196
+              ],
+              [
+                86,
+                195
+              ],
+              [
+                86,
+                194
+              ],
+              [
+                86,
+                193
+              ],
+              [
+                86,
+                192
+              ],
+              [
+                86,
+                191
+              ],
+              [
+                86,
+                190
+              ],
+              [
+                86,
+                189
+              ],
+              [
+                86,
+                188
+              ],
+              [
+                86,
+                187
+              ],
+              [
+                86,
+                186
+              ],
+              [
+                86,
+                185
+              ],
+              [
+                86,
+                184
+              ],
+              [
+                86,
+                183
+              ],
+              [
+                86,
+                182
+              ],
+              [
+                86,
+                181
+              ],
+              [
+                86,
+                180
+              ],
+              [
+                86,
+                179
+              ],
+              [
+                86,
+                178
+              ],
+              [
+                86,
+                177
+              ],
+              [
+                86,
+                176
+              ],
+              [
+                86,
+                175
+              ],
+              [
+                86,
+                174
+              ],
+              [
+                86,
+                173
+              ],
+              [
+                86,
+                172
+              ],
+              [
+                86,
+                171
+              ],
+              [
+                86,
+                170
+              ],
+              [
+                86,
+                169
+              ],
+              [
+                86,
+                168
+              ],
+              [
+                86,
+                167
+              ],
+              [
+                86,
+                166
+              ],
+              [
+                86,
+                165
+              ],
+              [
+                86,
+                164
+              ],
+              [
+                86,
+                163
+              ],
+              [
+                86,
+                162
+              ],
+              [
+                86,
+                161
+              ],
+              [
+                86,
+                160
+              ],
+              [
+                86,
+                159
+              ],
+              [
+                86,
+                158
+              ],
+              [
+                86,
+                157
+              ],
+              [
+                86,
+                156
+              ],
+              [
+                86,
+                155
+              ],
+              [
+                86,
+                154
+              ],
+              [
+                86,
+                153
+              ],
+              [
+                86,
+                152
+              ],
+              [
+                86,
+                151
+              ],
+              [
+                86,
+                150
+              ],
+              [
+                86,
+                149
+              ],
+              [
+                86,
+                148
+              ],
+              [
+                86,
+                147
+              ],
+              [
+                85,
+                146
+              ],
+              [
+                85,
+                145
+              ],
+              [
+                84,
+                144
+              ],
+              [
+                83,
+                143
+              ],
+              [
+                82,
+                142
+              ],
+              [
+                81,
+                141
+              ],
+              [
+                80,
+                140
+              ],
+              [
+                79,
+                140
+              ],
+              [
+                78,
+                140
+              ],
+              [
+                77,
+                140
+              ],
+              [
+                76,
+                140
+              ],
+              [
+                75,
+                139
+              ],
+              [
+                74,
+                139
+              ],
+              [
+                73,
+                139
+              ],
+              [
+                72,
+                139
+              ],
+              [
+                71,
+                139
+              ],
+              [
+                70,
+                139
+              ],
+              [
+                69,
+                139
+              ],
+              [
+                68,
+                139
+              ],
+              [
+                67,
+                139
+              ],
+              [
+                66,
+                139
+              ],
+              [
+                65,
+                139
+              ],
+              [
+                64,
+                139
+              ],
+              [
+                63,
+                139
+              ],
+              [
+                62,
+                139
+              ],
+              [
+                61,
+                139
+              ],
+              [
+                60,
+                139
+              ],
+              [
+                59,
+                139
+              ],
+              [
+                58,
+                139
+              ],
+              [
+                57,
+                139
+              ],
+              [
+                56,
+                140
+              ],
+              [
+                55,
+                141
+              ],
+              [
+                54,
+                142
+              ],
+              [
+                53,
+                143
+              ],
+              [
+                52,
+                144
+              ],
+              [
+                51,
+                145
+              ],
+              [
+                50,
+                146
+              ],
+              [
+                50,
+                147
+              ],
+              [
+                50,
+                148
+              ],
+              [
+                50,
+                149
+              ],
+              [
+                49,
+                150
+              ],
+              [
+                49,
+                151
+              ],
+              [
+                48,
+                152
+              ],
+              [
+                48,
+                153
+              ],
+              [
+                47,
+                154
+              ],
+              [
+                47,
+                155
+              ],
+              [
+                46,
+                156
+              ],
+              [
+                46,
+                157
+              ],
+              [
+                46,
+                158
+              ],
+              [
+                46,
+                159
+              ],
+              [
+                46,
+                160
+              ],
+              [
+                46,
+                161
+              ],
+              [
+                46,
+                162
+              ],
+              [
+                46,
+                163
+              ],
+              [
+                45,
+                164
+              ],
+              [
+                44,
+                165
+              ],
+              [
+                43,
+                166
+              ],
+              [
+                42,
+                167
+              ],
+              [
+                41,
+                168
+              ]
+            ],
+            "raw_waypoints_xy": [
+              [
+                1684.0,
+                700.0
+              ],
+              [
+                1676.0,
+                692.0
+              ],
+              [
+                1668.0,
+                692.0
+              ],
+              [
+                1660.0,
+                692.0
+              ],
+              [
+                1652.0,
+                692.0
+              ],
+              [
+                1644.0,
+                692.0
+              ],
+              [
+                1636.0,
+                692.0
+              ],
+              [
+                1628.0,
+                692.0
+              ],
+              [
+                1620.0,
+                692.0
+              ],
+              [
+                1612.0,
+                692.0
+              ],
+              [
+                1604.0,
+                692.0
+              ],
+              [
+                1596.0,
+                692.0
+              ],
+              [
+                1588.0,
+                692.0
+              ],
+              [
+                1580.0,
+                692.0
+              ],
+              [
+                1572.0,
+                692.0
+              ],
+              [
+                1564.0,
+                692.0
+              ],
+              [
+                1556.0,
+                692.0
+              ],
+              [
+                1548.0,
+                692.0
+              ],
+              [
+                1540.0,
+                692.0
+              ],
+              [
+                1532.0,
+                692.0
+              ],
+              [
+                1524.0,
+                692.0
+              ],
+              [
+                1516.0,
+                692.0
+              ],
+              [
+                1508.0,
+                692.0
+              ],
+              [
+                1500.0,
+                692.0
+              ],
+              [
+                1492.0,
+                692.0
+              ],
+              [
+                1484.0,
+                692.0
+              ],
+              [
+                1476.0,
+                692.0
+              ],
+              [
+                1468.0,
+                692.0
+              ],
+              [
+                1460.0,
+                692.0
+              ],
+              [
+                1452.0,
+                692.0
+              ],
+              [
+                1444.0,
+                692.0
+              ],
+              [
+                1436.0,
+                692.0
+              ],
+              [
+                1428.0,
+                692.0
+              ],
+              [
+                1420.0,
+                692.0
+              ],
+              [
+                1412.0,
+                692.0
+              ],
+              [
+                1404.0,
+                692.0
+              ],
+              [
+                1396.0,
+                692.0
+              ],
+              [
+                1388.0,
+                692.0
+              ],
+              [
+                1380.0,
+                692.0
+              ],
+              [
+                1372.0,
+                692.0
+              ],
+              [
+                1364.0,
+                692.0
+              ],
+              [
+                1356.0,
+                692.0
+              ],
+              [
+                1348.0,
+                692.0
+              ],
+              [
+                1340.0,
+                692.0
+              ],
+              [
+                1332.0,
+                692.0
+              ],
+              [
+                1324.0,
+                692.0
+              ],
+              [
+                1316.0,
+                692.0
+              ],
+              [
+                1308.0,
+                692.0
+              ],
+              [
+                1300.0,
+                692.0
+              ],
+              [
+                1292.0,
+                692.0
+              ],
+              [
+                1284.0,
+                692.0
+              ],
+              [
+                1276.0,
+                692.0
+              ],
+              [
+                1268.0,
+                692.0
+              ],
+              [
+                1260.0,
+                692.0
+              ],
+              [
+                1252.0,
+                692.0
+              ],
+              [
+                1244.0,
+                692.0
+              ],
+              [
+                1236.0,
+                692.0
+              ],
+              [
+                1228.0,
+                692.0
+              ],
+              [
+                1220.0,
+                692.0
+              ],
+              [
+                1212.0,
+                692.0
+              ],
+              [
+                1204.0,
+                692.0
+              ],
+              [
+                1196.0,
+                692.0
+              ],
+              [
+                1188.0,
+                692.0
+              ],
+              [
+                1180.0,
+                692.0
+              ],
+              [
+                1172.0,
+                684.0
+              ],
+              [
+                1164.0,
+                684.0
+              ],
+              [
+                1156.0,
+                676.0
+              ],
+              [
+                1148.0,
+                668.0
+              ],
+              [
+                1140.0,
+                660.0
+              ],
+              [
+                1132.0,
+                652.0
+              ],
+              [
+                1124.0,
+                644.0
+              ],
+              [
+                1124.0,
+                636.0
+              ],
+              [
+                1124.0,
+                628.0
+              ],
+              [
+                1124.0,
+                620.0
+              ],
+              [
+                1124.0,
+                612.0
+              ],
+              [
+                1116.0,
+                604.0
+              ],
+              [
+                1116.0,
+                596.0
+              ],
+              [
+                1116.0,
+                588.0
+              ],
+              [
+                1116.0,
+                580.0
+              ],
+              [
+                1116.0,
+                572.0
+              ],
+              [
+                1116.0,
+                564.0
+              ],
+              [
+                1116.0,
+                556.0
+              ],
+              [
+                1116.0,
+                548.0
+              ],
+              [
+                1116.0,
+                540.0
+              ],
+              [
+                1116.0,
+                532.0
+              ],
+              [
+                1116.0,
+                524.0
+              ],
+              [
+                1116.0,
+                516.0
+              ],
+              [
+                1116.0,
+                508.0
+              ],
+              [
+                1116.0,
+                500.0
+              ],
+              [
+                1116.0,
+                492.0
+              ],
+              [
+                1116.0,
+                484.0
+              ],
+              [
+                1116.0,
+                476.0
+              ],
+              [
+                1116.0,
+                468.0
+              ],
+              [
+                1116.0,
+                460.0
+              ],
+              [
+                1124.0,
+                452.0
+              ],
+              [
+                1132.0,
+                444.0
+              ],
+              [
+                1140.0,
+                436.0
+              ],
+              [
+                1148.0,
+                428.0
+              ],
+              [
+                1156.0,
+                420.0
+              ],
+              [
+                1164.0,
+                412.0
+              ],
+              [
+                1172.0,
+                404.0
+              ],
+              [
+                1180.0,
+                404.0
+              ],
+              [
+                1188.0,
+                404.0
+              ],
+              [
+                1196.0,
+                404.0
+              ],
+              [
+                1204.0,
+                396.0
+              ],
+              [
+                1212.0,
+                396.0
+              ],
+              [
+                1220.0,
+                388.0
+              ],
+              [
+                1228.0,
+                388.0
+              ],
+              [
+                1236.0,
+                380.0
+              ],
+              [
+                1244.0,
+                380.0
+              ],
+              [
+                1252.0,
+                372.0
+              ],
+              [
+                1260.0,
+                372.0
+              ],
+              [
+                1268.0,
+                372.0
+              ],
+              [
+                1276.0,
+                372.0
+              ],
+              [
+                1284.0,
+                372.0
+              ],
+              [
+                1292.0,
+                372.0
+              ],
+              [
+                1300.0,
+                372.0
+              ],
+              [
+                1308.0,
+                372.0
+              ],
+              [
+                1316.0,
+                364.0
+              ],
+              [
+                1324.0,
+                356.0
+              ],
+              [
+                1332.0,
+                348.0
+              ],
+              [
+                1340.0,
+                340.0
+              ],
+              [
+                1348.0,
+                332.0
+              ]
+            ],
+            "length_px": 998.53,
+            "raw_length_px": 1055.53,
+            "error": null,
+            "status": "PATH_FOUND",
+            "simplified_cells": [
+              [
+                87,
+                210
+              ],
+              [
+                81,
+                141
+              ],
+              [
+                52,
+                144
+              ],
+              [
+                41,
+                168
+              ]
+            ],
+            "astar_cost": 1091.247,
+            "nodes_expanded": 2224,
+            "planning_time_ms": 14.33,
+            "n_raw_waypoints": 123,
+            "n_waypoints": 4,
+            "start_cell": [
+              87,
+              210
+            ],
+            "goal_cell": [
+              41,
+              168
+            ],
+            "endpoint_snapping": "start/goal are snapped to their cell centres (<= cell_px/sqrt(2) px)"
+          },
+          "v02_validation": {
+            "valid": true,
+            "checks": [
+              {
+                "check": "non_empty",
+                "ok": true,
+                "detail": "4 waypoints"
+              },
+              {
+                "check": "starts_at_start",
+                "ok": true,
+                "detail": "4.69px (limit 5.66)"
+              },
+              {
+                "check": "ends_at_goal",
+                "ok": true,
+                "detail": "0.00px (limit 5.66)"
+              },
+              {
+                "check": "collision_free_footprint",
+                "ok": true,
+                "detail": "min clearance 37.00px, required >= 27.00px over 504 samples"
+              }
+            ],
+            "min_clearance_px": 37.0,
+            "required_clearance_px": 27,
+            "first_violation": null,
+            "n_samples": 504,
+            "raw_path_check": true,
+            "raw_vs_simplified": {
+              "raw_length_px": 1055.53,
+              "simplified_length_px": 998.53,
+              "length_reduction_pct": 5.4,
+              "raw_waypoints": 123,
+              "simplified_waypoints": 4
+            }
+          },
+          "independent_checks": {
+            "swept_disc_at_radius_minus_tolerance": {
+              "radius_px": 27,
+              "swept_area_px": 56757,
+              "on_static_obstacle_px": 0,
+              "on_no_go_px": 0,
+              "on_dynamic_obstacle_px": 0,
+              "outside_traversable_px": 0
+            },
+            "swept_disc_at_full_radius_informational": {
+              "radius_px": 35,
+              "swept_area_px": 74120,
+              "on_static_obstacle_px": 0,
+              "on_no_go_px": 0,
+              "on_dynamic_obstacle_px": 0,
+              "outside_traversable_px": 0
+            },
+            "tolerance_px": 8,
+            "tolerance_note": "v0.2 validation_tolerance_px (grid discretisation); the same convention as path_validator",
+            "yellow_tape": {
+              "centre_line_samples_on_tape": 0,
+              "first_hit_xy": null,
+              "min_distance_to_tape_px": 32.4
+            },
+            "tape_overlap_of_footprint": {
+              "radius_px": 35,
+              "swept_pixels_on_tape": 48
+            },
+            "goal": {
+              "goal_xy": [
+                1348.0,
+                332.0
+              ],
+              "cell": [
+                41,
+                168
+              ],
+              "in_valid_robot_cell": true,
+              "clearance_px": 37.0,
+              "inside_bay_polygon": false,
+              "distance_to_bay_polygon_px": 177.9,
+              "inside_detected_object_boxes": [],
+              "ok": true
+            },
+            "pass": true
+          },
+          "start_checks": {
+            "robot_in_obstacle_classes": false,
+            "robot_box_overlap_px": {
+              "traversable": 37453,
+              "static_obstacle": 0,
+              "no_go": 0,
+              "dynamic_obstacle": 0
+            },
+            "cell": [
+              87,
+              210
+            ],
+            "in_traversable": true,
+            "valid_robot_cell": true,
+            "clearance_px": 93.0
+          },
+          "goal_checks": {
+            "goal_xy": [
+              1348.0,
+              332.0
+            ],
+            "cell": [
+              41,
+              168
+            ],
+            "in_valid_robot_cell": true,
+            "clearance_px": 37.0,
+            "inside_bay_polygon": false,
+            "distance_to_bay_polygon_px": 177.9,
+            "inside_detected_object_boxes": [],
+            "ok": true
+          },
+          "verdict": {
+            "goal_selected": true,
+            "path_found": true,
+            "v02_validator": true,
+            "independent": true
+          },
+          "start_shift_px": 20
+        },
+        "start_shift40_r35": {
+          "label": "start_shift40_r35",
+          "robot_radius_px": 35,
+          "robot_radius_status": "ASSUMED (image-space, not measured)",
+          "start_xy": [
+            1660.6,
+            692.8
+          ],
+          "n_dynamic_obstacles_in_map": 1,
+          "dynamic_obstacle_ids": [
+            "conveyor_1"
+          ],
+          "map_summary": {
+            "coordinate_frame": "raw_image_px",
+            "map_mode_note": "image space; not metric",
+            "cell_px": 8,
+            "rows": 135,
+            "cols": 240,
+            "robot_radius_px": 35,
+            "robot_footprint": "disc (assumed, image space)",
+            "safety_margin_px": 40,
+            "cell_counts": {
+              "traversable": 10789,
+              "static_obstacle": 1714,
+              "no_go": 2905,
+              "dynamic_obstacle": 1860,
+              "free": 9042,
+              "valid_robot_center": 6077
+            },
+            "layer_sha256": {
+              "traversable": "2f9922e6269a10a9888c1f36a0c211e2c3f11d59f9d20eaf8d3c0fefbf37eb20",
+              "static_obstacle": "b4010d512cad060a7a6879c7d9175b7ee71cb168ac088fb9ec210ddaaf953937",
+              "no_go": "cec052227dfd9a4cf818af01afc6a02fb5100e53da2f43f1f7971a0fad12ce76",
+              "dynamic_obstacle": "aec073c25a0e35ce3ad9826a30169ab9851cd2d26b4fd334b77ea77e93f8c6e6",
+              "valid": "5e5be1433108666febc0553d060aaf474267c2aa7c54feec34ae4f5c9f75dcb2"
+            },
+            "dynamic_obstacles": [
+              {
+                "id": "conveyor_1",
+                "bbox_xyxy": [
+                  225.57,
+                  272.97,
+                  461.76,
+                  766.68
+                ],
+                "source": "grounding_dino",
+                "knowledge": "observed_by_model"
+              }
+            ]
+          },
+          "goal": {
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay_candidate",
+            "anchor_polygon_xy": [
+              [
+                1426.7,
+                172.5
+              ],
+              [
+                1680.3,
+                168.0
+              ],
+              [
+                1653.4,
+                56.2
+              ],
+              [
+                1399.7,
+                60.7
+              ]
+            ],
+            "coordinate_frame": "raw_image_px",
+            "params": {
+              "max_dist_px": 180,
+              "min_dist_px": 0,
+              "distance_weight": 1.5,
+              "top_k_report": 5
+            },
+            "reach": {
+              "reach_px": 180,
+              "status": "PROVISIONAL",
+              "basis": "goal_selection.dropoff.max_dist_px = 180 px (dev assumption; gripper reach and on-board camera view not measured)"
+            },
+            "pose": {
+              "purpose": "dropoff_approach",
+              "xy": [
+                1348.0,
+                332.0
+              ],
+              "cell": [
+                41,
+                168
+              ],
+              "heading_deg": -48.6,
+              "heading_note": "image-frame direction towards the anchor centroid (x right, y down); mecanum base does not need to rotate along the path",
+              "coordinate_frame": "raw_image_px",
+              "anchor": "loading_bay_candidate",
+              "path_cost": 1063.93,
+              "metric_valid": false
+            },
+            "candidates_top_k": [
+              {
+                "cell": [
+                  41,
+                  168
+                ],
+                "xy": [
+                  1348.0,
+                  332.0
+                ],
+                "path_cost": 1063.93,
+                "distance_to_anchor_px": 178.44,
+                "score": 1331.59
+              },
+              {
+                "cell": [
+                  42,
+                  170
+                ],
+                "xy": [
+                  1364.0,
+                  340.0
+                ],
+                "path_cost": 1065.06,
+                "distance_to_anchor_px": 179.42,
+                "score": 1334.2
+              },
+              {
+                "cell": [
+                  41,
+                  169
+                ],
+                "xy": [
+                  1356.0,
+                  332.0
+                ],
+                "path_cost": 1071.67,
+                "distance_to_anchor_px": 175.05,
+                "score": 1334.24
+              },
+              {
+                "cell": [
+                  41,
+                  170
+                ],
+                "xy": [
+                  1364.0,
+                  332.0
+                ],
+                "path_cost": 1079.4,
+                "distance_to_anchor_px": 171.96,
+                "score": 1337.33
+              },
+              {
+                "cell": [
+                  42,
+                  171
+                ],
+                "xy": [
+                  1372.0,
+                  340.0
+                ],
+                "path_cost": 1072.86,
+                "distance_to_anchor_px": 176.77,
+                "score": 1338.02
+              }
+            ],
+            "stats": {
+              "cells_in_reach": 3150,
+              "cells_in_reach_traversable": 355,
+              "cells_accessible_collision_free": 124,
+              "cells_reachable_from_start": 124,
+              "nearest_valid_cell_to_anchor_px": 160.0
+            },
+            "status": "GOAL_SELECTED",
+            "accessible_cells_count": 124
+          },
+          "path": {
+            "path_id": "A_start_to_goal",
+            "coordinate_frame": "raw_image_px",
+            "planner": "SAFETY_COST_ASTAR",
+            "simplification": "line_of_sight",
+            "start_xy": [
+              1660.6,
+              692.8
+            ],
+            "goal_xy": [
+              1348.0,
+              332.0
+            ],
+            "waypoints_xy": [
+              [
+                1660.0,
+                692.0
+              ],
+              [
+                1132.0,
+                652.0
+              ],
+              [
+                1156.0,
+                420.0
+              ],
+              [
+                1348.0,
+                332.0
+              ]
+            ],
+            "raw_cells": [
+              [
+                86,
+                207
+              ],
+              [
+                86,
+                206
+              ],
+              [
+                86,
+                205
+              ],
+              [
+                86,
+                204
+              ],
+              [
+                86,
+                203
+              ],
+              [
+                86,
+                202
+              ],
+              [
+                86,
+                201
+              ],
+              [
+                86,
+                200
+              ],
+              [
+                86,
+                199
+              ],
+              [
+                86,
+                198
+              ],
+              [
+                86,
+                197
+              ],
+              [
+                86,
+                196
+              ],
+              [
+                86,
+                195
+              ],
+              [
+                86,
+                194
+              ],
+              [
+                86,
+                193
+              ],
+              [
+                86,
+                192
+              ],
+              [
+                86,
+                191
+              ],
+              [
+                86,
+                190
+              ],
+              [
+                86,
+                189
+              ],
+              [
+                86,
+                188
+              ],
+              [
+                86,
+                187
+              ],
+              [
+                86,
+                186
+              ],
+              [
+                86,
+                185
+              ],
+              [
+                86,
+                184
+              ],
+              [
+                86,
+                183
+              ],
+              [
+                86,
+                182
+              ],
+              [
+                86,
+                181
+              ],
+              [
+                86,
+                180
+              ],
+              [
+                86,
+                179
+              ],
+              [
+                86,
+                178
+              ],
+              [
+                86,
+                177
+              ],
+              [
+                86,
+                176
+              ],
+              [
+                86,
+                175
+              ],
+              [
+                86,
+                174
+              ],
+              [
+                86,
+                173
+              ],
+              [
+                86,
+                172
+              ],
+              [
+                86,
+                171
+              ],
+              [
+                86,
+                170
+              ],
+              [
+                86,
+                169
+              ],
+              [
+                86,
+                168
+              ],
+              [
+                86,
+                167
+              ],
+              [
+                86,
+                166
+              ],
+              [
+                86,
+                165
+              ],
+              [
+                86,
+                164
+              ],
+              [
+                86,
+                163
+              ],
+              [
+                86,
+                162
+              ],
+              [
+                86,
+                161
+              ],
+              [
+                86,
+                160
+              ],
+              [
+                86,
+                159
+              ],
+              [
+                86,
+                158
+              ],
+              [
+                86,
+                157
+              ],
+              [
+                86,
+                156
+              ],
+              [
+                86,
+                155
+              ],
+              [
+                86,
+                154
+              ],
+              [
+                86,
+                153
+              ],
+              [
+                86,
+                152
+              ],
+              [
+                86,
+                151
+              ],
+              [
+                86,
+                150
+              ],
+              [
+                86,
+                149
+              ],
+              [
+                86,
+                148
+              ],
+              [
+                86,
+                147
+              ],
+              [
+                85,
+                146
+              ],
+              [
+                85,
+                145
+              ],
+              [
+                84,
+                144
+              ],
+              [
+                83,
+                143
+              ],
+              [
+                82,
+                142
+              ],
+              [
+                81,
+                141
+              ],
+              [
+                80,
+                140
+              ],
+              [
+                79,
+                140
+              ],
+              [
+                78,
+                140
+              ],
+              [
+                77,
+                140
+              ],
+              [
+                76,
+                140
+              ],
+              [
+                75,
+                139
+              ],
+              [
+                74,
+                139
+              ],
+              [
+                73,
+                139
+              ],
+              [
+                72,
+                139
+              ],
+              [
+                71,
+                139
+              ],
+              [
+                70,
+                139
+              ],
+              [
+                69,
+                139
+              ],
+              [
+                68,
+                139
+              ],
+              [
+                67,
+                139
+              ],
+              [
+                66,
+                139
+              ],
+              [
+                65,
+                139
+              ],
+              [
+                64,
+                139
+              ],
+              [
+                63,
+                139
+              ],
+              [
+                62,
+                139
+              ],
+              [
+                61,
+                139
+              ],
+              [
+                60,
+                139
+              ],
+              [
+                59,
+                139
+              ],
+              [
+                58,
+                139
+              ],
+              [
+                57,
+                139
+              ],
+              [
+                56,
+                140
+              ],
+              [
+                55,
+                141
+              ],
+              [
+                54,
+                142
+              ],
+              [
+                53,
+                143
+              ],
+              [
+                52,
+                144
+              ],
+              [
+                51,
+                145
+              ],
+              [
+                50,
+                146
+              ],
+              [
+                50,
+                147
+              ],
+              [
+                50,
+                148
+              ],
+              [
+                50,
+                149
+              ],
+              [
+                49,
+                150
+              ],
+              [
+                49,
+                151
+              ],
+              [
+                48,
+                152
+              ],
+              [
+                48,
+                153
+              ],
+              [
+                47,
+                154
+              ],
+              [
+                47,
+                155
+              ],
+              [
+                46,
+                156
+              ],
+              [
+                46,
+                157
+              ],
+              [
+                46,
+                158
+              ],
+              [
+                46,
+                159
+              ],
+              [
+                46,
+                160
+              ],
+              [
+                46,
+                161
+              ],
+              [
+                46,
+                162
+              ],
+              [
+                46,
+                163
+              ],
+              [
+                45,
+                164
+              ],
+              [
+                44,
+                165
+              ],
+              [
+                43,
+                166
+              ],
+              [
+                42,
+                167
+              ],
+              [
+                41,
+                168
+              ]
+            ],
+            "raw_waypoints_xy": [
+              [
+                1660.0,
+                692.0
+              ],
+              [
+                1652.0,
+                692.0
+              ],
+              [
+                1644.0,
+                692.0
+              ],
+              [
+                1636.0,
+                692.0
+              ],
+              [
+                1628.0,
+                692.0
+              ],
+              [
+                1620.0,
+                692.0
+              ],
+              [
+                1612.0,
+                692.0
+              ],
+              [
+                1604.0,
+                692.0
+              ],
+              [
+                1596.0,
+                692.0
+              ],
+              [
+                1588.0,
+                692.0
+              ],
+              [
+                1580.0,
+                692.0
+              ],
+              [
+                1572.0,
+                692.0
+              ],
+              [
+                1564.0,
+                692.0
+              ],
+              [
+                1556.0,
+                692.0
+              ],
+              [
+                1548.0,
+                692.0
+              ],
+              [
+                1540.0,
+                692.0
+              ],
+              [
+                1532.0,
+                692.0
+              ],
+              [
+                1524.0,
+                692.0
+              ],
+              [
+                1516.0,
+                692.0
+              ],
+              [
+                1508.0,
+                692.0
+              ],
+              [
+                1500.0,
+                692.0
+              ],
+              [
+                1492.0,
+                692.0
+              ],
+              [
+                1484.0,
+                692.0
+              ],
+              [
+                1476.0,
+                692.0
+              ],
+              [
+                1468.0,
+                692.0
+              ],
+              [
+                1460.0,
+                692.0
+              ],
+              [
+                1452.0,
+                692.0
+              ],
+              [
+                1444.0,
+                692.0
+              ],
+              [
+                1436.0,
+                692.0
+              ],
+              [
+                1428.0,
+                692.0
+              ],
+              [
+                1420.0,
+                692.0
+              ],
+              [
+                1412.0,
+                692.0
+              ],
+              [
+                1404.0,
+                692.0
+              ],
+              [
+                1396.0,
+                692.0
+              ],
+              [
+                1388.0,
+                692.0
+              ],
+              [
+                1380.0,
+                692.0
+              ],
+              [
+                1372.0,
+                692.0
+              ],
+              [
+                1364.0,
+                692.0
+              ],
+              [
+                1356.0,
+                692.0
+              ],
+              [
+                1348.0,
+                692.0
+              ],
+              [
+                1340.0,
+                692.0
+              ],
+              [
+                1332.0,
+                692.0
+              ],
+              [
+                1324.0,
+                692.0
+              ],
+              [
+                1316.0,
+                692.0
+              ],
+              [
+                1308.0,
+                692.0
+              ],
+              [
+                1300.0,
+                692.0
+              ],
+              [
+                1292.0,
+                692.0
+              ],
+              [
+                1284.0,
+                692.0
+              ],
+              [
+                1276.0,
+                692.0
+              ],
+              [
+                1268.0,
+                692.0
+              ],
+              [
+                1260.0,
+                692.0
+              ],
+              [
+                1252.0,
+                692.0
+              ],
+              [
+                1244.0,
+                692.0
+              ],
+              [
+                1236.0,
+                692.0
+              ],
+              [
+                1228.0,
+                692.0
+              ],
+              [
+                1220.0,
+                692.0
+              ],
+              [
+                1212.0,
+                692.0
+              ],
+              [
+                1204.0,
+                692.0
+              ],
+              [
+                1196.0,
+                692.0
+              ],
+              [
+                1188.0,
+                692.0
+              ],
+              [
+                1180.0,
+                692.0
+              ],
+              [
+                1172.0,
+                684.0
+              ],
+              [
+                1164.0,
+                684.0
+              ],
+              [
+                1156.0,
+                676.0
+              ],
+              [
+                1148.0,
+                668.0
+              ],
+              [
+                1140.0,
+                660.0
+              ],
+              [
+                1132.0,
+                652.0
+              ],
+              [
+                1124.0,
+                644.0
+              ],
+              [
+                1124.0,
+                636.0
+              ],
+              [
+                1124.0,
+                628.0
+              ],
+              [
+                1124.0,
+                620.0
+              ],
+              [
+                1124.0,
+                612.0
+              ],
+              [
+                1116.0,
+                604.0
+              ],
+              [
+                1116.0,
+                596.0
+              ],
+              [
+                1116.0,
+                588.0
+              ],
+              [
+                1116.0,
+                580.0
+              ],
+              [
+                1116.0,
+                572.0
+              ],
+              [
+                1116.0,
+                564.0
+              ],
+              [
+                1116.0,
+                556.0
+              ],
+              [
+                1116.0,
+                548.0
+              ],
+              [
+                1116.0,
+                540.0
+              ],
+              [
+                1116.0,
+                532.0
+              ],
+              [
+                1116.0,
+                524.0
+              ],
+              [
+                1116.0,
+                516.0
+              ],
+              [
+                1116.0,
+                508.0
+              ],
+              [
+                1116.0,
+                500.0
+              ],
+              [
+                1116.0,
+                492.0
+              ],
+              [
+                1116.0,
+                484.0
+              ],
+              [
+                1116.0,
+                476.0
+              ],
+              [
+                1116.0,
+                468.0
+              ],
+              [
+                1116.0,
+                460.0
+              ],
+              [
+                1124.0,
+                452.0
+              ],
+              [
+                1132.0,
+                444.0
+              ],
+              [
+                1140.0,
+                436.0
+              ],
+              [
+                1148.0,
+                428.0
+              ],
+              [
+                1156.0,
+                420.0
+              ],
+              [
+                1164.0,
+                412.0
+              ],
+              [
+                1172.0,
+                404.0
+              ],
+              [
+                1180.0,
+                404.0
+              ],
+              [
+                1188.0,
+                404.0
+              ],
+              [
+                1196.0,
+                404.0
+              ],
+              [
+                1204.0,
+                396.0
+              ],
+              [
+                1212.0,
+                396.0
+              ],
+              [
+                1220.0,
+                388.0
+              ],
+              [
+                1228.0,
+                388.0
+              ],
+              [
+                1236.0,
+                380.0
+              ],
+              [
+                1244.0,
+                380.0
+              ],
+              [
+                1252.0,
+                372.0
+              ],
+              [
+                1260.0,
+                372.0
+              ],
+              [
+                1268.0,
+                372.0
+              ],
+              [
+                1276.0,
+                372.0
+              ],
+              [
+                1284.0,
+                372.0
+              ],
+              [
+                1292.0,
+                372.0
+              ],
+              [
+                1300.0,
+                372.0
+              ],
+              [
+                1308.0,
+                372.0
+              ],
+              [
+                1316.0,
+                364.0
+              ],
+              [
+                1324.0,
+                356.0
+              ],
+              [
+                1332.0,
+                348.0
+              ],
+              [
+                1340.0,
+                340.0
+              ],
+              [
+                1348.0,
+                332.0
+              ]
+            ],
+            "length_px": 973.96,
+            "raw_length_px": 1028.22,
+            "error": null,
+            "status": "PATH_FOUND",
+            "simplified_cells": [
+              [
+                86,
+                207
+              ],
+              [
+                81,
+                141
+              ],
+              [
+                52,
+                144
+              ],
+              [
+                41,
+                168
+              ]
+            ],
+            "astar_cost": 1063.933,
+            "nodes_expanded": 2217,
+            "planning_time_ms": 14.4,
+            "n_raw_waypoints": 120,
+            "n_waypoints": 4,
+            "start_cell": [
+              86,
+              207
+            ],
+            "goal_cell": [
+              41,
+              168
+            ],
+            "endpoint_snapping": "start/goal are snapped to their cell centres (<= cell_px/sqrt(2) px)"
+          },
+          "v02_validation": {
+            "valid": true,
+            "checks": [
+              {
+                "check": "non_empty",
+                "ok": true,
+                "detail": "4 waypoints"
+              },
+              {
+                "check": "starts_at_start",
+                "ok": true,
+                "detail": "1.00px (limit 5.66)"
+              },
+              {
+                "check": "ends_at_goal",
+                "ok": true,
+                "detail": "0.00px (limit 5.66)"
+              },
+              {
+                "check": "collision_free_footprint",
+                "ok": true,
+                "detail": "min clearance 37.00px, required >= 27.00px over 491 samples"
+              }
+            ],
+            "min_clearance_px": 37.0,
+            "required_clearance_px": 27,
+            "first_violation": null,
+            "n_samples": 491,
+            "raw_path_check": true,
+            "raw_vs_simplified": {
+              "raw_length_px": 1028.22,
+              "simplified_length_px": 973.96,
+              "length_reduction_pct": 5.28,
+              "raw_waypoints": 120,
+              "simplified_waypoints": 4
+            }
+          },
+          "independent_checks": {
+            "swept_disc_at_radius_minus_tolerance": {
+              "radius_px": 27,
+              "swept_area_px": 55430,
+              "on_static_obstacle_px": 0,
+              "on_no_go_px": 0,
+              "on_dynamic_obstacle_px": 0,
+              "outside_traversable_px": 0
+            },
+            "swept_disc_at_full_radius_informational": {
+              "radius_px": 35,
+              "swept_area_px": 72406,
+              "on_static_obstacle_px": 0,
+              "on_no_go_px": 0,
+              "on_dynamic_obstacle_px": 0,
+              "outside_traversable_px": 0
+            },
+            "tolerance_px": 8,
+            "tolerance_note": "v0.2 validation_tolerance_px (grid discretisation); the same convention as path_validator",
+            "yellow_tape": {
+              "centre_line_samples_on_tape": 0,
+              "first_hit_xy": null,
+              "min_distance_to_tape_px": 32.4
+            },
+            "tape_overlap_of_footprint": {
+              "radius_px": 35,
+              "swept_pixels_on_tape": 48
+            },
+            "goal": {
+              "goal_xy": [
+                1348.0,
+                332.0
+              ],
+              "cell": [
+                41,
+                168
+              ],
+              "in_valid_robot_cell": true,
+              "clearance_px": 37.0,
+              "inside_bay_polygon": false,
+              "distance_to_bay_polygon_px": 177.9,
+              "inside_detected_object_boxes": [],
+              "ok": true
+            },
+            "pass": true
+          },
+          "start_checks": {
+            "robot_in_obstacle_classes": false,
+            "robot_box_overlap_px": {
+              "traversable": 37453,
+              "static_obstacle": 0,
+              "no_go": 0,
+              "dynamic_obstacle": 0
+            },
+            "cell": [
+              86,
+              207
+            ],
+            "in_traversable": true,
+            "valid_robot_cell": true,
+            "clearance_px": 88.0
+          },
+          "goal_checks": {
+            "goal_xy": [
+              1348.0,
+              332.0
+            ],
+            "cell": [
+              41,
+              168
+            ],
+            "in_valid_robot_cell": true,
+            "clearance_px": 37.0,
+            "inside_bay_polygon": false,
+            "distance_to_bay_polygon_px": 177.9,
+            "inside_detected_object_boxes": [],
+            "ok": true
+          },
+          "verdict": {
+            "goal_selected": true,
+            "path_found": true,
+            "v02_validator": true,
+            "independent": true
+          },
+          "start_shift_px": 40
+        },
+        "stress_inscribed_r82_start_shift0": {
+          "label": "stress_inscribed_r82_start_shift0",
+          "robot_radius_px": 82,
+          "robot_radius_status": "ASSUMED (image-space, not measured)",
+          "start_xy": [
+            1699.5,
+            702.1
+          ],
+          "n_dynamic_obstacles_in_map": 1,
+          "dynamic_obstacle_ids": [
+            "conveyor_1"
+          ],
+          "map_summary": {
+            "coordinate_frame": "raw_image_px",
+            "map_mode_note": "image space; not metric",
+            "cell_px": 8,
+            "rows": 135,
+            "cols": 240,
+            "robot_radius_px": 82,
+            "robot_footprint": "disc (assumed, image space)",
+            "safety_margin_px": 40,
+            "cell_counts": {
+              "traversable": 10789,
+              "static_obstacle": 1714,
+              "no_go": 2905,
+              "dynamic_obstacle": 1860,
+              "free": 9042,
+              "valid_robot_center": 2144
+            },
+            "layer_sha256": {
+              "traversable": "2f9922e6269a10a9888c1f36a0c211e2c3f11d59f9d20eaf8d3c0fefbf37eb20",
+              "static_obstacle": "b4010d512cad060a7a6879c7d9175b7ee71cb168ac088fb9ec210ddaaf953937",
+              "no_go": "cec052227dfd9a4cf818af01afc6a02fb5100e53da2f43f1f7971a0fad12ce76",
+              "dynamic_obstacle": "aec073c25a0e35ce3ad9826a30169ab9851cd2d26b4fd334b77ea77e93f8c6e6",
+              "valid": "24f8fb8f95bfe241184b08775af1c6d2b31de639ea7e2645776b1943427d4c9a"
+            },
+            "dynamic_obstacles": [
+              {
+                "id": "conveyor_1",
+                "bbox_xyxy": [
+                  225.57,
+                  272.97,
+                  461.76,
+                  766.68
+                ],
+                "source": "grounding_dino",
+                "knowledge": "observed_by_model"
+              }
+            ]
+          },
+          "goal": {
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay_candidate",
+            "anchor_polygon_xy": [
+              [
+                1426.7,
+                172.5
+              ],
+              [
+                1680.3,
+                168.0
+              ],
+              [
+                1653.4,
+                56.2
+              ],
+              [
+                1399.7,
+                60.7
+              ]
+            ],
+            "coordinate_frame": "raw_image_px",
+            "params": {
+              "max_dist_px": 180,
+              "min_dist_px": 0,
+              "distance_weight": 1.5,
+              "top_k_report": 5
+            },
+            "reach": {
+              "reach_px": 180,
+              "status": "PROVISIONAL",
+              "basis": "goal_selection.dropoff.max_dist_px = 180 px (dev assumption; gripper reach and on-board camera view not measured)"
+            },
+            "pose": null,
+            "candidates_top_k": [],
+            "stats": {
+              "cells_in_reach": 3150,
+              "cells_in_reach_traversable": 355,
+              "cells_accessible_collision_free": 0,
+              "cells_reachable_from_start": 0,
+              "nearest_valid_cell_to_anchor_px": 208.0
+            },
+            "status": "NO_ACCESSIBLE_CANDIDATE",
+            "reason": "no collision-free robot position within 180 px of loading_bay_candidate",
+            "accessible_cells_count": 0
+          },
+          "path": null,
+          "v02_validation": null,
+          "independent_checks": null,
+          "start_checks": {
+            "robot_in_obstacle_classes": false,
+            "robot_box_overlap_px": {
+              "traversable": 37453,
+              "static_obstacle": 0,
+              "no_go": 0,
+              "dynamic_obstacle": 0
+            },
+            "cell": [
+              87,
+              212
+            ],
+            "in_traversable": true,
+            "valid_robot_cell": true,
+            "clearance_px": 99.0
+          },
+          "verdict": {
+            "goal_selected": false,
+            "path_found": false,
+            "v02_validator": null,
+            "independent": null
+          },
+          "start_shift_px": 0
+        }
+      }
+    }
+  },
+  "figures": [
+    "04_map_transfer_check.png",
+    "01_final_overview.png",
+    "02_bay_goal_zoom.png",
+    "03_robot_start_zoom.png",
+    "05_variants.png"
+  ],
+  "v02_code_fingerprint": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+  "no_hardware_command": true,
+  "not_used_as_input": [
+    "Z06 / semantic_reference_zones",
+    "the manual start (700, 740) of the v0.2 map",
+    "any typed goal or bay coordinate",
+    "a new Qwen semantic inference or a new prompt"
+  ]
+}

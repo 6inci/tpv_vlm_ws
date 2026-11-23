@@ -1,0 +1,89 @@
+{
+  "ground_truth_available": false,
+  "comparison_scope": "detection behavior on this image; confidence scales are detector-specific and not directly comparable",
+  "same_vocabulary_trials": [
+    [
+      "manipulator",
+      "conveyor",
+      "mobile robot",
+      "pallet"
+    ],
+    [
+      "robot arm",
+      "robotic arm",
+      "conveyor belt",
+      "industrial conveyor",
+      "AGV",
+      "robot vehicle",
+      "wooden pallet",
+      "industrial pallet"
+    ],
+    [
+      "industrial robot",
+      "industrial robot arm",
+      "robotic manipulator",
+      "belt conveyor",
+      "AMR",
+      "mobile robot platform",
+      "cargo pallet"
+    ]
+  ],
+  "families": {
+    "manipulator": {
+      "grounding_dino_detections": 27,
+      "yolo_world_detections": 1,
+      "best_cross_detector_match": {
+        "dino_id": "d_013",
+        "dino_label": "industrial robot robotic manipulator",
+        "dino_trial": "extended_synonyms",
+        "yolo_id": "y_014",
+        "yolo_label": "industrial robot arm",
+        "yolo_trial": "extended_synonyms",
+        "bbox_iou": 0.29085094033425685
+      },
+      "diagnosis": "VOCABULARY_DEPENDENT"
+    },
+    "conveyor": {
+      "grounding_dino_detections": 17,
+      "yolo_world_detections": 4,
+      "best_cross_detector_match": {
+        "dino_id": "d_008",
+        "dino_label": "conveyor belt wooden pallet",
+        "dino_trial": "common_synonyms",
+        "yolo_id": "y_007",
+        "yolo_label": "belt conveyor",
+        "yolo_trial": "extended_synonyms",
+        "bbox_iou": 0.959581029971041
+      },
+      "diagnosis": "AMBIGUOUS"
+    },
+    "mobile_robot": {
+      "grounding_dino_detections": 11,
+      "yolo_world_detections": 21,
+      "best_cross_detector_match": {
+        "dino_id": "d_003",
+        "dino_label": "robot vehicle",
+        "dino_trial": "common_synonyms",
+        "yolo_id": "y_019",
+        "yolo_label": "mobile robot platform",
+        "yolo_trial": "extended_synonyms",
+        "bbox_iou": 0.9485708693257504
+      },
+      "diagnosis": "VOCABULARY_DEPENDENT"
+    },
+    "pallet": {
+      "grounding_dino_detections": 18,
+      "yolo_world_detections": 5,
+      "best_cross_detector_match": {
+        "dino_id": "d_017",
+        "dino_label": "pallet",
+        "dino_trial": "canonical",
+        "yolo_id": "y_011",
+        "yolo_label": "cargo pallet",
+        "yolo_trial": "extended_synonyms",
+        "bbox_iou": 0.9590210841452412
+      },
+      "diagnosis": "VOCABULARY_DEPENDENT"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+ "description": "주행 쪽 값 (2026-11-20). 길이 m. base_link = 바퀴 4개 중심",
+ "footprint_m": [
+  [
+   0.145,
+   0.123
+  ],
+  [
+   0.145,
+   -0.123
+  ],
+  [
+   -0.145,
+   -0.123
+  ],
+  [
+   -0.145,
+   0.123
+  ]
+ ],
+ "footprint_padding_m": 0.01,
+ "inflation_radius_m": 0.2,
+ "cost_scaling_factor": 3.0,
+ "inscribed_radius_with_padding_m": 0.133,
+ "footprint_note": "Nav2 지역 costmap 값. 그리퍼 미포함, 실측 아님. 차체 테두리 29.0 x 24.6 cm 를 base_link 가운데로 둔 가정",
+ "tool_rules": {
+  "tight_cm": 3.0,
+  "turn_step_deg": 2.0,
+  "path_step_m": 0.01,
+  "bad": "몸체 여유 < footprint_padding 또는 로봇 중심 칸 Nav2 비용 >= 253",
+  "start_tol_m": 0.1,
+  "start_yaw_tol_deg": 15.0,
+  "headings": "출발·도착 방향 90° 단위, 다르면 한 경유점(또는 도착점)에서 한 번 제자리 회전"
+ },
+ "goal_yaw_tolerance_rad": 0.25,
+ "goal_tolerance_note": "주행 쪽 작업 폴더 설정 값. 실제 로봇에서 쓰인 값은 확인하지 않음. 위치 판정 값은 조정 중이라 넣지 않음",
+ "gripper_measured_20261120": {
+  "tip_ahead_of_body_front_cm": 5.0,
+  "precision": "대략 (약 5 cm)",
+  "state": "열림 1500 us",
+  "width": "차체 폭 안쪽 (값은 재지 않음)",
+  "reference": "차체 앞 테두리"
+ },
+ "gripper_tip_from_base_link_estimate_m": 0.195,
+ "gripper_tip_note": "추정 = 차체 앞 테두리(Nav2 0.145 m, 실측 아님) + 약 0.05 m. base_link 가 테두리 한가운데라는 가정"
+}

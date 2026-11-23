@@ -1,0 +1,48 @@
+{
+  "purpose": "빨간 큐브를 컨베이어 옆으로 이동",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [747, 0, 880, 144]
+  },
+  "source_relation": "next_to",
+  "destination_meaning": "컨베이어 옆",
+  "destination_reference": {
+    "name_en": "conveyor",
+    "bbox_2d": [120, 262, 240, 410],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "white bordered conveyor and robot arm cell",
+      "visual_evidence": ["white border around conveyor and robot arm"],
+      "bbox_2d": [110, 250, 250, 420],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "yellow bordered driving area",
+      "visual_evidence": ["yellow outer line on black floor"],
+      "bbox_2d": [100, 250, 970, 900],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "green pedestrian walkway",
+      "visual_evidence": ["green floor with footprints"],
+      "bbox_2d": [300, 50, 550, 270],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "truck unloading zone",
+      "visual_evidence": ["truck and white dashed lines"],
+      "bbox_2d": [620, 0, 880, 180],
+      "robot_body_access": "unknown"
+    }
+  ],
+  "uncertainty": [
+    "exact location of red cube not visible",
+    "grappling reach of robot not confirmed"
+  ]
+}

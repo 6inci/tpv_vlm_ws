@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T06:22:08.643522+09:00",
+  "status": "ACCEPTED",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_raw.png",
+    "sha256": "1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299",
+    "coordinate_domain": "RAW_IMAGE_PX",
+    "width": 1920,
+    "height": 1080
+  },
+  "request_artifact": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/vlm_static_grounding_request.json",
+    "sha256": "a58ff180034361c37f5a5ecc7f3037aedd7354283706f61c4c089d9d9f927bda"
+  },
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "qwen_inference_runs": 1,
+  "retry_runs": 0,
+  "raw_model_output": "{\"label\":\"small brown cardboard box on the floor\",\"bbox_2d\":[465, 575, 492, 605]}",
+  "raw_output_path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/qwen_raw_output.txt",
+  "raw_output_sha256": "eb1584a9d5ce100fbad0e353e2f6c1b1a357b0978676541126b75ba749ad0975",
+  "parsed_visible_object": {
+    "label": "small brown cardboard box on the floor",
+    "bbox_normalized_0_1000": [
+      465,
+      575,
+      492,
+      605
+    ],
+    "bbox_raw_image_px": [
+      892.8,
+      621.0,
+      944.64,
+      653.4
+    ],
+    "confidence": null
+  },
+  "validation": {
+    "single_json_object": true,
+    "single_object": true,
+    "label_nonempty": true,
+    "bbox_coordinate_count": 4,
+    "bbox_coordinates_integer": true,
+    "bbox_domain": "NORMALIZED_0_1000",
+    "bbox_order_valid": true,
+    "full_visible_object_bbox_requested": true
+  },
+  "semantic_interpretation": "The returned bbox visually encloses the selected small floor box; this is model-derived semantic evidence, not a physical-size measurement."
+}

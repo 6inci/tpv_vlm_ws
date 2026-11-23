@@ -1,0 +1,138 @@
+{
+ "photo": "photo_8",
+ "rule": "step4b_batch.gripper_line_rule (config)",
+ "frame": "map_m (REP-103); floor_cm for raw samples",
+ "note": "diagnostic only, recomputed from path_plan.json candidates; 2D floor-level centre line; gripper width/height/3D UNVERIFIED",
+ "candidates": [
+  {
+   "leg": "A",
+   "yaw_map_deg": 0,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "A",
+   "yaw_map_deg": 90,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "A",
+   "yaw_map_deg": 180,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "A",
+   "yaw_map_deg": 270,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "B",
+   "yaw_map_deg": 0,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "B",
+   "yaw_map_deg": 90,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "B",
+   "yaw_map_deg": 180,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "B",
+   "yaw_map_deg": 270,
+   "status": "FEASIBLE_PLAN_GRASP_UNVERIFIED",
+   "selected": true,
+   "stop_pose_map": {
+    "x_m": 2.67,
+    "y_m": 0.51,
+    "yaw_deg": 270.0
+   },
+   "body_front_map_m": [
+    2.67,
+    0.335
+   ],
+   "target_map_m": [
+    2.665,
+    0.239
+   ],
+   "front_to_target_gap_cm": 9.6,
+   "gripper_line_crosses_planner": [],
+   "runs": [
+    {
+     "layer": "NOT_DRIVABLE",
+     "zone": null,
+     "from_floor_cm": [
+      267.0,
+      176.5
+     ],
+     "to_floor_cm": [
+      266.82,
+      179.86
+     ],
+     "length_cm": 3.4,
+     "from_map_m": [
+      2.67,
+      0.335
+     ],
+     "to_map_m": [
+      2.668,
+      0.301
+     ],
+     "blocking": false
+    },
+    {
+     "layer": "TARGET_PALLET",
+     "zone": null,
+     "from_floor_cm": [
+      266.8,
+      180.34
+     ],
+     "to_floor_cm": [
+      266.5,
+      186.1
+     ],
+     "length_cm": 5.8,
+     "from_map_m": [
+      2.668,
+      0.297
+     ],
+     "to_map_m": [
+      2.665,
+      0.239
+     ],
+     "blocking": false
+    }
+   ],
+   "reason": "selected stop"
+  }
+ ],
+ "reference_stops": {
+  "A": {
+   "yaw_map_deg": 180,
+   "pose_map": {
+    "x_m": 0.83,
+    "y_m": 1.27,
+    "yaw_deg": 180.0
+   },
+   "centre_to_target_cm": 29.0,
+   "status": "REFERENCE_ONLY (not a grasp / placement pose)"
+  },
+  "B": null
+ }
+}

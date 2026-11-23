@@ -1,0 +1,178 @@
+{
+  "truck_object": "truck_1",
+  "loading_area_candidates": [
+    {
+      "candidate_id": 1,
+      "side_of_truck_box": "below",
+      "polygon_xy": [
+        [
+          1424.2,
+          204.7
+        ],
+        [
+          1623.5,
+          204.7
+        ],
+        [
+          1623.5,
+          324.3
+        ],
+        [
+          1424.2,
+          324.3
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.6 px adjacent to the truck box",
+      "vlm_plausible": "no",
+      "vlm_reason": "Cones and floor markings suggest this is a boundary or path, not a loading zone.",
+      "accessible_cells": 568
+    },
+    {
+      "candidate_id": 2,
+      "side_of_truck_box": "above",
+      "polygon_xy": [
+        [
+          1424.2,
+          0
+        ],
+        [
+          1623.5,
+          0
+        ],
+        [
+          1623.5,
+          72.5
+        ],
+        [
+          1424.2,
+          72.5
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.6 px adjacent to the truck box",
+      "vlm_plausible": "yes",
+      "vlm_reason": "Truck's cargo bed is open and facing this area, with no obstructions.",
+      "accessible_cells": 0
+    },
+    {
+      "candidate_id": 3,
+      "side_of_truck_box": "left",
+      "polygon_xy": [
+        [
+          1304.6,
+          72.5
+        ],
+        [
+          1424.2,
+          72.5
+        ],
+        [
+          1424.2,
+          204.7
+        ],
+        [
+          1304.6,
+          204.7
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.6 px adjacent to the truck box",
+      "vlm_plausible": "no",
+      "vlm_reason": "Cones and markings indicate this is a restricted or safety zone, not a loading area.",
+      "accessible_cells": 43
+    },
+    {
+      "candidate_id": 4,
+      "side_of_truck_box": "right",
+      "polygon_xy": [
+        [
+          1623.5,
+          72.5
+        ],
+        [
+          1743.0,
+          72.5
+        ],
+        [
+          1743.0,
+          204.7
+        ],
+        [
+          1623.5,
+          204.7
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.6 px adjacent to the truck box",
+      "vlm_plausible": "no",
+      "vlm_reason": "No direct access to cargo bed; truck is oriented away from this area.",
+      "accessible_cells": 10
+    }
+  ],
+  "selection": {
+    "method": "vlm_plausibility_per_numbered_geometric_candidate + robot_accessibility",
+    "rule": "1) the VLM's 'best' if it is judged plausible (yes) and robot-accessible; 2) otherwise the single other candidate that is plausible and accessible; 3) otherwise no region (uncertain/inaccessible). The VLM never supplies coordinates; accessibility is computed on the navigation map.",
+    "input_image": "analysis/region_select_input.png",
+    "input_crop": {
+      "crop_xyxy_raw": [
+        1224,
+        0,
+        1823,
+        404
+      ],
+      "scale": 1.4958
+    },
+    "call": {
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "prompt_id": "region_select_v2",
+      "prompt_sha256": "1e9be910e31f20d37732dd0c3a4fdfc011449e06b40fe370d0519941f28201c1",
+      "image_path": "analysis/region_select_input.png",
+      "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"plausible\": \"no\",\n      \"reason\": \"Cones and floor markings suggest this is a boundary or path, not a loading zone.\"\n    },\n    {\n      \"id\": 2,\n      \"plausible\": \"yes\",\n      \"reason\": \"Truck's cargo bed is open and facing this area, with no obstructions.\"\n    },\n    {\n      \"id\": 3,\n      \"plausible\": \"no\",\n      \"reason\": \"Cones and markings indicate this is a restricted or safety zone, not a loading area.\"\n    },\n    {\n      \"id\": 4,\n      \"plausible\": \"no\",\n      \"reason\": \"No direct access to cargo bed; truck is oriented away from this area.\"\n    }\n  ],\n  \"best\": 2,\n  \"evidence\": [\n    \"Open cargo bed facing area 2\",\n    \"Truck oriented toward area 2\",\n    \"No obstructions in area 2\"\n  ],\n  \"uncertain\": []\n}",
+      "latency_s": 7.22,
+      "n_output_tokens": 225,
+      "hit_max_new_tokens": false,
+      "peak_vram_gib": 8.474,
+      "error": null
+    },
+    "output": {
+      "candidates": [
+        {
+          "id": 1,
+          "plausible": "no",
+          "reason": "Cones and floor markings suggest this is a boundary or path, not a loading zone."
+        },
+        {
+          "id": 2,
+          "plausible": "yes",
+          "reason": "Truck's cargo bed is open and facing this area, with no obstructions."
+        },
+        {
+          "id": 3,
+          "plausible": "no",
+          "reason": "Cones and markings indicate this is a restricted or safety zone, not a loading area."
+        },
+        {
+          "id": 4,
+          "plausible": "no",
+          "reason": "No direct access to cargo bed; truck is oriented away from this area."
+        }
+      ],
+      "best": 2,
+      "evidence": [
+        "Open cargo bed facing area 2",
+        "Truck oriented toward area 2",
+        "No obstructions in area 2"
+      ],
+      "uncertain": []
+    }
+  },
+  "selected_loading_region": null,
+  "validated_loading_region": null,
+  "prior_zone_consistency": [],
+  "model_best": 2,
+  "model_uncertainty": [],
+  "status": "SEMANTIC_REGION_INACCESSIBLE",
+  "reason": "candidates judged plausible [2] have no collision-free robot position within reach; VLM best=2"
+}

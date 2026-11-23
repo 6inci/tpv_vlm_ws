@@ -1,0 +1,51 @@
+# Task-route integration on E1 (offline, no model call, no GPU, no hardware). Declared BEFORE the run.
+# Natural-language command -> stored semantic outputs -> target (condition A / B) -> robot start -> 2D map -> footprint ->
+# pick-up approach -> path A -> VERIFY_REQUIRED / PICKUP_ASSUMED -> place approach -> path B -> PLACEMENT_ASSUMED.
+# Nothing here changes v0.2 (src/, config/), a frozen prompt, stored results, the calibration file or another experiment.
+experiment_id: task_route_integration
+command: "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+image: /home/binci/Pictures/Calibration/undistorted_25070552942982.png
+image_sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605
+results_dir: results
+
+# Geometry is REUSED from task_plan_prototype (read only): floor-transform seeds and acceptance rule, BEV grid, footprint headings, approach slack.
+# Its floor transform is PROVISIONAL_UNVALIDATED (mat seams + user mat size; no human-confirmed reference points).
+geometry_config: ../task_plan_prototype/config.yaml
+
+stored:
+  e1_run: ../semantic_to_navigation_integration/results/20261118_203058_46d8           # stored Qwen L2 destination reply, DINO/HSV candidates, stored Qwen crop answers
+  first_path_run: ../first_vlm_navigation_path/results/20261119_001504_first_path       # robot start (DINO + Qwen crop yes), transferred DRAFT map, old 35 px path
+  retention_run: ../candidate_retention_policy/results/20261119_073841_retention         # condition B candidates and states
+  crop_comparison_run: ../qwen_crop_comparison/results/20261119_075541_crop_comparison   # per-view Qwen verdicts for 4 E1 candidates
+  funnel_config: ../cube_candidate_funnel/config.yaml                                    # AI preliminary cube label (condition A)
+
+semantics:
+  # No stored Qwen reply exists for THIS wording. The stored L2 reply was made for "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘." (same purpose clause,
+  # without the source clause). It is reused for the destination; the source clause is parsed by the deterministic v0.2 rule parser (no model).
+  stored_destination_instruction: "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+  destination_reuse_status: "STORED_FOR_SHORTER_WORDING (purpose clause identical; not re-run: a new Qwen call needs approval)"
+
+condition_A:
+  name: REFERENCE_TARGET_PRELIMINARY
+  photo_id: U25070552                       # label of cube_candidate_funnel (AI visual review, not human ground truth, not an oracle)
+condition_B:
+  plannable_states: [VLM_ACCEPTED, PROBABLE]   # candidates in these states get a CONDITIONAL plan each; none is chosen when the photo is AMBIGUOUS
+  never: CONFIRMED                              # nothing in this experiment is promoted to CONFIRMED
+  crop_verdict_match_iou: 0.5
+
+footprint:
+  primary: rectangle_with_transform_margin      # 35 x 24 cm + measured floor-transform error per side (from the run), fixed heading per leg
+  comparisons:
+    - nominal_rectangle                          # 35 x 24 cm, no margin (NOT conservative)
+    - circumscribed_disc_with_margin             # v0.2 disc footprint with r = half diagonal of the primary rectangle (conservative, rotation-safe)
+  wheel_inclusion: UNKNOWN
+
+old_path_check:                                  # the earlier 1,014.5 px path planned with the v0.2 35 px disc; re-checked with the real-size body
+  variant: primary_assumed_r35_start_shift0
+  headings_deg: [0, 90]
+
+figures_sample_step_cm: 15                       # body outlines drawn along the paths (display only; the check samples every 0.25 cm)
+claims:
+  pickup_or_placement_success: NOT_CLAIMABLE
+  detection_accuracy: NOT_COMPUTED
+  physical_safety: "NOT CLAIMED: geometry rests on a PROVISIONAL floor transform and a DRAFT map"

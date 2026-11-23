@@ -1,0 +1,4339 @@
+{
+  "experiment_id": "candidate_retention_policy",
+  "created": "2026-11-19T07:38:00",
+  "claims": {
+    "accuracy_or_recall": "NOT_COMPUTED (labels are an AI preliminary review, 8 photos of one session)",
+    "model_calls_in_this_run": 0,
+    "counts_mean": "how many AI-labelled cube candidates reach the verification stage under this policy"
+  },
+  "policy": {
+    "search_area": "whole_image",
+    "sources": {
+      "hsv_color_shape": "recomputed on every photo with the unchanged v0.2 parameters",
+      "grounding_dino": "STORED records only (E1: whole-image and ROI boxes of the v0.2 run). Other photos: NOT_AVAILABLE (no DINO run exists)"
+    },
+    "dedup": "v0.2 merge_candidates (config/models.yaml merge_iou), unchanged",
+    "order": [
+      "n_source_types_desc",
+      "inside_roi_first",
+      "score_desc",
+      "solidity_desc"
+    ],
+    "verify_budget": 24,
+    "v02_verify_limit_for_comparison": 8
+  },
+  "states_rule": {
+    "target_color": "red",
+    "VLM_ACCEPTED": "stored/new Qwen crop answer is yes",
+    "PROBABLE": "Qwen says no, but >= 2 source types point at the box AND Qwen itself reports the target colour (disagreement is recorded)",
+    "REJECTED": "Qwen says no and the PROBABLE condition does not hold",
+    "PENDING_VERIFICATION": "no Qwen answer exists for this candidate",
+    "AMBIGUOUS": "photo-level decision when more than one candidate is VLM_ACCEPTED or PROBABLE; none is chosen automatically",
+    "use_of_PROBABLE": "virtual task planning only; never counted as a pick-up or detection success"
+  },
+  "summary": {
+    "photos": 8,
+    "label_candidate_reaches_verification": 8,
+    "label_candidate_within_v02_limit": 8,
+    "v02_baseline_not_dropped_before_gate": 4,
+    "candidates_per_photo": [
+      21,
+      17,
+      22,
+      20,
+      34,
+      20,
+      21,
+      15
+    ],
+    "candidates_beyond_budget": 10,
+    "e1_states": {
+      "VLM_ACCEPTED": 0,
+      "PROBABLE": 2,
+      "REJECTED": 6,
+      "PENDING_VERIFICATION": 26
+    },
+    "e1_photo_decision": "AMBIGUOUS"
+  },
+  "photos": [
+    {
+      "photo_id": "U23678143",
+      "dino_records": "NOT_AVAILABLE",
+      "n_candidates": 21,
+      "n_sent_to_verification": 21,
+      "n_beyond_budget": 0,
+      "n_inside_roi": 5,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 6,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": false,
+        "state": "PENDING_VERIFICATION"
+      },
+      "v02_baseline_first_dropped_stage": "roi_search_area",
+      "photo_decision_from_stored_answers": "NOT_AVAILABLE (no Qwen answers)",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            554.0,
+            210.0,
+            569.0,
+            220.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 112.0,
+            "aspect": 1.5,
+            "solidity": 0.974
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            288.0,
+            207.0,
+            300.0,
+            215.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 61.5,
+            "aspect": 1.5,
+            "solidity": 0.918
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            255.0,
+            175.0,
+            283.0,
+            218.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 631.5,
+            "aspect": 1.54,
+            "solidity": 0.768
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            551.0,
+            228.0,
+            567.0,
+            240.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 86.5,
+            "aspect": 1.33,
+            "solidity": 0.739
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            573.0,
+            223.0,
+            582.0,
+            237.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 54.0,
+            "aspect": 1.56,
+            "solidity": 0.706
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            1552.0,
+            865.0,
+            1573.0,
+            883.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 258.0,
+            "aspect": 1.17,
+            "solidity": 0.942
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1438.0,
+            258.0,
+            1448.0,
+            268.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 59.5,
+            "aspect": 1.0,
+            "solidity": 0.922
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1073.0,
+            198.0,
+            1080.0,
+            211.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 49.0,
+            "aspect": 1.86,
+            "solidity": 0.875
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1643.0,
+            889.0,
+            1706.0,
+            934.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1882.5,
+            "aspect": 1.4,
+            "solidity": 0.865
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            1677.0,
+            262.0,
+            1689.0,
+            277.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 106.0,
+            "aspect": 1.25,
+            "solidity": 0.858
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1817.0,
+            837.0,
+            1835.0,
+            858.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 210.0,
+            "aspect": 1.17,
+            "solidity": 0.845
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            1295.0,
+            77.0,
+            1308.0,
+            88.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 79.5,
+            "aspect": 1.18,
+            "solidity": 0.841
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1282.0,
+            97.0,
+            1298.0,
+            115.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 119.0,
+            "aspect": 1.12,
+            "solidity": 0.793
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1300.0,
+            163.0,
+            1309.0,
+            174.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 41.0,
+            "aspect": 1.22,
+            "solidity": 0.759
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            1285.0,
+            179.0,
+            1299.0,
+            198.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 124.5,
+            "aspect": 1.36,
+            "solidity": 0.755
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 16,
+          "bbox_xyxy": [
+            946.0,
+            851.0,
+            983.0,
+            885.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 724.0,
+            "aspect": 1.09,
+            "solidity": 0.73
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 17,
+          "bbox_xyxy": [
+            1416.0,
+            268.0,
+            1429.0,
+            287.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 121.0,
+            "aspect": 1.46,
+            "solidity": 0.712
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 18,
+          "bbox_xyxy": [
+            1697.0,
+            245.0,
+            1705.0,
+            261.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 55.5,
+            "aspect": 2.0,
+            "solidity": 0.694
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 19,
+          "bbox_xyxy": [
+            1076.0,
+            178.0,
+            1089.0,
+            190.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 74.5,
+            "aspect": 1.08,
+            "solidity": 0.656
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 20,
+          "bbox_xyxy": [
+            1311.0,
+            271.0,
+            1319.0,
+            286.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 43.0,
+            "aspect": 1.88,
+            "solidity": 0.637
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 21,
+          "bbox_xyxy": [
+            1792.0,
+            841.0,
+            1820.0,
+            869.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 284.0,
+            "aspect": 1.0,
+            "solidity": 0.607
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    },
+    {
+      "photo_id": "U24768580",
+      "dino_records": "NOT_AVAILABLE",
+      "n_candidates": 17,
+      "n_sent_to_verification": 17,
+      "n_beyond_budget": 0,
+      "n_inside_roi": 3,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 5,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": false,
+        "state": "PENDING_VERIFICATION"
+      },
+      "v02_baseline_first_dropped_stage": "roi_search_area",
+      "photo_decision_from_stored_answers": "NOT_AVAILABLE (no Qwen answers)",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            257.0,
+            174.0,
+            282.0,
+            213.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 641.5,
+            "aspect": 1.56,
+            "solidity": 0.928
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            552.0,
+            206.0,
+            568.0,
+            219.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 134.5,
+            "aspect": 1.23,
+            "solidity": 0.894
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            284.0,
+            205.0,
+            299.0,
+            216.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 81.0,
+            "aspect": 1.36,
+            "solidity": 0.79
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            1816.0,
+            835.0,
+            1834.0,
+            852.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 206.0,
+            "aspect": 1.06,
+            "solidity": 0.943
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            1263.0,
+            259.0,
+            1279.0,
+            277.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 196.0,
+            "aspect": 1.12,
+            "solidity": 0.933
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            1079.0,
+            249.0,
+            1096.0,
+            264.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 155.5,
+            "aspect": 1.13,
+            "solidity": 0.884
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1529.0,
+            261.0,
+            1538.0,
+            271.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 50.0,
+            "aspect": 1.11,
+            "solidity": 0.877
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1678.0,
+            274.0,
+            1694.0,
+            283.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 88.0,
+            "aspect": 1.78,
+            "solidity": 0.867
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1078.0,
+            176.0,
+            1088.0,
+            188.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 61.5,
+            "aspect": 1.2,
+            "solidity": 0.86
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            1643.0,
+            887.0,
+            1706.0,
+            933.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1875.5,
+            "aspect": 1.37,
+            "solidity": 0.859
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1296.0,
+            73.0,
+            1308.0,
+            85.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 79.0,
+            "aspect": 1.0,
+            "solidity": 0.849
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            1091.0,
+            270.0,
+            1100.0,
+            280.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 49.5,
+            "aspect": 1.11,
+            "solidity": 0.839
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1698.0,
+            244.0,
+            1711.0,
+            258.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 103.0,
+            "aspect": 1.08,
+            "solidity": 0.827
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1436.0,
+            256.0,
+            1448.0,
+            266.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 47.5,
+            "aspect": 1.2,
+            "solidity": 0.798
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            1282.0,
+            93.0,
+            1293.0,
+            109.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 85.5,
+            "aspect": 1.45,
+            "solidity": 0.795
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 16,
+          "bbox_xyxy": [
+            947.0,
+            850.0,
+            981.0,
+            885.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 716.0,
+            "aspect": 1.03,
+            "solidity": 0.73
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 17,
+          "bbox_xyxy": [
+            1311.0,
+            270.0,
+            1320.0,
+            292.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 92.0,
+            "aspect": 2.44,
+            "solidity": 0.679
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    },
+    {
+      "photo_id": "U24837448",
+      "dino_records": "NOT_AVAILABLE",
+      "n_candidates": 22,
+      "n_sent_to_verification": 22,
+      "n_beyond_budget": 0,
+      "n_inside_roi": 4,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 1,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": true,
+        "state": "PENDING_VERIFICATION"
+      },
+      "v02_baseline_first_dropped_stage": "NONE (stages after the last available one were not run for this photo)",
+      "photo_decision_from_stored_answers": "NOT_AVAILABLE (no Qwen answers)",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            530.0,
+            855.0,
+            549.0,
+            872.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 232.0,
+            "aspect": 1.12,
+            "solidity": 0.932
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            258.0,
+            173.0,
+            281.0,
+            215.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 646.5,
+            "aspect": 1.83,
+            "solidity": 0.925
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            553.0,
+            206.0,
+            568.0,
+            219.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 128.0,
+            "aspect": 1.15,
+            "solidity": 0.883
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            282.0,
+            205.0,
+            297.0,
+            215.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 75.5,
+            "aspect": 1.5,
+            "solidity": 0.799
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            1682.0,
+            257.0,
+            1689.0,
+            268.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 49.5,
+            "aspect": 1.57,
+            "solidity": 0.943
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            1698.0,
+            251.0,
+            1711.0,
+            257.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 49.5,
+            "aspect": 2.17,
+            "solidity": 0.943
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1643.0,
+            887.0,
+            1706.0,
+            933.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1854.0,
+            "aspect": 1.37,
+            "solidity": 0.855
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1066.0,
+            193.0,
+            1076.0,
+            206.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 72.5,
+            "aspect": 1.3,
+            "solidity": 0.829
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1295.0,
+            73.0,
+            1308.0,
+            85.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 83.0,
+            "aspect": 1.08,
+            "solidity": 0.798
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            1285.0,
+            177.0,
+            1297.0,
+            195.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 103.5,
+            "aspect": 1.5,
+            "solidity": 0.778
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1075.0,
+            176.0,
+            1088.0,
+            187.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 78.0,
+            "aspect": 1.18,
+            "solidity": 0.772
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            953.0,
+            850.0,
+            969.0,
+            857.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 52.5,
+            "aspect": 2.29,
+            "solidity": 0.766
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1325.0,
+            255.0,
+            1333.0,
+            268.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 44.5,
+            "aspect": 1.62,
+            "solidity": 0.724
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1433.0,
+            277.0,
+            1447.0,
+            291.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 71.0,
+            "aspect": 1.0,
+            "solidity": 0.717
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            947.0,
+            858.0,
+            983.0,
+            886.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 601.0,
+            "aspect": 1.29,
+            "solidity": 0.716
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 16,
+          "bbox_xyxy": [
+            1525.0,
+            264.0,
+            1539.0,
+            279.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 85.5,
+            "aspect": 1.07,
+            "solidity": 0.71
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 17,
+          "bbox_xyxy": [
+            1794.0,
+            835.0,
+            1808.0,
+            862.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 183.0,
+            "aspect": 1.93,
+            "solidity": 0.704
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 18,
+          "bbox_xyxy": [
+            1677.0,
+            270.0,
+            1696.0,
+            283.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 91.0,
+            "aspect": 1.46,
+            "solidity": 0.689
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 19,
+          "bbox_xyxy": [
+            1301.0,
+            184.0,
+            1316.0,
+            199.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 83.0,
+            "aspect": 1.0,
+            "solidity": 0.686
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 20,
+          "bbox_xyxy": [
+            1416.0,
+            266.0,
+            1427.0,
+            287.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 91.0,
+            "aspect": 1.91,
+            "solidity": 0.636
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 21,
+          "bbox_xyxy": [
+            1816.0,
+            834.0,
+            1834.0,
+            860.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 194.0,
+            "aspect": 1.44,
+            "solidity": 0.63
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 22,
+          "bbox_xyxy": [
+            1281.0,
+            95.0,
+            1300.0,
+            112.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 130.0,
+            "aspect": 1.12,
+            "solidity": 0.603
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    },
+    {
+      "photo_id": "U24898553",
+      "dino_records": "NOT_AVAILABLE",
+      "n_candidates": 20,
+      "n_sent_to_verification": 20,
+      "n_beyond_budget": 0,
+      "n_inside_roi": 4,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 6,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": false,
+        "state": "PENDING_VERIFICATION"
+      },
+      "v02_baseline_first_dropped_stage": "roi_search_area",
+      "photo_decision_from_stored_answers": "NOT_AVAILABLE (no Qwen answers)",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            549.0,
+            226.0,
+            557.0,
+            235.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 41.0,
+            "aspect": 1.12,
+            "solidity": 0.901
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            258.0,
+            173.0,
+            281.0,
+            215.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 594.5,
+            "aspect": 1.83,
+            "solidity": 0.901
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            285.0,
+            205.0,
+            298.0,
+            215.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 70.5,
+            "aspect": 1.3,
+            "solidity": 0.86
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            552.0,
+            206.0,
+            568.0,
+            219.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 119.0,
+            "aspect": 1.23,
+            "solidity": 0.829
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            1075.0,
+            176.0,
+            1087.0,
+            188.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 98.5,
+            "aspect": 1.0,
+            "solidity": 0.947
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            1607.0,
+            253.0,
+            1623.0,
+            271.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 193.0,
+            "aspect": 1.12,
+            "solidity": 0.93
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1305.0,
+            184.0,
+            1316.0,
+            192.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 56.0,
+            "aspect": 1.38,
+            "solidity": 0.911
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1416.0,
+            266.0,
+            1427.0,
+            289.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 156.0,
+            "aspect": 2.09,
+            "solidity": 0.876
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1281.0,
+            95.0,
+            1292.0,
+            108.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 85.0,
+            "aspect": 1.18,
+            "solidity": 0.867
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            1285.0,
+            177.0,
+            1298.0,
+            192.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 105.5,
+            "aspect": 1.15,
+            "solidity": 0.861
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1643.0,
+            887.0,
+            1706.0,
+            932.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1865.0,
+            "aspect": 1.4,
+            "solidity": 0.859
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            1436.0,
+            251.0,
+            1443.0,
+            265.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 57.5,
+            "aspect": 2.0,
+            "solidity": 0.858
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1440.0,
+            277.0,
+            1449.0,
+            289.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 60.5,
+            "aspect": 1.33,
+            "solidity": 0.852
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1304.0,
+            97.0,
+            1312.0,
+            107.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 42.5,
+            "aspect": 1.25,
+            "solidity": 0.833
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            947.0,
+            850.0,
+            983.0,
+            886.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 906.0,
+            "aspect": 1.0,
+            "solidity": 0.829
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 16,
+          "bbox_xyxy": [
+            1079.0,
+            254.0,
+            1096.0,
+            264.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 98.0,
+            "aspect": 1.7,
+            "solidity": 0.82
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 17,
+          "bbox_xyxy": [
+            1816.0,
+            833.0,
+            1833.0,
+            860.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 270.0,
+            "aspect": 1.59,
+            "solidity": 0.801
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 18,
+          "bbox_xyxy": [
+            1698.0,
+            251.0,
+            1712.0,
+            258.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 43.5,
+            "aspect": 2.0,
+            "solidity": 0.784
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 19,
+          "bbox_xyxy": [
+            1310.0,
+            272.0,
+            1320.0,
+            289.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 90.0,
+            "aspect": 1.7,
+            "solidity": 0.753
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 20,
+          "bbox_xyxy": [
+            1299.0,
+            162.0,
+            1313.0,
+            172.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 58.5,
+            "aspect": 1.4,
+            "solidity": 0.636
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    },
+    {
+      "photo_id": "U25070552",
+      "dino_records": "STORED (E1 v0.2 run)",
+      "n_candidates": 34,
+      "n_sent_to_verification": 24,
+      "n_beyond_budget": 10,
+      "n_inside_roi": 10,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 1,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": true,
+        "state": "PROBABLE"
+      },
+      "v02_baseline_first_dropped_stage": "qwen_gate",
+      "photo_decision_from_stored_answers": "AMBIGUOUS",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            434.0,
+            417.0,
+            451.0,
+            432.0
+          ],
+          "score": 0.438,
+          "source_types": [
+            "grounding_dino_full_image",
+            "grounding_dino_roi",
+            "hsv_color_shape"
+          ],
+          "n_members": 5,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 174.0,
+            "aspect": 1.13,
+            "solidity": 0.909
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PROBABLE",
+          "disagreement": "Qwen 'no' vs 3 detector source types pointing at the box (correlated evidence)",
+          "stored_qwen": {
+            "candidate_id": "target_cand1",
+            "status": "no",
+            "observed_color": "red",
+            "observed_object": "round object",
+            "reason": "The object is round, not cube-shaped."
+          }
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            550.0,
+            227.0,
+            566.0,
+            234.0
+          ],
+          "score": 0.3829,
+          "source_types": [
+            "grounding_dino_full_image",
+            "grounding_dino_roi",
+            "hsv_color_shape"
+          ],
+          "n_members": 5,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 60.5,
+            "aspect": 2.29,
+            "solidity": 0.812
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "REJECTED",
+          "disagreement": "Qwen 'no' vs 3 detector source types pointing at the box (correlated evidence)",
+          "stored_qwen": {
+            "candidate_id": "target_cand2",
+            "status": "no",
+            "observed_color": "orange",
+            "observed_object": "cone",
+            "reason": "The object is a traffic cone, not a cube."
+          }
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            285.0,
+            208.0,
+            298.0,
+            216.0
+          ],
+          "score": 0.1469,
+          "source_types": [
+            "grounding_dino_full_image",
+            "grounding_dino_roi",
+            "hsv_color_shape"
+          ],
+          "n_members": 5,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 54.5,
+            "aspect": 1.62,
+            "solidity": 0.838
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PROBABLE",
+          "disagreement": "Qwen 'no' vs 3 detector source types pointing at the box (correlated evidence)",
+          "stored_qwen": {
+            "candidate_id": "target_cand3",
+            "status": "no",
+            "observed_color": "red",
+            "observed_object": "rectangle",
+            "reason": "The object is a rectangular shape, not a cube."
+          }
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            329.52,
+            380.59,
+            365.91,
+            444.04
+          ],
+          "score": 0.2283,
+          "source_types": [
+            "grounding_dino_full_image",
+            "grounding_dino_roi"
+          ],
+          "n_members": 2,
+          "inside_roi": true,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "REJECTED",
+          "disagreement": "Qwen 'no' vs 2 detector source types pointing at the box (correlated evidence)",
+          "stored_qwen": {
+            "candidate_id": "target_cand4",
+            "status": "no",
+            "observed_color": "purple",
+            "observed_object": "purple object",
+            "reason": "The object inside the green box is purple, not red."
+          }
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            269.06,
+            376.8,
+            315.14,
+            440.06
+          ],
+          "score": 0.2096,
+          "source_types": [
+            "grounding_dino_full_image",
+            "grounding_dino_roi"
+          ],
+          "n_members": 3,
+          "inside_roi": true,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "REJECTED",
+          "disagreement": "Qwen 'no' vs 2 detector source types pointing at the box (correlated evidence)",
+          "stored_qwen": {
+            "candidate_id": "target_cand6",
+            "status": "no",
+            "observed_color": "orange",
+            "observed_object": "object",
+            "reason": "The object inside the green box is orange, not red, and its shape is not a cube."
+          }
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            947.0,
+            850.0,
+            983.0,
+            885.0
+          ],
+          "score": 0.448,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 634.0,
+            "aspect": 1.03,
+            "solidity": 0.711
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1643.0,
+            887.0,
+            1705.0,
+            932.0
+          ],
+          "score": 0.4276,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1835.0,
+            "aspect": 1.38,
+            "solidity": 0.855
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1792.0,
+            834.0,
+            1808.0,
+            856.0
+          ],
+          "score": 0.3858,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 177.5,
+            "aspect": 1.38,
+            "solidity": 0.741
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1070.0,
+            265.0,
+            1080.0,
+            280.0
+          ],
+          "score": 0.2999,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 86.0,
+            "aspect": 1.5,
+            "solidity": 0.896
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            940.99,
+            176.54,
+            966.58,
+            215.49
+          ],
+          "score": 0.2268,
+          "source_types": [
+            "grounding_dino_full_image",
+            "grounding_dino_roi"
+          ],
+          "n_members": 3,
+          "inside_roi": false,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1066.0,
+            193.0,
+            1075.0,
+            205.0
+          ],
+          "score": 0.2211,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 55.5,
+            "aspect": 1.33,
+            "solidity": 0.81
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            1310.0,
+            270.0,
+            1324.0,
+            290.0
+          ],
+          "score": 0.1897,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 117.5,
+            "aspect": 1.43,
+            "solidity": 0.683
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1677.0,
+            272.0,
+            1689.0,
+            285.0
+          ],
+          "score": 0.1814,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 80.0,
+            "aspect": 1.08,
+            "solidity": 0.829
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1285.0,
+            187.0,
+            1299.0,
+            198.0
+          ],
+          "score": 0.1766,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 44.0,
+            "aspect": 1.27,
+            "solidity": 0.629
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            1296.0,
+            75.0,
+            1308.0,
+            85.0
+          ],
+          "score": 0.1505,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 64.0,
+            "aspect": 1.2,
+            "solidity": 0.837
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 16,
+          "bbox_xyxy": [
+            1416.0,
+            269.0,
+            1427.0,
+            280.0
+          ],
+          "score": 0.1464,
+          "source_types": [
+            "grounding_dino_full_image",
+            "hsv_color_shape"
+          ],
+          "n_members": 2,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 57.5,
+            "aspect": 1.0,
+            "solidity": 0.816
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 17,
+          "bbox_xyxy": [
+            317.72,
+            459.72,
+            367.53,
+            592.08
+          ],
+          "score": 0.187,
+          "source_types": [
+            "grounding_dino_roi"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "REJECTED",
+          "disagreement": null,
+          "stored_qwen": {
+            "candidate_id": "target_cand7",
+            "status": "no",
+            "observed_color": "gray",
+            "observed_object": "metallic structure",
+            "reason": "The green box contains a gray metallic structure, not a red cube."
+          }
+        },
+        {
+          "rank": 18,
+          "bbox_xyxy": [
+            293.97,
+            578.84,
+            330.99,
+            654.35
+          ],
+          "score": 0.1751,
+          "source_types": [
+            "grounding_dino_roi"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "REJECTED",
+          "disagreement": null,
+          "stored_qwen": {
+            "candidate_id": "target_cand8",
+            "status": "no",
+            "observed_color": "orange",
+            "observed_object": "rectangular object",
+            "reason": "The object is orange, not red, and its shape is rectangular, not cubic."
+          }
+        },
+        {
+          "rank": 19,
+          "bbox_xyxy": [
+            340.17,
+            42.5,
+            449.73,
+            142.09
+          ],
+          "score": 0.1548,
+          "source_types": [
+            "grounding_dino_roi"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 20,
+          "bbox_xyxy": [
+            257.0,
+            174.0,
+            281.0,
+            212.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 586.5,
+            "aspect": 1.58,
+            "solidity": 0.929
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "REJECTED",
+          "disagreement": null,
+          "stored_qwen": {
+            "candidate_id": "target_cand5",
+            "status": "no",
+            "observed_color": "red",
+            "observed_object": "irregularly shaped object",
+            "reason": "The object is not a cube but has an irregular, possibly organic shape."
+          }
+        },
+        {
+          "rank": 21,
+          "bbox_xyxy": [
+            554.0,
+            206.0,
+            567.0,
+            219.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 104.5,
+            "aspect": 1.0,
+            "solidity": 0.905
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 22,
+          "bbox_xyxy": [
+            927.92,
+            507.69,
+            963.9,
+            556.08
+          ],
+          "score": 0.3033,
+          "source_types": [
+            "grounding_dino_full_image"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 23,
+          "bbox_xyxy": [
+            809.3,
+            425.77,
+            926.32,
+            591.08
+          ],
+          "score": 0.1618,
+          "source_types": [
+            "grounding_dino_full_image"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 24,
+          "bbox_xyxy": [
+            1525.14,
+            243.97,
+            1560.66,
+            289.1
+          ],
+          "score": 0.1313,
+          "source_types": [
+            "grounding_dino_full_image"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": null,
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 25,
+          "bbox_xyxy": [
+            666.23,
+            854.63,
+            864.99,
+            995.32
+          ],
+          "score": 0.1222,
+          "source_types": [
+            "grounding_dino_full_image"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": null,
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 26,
+          "bbox_xyxy": [
+            1703.5,
+            469.14,
+            1801.08,
+            571.1
+          ],
+          "score": 0.113,
+          "source_types": [
+            "grounding_dino_full_image"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": null,
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 27,
+          "bbox_xyxy": [
+            1590.59,
+            247.75,
+            1641.26,
+            290.21
+          ],
+          "score": 0.1114,
+          "source_types": [
+            "grounding_dino_full_image"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": null,
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 28,
+          "bbox_xyxy": [
+            1078.0,
+            249.0,
+            1096.0,
+            264.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 162.5,
+            "aspect": 1.2,
+            "solidity": 0.878
+          },
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 29,
+          "bbox_xyxy": [
+            1816.0,
+            833.0,
+            1834.0,
+            859.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 251.5,
+            "aspect": 1.44,
+            "solidity": 0.831
+          },
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 30,
+          "bbox_xyxy": [
+            1698.0,
+            245.0,
+            1711.0,
+            258.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 94.0,
+            "aspect": 1.0,
+            "solidity": 0.825
+          },
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 31,
+          "bbox_xyxy": [
+            1677.0,
+            259.0,
+            1689.0,
+            270.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 66.5,
+            "aspect": 1.09,
+            "solidity": 0.787
+          },
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 32,
+          "bbox_xyxy": [
+            1075.0,
+            176.0,
+            1088.0,
+            188.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 81.0,
+            "aspect": 1.08,
+            "solidity": 0.743
+          },
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 33,
+          "bbox_xyxy": [
+            1433.0,
+            254.0,
+            1448.0,
+            264.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 71.0,
+            "aspect": 1.5,
+            "solidity": 0.717
+          },
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 34,
+          "bbox_xyxy": [
+            1302.0,
+            183.0,
+            1316.0,
+            196.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 77.5,
+            "aspect": 1.08,
+            "solidity": 0.701
+          },
+          "retention": "BEYOND_BUDGET (recorded, not deleted)",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    },
+    {
+      "photo_id": "U25137685",
+      "dino_records": "NOT_AVAILABLE",
+      "n_candidates": 20,
+      "n_sent_to_verification": 20,
+      "n_beyond_budget": 0,
+      "n_inside_roi": 4,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 5,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": false,
+        "state": "PENDING_VERIFICATION"
+      },
+      "v02_baseline_first_dropped_stage": "roi_search_area",
+      "photo_decision_from_stored_answers": "NOT_AVAILABLE (no Qwen answers)",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            550.0,
+            227.0,
+            563.0,
+            236.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 73.0,
+            "aspect": 1.44,
+            "solidity": 0.901
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            283.0,
+            209.0,
+            298.0,
+            216.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 60.5,
+            "aspect": 2.14,
+            "solidity": 0.896
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            257.0,
+            174.0,
+            282.0,
+            215.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 625.5,
+            "aspect": 1.64,
+            "solidity": 0.881
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            553.0,
+            207.0,
+            568.0,
+            216.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 61.0,
+            "aspect": 1.67,
+            "solidity": 0.689
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            1612.0,
+            259.0,
+            1629.0,
+            276.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 209.0,
+            "aspect": 1.0,
+            "solidity": 0.95
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            1075.0,
+            176.0,
+            1088.0,
+            188.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 102.5,
+            "aspect": 1.08,
+            "solidity": 0.903
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1300.0,
+            184.0,
+            1316.0,
+            196.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 117.0,
+            "aspect": 1.33,
+            "solidity": 0.9
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1295.0,
+            76.0,
+            1308.0,
+            85.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 71.5,
+            "aspect": 1.44,
+            "solidity": 0.888
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1079.0,
+            249.0,
+            1096.0,
+            264.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 158.5,
+            "aspect": 1.13,
+            "solidity": 0.873
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            1697.0,
+            244.0,
+            1712.0,
+            258.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 130.5,
+            "aspect": 1.07,
+            "solidity": 0.873
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1643.0,
+            887.0,
+            1706.0,
+            933.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1890.5,
+            "aspect": 1.37,
+            "solidity": 0.851
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            1677.0,
+            257.0,
+            1689.0,
+            277.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 146.0,
+            "aspect": 1.67,
+            "solidity": 0.844
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1311.0,
+            279.0,
+            1323.0,
+            290.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 65.5,
+            "aspect": 1.09,
+            "solidity": 0.809
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1436.0,
+            251.0,
+            1442.0,
+            266.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 47.0,
+            "aspect": 2.5,
+            "solidity": 0.79
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            1299.0,
+            165.0,
+            1313.0,
+            172.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 52.0,
+            "aspect": 2.0,
+            "solidity": 0.788
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 16,
+          "bbox_xyxy": [
+            1071.0,
+            266.0,
+            1078.0,
+            280.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 46.5,
+            "aspect": 2.0,
+            "solidity": 0.756
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 17,
+          "bbox_xyxy": [
+            1416.0,
+            266.0,
+            1431.0,
+            286.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 130.0,
+            "aspect": 1.33,
+            "solidity": 0.688
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 18,
+          "bbox_xyxy": [
+            1809.0,
+            834.0,
+            1833.0,
+            866.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 303.5,
+            "aspect": 1.33,
+            "solidity": 0.68
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 19,
+          "bbox_xyxy": [
+            947.0,
+            850.0,
+            983.0,
+            884.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 638.5,
+            "aspect": 1.06,
+            "solidity": 0.661
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 20,
+          "bbox_xyxy": [
+            1792.0,
+            834.0,
+            1807.0,
+            855.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 138.0,
+            "aspect": 1.4,
+            "solidity": 0.615
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    },
+    {
+      "photo_id": "U25967031",
+      "dino_records": "NOT_AVAILABLE",
+      "n_candidates": 21,
+      "n_sent_to_verification": 21,
+      "n_beyond_budget": 0,
+      "n_inside_roi": 5,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 2,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": true,
+        "state": "PENDING_VERIFICATION"
+      },
+      "v02_baseline_first_dropped_stage": "NONE (stages after the last available one were not run for this photo)",
+      "photo_decision_from_stored_answers": "NOT_AVAILABLE (no Qwen answers)",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            553.0,
+            210.0,
+            567.0,
+            220.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 102.0,
+            "aspect": 1.4,
+            "solidity": 0.967
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            571.0,
+            860.0,
+            590.0,
+            878.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 251.0,
+            "aspect": 1.06,
+            "solidity": 0.951
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            256.0,
+            175.0,
+            281.0,
+            216.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 608.5,
+            "aspect": 1.64,
+            "solidity": 0.899
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            285.0,
+            210.0,
+            296.0,
+            217.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 45.5,
+            "aspect": 1.57,
+            "solidity": 0.875
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            570.0,
+            223.0,
+            580.0,
+            235.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 52.0,
+            "aspect": 1.2,
+            "solidity": 0.717
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            1332.0,
+            277.0,
+            1342.0,
+            287.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 54.5,
+            "aspect": 1.0,
+            "solidity": 0.908
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1698.0,
+            250.0,
+            1709.0,
+            257.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 48.0,
+            "aspect": 1.57,
+            "solidity": 0.906
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1324.0,
+            258.0,
+            1340.0,
+            267.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 89.5,
+            "aspect": 1.78,
+            "solidity": 0.886
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1078.0,
+            249.0,
+            1096.0,
+            264.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 158.0,
+            "aspect": 1.2,
+            "solidity": 0.885
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            1644.0,
+            887.0,
+            1705.0,
+            931.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1806.5,
+            "aspect": 1.39,
+            "solidity": 0.863
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1074.0,
+            178.0,
+            1083.0,
+            189.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 43.0,
+            "aspect": 1.22,
+            "solidity": 0.811
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            1677.0,
+            259.0,
+            1689.0,
+            276.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 93.5,
+            "aspect": 1.42,
+            "solidity": 0.789
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1285.0,
+            181.0,
+            1297.0,
+            197.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 104.5,
+            "aspect": 1.33,
+            "solidity": 0.774
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1293.0,
+            72.0,
+            1308.0,
+            85.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 91.0,
+            "aspect": 1.15,
+            "solidity": 0.762
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            1280.0,
+            93.0,
+            1293.0,
+            111.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 105.0,
+            "aspect": 1.38,
+            "solidity": 0.761
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 16,
+          "bbox_xyxy": [
+            1415.0,
+            265.0,
+            1428.0,
+            288.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 141.5,
+            "aspect": 1.77,
+            "solidity": 0.747
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 17,
+          "bbox_xyxy": [
+            1070.0,
+            266.0,
+            1078.0,
+            279.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 48.0,
+            "aspect": 1.62,
+            "solidity": 0.738
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 18,
+          "bbox_xyxy": [
+            1524.0,
+            261.0,
+            1536.0,
+            271.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 45.5,
+            "aspect": 1.2,
+            "solidity": 0.679
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 19,
+          "bbox_xyxy": [
+            1815.0,
+            833.0,
+            1833.0,
+            853.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 148.5,
+            "aspect": 1.11,
+            "solidity": 0.663
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 20,
+          "bbox_xyxy": [
+            947.0,
+            851.0,
+            984.0,
+            887.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 725.5,
+            "aspect": 1.03,
+            "solidity": 0.662
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 21,
+          "bbox_xyxy": [
+            1310.0,
+            274.0,
+            1322.0,
+            292.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 83.5,
+            "aspect": 1.5,
+            "solidity": 0.628
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    },
+    {
+      "photo_id": "U26007129",
+      "dino_records": "NOT_AVAILABLE",
+      "n_candidates": 15,
+      "n_sent_to_verification": 15,
+      "n_beyond_budget": 0,
+      "n_inside_roi": 5,
+      "label": {
+        "status": "AI_PRELIMINARY_REVIEW",
+        "in_candidates": true,
+        "rank": 1,
+        "reaches_verification": true,
+        "within_v02_limit_of_8": true,
+        "inside_roi": true,
+        "state": "PENDING_VERIFICATION"
+      },
+      "v02_baseline_first_dropped_stage": "NONE (stages after the last available one were not run for this photo)",
+      "photo_decision_from_stored_answers": "NOT_AVAILABLE (no Qwen answers)",
+      "candidates": [
+        {
+          "rank": 1,
+          "bbox_xyxy": [
+            534.0,
+            279.0,
+            550.0,
+            294.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 159.5,
+            "aspect": 1.07,
+            "solidity": 0.911
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 2,
+          "bbox_xyxy": [
+            552.0,
+            207.0,
+            566.0,
+            219.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 107.5,
+            "aspect": 1.17,
+            "solidity": 0.911
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 3,
+          "bbox_xyxy": [
+            285.0,
+            208.0,
+            298.0,
+            216.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 63.0,
+            "aspect": 1.62,
+            "solidity": 0.906
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 4,
+          "bbox_xyxy": [
+            258.0,
+            175.0,
+            281.0,
+            216.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 586.0,
+            "aspect": 1.78,
+            "solidity": 0.887
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 5,
+          "bbox_xyxy": [
+            550.0,
+            227.0,
+            562.0,
+            235.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": true,
+          "shape_stats": {
+            "area_raw_px": 50.0,
+            "aspect": 1.5,
+            "solidity": 0.769
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 6,
+          "bbox_xyxy": [
+            1697.0,
+            243.0,
+            1706.0,
+            252.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 44.5,
+            "aspect": 1.0,
+            "solidity": 0.937
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 7,
+          "bbox_xyxy": [
+            1075.0,
+            175.0,
+            1082.0,
+            187.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 45.5,
+            "aspect": 1.71,
+            "solidity": 0.858
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 8,
+          "bbox_xyxy": [
+            1644.0,
+            886.0,
+            1707.0,
+            932.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 1810.5,
+            "aspect": 1.37,
+            "solidity": 0.847
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 9,
+          "bbox_xyxy": [
+            1814.0,
+            831.0,
+            1833.0,
+            853.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 230.0,
+            "aspect": 1.16,
+            "solidity": 0.829
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 10,
+          "bbox_xyxy": [
+            1793.0,
+            833.0,
+            1809.0,
+            859.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 236.5,
+            "aspect": 1.62,
+            "solidity": 0.782
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 11,
+          "bbox_xyxy": [
+            1677.0,
+            261.0,
+            1689.0,
+            280.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 113.0,
+            "aspect": 1.58,
+            "solidity": 0.774
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 12,
+          "bbox_xyxy": [
+            1310.0,
+            272.0,
+            1327.0,
+            285.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 90.5,
+            "aspect": 1.31,
+            "solidity": 0.707
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 13,
+          "bbox_xyxy": [
+            1300.0,
+            183.0,
+            1316.0,
+            198.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 83.5,
+            "aspect": 1.07,
+            "solidity": 0.705
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 14,
+          "bbox_xyxy": [
+            1285.0,
+            178.0,
+            1296.0,
+            196.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 102.0,
+            "aspect": 1.64,
+            "solidity": 0.701
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        },
+        {
+          "rank": 15,
+          "bbox_xyxy": [
+            1065.0,
+            190.0,
+            1077.0,
+            209.0
+          ],
+          "score": null,
+          "source_types": [
+            "hsv_color_shape"
+          ],
+          "n_members": 1,
+          "inside_roi": false,
+          "shape_stats": {
+            "area_raw_px": 97.5,
+            "aspect": 1.58,
+            "solidity": 0.699
+          },
+          "retention": "SENT_TO_VERIFICATION",
+          "state": "PENDING_VERIFICATION",
+          "disagreement": null,
+          "stored_qwen": null
+        }
+      ]
+    }
+  ],
+  "figures": [
+    "01_retained_candidates.png"
+  ],
+  "provenance": {
+    "v02_code_before": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "v02_code_after": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "config_sha256": "978b3bfaac6f251bc3724ec8439c38305e1b93413c02cbc3ae61afedd637073a",
+    "e1_stored_dino_boxes": {
+      "whole_image": 26,
+      "roi": 13
+    }
+  }
+}

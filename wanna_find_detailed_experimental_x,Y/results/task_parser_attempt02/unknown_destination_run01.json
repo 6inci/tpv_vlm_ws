@@ -1,0 +1,30 @@
+{
+  "case_id": "unknown_destination",
+  "category": "unknown_destination",
+  "run": 1,
+  "instruction": "빨간 컵을 왼쪽으로 옮겨",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"빨간 컵\",\"destination_phrase\":\"왼쪽\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "빨간 컵",
+    "destination_phrase": "왼쪽"
+  },
+  "validated": {
+    "status": "DESTINATION_NOT_RESOLVED",
+    "raw_instruction": "빨간 컵을 왼쪽으로 옮겨",
+    "error_code": "ZONE_NOT_RESOLVED",
+    "reason": "destination is not a configured zone alias: 왼쪽",
+    "parsed_fields": {
+      "action": "reposition",
+      "target_phrase": "빨간 컵",
+      "destination_phrase": "왼쪽"
+    }
+  },
+  "integrated": null,
+  "inference_sec": 7.788451315000202,
+  "expected": {
+    "status": "DESTINATION_NOT_RESOLVED",
+    "error_code": "ZONE_NOT_RESOLVED"
+  },
+  "matches_expected": true
+}

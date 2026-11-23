@@ -1,0 +1,25 @@
+작업지시: "빨간 큐브를 비어 있는 팔레트로 옮겨줘."
+이 작업장의 운영 규칙(사용자 초안, 확인 전):
+- 초록색 바닥에 발자국 표시가 있는 통로는 보행자 통로이며 로봇 본체가 들어갈 수 없다.
+- 노란 외곽선 안의 넓은 검은 바닥은 로봇 주행 구역이다. 로봇 본체는 이 구역 안에서만 움직인다.
+- 흰 테두리 안의 컨베이어·로봇 팔 작업셀에는 로봇 본체가 들어갈 수 없다.
+- 노란 테두리 안의 화물 적치 구역과 자재 보관 구역에는 로봇 본체가 들어가지 않고 접근만 한다.
+- 트럭과 흰색 점선 구획은 트럭 하역장이다.
+- 안전 콘과 바닥 경계선은 작업공간을 나누는 표시일 수 있다.
+- 로봇은 주행 구역에 정차한 채 인접한 구역의 물체를 집거나 놓을 수 있다(그리퍼 도달 거리는 확인되지 않았다).
+
+이미지를 보고 이 작업지시를 해석하라. 옮길 물체, 출발지의 기준 물체와 공간 관계, 목적지의 의미와 기준 물체·공간 관계, 작업 목적을 구분하라.
+기준 물체가 명령에 직접 나오지 않으면 이미지에서 작업 목적과 관련된 설비를 추론하라. 바닥 표시, 경계선, 안전 콘, 표지처럼 구역을 나누는 시각적 단서가 보이면 함께 기록하라.
+
+Return JSON only, no prose:
+{"purpose": <short text>,
+ "source_object": {"name_en": <short English noun phrase>},
+ "source_reference": {"name_en": <English noun or null>, "bbox_2d": [x1, y1, x2, y2] or null},
+ "source_relation": "next_to" | "near" | "on" | "from" | "none",
+ "destination_meaning": <short text>,
+ "destination_reference": {"name_en": <English noun or null>, "bbox_2d": [x1, y1, x2, y2] or null, "inferred": true | false},
+ "destination_relation": "next_to" | "near" | "on" | "none",
+ "zones_seen": [{"description": <short text>, "visual_evidence": [<text>], "bbox_2d": [x1, y1, x2, y2] or null,
+                 "robot_body_access": "allowed" | "forbidden" | "unknown"}],
+ "uncertainty": [<text>]}
+bbox_2d: integers normalized to 0-1000 relative to this image's width and height.

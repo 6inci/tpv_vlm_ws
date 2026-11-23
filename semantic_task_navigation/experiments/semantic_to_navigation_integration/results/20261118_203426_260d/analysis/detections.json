@@ -1,0 +1,4106 @@
+{
+  "objects": [
+    {
+      "object_id": "conveyor_cand1",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1191.98,
+        467.35,
+        1806.52,
+        612.82
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.356,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor belt.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "green",
+          "observed_object": "stacks of barrels and containers",
+          "reason": "The green box contains cargo items, not a conveyor or production line."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_1.png",
+          "crop_xyxy_raw": [
+            270,
+            0,
+            1920,
+            1080
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_1.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo items, not a conveyor or production line.\"}",
+          "latency_s": 2.645,
+          "n_output_tokens": 47,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.792,
+          "error": null
+        }
+      },
+      "phrase": "conveyor belt"
+    },
+    {
+      "object_id": "conveyor_1",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        225.57,
+        272.97,
+        461.76,
+        766.68
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.272,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": true,
+      "verification": {
+        "status": "yes",
+        "answer": {
+          "answer": "yes",
+          "observed_color": "white",
+          "observed_object": "conveyor",
+          "reason": "The green box encloses a white conveyor belt with robotic arms on either side."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_2.png",
+          "crop_xyxy_raw": [
+            0,
+            0,
+            1202,
+            1080
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_2.png",
+          "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"white\", \"observed_object\": \"conveyor\", \"reason\": \"The green box encloses a white conveyor belt with robotic arms on either side.\"}",
+          "latency_s": 1.762,
+          "n_output_tokens": 45,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.665,
+          "error": null
+        }
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand3",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        809.76,
+        425.97,
+        926.15,
+        589.84
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.2718,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "brown",
+          "observed_object": "stack of boxes",
+          "reason": "The green box contains stacked cardboard boxes, not a conveyor or production line."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_3.png",
+          "crop_xyxy_raw": [
+            563,
+            180,
+            1171,
+            835
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_3.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"brown\", \"observed_object\": \"stack of boxes\", \"reason\": \"The green box contains stacked cardboard boxes, not a conveyor or production line.\"}",
+          "latency_s": 1.416,
+          "n_output_tokens": 45,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.423,
+          "error": null
+        }
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand4",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        434.22,
+        76.39,
+        830.23,
+        186.76
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.2532,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor belt.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "green",
+          "observed_object": "robot arms",
+          "reason": "The green box contains two robotic arms, not a conveyor or production line."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_4.png",
+          "crop_xyxy_raw": [
+            0,
+            0,
+            1424,
+            780
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_4.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"robot arms\", \"reason\": \"The green box contains two robotic arms, not a conveyor or production line.\"}",
+          "latency_s": 1.61,
+          "n_output_tokens": 44,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.603,
+          "error": null
+        }
+      },
+      "phrase": "conveyor belt"
+    },
+    {
+      "object_id": "conveyor_cand5",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1394.16,
+        57.3,
+        1688.01,
+        180.03
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.212,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor belt.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "white and black",
+          "observed_object": "truck",
+          "reason": "The object is a toy truck, not a conveyor or production line."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_5.png",
+          "crop_xyxy_raw": [
+            953,
+            0,
+            1920,
+            620
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_5.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white and black\", \"observed_object\": \"truck\", \"reason\": \"The object is a toy truck, not a conveyor or production line.\"}",
+          "latency_s": 1.422,
+          "n_output_tokens": 44,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.473,
+          "error": null
+        }
+      },
+      "phrase": "conveyor belt"
+    },
+    {
+      "object_id": "conveyor_cand6",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1065.63,
+        36.55,
+        1155.67,
+        178.21
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1939,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "gray",
+          "observed_object": "structure",
+          "reason": "The object is a gray structure with green supports, not a conveyor or production line."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_6.png",
+          "crop_xyxy_raw": [
+            853,
+            0,
+            1368,
+            390
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_6.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"gray\", \"observed_object\": \"structure\", \"reason\": \"The object is a gray structure with green supports, not a conveyor or production line.\"}",
+          "latency_s": 1.275,
+          "n_output_tokens": 45,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.373,
+          "error": null
+        }
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand7",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1381.83,
+        473.94,
+        1470.75,
+        573.0
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1893,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "white",
+          "observed_object": "stack of containers",
+          "reason": "The green box contains a stack of white containers, not a conveyor or production line."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_7.png",
+          "crop_xyxy_raw": [
+            1233,
+            325,
+            1619,
+            721
+          ],
+          "scale": 1.1313,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_7.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"stack of containers\", \"reason\": \"The green box contains a stack of white containers, not a conveyor or production line.\"}",
+          "latency_s": 1.333,
+          "n_output_tokens": 47,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.374,
+          "error": null
+        }
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand8",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        341.55,
+        42.89,
+        448.96,
+        142.1
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.187,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "white",
+          "observed_object": "grid-like object",
+          "reason": "The green box encloses a grid-like object, not a conveyor or production line."
+        },
+        "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+        "crop": {
+          "path": "analysis/crops/verify_conveyor_8.png",
+          "crop_xyxy_raw": [
+            180,
+            0,
+            610,
+            303
+          ],
+          "scale": 1.0419,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+          "image_path": "analysis/crops/verify_conveyor_8.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"grid-like object\", \"reason\": \"The green box encloses a grid-like object, not a conveyor or production line.\"}",
+          "latency_s": 1.327,
+          "n_output_tokens": 47,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.359,
+          "error": null
+        }
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand9",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1191.71,
+        465.47,
+        1850.74,
+        836.97
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1675,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand10",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        863.53,
+        42.63,
+        952.81,
+        181.28
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1645,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand11",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1299.54,
+        492.82,
+        1382.6,
+        581.51
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1626,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand12",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1219.37,
+        497.76,
+        1300.55,
+        586.52
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1551,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand13",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        586.15,
+        63.07,
+        1070.86,
+        303.2
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1473,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor belt.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "conveyor belt"
+    },
+    {
+      "object_id": "conveyor_cand14",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1587.56,
+        621.58,
+        1811.17,
+        782.45
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1428,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand15",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        772.33,
+        425.79,
+        970.1,
+        619.44
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.142,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand16",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1470.05,
+        468.13,
+        1573.23,
+        576.65
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1364,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand17",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        227.21,
+        88.88,
+        333.82,
+        290.64
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1358,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand18",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        109.55,
+        774.58,
+        509.19,
+        986.03
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1284,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand19",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        105.55,
+        272.3,
+        517.06,
+        986.48
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1229,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand20",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        667.34,
+        16.78,
+        788.83,
+        124.39
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1217,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller"
+    },
+    {
+      "object_id": "conveyor_cand21",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        988.35,
+        881.35,
+        1108.58,
+        998.99
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1194,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand22",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1568.91,
+        471.02,
+        1682.96,
+        586.21
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1177,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller conveyor"
+    },
+    {
+      "object_id": "conveyor_cand23",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        433.33,
+        18.3,
+        794.62,
+        125.86
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1109,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller"
+    },
+    {
+      "object_id": "conveyor_cand24",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1420.09,
+        159.97,
+        1687.14,
+        179.82
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1103,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor belt.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "belt"
+    },
+    {
+      "object_id": "conveyor_cand25",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        228.59,
+        542.7,
+        395.23,
+        762.69
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1101,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller"
+    },
+    {
+      "object_id": "conveyor_cand26",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1125.5,
+        870.81,
+        1250.84,
+        988.43
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1091,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller convey"
+    },
+    {
+      "object_id": "conveyor_cand27",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        433.78,
+        24.28,
+        571.98,
+        111.34
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1069,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "roller conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "roller"
+    },
+    {
+      "object_id": "conveyor_cand28",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        665.39,
+        853.09,
+        865.83,
+        994.94
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1063,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "conveyor_cand29",
+      "class_name": "conveyor",
+      "bbox_xyxy": [
+        1224.65,
+        538.19,
+        1300.27,
+        585.54
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1013,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "conveyor.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=8"
+      },
+      "phrase": "conveyor"
+    },
+    {
+      "object_id": "truck_1",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        1447.27,
+        0.19,
+        1687.36,
+        149.58
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.56,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": true,
+      "verification": {
+        "status": "yes",
+        "answer": {
+          "answer": "yes",
+          "observed_color": "white and black",
+          "observed_object": "truck",
+          "reason": "The green box encloses a toy truck with a cab and cargo bed."
+        },
+        "description": "a truck (a vehicle with a cab and a cargo bed; a toy or model truck counts)",
+        "crop": {
+          "path": "analysis/crops/verify_truck_1.png",
+          "crop_xyxy_raw": [
+            1087,
+            0,
+            1920,
+            509
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+          "image_path": "analysis/crops/verify_truck_1.png",
+          "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"white and black\", \"observed_object\": \"truck\", \"reason\": \"The green box encloses a toy truck with a cab and cargo bed.\"}",
+          "latency_s": 1.364,
+          "n_output_tokens": 45,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.432,
+          "error": null
+        }
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand2",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        809.48,
+        426.67,
+        926.81,
+        591.79
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.2499,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "brown",
+          "observed_object": "stack of boxes",
+          "reason": "The green box contains stacked boxes, not a truck."
+        },
+        "description": "a truck (a vehicle with a cab and a cargo bed; a toy or model truck counts)",
+        "crop": {
+          "path": "analysis/crops/verify_truck_2.png",
+          "crop_xyxy_raw": [
+            561,
+            178,
+            1174,
+            839
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+          "image_path": "analysis/crops/verify_truck_2.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"brown\", \"observed_object\": \"stack of boxes\", \"reason\": \"The green box contains stacked boxes, not a truck.\"}",
+          "latency_s": 1.249,
+          "n_output_tokens": 41,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.427,
+          "error": null
+        }
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand3",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        1381.18,
+        474.74,
+        1471.89,
+        573.68
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.22,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "white",
+          "observed_object": "stack of pallets",
+          "reason": "The green box contains a stack of pallets, not a truck."
+        },
+        "description": "a truck (a vehicle with a cab and a cargo bed; a toy or model truck counts)",
+        "crop": {
+          "path": "analysis/crops/verify_truck_3.png",
+          "crop_xyxy_raw": [
+            1232,
+            326,
+            1620,
+            722
+          ],
+          "scale": 1.1313,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+          "image_path": "analysis/crops/verify_truck_3.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"stack of pallets\", \"reason\": \"The green box contains a stack of pallets, not a truck.\"}",
+          "latency_s": 1.288,
+          "n_output_tokens": 45,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.373,
+          "error": null
+        }
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand4",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        1299.28,
+        493.04,
+        1382.96,
+        581.51
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.2194,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand5",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        1219.39,
+        499.41,
+        1300.79,
+        587.38
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.2109,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand6",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        226.91,
+        272.47,
+        466.18,
+        764.22
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1963,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand7",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        433.98,
+        17.93,
+        810.46,
+        176.38
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.185,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand8",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        228.63,
+        26.87,
+        1074.14,
+        305.4
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.182,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand9",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        1065.87,
+        37.53,
+        1155.98,
+        178.97
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1745,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand10",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        1588.54,
+        623.23,
+        1811.58,
+        783.31
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1728,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand11",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        341.47,
+        43.1,
+        448.79,
+        142.46
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1616,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand12",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        227.55,
+        156.47,
+        326.42,
+        290.48
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1565,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand13",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        228.89,
+        535.33,
+        395.36,
+        763.34
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1533,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand14",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        450.09,
+        75.27,
+        538.91,
+        166.53
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1387,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand15",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        273.8,
+        660.57,
+        394.77,
+        763.22
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1318,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand16",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        433.67,
+        25.48,
+        568.65,
+        167.9
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1246,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand17",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        863.6,
+        43.02,
+        953.12,
+        181.96
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1227,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand18",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        109.09,
+        774.49,
+        510.13,
+        986.58
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1202,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand19",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        667.17,
+        16.94,
+        798.19,
+        138.55
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1202,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand20",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        313.1,
+        272.93,
+        428.95,
+        374.29
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1052,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "truck_cand21",
+      "class_name": "truck",
+      "bbox_xyxy": [
+        1305.07,
+        533.44,
+        1382.36,
+        579.96
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1021,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "truck.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "truck"
+    },
+    {
+      "object_id": "mobile_robot_cand1",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        225.03,
+        271.14,
+        466.8,
+        764.9
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.6303,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "mobile robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "white and purple",
+          "observed_object": "robot arm",
+          "reason": "The object is a stationary robot arm, not a wheeled mobile robot."
+        },
+        "description": "a wheeled mobile robot, i.e. a small ground vehicle that drives on the floor (not a fixed robot arm, not a truck, not a cart)",
+        "crop": {
+          "path": "analysis/crops/verify_mobile_robot_1.png",
+          "crop_xyxy_raw": [
+            0,
+            0,
+            1207,
+            1080
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+          "image_path": "analysis/crops/verify_mobile_robot_1.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white and purple\", \"observed_object\": \"robot arm\", \"reason\": \"The object is a stationary robot arm, not a wheeled mobile robot.\"}",
+          "latency_s": 1.79,
+          "n_output_tokens": 46,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.667,
+          "error": null
+        }
+      },
+      "phrase": "mobile robot"
+    },
+    {
+      "object_id": "mobile_robot_cand2",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        428.85,
+        15.42,
+        822.24,
+        183.84
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.396,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "mobile robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "white",
+          "observed_object": "robot arm",
+          "reason": "The object is a stationary robot arm, not a wheeled mobile robot."
+        },
+        "description": "a wheeled mobile robot, i.e. a small ground vehicle that drives on the floor (not a fixed robot arm, not a truck, not a cart)",
+        "crop": {
+          "path": "analysis/crops/verify_mobile_robot_2.png",
+          "crop_xyxy_raw": [
+            0,
+            0,
+            1412,
+            773
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+          "image_path": "analysis/crops/verify_mobile_robot_2.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"robot arm\", \"reason\": \"The object is a stationary robot arm, not a wheeled mobile robot.\"}",
+          "latency_s": 1.595,
+          "n_output_tokens": 44,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.605,
+          "error": null
+        }
+      },
+      "phrase": "mobile robot"
+    },
+    {
+      "object_id": "mobile_robot_cand3",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        1445.67,
+        0.39,
+        1687.75,
+        151.13
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.3742,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "mobile robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "white and black",
+          "observed_object": "truck",
+          "reason": "The object is a truck, not a wheeled mobile robot."
+        },
+        "description": "a wheeled mobile robot, i.e. a small ground vehicle that drives on the floor (not a fixed robot arm, not a truck, not a cart)",
+        "crop": {
+          "path": "analysis/crops/verify_mobile_robot_3.png",
+          "crop_xyxy_raw": [
+            1082,
+            0,
+            1920,
+            514
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+          "image_path": "analysis/crops/verify_mobile_robot_3.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white and black\", \"observed_object\": \"truck\", \"reason\": \"The object is a truck, not a wheeled mobile robot.\"}",
+          "latency_s": 1.332,
+          "n_output_tokens": 43,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.434,
+          "error": null
+        }
+      },
+      "phrase": "mobile robot"
+    },
+    {
+      "object_id": "mobile_robot_cand4",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        1585.03,
+        619.74,
+        1814.01,
+        784.4
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.3559,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "mobile robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "mobile robot"
+    },
+    {
+      "object_id": "mobile_robot_cand5",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        228.08,
+        535.28,
+        396.2,
+        763.74
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.2419,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "wheeled robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "wheeled robot"
+    },
+    {
+      "object_id": "mobile_robot_cand6",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        665.98,
+        15.76,
+        812.68,
+        165.96
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1949,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "mobile robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "mobile robot"
+    },
+    {
+      "object_id": "mobile_robot_cand7",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        1063.34,
+        34.81,
+        1157.03,
+        209.97
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1927,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "wheeled robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "wheeled robot"
+    },
+    {
+      "object_id": "mobile_robot_cand8",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        1588.4,
+        623.07,
+        1693.4,
+        782.67
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1857,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "mobile robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "mobile robot"
+    },
+    {
+      "object_id": "mobile_robot_cand9",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        431.18,
+        23.41,
+        575.49,
+        169.03
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1844,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "mobile robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "mobile robot"
+    },
+    {
+      "object_id": "mobile_robot_cand10",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        862.43,
+        40.95,
+        954.12,
+        182.05
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.163,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "wheeled robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "wheeled robot"
+    },
+    {
+      "object_id": "mobile_robot_cand11",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        808.78,
+        425.55,
+        927.7,
+        591.85
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1358,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "wheeled robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "robot"
+    },
+    {
+      "object_id": "mobile_robot_cand12",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        226.65,
+        87.14,
+        334.33,
+        290.16
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.1091,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "wheeled robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "robot"
+    },
+    {
+      "object_id": "mobile_robot_cand13",
+      "class_name": "mobile_robot",
+      "bbox_xyxy": [
+        267.1,
+        271.92,
+        466.49,
+        473.29
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.104,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "IDEA-Research/grounding-dino-tiny",
+      "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "prompt": "wheeled robot.",
+      "source": "grounding_dino",
+      "knowledge": "observed_by_model",
+      "accepted": false,
+      "verification": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      },
+      "phrase": "robot"
+    }
+  ],
+  "unverified_candidates": {
+    "red_cube": [
+      {
+        "bbox_xyxy": [
+          945.32,
+          848.02,
+          983.39,
+          886.34
+        ],
+        "score": 0.448,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1641.7,
+          883.92,
+          1708.52,
+          934.9
+        ],
+        "score": 0.4276,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1792.15,
+          830.91,
+          1833.39,
+          869.05
+        ],
+        "score": 0.3858,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          927.92,
+          507.69,
+          963.9,
+          556.08
+        ],
+        "score": 0.3033,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1069.42,
+          248.29,
+          1101.24,
+          286.35
+        ],
+        "score": 0.2999,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          549.55,
+          204.01,
+          582.94,
+          241.53
+        ],
+        "score": 0.2708,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          430.84,
+          412.78,
+          452.37,
+          434.75
+        ],
+        "score": 0.2277,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          940.99,
+          176.54,
+          966.58,
+          215.49
+        ],
+        "score": 0.2268,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1064.72,
+          172.02,
+          1095.97,
+          210.32
+        ],
+        "score": 0.2211,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1309.26,
+          250.86,
+          1341.77,
+          294.09
+        ],
+        "score": 0.1897,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1676.88,
+          240.54,
+          1712.7,
+          285.28
+        ],
+        "score": 0.1814,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1284.49,
+          155.32,
+          1316.58,
+          200.52
+        ],
+        "score": 0.1766,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          809.3,
+          425.77,
+          926.32,
+          591.08
+        ],
+        "score": 0.1618,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1280.65,
+          69.02,
+          1312.91,
+          114.42
+        ],
+        "score": 0.1505,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          551.58,
+          204.07,
+          570.73,
+          227.74
+        ],
+        "score": 0.1493,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1415.96,
+          248.69,
+          1450.1,
+          292.19
+        ],
+        "score": 0.1464,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          585.63,
+          62.61,
+          1068.98,
+          304.89
+        ],
+        "score": 0.1323,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1525.14,
+          243.97,
+          1560.66,
+          289.1
+        ],
+        "score": 0.1313,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          228.53,
+          155.34,
+          325.5,
+          290.43
+        ],
+        "score": 0.1258,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          666.23,
+          854.63,
+          864.99,
+          995.32
+        ],
+        "score": 0.1222,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          419.7,
+          406.02,
+          468.6,
+          450.62
+        ],
+        "score": 0.1198,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1703.5,
+          469.14,
+          1801.08,
+          571.1
+        ],
+        "score": 0.113,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          243.82,
+          158.5,
+          283.25,
+          219.28
+        ],
+        "score": 0.1129,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          1590.59,
+          247.75,
+          1641.26,
+          290.21
+        ],
+        "score": 0.1114,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          269.06,
+          376.8,
+          315.14,
+          440.06
+        ],
+        "score": 0.1036,
+        "prompt": "red cube.",
+        "phrase": "red",
+        "source": "grounding_dino"
+      },
+      {
+        "bbox_xyxy": [
+          329.52,
+          380.59,
+          365.91,
+          444.04
+        ],
+        "score": 0.1023,
+        "prompt": "red cube.",
+        "phrase": "red",
+        "source": "grounding_dino"
+      }
+    ]
+  },
+  "detector_raw": {
+    "conveyor": {
+      "image_path": "input/raw_frame.png",
+      "image_size": [
+        1920,
+        1080
+      ],
+      "box_threshold": 0.1,
+      "text_threshold": 0.1,
+      "results": [
+        {
+          "prompt": "conveyor belt.",
+          "boxes_xyxy": [
+            [
+              70.7,
+              50.87,
+              1877.36,
+              1037.38
+            ],
+            [
+              1191.98,
+              467.35,
+              1806.52,
+              612.82
+            ],
+            [
+              150.93,
+              276.71,
+              515.41,
+              796.47
+            ],
+            [
+              434.22,
+              76.39,
+              830.23,
+              186.76
+            ],
+            [
+              809.87,
+              425.63,
+              926.2,
+              590.21
+            ],
+            [
+              1394.16,
+              57.3,
+              1688.01,
+              180.03
+            ],
+            [
+              73.34,
+              275.08,
+              1874.81,
+              1032.72
+            ],
+            [
+              341.61,
+              42.87,
+              448.86,
+              142.19
+            ],
+            [
+              1381.59,
+              473.68,
+              1470.51,
+              573.17
+            ],
+            [
+              1192.75,
+              466.21,
+              1851.42,
+              837.81
+            ],
+            [
+              1065.74,
+              36.52,
+              1155.89,
+              178.22
+            ],
+            [
+              988.42,
+              881.39,
+              1108.59,
+              999.06
+            ],
+            [
+              1244.02,
+              592.28,
+              1846.71,
+              836.87
+            ],
+            [
+              1196.01,
+              464.05,
+              1874.03,
+              1025.3
+            ],
+            [
+              1299.43,
+              492.37,
+              1382.61,
+              581.63
+            ],
+            [
+              771.99,
+              464.39,
+              971.5,
+              618.62
+            ],
+            [
+              228.42,
+              376.39,
+              395.32,
+              763.57
+            ],
+            [
+              1219.31,
+              496.75,
+              1300.56,
+              585.8
+            ],
+            [
+              1420.09,
+              159.97,
+              1687.14,
+              179.82
+            ],
+            [
+              863.63,
+              42.56,
+              953.07,
+              181.04
+            ],
+            [
+              1568.9,
+              470.21,
+              1683.67,
+              586.34
+            ],
+            [
+              586.15,
+              63.07,
+              1070.86,
+              303.2
+            ],
+            [
+              1469.93,
+              468.14,
+              1573.11,
+              577.64
+            ],
+            [
+              772.6,
+              426.0,
+              970.1,
+              619.3
+            ],
+            [
+              223.89,
+              272.92,
+              460.68,
+              768.54
+            ],
+            [
+              431.11,
+              24.9,
+              829.63,
+              186.82
+            ]
+          ],
+          "scores": [
+            0.4578,
+            0.356,
+            0.1835,
+            0.2532,
+            0.1941,
+            0.212,
+            0.1233,
+            0.151,
+            0.1474,
+            0.1663,
+            0.1378,
+            0.1098,
+            0.1074,
+            0.1013,
+            0.1172,
+            0.1107,
+            0.1258,
+            0.1128,
+            0.1103,
+            0.1178,
+            0.1154,
+            0.1473,
+            0.1156,
+            0.105,
+            0.124,
+            0.1063
+          ],
+          "phrases": [
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "conveyor belt",
+            "##or",
+            "conveyor belt",
+            "convey",
+            "conveyor belt",
+            "conveyor",
+            "belt",
+            "conveyor belt",
+            "conveyor",
+            "conveyor belt",
+            "conveyor",
+            "convey",
+            "conveyor belt",
+            "conveyor belt"
+          ],
+          "latency_s": 1.0747
+        },
+        {
+          "prompt": "conveyor.",
+          "boxes_xyxy": [
+            [
+              69.98,
+              47.17,
+              1876.94,
+              1037.67
+            ],
+            [
+              1190.93,
+              467.32,
+              1808.66,
+              613.14
+            ],
+            [
+              809.76,
+              425.97,
+              926.15,
+              589.84
+            ],
+            [
+              434.59,
+              75.68,
+              829.88,
+              186.16
+            ],
+            [
+              341.55,
+              42.89,
+              448.96,
+              142.1
+            ],
+            [
+              225.6,
+              272.8,
+              460.88,
+              767.11
+            ],
+            [
+              1065.63,
+              36.55,
+              1155.67,
+              178.21
+            ],
+            [
+              1381.83,
+              473.94,
+              1470.75,
+              573.0
+            ],
+            [
+              863.53,
+              42.63,
+              952.81,
+              181.28
+            ],
+            [
+              1299.54,
+              492.82,
+              1382.6,
+              581.51
+            ],
+            [
+              1219.37,
+              497.76,
+              1300.55,
+              586.52
+            ],
+            [
+              105.36,
+              272.29,
+              516.97,
+              986.16
+            ],
+            [
+              229.07,
+              376.4,
+              395.66,
+              763.05
+            ],
+            [
+              1192.39,
+              466.14,
+              1851.67,
+              839.05
+            ],
+            [
+              109.77,
+              774.6,
+              508.81,
+              985.92
+            ],
+            [
+              988.5,
+              881.63,
+              1108.45,
+              998.85
+            ],
+            [
+              772.33,
+              425.79,
+              970.1,
+              619.44
+            ],
+            [
+              1224.65,
+              538.19,
+              1300.27,
+              585.54
+            ],
+            [
+              586.34,
+              62.83,
+              1070.91,
+              302.9
+            ],
+            [
+              73.26,
+              274.93,
+              1875.25,
+              1033.31
+            ],
+            [
+              1394.59,
+              57.46,
+              1687.44,
+              180.32
+            ],
+            [
+              227.29,
+              89.56,
+              333.53,
+              290.67
+            ],
+            [
+              1125.55,
+              871.02,
+              1250.58,
+              988.21
+            ],
+            [
+              432.85,
+              22.53,
+              829.88,
+              185.64
+            ],
+            [
+              1195.11,
+              464.73,
+              1874.85,
+              1025.49
+            ],
+            [
+              1587.53,
+              621.8,
+              1811.02,
+              782.52
+            ],
+            [
+              665.39,
+              853.09,
+              865.83,
+              994.94
+            ],
+            [
+              1469.98,
+              468.54,
+              1573.42,
+              576.63
+            ],
+            [
+              772.06,
+              463.57,
+              971.04,
+              619.09
+            ],
+            [
+              228.01,
+              155.51,
+              325.64,
+              290.67
+            ],
+            [
+              1568.44,
+              489.47,
+              1677.16,
+              585.02
+            ],
+            [
+              150.35,
+              275.98,
+              513.96,
+              794.92
+            ],
+            [
+              1217.28,
+              468.51,
+              1800.05,
+              589.86
+            ]
+          ],
+          "scores": [
+            0.3978,
+            0.3238,
+            0.2718,
+            0.2182,
+            0.187,
+            0.2121,
+            0.1939,
+            0.1893,
+            0.1645,
+            0.1626,
+            0.1551,
+            0.1044,
+            0.1645,
+            0.1597,
+            0.1257,
+            0.1184,
+            0.142,
+            0.1013,
+            0.1369,
+            0.1026,
+            0.1649,
+            0.1029,
+            0.1056,
+            0.1895,
+            0.1273,
+            0.1066,
+            0.1063,
+            0.1305,
+            0.1164,
+            0.1063,
+            0.1164,
+            0.1553,
+            0.1089
+          ],
+          "phrases": [
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "##or",
+            "conveyor",
+            "##or",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "conveyor",
+            "##or",
+            "conveyor",
+            "conveyor",
+            "conveyor"
+          ],
+          "latency_s": 0.1948
+        },
+        {
+          "prompt": "roller conveyor.",
+          "boxes_xyxy": [
+            [
+              70.83,
+              46.89,
+              1876.8,
+              1037.64
+            ],
+            [
+              1190.95,
+              467.08,
+              1808.82,
+              612.64
+            ],
+            [
+              809.79,
+              425.68,
+              926.22,
+              590.19
+            ],
+            [
+              225.57,
+              272.97,
+              461.76,
+              766.68
+            ],
+            [
+              434.16,
+              74.98,
+              829.75,
+              185.8
+            ],
+            [
+              1065.46,
+              36.06,
+              1155.79,
+              178.46
+            ],
+            [
+              1381.51,
+              473.69,
+              1470.49,
+              573.06
+            ],
+            [
+              229.37,
+              377.07,
+              395.54,
+              763.35
+            ],
+            [
+              863.46,
+              42.41,
+              953.03,
+              181.43
+            ],
+            [
+              105.55,
+              272.3,
+              517.06,
+              986.48
+            ],
+            [
+              432.52,
+              21.24,
+              829.18,
+              184.83
+            ],
+            [
+              341.5,
+              42.63,
+              449.03,
+              142.13
+            ],
+            [
+              1219.15,
+              497.11,
+              1300.52,
+              586.68
+            ],
+            [
+              988.35,
+              881.35,
+              1108.58,
+              998.99
+            ],
+            [
+              109.55,
+              774.58,
+              509.19,
+              986.03
+            ],
+            [
+              1191.71,
+              465.47,
+              1850.74,
+              836.97
+            ],
+            [
+              1470.05,
+              468.13,
+              1573.23,
+              576.65
+            ],
+            [
+              75.05,
+              278.4,
+              1875.21,
+              1033.0
+            ],
+            [
+              1394.42,
+              57.56,
+              1687.3,
+              180.3
+            ],
+            [
+              227.21,
+              88.88,
+              333.82,
+              290.64
+            ],
+            [
+              1299.27,
+              492.65,
+              1382.38,
+              581.85
+            ],
+            [
+              1587.56,
+              621.58,
+              1811.17,
+              782.45
+            ],
+            [
+              1584.46,
+              470.39,
+              1683.27,
+              568.53
+            ],
+            [
+              1125.5,
+              870.81,
+              1250.84,
+              988.43
+            ],
+            [
+              586.31,
+              62.7,
+              1071.28,
+              303.05
+            ],
+            [
+              772.42,
+              425.86,
+              970.44,
+              620.08
+            ],
+            [
+              667.34,
+              16.78,
+              788.83,
+              124.39
+            ],
+            [
+              227.93,
+              155.6,
+              325.35,
+              290.49
+            ],
+            [
+              1192.89,
+              464.37,
+              1873.67,
+              1025.11
+            ],
+            [
+              433.56,
+              25.52,
+              541.66,
+              166.45
+            ],
+            [
+              228.59,
+              542.7,
+              395.23,
+              762.69
+            ],
+            [
+              433.78,
+              24.28,
+              571.98,
+              111.34
+            ],
+            [
+              152.1,
+              274.71,
+              514.05,
+              794.77
+            ],
+            [
+              1218.57,
+              468.49,
+              1799.41,
+              591.73
+            ],
+            [
+              1568.91,
+              471.02,
+              1682.96,
+              586.21
+            ],
+            [
+              433.33,
+              18.3,
+              794.62,
+              125.86
+            ]
+          ],
+          "scores": [
+            0.3785,
+            0.3218,
+            0.2674,
+            0.272,
+            0.2033,
+            0.188,
+            0.177,
+            0.1896,
+            0.158,
+            0.1229,
+            0.2411,
+            0.1865,
+            0.1467,
+            0.1194,
+            0.1284,
+            0.1675,
+            0.1364,
+            0.1024,
+            0.1851,
+            0.1358,
+            0.1421,
+            0.1428,
+            0.1063,
+            0.1091,
+            0.1192,
+            0.1325,
+            0.1217,
+            0.1037,
+            0.1238,
+            0.1059,
+            0.1101,
+            0.1069,
+            0.17,
+            0.1474,
+            0.1177,
+            0.1109
+          ],
+          "phrases": [
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "##or",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller",
+            "roller convey",
+            "roller conveyor",
+            "roller conveyor",
+            "roller",
+            "roller",
+            "roller conveyor",
+            "roller",
+            "roller",
+            "roller",
+            "roller conveyor",
+            "roller conveyor",
+            "roller conveyor",
+            "roller"
+          ],
+          "latency_s": 0.1983
+        }
+      ],
+      "model": "IDEA-Research/grounding-dino-tiny",
+      "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "allocated_gib": 0.744,
+      "peak_allocated_gib": 1.969
+    },
+    "truck": {
+      "image_path": "input/raw_frame.png",
+      "image_size": [
+        1920,
+        1080
+      ],
+      "box_threshold": 0.1,
+      "text_threshold": 0.1,
+      "results": [
+        {
+          "prompt": "truck.",
+          "boxes_xyxy": [
+            [
+              1447.27,
+              0.19,
+              1687.36,
+              149.58
+            ],
+            [
+              1381.18,
+              474.74,
+              1471.89,
+              573.68
+            ],
+            [
+              1065.87,
+              37.53,
+              1155.98,
+              178.97
+            ],
+            [
+              809.48,
+              426.67,
+              926.81,
+              591.79
+            ],
+            [
+              1299.28,
+              493.04,
+              1382.96,
+              581.51
+            ],
+            [
+              228.61,
+              378.12,
+              395.8,
+              763.53
+            ],
+            [
+              226.91,
+              272.47,
+              466.18,
+              764.22
+            ],
+            [
+              69.7,
+              20.86,
+              1877.4,
+              1038.04
+            ],
+            [
+              273.8,
+              660.57,
+              394.77,
+              763.22
+            ],
+            [
+              433.98,
+              17.93,
+              810.46,
+              176.38
+            ],
+            [
+              227.55,
+              156.47,
+              326.42,
+              290.48
+            ],
+            [
+              1588.54,
+              623.23,
+              1811.58,
+              783.31
+            ],
+            [
+              1219.39,
+              499.41,
+              1300.79,
+              587.38
+            ],
+            [
+              341.47,
+              43.1,
+              448.79,
+              142.46
+            ],
+            [
+              109.09,
+              774.49,
+              510.13,
+              986.58
+            ],
+            [
+              433.67,
+              25.48,
+              568.65,
+              167.9
+            ],
+            [
+              450.09,
+              75.27,
+              538.91,
+              166.53
+            ],
+            [
+              667.17,
+              16.94,
+              798.19,
+              138.55
+            ],
+            [
+              226.89,
+              89.57,
+              333.18,
+              291.1
+            ],
+            [
+              228.89,
+              535.33,
+              395.36,
+              763.34
+            ],
+            [
+              1224.22,
+              538.5,
+              1300.1,
+              586.96
+            ],
+            [
+              228.63,
+              26.87,
+              1074.14,
+              305.4
+            ],
+            [
+              1305.07,
+              533.44,
+              1382.36,
+              579.96
+            ],
+            [
+              772.83,
+              426.06,
+              969.96,
+              620.01
+            ],
+            [
+              863.6,
+              43.02,
+              953.12,
+              181.96
+            ],
+            [
+              427.74,
+              24.81,
+              1071.04,
+              303.27
+            ],
+            [
+              1064.62,
+              37.32,
+              1156.4,
+              210.16
+            ],
+            [
+              313.1,
+              272.93,
+              428.95,
+              374.29
+            ],
+            [
+              230.78,
+              598.7,
+              395.01,
+              763.1
+            ]
+          ],
+          "scores": [
+            0.56,
+            0.22,
+            0.1745,
+            0.2499,
+            0.2194,
+            0.1902,
+            0.1963,
+            0.1677,
+            0.1318,
+            0.185,
+            0.1565,
+            0.1728,
+            0.2109,
+            0.1616,
+            0.1202,
+            0.1246,
+            0.1387,
+            0.1202,
+            0.1436,
+            0.1533,
+            0.111,
+            0.182,
+            0.1021,
+            0.1539,
+            0.1227,
+            0.1239,
+            0.1383,
+            0.1052,
+            0.1161
+          ],
+          "phrases": [
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck",
+            "truck"
+          ],
+          "latency_s": 0.1956
+        }
+      ],
+      "model": "IDEA-Research/grounding-dino-tiny",
+      "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "allocated_gib": 0.744,
+      "peak_allocated_gib": 1.914
+    },
+    "mobile_robot": {
+      "image_path": "input/raw_frame.png",
+      "image_size": [
+        1920,
+        1080
+      ],
+      "box_threshold": 0.1,
+      "text_threshold": 0.1,
+      "results": [
+        {
+          "prompt": "mobile robot.",
+          "boxes_xyxy": [
+            [
+              225.03,
+              271.14,
+              466.8,
+              764.9
+            ],
+            [
+              428.85,
+              15.42,
+              822.24,
+              183.84
+            ],
+            [
+              1445.67,
+              0.39,
+              1687.75,
+              151.13
+            ],
+            [
+              1585.03,
+              619.74,
+              1814.01,
+              784.4
+            ],
+            [
+              665.98,
+              15.76,
+              812.68,
+              165.96
+            ],
+            [
+              1588.4,
+              623.07,
+              1693.4,
+              782.67
+            ],
+            [
+              1063.25,
+              34.93,
+              1157.22,
+              210.0
+            ],
+            [
+              771.89,
+              424.38,
+              970.77,
+              619.57
+            ],
+            [
+              666.07,
+              15.68,
+              801.29,
+              139.94
+            ],
+            [
+              227.5,
+              537.77,
+              396.47,
+              764.07
+            ],
+            [
+              431.18,
+              23.41,
+              575.49,
+              169.03
+            ],
+            [
+              1683.88,
+              621.24,
+              1811.82,
+              777.58
+            ],
+            [
+              862.42,
+              40.01,
+              954.57,
+              182.35
+            ],
+            [
+              1064.54,
+              35.96,
+              1156.46,
+              178.29
+            ]
+          ],
+          "scores": [
+            0.6303,
+            0.396,
+            0.3742,
+            0.3559,
+            0.1949,
+            0.1857,
+            0.1548,
+            0.1116,
+            0.1914,
+            0.1998,
+            0.1844,
+            0.1507,
+            0.1014,
+            0.1061
+          ],
+          "phrases": [
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile robot",
+            "mobile",
+            "mobile"
+          ],
+          "latency_s": 0.1985
+        },
+        {
+          "prompt": "wheeled robot.",
+          "boxes_xyxy": [
+            [
+              225.98,
+              271.34,
+              466.52,
+              764.61
+            ],
+            [
+              1446.08,
+              0.48,
+              1687.48,
+              150.69
+            ],
+            [
+              1587.39,
+              620.39,
+              1813.56,
+              783.77
+            ],
+            [
+              430.21,
+              16.08,
+              811.44,
+              176.99
+            ],
+            [
+              1064.82,
+              35.95,
+              1156.2,
+              177.5
+            ],
+            [
+              666.24,
+              16.65,
+              797.87,
+              136.51
+            ],
+            [
+              228.08,
+              535.28,
+              396.2,
+              763.74
+            ],
+            [
+              772.16,
+              423.75,
+              970.81,
+              620.21
+            ],
+            [
+              1590.36,
+              623.69,
+              1692.92,
+              782.21
+            ],
+            [
+              431.9,
+              23.69,
+              575.1,
+              168.12
+            ],
+            [
+              808.78,
+              425.55,
+              927.7,
+              591.85
+            ],
+            [
+              862.43,
+              40.95,
+              954.12,
+              182.05
+            ],
+            [
+              226.65,
+              87.14,
+              334.33,
+              290.16
+            ],
+            [
+              1680.87,
+              621.42,
+              1810.35,
+              777.23
+            ],
+            [
+              267.1,
+              271.92,
+              466.49,
+              473.29
+            ],
+            [
+              432.35,
+              17.04,
+              797.23,
+              135.78
+            ],
+            [
+              1063.34,
+              34.81,
+              1157.03,
+              209.97
+            ],
+            [
+              666.43,
+              16.45,
+              809.61,
+              166.12
+            ]
+          ],
+          "scores": [
+            0.4529,
+            0.3562,
+            0.3199,
+            0.3529,
+            0.1603,
+            0.1716,
+            0.2419,
+            0.1302,
+            0.1568,
+            0.1713,
+            0.1358,
+            0.163,
+            0.1091,
+            0.1262,
+            0.104,
+            0.1346,
+            0.1927,
+            0.1598
+          ],
+          "phrases": [
+            "wheeled robot",
+            "wheeled robot",
+            "wheeled robot",
+            "wheeled robot",
+            "wheeled robot",
+            "wheeled robot",
+            "wheeled robot",
+            "robot",
+            "wheeled robot",
+            "wheeled robot",
+            "robot",
+            "wheeled robot",
+            "robot",
+            "robot",
+            "robot",
+            "wheeled robot",
+            "wheeled robot",
+            "wheeled robot"
+          ],
+          "latency_s": 0.1921
+        }
+      ],
+      "model": "IDEA-Research/grounding-dino-tiny",
+      "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "allocated_gib": 0.744,
+      "peak_allocated_gib": 1.967
+    },
+    "red_cube": {
+      "image_path": "input/raw_frame.png",
+      "image_size": [
+        1920,
+        1080
+      ],
+      "box_threshold": 0.1,
+      "text_threshold": 0.1,
+      "results": [
+        {
+          "prompt": "red cube.",
+          "boxes_xyxy": [
+            [
+              1642.75,
+              885.31,
+              1708.98,
+              934.09
+            ],
+            [
+              946.17,
+              849.09,
+              982.38,
+              885.61
+            ],
+            [
+              1793.22,
+              832.22,
+              1832.65,
+              868.16
+            ],
+            [
+              1069.42,
+              248.29,
+              1101.24,
+              286.35
+            ],
+            [
+              927.92,
+              507.69,
+              963.9,
+              556.08
+            ],
+            [
+              549.55,
+              204.01,
+              582.94,
+              241.53
+            ],
+            [
+              430.84,
+              412.78,
+              452.37,
+              434.75
+            ],
+            [
+              1064.72,
+              172.02,
+              1095.97,
+              210.32
+            ],
+            [
+              940.99,
+              176.54,
+              966.58,
+              215.49
+            ],
+            [
+              1309.26,
+              250.86,
+              1341.77,
+              294.09
+            ],
+            [
+              1676.88,
+              240.54,
+              1712.7,
+              285.28
+            ],
+            [
+              228.53,
+              155.34,
+              325.5,
+              290.43
+            ],
+            [
+              551.58,
+              204.07,
+              570.73,
+              227.74
+            ],
+            [
+              809.3,
+              425.77,
+              926.32,
+              591.08
+            ],
+            [
+              269.06,
+              376.8,
+              315.14,
+              440.06
+            ],
+            [
+              1284.49,
+              155.32,
+              1316.58,
+              200.52
+            ],
+            [
+              1703.5,
+              469.14,
+              1801.08,
+              571.1
+            ],
+            [
+              666.23,
+              854.63,
+              864.99,
+              995.32
+            ],
+            [
+              1280.65,
+              69.02,
+              1312.91,
+              114.42
+            ],
+            [
+              329.52,
+              380.59,
+              365.91,
+              444.04
+            ],
+            [
+              585.63,
+              62.61,
+              1068.98,
+              304.89
+            ],
+            [
+              79.1,
+              37.6,
+              1877.46,
+              1035.47
+            ],
+            [
+              243.82,
+              158.5,
+              283.25,
+              219.28
+            ],
+            [
+              1415.96,
+              248.69,
+              1450.1,
+              292.19
+            ],
+            [
+              1525.14,
+              243.97,
+              1560.66,
+              289.1
+            ],
+            [
+              1591.51,
+              248.77,
+              1640.53,
+              289.52
+            ],
+            [
+              771.79,
+              425.19,
+              969.4,
+              619.81
+            ]
+          ],
+          "scores": [
+            0.3923,
+            0.3758,
+            0.3474,
+            0.2999,
+            0.3033,
+            0.2708,
+            0.2277,
+            0.2211,
+            0.2268,
+            0.1897,
+            0.1814,
+            0.1258,
+            0.1493,
+            0.1618,
+            0.1036,
+            0.1766,
+            0.113,
+            0.1222,
+            0.1505,
+            0.1023,
+            0.1323,
+            0.1628,
+            0.1129,
+            0.1464,
+            0.1313,
+            0.1026,
+            0.1053
+          ],
+          "phrases": [
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red cube",
+            "red",
+            "red cube"
+          ],
+          "latency_s": 0.1953
+        },
+        {
+          "prompt": "small red block.",
+          "boxes_xyxy": [
+            [
+              1641.7,
+              883.92,
+              1708.52,
+              934.9
+            ],
+            [
+              945.32,
+              848.02,
+              983.39,
+              886.34
+            ],
+            [
+              1792.15,
+              830.91,
+              1833.39,
+              869.05
+            ],
+            [
+              1068.72,
+              247.57,
+              1101.96,
+              287.15
+            ],
+            [
+              548.44,
+              203.28,
+              583.74,
+              242.83
+            ],
+            [
+              1308.46,
+              250.07,
+              1342.83,
+              294.88
+            ],
+            [
+              429.84,
+              412.16,
+              452.87,
+              435.05
+            ],
+            [
+              1064.05,
+              171.1,
+              1096.76,
+              211.15
+            ],
+            [
+              1676.15,
+              239.74,
+              1713.55,
+              286.0
+            ],
+            [
+              74.83,
+              40.93,
+              1878.47,
+              1038.32
+            ],
+            [
+              1283.41,
+              154.3,
+              1317.48,
+              201.64
+            ],
+            [
+              939.99,
+              175.98,
+              967.67,
+              216.39
+            ],
+            [
+              227.95,
+              153.89,
+              326.18,
+              291.06
+            ],
+            [
+              927.99,
+              507.05,
+              964.23,
+              556.66
+            ],
+            [
+              1279.78,
+              68.38,
+              1313.6,
+              115.73
+            ],
+            [
+              549.85,
+              215.91,
+              582.75,
+              241.69
+            ],
+            [
+              1415.07,
+              247.81,
+              1451.23,
+              292.91
+            ],
+            [
+              666.19,
+              852.34,
+              866.59,
+              996.33
+            ],
+            [
+              1590.59,
+              247.75,
+              1641.26,
+              290.21
+            ],
+            [
+              1524.28,
+              243.07,
+              1561.77,
+              289.94
+            ],
+            [
+              585.49,
+              62.03,
+              1070.62,
+              307.63
+            ],
+            [
+              419.7,
+              406.02,
+              468.6,
+              450.62
+            ]
+          ],
+          "scores": [
+            0.4276,
+            0.448,
+            0.3858,
+            0.2681,
+            0.2651,
+            0.1891,
+            0.1868,
+            0.1976,
+            0.1723,
+            0.2024,
+            0.1663,
+            0.1698,
+            0.1104,
+            0.1144,
+            0.1314,
+            0.1754,
+            0.1453,
+            0.1041,
+            0.1114,
+            0.115,
+            0.1094,
+            0.1198
+          ],
+          "phrases": [
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "red block",
+            "small red block",
+            "small red block",
+            "small red block",
+            "small red block"
+          ],
+          "latency_s": 0.2066
+        }
+      ],
+      "model": "IDEA-Research/grounding-dino-tiny",
+      "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "allocated_gib": 0.744,
+      "peak_allocated_gib": 1.969
+    }
+  },
+  "qwen_fallback_calls": {},
+  "detector": {
+    "model": "IDEA-Research/grounding-dino-tiny",
+    "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+    "box_threshold": 0.1,
+    "text_threshold": 0.1,
+    "max_area_frac": 0.25,
+    "nms_iou": 0.5
+  }
+}

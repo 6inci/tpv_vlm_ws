@@ -1,0 +1,104 @@
+{
+  "purpose": "Move the red cube to an empty pallet",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [
+      585,
+      807,
+      655,
+      907
+    ],
+    "inferred": true
+  },
+  "source_relation": "on",
+  "destination_meaning": "Empty pallet",
+  "destination_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [
+      585,
+      807,
+      655,
+      907
+    ],
+    "inferred": true
+  },
+  "destination_relation": "on",
+  "zones_seen": [
+    {
+      "description": "Main robot navigation area",
+      "visual_evidence": [
+        "yellow border",
+        "black floor"
+      ],
+      "bbox_2d": [
+        250,
+        280,
+        650,
+        750
+      ],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Pedestrian walkway",
+      "visual_evidence": [
+        "green floor",
+        "white footprints"
+      ],
+      "bbox_2d": [
+        300,
+        50,
+        560,
+        280
+      ],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Robot work cell",
+      "visual_evidence": [
+        "white border",
+        "conveyor belt"
+      ],
+      "bbox_2d": [
+        100,
+        260,
+        260,
+        720
+      ],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Material storage area",
+      "visual_evidence": [
+        "yellow border",
+        "stacked containers"
+      ],
+      "bbox_2d": [
+        620,
+        430,
+        950,
+        550
+      ],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Truck unloading zone",
+      "visual_evidence": [
+        "white dashed lines",
+        "truck"
+      ],
+      "bbox_2d": [
+        620,
+        0,
+        900,
+        280
+      ],
+      "robot_body_access": "forbidden"
+    }
+  ],
+  "uncertainty": [
+    "The exact location of the red cube is not visible in the image."
+  ]
+}

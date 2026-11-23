@@ -1,0 +1,62 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "46fbe7cf16da1d1408f06f669dad908ded040c14916314008b69fe04fa1b35ff",
+  "image_path": "/home/binci/Pictures/Calibration/2calibration.png",
+  "image_sha256": "dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2712,
+  "n_output_tokens": 614,
+  "hit_max_new_tokens": false,
+  "latency_s": 18.629,
+  "wall_s": 18.75,
+  "peak_vram_gib": 8.981,
+  "raw_response": "{\n  \"purpose\": \"Move the red cube to an empty pallet\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": null,\n    \"bbox_2d\": null\n  },\n  \"source_relation\": \"none\",\n  \"destination_meaning\": \"Empty pallet for placing the red cube\",\n  \"destination_reference\": {\n    \"name_en\": \"empty pallet\",\n    \"bbox_2d\": [584, 804, 654, 904],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Green pedestrian walkway with footprints\",\n      \"visual_evidence\": [\n        \"green floor with footprints\",\n        \"no robot body allowed\"\n      ],\n      \"bbox_2d\": [305, 58, 560, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Yellow-bordered main robot travel area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"robot body allowed\"\n      ],\n      \"bbox_2d\": [100, 270, 970, 950],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"White-bordered conveyor and robot arm workstation\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot body forbidden\"\n      ],\n      \"bbox_2d\": [100, 270, 260, 720],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Yellow-bordered cargo storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"robot body not allowed, only access\"\n      ],\n      \"bbox_2d\": [615, 430, 950, 560],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\n        \"white truck\",\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [615, 0, 890, 270],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Safety cones and boundary lines\",\n      \"visual_evidence\": [\n        \"orange cones\",\n        \"white and yellow lines\"\n      ],\n      \"bbox_2d\": [100, 0, 970, 950],\n      \"robot_body_access\": \"unknown\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The red cube is not visible in the image, so its location is unknown.\"\n  ]\n}"
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "mm_source_roles_v1",
+  "prompt_sha256": "672f46507acd275bc17069a3e0aaf89b4fb5f1b12944217cd0bf3d9a5364b999",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_019_U24768580/inputs/source_1.png",
+  "image_sha256": "36470fd5db8970d4175a4dba7fa166673bf9ba2849fdad72013825fea6a4434f",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 3163,
+  "n_output_tokens": 775,
+  "hit_max_new_tokens": false,
+  "latency_s": 23.731,
+  "wall_s": 23.88,
+  "peak_vram_gib": 9.077,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"an orange traffic cone\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"an orange traffic cone\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"an orange object\",\n        \"a robot arm\",\n        \"a red cube\"\n      ],\n      \"role\": \"object_to_move\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"an orange traffic cone\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"an orange object\",\n        \"a robot arm\",\n        \"a red cube\"\n      ],\n      \"role\": \"object_to_move\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"an orange traffic cone\",\n        \"an orange object\",\n        \"a barrel\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"an orange traffic cone\",\n        \"an orange object\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"an orange object\",\n        \"an orange traffic cone\",\n        \"a barrel\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"an orange object\",\n        \"an orange traffic cone\",\n        \"a robot arm\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"a red cube\",\n        \"an orange object\",\n        \"a metal grate\"\n      ],\n      \"role\": \"object_to_move\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"an orange object\",\n        \"an orange traffic cone\",\n        \"a barrel\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"an orange object\",\n        \"an orange traffic cone\",\n        \"a red cube\"\n      ],\n      \"role\": \"object_to_move\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"an orange traffic cone\",\n        \"an orange object\",\n        \"a red cube\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"an orange traffic cone\",\n        \"an orange object\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"an orange object\",\n        \"an orange traffic cone\",\n        \"a red cube\"\n      ],\n      \"role\": \"other\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"an orange object\",\n        \"an orange traffic cone\",\n        \"a red cube\"\n      ],\n      \"role\": \"object_to_move\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"an orange object\",\n        \"a red cube\",\n        \"an orange traffic cone\"\n      ],\n      \"role\": \"object_to_move\"\n    }\n  ],\n  \"object_to_move_id\": 3,\n  \"reason\": \"The red cube is located inside the green box marked as 3, which is the only candidate that contains the red cube and is not a traffic cone or other non-target object.\"\n}"
+ },
+ {
+  "stage": "destination_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "mm_destination_roles_v1",
+  "prompt_sha256": "aa730ac1e0ea7b920b4f7846d28e9dff5070e51d4a44fd7daa36d372c04ee7ef",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_019_U24768580/inputs/destination_1.png",
+  "image_sha256": "b10b74a12188df592b0a9a008e0c760cf71265d8bbdf3fe33532a449f3546d32",
+  "image_size": [
+   1552,
+   1328
+  ],
+  "n_input_tokens": 2747,
+  "n_output_tokens": 164,
+  "hit_max_new_tokens": false,
+  "latency_s": 5.732,
+  "wall_s": 5.85,
+  "peak_vram_gib": 8.987,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"a small pallet\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The pallet is occupied by four barrels and cannot be used as a destination.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"a metal grate\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The metal grate is not a pallet and is not a designated storage or transfer area for the red cube.\"\n    }\n  ],\n  \"best_destination_id\": null,\n  \"reason\": \"Neither candidate is a suitable empty pallet for placing the red cube.\"\n}"
+ }
+]

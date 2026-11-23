@@ -1,0 +1,885 @@
+{
+ "calls": [
+  {
+   "stage": "interp_E1_T1_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "0045569102f67b3468ad42cdaa813661ae1efed1f37a415b08d4e48660b935d4",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2469,
+   "n_output_tokens": 628,
+   "hit_max_new_tokens": false,
+   "latency_s": 19.54,
+   "wall_s": 19.71,
+   "peak_vram_gib": 8.93,
+   "raw_response": "{\n  \"purpose\": \"Move the red cube from the conveyor to an appropriate shipping location\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"conveyor\",\n    \"bbox_2d\": [116, 255, 238, 725]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"Shipping location for outgoing goods\",\n  \"destination_reference\": {\n    \"name_en\": \"white truck\",\n    \"bbox_2d\": [752, 0, 879, 143],\n    \"inferred\": false\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Loading area with robotic arms\",\n      \"visual_evidence\": [\n        \"robotic arms\",\n        \"conveyor\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [116, 255, 238, 725],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Shipping area with white truck\",\n      \"visual_evidence\": [\n        \"white truck\",\n        \"orange cones\",\n        \"white lines\"\n      ],\n      \"bbox_2d\": [630, 0, 910, 280],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Central storage area\",\n      \"visual_evidence\": [\n        \"stacked boxes\",\n        \"orange cone\"\n      ],\n      \"bbox_2d\": [398, 394, 505, 575],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Material storage area\",\n      \"visual_evidence\": [\n        \"barrels\",\n        \"pallets\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [620, 430, 956, 730],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Power station area\",\n      \"visual_evidence\": [\n        \"lightning bolt symbol\",\n        \"green panels\"\n      ],\n      \"bbox_2d\": [665, 775, 800, 945],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Loading dock area\",\n      \"visual_evidence\": [\n        \"green loading zone\",\n        \"white arrows\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [305, 55, 560, 280],\n      \"robot_body_access\": \"allowed\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact location of the red cube is not visible in the image.\"\n  ]\n}"
+  },
+  {
+   "stage": "interp_E1_T1_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "90123df7876ec5b593997ae40e782256f24af03c75d5c29422c327dd543371e7",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2725,
+   "n_output_tokens": 614,
+   "hit_max_new_tokens": false,
+   "latency_s": 18.324,
+   "wall_s": 18.44,
+   "peak_vram_gib": 8.984,
+   "raw_response": "{\n  \"purpose\": \"Move the red cube from the conveyor to an appropriate shipping location\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"conveyor\",\n    \"bbox_2d\": [116, 330, 220, 620]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"Shipping area for outgoing goods\",\n  \"destination_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [752, 0, 878, 142],\n    \"inferred\": false\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Pedestrian walkway\",\n      \"visual_evidence\": [\n        \"green floor with footprints\",\n        \"no robot body allowed\"\n      ],\n      \"bbox_2d\": [305, 58, 557, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Robot navigation area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [100, 280, 650, 750],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor and robot arm workstation\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot arms\"\n      ],\n      \"bbox_2d\": [78, 265, 268, 720],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Goods storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"stacked boxes and barrels\"\n      ],\n      \"bbox_2d\": [618, 430, 960, 720],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\n        \"white truck\",\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [690, 0, 890, 270],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Power station\",\n      \"visual_evidence\": [\n        \"lightning bolt symbol\",\n        \"green panels\"\n      ],\n      \"bbox_2d\": [660, 770, 800, 940],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The reach of the gripper is not confirmed\"\n  ]\n}"
+  },
+  {
+   "stage": "interp_E1_T2_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "d4f4d6cfc836e4286815edddb8317c5197e54c957cc7c03e564375ceba4a1936",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2473,
+   "n_output_tokens": 428,
+   "hit_max_new_tokens": false,
+   "latency_s": 12.862,
+   "wall_s": 12.97,
+   "peak_vram_gib": 8.931,
+   "raw_response": "{\n  \"purpose\": \"Move a red cube from near the conveyor belt to an appropriate storage location near the truck.\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [106, 255, 238, 725]\n  },\n  \"source_relation\": \"next_to\",\n  \"destination_meaning\": \"Appropriate storage location near the truck\",\n  \"destination_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [752, 0, 880, 145],\n    \"inferred\": false\n  },\n  \"destination_relation\": \"near\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Main operational area with conveyor belt and robotic arms\",\n      \"visual_evidence\": [\n        \"conveyor belt\",\n        \"robotic arms\",\n        \"orange cones\",\n        \"green path\"\n      ],\n      \"bbox_2d\": [0, 0, 500, 750],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Storage and loading zone with truck and various containers\",\n      \"visual_evidence\": [\n        \"truck\",\n        \"barrels\",\n        \"stacked boxes\",\n        \"orange cones\",\n        \"yellow lines\"\n      ],\n      \"bbox_2d\": [500, 0, 1000, 750],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Control or instruction zone with whiteboard\",\n      \"visual_evidence\": [\n        \"whiteboard\",\n        \"orange cone\",\n        \"gray grate\"\n      ],\n      \"bbox_2d\": [0, 750, 500, 999],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": []\n}"
+  },
+  {
+   "stage": "interp_E1_T2_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "ac9490b49cc1b8370f8cca6f634171da2941cb596bd7c19b5f9e99f0cbbad4a3",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2729,
+   "n_output_tokens": 637,
+   "hit_max_new_tokens": false,
+   "latency_s": 19.002,
+   "wall_s": 19.11,
+   "peak_vram_gib": 8.985,
+   "raw_response": "{\n  \"purpose\": \"Move a red cube from near the conveyor to an appropriate storage location near the truck\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"conveyor\",\n    \"bbox_2d\": [107, 256, 232, 725]\n  },\n  \"source_relation\": \"next_to\",\n  \"destination_meaning\": \"appropriate storage location near the truck\",\n  \"destination_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [752, 0, 880, 145],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Pedestrian walkway with green floor and footprints\",\n      \"visual_evidence\": [\n        \"green floor\",\n        \"footprint symbols\"\n      ],\n      \"bbox_2d\": [305, 58, 557, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Main robot travel zone (yellow border, black floor)\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [107, 256, 975, 950],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor and robot arm workstation (white border)\",\n      \"visual_evidence\": [\n        \"white border\"\n      ],\n      \"bbox_2d\": [107, 256, 232, 725],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Cargo storage zone (yellow border)\",\n      \"visual_evidence\": [\n        \"yellow border\"\n      ],\n      \"bbox_2d\": [618, 430, 975, 730],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone (white dashed lines)\",\n      \"visual_evidence\": [\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [680, 0, 880, 270],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Safety cones and boundary lines\",\n      \"visual_evidence\": [\n        \"orange cones\",\n        \"white boundary lines\"\n      ],\n      \"bbox_2d\": [107, 0, 975, 950],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The reach of the gripper is not confirmed, so whether the robot can physically pick up and place the red cube is uncertain.\"\n  ]\n}"
+  },
+  {
+   "stage": "interp_E1_T3_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "719d38f5bae576ac99f9b85e552a45145cd15acf8d71c863b1d853aa151bc6e9",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2458,
+   "n_output_tokens": 478,
+   "hit_max_new_tokens": false,
+   "latency_s": 14.277,
+   "wall_s": 14.39,
+   "peak_vram_gib": 8.928,
+   "raw_response": "{\n  \"purpose\": \"Move the box from the truck to the conveyor belt area\",\n  \"source_object\": {\n    \"name_en\": \"box\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [752, 0, 879, 142]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"conveyor belt area\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [117, 258, 250, 728],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Loading area with robotic arms\",\n      \"visual_evidence\": [\n        \"robotic arms\",\n        \"orange cones\",\n        \"green path\"\n      ],\n      \"bbox_2d\": [117, 258, 250, 728],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Central storage zone with stacked boxes\",\n      \"visual_evidence\": [\n        \"stacked boxes\",\n        \"orange cone\"\n      ],\n      \"bbox_2d\": [398, 394, 505, 572],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Right-side storage zone with barrels and pallets\",\n      \"visual_evidence\": [\n        \"barrels\",\n        \"pallets\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [618, 430, 955, 728],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Bottom zone with whiteboard and charging station\",\n      \"visual_evidence\": [\n        \"whiteboard\",\n        \"charging station\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [330, 778, 657, 958],\n      \"robot_body_access\": \"allowed\"\n    }\n  ],\n  \"uncertainty\": []\n}"
+  },
+  {
+   "stage": "interp_E1_T3_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "49ce4da444726bf44e8bd7b6928086c5eeaaa27a80fd0e8cc9861f08ff6013c5",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2714,
+   "n_output_tokens": 614,
+   "hit_max_new_tokens": false,
+   "latency_s": 18.362,
+   "wall_s": 18.49,
+   "peak_vram_gib": 8.982,
+   "raw_response": "{\n  \"purpose\": \"Move a box from the truck to the conveyor belt area\",\n  \"source_object\": {\n    \"name_en\": \"box\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [753, 0, 879, 143]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"Conveyor belt area for loading\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [107, 258, 250, 728],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Pedestrian walkway\",\n      \"visual_evidence\": [\n        \"green floor with footprints\",\n        \"no robot body allowed\"\n      ],\n      \"bbox_2d\": [305, 58, 557, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Robot travel zone\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [107, 258, 657, 728],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor belt and robot arm workstation\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot arms\"\n      ],\n      \"bbox_2d\": [107, 258, 250, 728],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Cargo storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"stacked boxes and barrels\"\n      ],\n      \"bbox_2d\": [620, 430, 957, 550],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\n        \"white dashed lines\",\n        \"truck\"\n      ],\n      \"bbox_2d\": [620, 0, 879, 280],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Robot charging station\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"lightning bolt symbol\"\n      ],\n      \"bbox_2d\": [660, 770, 800, 940],\n      \"robot_body_access\": \"allowed\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The reach of the gripper is not confirmed\"\n  ]\n}"
+  },
+  {
+   "stage": "interp_D1_T2_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "d4f4d6cfc836e4286815edddb8317c5197e54c957cc7c03e564375ceba4a1936",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+   "image_sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2473,
+   "n_output_tokens": 424,
+   "hit_max_new_tokens": false,
+   "latency_s": 12.82,
+   "wall_s": 12.94,
+   "peak_vram_gib": 8.931,
+   "raw_response": "{\n  \"purpose\": \"Move a red cube from near the conveyor belt to an appropriate storage location near the truck.\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [110, 260, 225, 720]\n  },\n  \"source_relation\": \"next_to\",\n  \"destination_meaning\": \"Appropriate storage location near the truck\",\n  \"destination_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [752, 0, 880, 145],\n    \"inferred\": false\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Main operational area with conveyor belt, robotic arms, and storage zones\",\n      \"visual_evidence\": [\n        \"white lines\",\n        \"yellow boundary lines\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [37, 0, 980, 960],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Storage zone with various containers and pallets\",\n      \"visual_evidence\": [\n        \"yellow boundary lines\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [615, 420, 960, 720],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Truck parking zone\",\n      \"visual_evidence\": [\n        \"white dashed lines\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [615, 0, 960, 280],\n      \"robot_body_access\": \"allowed\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact location of the red cube is not visible in the image.\"\n  ]\n}"
+  },
+  {
+   "stage": "interp_D1_T2_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "ac9490b49cc1b8370f8cca6f634171da2941cb596bd7c19b5f9e99f0cbbad4a3",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+   "image_sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2729,
+   "n_output_tokens": 633,
+   "hit_max_new_tokens": false,
+   "latency_s": 18.984,
+   "wall_s": 19.09,
+   "peak_vram_gib": 8.985,
+   "raw_response": "{\n  \"purpose\": \"Move a red cube from near the conveyor to an appropriate storage location near the truck\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"conveyor\",\n    \"bbox_2d\": [107, 260, 227, 725]\n  },\n  \"source_relation\": \"next_to\",\n  \"destination_meaning\": \"appropriate storage location near the truck\",\n  \"destination_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [752, 0, 880, 145],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Pedestrian walkway with green floor and footprints\",\n      \"visual_evidence\": [\n        \"green floor\",\n        \"footprints\"\n      ],\n      \"bbox_2d\": [305, 58, 560, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Main robot travel area with yellow border\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [107, 260, 975, 950],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor and robot arm workstation with white border\",\n      \"visual_evidence\": [\n        \"white border\"\n      ],\n      \"bbox_2d\": [107, 260, 227, 725],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Cargo storage area with yellow border\",\n      \"visual_evidence\": [\n        \"yellow border\"\n      ],\n      \"bbox_2d\": [618, 430, 975, 725],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone with white dashed lines\",\n      \"visual_evidence\": [\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [618, 0, 975, 280],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Safety cones and boundary lines\",\n      \"visual_evidence\": [\n        \"safety cones\",\n        \"boundary lines\"\n      ],\n      \"bbox_2d\": [280, 185, 975, 280],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The reach of the gripper is not confirmed, so whether the robot can physically pick up the red cube is uncertain.\"\n  ]\n}"
+  },
+  {
+   "stage": "interp_P4_R_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "9e1dcadc9607eb33665c4415269c17d47cbbd4b4fed398860e4c839b5401c280",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_24898553897872.png",
+   "image_sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2469,
+   "n_output_tokens": 540,
+   "hit_max_new_tokens": false,
+   "latency_s": 16.137,
+   "wall_s": 16.25,
+   "peak_vram_gib": 8.93,
+   "raw_response": "{\n  \"purpose\": \"Move the red cube from near the truck to the conveyor belt area\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [\n      752,\n      0,\n      879,\n      142\n    ]\n  },\n  \"source_relation\": \"near\",\n  \"destination_meaning\": \"Conveyor belt area for processing\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [\n      118,\n      268,\n      223,\n      720\n    ],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Left-side conveyor belt area with robotic arms\",\n      \"visual_evidence\": [\n        \"white boundary lines\",\n        \"robotic arms\",\n        \"yellow safety lines\"\n      ],\n      \"bbox_2d\": [\n        118,\n        268,\n        223,\n        720\n      ],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Right-side truck parking zone\",\n      \"visual_evidence\": [\n        \"white dashed lines\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [\n        628,\n        0,\n        917,\n        280\n      ],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Central storage zone with cardboard boxes\",\n      \"visual_evidence\": [\n        \"yellow boundary lines\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [\n        388,\n        394,\n        505,\n        570\n      ],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Bottom-right charging station zone\",\n      \"visual_evidence\": [\n        \"white boundary lines\",\n        \"lightning bolt symbol\",\n        \"green safety markers\"\n      ],\n      \"bbox_2d\": [\n        668,\n        770,\n        800,\n        940\n      ],\n      \"robot_body_access\": \"allowed\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact position of the red cube relative to the truck is not clearly visible\"\n  ]\n}"
+  },
+  {
+   "stage": "interp_P4_R_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_context_v1",
+   "prompt_sha256": "0ec127afb2b84847969e465945c45dad6600204c226a2bebdc6631bc958a46b8",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_24898553897872.png",
+   "image_sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2725,
+   "n_output_tokens": 659,
+   "hit_max_new_tokens": false,
+   "latency_s": 19.773,
+   "wall_s": 19.91,
+   "peak_vram_gib": 8.984,
+   "raw_response": "{\n  \"purpose\": \"Move a red cube from near the truck to the conveyor belt area\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [750, 0, 878, 142]\n  },\n  \"source_relation\": \"near\",\n  \"destination_meaning\": \"Conveyor belt area for object transfer\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [117, 260, 220, 720],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Green pedestrian walkway with footprints\",\n      \"visual_evidence\": [\n        \"green floor with white footprints\",\n        \"no robot body allowed\"\n      ],\n      \"bbox_2d\": [305, 58, 557, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Main robot travel zone (yellow border, black floor)\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [250, 270, 970, 770],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor belt and robot arm work cell (white border)\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot arms and conveyor\"\n      ],\n      \"bbox_2d\": [117, 260, 220, 720],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Cargo storage area (yellow border)\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"stacks of barrels and pallets\"\n      ],\n      \"bbox_2d\": [618, 430, 960, 550],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone (white dashed lines)\",\n      \"visual_evidence\": [\n        \"white dashed lines\",\n        \"truck parked\"\n      ],\n      \"bbox_2d\": [625, 0, 890, 270],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Safety cones and boundary lines\",\n      \"visual_evidence\": [\n        \"orange cones\",\n        \"white and yellow boundary lines\"\n      ],\n      \"bbox_2d\": [250, 0, 970, 950],\n      \"robot_body_access\": \"unknown\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The reach of the gripper is not confirmed, so whether the robot can physically pick up the red cube is uncertain.\"\n  ]\n}"
+  },
+  {
+   "stage": "dino_refs_U26007129",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+   "image_sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+   "prompts": [
+    "conveyor belt",
+    "conveyor",
+    "roller conveyor",
+    "truck",
+    "mobile robot",
+    "wheeled robot"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 147,
+   "wall_s": 1.94,
+   "peak_vram_gib": 1.969
+  },
+  {
+   "stage": "dino_full_U26007129",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+   "image_sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking",
+    "conveyor",
+    "conveyor belt",
+    "red cube",
+    "truck"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 386,
+   "wall_s": 3.35,
+   "peak_vram_gib": 1.969
+  },
+  {
+   "stage": "dino_refs_U24898553",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_24898553897872.png",
+   "image_sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+   "prompts": [
+    "conveyor belt",
+    "conveyor",
+    "roller conveyor",
+    "truck",
+    "mobile robot",
+    "wheeled robot"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 153,
+   "wall_s": 1.68,
+   "peak_vram_gib": 1.969
+  },
+  {
+   "stage": "dino_full_U24898553",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/Pictures/Calibration/undistorted_24898553897872.png",
+   "image_sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking",
+    "conveyor belt",
+    "red cube",
+    "truck"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 373,
+   "wall_s": 3.1,
+   "peak_vram_gib": 1.969
+  },
+  {
+   "stage": "verify_U26007129_conveyor_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo items, not a conveyor or production line.\"}",
+   "latency_s": 2.088,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U26007129_conveyor_0.png"
+  },
+  {
+   "stage": "verify_U26007129_conveyor_1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo containers and barrels, not a conveyor or production line.\"}",
+   "latency_s": 2.144,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U26007129_conveyor_1.png"
+  },
+  {
+   "stage": "verify_U26007129_conveyor_2",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo containers and barrels, not a conveyor or production line.\"}",
+   "latency_s": 2.139,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U26007129_conveyor_2.png"
+  },
+  {
+   "stage": "verify_U26007129_truck_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"white and black\", \"observed_object\": \"truck\", \"reason\": \"The green box encloses a toy truck with a cab and cargo bed.\"}",
+   "latency_s": 1.339,
+   "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U26007129_truck_0.png"
+  },
+  {
+   "stage": "verify_U26007129_robot_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"black\", \"observed_object\": \"wheeled mobile robot\", \"reason\": \"The object is a small, mobile robot with wheels and a chassis designed for movement on the floor.\"}",
+   "latency_s": 1.544,
+   "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U26007129_robot_0.png"
+  },
+  {
+   "stage": "verify_U24898553_conveyor_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo items, not a conveyor or production line.\"}",
+   "latency_s": 2.093,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U24898553_conveyor_0.png"
+  },
+  {
+   "stage": "verify_U24898553_conveyor_1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo containers and barrels, not a conveyor or production line.\"}",
+   "latency_s": 2.138,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U24898553_conveyor_1.png"
+  },
+  {
+   "stage": "verify_U24898553_conveyor_2",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo containers and barrels, not a conveyor or production line.\"}",
+   "latency_s": 2.139,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U24898553_conveyor_2.png"
+  },
+  {
+   "stage": "verify_U24898553_truck_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"white\", \"observed_object\": \"truck\", \"reason\": \"The green box encloses a white toy truck with a cab and cargo bed.\"}",
+   "latency_s": 1.307,
+   "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U24898553_truck_0.png"
+  },
+  {
+   "stage": "verify_U24898553_robot_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"black\", \"observed_object\": \"wheeled mobile robot\", \"reason\": \"The object is a small, mobile robot with wheels and a chassis designed for movement on the floor.\"}",
+   "latency_s": 1.612,
+   "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/verify_U24898553_robot_0.png"
+  },
+  {
+   "stage": "dino_roi_U26007129_truck",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/roi_U26007129_truck.png",
+   "image_sha256": "d64e2f2fecaf7685e5240ee89a57ac527080b851b2b2f475adb5910abdd1b868",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking",
+    "conveyor",
+    "conveyor belt",
+    "red cube",
+    "truck"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 135,
+   "wall_s": 3.33,
+   "peak_vram_gib": 1.958
+  },
+  {
+   "stage": "dino_roi_U24898553_truck",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/roi_U24898553_truck.png",
+   "image_sha256": "cffc8734feb5e3972e226206c13c53c43373df4f5abde823ec8799aacdbedbcb",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking",
+    "conveyor belt",
+    "red cube",
+    "truck"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 134,
+   "wall_s": 3.01,
+   "peak_vram_gib": 1.958
+  },
+  {
+   "stage": "source_E1_T1_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "586c3204b225edff7c94baf685e4b6319e3502b8abfa98f03919926372c35830",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_E1_T1_R0.png",
+   "image_sha256": "41509086a3980bf1b099b9de8bc681e52ba1f622306fbb325312847b5129a196",
+   "image_size": [
+    764,
+    1600
+   ],
+   "n_input_tokens": 1428,
+   "n_output_tokens": 301,
+   "hit_max_new_tokens": false,
+   "latency_s": 8.724,
+   "wall_s": 8.83,
+   "peak_vram_gib": 8.664,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The object is not red and does not match the target red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"purple object with a white symbol\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The object is not red and does not match the target red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"The object is a red cube, which matches the target object to be moved.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"purple and white object with mechanical parts\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The object is not red and does not match the target red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The object is not red and does not match the target red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 4,\n  \"reason\": \"The red cube is the only object that matches the target object to be moved.\"\n}"
+  },
+  {
+   "stage": "destination_E1_T1_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "c6b92cfacae43882c016863d5ed9be2bf28675b66fc1ddbce0f0ffd9d6ef3de7",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_E1_T1_R0.png",
+   "image_sha256": "59cff9b997878e492975dd97a1f5cee5877e6d5a437b9af62485298c22eedb4c",
+   "image_size": [
+    1600,
+    892
+   ],
+   "n_input_tokens": 1745,
+   "n_output_tokens": 1073,
+   "hit_max_new_tokens": false,
+   "latency_s": 30.285,
+   "wall_s": 30.38,
+   "peak_vram_gib": 8.742,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"white truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck is already carrying a load and is not a suitable destination for a red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"window of a white truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The window is part of the truck's cabin and not a suitable surface for placing a red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"side of a white truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The side of the truck is occupied and not a suitable surface for placing a red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"cargo area of a white truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cargo area is already occupied and not suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"window of a white truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The window is part of the truck's cabin and not a suitable surface for placing a red cube.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"side of a white truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The side of the truck is occupied and not a suitable surface for placing a red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"road surface\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The road surface is empty and provides a flat, open area for placing the red cube.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"road surface\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The road surface is empty and provides a flat, open area for placing the red cube.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The traffic cone is empty and can be used as a temporary placement point for the red cube.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The traffic cone is empty and can be used as a temporary placement point for the red cube.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The traffic cone is empty and can be used as a temporary placement point for the red cube.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The traffic cone is empty and can be used as a temporary placement point for the red cube.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The traffic cone is empty and can be used as a temporary placement point for the red cube.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"manhole cover\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The manhole cover is not a suitable surface for placing a red cube.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The traffic cone is empty and can be used as a temporary placement point for the red cube.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The traffic cone is empty and can be used as a temporary placement point for the red cube.\"\n    }\n  ],\n  \"best_destination_id\": 8,\n  \"reason\": \"The road surface is the most suitable and open area for placing the red cube without obstruction.\"\n}"
+  },
+  {
+   "stage": "source_E1_T1_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "3acede3c3c45af1e9123dda050fb00549b410db7bcd7a829875e9d656ba6755a",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_E1_T1_R1.png",
+   "image_sha256": "41509086a3980bf1b099b9de8bc681e52ba1f622306fbb325312847b5129a196",
+   "image_size": [
+    764,
+    1600
+   ],
+   "n_input_tokens": 1684,
+   "n_output_tokens": 248,
+   "hit_max_new_tokens": false,
+   "latency_s": 7.411,
+   "wall_s": 7.51,
+   "peak_vram_gib": 8.718,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"Not the red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"Not the red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"Matches the target red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"Not the red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"Not the red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 4,\n  \"reason\": \"The red cube is the only object matching the target description.\"\n}"
+  },
+  {
+   "stage": "destination_E1_T1_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "cd00e7ddb630ace971bb09cbdce7a3beeeb06e0271c3e493f33a241dba8626fd",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_E1_T1_R1.png",
+   "image_sha256": "59cff9b997878e492975dd97a1f5cee5877e6d5a437b9af62485298c22eedb4c",
+   "image_size": [
+    1600,
+    892
+   ],
+   "n_input_tokens": 2000,
+   "n_output_tokens": 973,
+   "hit_max_new_tokens": false,
+   "latency_s": 27.87,
+   "wall_s": 27.98,
+   "peak_vram_gib": 8.796,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Truck is occupied and not a designated drop zone for the red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Window is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"truck cab\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Cab is not a designated drop zone for the red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"truck cargo area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"Cargo area is designated for storage and can accommodate the red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Window is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"truck cargo area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"Cargo area is designated for storage and can accommodate the red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"road edge\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Road edge is not a designated drop zone for the red cube.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"road edge\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Road edge is not a designated drop zone for the red cube.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cone is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cone is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cone is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cone is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cone is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"manhole cover\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Manhole cover is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cone is not a suitable surface for placing the red cube.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cone is not a suitable surface for placing the red cube.\"\n    }\n  ],\n  \"best_destination_id\": 5,\n  \"reason\": \"Cargo area is designated for storage and can accommodate the red cube.\"\n}"
+  },
+  {
+   "stage": "source_E1_T2_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "660b2e0f4450f76817264a625483c3f10de569af9488a61bf3e54ca346dbfbf6",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_E1_T2_R0.png",
+   "image_sha256": "68b9da165ccff74968901c809869b770bf60d16bea7f926b1f9fc40084da6235",
+   "image_size": [
+    1141,
+    1600
+   ],
+   "n_input_tokens": 2033,
+   "n_output_tokens": 639,
+   "hit_max_new_tokens": false,
+   "latency_s": 18.663,
+   "wall_s": 18.78,
+   "peak_vram_gib": 8.825,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a white grid-like object, not a red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"green and orange object with multiple components\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a complex mechanical assembly, not a red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"orange and green object with multiple components\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a mechanical assembly, not a red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"orange cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, matching the object to be moved.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"orange cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, matching the object to be moved.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"green surface with white symbol\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a green surface with a symbol, not a red cube.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"orange cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, matching the object to be moved.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a purple and orange object, not a red cube.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"purple object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a purple object, not a red cube.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, matching the object to be moved.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"purple object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a purple object, not a red cube.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange object, not a red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 4,\n  \"reason\": \"The red cube is located near the conveyor belt, matching the task instruction.\"\n}"
+  },
+  {
+   "stage": "destination_E1_T2_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "5923ca529cb6d0dc3fa10895533ff3e4554238854a85d486c8a09bf3a30cc226",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_E1_T2_R0.png",
+   "image_sha256": "59cff9b997878e492975dd97a1f5cee5877e6d5a437b9af62485298c22eedb4c",
+   "image_size": [
+    1600,
+    892
+   ],
+   "n_input_tokens": 1748,
+   "n_output_tokens": 970,
+   "hit_max_new_tokens": false,
+   "latency_s": 27.515,
+   "wall_s": 27.62,
+   "peak_vram_gib": 8.743,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck is a large vehicle with an open cargo area, suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The window is part of the truck's cab and not designed for placing cargo.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck is a large vehicle with an open cargo area, suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"cargo area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The cargo area is open and spacious, suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The window is part of the truck's cab and not designed for placing cargo.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck is a large vehicle with an open cargo area, suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"road\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The road is not a designated storage area for cargo.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"road\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The road is not a designated storage area for cargo.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a storage area for cargo.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a storage area for cargo.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a storage area for cargo.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a storage area for cargo.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a storage area for cargo.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"manhole cover\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The manhole cover is not a storage area for cargo.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a storage area for cargo.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a storage area for cargo.\"\n    }\n  ],\n  \"best_destination_id\": 5,\n  \"reason\": \"The cargo area is the most suitable location for placing the red cube as it is open and designed for cargo storage.\"\n}"
+  },
+  {
+   "stage": "source_E1_T2_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "de77247376c0aa69111c4282135d4d3016d453434c05b5954098c64f68a2f44d",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_E1_T2_R1.png",
+   "image_sha256": "68b9da165ccff74968901c809869b770bf60d16bea7f926b1f9fc40084da6235",
+   "image_size": [
+    1141,
+    1600
+   ],
+   "n_input_tokens": 2288,
+   "n_output_tokens": 641,
+   "hit_max_new_tokens": false,
+   "latency_s": 18.832,
+   "wall_s": 18.96,
+   "peak_vram_gib": 8.879,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a static object, not the red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"green and orange object with multiple components\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a complex assembly, not the red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"orange and green object with multiple components\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a complex assembly, not the red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"orange cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a safety cone, not the red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"orange object with red markings\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It matches the description of the red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"green surface with white bird symbol\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a decorative or instructional panel, not the red cube.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"orange object with red markings\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It matches the description of the red cube.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a complex assembly, not the red cube.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"purple object with white markings\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a complex assembly, not the red cube.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is clearly a red cube, matching the target object.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"purple object with white markings\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a complex assembly, not the red cube.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"orange object with red markings\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It matches the description of the red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 11,\n  \"reason\": \"The red cube is clearly visible and located near the conveyor, matching the target object for movement.\"\n}"
+  },
+  {
+   "stage": "destination_E1_T2_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "225d9b5d3f7ab811337a348963ab45a4843a235c63c464993e62e67e9698eb87",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_E1_T2_R1.png",
+   "image_sha256": "59cff9b997878e492975dd97a1f5cee5877e6d5a437b9af62485298c22eedb4c",
+   "image_size": [
+    1600,
+    892
+   ],
+   "n_input_tokens": 2004,
+   "n_output_tokens": 963,
+   "hit_max_new_tokens": false,
+   "latency_s": 27.615,
+   "wall_s": 27.7,
+   "peak_vram_gib": 8.797,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck is occupied and not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck window is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"truck cab\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck cab is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"truck cargo area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck cargo area is a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck window is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"truck cargo area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck cargo area is a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"road edge\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The road edge is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"road edge\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The road edge is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"manhole cover\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The manhole cover is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a designated storage area for placing objects.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cone is not a designated storage area for placing objects.\"\n    }\n  ],\n  \"best_destination_id\": 5,\n  \"reason\": \"The truck cargo area is the designated storage area for placing objects.\"\n}"
+  },
+  {
+   "stage": "source_E1_T3_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "df5ec615fdb66a13a7f7f2beef5061ac125a1b65ecb37e51aa12f1c44f09514f",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_E1_T3_R0.png",
+   "image_sha256": "6b37207f917e33f824a826175588e171322ad365ca919ee368d195f8321bae55",
+   "image_size": [
+    960,
+    596
+   ],
+   "n_input_tokens": 785,
+   "n_output_tokens": 338,
+   "hit_max_new_tokens": false,
+   "latency_s": 9.302,
+   "wall_s": 9.35,
+   "peak_vram_gib": 8.494,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is the truck itself, not the box to be moved.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"truck's windshield\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is part of the truck's cab, not the box.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"truck's side mirror\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is a mirror on the truck, not the box.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"box on the truck\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"This is the box that needs to be moved from the truck.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"truck's side window\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is a window on the truck, not the box.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"truck's cargo area\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is the area where the box is located, not the box itself.\"\n    }\n  ],\n  \"object_to_move_id\": 4,\n  \"reason\": \"The box is the only object that needs to be moved from the truck.\"\n}"
+  },
+  {
+   "stage": "destination_E1_T3_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "c4b2b8a350e4a647896ff8f512ab709518b83b5ec975f8daf67a7675ca4e6e9a",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_E1_T3_R0.png",
+   "image_sha256": "f0722258399fd7ef9877ee533e9c39822770a1cdc331c442525edb4266d8bba3",
+   "image_size": [
+    1600,
+    1581
+   ],
+   "n_input_tokens": 2784,
+   "n_output_tokens": 1003,
+   "hit_max_new_tokens": false,
+   "latency_s": 29.801,
+   "wall_s": 29.94,
+   "peak_vram_gib": 9.019,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"scissors\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Not a conveyor belt or suitable surface for placing a box.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"gray floor area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Not a conveyor belt or suitable surface for placing a box.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"white box-like structure\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"white box-like structure\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"white box-like structure\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"white box-like structure\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"green and yellow cart\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"green and yellow cart\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"green and yellow cart\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"green and yellow cart\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"orange cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Not a conveyor belt or suitable surface for placing a box.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\n        \"green surface with white symbol\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"Green surface with white symbol, likely a conveyor belt or designated area for placing boxes.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\n        \"green surface with white symbol\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"Green surface with white symbol, likely a conveyor belt or designated area for placing boxes.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\n        \"green surface with white symbol\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"Green surface with white symbol, likely a conveyor belt or designated area for placing boxes.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"white box-like structure\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"white box-like structure\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not a conveyor belt.\"\n    }\n  ],\n  \"best_destination_id\": 18,\n  \"reason\": \"Green surface with white symbol is likely a conveyor belt or designated area for placing boxes, and is empty.\"\n}"
+  },
+  {
+   "stage": "source_E1_T3_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "2e5847155d0f616be8421f00014d2d32a6cf9853be5d0aa72fc3d4b23f770cf3",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_E1_T3_R1.png",
+   "image_sha256": "6b37207f917e33f824a826175588e171322ad365ca919ee368d195f8321bae55",
+   "image_size": [
+    960,
+    596
+   ],
+   "n_input_tokens": 1041,
+   "n_output_tokens": 341,
+   "hit_max_new_tokens": false,
+   "latency_s": 9.477,
+   "wall_s": 9.52,
+   "peak_vram_gib": 8.548,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"truck cab\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is part of the truck, not the box to be moved.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is a window of the truck, not the box to be moved.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"truck side\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is part of the truck's body, not the box to be moved.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"box on truck bed\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"This is the box that needs to be moved from the truck.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"truck side mirror\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is a mirror, not the box to be moved.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"truck bed\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"This is the truck bed, not the box to be moved.\"\n    }\n  ],\n  \"object_to_move_id\": 4,\n  \"reason\": \"The box is located on the truck bed and needs to be moved according to the instruction.\"\n}"
+  },
+  {
+   "stage": "destination_E1_T3_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "49f11acc20cae77b04c6d56b82dc7bc77c04505e89ce0bebb8cc875129b96fcd",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_E1_T3_R1.png",
+   "image_sha256": "f0722258399fd7ef9877ee533e9c39822770a1cdc331c442525edb4266d8bba3",
+   "image_size": [
+    1600,
+    1581
+   ],
+   "n_input_tokens": 3040,
+   "n_output_tokens": 1006,
+   "hit_max_new_tokens": false,
+   "latency_s": 30.177,
+   "wall_s": 30.31,
+   "peak_vram_gib": 9.073,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"green conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the target destination for placing the box, and it is clearly marked as a working area.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"white storage unit\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a storage unit, not a conveyor belt or designated placement area for the box.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"white storage unit\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a storage unit, not a conveyor belt or designated placement area for the box.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"robot arm\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The robot arm is not a surface for placing objects; it is a tool for handling items.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"white storage unit\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a storage unit, not a conveyor belt or designated placement area for the box.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"orange cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety cone, not a surface for placing objects.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\n        \"green area with safety markings\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"This is a safety walkway, not a designated area for placing objects.\"\n    }\n  ],\n  \"best_destination_id\": 5,\n  \"reason\": \"The conveyor belt is the designated target area for placing the box, as per the operational rules and the task description.\"\n}"
+  },
+  {
+   "stage": "source_D1_T2_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "660b2e0f4450f76817264a625483c3f10de569af9488a61bf3e54ca346dbfbf6",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_D1_T2_R0.png",
+   "image_sha256": "dab62165f8ce35e00cb7448b0d7b532909b50ab35031739105b14bda249bef70",
+   "image_size": [
+    1087,
+    1600
+   ],
+   "n_input_tokens": 1933,
+   "n_output_tokens": 296,
+   "hit_max_new_tokens": false,
+   "latency_s": 8.972,
+   "wall_s": 9.08,
+   "peak_vram_gib": 8.798,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"green box with red interior\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a green box, not a red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, which is the object to be moved.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"green box with red interior\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a green box, not a red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, which is the object to be moved.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, which is the object to be moved.\"\n    }\n  ],\n  \"object_to_move_id\": 2,\n  \"reason\": \"The red cube located at position 2 is the target object to be moved according to the instruction.\"\n}"
+  },
+  {
+   "stage": "destination_D1_T2_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "5923ca529cb6d0dc3fa10895533ff3e4554238854a85d486c8a09bf3a30cc226",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_D1_T2_R0.png",
+   "image_sha256": "268e1c7e5ed6babfd346fef026ea7c802edf72f71f69da8dfa5a03d89c2c9820",
+   "image_size": [
+    1600,
+    891
+   ],
+   "n_input_tokens": 1748,
+   "n_output_tokens": 903,
+   "hit_max_new_tokens": false,
+   "latency_s": 25.514,
+   "wall_s": 25.6,
+   "peak_vram_gib": 8.743,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck is a vehicle designed to carry cargo, making it suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The window is part of the truck's cabin and not designed for cargo placement.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"truck cab\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The cab is for the driver and not intended for cargo.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"truck bed\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck bed is designed to hold cargo, making it suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"concrete wall\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The wall is not a container for cargo.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"road surface\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The road surface is open and could potentially hold the red cube, though not ideal for cargo.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"concrete wall\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The wall is not a container for cargo.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designed to hold cargo.\"\n    }\n  ],\n  \"best_destination_id\": 7,\n  \"reason\": \"The truck bed is the most appropriate location for placing cargo, as it is specifically designed for carrying items.\"\n}"
+  },
+  {
+   "stage": "source_D1_T2_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "de77247376c0aa69111c4282135d4d3016d453434c05b5954098c64f68a2f44d",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_D1_T2_R1.png",
+   "image_sha256": "c010a9401325a9c3dd07b0fb4d94a73fbe384ffe2d2a9b2ff2952d6120a39881",
+   "image_size": [
+    1093,
+    1600
+   ],
+   "n_input_tokens": 2188,
+   "n_output_tokens": 286,
+   "hit_max_new_tokens": false,
+   "latency_s": 8.786,
+   "wall_s": 8.89,
+   "peak_vram_gib": 8.852,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"The red cube is located next to the conveyor and is the object to be moved.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"orange cube\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The orange cube is not the red cube to be moved.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"green box\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The green box is not the red cube to be moved.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"orange cube\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The orange cube is not the red cube to be moved.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"green box\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The green box is not the red cube to be moved.\"\n    }\n  ],\n  \"object_to_move_id\": 1,\n  \"reason\": \"The red cube (id 1) is the object specified in the instruction to be moved.\"\n}"
+  },
+  {
+   "stage": "destination_D1_T2_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "225d9b5d3f7ab811337a348963ab45a4843a235c63c464993e62e67e9698eb87",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_D1_T2_R1.png",
+   "image_sha256": "268e1c7e5ed6babfd346fef026ea7c802edf72f71f69da8dfa5a03d89c2c9820",
+   "image_size": [
+    1600,
+    891
+   ],
+   "n_input_tokens": 2004,
+   "n_output_tokens": 331,
+   "hit_max_new_tokens": false,
+   "latency_s": 9.843,
+   "wall_s": 9.93,
+   "peak_vram_gib": 8.797,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck is occupied and not a designated storage area for placing items.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck window is not a designated storage area for placing items.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"truck cab\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck cab is not a designated storage area for placing items.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"truck cargo\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck cargo is occupied and not a designated storage area for placing items.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"truck unloading zone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck unloading zone is designated for unloading items.\"\n    }\n  ],\n  \"best_destination_id\": 9,\n  \"reason\": \"The truck unloading zone is the designated area for unloading items.\"\n}"
+  },
+  {
+   "stage": "source_P4_R_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "413791b3c51ce90248a994837d0ec9e431d27dd34dbf1332d2e518c046c75a7f",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_P4_R_R0.png",
+   "image_sha256": "a40f1cc3fac31134d44d749f2594d2f74dafb6c4038e64c17ea9857e43cbfe13",
+   "image_size": [
+    1600,
+    886
+   ],
+   "n_input_tokens": 1627,
+   "n_output_tokens": 477,
+   "hit_max_new_tokens": false,
+   "latency_s": 13.656,
+   "wall_s": 13.73,
+   "peak_vram_gib": 8.717,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is a red cube, which is the object to be moved.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 6,\n  \"reason\": \"The red cube is the only object matching the description of the item to be moved.\"\n}"
+  },
+  {
+   "stage": "destination_P4_R_R0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "89ebfae08346888378c2d9979aecebb7dded6f5bd317732de213b936d5857d99",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_P4_R_R0.png",
+   "image_sha256": "b54787ed095e1bd387b85ba2d3bc66c9edeeb2265da8728f9692024b8853e4f5",
+   "image_size": [
+    1218,
+    1600
+   ],
+   "n_input_tokens": 2246,
+   "n_output_tokens": 695,
+   "hit_max_new_tokens": false,
+   "latency_s": 20.323,
+   "wall_s": 20.42,
+   "peak_vram_gib": 8.875,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The red cube is the object to be moved, not a placement surface.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\n        \"conveyor belt\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The conveyor belt is the designated area for placing the red cube as per the task instruction.\"\n    }\n  ],\n  \"best_destination_id\": 15,\n  \"reason\": \"The conveyor belt at ID 15 is empty and located in the designated area for placing the red cube as per the task instruction.\"\n}"
+  },
+  {
+   "stage": "source_P4_R_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_roles_v2",
+   "prompt_sha256": "0c7fa6b1279b350863da2c6a724c9c72a3302a2bc0d92fae212340e3b66b487c",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/src_P4_R_R1.png",
+   "image_sha256": "a40f1cc3fac31134d44d749f2594d2f74dafb6c4038e64c17ea9857e43cbfe13",
+   "image_size": [
+    1600,
+    886
+   ],
+   "n_input_tokens": 1883,
+   "n_output_tokens": 475,
+   "hit_max_new_tokens": false,
+   "latency_s": 13.828,
+   "wall_s": 13.91,
+   "peak_vram_gib": 8.771,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is the red cube that needs to be moved.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 6,\n  \"reason\": \"The red cube is the only object that matches the description of the item to be moved.\"\n}"
+  },
+  {
+   "stage": "destination_P4_R_R1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_roles_v2",
+   "prompt_sha256": "66414e5642469647c69b57213ab1ed03d0374ac070ed9fee594c8fc8b12c5b73",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/results/20261119_174000/inputs/dst_P4_R_R1.png",
+   "image_sha256": "52d9b963936c6e2153050f465f9ac12a05e2b9b74f1f133c48be34a783b24706",
+   "image_size": [
+    1212,
+    1600
+   ],
+   "n_input_tokens": 2502,
+   "n_output_tokens": 939,
+   "hit_max_new_tokens": false,
+   "latency_s": 27.681,
+   "wall_s": 27.79,
+   "peak_vram_gib": 8.929,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"white robotic arm with black base\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"Robotic arm is positioned to handle objects, suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"green and orange object with red top\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"orange and green object with red top\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"orange and green object with red top\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"Red cube is located in a zone where robot can access and place it.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"gray floor with white line\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Not a designated area for placing objects; it's a walkway.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"white robotic arm with black base\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"Robotic arm is positioned to handle objects, suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"gray floor with yellow line\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Not a designated area for placing objects; it's a robot travel zone.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\n        \"white rectangular object with grid pattern\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by another object, not suitable for placing the red cube.\"\n    }\n  ],\n  \"best_destination_id\": 5,\n  \"reason\": \"The robotic arm at ID 5 is positioned to handle objects, making it suitable for placing the red cube.\"\n}"
+  }
+ ],
+ "n": {
+  "qwen": 40,
+  "dino": 6
+ },
+ "worker_env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "pid": 27823,
+  "torch": "2.13.0+cu130",
+  "torch_cuda": "13.0",
+  "transformers": "5.16.1",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "loaded": {}
+ },
+ "swaps": [
+  {
+   "unloaded": [
+    "qwen"
+   ],
+   "for": "dino",
+   "t": 1795077779.7284582
+  },
+  {
+   "unloaded": [
+    "dino"
+   ],
+   "for": "qwen",
+   "t": 1795077790.810612
+  },
+  {
+   "unloaded": [
+    "qwen"
+   ],
+   "for": "dino",
+   "t": 1795077813.262039
+  },
+  {
+   "unloaded": [
+    "dino"
+   ],
+   "for": "qwen",
+   "t": 1795077820.6178377
+  }
+ ],
+ "total_wall_s": 599.5,
+ "peak_vram_gib": 9.073
+}

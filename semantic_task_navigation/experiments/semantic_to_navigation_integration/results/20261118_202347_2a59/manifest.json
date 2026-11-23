@@ -1,0 +1,605 @@
+{
+  "run_id": "20261118_202347_2a59",
+  "created": "2026-11-18T20:23:47",
+  "finished": "2026-11-18T20:25:50",
+  "overall_status": "NO_EXECUTABLE_PLAN",
+  "analysis_mode": "LOCAL_ONLY",
+  "map_mode": "IMAGE_SPACE_DEMO",
+  "command": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "input": {
+    "source": {
+      "kind": "image",
+      "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/natural_language_abstraction/data/images/undistorted_25070552942982.png",
+      "camera_model": null,
+      "camera_model_from": "EXIF Model tag",
+      "width": 1920,
+      "height": 1080
+    },
+    "source_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+    "decoded_pixels_sha256": "2373158e78f2e726745cc70f9a48ab3d3d87382fbcdf193229b2f801a165df5e",
+    "raw_frame_png": "input/raw_frame.png",
+    "frame_id": 1,
+    "timestamp_iso": "2026-11-18T20:23:45.221",
+    "width": 1920,
+    "height": 1080
+  },
+  "code": {
+    "sha256": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "n_files": 32,
+    "git_commit": null
+  },
+  "software": {
+    "python": "/home/binci/miniconda3/envs/stnav_gui/bin/python",
+    "python_version": "3.10.20",
+    "numpy": "2.2.6",
+    "opencv": "5.0.0",
+    "pillow": "12.3.0"
+  },
+  "models": {
+    "used": true,
+    "worker_env": {
+      "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+      "python_version": "3.10.20",
+      "pid": 89805,
+      "torch": "2.13.0+cu130",
+      "torch_cuda": "13.0",
+      "transformers": "5.16.1",
+      "cuda_available": true,
+      "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+      "loaded": {}
+    },
+    "worker_log": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/_worker_logs/worker_20261118_202345_89753.log",
+    "qwen": {
+      "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+      "requested_revision": null
+    },
+    "grounding_dino": {
+      "model_id": "IDEA-Research/grounding-dino-tiny",
+      "requested_revision": null
+    },
+    "commit_hashes_seen": [
+      "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+    ],
+    "loaded_at_end": {
+      "qwen": {
+        "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+        "requested_revision": null,
+        "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "dtype": "torch.bfloat16",
+        "load_s": 2.56,
+        "allocated_gib": 8.297,
+        "peak_allocated_gib": 8.297
+      }
+    },
+    "gpu_swaps_total_in_worker": 5,
+    "n_calls": 27,
+    "peak_vram_gib_max": 8.792
+  },
+  "prompts": {
+    "task_parse": {
+      "id": "task_parse_v1",
+      "template_sha256": "0fc408fc35dc096c4484037e3af8427a75df5ce0fd01e9ef8dde941c8699c97d"
+    },
+    "scene_analysis": {
+      "id": "scene_analysis_v1",
+      "template_sha256": "175e8d8e05ab78d44a359cee9c85cce186a825854b798403efa35514728e65fe"
+    },
+    "verify_object": {
+      "id": "verify_object_v1",
+      "template_sha256": "9a83d1d18c27929c33a99525fc8dc83f3f6acc174f8e53b9afb8e3860d6837f6"
+    },
+    "region_select": {
+      "id": "region_select_v2",
+      "template_sha256": "04efe1ab95a1fc7d85b823b882c1d9a1185174b6823ecb37907ffb396a3cac47"
+    },
+    "region_judge": {
+      "id": "region_judge_v1",
+      "template_sha256": "cee41976e018ff960a0b0c322ff3fdaa358f8c86703c0b03810e1dce543dec9a"
+    },
+    "grounding_fallback": {
+      "id": "grounding_fallback_v1",
+      "template_sha256": "c792ea2ef7aedba1daed88de99685bee8dbf33e5ffe561c5664550794ce4e97b"
+    }
+  },
+  "inference_params": {
+    "qwen": {
+      "dtype": "bfloat16",
+      "do_sample": false,
+      "max_new_tokens": {
+        "task_parse": 384,
+        "scene_analysis": 768,
+        "verify": 160,
+        "region_select": 320,
+        "grounding": 512
+      }
+    },
+    "grounding_dino": {
+      "box_threshold": 0.1,
+      "text_threshold": 0.1,
+      "nms_iou": 0.5,
+      "max_area_frac": 0.25,
+      "class_prompts": {
+        "conveyor": [
+          "conveyor belt",
+          "conveyor",
+          "roller conveyor"
+        ],
+        "truck": [
+          "truck"
+        ],
+        "mobile_robot": [
+          "mobile robot",
+          "wheeled robot"
+        ],
+        "red_cube": [
+          "red cube",
+          "small red block"
+        ]
+      },
+      "verify_top_k": {
+        "conveyor": 8,
+        "truck": 3,
+        "mobile_robot": 3
+      }
+    },
+    "target_inspection": {
+      "roi_margin_ratio": 0.6,
+      "roi_min_margin_px": 120,
+      "roi_zoom_long_side_px": 1600,
+      "roi_max_zoom": 4.0,
+      "hsv_red_ranges": [
+        [
+          0,
+          10
+        ],
+        [
+          170,
+          180
+        ]
+      ],
+      "hsv_min_saturation": 120,
+      "hsv_min_value": 70,
+      "candidate_min_area_raw_px": 40,
+      "candidate_max_area_raw_px": 4000,
+      "candidate_max_aspect": 2.5,
+      "candidate_min_solidity": 0.6,
+      "merge_iou": 0.3,
+      "max_candidates_to_verify": 8,
+      "verify_crop_pad_ratio": 1.5,
+      "verify_crop_min_px": 64,
+      "verify_crop_upscale_px": 448,
+      "robot_max_candidates_to_verify": 3
+    },
+    "gpu_residency": "exclusive"
+  },
+  "camera_calibration": {
+    "map_mode": "IMAGE_SPACE_DEMO",
+    "metric_output_enabled": false,
+    "undistort_view_available": false,
+    "checks": [
+      {
+        "check": "resolution",
+        "expected": [
+          1920,
+          1080
+        ],
+        "actual": [
+          1920,
+          1080
+        ],
+        "ok": true
+      },
+      {
+        "check": "camera_model",
+        "expected": "HD Web Camera",
+        "actual": null,
+        "ok": false
+      }
+    ],
+    "reasons": [
+      "camera model unknown or different from the calibrated camera",
+      "intrinsics not validated for the current camera installation",
+      "homography status: not_available (no validated floor-plane transform)"
+    ],
+    "homography_status": "not_available",
+    "intrinsics_file": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "intrinsics_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f"
+  },
+  "map": {
+    "file": "config/maps/reference_scene_map.json",
+    "map_id": "reference_scene_2026-11-14_zone_draft_v2",
+    "review_status": "DRAFT_UNCONFIRMED",
+    "spec_sha256": "079a304811e638733637b1043d6f4c3586af3193fb91cf969443f3ebf32ce486",
+    "alignment": {
+      "status": "MISALIGNED",
+      "shift_px": [
+        -32.785,
+        -6.523
+      ],
+      "response": 0.1215,
+      "thresholds": {
+        "max_shift_px": 3.0,
+        "min_response": 0.3
+      },
+      "reference_image": "config/maps/reference_scene_map.reference_P01.jpg"
+    }
+  },
+  "coordinate_frames": {
+    "detections": "raw_image_px",
+    "roi": "roi_local_px (raw = offset + roi/scale)",
+    "planning": "grid_row_col with cell_px=8 over raw_image_px",
+    "ground_map_xy": "disabled (no validated homography)"
+  },
+  "planning": {
+    "planner": "SAFETY_COST_ASTAR",
+    "simplification": "line_of_sight",
+    "cell_px": 8,
+    "robot_radius_px": 35,
+    "safety_margin_px": 40,
+    "safety_weight": 1.0,
+    "validation_tolerance_px": 8,
+    "goal_selection": {
+      "pickup": {
+        "max_dist_px": 140,
+        "min_dist_px": 0,
+        "distance_weight": 1.5,
+        "top_k_report": 5
+      },
+      "dropoff": {
+        "max_dist_px": 180,
+        "min_dist_px": 0,
+        "distance_weight": 1.5,
+        "top_k_report": 5
+      }
+    }
+  },
+  "manual_inputs": [
+    {
+      "item": "navigation map",
+      "source": "config/maps/reference_scene_map.json",
+      "review_status": "DRAFT_UNCONFIRMED",
+      "knowledge": "manual_prior"
+    },
+    {
+      "item": "robot start pose",
+      "source": "map.start_pose",
+      "knowledge": "manual_prior"
+    },
+    {
+      "item": "robot footprint, reach distances",
+      "source": "config/planning.yaml (image-space assumptions)",
+      "knowledge": "manual_prior"
+    }
+  ],
+  "auto_inferred": [
+    "task parse (LLM)",
+    "scene description (VLM)",
+    "object candidates (detector) + verification (VLM)",
+    "target selection",
+    "loading-area choice (VLM)"
+  ],
+  "timing": {
+    "total_s": 122.487,
+    "per_step_s": {
+      "parse_task": 0.0,
+      "analyze_scene": 0.0,
+      "detect_objects": 31.482,
+      "inspect_target": 14.594,
+      "build_scene_graph": 0.0,
+      "build_navigation_map": 0.085,
+      "infer_destination": 76.231,
+      "assess_placement": null,
+      "select_pickup_pose": null,
+      "select_dropoff_pose": null,
+      "plan_path": null,
+      "validate_path": null,
+      "create_handoff_request": null,
+      "save_results": null
+    }
+  },
+  "config_snapshot": {
+    "app": {
+      "default_analysis_mode": "LOCAL_ONLY",
+      "default_command": "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘.",
+      "default_image": "assets/reference/warehouse_scene_reference_01.jpg",
+      "runs_dir": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results",
+      "worker_log_dir": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/_worker_logs",
+      "map_file": "config/maps/reference_scene_map.json",
+      "demo_inputs_file": "config/demo/reference_scene_manual_inputs.json",
+      "handoff": {
+        "mode": "simulation",
+        "hardware_enabled": false
+      },
+      "api_agent": {
+        "provider": "openai_compatible",
+        "base_url": "https://api.openai.com/v1",
+        "model": "gpt-4o-mini",
+        "api_key_env": "OPENAI_API_KEY",
+        "timeout_s": 60
+      },
+      "gui": {
+        "preview_max_fps": 30,
+        "scene_change_shift_px": 3.0,
+        "scene_change_diff_ratio": 0.15,
+        "gpu_poll_interval_s": 2.0
+      }
+    },
+    "models": {
+      "worker": {
+        "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+        "startup_timeout_s": 120,
+        "request_timeout_s": 600,
+        "gpu_residency": "exclusive"
+      },
+      "qwen": {
+        "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+        "revision": null,
+        "dtype": "bfloat16",
+        "do_sample": false,
+        "max_new_tokens": {
+          "task_parse": 384,
+          "scene_analysis": 768,
+          "verify": 160,
+          "region_select": 320,
+          "grounding": 512
+        }
+      },
+      "grounding_dino": {
+        "model_id": "IDEA-Research/grounding-dino-tiny",
+        "revision": null,
+        "box_threshold": 0.1,
+        "text_threshold": 0.1,
+        "nms_iou": 0.5,
+        "max_area_frac": 0.25,
+        "class_prompts": {
+          "conveyor": [
+            "conveyor belt",
+            "conveyor",
+            "roller conveyor"
+          ],
+          "truck": [
+            "truck"
+          ],
+          "mobile_robot": [
+            "mobile robot",
+            "wheeled robot"
+          ],
+          "red_cube": [
+            "red cube",
+            "small red block"
+          ]
+        },
+        "verify_top_k": {
+          "conveyor": 8,
+          "truck": 3,
+          "mobile_robot": 3
+        },
+        "qwen_fallback_classes": [
+          "conveyor",
+          "truck"
+        ],
+        "roi_detector": true
+      },
+      "verification": {
+        "descriptions": {
+          "target": "a small {color} {object_class}",
+          "conveyor": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "truck": "a truck (a vehicle with a cab and a cargo bed; a toy or model truck counts)",
+          "mobile_robot": "a wheeled mobile robot, i.e. a small ground vehicle that drives on the floor (not a fixed robot arm, not a truck, not a cart)"
+        }
+      },
+      "target_inspection": {
+        "roi_margin_ratio": 0.6,
+        "roi_min_margin_px": 120,
+        "roi_zoom_long_side_px": 1600,
+        "roi_max_zoom": 4.0,
+        "hsv_red_ranges": [
+          [
+            0,
+            10
+          ],
+          [
+            170,
+            180
+          ]
+        ],
+        "hsv_min_saturation": 120,
+        "hsv_min_value": 70,
+        "candidate_min_area_raw_px": 40,
+        "candidate_max_area_raw_px": 4000,
+        "candidate_max_aspect": 2.5,
+        "candidate_min_solidity": 0.6,
+        "merge_iou": 0.3,
+        "max_candidates_to_verify": 8,
+        "verify_crop_pad_ratio": 1.5,
+        "verify_crop_min_px": 64,
+        "verify_crop_upscale_px": 448,
+        "robot_max_candidates_to_verify": 3
+      },
+      "prompts": {
+        "task_parse": {
+          "id": "task_parse_v1",
+          "text": "You convert one robot work instruction (Korean or English) into JSON. Return JSON only, no prose.\nSchema:\n{\"status\": \"ok\" | \"unsupported\" | \"ambiguous\" | \"missing_information\",\n \"task_type\": \"transport_and_place\" | \"navigate_to_region\" | null,\n \"target\": {\"class\": <singular English noun>, \"color\": <English color word or null>, \"count\": <integer>,\n            \"source_reference\": <English noun or null>, \"source_relation\": \"produced_by\" | \"on\" | \"near\" | \"from\" | null} | null,\n \"destination\": {\"region_type\": <snake_case English noun phrase, e.g. \"loading_area\">, \"reference_object\": <English noun or null>} | null,\n \"reason\": <one short English sentence>}\nRules:\n- transport_and_place: the robot picks up one object and places it at a destination.\n- navigate_to_region: the robot itself moves to a destination; target must be null.\n- Any other kind of action (rotate, stack, sort, open, clean, ...) -> status \"unsupported\".\n- If it is unclear which object or destination is meant -> status \"ambiguous\".\n- If the object to move or the destination is not stated -> status \"missing_information\".\n- count = number of objects the instruction asks to move.\n- Use only information stated in the instruction; do not invent objects.\nInstruction: \"\"\"{command}\"\"\"\n"
+        },
+        "scene_analysis": {
+          "id": "scene_analysis_v1",
+          "text": "You are assisting a mobile-robot task planner. Describe the work environment in this image.\nBase every statement only on what is visible. Return JSON only, no prose:\n{\"scene_type\": <short English phrase>,\n \"observed_equipment\": [<English noun phrases>],\n \"transport_objects\": [<vehicles, carts, pallets, containers seen>],\n \"task_relevant_objects\": [<visible objects relevant to the task below>],\n \"evidence\": [<short visual evidence statements>],\n \"uncertain\": [<things that cannot be determined from this single image>]}\nTask: {task_summary}\n"
+        },
+        "verify_object": {
+          "id": "verify_object_v1",
+          "text": "The green box in this zoomed image marks one candidate object. Is the object inside the green box {description}?\nAnswer \"no\" if it is a different kind of object or a different color.\nReturn JSON only, no prose:\n{\"answer\": \"yes\" | \"no\" | \"uncertain\", \"observed_color\": <English>, \"observed_object\": <English>, \"reason\": <one short sentence>}\n"
+        },
+        "region_select": {
+          "id": "region_select_v2",
+          "text": "This image shows a truck marked by a white box labeled \"T\" and numbered candidate floor areas ({candidate_ids}) drawn around it.\nFor each numbered area, judge whether it could be the loading area of this truck, i.e. where goods are handed over to or from the truck.\nUse visible cues such as the cargo bed and its open side, the truck's orientation, floor markings and nearby equipment.\nReturn JSON only, no prose:\n{\"candidates\": [{\"id\": <number>, \"plausible\": \"yes\" | \"no\" | \"uncertain\", \"reason\": <short>}],\n \"best\": <number or null>, \"evidence\": [<short visible cues>], \"uncertain\": [<what cannot be determined>]}\n"
+        },
+        "region_judge": {
+          "id": "region_judge_v1",
+          "text": "This top-down image of a work floor shows a truck marked by a white box labeled \"T\" and one candidate area outlined in green.\nIs the outlined area part of the loading/unloading area of this truck, i.e. a place where goods are handed over to or from this truck?\nUse visible cues such as floor markings, the truck's position and nearby equipment.\nAnswer \"no\" if the outlined area is a walkway, a safety zone, an area of other equipment, or unrelated floor.\nReturn JSON only, no prose:\n{\"answer\": \"yes\" | \"no\" | \"uncertain\", \"reason\": <one short sentence>}\n"
+        },
+        "grounding_fallback": {
+          "id": "grounding_fallback_v1",
+          "text": "Find every instance of \"{query}\" in this image. Return JSON only, no prose: {\"objects\": [{\"bbox_2d\": [x1, y1, x2, y2]}]} with integer coordinates normalized to 0-1000 relative to image width and height. If there is no such object, return {\"objects\": []}.\n"
+        }
+      }
+    },
+    "camera": {
+      "live": {
+        "device": null,
+        "width": 1920,
+        "height": 1080,
+        "fourcc": "MJPG",
+        "backend": "V4L2"
+      },
+      "calibration": {
+        "intrinsics_file": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+        "camera_model": "HD Web Camera",
+        "calibrated_on": "2026-08-14",
+        "intrinsics_validated_for_current_install": false,
+        "homography_file": null,
+        "homography_status": "not_available",
+        "ground_frame": null
+      }
+    },
+    "planning": {
+      "coordinate_frame": "raw_image_px",
+      "cell_px": 8,
+      "robot_radius_px": 35,
+      "safety_margin_px": 40,
+      "safety_weight": 1.0,
+      "planner": "SAFETY_COST_ASTAR",
+      "simplification": "line_of_sight",
+      "validation_tolerance_px": 8,
+      "validation_sample_step_px": 2.0,
+      "start_policy": "detected_else_manual",
+      "goal_selection": {
+        "pickup": {
+          "max_dist_px": 140,
+          "min_dist_px": 0,
+          "distance_weight": 1.5,
+          "top_k_report": 5
+        },
+        "dropoff": {
+          "max_dist_px": 180,
+          "min_dist_px": 0,
+          "distance_weight": 1.5,
+          "top_k_report": 5
+        }
+      },
+      "destination": {
+        "candidate_sources": [
+          "geometric_bands",
+          "grounded_structure"
+        ],
+        "structure_queries": [
+          "loading area of the truck",
+          "parking space of the truck"
+        ],
+        "structure_min_truck_containment": 0.5,
+        "structure_max_area_ratio": 6.0,
+        "structure_max_truck_iou": 0.95,
+        "structure_dedup_iou": 0.7,
+        "judge_crop_margin_px": 120
+      },
+      "placement": {
+        "exclude_detected_classes": [
+          "truck",
+          "conveyor",
+          "mobile_robot"
+        ],
+        "default_margin_px": 8,
+        "min_area_px": 150
+      },
+      "handoff_geometry": {
+        "gripper_reach_px": null,
+        "onboard_camera_view_px": null,
+        "provisional_reach_source": "goal_selection.max_dist_px"
+      },
+      "region_grounding": {
+        "band_ratio": 0.6,
+        "min_band_px": 60,
+        "min_candidate_area_px": 1500,
+        "context_margin_px": 80,
+        "prior_match_iou": 0.3
+      },
+      "relations": {
+        "near_px": 150,
+        "contain_ratio": 0.8
+      },
+      "dynamic_obstacle_classes": [
+        "truck",
+        "conveyor"
+      ]
+    }
+  },
+  "files_sha256": {
+    "analysis/crops/verify_conveyor_1.png": "9d7400d7d761b54fabdfb30dbff32096a5af99bc714987526e260bcf542eb54a",
+    "analysis/crops/verify_conveyor_2.png": "a09b15c136c74853c2caeab2227355b21be25e1a8f30157339a8ecc503fdf4e7",
+    "analysis/crops/verify_conveyor_3.png": "beaf95a1c487b04f330d5ffba2a6ac1da311d957ed13d011a630b2ffd24b0d8b",
+    "analysis/crops/verify_conveyor_4.png": "78489ce61b8407f39fbd4004900c5ae5a06648b39ab01e78afa41f017bbff4f5",
+    "analysis/crops/verify_conveyor_5.png": "c81796d495356f7030f5237c00221dd4dcb1d04c0338d4a71d5383d7911d67a0",
+    "analysis/crops/verify_conveyor_6.png": "91a37c3861f5c5dc2cbc52e9420ff198fc0e072f02a11733dcf97dc97d40c8b2",
+    "analysis/crops/verify_conveyor_7.png": "20245de0c4b032ae53be7b597d9ad9922f565e47614b07ab07fc4cb74d734faa",
+    "analysis/crops/verify_conveyor_8.png": "d46d213d6675c4ca20dbdba73eb4e1a42e3c92bf30d1baf959cafd10fd97c6b3",
+    "analysis/crops/verify_mobile_robot_1.png": "09a7c303eb882458b3095e161e624d42a137c2de90cceea60663724e4763ee5d",
+    "analysis/crops/verify_mobile_robot_2.png": "da977019de714fa3582e28faad69465ceb373666f555bb2d8a5d039a1ee31736",
+    "analysis/crops/verify_mobile_robot_3.png": "9e502f740751e9f1fcaf58a6144117a4dc075233d62e32fe602efdd9776cf857",
+    "analysis/crops/verify_truck_1.png": "96c4cc1575a883a3677145ef4d753c61daaf703da30893394596363105ea6e91",
+    "analysis/crops/verify_truck_2.png": "b5c8ed05f080bc50499eff0c839f6e893e3bd6fe9da4f01be455f9a75e7d50b7",
+    "analysis/crops/verify_truck_3.png": "cef17b58d33012480d57c00629fd02b7c6717b3939afd5ad1193fa91767cc38e",
+    "analysis/destination_chain.json": "de2b39f3c59d9577292807c8212f4dcadbb4e0446ada9cab66b66b0a19c37178",
+    "analysis/detections.json": "222391e9374298c02fd72b763831cb894476388f61ff071f5023aa57fe5b2154",
+    "analysis/model_calls.jsonl": "08f28837861d487069e519877d13fc23ad81e084e8961362c280b27cddd24725",
+    "analysis/roi/roi_1_zoom.png": "defc2ab0a73f92ac722b99b7bd51592e44eb644a1a4c0045b066417b65423ce8",
+    "analysis/roi/verify_target_1.png": "b9b4bb26af52a0d0edba996db3df38ceb60c84e48ac760b59af2c95940f823a7",
+    "analysis/roi/verify_target_2.png": "afb94f3fd763388b98cdbe33afa4cc4da0ba1b2fcddd3ca30010287499c6ddf3",
+    "analysis/roi/verify_target_3.png": "1967768d3b6354d01add654d779959394211572da31be8af4aa6892457d6afe8",
+    "analysis/roi/verify_target_4.png": "c362d37866ef896a9d81b568dc54c18ed7553660ffe216880d208464a8f50050",
+    "analysis/roi/verify_target_5.png": "2b3fce1bc4d38c8c9f676fe184729bb4007f0c348a44d84b5d9147641b0e1f16",
+    "analysis/roi/verify_target_6.png": "7be5fc82421e7a0088b274397d7253330096b799edf88ea7e5b9d933088c8450",
+    "analysis/roi/verify_target_7.png": "181c110e782411bf46b0fc6665ce1840f9f637473ccd8ece7d55f5e32042c99d",
+    "analysis/roi/verify_target_8.png": "99e2dc0e791fad34e2438cf11c20113bae9329159001c273893beb9f398dc5c5",
+    "analysis/target_inspection.json": "3827bef88b7adcb3419079f82b030335193e875c549cf0034cc698af09e5e364",
+    "analysis/task_parse.json": "5844a726b6ba5dff2f2025bbf430e3b4cc0708334706eebb6f4bec7c810f70a9",
+    "figures/01_raw.png": "de401eb0f23fd39f8fb9650df2ac1ad6f94a765a117e13645dddbf8e9c67eddd",
+    "figures/02_detections.png": "c412e943d0a0461f2a397c8190099cb28e23c765d15ea91e9e7788ade694b60c",
+    "figures/03_red_cube_roi.png": "969183c16339e46c28986580d15312f6677399441e05f8ba341df2510e21fa43",
+    "figures/04_semantic_regions.png": "f85763a9c6e841e71c34c66be04389737dc493b4edc66557fa6bba3d50edfd73",
+    "figures/05_occupancy_map.png": "aff4af8ab420960b25b05a301d8ddcd802a92f5f4006b2b71dc27bdb7d81064e",
+    "figures/06_pickup_path.png": "47a555268693b9110f3af794681fe9c0cd666d7525b2511411934bd9a1c78503",
+    "figures/07_delivery_path.png": "ca2a1a266f0df89e58f5d05424e1168ea8fcf5c76207e15e8f75d3f7b7650ef7",
+    "figures/08_final_overview.png": "e71e9c0f6324ea0eadf89b8f3b8ab129cd83afcdecc1bc7b937a64e93d18c1da",
+    "figures/09_object_relationship.png": "7d741759b84a4182089dc13d15157d850eb1c2d2c56e59852ea466ea56f0a35c",
+    "figures/10_traversable_map.png": "e4ea1964d4990461c05429e862ea39d66bdb4717a3fb27366c94893b9852c200",
+    "figures/11_destination_chain.png": "3fc5f22cb096d57e64df0464ef7cdd59d389aac5fe71180d83453806d23f250c",
+    "input/command.txt": "5f8e5df4dfa5ff3b25e6e8c39d83bbad17a3d713267139df67e3a807b8d9e996",
+    "input/frame.json": "7570b2b0051244a3f70d3a59a6d90dd01e0fbc2608c2893c9b722566bab4cb62",
+    "input/raw_frame.png": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+    "planning/map.json": "ee5565fe614de84727160b96fe181980d8f2fc817104dae268b9f70e225a8a43",
+    "result.json": "867dd29b57c78144529562458e49529f3d5c44f06c16a01f7e075564d278c4a9",
+    "verification/judge/region_judge_cand1.png": "b63f7a6b719cb36e809cdf928dea64ea9329d3757aea51f6b9c0ce4683189b2a",
+    "verification/judge/region_judge_cand2.png": "79f415dde415026944b751b2d0b1ac932597b704fcd3f5d880610e0bdec5bf26",
+    "verification/judge/region_judge_cand3.png": "2e12a7d2513af08f7d8dcf944b9691a4bf4d42a61be8b994870ad0c449434526",
+    "verification/judge/region_judge_cand4.png": "78eac0571f1d2bed4f8765da82ad8ea349054e0803db4216f2fe0867fbbd1599",
+    "verification/traffic_cone_crops/crop_1.png": "3bdd5e9041a9ac8a6e93b4b3de9e182c9846be2fdd66aee7713820dec9e253ab",
+    "verification/traffic_cone_crops/crop_2.png": "8048cf3cb80975e50bfebda5696628bb908cb7fb522ec28b1b8bf5da19b4ddb3",
+    "verification/traffic_cone_crops/crop_3.png": "2ff13efc7e1b1a3104afb0489381e9e59cdda437baa49d61334c967a71be86e7",
+    "verification/traffic_cone_crops/crop_4.png": "6452fb83220bd4f2dd3fad688422be7c1ad4690385e67d8c48e22e7e2ff3cf39",
+    "verification/traffic_cone_crops/crop_5.png": "7a794b81d4c2ced7a050606a2afb887e1f9985b816e6ab7528335cba6b570426",
+    "verification/traffic_cone_crops/crop_6.png": "8d7a4c13477af0fdb3a920f3e784c4da78f96dc749a366e8931c2a10ee75e4c9",
+    "verification/verification.json": "4c3dc19b52f5fb90dc399078f53df5e0c0f8e28b40de61080aaececc9c8fb7bb",
+    "vlm_proposal/overlay_areas.png": "3e0f7093ad494d2c8d4a937d4d47c154d8d2082bdbb6e20416515aec63fe9c87",
+    "vlm_proposal/prompt.txt": "3ab876f263fefd093619942b393d5bdc220f155454324a5d9c847a1083d88e97",
+    "vlm_proposal/raw_response.txt": "d4635d4a54f5806c5622fa8b05b709426b20dc0cd5f7969c05ad40d0ae098f09",
+    "vlm_proposal/result.json": "66a28166a9c18ed1575ffd72de5f7d261e3d33d6909baafb1a01364eeb4b13c1",
+    "vlm_proposal/structured.json": "f03d86f6cccd45fa8f578b342437b4424b24f578a6f4db1e86d8187c40e810f3"
+  },
+  "append_only_logs": {
+    "files": [
+      "analysis/agent_events.jsonl",
+      "handoff/events.jsonl"
+    ],
+    "note": "appended after the manifest (run_finished, simulated hand-off events); not hashed"
+  }
+}

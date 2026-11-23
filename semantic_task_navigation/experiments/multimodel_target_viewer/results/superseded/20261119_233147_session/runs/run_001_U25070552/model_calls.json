@@ -1,0 +1,131 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "9e3886807cf0aaa9ca2d1221599984163d11cde2886ae221b8203bbdc48affa6",
+  "image_path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2727,
+  "n_output_tokens": 465,
+  "hit_max_new_tokens": false,
+  "latency_s": 19.407,
+  "wall_s": 19.6,
+  "peak_vram_gib": 7.117,
+  "raw_response": "{\n  \"purpose\": \"Move a red cube from conveyor area to truck loading zone\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [120, 300, 230, 500]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"Truck loading zone\",\n  \"destination_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [740, 0, 880, 150],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Robot driving area\",\n      \"visual_evidence\": [\"yellow outer boundary line\", \"black floor\"],\n      \"bbox_2d\": [240, 270, 700, 700],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor and robot arm workcell\",\n      \"visual_evidence\": [\"white inner boundary\", \"conveyor belt\", \"robot arm\"],\n      \"bbox_2d\": [100, 260, 270, 700],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck loading zone\",\n      \"visual_evidence\": [\"white dotted line\", \"truck\", \"orange cones\"],\n      \"bbox_2d\": [620, 0, 880, 270],\n      \"robot_body_access\": \"unknown\"\n    },\n    {\n      \"description\": \"Pedestrian walkway\",\n      \"visual_evidence\": [\"green floor\", \"footprint symbols\"],\n      \"bbox_2d\": [300, 50, 560, 270],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"Exact location of red cube not visible\",\n    \"Robot's reach capability not confirmed\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_001_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "prompts": [
+   "conveyor belt",
+   "truck"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 55,
+  "wall_s": 0.76,
+  "peak_vram_gib": 1.966
+ },
+ {
+  "stage": "dino_roi_U25070552_truck_run_001_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/results/20261119_233147_session/photos/U25070552_inputs/roi_truck.png",
+  "image_sha256": "11df1597a6db75dbdc72ea76e6c09cdbb35b5e345e9c171813bba834852b6864",
+  "prompts": [
+   "conveyor belt",
+   "truck"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 19,
+  "wall_s": 0.57,
+  "peak_vram_gib": 1.956
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_source_roles_v1",
+  "prompt_sha256": "f8665cf849f20a3c681e1e7cb3ce738b3a5a6e426c9ee9a73c9a2773adff824e",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/results/20261119_233147_session/runs/run_001_U25070552/inputs/source_1.png",
+  "image_sha256": "290c532e26c65d9960c64ec7ba28c7ca8d32ebb582e0669d03b69c82239e48ba",
+  "image_size": [
+   844,
+   1076
+  ],
+  "n_input_tokens": 1610,
+  "n_output_tokens": 220,
+  "hit_max_new_tokens": false,
+  "latency_s": 8.679,
+  "wall_s": 8.74,
+  "peak_vram_gib": 6.798,
+  "raw_response": "{\"candidates\": [{\"id\": 1, \"appearance\": [\"a floor marking\", \"a conveyor belt\", \"an orange object\"], \"role\": \"other\", \"reason\": \"Contains floor marking and conveyor belt, not a red cube.\"}, {\"id\": 2, \"appearance\": [\"a robot arm\", \"a conveyor belt\", \"a floor marking\"], \"role\": \"other\", \"reason\": \"Contains robot arm and conveyor belt, not a red cube.\"}, {\"id\": 3, \"appearance\": [\"a robot arm\", \"a conveyor belt\", \"a floor marking\"], \"role\": \"other\", \"reason\": \"Contains robot arm and conveyor belt, not a red cube.\"}, {\"id\": 4, \"appearance\": [\"a robot arm\", \"a truck\", \"a mobile robot\"], \"role\": \"other\", \"reason\": \"Contains robot arm and truck, not a red cube.\"}], \"object_to_move_id\": null, \"reason\": \"None of the candidates show a red cube; all contain robot arms or conveyor belts.\"}"
+ },
+ {
+  "stage": "siglip_images_destination",
+  "model": "google/siglip2-base-patch16-384",
+  "commit_hash": "f775b65a79762255128c981547af89addcfe0f88",
+  "n_images": 2,
+  "seconds": 0.13,
+  "device": "cuda:0",
+  "peak_vram_gib": 7.022
+ },
+ {
+  "stage": "destination_1",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_destination_roles_v1",
+  "prompt_sha256": "2f3cf91d28b0f3ca9d890edb7fba93520431218bbc260b3ce9289de98bc5d361",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/results/20261119_233147_session/runs/run_001_U25070552/inputs/destination_1.png",
+  "image_sha256": "25ccb558d58913c05a2acd474f1f6faa9dddf10991013b8f4b3fc3afa3fc23a6",
+  "image_size": [
+   1600,
+   889
+  ],
+  "n_input_tokens": 2706,
+  "n_output_tokens": 1447,
+  "hit_max_new_tokens": false,
+  "latency_s": 52.823,
+  "wall_s": 52.93,
+  "peak_vram_gib": 7.068,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"a truck\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"트럭 본체에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"a truck cargo bed\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"화물칸이 이미 채워져 있음.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"an orange traffic cone\", \"a floor marking\", \"a mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"로봇이 존재하며, 안전 콘 위에 놓을 수 없음.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"a floor marking\", \"an orange traffic cone\", \"a truck\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"트럭 근처의 바닥 표시선 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\"a truck\", \"an orange traffic cone\", \"a truck cargo bed\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"트럭 본체 근처에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\"a truck\", \"a stack of boxes\", \"a truck cargo bed\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"화물칸이 이미 쌓여 있음.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\"a truck\", \"a truck cargo bed\", \"a small pallet\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"화물칸이 이미 쌓여 있음.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\"a truck cargo bed\", \"a truck\", \"an orange traffic cone\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"화물칸이 이미 쌓여 있음.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\"a truck\", \"a floor marking\", \"a mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"로봇이 존재하며, 바닥 표시선 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a cart\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"an empty floor area\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\"a truck\", \"a mobile robot\", \"a floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"로봇이 존재하며, 바닥 표시선 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\"a floor marking\", \"an orange traffic cone\", \"a mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"로봇이 존재하며, 바닥 표시선 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a robot arm\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"로봇 팔이 존재하며, 안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a small pallet\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a barrel\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a cardboard box\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a cart\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"안전 콘 위에 물체를 놓을 수 없음.\"\n    }\n  ],\n  \"best_destination_id\": null,\n  \"reason\": \"트럭 근처에 적절한 물체 놓을 수 있는 공간이 없음.\"\n}"
+ },
+ {
+  "stage": "destination_2",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_destination_roles_v1",
+  "prompt_sha256": "3e5d51611b6306ec8838f2ba239cf89df6e8028441f4b058ae25e66c31260e18",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/results/20261119_233147_session/runs/run_001_U25070552/inputs/destination_2.png",
+  "image_sha256": "2374172043f78addd148b8b010f8337c8e244f38bfe88ee7c7d4d2991f51c73d",
+  "image_size": [
+   1600,
+   892
+  ],
+  "n_input_tokens": 2207,
+  "n_output_tokens": 265,
+  "hit_max_new_tokens": false,
+  "latency_s": 10.854,
+  "wall_s": 10.94,
+  "peak_vram_gib": 6.961,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"a metal grate\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"metal grate is on truck's loading zone and suitable for placing the red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by traffic cone, cannot place the red cube here.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"an orange object\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by orange object, cannot place the red cube here.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"a floor marking\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"empty floor marking, but not near truck, less suitable than option 1.\"\n    }\n  ],\n  \"best_destination_id\": 1,\n  \"reason\": \"metal grate is empty, located near truck, and suitable for placing the red cube.\"\n}"
+ }
+]

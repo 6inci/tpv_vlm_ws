@@ -1,0 +1,152 @@
+{
+  "scenario_id": "S5_completely_blocked",
+  "description": "A horizontal obstacle spans the workspace and separates start from goal.",
+  "geometry_status": "DEVELOPMENT_SYNTHETIC",
+  "expected_high_level_result": "NO_PATH_EXPECTED",
+  "result": "PASS",
+  "start": {
+    "x": 0.2,
+    "y": 0.3,
+    "status": "DEVELOPMENT_DEFINED"
+  },
+  "goal": {
+    "x": 0.95,
+    "y": 1.5,
+    "status": "DEVELOPMENT_DEFINED"
+  },
+  "static_obstacles": [
+    {
+      "id": "s5_blocking_obstacle",
+      "geometry_status": "DEVELOPMENT_SYNTHETIC",
+      "planning_role": "STATIC_OBSTACLE",
+      "shape": "axis_aligned_rectangle",
+      "raw_bounds": {
+        "x_min": 0.145,
+        "x_max": 1.055,
+        "y_min": 0.82,
+        "y_max": 0.98
+      },
+      "collision_bounds": {
+        "x_min": 0.0,
+        "x_max": 1.2,
+        "y_min": 0.697,
+        "y_max": 1.103
+      },
+      "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+      "source_detail": "Development-only full-width barrier for explicit NO_PATH validation."
+    }
+  ],
+  "grid": {
+    "resolution_m": 0.02,
+    "rows": 90,
+    "cols": 60,
+    "cell_count": 5400,
+    "free_cell_count": 2668,
+    "occupied_cell_count": 2732,
+    "additional_inflation_m": 0.0,
+    "occupancy_sha256": "f955b8a34bd55a264cd619ecc646f36dfaa3bdbf66faf0f44ea3bfc8856af598",
+    "safety_risk_sha256": "e75eb2e99f3805452d91f6245c4eed5049f8b835c28680ea2d434a81da10a41c"
+  },
+  "distance_only_astar": {
+    "status": "NO_PATH",
+    "path_found": false,
+    "planner": "DISTANCE_ONLY_ASTAR",
+    "start_input_m": [
+      0.2,
+      0.3
+    ],
+    "goal_input_m": [
+      0.95,
+      1.5
+    ],
+    "start_grid": [
+      15,
+      10
+    ],
+    "goal_grid": [
+      75,
+      47
+    ],
+    "start_cell_center_m": [
+      0.21,
+      0.31
+    ],
+    "goal_cell_center_m": [
+      0.9500000000000001,
+      1.51
+    ],
+    "mapping_policy": "HALF_OPEN_CONTAINING_CELL_CENTER",
+    "path_grid": [],
+    "path_world": [],
+    "planning_time_ms": 4.95641099405475,
+    "nodes_expanded": 1334,
+    "path_length_m": null,
+    "minimum_clearance_m": null,
+    "accumulated_safety_risk": null,
+    "number_of_waypoints": 0,
+    "total_objective_cost": null,
+    "collision_free": false
+  },
+  "safety_cost_astar": {
+    "status": "NO_PATH",
+    "path_found": false,
+    "planner": "SAFETY_COST_ASTAR",
+    "start_input_m": [
+      0.2,
+      0.3
+    ],
+    "goal_input_m": [
+      0.95,
+      1.5
+    ],
+    "start_grid": [
+      15,
+      10
+    ],
+    "goal_grid": [
+      75,
+      47
+    ],
+    "start_cell_center_m": [
+      0.21,
+      0.31
+    ],
+    "goal_cell_center_m": [
+      0.9500000000000001,
+      1.51
+    ],
+    "mapping_policy": "HALF_OPEN_CONTAINING_CELL_CENTER",
+    "path_grid": [],
+    "path_world": [],
+    "planning_time_ms": 5.371264007408172,
+    "nodes_expanded": 1334,
+    "path_length_m": null,
+    "minimum_clearance_m": null,
+    "accumulated_safety_risk": null,
+    "number_of_waypoints": 0,
+    "total_objective_cost": null,
+    "collision_free": false
+  },
+  "independent_validation": {
+    "distance_only_astar": {
+      "status": "NO_PATH_CONFIRMED",
+      "no_partial_path": true,
+      "collision_free": null,
+      "valid_adjacency": null,
+      "corner_cutting_absent": null
+    },
+    "safety_cost_astar": {
+      "status": "NO_PATH_CONFIRMED",
+      "no_partial_path": true,
+      "collision_free": null,
+      "valid_adjacency": null,
+      "corner_cutting_absent": null
+    }
+  },
+  "determinism": {
+    "occupancy_identical": true,
+    "safety_risk_identical": true,
+    "distance_path_semantic_identical": true,
+    "safety_path_semantic_identical": true
+  }
+}

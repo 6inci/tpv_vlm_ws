@@ -1,0 +1,91 @@
+{
+  "purpose": "Move the red cube from near the truck to the conveyor belt area",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [
+      752,
+      0,
+      879,
+      142
+    ]
+  },
+  "source_relation": "near",
+  "destination_meaning": "Conveyor belt area for processing",
+  "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [
+      118,
+      268,
+      223,
+      720
+    ],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Left-side conveyor belt area with robotic arms",
+      "visual_evidence": [
+        "white boundary lines",
+        "robotic arms",
+        "yellow safety lines"
+      ],
+      "bbox_2d": [
+        118,
+        268,
+        223,
+        720
+      ],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Right-side truck parking zone",
+      "visual_evidence": [
+        "white dashed lines",
+        "orange cones"
+      ],
+      "bbox_2d": [
+        628,
+        0,
+        917,
+        280
+      ],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Central storage zone with cardboard boxes",
+      "visual_evidence": [
+        "yellow boundary lines",
+        "orange cones"
+      ],
+      "bbox_2d": [
+        388,
+        394,
+        505,
+        570
+      ],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Bottom-right charging station zone",
+      "visual_evidence": [
+        "white boundary lines",
+        "lightning bolt symbol",
+        "green safety markers"
+      ],
+      "bbox_2d": [
+        668,
+        770,
+        800,
+        940
+      ],
+      "robot_body_access": "allowed"
+    }
+  ],
+  "uncertainty": [
+    "The exact position of the red cube relative to the truck is not clearly visible"
+  ]
+}

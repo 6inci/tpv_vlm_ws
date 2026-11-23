@@ -1,0 +1,79 @@
+{
+ "frames": {
+  "undistorted_px": "pixels of the photos as stored (already undistorted, newK = K); never undistort again",
+  "floor_cm": "PROVISIONAL E1 mat-seam floor plane: origin mat node (0,0) far-left, +x image right, +y towards the camera",
+  "map_m": "ROS2 map frame of map.yaml (REP-103 right-handed, z up): origin mat node (0,2), +y away from the camera",
+  "grid_rc": "map.pgm row/col; row 0 = largest y_map",
+  "odom/base_link": "NOT defined here; map->odom comes from the robot's localisation"
+ },
+ "transform": {
+  "H_img_to_floor_cm": [
+   [
+    0.24949985848408293,
+    0.06402733890237534,
+    -76.94939494298758
+   ],
+   [
+    0.009393995776614674,
+    0.3181181406638206,
+    -30.132148682325916
+   ],
+   [
+    4.52436793590954e-05,
+    0.0003723999788949748,
+    1.0
+   ]
+  ],
+  "map_origin_floor_cm": [
+   0.0,
+   210.0
+  ],
+  "formulas": {
+   "img_to_floor": "floor_cm = H_img_to_floor_cm * [u, v, 1] (perspective division)",
+   "floor_to_map": "x_map = (x_floor - ox)/100, y_map = (oy - y_floor)/100  [m]",
+   "yaw": "yaw_map = -yaw_floor (yaw_floor measured from +x_floor towards +y_floor, i.e. image right towards image down)"
+  }
+ },
+ "grid": {
+  "rows": 115,
+  "cols": 168,
+  "resolution_m": 0.02,
+  "origin_m": [
+   -0.1,
+   -0.1,
+   0.0
+  ],
+  "extent_floor_cm": [
+   -10.0,
+   -10.0,
+   326.0,
+   220.0
+  ],
+  "row0": "top image row = largest y_map (Nav2 map_server)"
+ },
+ "layer_codes": {
+  "0": "FREE (inside drivable zone Z02, no obstacle)",
+  "1": "STATIC_OBSTACLE (DRAFT staging zones)",
+  "2": "NO_GO (DRAFT pedestrian route / robotic workcell)",
+  "3": "NOT_DRIVABLE (workspace outside Z02, or a mixed boundary cell)",
+  "4": "UNKNOWN (outside the 3 x 2 mat workspace)"
+ },
+ "floor_transform_record": {
+  "method": "local seam-line fits intersected at the mat-grid nodes -> DLT homography (cv2.findHomography, method 0, all nodes)",
+  "status": "PROVISIONAL_UNVALIDATED",
+  "fit_rms_cm": 3.57,
+  "fit_max_cm": 5.22,
+  "leave_one_out_max_cm": 19.7,
+  "seam_max_abs_dev_cm": 3.5,
+  "footprint_margin_cm": 3.5,
+  "known_limits": [
+   "mat edges near the image border are visibly curved: residual lens distortion remains after the read-only undistortion; the nodes on the bottom mat row (image y > 975) have the largest residuals and lie outside the planned work band",
+   "points above the floor (cube on the conveyor, tops of boxes) are displaced by parallax: only floor-level features map correctly",
+   "mat gaps are ignored as the user stated; a gap of a few mm would shift the node positions"
+  ]
+ },
+ "status": {
+  "floor_transform": "PROVISIONAL_UNVALIDATED",
+  "zones": "DRAFT_UNCONFIRMED"
+ }
+}

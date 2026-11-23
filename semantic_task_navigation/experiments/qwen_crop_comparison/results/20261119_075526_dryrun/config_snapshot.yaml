@@ -1,0 +1,63 @@
+# Qwen crop-representation comparison on E1 (4 candidates x 3 conditions). Declared and frozen BEFORE any model call.
+# Question: is the stored Qwen "no" for the cube candidate related to how the crop is presented? NOT a detector evaluation, NO accuracy claim.
+# Nothing here changes v0.2 (src/, config/), the frozen prompt verify_object_v1, the model, or stored results.
+experiment_id: qwen_crop_comparison
+image: /home/binci/Pictures/Calibration/undistorted_25070552942982.png      # E1 (identical to the stored run's input/raw_frame.png, sha256 checked)
+image_sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605
+stored_run: ../semantic_to_navigation_integration/results/20261118_203058_46d8       # candidates, boxes, crops, Qwen answers (read only)
+stored_repeat_run: ../semantic_to_navigation_integration/results/20261118_203426_260d  # same photo again: all 8 raw responses were identical (determinism evidence)
+retention_run: ../candidate_retention_policy/results/20261119_073841_retention
+results_dir: results
+
+# Candidates = the stored v0.2 records (their boxes and Qwen answers exist). `role` is an AI PRELIMINARY visual review, not human ground truth.
+# The retention ranking boxes differ slightly for ranks 3 and 6 (merge order); the stored boxes are used because condition A is their stored answer.
+candidates:
+  - {id: target_cand1, retention_rank: 1, role: cube_estimate,  ai_note: "small red block on a gray grid pad (matches the AI label of cube_candidate_funnel)"}
+  - {id: target_cand2, retention_rank: 2, role: confusable,      ai_note: "base plate of an orange traffic cone"}
+  - {id: target_cand5, retention_rank: 3, role: confusable,      ai_note: "red/orange parts inside a shelf rack"}
+  - {id: target_cand3, retention_rank: 6, role: confusable,      ai_note: "small red/orange part inside the same rack"}
+label_status: AI_PRELIMINARY_REVIEW
+
+# Prompt: v0.2 verify_object_v1, text unchanged, description from the stored run ("a small red cube"). It mentions "the green box": see KNOWN_CONFOUND_B.
+prompt: {key: verify_object, id: verify_object_v1, sha256: c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd}
+generation: {do_sample: false, max_new_tokens_from: qwen.max_new_tokens.verify}      # greedy: same input -> same output
+gpu: "RTX 5070 Ti Laptop 12 GB; Qwen only (no DINO), one worker, calls strictly sequential, exclusive residency (v0.2 default)"
+
+conditions:
+  A:
+    what: "stored v0.2 verification: stored crop (pad 1.5 x longest side, min 64 px, upscale to 448 px, green box marker) and the STORED answer"
+    model_calls: 0
+  A_control:
+    what: "PIPELINE CONTROL, not a condition: the stored A crop files are sent through the current pipeline once; the raw response must equal the stored one, otherwise B/C differences cannot be attributed"
+    model_calls: 4
+  B:
+    what: "marker removal only: same box, same crop range, same scale (unrounded A scale), same prompt; the green rectangle is not drawn"
+    pad_ratio: 1.5
+    scale: same_as_A
+    marker: false
+    model_calls: 4
+  C:
+    what: "surrounding context only: same box, same prompt, same marker, same candidate scale as A (the candidate has the same pixel size); the margin around the box is enlarged"
+    pad_ratio: 5.0                 # v0.2: 1.5
+    scale: same_as_A               # so the OUTPUT IMAGE gets larger (more visual tokens): unavoidable side effect, recorded
+    marker: true
+    model_calls: 4
+crop_mapping: "every crop records crop_xyxy_raw and scale: raw = crop_xyxy_raw[:2] + crop_px / scale; the box is drawn / located by the same formula"
+
+KNOWN_CONFOUND_B: >
+  The frozen prompt asks about "the green box". In B the box is absent, so Qwen must answer about whatever it considers the main object. The candidate
+  is at the crop centre (symmetric padding), but a changed answer in B cannot be read as "the marker hid the cube". The prompt is NOT modified.
+KNOWN_CONFOUND_C: "larger output image (more visual tokens) together with more context; separating these two would need another condition and is not run"
+
+# Decision rule, declared before the run. "accepted" = parsed answer "yes"; "uncertain" and "no" are not accepted (uncertain is recorded).
+decision:
+  per_condition:
+    CUBE_ONLY: "cube_estimate accepted, no confusable accepted -> situation 1 for that condition (promising crop method, E1 only, not generalised)"
+    CUBE_AND_CONFUSABLE: "cube_estimate and >= 1 confusable accepted -> situation 2 (candidate discrimination not solved)"
+    CONFUSABLE_ONLY: "a confusable accepted, cube_estimate not -> wrong accept without the cube (worse than situation 3)"
+    NONE_ACCEPTED: "nothing accepted"
+  across_conditions:
+    situation_3: "cube_estimate not accepted in A, B and C"
+    situation_4: "cube_estimate decision differs between conditions: record which image condition changed it, the cause is NOT established"
+    situation_1_or_2: "cube_estimate accepted in A, B and C: situation 1 if no confusable is accepted in any, otherwise 2"
+claims: {detection_accuracy: NOT_COMPUTED, generalisation: "none: one photo, four candidates, AI preliminary roles"}

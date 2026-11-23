@@ -1,0 +1,187 @@
+{
+  "result": "PARTIAL",
+  "verification_type": "Semantic Label Specificity / Software Integration Verification",
+  "not_final_paper_accuracy": true,
+  "created_at": "2026-09-17T17:23:42.437290+09:00",
+  "image": "/home/binci/qwen_vision_test/photo_04.png",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "model_cache": "/home/binci/.cache/huggingface/hub/models--Qwen--Qwen3-VL-4B-Instruct",
+  "local_files_only": true,
+  "model_load_sec": 1.952243683999768,
+  "inference_sec": [
+    19.972361706999436,
+    19.011286400000245,
+    18.896199894001256
+  ],
+  "environment": {
+    "python": "3.10.20",
+    "torch": "2.13.0+cu130",
+    "transformers": "5.16.1",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU"
+  },
+  "architecture": {
+    "vlm_outputs": [
+      "specific semantic label",
+      "semantic_type",
+      "bbox_2d"
+    ],
+    "vlm_does_not_output": [
+      "navigation_role",
+      "target selection",
+      "collision role",
+      "path role"
+    ],
+    "geometry_outputs": [
+      "undistorted pixel",
+      "metric X/Y"
+    ]
+  },
+  "prompt_contains_current_reference_answers": false,
+  "reference_status": "PARTIAL_SEMANTIC_REFERENCE",
+  "entity_counts": [
+    11,
+    11,
+    11
+  ],
+  "label_status_counts_by_run": [
+    {
+      "SPECIFIC": 11,
+      "GENERIC": 0,
+      "UNKNOWN": 0
+    },
+    {
+      "SPECIFIC": 11,
+      "GENERIC": 0,
+      "UNKNOWN": 0
+    },
+    {
+      "SPECIFIC": 11,
+      "GENERIC": 0,
+      "UNKNOWN": 0
+    }
+  ],
+  "active_workspace_counts_by_run": [
+    {
+      "INSIDE": 3,
+      "OUTSIDE": 8,
+      "INVALID_GEOMETRY": 0
+    },
+    {
+      "INSIDE": 3,
+      "OUTSIDE": 8,
+      "INVALID_GEOMETRY": 0
+    },
+    {
+      "INSIDE": 3,
+      "OUTSIDE": 8,
+      "INVALID_GEOMETRY": 0
+    }
+  ],
+  "reference_repeatability": [
+    {
+      "reference_id": "ref_001",
+      "canonical_label": "red cup",
+      "fresh_labels_by_run": [
+        "red mug",
+        "red mug",
+        "red mug"
+      ],
+      "label_consistent": true,
+      "semantic_types_by_run": [
+        "workspace_element",
+        "workspace_element",
+        "workspace_element"
+      ],
+      "semantic_type_consistent": true,
+      "reference_bbox_iou_by_run": [
+        0.9444444444444444,
+        0.9444444444444444,
+        0.9444444444444444
+      ],
+      "bbox_iou_vs_run01": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "world_xy_peak_to_peak_m": [
+        0.0,
+        0.0
+      ],
+      "results_by_run": [
+        "LABEL_MISMATCH",
+        "LABEL_MISMATCH",
+        "LABEL_MISMATCH"
+      ]
+    },
+    {
+      "reference_id": "ref_002",
+      "canonical_label": "white bag",
+      "fresh_labels_by_run": [
+        null,
+        null,
+        null
+      ],
+      "label_consistent": false,
+      "semantic_types_by_run": [
+        null,
+        null,
+        null
+      ],
+      "semantic_type_consistent": false,
+      "reference_bbox_iou_by_run": [
+        0.06522267206477733,
+        0.06522267206477733,
+        0.06522267206477733
+      ],
+      "bbox_iou_vs_run01": null,
+      "world_xy_peak_to_peak_m": null,
+      "results_by_run": [
+        "NO_BBOX_MATCH",
+        "NO_BBOX_MATCH",
+        "NO_BBOX_MATCH"
+      ]
+    },
+    {
+      "reference_id": "ref_003",
+      "canonical_label": "gold trophy-like object",
+      "fresh_labels_by_run": [
+        "trophy",
+        "trophy",
+        "trophy"
+      ],
+      "label_consistent": true,
+      "semantic_types_by_run": [
+        "workspace_element",
+        "workspace_element",
+        "workspace_element"
+      ],
+      "semantic_type_consistent": true,
+      "reference_bbox_iou_by_run": [
+        0.9153112731351655,
+        0.9153112731351655,
+        0.9153112731351655
+      ],
+      "bbox_iou_vs_run01": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "world_xy_peak_to_peak_m": [
+        0.0,
+        0.0
+      ],
+      "results_by_run": [
+        "PASS",
+        "PASS",
+        "PASS"
+      ]
+    }
+  ],
+  "unreviewed_entity_counts": [
+    9,
+    9,
+    9
+  ]
+}

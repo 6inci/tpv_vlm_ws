@@ -1,0 +1,101 @@
+# Semantic Evidence Verification (V2) -- configuration (2026-11-18).
+# An independent verifier for VLM-proposed semantic destinations. It is compared with the truck-centred verifier of
+# experiments/semantic_to_navigation_integration (V1), which stays untouched and is only imported for the comparison.
+#
+# What is human knowledge here (and therefore declared, with its provenance): the evidence `registry` and the
+# `purposes` table below. They are DATA. Extending them (a new vehicle class, a new purpose) needs no code change.
+# Nothing in this file requires a specific facility, and no value was tuned on the stored results; the relation
+# thresholds are the ones v0.2 already uses (config/planning.yaml), read at run time.
+
+experiment_id: SEV2_VERIFICATION_2026-11-18
+status: TESTING
+
+# ------------------------------------------------------------------ stored cases (offline stage)
+# Each case = one saved integration run (VLM raw reply + v0.2 detections + map record). `supplementary_runs` are runs on the
+# SAME image whose VLM reply is byte-identical (checked at load time); they only add detections the primary run did not reach.
+instruction_default: "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+stored_cases:
+  - id: DEV_REF
+    runs: [../semantic_to_navigation_integration/results/20261118_202916_fbe7]
+  - id: E1
+    runs: [../semantic_to_navigation_integration/results/20261118_203058_46d8]
+    supplementary_runs: [../semantic_to_navigation_integration/results/20261118_203426_260d]    # adds 6 verified traffic cones
+  - id: REF_P01
+    runs: [../semantic_to_navigation_integration/results/20261118_203247_fd48]
+
+# ------------------------------------------------------------------ A. evidence registry (what a cited object can be checked with)
+# backend:
+#   v02_detection : accepted detections of the v0.2 detect_objects step (Grounding DINO + Qwen crop verification)
+#   dino_verify   : ad-hoc Grounding DINO prompts + the same Qwen crop verification (existing functions, no new model)
+#   v02_target    : the v0.2 red-cube inspection
+# role: equipment | marker | task_object. A task_object (the thing to be carried) is never evidence for a destination.
+# capabilities: what a VERIFIED instance of this class establishes about the place around it. This is the only link
+#   between an object class and a function, and it is a human-written prior (knowledge: manual_prior).
+# obstacle: the placement step can keep a verified instance of this class out of the placeable area (v0.2 excludes
+#   truck/conveyor/mobile_robot by config; the integration adapter passes any other verified object the same way).
+# Evidence text that matches no class is UNVERIFIABLE: it is listed, never counted, and never assumed true.
+registry:
+  truck:        {terms: [truck, lorry], backend: v02_detection, role: equipment, capabilities: [carrier_vehicle], obstacle: true}
+  conveyor:     {terms: [conveyor], backend: v02_detection, role: equipment, capabilities: [transfer_equipment], obstacle: true}
+  mobile_robot: {terms: ["robotic vehicle", "mobile robot", "wheeled robot", "black robot", "black vehicle"],
+                 backend: v02_detection, role: equipment, capabilities: [], obstacle: true}
+  traffic_cone: {terms: [cone], backend: dino_verify, role: marker, capabilities: [zone_marker], obstacle: true,
+                 dino_prompts: ["traffic cone", "orange cone"], description: "an orange traffic cone (a small cone-shaped road marker)"}
+  pallet:       {terms: [pallet], backend: dino_verify, role: equipment, capabilities: [goods_staging], obstacle: true,
+                 dino_prompts: ["pallet"], description: "a pallet or a pallet carrying goods"}
+  container:    {terms: [container, barrel, drum], backend: dino_verify, role: equipment, capabilities: [goods_staging], obstacle: true,
+                 dino_prompts: ["container", "barrel"], description: "a storage container, barrel or drum"}
+  red_cube:     {terms: ["red cube", "cube"], backend: v02_target, role: task_object, capabilities: [], obstacle: false}
+
+# Evidence text containing one of these words and matching no class is a MARKING claim (lines, symbols, labels): it cannot
+# be checked by the existing detectors (UNVERIFIABLE) but it is not a physical obstacle either. Any other unmatched
+# noun phrase is an UNVERIFIABLE PHYSICAL OBJECT claim: it could be an obstacle that the placement step does not know.
+marking_terms: [line, lines, marking, markings, symbol, sign, boundary, outline, border, label, text, writing, arrow, paint]
+
+# ------------------------------------------------------------------ B. relation between an evidence object and the proposed region
+# Same rule as v0.2's own association (region_grounding / config planning.yaml), made class-generic:
+#   the object lies inside the region  : fraction of the object box inside the region >= destination.structure_min_truck_containment
+#   or abuts it                         : box gap <= band_depth(object box) = max(min_band_px, band_ratio * longest side)
+# Both numbers are READ from config/planning.yaml; none is defined here.
+relation:
+  holds_if: inside_or_adjacent
+
+# ------------------------------------------------------------------ C. task purpose: what the instruction asks the place to be FOR
+# The purpose is read from the INSTRUCTION text (not from the VLM's own reading of it). A place fits a purpose when a
+# VERIFIED object that the VLM cited, and whose relation to the region holds, has at least one capability the purpose
+# lists in `requires_any_of`. No facility name is required: any registry class carrying the capability counts, and
+# a facility that is not in the registry leaves the fit UNDETERMINED (hold), it is never rejected for that reason.
+# An instruction that matches no purpose, or a purpose whose capability no registered detector can verify, is UNDETERMINED.
+purposes:
+  outbound_shipping:
+    instruction_terms: ["출하", "출고", "발송", "선적", "ship", "dispatch", "outbound"]
+    requires_any_of: [carrier_vehicle]
+  loading_unloading:
+    instruction_terms: ["하역", "상차", "하차", "load", "unload"]
+    requires_any_of: [carrier_vehicle]
+  charging:
+    instruction_terms: ["충전", "charge", "charging"]
+    requires_any_of: [charging_equipment]      # no registered class carries it -> always UNDETERMINED until a detector exists
+
+# ------------------------------------------------------------------ D. semantic region vs placeable region
+# Region SIZE is never a criterion for semantic validity. For the placement stage the only accepted proof that a spot inside
+# the region can be used is a verified LOCALIZATION: a box obtained by grounding the VLM's own evidence phrase that lies
+# inside the proposal and encloses/abuts a verified evidence object (stored by V1 as refinement.chosen), or a
+# human-CONFIRMED region (none exists: Z06 is DRAFT_UNCONFIRMED and is never used).
+# The old V1 size gate is evaluated only to compare (legacy_v1_size_gate), never to decide.
+placement:
+  accepted_localization_sources: [evidence_grounded_refinement, human_confirmed_region]
+  max_drive_zone_overlap_frac: 0.05       # same limits as V1's V5; only checked when the v0.2 map is ALIGNED
+  max_no_go_overlap_frac: 0.05
+  max_other_equipment_containment: 0.3    # same as V1's max_other_object_containment
+  min_localization_inside_proposal: 0.8   # same as V1's refine.min_inside_vlm_box: a localization must lie within the VLM proposal
+
+# ------------------------------------------------------------------ the old V1 size gate (comparison only)
+# V1's `max_unrefined_area_ratio` (2.5x the truck box) is an unverified assumption. V2 never uses it to decide. It is READ from
+# V1's own config so that each region can be reported next to it (`legacy_v1_size_gate`), and so the comparison keeps the old number.
+legacy_v1:
+  config: ../semantic_to_navigation_integration/config.yaml
+  key: verification.max_unrefined_area_ratio
+
+# ------------------------------------------------------------------ outputs
+results_dir: results                      # each run writes a NEW timestamp folder; nothing is overwritten

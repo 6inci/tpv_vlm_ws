@@ -1,0 +1,100 @@
+# 독립 시험 (새 사진): 예전 실행 vs 새 버전. 사진·정답이 들어오기 전 2026-11-22에 작성 (사전 등록).
+# 이 파일과 아래 freeze 목록은 정답 확정 뒤에는 바꾸지 않는다 (freeze.py가 확인).
+# 좌표: 사진 픽셀 = 2차 공유 사진과 같은 편 사진 픽셀 (alpha 0 newK, 왜곡 없음). 지도 = env2_20261119 (m).
+experiment_id: HOLDOUT_20261122
+python: /home/binci/miniconda3/envs/stnav_gui/bin/python
+
+# ---- 비교 대상 (둘 다 코드·설정을 바꾸지 않고 부른다)
+systems:
+  old:
+    name: "예전 실행 (nl_to_path, 11-22 통합)"
+    dir: /home/binci/vlm_ws/nl_to_route_20261122
+    how: "nl_to_path.main()을 그대로 부르고 CFG.photo_set.dir 한 값만 새 사진 폴더로 바꾼다 (이 값은 --all 사진 목록에만 쓰임)"
+  new:
+    name: "새 버전 (context_policy, 맥락 정책)"
+    dir: /home/binci/vlm_ws/context_policy_20261122
+    how: "common.C.photo_sets에 holdout 묶음을 더하고 extract.main(), policy.run_set/draw_photo, nl_to_path.run_one을 그대로 부른다. 출력은 이 폴더"
+    thresholds_file: /home/binci/vlm_ws/context_policy_20261122/data/dev/calibration.json   # 개발 8장에서 정한 기준값 (고정)
+instruction: "빨간 큐브를 비어 있는 팔레트로 옮겨줘."   # I1 = nl_to_path.yaml default_instruction. 15장 시험과 같은 지시
+
+# ---- 사진 조건 (run_holdout.py가 실행 전에 확인, 하나라도 어기면 실행하지 않음)
+photos_dir: data/photos                 # 새 사진만, *.png
+pose_file: /home/binci/vlm_ws/env2_photos_20261120/camera_pose/photoset_20261120_pose.json   # 2차 사진 묶음의 카메라 자세
+reference_photo: /home/binci/vlm_ws/env2_photos_20261120/photos/20261120_215746_view.png
+photo_rules:
+  size: [1920, 1080]
+  camera_max_shift_px: 3.0              # 기준 사진과 배경 특징점 어긋남 (v0.2 alignment_check와 같은 값). 넘으면 카메라가 움직였거나 펴는 방식이 다름
+  robot_marker: "nl_to_path.yaml start.marker (ArUco id 0, 꼭짓점 3 px 안) -> 로봇이 2차 사진과 같은 출발 자리"
+  not_in: /home/binci/vlm_ws/env2_photos_20261120/photos   # 이미 본 15장과 sha256이 같으면 거부
+
+# ---- 정답 (사람이 실행 전에 gt_tool.py로 찍고 '확정'한다. 확정 뒤에는 고칠 수 없음)
+ground_truth:
+  file: data/gt_holdout.json
+  point: "큐브 = 큐브 윗면 가운데, 빈 팔레트 = 팔레트 윗면 가운데 (사진 픽셀, 원본 크기)"
+  empty_pallet: "위에 아무것도 없는 팔레트 전부. 하나라도 고르면 맞음"
+  cube: "빨간 큐브 전부 (E2처럼 둘이면 둘 다). 하나라도 고르면 맞음"
+  none: "해당 물체가 사진에 없으면 빈 목록 [] -> 고르지 않는 것(보류)이 정답"
+
+# ---- 채점 (score.py, 두 버전에 같은 규칙)
+scoring:
+  match_px: 20                          # = context_policy policy.match_px. 고른 박스 중심이 정답 점에서 20 px 안이면 맞음
+  grades:
+    target_exists: {selected_near: 맞음, selected_far: 틀리게 확정, not_selected: 놓침(보류)}
+    target_absent: {not_selected: 맞는 보류, selected: 틀리게 확정}
+  path: "경로 그림까지 = 예전: nl_to_path.json result.status PATH_OK, 새: path_result.status PATH_OK (보조 지표, 판정에 안 씀)"
+
+# ---- 촬영 목록 (scenario 태그는 정답 도구에서 사진마다 붙임)
+scenarios:
+  primary:                              # 판정에 쓰는 사진. 정답이 하나로 정해지는 배치
+    P1: {n: 6, what: "팔레트 위 큐브 1개 + 빈 팔레트 1~2개. 노란 선 밖 0~15 cm. 2차 15장에서 쓰지 않은 자리"}
+    P2: {n: 4, what: "P1 + 빨간 방해물 (작업대 위 빨간 부품, 꼬깔 등)을 눈에 띄게"}
+    P3: {n: 3, what: "큐브 없음, 빈 팔레트만 (A 정답 = 보류)"}
+    P4: {n: 3, what: "빈 팔레트 없음, 팔레트마다 물체가 올라감 (B 정답 = 보류)"}
+  edge:                                 # 따로 보고만 함 (판정에 안 씀)
+    E1: {n: 2, what: "줄무늬나 충전소 기둥 바로 옆 빈 팔레트"}
+    E2: {n: 1, what: "큐브 2개 (어느 쪽이든 고르면 맞음)"}
+    E3: {n: 1, what: "큐브가 노란 선에서 15 cm 넘게 떨어짐 (작업 공간 밖)"}
+
+# ---- 판정 규칙 (실행 전에 정함)
+decision_rule:
+  set: primary
+  wrong_commits: "A 틀리게 확정 + B 틀리게 확정"
+  correct: "A 맞음 + A 맞는 보류 + B 맞음 + B 맞는 보류"
+  adopt_new_if: "새 버전 wrong_commits <= 예전 wrong_commits 그리고 새 버전 correct >= 예전 correct"
+  then: "본문 기준을 새 버전으로 바꾸고 예전 실행은 이전 결과로 함께 적는다"
+  else: "본문은 예전 실행 그대로, 새 버전은 별첨"
+  note: "사진 수가 적어 통계적 유의성은 주장하지 않는다. 개수만 보고한다"
+
+# ---- 실행 전에 고정하는 것 (freeze.py가 sha256 목록을 FREEZE.json에 저장, 실행 때 다시 대조)
+freeze:
+  files:                                # 파일 하나씩
+    - /home/binci/vlm_ws/nl_to_route_20261122/nl_to_path.py
+    - /home/binci/vlm_ws/context_policy_20261122/common.py
+    - /home/binci/vlm_ws/context_policy_20261122/extract.py
+    - /home/binci/vlm_ws/context_policy_20261122/policy.py
+    - /home/binci/vlm_ws/context_policy_20261122/data/dev/calibration.json
+    - /home/binci/vlm_ws/hybrid_exemplar_20261121/hybrid_pipeline.py
+    - /home/binci/vlm_ws/hybrid_exemplar_20261121/config.yaml
+    - /home/binci/vlm_ws/semantic_task_navigation/experiments/siglip_small_object_test/run_test.py
+    - /home/binci/vlm_ws/semantic_task_navigation/experiments/siglip_small_object_test/config.yaml
+    - /home/binci/vlm_ws/semantic_task_navigation/experiments/cube_candidate_funnel/config.yaml
+    - /home/binci/vlm_ws/semantic_task_navigation/experiments/navigation_handoff/results/20261120_062203_step4a_photo_survey/survey.json
+    - /home/binci/vlm_ws/env2_photos_20261120/camera_pose/photoset_20261120_pose.json
+  dirs:                                 # 폴더 안 코드·설정 (하위 폴더 포함, 결과 폴더 제외)
+    - {dir: /home/binci/vlm_ws/nl_to_route_20261122/config, glob: "*"}
+    - {dir: /home/binci/vlm_ws/nl_to_route_20261122/vendor, glob: "*", recursive: true}
+    - {dir: /home/binci/vlm_ws/context_policy_20261122/config, glob: "*"}
+    - {dir: /home/binci/vlm_ws/context_policy_20261122/zones, glob: "*.json"}
+    - {dir: /home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer, glob: "*.py"}
+    - {dir: /home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer, glob: "*.yaml"}
+    - {dir: /home/binci/vlm_ws/semantic_task_navigation/src, glob: "*.py", recursive: true}
+    - {dir: /home/binci/vlm_ws/semantic_task_navigation/config, glob: "*.yaml"}
+    - {dir: /home/binci/Pictures/Calibration, glob: "*.png"}          # 개발 8장 (예시 이미지 출처)
+    - {dir: /home/binci/vlm_ws/holdout_test_20261122, glob: "*.py"}   # 이 시험의 코드
+    - {dir: /home/binci/vlm_ws/holdout_test_20261122/config, glob: "*"}
+  models:                               # Hugging Face 캐시 스냅샷 (가중치 파일 대신 리비전을 기록)
+    - Qwen/Qwen3-VL-4B-Instruct
+    - IDEA-Research/grounding-dino-tiny
+    - google/siglip2-base-patch16-384
+    - google/siglip2-so400m-patch14-384
+  hf_cache: /home/binci/.cache/huggingface/hub

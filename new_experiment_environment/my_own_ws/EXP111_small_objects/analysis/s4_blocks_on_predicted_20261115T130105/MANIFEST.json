@@ -1,0 +1,43 @@
+{
+ "id": "EXP111-s4-pilot",
+ "started": "2026-11-15T13:03:06.360773+09:00",
+ "env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "transformers": "5.16.1",
+  "nvidia_driver": "580.178.04"
+ },
+ "config": {
+  "pallets_from": "analysis/s3A_zoom_describe_20261115T124946/rows.json (candidates answered small_pallet=true, false positives included)",
+  "pallet_rows": "analysis/s3A_zoom_describe_20261115T124946/rows.json",
+  "queries": [
+   "q028",
+   "q029",
+   "q030",
+   "q031",
+   "q032",
+   "q033",
+   "q034",
+   "q035"
+  ],
+  "crop": "same as s3_zoom_verify_pilot.crop (= EXP110 X4 oracle crop)",
+  "prompt": "EXP110 config qwen.c1_prompt (unchanged, as in X4)",
+  "merge_nms_iou": 0.5,
+  "state_rule": "pallet state = loaded if the center of at least one predicted block box (any block query, en) lies inside the predicted pallet box, else empty. Python rule, fixed before running."
+ },
+ "crop": {
+  "context_scale": 3.0,
+  "min_side_px": 160,
+  "enlarged_long_side_px": 768,
+  "note": "identical to EXP110 X4 oracle crop"
+ },
+ "c1_prompt": "Find every instance of \"{q}\" in this image. Return JSON only, no prose: {{\"objects\": [{{\"bbox_2d\": [x1, y1, x2, y2]}}]}} with integer coordinates normalized to 0-1000 relative to image width and height. If there is no such object, return {{\"objects\": []}}.",
+ "sha256": {
+  "tools/s4_blocks_on_predicted.py": "ae2a9f4573d9e7f6cb9e89084878ff99638dfa12faf7f2417559e9ef7f32133e",
+  "config.json": "29aedf77c1ca6cd6b57cda6408bdeb949b3a3fe0a028ea19f0645f105cb8b366",
+  "analysis/s3A_zoom_describe_20261115T124946/rows.json": "758006589f79e81e2aa6a1f7c92455213713e4c5f5f3213ba628d036ae891f2a"
+ }
+}

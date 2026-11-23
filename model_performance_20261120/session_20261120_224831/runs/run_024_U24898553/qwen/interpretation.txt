@@ -1,0 +1,68 @@
+{
+  "purpose": "Move an object from the unloading area to the conveyor belt area",
+  "source_object": {
+    "name_en": "object"
+  },
+  "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [752, 0, 878, 142]
+  },
+  "source_relation": "next_to",
+  "destination_meaning": "Conveyor belt area",
+  "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [116, 260, 220, 720],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Pedestrian walkway",
+      "visual_evidence": [
+        "green floor",
+        "footprint symbols"
+      ],
+      "bbox_2d": [305, 58, 555, 280],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Robot travel area",
+      "visual_evidence": [
+        "yellow border",
+        "black floor"
+      ],
+      "bbox_2d": [250, 280, 970, 760],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Conveyor belt area",
+      "visual_evidence": [
+        "white border",
+        "robot arms"
+      ],
+      "bbox_2d": [116, 260, 220, 720],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Unloading area",
+      "visual_evidence": [
+        "white dashed lines",
+        "truck"
+      ],
+      "bbox_2d": [630, 0, 900, 280],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Material storage area",
+      "visual_evidence": [
+        "yellow border",
+        "stacked containers"
+      ],
+      "bbox_2d": [620, 430, 970, 560],
+      "robot_body_access": "forbidden"
+    }
+  ],
+  "uncertainty": [
+    "The exact object to be moved is not specified, only the action is given."
+  ]
+}

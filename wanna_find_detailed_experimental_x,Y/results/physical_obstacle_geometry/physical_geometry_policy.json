@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "source_policy": {
+    "priority": [
+      "MEASURED_PHYSICAL_GEOMETRY",
+      "KNOWN_EXPERIMENT_OBJECT_GEOMETRY",
+      "PLANAR_GROUND_CONTACT_GEOMETRY",
+      "DEVELOPMENT_SYNTHETIC",
+      "UNKNOWN"
+    ],
+    "prohibited_sources": [
+      "IMAGE_BBOX",
+      "VLM_BBOX",
+      "SEMANTIC_LABEL",
+      "VLM_GENERATED_DIMENSIONS"
+    ]
+  },
+  "allowed_shape_types": [
+    "CIRCLE",
+    "AXIS_ALIGNED_RECTANGLE",
+    "POLYGON",
+    "UNKNOWN"
+  ],
+  "anchor_policy": {
+    "observed_bottom_center_is_footprint_center": false,
+    "unknown_anchor_blocks_world_placement": true,
+    "development_assumed_center_is_development_only": true
+  },
+  "orientation_policy": {
+    "image_angle_is_not_a_physical_orientation_source": true,
+    "vlm_orientation_is_not_allowed": true,
+    "unknown_required_orientation_blocks_world_placement": true
+  },
+  "layer_policy": {
+    "physical_geometry": "DEFINED_HERE",
+    "uncertainty": "SEPARATE_NOT_APPLIED",
+    "safety_margin": "SEPARATE_NOT_APPLIED",
+    "robot_inflation": "SEPARATE_NOT_APPLIED",
+    "planning_geometry": "NOT_GENERATED",
+    "planner_injection": "NOT_RUN"
+  },
+  "planar_ground_contact_requirement": "Only independently validated physical boundary points known to lie on the ground plane may use ground Homography; image bbox corners are prohibited.",
+  "semantic_metric_point_is_physical_footprint": false,
+  "vlm_bbox_used_for_metric_dimensions": false
+}

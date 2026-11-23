@@ -1,0 +1,83 @@
+{
+  "schema_version": "0.1",
+  "session_id": "geometry_session_02_current_view",
+  "status": "CAPTURED",
+  "capture_time": "2026-09-21T06:08:38.452031+09:00",
+  "camera_identity": {
+    "required_identity": "Ucamera001",
+    "identity_status": "CONFIRMED",
+    "serial_short": "Ucamera001",
+    "id_serial": "HD_Web_Camera_HD_Web_Camera_Ucamera001",
+    "usb_vendor_id": "05a3",
+    "usb_product_id": "9331",
+    "driver": "uvcvideo",
+    "driver_version": "6.8.12",
+    "current_video_node": "/dev/video7",
+    "by_id_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "bus_info": "usb-0000:80:14.0-1.4.1"
+  },
+  "native_capture": {
+    "width": 1920,
+    "height": 1080,
+    "pixel_format": "MJPG",
+    "fps": 30.0,
+    "mode_support_confirmed": true,
+    "current_mode_confirmed_before_capture": true,
+    "saved_frame_count": 1,
+    "capture_transport": "PipeWire shared Ucamera001 source",
+    "pipewire_source_object_id_at_capture": 49,
+    "pipewire_source_path": "v4l2:/dev/video7",
+    "pipewire_negotiated_caps": "image/jpeg,width=1920,height=1080,framerate=30/1",
+    "capture_command": "gst-launch-1.0 -e pipewiresrc path=49 num-buffers=1 ! image/jpeg,width=1920,height=1080,framerate=30/1 ! filesink location=reference_native.mjpg",
+    "capture_attempts": [
+      {
+        "method": "direct v4l2-ctl",
+        "result": "NO_FRAME_DEVICE_BUSY",
+        "saved_frame_count": 0,
+        "reason": "The running Cheese client held Ucamera001 through PipeWire."
+      },
+      {
+        "method": "PipeWire shared source",
+        "result": "CAPTURED",
+        "saved_frame_count": 1
+      }
+    ]
+  },
+  "read_only_uvc_controls": {
+    "brightness": 105,
+    "contrast": 105,
+    "saturation": 128,
+    "hue": 128,
+    "white_balance_automatic": 1,
+    "controls_modified": false,
+    "zoom_pan_tilt_focus_exposure_roi_controls": "NOT_EXPOSED"
+  },
+  "native_frame": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_native.mjpg",
+    "sha256": "011d477e6d07e5f0fc846445c0c563f17963cd1cb88f160ed9db624b3cf2e41b",
+    "bytes": 443452,
+    "container_observation": "single baseline JPEG frame"
+  },
+  "decoded_lossless_frame": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_raw.png",
+    "sha256": "1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299",
+    "width": 1920,
+    "height": 1080,
+    "channels": 3,
+    "meaning": "Lossless PNG representation of the one captured native MJPG frame."
+  },
+  "transformations": {
+    "resize": false,
+    "crop": false,
+    "rotation": false,
+    "undistortion": false,
+    "software_warp": false
+  },
+  "environment": {
+    "kernel": "Linux 6.8.0-138-generic x86_64",
+    "python": "3.10.12",
+    "opencv": "4.5.4",
+    "git_commit": "NOT_AVAILABLE_NOT_GIT_REPOSITORY"
+  },
+  "previous_session_policy": "geometry_session_candidate_01 remains immutable historical evidence and supplied no image pixels or correspondences to this session."
+}

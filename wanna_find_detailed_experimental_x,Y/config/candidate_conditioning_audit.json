@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "representative_cases": [
+    {
+      "case_id": "photo06_track011",
+      "image_id": "image_012_photo_06",
+      "track_id": "track_011",
+      "candidate_bbox_px": [1430, 222, 2016, 1092],
+      "visual_target": "seated person",
+      "candidate_shape_class": "OBJECT_PLUS_BACKGROUND",
+      "observation_path": "/home/binci/vlm_ws/results/offline_image_replay/scene_monitor_observations/replay_006_photo_06.json",
+      "frame_result_path": "/home/binci/vlm_ws/results/offline_semantic_metric_grounding_representative/photo06_track011_v3/frame_results/006_photo_06_run01.json",
+      "raw_output_path": "/home/binci/vlm_ws/results/offline_semantic_metric_grounding_representative/photo06_track011_v3/qwen_raw_outputs/006_photo_06_run01.txt"
+    },
+    {
+      "case_id": "photo08_track039",
+      "image_id": "image_014_photo_08",
+      "track_id": "track_039",
+      "candidate_bbox_px": [1017, 545, 1375, 684],
+      "visual_target": "floor tennis racket",
+      "candidate_shape_class": "FULL_OBJECT_LIKE",
+      "observation_path": "/home/binci/vlm_ws/results/offline_image_replay/scene_monitor_observations/replay_008_photo_08.json",
+      "frame_result_path": "/home/binci/vlm_ws/results/offline_semantic_metric_grounding_representative/photo08_track039_v3/frame_results/008_photo_08_run01.json",
+      "raw_output_path": "/home/binci/vlm_ws/results/offline_semantic_metric_grounding_representative/photo08_track039_v3/qwen_raw_outputs/008_photo_08_run01.txt"
+    },
+    {
+      "case_id": "photo07_track036",
+      "image_id": "image_013_photo_07",
+      "track_id": "track_036",
+      "candidate_bbox_px": [699, 451, 745, 518],
+      "visual_target": "paper cup",
+      "candidate_shape_class": "FULL_OBJECT_LIKE",
+      "observation_path": "/home/binci/vlm_ws/results/offline_image_replay/scene_monitor_observations/replay_007_photo_07.json",
+      "frame_result_path": "/home/binci/vlm_ws/results/offline_semantic_metric_grounding_representative/photo07_track036_v3/frame_results/007_photo_07_run01.json",
+      "raw_output_path": "/home/binci/vlm_ws/results/offline_semantic_metric_grounding_representative/photo07_track036_v3/qwen_raw_outputs/007_photo_07_run01.txt"
+    }
+  ],
+  "coordinate_conversion_policy": {
+    "source_domain": "RAW_IMAGE_PIXELS_HALF_OPEN",
+    "target_domain": "NORMALIZED_INTEGER_0_1000",
+    "rounding": "ROUND_HALF_UP",
+    "formula": "floor(raw_coordinate / corresponding_image_extent * 1000 + 0.5)"
+  },
+  "visualization": {
+    "rectangle_bgr": [0, 255, 0],
+    "highlight_bgr": [0, 255, 255],
+    "highlight_alpha": 0.25,
+    "rectangle_thickness": 3,
+    "center_radius": 7
+  },
+  "candidate_crop": {
+    "context_margin_ratio": 0.15,
+    "coordinate_role": "SEMANTIC_CONDITIONING_ONLY"
+  },
+  "future_conditioning_prototypes": [
+    "RAW_PIXEL_COORDINATES_ONLY",
+    "NORMALIZED_0_1000_COORDINATES_ONLY",
+    "FULL_IMAGE_VISIBLE_OVERLAY_PLUS_NORMALIZED_COORDINATES",
+    "FULL_IMAGE_PLUS_SECONDARY_CONTEXT_CROP_PLUS_NORMALIZED_COORDINATES"
+  ],
+  "parameter_status": "DEVELOPMENT_PARAMETER"
+}

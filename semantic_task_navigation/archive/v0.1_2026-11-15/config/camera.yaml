@@ -1,0 +1,18 @@
+live:
+  device: null          # null -> first capture node in /dev/video*; or an index (0) or a path (/dev/video2)
+  width: 1920
+  height: 1080
+  fourcc: MJPG
+  backend: V4L2
+
+calibration:
+  # Existing calibration (READ-ONLY reference, not copied). Used only when the input camera and
+  # resolution match; its validity for the current camera installation is NOT verified.
+  intrinsics_file: /home/binci/camera_calibration_1920x1080/calibration_result.json
+  camera_model: "HD Web Camera"
+  calibrated_on: "2026-08-14"
+  intrinsics_validated_for_current_install: false
+  # No homography exists for the current floor layout (the 2026-09-06 one belongs to an earlier layout).
+  homography_file: null
+  homography_status: not_available     # validated | unvalidated | not_available
+  ground_frame: null

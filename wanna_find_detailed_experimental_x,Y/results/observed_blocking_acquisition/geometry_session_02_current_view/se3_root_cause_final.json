@@ -1,0 +1,392 @@
+{
+  "result": "ROOT_CAUSE_MULTIFACTOR",
+  "camera_world_se3_status": "CAMERA_WORLD_SE3_VALIDATION_FAILED",
+  "strict_recovery": false,
+  "accepted_geometry_status": "PRESERVED_UNCHANGED",
+  "dominant_unresolved_factor": "CURRENT_VIEW_EFFECTIVE_CAMERA_MODEL_COMPATIBILITY_OR_LIMITATION",
+  "contributing_factor": "FLOOR_MARKER_CORNER_LOCALIZATION_AT_LOW_PIXEL_HEIGHT",
+  "not_supported_as_sole_causes": [
+    "WORLD_REGISTRATION",
+    "PHYSICAL_NONPLANARITY",
+    "CORNER_SEMANTICS",
+    "PLANAR_PNP_DEGENERACY",
+    "PIXEL_DOMAIN_MISMATCH"
+  ],
+  "models": {
+    "MODEL_0_ORIGINAL_STORED_KD": {
+      "camera_center_world_m": [
+        0.8201393288036569,
+        -1.9302746085745108,
+        2.2128499475350076
+      ],
+      "rvec_rad": [
+        2.013897541330341,
+        0.09350395983354814,
+        -0.18212697417656973
+      ],
+      "marker_rmse_px": 5.266286015402332,
+      "marker_max_px": 8.713555427016363,
+      "tile_holdout_rmse_px": 7.554916821597558,
+      "tile_holdout_max_px": 12.936646217321089,
+      "homography_pixel_rmse_px": 9.019802891015006,
+      "homography_world_rmse_m": 0.048698415446027876
+    },
+    "MODEL_1_METHOD_C_STORED_KD": {
+      "camera_center_world_m": [
+        0.8426306397235397,
+        -1.9282965185222782,
+        2.2075682332995066
+      ],
+      "rvec_rad": [
+        2.0128072770286316,
+        0.09453184503269993,
+        -0.18855742626707148
+      ],
+      "marker_rmse_px": 5.10451105465367,
+      "marker_max_px": 8.16868704175899,
+      "tile_holdout_rmse_px": 7.577319070981049,
+      "tile_holdout_max_px": 13.908457681245167,
+      "homography_pixel_rmse_px": 9.024599874259138,
+      "homography_world_rmse_m": 0.048901589681484656
+    },
+    "MODEL_2_METHOD_C_RADIAL_ONLY": {
+      "camera_center_world_m": [
+        0.792911018803573,
+        -1.870278313047368,
+        2.209098265932581
+      ],
+      "rvec_rad": [
+        2.0186178198958755,
+        0.09843331196570702,
+        -0.1736428823826661
+      ],
+      "marker_rmse_px": 4.267022256901371,
+      "marker_max_px": 6.967516925704875,
+      "tile_holdout_rmse_px": 5.796987590563065,
+      "tile_holdout_max_px": 10.87582679207694,
+      "homography_pixel_rmse_px": 6.933046577157858,
+      "homography_world_rmse_m": 0.03739127227145837
+    },
+    "MODEL_3_METHOD_C_LIMITED_INTRINSIC": {
+      "camera_center_world_m": [
+        0.8491387752194024,
+        -1.9838057767117925,
+        2.2441766151749616
+      ],
+      "rvec_rad": [
+        2.0299393004630173,
+        0.10301102971262867,
+        -0.20462554041084793
+      ],
+      "marker_rmse_px": 4.488878963469283,
+      "marker_max_px": 7.1972751141038716,
+      "tile_holdout_rmse_px": 6.6356392694521675,
+      "tile_holdout_max_px": 12.407875260902225,
+      "homography_pixel_rmse_px": 7.824496080844116,
+      "homography_world_rmse_m": 0.04307131107647477,
+      "intrinsic_perturbation": {
+        "common_focal_scale_percent": 2,
+        "cx_offset_px": -20,
+        "cy_offset_px": 20
+      }
+    }
+  },
+  "hypotheses": {
+    "H1_FLOOR_MARKER_CORNER_LOCALIZATION_ERROR": {
+      "for": [
+        "Independent Methods A/C move corners by mean 1.85/1.81 px and maxima 5.01/4.28 px.",
+        "Source floor markers are only about 20 px (far) and 39 px (near) high."
+      ],
+      "against": [
+        "Method C produces 0.174877 m mean side under accepted H, yet strict PnP validations remain poor."
+      ],
+      "confidence": "MEDIUM"
+    },
+    "H2_CURRENT_IMAGE_STORED_KD_COMPATIBILITY_ERROR": {
+      "for": [
+        "Calibration was reconstructed from screenshots; original raw calibration frames and historical active sensor state are unavailable.",
+        "Accepted H normalized columns violate one rigid calibrated-plane constraints: 14.41% norm mismatch and 86.45 deg angle."
+      ],
+      "against": [
+        "Camera name/native resolution and current full-frame MJPG mode agree; no direct identity mismatch was found.",
+        "Limited K grid does not produce a jointly strong validation."
+      ],
+      "confidence": "HIGH"
+    },
+    "H3_FLOOR_MARKER_WORLD_CORNER_REGISTRATION_ERROR": {
+      "for": [
+        "Accepted-H-implied touch offsets reach 10.736 mm."
+      ],
+      "against": [
+        "Replacing declared marker XY by accepted-H-implied XY improves marker RMSE only 5.266 to 5.127 px and holdout 7.555 to 7.509 px.",
+        "Monte Carlo indicates roughly 61-66 mm registration error would be needed."
+      ],
+      "confidence": "LOW"
+    },
+    "H4_MARKER_PHYSICAL_NONPLANARITY": {
+      "for": [
+        "Paper flatness was not measured."
+      ],
+      "against": [
+        "1-5 mm simulated Z deviations are far too small; linear scale estimates require about 41-93 mm for marker residual magnitude."
+      ],
+      "confidence": "LOW"
+    },
+    "H5_WRONG_CORNER_SEMANTICS": {
+      "for": [
+        "Recovered corners were manually bounded at low pixel height."
+      ],
+      "against": [
+        "Canonical orientation is rotation 0 with Hamming distance 0; current visual/canonical/world touch meanings coincide; opposite bottom corner causes 172-186 mm error."
+      ],
+      "confidence": "LOW"
+    },
+    "H6_CAMERA_MODEL_LIMITATION": {
+      "for": [
+        "Removing tangential terms improves rigid marker/tile metrics and residuals are strongly correlated with image location.",
+        "Stored full D remains best for direct frozen-split planar H, showing a rigid-model-versus-planar tension."
+      ],
+      "against": [
+        "No tested D variant yields strict validation and full D is superior in the accepted planar control."
+      ],
+      "confidence": "HIGH"
+    },
+    "H7_PLANAR_PNP_NUMERICAL_DEGENERACY": {
+      "for": [
+        "All control points are coplanar."
+      ],
+      "against": [
+        "Physical and mirror IPPE branches are separated by 6.766 m and 116.58 deg; Jacobian rank is 6; +/-1 px noise changes height only about 4 mm std, not the observed failure."
+      ],
+      "confidence": "LOW"
+    },
+    "H8_PIXEL_DOMAIN_MISMATCH": {
+      "for": [
+        "Tile and marker observations originate from two stable captures."
+      ],
+      "against": [
+        "All domains trace consistently; cross-frame projective correction is only 0.173 px RMS and changes holdout 7.555 to 7.519 px."
+      ],
+      "confidence": "LOW"
+    },
+    "H9_MULTIPLE_SMALL_ERRORS_COMBINE": {
+      "for": [
+        "Corner localization, calibration provenance/model tension, and millimetric registration offsets all have measurable contributions.",
+        "No single tested correction passes marker + independent tile + accepted-H checks."
+      ],
+      "against": [
+        "Exact contribution weights cannot be uniquely identified from one planar view."
+      ],
+      "confidence": "HIGH"
+    }
+  },
+  "id0_world_pose_status": "NOT_COMPUTED_BECAUSE_CAMERA_WORLD_SE3_FAILED",
+  "goal_candidates_source_sha256": "23604448eab88765fcbb663b80c2020c231f84779d638149ebf562d568d2d84e",
+  "goal_candidates_preserved": true,
+  "single_best_next_action": "Fresh intrinsic calibration of the exact Ucamera001 in the current native 1920x1080 MJPG mode, captured as direct raw frames with broad image-center/edge, tilt, and depth coverage; record by-id, mode, controls, and raw hashes.",
+  "why": "It directly tests the only high-confidence unresolved common factor (H2/H6) without changing accepted world geometry, and separates current-view camera-model incompatibility from low-resolution marker-corner error.",
+  "execution_boundaries": {
+    "qwen_inference_runs": 0,
+    "planner_runs": 0,
+    "ros_runs": 0,
+    "robot_motion": "NOT_RUN",
+    "step32": "NOT_STARTED",
+    "accepted_homography_recomputed": false,
+    "calibration_modified": false
+  },
+  "goal_candidates_snapshot": {
+    "schema_version": "0.1",
+    "created_at": "2026-09-21T08:36:36+09:00",
+    "session_id": "geometry_session_02_current_view",
+    "status": "PASS",
+    "result": "CURRENT_WORLD_GOAL_CANDIDATES_CREATED",
+    "scope": "UNRANKED_VISUALIZATION_CANDIDATES_ONLY",
+    "world_frame": "GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+    "ground_plane_z_m": 0.0,
+    "source_image": {
+      "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+      "sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+      "coordinate_domain": "RAW_IMAGE_PX"
+    },
+    "geometry_provenance": {
+      "tile_grid_points_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_points.json",
+      "tile_grid_points_sha256": "24d648feb8de81d5f825dbc09ea03bbcb1be2dc57f067792c3ed9e591fe2fab4",
+      "validated_homography_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+      "validated_homography_sha256": "070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da",
+      "selected_mapping": "RAW_IMAGE_PX_TO_EXISTING_UNDISTORTION_TO_UNDISTORTED_IMAGE_PX_TO_VALIDATED_HOMOGRAPHY_TO_WORLD_XY",
+      "homography_recomputed": false,
+      "camera_world_se3_required": false,
+      "candidate_pixel_source": "Existing accepted tile-grid intersection RAW observations"
+    },
+    "selection_policy": {
+      "candidate_count": 4,
+      "requirements_applied": [
+        "Accepted visible tile-grid intersection inside validated geometry",
+        "Local visibility GOOD and occlusion CLEAR in the existing tile artifact",
+        "Not directly on ID0 robot marker polygon",
+        "Not directly on a registered manual object reference point",
+        "Not directly on visually obvious fixed furniture at the marked pixel"
+      ],
+      "ranking_performed": false,
+      "single_goal_selected": false,
+      "physical_safety_claimed": false,
+      "reachability_claimed": false,
+      "robot_footprint_clearance_checked": false,
+      "planner_used": false
+    },
+    "candidates": [
+      {
+        "label": "GOAL_A",
+        "grid_id": "G12",
+        "world_xyz_m": [
+          0.6,
+          1.2,
+          0.0
+        ],
+        "overlay_raw_image_px": [
+          1046.057728113,
+          719.890109692
+        ],
+        "tile_visibility": "GOOD",
+        "tile_occlusion": "CLEAR",
+        "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP",
+        "rank": null,
+        "selected": false
+      },
+      {
+        "label": "GOAL_B",
+        "grid_id": "G13",
+        "world_xyz_m": [
+          0.6,
+          1.8,
+          0.0
+        ],
+        "overlay_raw_image_px": [
+          1052.954764764,
+          621.036310477
+        ],
+        "tile_visibility": "GOOD",
+        "tile_occlusion": "CLEAR",
+        "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP",
+        "rank": null,
+        "selected": false
+      },
+      {
+        "label": "GOAL_C",
+        "grid_id": "G15",
+        "world_xyz_m": [
+          0.6,
+          3.0,
+          0.0
+        ],
+        "overlay_raw_image_px": [
+          1062.476020419,
+          476.343409231
+        ],
+        "tile_visibility": "GOOD",
+        "tile_occlusion": "CLEAR",
+        "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP",
+        "rank": null,
+        "selected": false
+      },
+      {
+        "label": "GOAL_D",
+        "grid_id": "G25",
+        "world_xyz_m": [
+          1.2,
+          3.0,
+          0.0
+        ],
+        "overlay_raw_image_px": [
+          1203.602984717,
+          477.727585611
+        ],
+        "tile_visibility": "GOOD",
+        "tile_occlusion": "CLEAR",
+        "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP_RIGHT_FURNITURE_CLEARANCE_NOT_QUANTIFIED",
+        "rank": null,
+        "selected": false
+      }
+    ],
+    "preserved_manual_object_references": [
+      {
+        "object": "UMBRELLA",
+        "world_xy_m": [
+          0.89,
+          0.87
+        ],
+        "overlay_raw_image_px": [
+          1140.398794394,
+          786.0743833227
+        ]
+      },
+      {
+        "object": "KEYBOARD",
+        "world_xy_m": [
+          0.225,
+          1.03
+        ],
+        "overlay_raw_image_px": [
+          918.6695540882,
+          749.2476685718
+        ]
+      },
+      {
+        "object": "CUP",
+        "world_xy_m": [
+          0.76,
+          2.14
+        ],
+        "overlay_raw_image_px": [
+          1099.227079919,
+          574.3876475982
+        ]
+      },
+      {
+        "object": "BOX",
+        "world_xy_m": [
+          0.11,
+          1.69
+        ],
+        "overlay_raw_image_px": [
+          908.3738074219,
+          635.7520020013
+        ]
+      }
+    ],
+    "robot_marker_context": {
+      "marker_id": 0,
+      "observed_raw_corners_px_tl_tr_br_bl": [
+        [
+          984,
+          867
+        ],
+        [
+          1060,
+          867
+        ],
+        [
+          1058,
+          919
+        ],
+        [
+          978,
+          920
+        ]
+      ],
+      "label": "ROBOT MARKER ID0 - BASE POSE UNRESOLVED",
+      "ground_homography_applied": false
+    },
+    "output_overlay": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/current_world_goal_candidates_overlay.png",
+    "current_goal_status": "WAITING_FOR_USER_SELECTION_AND_FUTURE_SAFETY_VALIDATION",
+    "execution_boundaries": {
+      "qwen_inference_runs": 0,
+      "planner_runs": 0,
+      "step17_runs": 0,
+      "step18_runs": 0,
+      "step19_runs": 0,
+      "ros_nav2_runs": 0,
+      "robot_motion_commands": 0
+    }
+  }
+}

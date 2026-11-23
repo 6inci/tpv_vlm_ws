@@ -1,0 +1,34 @@
+| backend | instr | photo | A status | VLM pointed at | A right | B status | B right | outcome | first failure | wall s |
+|---|---|---|---|---|---|---|---|---|---|---|
+| qwen3vl_8b_nf4 | I1 | U23678143 | NOT_FOUND | - | False | NOT_FOUND | False | ABSTAIN | source_candidates | 69.7 |
+| qwen3vl_8b_nf4 | I2 | U23678143 | TYPE_UNCERTAIN | TRUCK_BED_BOX | False | AMBIGUOUS | False | CORRECT_ABSTAIN | source_type_check | 132.3 |
+| qwen3vl_8b_nf4 | I1 | U24768580 | NOT_FOUND | - | False | NOT_FOUND | False | ABSTAIN | source_candidates | 49.5 |
+| qwen3vl_8b_nf4 | I2 | U24768580 | TYPE_UNCERTAIN | TRUCK_BED_BOX | False | SELECTED | True | CORRECT_ABSTAIN | source_type_check | 103.5 |
+| qwen3vl_8b_nf4 | I1 | U24837448 | NOT_FOUND | - | False | SELECTED | False | ABSTAIN_B_WRONG | source_candidates | 64.8 |
+| qwen3vl_8b_nf4 | I2 | U24837448 | AMBIGUOUS | OTHER,TRUCK_BED_BOX | False | AMBIGUOUS | False | CORRECT_ABSTAIN | source_decision | 115.2 |
+| qwen3vl_8b_nf4 | I1 | U24898553 | NOT_FOUND | - | False | SELECTED | False | ABSTAIN_B_WRONG | source_candidates | 47.9 |
+| qwen3vl_8b_nf4 | I2 | U24898553 | TYPE_UNCERTAIN | TRUCK_BED_BOX | False | AMBIGUOUS | False | ABSTAIN | source_type_check | 130.2 |
+| qwen3vl_8b_nf4 | I1 | U25070552 | NOT_FOUND | - | False | NOT_FOUND | False | ABSTAIN | source_decision | 52.2 |
+| qwen3vl_8b_nf4 | I2 | U25070552 | TYPE_UNCERTAIN | TRUCK_BED_BOX | False | SELECTED | True | CORRECT_ABSTAIN | source_type_check | 131.0 |
+| qwen3vl_8b_nf4 | I1 | U25137685 | NOT_FOUND | - | False | SELECTED | False | ABSTAIN_B_WRONG | source_candidates | 52.1 |
+| qwen3vl_8b_nf4 | I2 | U25137685 | TYPE_UNCERTAIN | TRUCK_BED_BOX | False | AMBIGUOUS | False | ABSTAIN | source_type_check | 116.5 |
+| qwen3vl_8b_nf4 | I1 | U25967031 | NOT_FOUND | - | False | SELECTED | False | ABSTAIN_B_WRONG | source_candidates | 55.9 |
+| qwen3vl_8b_nf4 | I2 | U25967031 | TYPE_UNCERTAIN | TRUCK_BED_BOX | False | SELECTED | False | CORRECT_ABSTAIN | source_type_check | 126.1 |
+| qwen3vl_8b_nf4 | I1 | U26007129 | NOT_FOUND | - | False | NOT_FOUND | False | ABSTAIN | source_candidates | 54.4 |
+| qwen3vl_8b_nf4 | I2 | U26007129 | AMBIGUOUS | OTHER,OTHER | False | SELECTED | False | CORRECT_ABSTAIN | source_decision | 136.4 |
+| qwen3vl_4b_bf16 | I1 | U23678143 | AMBIGUOUS | OTHER,OTHER,OTHER,CUBE | False | NOT_ACCESSIBLE | False | ABSTAIN | source_decision | 78.1 |
+| qwen3vl_4b_bf16 | I2 | U23678143 | NOT_FOUND | - | False | SELECTED | False | CORRECT_ABSTAIN | source_decision | 125.1 |
+| qwen3vl_4b_bf16 | I1 | U24768580 | AMBIGUOUS | OTHER,OTHER,CUBE,OTHER,OTHER,OTHER | False | NOT_FOUND | False | ABSTAIN | source_decision | 48.6 |
+| qwen3vl_4b_bf16 | I2 | U24768580 | NOT_RUN | - | False | NOT_RUN | False | CORRECT_ABSTAIN | interpretation | 16.9 |
+| qwen3vl_4b_bf16 | I1 | U24837448 | AMBIGUOUS | OTHER,CUBE,OTHER | False | NOT_FOUND | False | ABSTAIN | source_decision | 53.1 |
+| qwen3vl_4b_bf16 | I2 | U24837448 | NOT_FOUND | - | False | SELECTED | False | CORRECT_ABSTAIN | source_decision | 104.2 |
+| qwen3vl_4b_bf16 | I1 | U24898553 | AMBIGUOUS | OTHER,OTHER,CUBE,OTHER,OTHER | False | NOT_ACCESSIBLE | False | ABSTAIN | source_decision | 53.0 |
+| qwen3vl_4b_bf16 | I2 | U24898553 | AMBIGUOUS | OTHER,OTHER,OTHER,OTHER,OTHER,OTHER,OTHER,OTHER,OTHER,OTHER,CUBE,OTHER,OTHER,OTHER,CUBE | False | AMBIGUOUS | False | ABSTAIN | source_decision | 179.8 |
+| qwen3vl_4b_bf16 | I1 | U25070552 | SELECTED | CUBE | True | NOT_ACCESSIBLE | False | A_ONLY | destination_decision | 40.2 |
+| qwen3vl_4b_bf16 | I2 | U25070552 | NOT_RUN | - | False | NOT_RUN | False | CORRECT_ABSTAIN | interpretation | 16.9 |
+| qwen3vl_4b_bf16 | I1 | U25137685 | AMBIGUOUS | OTHER,OTHER,CUBE,OTHER | False | NOT_FOUND | False | ABSTAIN | source_decision | 49.2 |
+| qwen3vl_4b_bf16 | I2 | U25137685 | NOT_FOUND | - | False | AMBIGUOUS | False | ABSTAIN | source_decision | 121.0 |
+| qwen3vl_4b_bf16 | I1 | U25967031 | NOT_FOUND | - | False | NOT_FOUND | False | ABSTAIN | source_candidates | 20.1 |
+| qwen3vl_4b_bf16 | I2 | U25967031 | NOT_RUN | - | False | NOT_RUN | False | CORRECT_ABSTAIN | interpretation | 19.9 |
+| qwen3vl_4b_bf16 | I1 | U26007129 | AMBIGUOUS | CUBE,OTHER | False | NOT_FOUND | False | ABSTAIN | source_decision | 54.0 |
+| qwen3vl_4b_bf16 | I2 | U26007129 | NOT_RUN | - | False | NOT_RUN | False | CORRECT_ABSTAIN | interpretation | 16.9 |

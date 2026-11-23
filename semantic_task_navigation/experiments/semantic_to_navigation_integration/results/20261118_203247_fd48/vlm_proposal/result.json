@@ -1,0 +1,240 @@
+{
+  "image_id": "integration",
+  "image_role": "integration",
+  "condition": "L2",
+  "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "prior_condition": "A",
+  "classification": "EXPLORATORY_DIAGNOSTIC",
+  "prompt_version": "n0",
+  "prompt_sha256": "3ab876f263fefd093619942b393d5bdc220f155454324a5d9c847a1083d88e97",
+  "image_sha256": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+  "image_file": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_203247_fd48/input/raw_frame.png",
+  "model_input_audit": {
+    "worker_call_keys": [
+      "image_path",
+      "max_new_tokens",
+      "prompt"
+    ],
+    "n_images": 1,
+    "prompt_sha256": "3ab876f263fefd093619942b393d5bdc220f155454324a5d9c847a1083d88e97"
+  },
+  "call": {
+    "latency_s": 46.656,
+    "n_input_tokens": 2909,
+    "n_output_tokens": 1563,
+    "hit_max_new_tokens": false,
+    "peak_allocated_gib": 9.023,
+    "image_size": [
+      1920,
+      1080
+    ],
+    "max_new_tokens": 2800,
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  },
+  "status": "OK",
+  "error": null,
+  "consistency_issues": [],
+  "structured": {
+    "observed_objects": [
+      {
+        "label": "robot arm",
+        "count": 3,
+        "location_in_image": "top-left, left side, and bottom-left",
+        "visible_evidence": "three robotic arms with articulated arms, mounted on bases, positioned near conveyor belts or workstations"
+      },
+      {
+        "label": "dump truck",
+        "count": 1,
+        "location_in_image": "top-right",
+        "visible_evidence": "a white and black toy dump truck parked on the right side of the floor"
+      },
+      {
+        "label": "stack of boxes",
+        "count": 1,
+        "location_in_image": "center",
+        "visible_evidence": "a stack of brown cardboard boxes on a yellow-bordered platform"
+      },
+      {
+        "label": "cones",
+        "count": 10,
+        "location_in_image": "distributed across the floor, especially near green zones and around the center",
+        "visible_evidence": "orange traffic cones placed on the black floor surface to mark boundaries or paths"
+      },
+      {
+        "label": "green zone",
+        "count": 1,
+        "location_in_image": "top-center",
+        "visible_evidence": "a green rectangular area with white hand symbols, surrounded by cones"
+      },
+      {
+        "label": "whiteboard",
+        "count": 1,
+        "location_in_image": "bottom-center",
+        "visible_evidence": "a whiteboard with Korean writing, placed on the floor"
+      },
+      {
+        "label": "barrels",
+        "count": 5,
+        "location_in_image": "right side, near the center",
+        "visible_evidence": "groups of black, gray, and blue barrels on wooden pallets"
+      },
+      {
+        "label": "green scaffolding",
+        "count": 2,
+        "location_in_image": "top-center and bottom-left",
+        "visible_evidence": "green metal-like scaffolding structures"
+      },
+      {
+        "label": "lightning bolt symbol",
+        "count": 1,
+        "location_in_image": "bottom-right",
+        "visible_evidence": "a white lightning bolt symbol on a white-bordered square"
+      },
+      {
+        "label": "red cube",
+        "count": 0,
+        "location_in_image": "not visible",
+        "visible_evidence": "no red cube is visible in the image"
+      }
+    ],
+    "functional_areas": [
+      {
+        "id": "area_1",
+        "function_name": "robot workstations",
+        "bbox_2d": [
+          100,
+          100,
+          300,
+          600
+        ],
+        "observed_evidence": [
+          "three robot arms",
+          "conveyor-like structures",
+          "green scaffolding nearby"
+        ],
+        "inference": "These areas are designated for robotic operations, likely loading/unloading or assembly tasks.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_2",
+        "function_name": "central staging area",
+        "bbox_2d": [
+          250,
+          250,
+          650,
+          750
+        ],
+        "observed_evidence": [
+          "stack of boxes",
+          "cones",
+          "green zone nearby"
+        ],
+        "inference": "This is a central zone where goods are temporarily held or processed before being moved to other areas.",
+        "confidence": "medium"
+      },
+      {
+        "id": "area_3",
+        "function_name": "loading/unloading zone",
+        "bbox_2d": [
+          600,
+          400,
+          950,
+          700
+        ],
+        "observed_evidence": [
+          "barrels on pallets",
+          "dump truck nearby",
+          "lightning bolt symbol"
+        ],
+        "inference": "This area is likely for receiving or dispatching goods, possibly to or from the dump truck.",
+        "confidence": "medium"
+      },
+      {
+        "id": "area_4",
+        "function_name": "exit/destination zone",
+        "bbox_2d": [
+          650,
+          750,
+          950,
+          950
+        ],
+        "observed_evidence": [
+          "lightning bolt symbol",
+          "red cube marker (assumed)",
+          "whiteboard nearby"
+        ],
+        "inference": "The lightning bolt symbol suggests an exit or discharge point, possibly for outgoing goods.",
+        "confidence": "medium"
+      },
+      {
+        "id": "area_5",
+        "function_name": "storage or buffer zone",
+        "bbox_2d": [
+          100,
+          700,
+          300,
+          900
+        ],
+        "observed_evidence": [
+          "green scaffolding",
+          "whiteboard nearby"
+        ],
+        "inference": "This area may be used for temporary storage or as a buffer between workstations and the main floor.",
+        "confidence": "low"
+      },
+      {
+        "id": "area_6",
+        "function_name": "conveyor or transport path",
+        "bbox_2d": [
+          300,
+          100,
+          600,
+          300
+        ],
+        "observed_evidence": [
+          "green zone",
+          "cones",
+          "robot arms nearby"
+        ],
+        "inference": "This is a designated path for moving goods, possibly via conveyor or guided transport.",
+        "confidence": "medium"
+      }
+    ],
+    "task_analysis": {
+      "inferred_task_purpose": "The instruction asks to move a red cube to an appropriate location for shipment.",
+      "info_given_by_instruction": [
+        "The destination must be a place where the red cube can be shipped out."
+      ],
+      "info_added_by_you": [
+        {
+          "statement": "The lightning bolt symbol in area_4 likely indicates an exit or discharge point for outgoing goods.",
+          "basis": "general_knowledge"
+        },
+        {
+          "statement": "The dump truck in area_3 is a vehicle for shipping goods, so area_3 is a likely candidate for shipment.",
+          "basis": "general_knowledge"
+        },
+        {
+          "statement": "The green zone in area_6 is a designated path, which may be used for moving goods to the exit.",
+          "basis": "image"
+        }
+      ],
+      "place_needed_for_task": "A location designated for outgoing goods, such as an exit or loading zone for transport.",
+      "decision": "proposed",
+      "destination_area_id": "area_4",
+      "reason": "The lightning bolt symbol in area_4 typically indicates an exit or discharge point, which aligns with the instruction to ship out the red cube."
+    },
+    "unknown_from_image": [
+      "The location of the red cube is not visible in the image.",
+      "The exact function of the whiteboard is not clear.",
+      "The size or type of the red cube is not visible."
+    ],
+    "physical_conditions_to_verify": [
+      "Whether the red cube is present and located in the image.",
+      "Whether the destination area is accessible for the robot to move the cube.",
+      "Whether the destination area is designated for shipping goods."
+    ]
+  },
+  "decision": "proposed"
+}

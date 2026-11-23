@@ -1,0 +1,89 @@
+{
+  "result": "PASS",
+  "verification_type": "Static Path Stress Test + Parameter Sensitivity",
+  "sources": {
+    "stress_scenarios": "/home/binci/vlm_ws/config/planner_stress_scenarios.json",
+    "planner_config": "/home/binci/vlm_ws/config/planner_baseline.json",
+    "step15_collision_world": "/home/binci/vlm_ws/results/collision_geometry/static_collision_world.json",
+    "step15_distance_path": "/home/binci/vlm_ws/results/path_planning_baseline/distance_only_astar.json",
+    "step15_safety_path": "/home/binci/vlm_ws/results/path_planning_baseline/safety_cost_astar.json"
+  },
+  "scenario_count": 6,
+  "path_exists_expected_count": 5,
+  "no_path_expected_count": 1,
+  "planner_run_count": 12,
+  "planner_success_count": 12,
+  "path_found_count": 10,
+  "no_path_confirmation_count": 2,
+  "collision_free_validation_count": 10,
+  "parameter_sweep_setting_count": 11,
+  "parameter_sweep_planner_run_count": 14,
+  "baseline_regression": {
+    "collision_world_identical": true,
+    "distance_path_semantic_identical": true,
+    "safety_path_semantic_identical": true
+  },
+  "scenario_results": {
+    "S1_baseline": {
+      "expected": "PATH_EXISTS",
+      "distance_status": "PATH_FOUND",
+      "safety_status": "PATH_FOUND",
+      "deterministic": true
+    },
+    "S2_shifted_left": {
+      "expected": "PATH_EXISTS",
+      "distance_status": "PATH_FOUND",
+      "safety_status": "PATH_FOUND",
+      "deterministic": true
+    },
+    "S3_two_obstacles": {
+      "expected": "PATH_EXISTS",
+      "distance_status": "PATH_FOUND",
+      "safety_status": "PATH_FOUND",
+      "deterministic": true
+    },
+    "S4_narrow_passage": {
+      "expected": "PATH_EXISTS",
+      "distance_status": "PATH_FOUND",
+      "safety_status": "PATH_FOUND",
+      "deterministic": true
+    },
+    "S5_completely_blocked": {
+      "expected": "NO_PATH_EXPECTED",
+      "distance_status": "NO_PATH",
+      "safety_status": "NO_PATH",
+      "deterministic": true
+    },
+    "S6_alternate_endpoints": {
+      "expected": "PATH_EXISTS",
+      "distance_status": "PATH_FOUND",
+      "safety_status": "PATH_FOUND",
+      "deterministic": true
+    }
+  },
+  "hard_occupancy_unchanged_by_safety_radius": true,
+  "hard_occupancy_unchanged_by_safety_weight": true,
+  "additional_inflation_m": 0.0,
+  "parameter_optimization": "NOT_RUN",
+  "path_smoothing": "NOT_RUN",
+  "dynamic_replanning": "NOT_RUN",
+  "real_robot_execution": "NOT_RUN",
+  "manipulation": "NOT_RUN",
+  "visualizations": [
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/S1_baseline_path_comparison.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/S2_shifted_left_path_comparison.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/S3_two_obstacles_path_comparison.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/S4_narrow_passage_path_comparison.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/S5_completely_blocked_overview.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/S6_alternate_endpoints_path_comparison.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/resolution_planning_time.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/resolution_nodes_expanded.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/resolution_path_length.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/safety_radius_path_length.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/safety_radius_minimum_clearance.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/safety_radius_accumulated_risk.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/safety_weight_path_length.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/safety_weight_minimum_clearance.png",
+    "/home/binci/vlm_ws/results/path_planning_stress/visualizations/safety_weight_accumulated_risk.png"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T06:22:08.643522+09:00",
+  "status": "AVAILABLE",
+  "session_id": "geometry_session_02_current_view",
+  "semantic_label": "small brown cardboard box on the floor",
+  "bbox_normalized_0_1000": [
+    465,
+    575,
+    492,
+    605
+  ],
+  "bbox_raw_image_px": [
+    892.8,
+    621.0,
+    944.64,
+    653.4
+  ],
+  "ground_reference": {
+    "policy": "BBOX_BOTTOM_CENTER_DEVELOPMENT_GROUND_REFERENCE",
+    "meaning": "development approximation of floor contact; not the physical center",
+    "raw_image_px": [
+      918.72,
+      653.4
+    ],
+    "undistorted_image_px": [
+      918.6071917443494,
+      652.4440499640152
+    ]
+  },
+  "world_coordinate": {
+    "x_m": 0.1594835965362156,
+    "y_m": 1.5764884784994297,
+    "frame": "GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+    "workspace_status": "INSIDE_VALIDATED_TILE_GRID_BOUNDS",
+    "finite": true
+  },
+  "geometry_provenance": {
+    "geometry_status": "NEW_SESSION_GEOMETRY_VALIDATED",
+    "homography_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+    "homography_sha256": "070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da",
+    "selected_branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+    "selected_input_coordinate_domain": "UNDISTORTED_IMAGE_PX",
+    "raw_to_selected_domain": {
+      "method": "cv2.undistortPoints with P=K",
+      "camera_matrix": [
+        [
+          1193.9285743624512,
+          0.0,
+          905.4672749500978
+        ],
+        [
+          0.0,
+          1191.56191006301,
+          513.000222084921
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "distortion_coefficients_k1_k2_p1_p2_k3": [
+        -0.20298479067273242,
+        0.13060299315148366,
+        0.027118263577020307,
+        0.003928149452520465,
+        -0.06119022290385212
+      ],
+      "output_camera_matrix": "same K"
+    },
+    "selected_H_pixel_to_world": [
+      [
+        0.020800896821360014,
+        0.005878184522286158,
+        -21.968611982334647
+      ],
+      [
+        0.001134256334563113,
+        -0.0277824313148755,
+        26.716724256268026
+      ],
+      [
+        0.00044178334705740935,
+        0.007209919588215674,
+        1.0
+      ]
+    ],
+    "legacy_homography_used": false,
+    "aruco_correspondence_used": false,
+    "previous_session_pixels_used": false
+  },
+  "physical_size_or_footprint": {
+    "estimated_from_bbox": false,
+    "status": "NOT_COMPUTED"
+  },
+  "downstream_navigation": {
+    "dynamic_obstacle": "NOT_CREATED",
+    "occupancy": "NOT_RUN",
+    "path_collision": "NOT_RUN",
+    "replanning": "NOT_RUN",
+    "robot_motion": "NOT_RUN"
+  }
+}

@@ -1,0 +1,168 @@
+{
+ "photo": {
+  "name": "photo_6",
+  "sha256": "afe33110258fc087e258729c61d0f5b5d5f18375746ba410e06bdd3c8a74c2d2",
+  "earlier_id": "U25137685",
+  "current_file": "6calibration.png"
+ },
+ "photo_path_now": "/home/binci/Pictures/Calibration/6calibration.png",
+ "file_name_matches_config": true,
+ "positions": {
+  "robot_base_link": {
+   "image_px": [
+    1708.8,
+    696.5
+   ],
+   "floor_cm": [
+    294.8,
+    155.2
+   ],
+   "map_m": [
+    2.9475,
+    0.5477
+   ],
+   "projection": "z = 0 (height parallax not corrected)",
+   "yaw_map_deg": -178.2
+  },
+  "A_grasp_target": {
+   "image_px": [
+    1620.5,
+    267.5
+   ],
+   "floor_cm": [
+    293.7,
+    59.8
+   ],
+   "map_m": [
+    2.937,
+    1.5016
+   ],
+   "projection": "z = 0 (height parallax not corrected)"
+  },
+  "B_placement_target": null
+ },
+ "robot_estimate": {
+  "base_link_px": [
+   1708.8,
+   696.5
+  ],
+  "yaw_map_deg": -178.2,
+  "ecc_correlation": 0.9994,
+  "ecc_rotation_deg": 0.0,
+  "ecc_shift_px": [
+   0.0,
+   0.0
+  ],
+  "method": "ECC euclidean alignment of the robot window to photo_5, applied to the photo_5 wheel reading; yaw = rear -> front (gripper) wheel pair",
+  "status": "PROVISIONAL (REVIEW_REQUIRED)"
+ },
+ "position_status": "PROVISIONAL (REVIEW_REQUIRED): STEP 4-A inventory, AI-preliminary cube label, ECC robot estimate; not user-approved",
+ "per_photo_obstacles": [
+  {
+   "role": "A cube pallet (target A, obstacle for wheels/body)",
+   "box_px": [
+    1594,
+    253,
+    1639,
+    287
+   ]
+  }
+ ],
+ "per_photo_obstacle_cells": 28,
+ "margin_cm": 2.0,
+ "path_A_status": "NOT_FOUND",
+ "path_B_status": "REVIEW_REQUIRED",
+ "path_B_basis": "no empty pallet in this photo: placement target must be given by the user (none invented)",
+ "path_A": null,
+ "path_B": null,
+ "summary_A": null,
+ "summary_B": null,
+ "grasp_stop": null,
+ "place_stop": null,
+ "grasp_candidates": [
+  {
+   "yaw_map_deg": 0,
+   "facing": "+x_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 90,
+   "facing": "+y_map",
+   "status": "GRIPPER_LINE_BLOCKED",
+   "searched_cm": 150,
+   "cell": [
+    84,
+    151
+   ],
+   "centre_floor_cm": [
+    293.0,
+    159.0
+   ],
+   "pose_map": {
+    "x_m": 2.93,
+    "y_m": 0.51,
+    "yaw_deg": 90.0
+   },
+   "centre_to_target_along_heading_cm": 99.2,
+   "lateral_offset_cm": 0.7,
+   "front_to_target_gap_cm": 81.7,
+   "required_gripper_offset_if_dy0": {
+    "dx_m": 0.992,
+    "dy_m": 0.0,
+    "status": "DERIVED, not a measurement"
+   },
+   "margin_body_free": true,
+   "nominal_body_free": true,
+   "gripper_corridor": {
+    "samples": 165,
+    "layers_crossed": {
+     "FREE": 88,
+     "STATIC_OBSTACLE": 64,
+     "NOT_DRIVABLE": 13
+    },
+    "static_obstacle_under_gripper_path": true,
+    "rule": "gripper may cross NOT_DRIVABLE / NO_GO (user decision 2026-11-19); the body may not. Gripper width/height UNKNOWN."
+   },
+   "gripper_alignment_error_cm": null,
+   "gripper_alignment_status": "UNVERIFIED: gripper offset not measured (dx, dy = null)",
+   "gripper_line_crosses": [
+    "STATIC_OBSTACLE"
+   ]
+  },
+  {
+   "yaw_map_deg": 180,
+   "facing": "-x_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 270,
+   "facing": "-y_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  }
+ ],
+ "place_candidates": [],
+ "cause_A": "A: the only collision-free stops on the target axis need the gripper to reach across {90: ['STATIC_OBSTACLE']} -> rejected",
+ "cause_B": null,
+ "reference_nearest_stop_A": {
+  "yaw_map_deg": 0,
+  "pose_map": {
+   "x_m": 2.93,
+   "y_m": 1.27,
+   "yaw_deg": 0.0
+  },
+  "centre_to_target_cm": 23.2,
+  "status": "REFERENCE_ONLY (not a grasp / placement pose)"
+ },
+ "reference_nearest_stop_B": null,
+ "straight_line_crossings": {
+  "robot_to_A": [
+   "Z04"
+  ],
+  "A_to_B": null
+ },
+ "grasp_placement": "UNVERIFIED (gripper offset and reach not measured)",
+ "driving": "NOT_FOR_DRIVING (2.0 cm margin < position uncertainty)"
+}

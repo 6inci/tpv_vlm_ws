@@ -1,0 +1,161 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:08:32+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "PASS",
+  "result": "MANUAL_OBJECT_REFERENCE_POINTS_REGISTERED",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd"
+  },
+  "validated_geometry": {
+    "world_frame": "GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+    "tile_pitch_m": 0.600,
+    "origin": "G00",
+    "x_axis": "rightward along floor tile grid",
+    "y_axis": "away from camera along floor tile grid",
+    "pipeline": "RAW_IMAGE_PX -> existing validated undistortion -> UNDISTORTED_IMAGE_PX -> validated session_02 tile Homography -> WORLD_XY",
+    "homography_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+    "homography_sha256": "070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da",
+    "holdout_rmse_m": 0.004060,
+    "holdout_maximum_m": 0.007035,
+    "homography_recomputed": false
+  },
+  "measurement_convention": {
+    "magnitudes": "PHYSICAL_USER_MEASUREMENT",
+    "directions": "IMAGE_DERIVED_DIRECTION",
+    "tile_reference": "CENTER_OF_BLACK_GROUT_GRID_LINE",
+    "formula": "GLOBAL_OBJECT_REFERENCE_XY = LOCAL_ORIGIN_WORLD_XY + SIGNED_LOCAL_OFFSET_XY",
+    "object_reference_points_are_centers": false
+  },
+  "local_origin_mapping": [
+    {
+      "spatial_marker": "FAR_LEFT_FLOOR_MARKER",
+      "recovered_marker_id": 3,
+      "marker_touch_corner": "BOTTOM_LEFT",
+      "marker_touch_raw_px": [902, 541],
+      "grid_id": "G04",
+      "origin_world_xy_m": [0.0, 2.4],
+      "origin_projected_raw_px": [903.3059269321, 540.8696355661],
+      "touch_to_grid_projection_distance_px": 1.3124176308,
+      "mapping_provenance": "IMAGE_DERIVED_MARKER_PLACEMENT_PLUS_VALIDATED_GRID_GEOMETRY"
+    },
+    {
+      "spatial_marker": "FAR_RIGHT_FLOOR_MARKER",
+      "recovered_marker_id": 1,
+      "marker_touch_corner": "BOTTOM_RIGHT",
+      "marker_touch_raw_px": [1215, 543],
+      "grid_id": "G24",
+      "origin_world_xy_m": [1.2, 2.4],
+      "origin_projected_raw_px": [1214.2360102503, 543.2702611613],
+      "touch_to_grid_projection_distance_px": 0.8103835098,
+      "mapping_provenance": "IMAGE_DERIVED_MARKER_PLACEMENT_PLUS_VALIDATED_GRID_GEOMETRY"
+    },
+    {
+      "spatial_marker": "NEAR_LEFT_FLOOR_MARKER",
+      "recovered_marker_id": 4,
+      "marker_touch_corner": "BOTTOM_LEFT",
+      "marker_touch_raw_px": [820, 837],
+      "grid_id": "G01",
+      "origin_world_xy_m": [0.0, 0.6],
+      "origin_projected_raw_px": [820.4610179701, 837.7944923882],
+      "touch_to_grid_projection_distance_px": 0.9185617691,
+      "mapping_provenance": "IMAGE_DERIVED_MARKER_PLACEMENT_PLUS_VALIDATED_GRID_GEOMETRY"
+    },
+    {
+      "spatial_marker": "NEAR_RIGHT_FLOOR_MARKER",
+      "recovered_marker_id": 2,
+      "marker_touch_corner": "BOTTOM_RIGHT",
+      "marker_touch_raw_px": [1258, 847],
+      "grid_id": "G21",
+      "origin_world_xy_m": [1.2, 0.6],
+      "origin_projected_raw_px": [1255.1418051318, 848.5361614099],
+      "touch_to_grid_projection_distance_px": 3.2448528136,
+      "mapping_provenance": "IMAGE_DERIVED_MARKER_PLACEMENT_PLUS_VALIDATED_GRID_GEOMETRY"
+    }
+  ],
+  "objects": [
+    {
+      "object": "UMBRELLA",
+      "local_marker": "NEAR_RIGHT_FLOOR_MARKER",
+      "recovered_marker_id": 2,
+      "local_origin_grid_id": "G21",
+      "local_origin_world_xy_m": [1.2, 0.6],
+      "absolute_offset_m": [0.310, 0.270],
+      "image_derived_sign_xy": [-1, 1],
+      "signed_local_offset_xy_m": [-0.310, 0.270],
+      "global_object_reference_xy_m": [0.890, 0.870],
+      "reference_point_definition": "USER_STATED_RIGHT_END_REFERENCE_NOT_OBJECT_CENTER",
+      "projected_raw_px_for_overlay": [1140.3987943940, 786.0743833227],
+      "magnitude_provenance": "PHYSICAL_USER_MEASUREMENT",
+      "sign_provenance": "IMAGE_DERIVED_DIRECTION"
+    },
+    {
+      "object": "KEYBOARD",
+      "local_marker": "NEAR_LEFT_FLOOR_MARKER",
+      "recovered_marker_id": 4,
+      "local_origin_grid_id": "G01",
+      "local_origin_world_xy_m": [0.0, 0.6],
+      "absolute_offset_m": [0.225, 0.430],
+      "image_derived_sign_xy": [1, 1],
+      "signed_local_offset_xy_m": [0.225, 0.430],
+      "global_object_reference_xy_m": [0.225, 1.030],
+      "reference_point_definition": "USER_MEASURED_OBJECT_REFERENCE_POINT_EXACT_FEATURE_NOT_SPECIFIED",
+      "projected_raw_px_for_overlay": [918.6695540882, 749.2476685718],
+      "magnitude_provenance": "PHYSICAL_USER_MEASUREMENT",
+      "sign_provenance": "IMAGE_DERIVED_DIRECTION"
+    },
+    {
+      "object": "CUP",
+      "local_marker": "FAR_RIGHT_FLOOR_MARKER",
+      "recovered_marker_id": 1,
+      "local_origin_grid_id": "G24",
+      "local_origin_world_xy_m": [1.2, 2.4],
+      "absolute_offset_m": [0.440, 0.260],
+      "image_derived_sign_xy": [-1, -1],
+      "signed_local_offset_xy_m": [-0.440, -0.260],
+      "global_object_reference_xy_m": [0.760, 2.140],
+      "reference_point_definition": "USER_DEFINED_OBJECT_REFERENCE_NEAR_VISIBLE_HANDLE_SIDE_STRUCTURE_NOT_CUP_CENTER",
+      "projected_raw_px_for_overlay": [1099.2270799190, 574.3876475982],
+      "magnitude_provenance": "PHYSICAL_USER_MEASUREMENT",
+      "sign_provenance": "IMAGE_DERIVED_DIRECTION"
+    },
+    {
+      "object": "BOX",
+      "local_marker": "FAR_LEFT_FLOOR_MARKER",
+      "recovered_marker_id": 3,
+      "local_origin_grid_id": "G04",
+      "local_origin_world_xy_m": [0.0, 2.4],
+      "absolute_offset_m": [0.110, 0.710],
+      "image_derived_sign_xy": [1, -1],
+      "signed_local_offset_xy_m": [0.110, -0.710],
+      "global_object_reference_xy_m": [0.110, 1.690],
+      "reference_point_definition": "USER_MEASURED_OBJECT_REFERENCE_POINT_EXACT_FEATURE_NOT_SPECIFIED",
+      "projected_raw_px_for_overlay": [908.3738074219, 635.7520020013],
+      "magnitude_provenance": "PHYSICAL_USER_MEASUREMENT",
+      "sign_provenance": "IMAGE_DERIVED_DIRECTION"
+    }
+  ],
+  "box_vs_prior_vlm": {
+    "classification": "REFERENCE_POINT_NOT_EQUIVALENT",
+    "prior_vlm_bottom_center_world_xy_m": [0.1594835965362156, 1.5764884784994297],
+    "manual_box_reference_world_xy_m": [0.110, 1.690],
+    "euclidean_separation_m_for_reference_only": 0.12382847749824505,
+    "local_image_evidence": {
+      "same_bbox_patch_gray_correlation": 0.9293334731129897,
+      "larger_context_gray_correlation": 0.9181274003884705,
+      "interpretation": "Same-box/no-visible-movement is image-supported under the passed camera stability gate."
+    },
+    "localization_error_claimed": false,
+    "reason": "The VLM point is a bbox bottom-center development ground reference; the exact physical feature used for the manual box reference was not specified."
+  },
+  "execution_boundaries": {
+    "qwen_inference_runs": 0,
+    "planner_runs": 0,
+    "step18_runs": 0,
+    "step19_runs": 0,
+    "ros_nav2_runs": 0,
+    "robot_motion_commands": 0,
+    "footprints_injected_into_planner": false
+  }
+}

@@ -1,0 +1,78 @@
+{
+ "calls": [
+  {
+   "stage": "source_zone",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "source_zone_roles_v1",
+   "prompt_sha256": "accc34a99732b6d423e2f2c2a60431c9ed782453417c30bd8f1183773c3f72fd",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/contextual_target_selection/results/20261119_152645/inputs/source_zone_numbered.png",
+   "image_sha256": "68b9da165ccff74968901c809869b770bf60d16bea7f926b1f9fc40084da6235",
+   "image_size": [
+    1141,
+    1600
+   ],
+   "n_input_tokens": 2059,
+   "n_output_tokens": 613,
+   "hit_max_new_tokens": false,
+   "latency_s": 18.809,
+   "wall_s": 18.96,
+   "peak_vram_gib": 8.83,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"white rectangular box with grid pattern\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a storage or display unit, not a red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"green machine with red and orange components\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a machine, not a red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is clearly a red cube, matching the target object.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"orange cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a safety cone, not a red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is clearly a red cube, matching the target object.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"green mat with white bird symbol\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a mat or sign, not a red cube.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"orange cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a safety cone, not a red cube.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a non-red cube object.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"purple object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a non-red cube object.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is clearly a red cube, matching the target object.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"purple object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a non-red cube object.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is not a red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 3,\n  \"reason\": \"The red cube located in the green box labeled 3 is the target object to be moved.\"\n}"
+  },
+  {
+   "stage": "destination_zone",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_zone_roles_v1",
+   "prompt_sha256": "bace0ed259c95d85544f5fba27e1f0722f5a96ee5cb99a7eba4449603cdf877f",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/contextual_target_selection/results/20261119_152645/inputs/destination_zone_numbered.png",
+   "image_sha256": "59cff9b997878e492975dd97a1f5cee5877e6d5a437b9af62485298c22eedb4c",
+   "image_size": [
+    1600,
+    892
+   ],
+   "n_input_tokens": 1734,
+   "n_output_tokens": 917,
+   "hit_max_new_tokens": false,
+   "latency_s": 25.861,
+   "wall_s": 25.98,
+   "peak_vram_gib": 8.74,
+   "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"white truck\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The white truck is the designated destination for shipping.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck window is not a suitable area for placing cargo.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"truck cab\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck cab is not a designated shipping area.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"truck bed\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck bed is the designated area for shipping cargo.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"truck window\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The truck window is not a suitable area for placing cargo.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"truck bed\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The truck bed is the designated area for shipping cargo.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"road\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The road is an open area, but not designated for shipping.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"road\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"The road is an open area, but not designated for shipping.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designated for shipping.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designated for shipping.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designated for shipping.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designated for shipping.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designated for shipping.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"manhole cover\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Manhole covers are not designated for shipping.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designated for shipping.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"traffic cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Traffic cones are not designated for shipping.\"\n    }\n  ],\n  \"best_destination_id\": 5,\n  \"reason\": \"The truck bed is the designated area for shipping cargo.\"\n}"
+  },
+  {
+   "stage": "destination_verify",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "destination_context_verify_v1",
+   "prompt_sha256": "94783cab1f8854f0c42105abefd36ac154fc4ad6c51551f1c16147100f525c1a",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/contextual_target_selection/results/20261119_152645/inputs/destination_context_verify.png",
+   "image_sha256": "34ff4dfe86822bc39511c2150ffeccb514a2c4b6ce1083ee33d3e95230aa5253",
+   "image_size": [
+    1024,
+    564
+   ],
+   "n_input_tokens": 770,
+   "n_output_tokens": 46,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.463,
+   "wall_s": 1.52,
+   "peak_vram_gib": 8.491,
+   "raw_response": "{\"appearance\": [\"rectangular\", \"light brown\"], \"load_state\": \"occupied\", \"placement_role\": \"unsuitable\", \"reason\": \"The object is not a red cube and is not positioned for shipping.\"}"
+  }
+ ],
+ "n_qwen_calls": 3,
+ "n_dino_calls": 0,
+ "worker_env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "pid": 16590,
+  "torch": "2.13.0+cu130",
+  "torch_cuda": "13.0",
+  "transformers": "5.16.1",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "loaded": {}
+ },
+ "total_wall_s": 54.1
+}

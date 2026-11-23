@@ -1,0 +1,82 @@
+{
+  "case_id": "valid_ko_red_cup_zone_a",
+  "category": "valid",
+  "run": 2,
+  "instruction": "빨간 컵을 A구역으로 옮겨",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"red cup\",\"destination_phrase\":\"A zone\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "red cup",
+    "destination_phrase": "A zone"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "빨간 컵을 A구역으로 옮겨",
+    "action": "reposition",
+    "target": {
+      "phrase": "red cup"
+    },
+    "destination": {
+      "phrase": "A zone",
+      "zone_id": "zone_A"
+    }
+  },
+  "integrated": {
+    "status": "VALID_TASK",
+    "language_status": "VALID_TASK",
+    "raw_instruction": "빨간 컵을 A구역으로 옮겨",
+    "action": "reposition",
+    "target": {
+      "phrase": "red cup",
+      "grounding": {
+        "status": "TARGET_FOUND",
+        "detected_label": "red cup",
+        "world_coordinate": {
+          "x": 0.26924043893814087,
+          "y": 0.6576284766197205,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "INSIDE",
+        "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/red_cup_run01.json"
+      }
+    },
+    "destination": {
+      "phrase": "A zone",
+      "zone_id": "zone_A",
+      "center": [
+        0.3,
+        0.3
+      ],
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0
+        ],
+        [
+          0.6,
+          0.6
+        ],
+        [
+          0.0,
+          0.6
+        ]
+      ],
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "unit": "m"
+    },
+    "feasibility_status": "NOT_EVALUATED"
+  },
+  "inference_sec": 5.909114935000616,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "red cup",
+    "zone_id": "zone_A"
+  },
+  "matches_expected": true
+}

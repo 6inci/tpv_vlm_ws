@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "path_representation": "ALIGNED_8_CONNECTED_GRID_CELLS_AND_CELL_CENTER_WORLD_POINTS",
+  "validity_api": "vlm_reposition.planning.validate_current_path",
+  "checks": [
+    "waypoint workspace/collision/grid",
+    "continuous segment/AABB intersection",
+    "8-connected transition",
+    "diagonal corner-cut"
+  ],
+  "first_blocking_support": [
+    "waypoint_index",
+    "edge_index",
+    "blocking_obstacle_ids"
+  ],
+  "step18_input_dependency": "ACTIVE_PATH_PLUS_CURRENT_POSE_AND_UPDATED_STEP17_WORLD",
+  "stronger_geometry_claimed": false
+}

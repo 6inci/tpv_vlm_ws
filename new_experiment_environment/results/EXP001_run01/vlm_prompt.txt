@@ -1,0 +1,58 @@
+Analyze this single oblique overhead image of an indoor industrial robotics/logistics test environment.
+
+Return JSON only. Do not use markdown. Use integer image coordinates normalized to 0..1000.
+
+Required schema:
+{
+  "scene_context": {
+    "environment_type": "short label",
+    "summary": "one concise sentence",
+    "confidence": 0.0
+  },
+  "objects": [
+    {
+      "id": "obj_001",
+      "label": "specific visible object",
+      "category": "rack|box|pallet|workbench|truck|traffic_cone|manipulator|mobile_robot|cart|drum|fence|other",
+      "bbox_2d": [x1,y1,x2,y2],
+      "confidence": 0.0
+    }
+  ],
+  "relations": [
+    {
+      "subject_id": "obj_001",
+      "predicate": "near|left_of|right_of|in_front_of|behind|on|contains|inside|adjacent_to|bounded_by",
+      "object_id": "obj_002",
+      "confidence": 0.0
+    }
+  ],
+  "semantic_regions": [
+    {
+      "id": "region_storage",
+      "label": "Storage Area|Loading Area|Work Station|Material Area|No-Go Zone|Drop Zone|Traversable Area",
+      "polygon": [[x1,y1],[x2,y2],[x3,y3]],
+      "confidence": 0.0,
+      "evidence_object_ids": ["obj_001"],
+      "reasoning": "short evidence-based reason"
+    }
+  ],
+  "traversable_area": {
+    "polygon": [[x1,y1],[x2,y2],[x3,y3]],
+    "confidence": 0.0,
+    "reasoning": "visible open floor only"
+  },
+  "restricted_areas": [
+    {"polygon": [[x1,y1],[x2,y2],[x3,y3]], "reason": "visible restriction evidence"}
+  ],
+  "unknown_areas": [
+    {"polygon": [[x1,y1],[x2,y2],[x3,y3]], "reason": "occluded or ambiguous"}
+  ]
+}
+
+Rules:
+- Include each distinct major visible object once. Group tightly stacked identical boxes as one box_group if individual boxes are not needed.
+- Bboxes and polygons must refer to the original full image, never a crop.
+- Infer regions from combinations of objects and spatial relations, not from one object alone.
+- Traversable area means visible open black floor that a mobile robot could approximately occupy in image space.
+- Object footprints, regions, and traversability are approximate image-plane interpretations, not metric geometry.
+- Do not invent hidden objects, physical dimensions, metric coordinates, or a path.

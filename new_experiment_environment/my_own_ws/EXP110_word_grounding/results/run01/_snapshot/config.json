@@ -1,0 +1,82 @@
+{
+  "experiment_id": "EXP110",
+  "name": "word_grounding",
+  "status": "DESIGN",
+  "registry": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-14_object_registry_draft/object_registry_draft.json",
+  "provenance": "No git (user decision 2026-11-14). Each run stores a code/config/queries snapshot + sha256 in results/<run>/_snapshot and MANIFEST per condition.",
+  "splits": {
+    "source": "data/pilot P01-P10 (Cheese JPEG, 2026-11-14). User decision: only small pallets + blocks change, robot excluded.",
+    "dev": ["P01", "P02", "P03", "P04"],
+    "test": ["P05", "P06", "P07", "P08", "P09", "P10"],
+    "rule": "chronological, fixed before any model was run on these images"
+  },
+  "camera": {
+    "device": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "width": 1920,
+    "height": 1080,
+    "fourcc": "YUYV",
+    "fourcc_note": "YUYV = uncompressed from the sensor (MJPG is JPEG-compressed). Camera exposes no exposure control; auto white balance is ON and is recorded, not changed.",
+    "warmup_frames": 30,
+    "frames_per_layout": 3,
+    "frame_interval_s": 0.5,
+    "preview_scale": 0.5
+  },
+  "image_space": "raw (distorted) camera pixels, 1920x1080, x right, y down, origin top-left. Undistortion is NOT applied in this experiment; geometry converts selected points later.",
+  "paths": {
+    "data": "data",
+    "annotations": "annotations",
+    "results": "results"
+  },
+  "annotation": {
+    "display_scale": 0.8,
+    "magnifier_zoom": 4,
+    "magnifier_half_size_px": 40
+  },
+  "queries": {
+    "colors": {"black": ["검은", "black"], "gray": ["회색", "gray"], "blue": ["파란", "blue"], "red": ["빨간", "red"], "dark_green": ["짙은 초록색", "dark green"]},
+    "negatives": [["지게차", "forklift"], ["사람", "person"], ["사다리", "ladder"], ["안전모", "hard hat"]],
+    "multi_class_targets": {"pallet": ["pallet", "small_pallet"]},
+    "query_ignore": {"storage_rack": ["storage_cubby"]}
+  },
+  "models": {
+    "qwen": "Qwen/Qwen3-VL-4B-Instruct",
+    "dino": "IDEA-Research/grounding-dino-tiny",
+    "florence_base": "florence-community/Florence-2-base",
+    "florence_large": "florence-community/Florence-2-large",
+    "yolo_world": "/home/binci/vlm_ws/new_experiment_environment/results/YOLO_WORLD_INTEGRATION_20260929T012518+0900/07_yolo_world/yolov8s-world.pt",
+    "yolo_world_clip_dir": "/home/binci/weights/clip",
+    "yoloe_text": "/home/binci/weights/yoloe/yoloe-26s-seg.pt",
+    "yoloe_pf": "/home/binci/weights/yoloe/yoloe-26s-seg-pf.pt",
+    "yoloe_dir": "/home/binci/weights/yoloe"
+  },
+  "detector": {
+    "save_min_score": 0.01,
+    "save_max_boxes": 100,
+    "yolo_imgsz": 1280,
+    "yolo_iou": 0.7,
+    "dino_box_threshold": 0.01,
+    "dino_text_threshold": 0.01,
+    "florence_num_beams": 3,
+    "florence_max_new_tokens": 1024
+  },
+  "qwen": {
+    "dtype": "bfloat16",
+    "do_sample": false,
+    "c1_max_new_tokens": 512,
+    "c6_max_new_tokens": 128,
+    "instruction_language": "English for every query; only the query string changes language",
+    "c1_prompt": "Find every instance of \"{q}\" in this image. Return JSON only, no prose: {{\"objects\": [{{\"bbox_2d\": [x1, y1, x2, y2]}}]}} with integer coordinates normalized to 0-1000 relative to image width and height. If there is no such object, return {{\"objects\": []}}.",
+    "c6_prompt": "Numbered candidate boxes are drawn on this image. Which numbered boxes contain \"{q}\"? Select every box that contains it and no other box. Return JSON only, no prose: {{\"ids\": [<numbers>]}}. If no box contains it, return {{\"ids\": []}}."
+  },
+  "c6": {
+    "variants": {
+      "pf": {"source": "PF", "min_score": 0.10, "max_area_frac": 0.25, "top_k": 60},
+      "dino": {"source": "C2", "min_score": 0.10, "max_area_frac": 0.25, "top_k": 15},
+      "yoloe": {"source": "C3", "min_score": 0.01, "max_area_frac": 0.25, "top_k": 15},
+      "yoloworld": {"source": "C4", "min_score": 0.01, "max_area_frac": 0.25, "top_k": 15},
+      "florence": {"source": "C5L", "min_score": null, "max_area_frac": 0.25, "top_k": 15}
+    },
+    "nms_iou": 0.7,
+    "note": "Candidate filters are initial values; tuned on dev only (DESIGN §9). Detectors only ever receive the query string (q-variants) or nothing (pf)."
+  }
+}

@@ -1,0 +1,6 @@
+M2 attempt 1 (2026-11-15) FAILED: torch.OutOfMemoryError in lm_head during generation on the 2nd query (q085 traffic cone, C1).
+Setting: max_memory GPU 9GiB / CPU 22GiB (config.json at that time). Only q043 completed (C1 46.6 s, C6 8.0 s); no rows/MANIFEST were written.
+Cause (INFERRED): 9 GiB of weights on the GPU left too little room for activations/KV cache of a ~2100-token image prompt
+plus the process's other allocations (11.5 GiB card, ~1.4 GiB used by the desktop).
+Full traceback: explore/X6_model_size/log_20261115T125305.txt
+Retry: lower the GPU weight budget (config models.M2.max_memory) and run again into a new run directory.

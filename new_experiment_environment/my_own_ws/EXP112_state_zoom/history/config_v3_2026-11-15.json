@@ -1,0 +1,88 @@
+{
+ "experiment_id": "EXP112",
+ "version": "v3 (2026-11-15). Units and the dev screening rule fixed before any EXP112 model run (user decision 2026-11-15).",
+ "model": "M1 = EXP110 run_models.Qwen (Qwen3-VL-4B-Instruct BF16, greedy)",
+ "image_space": "raw distorted pixels 1920x1080 (no undistortion)",
+ "candidates": "oracle only: answer-key small_pallet boxes of frame 0, ids by x (1 = leftmost); the same boxes are used for frames 1-2 (static scene, fixed camera)",
+ "data": {
+  "images": "../EXP111_small_objects/data/dev/{layout}_f{frame:02d}.png",
+  "layouts": [
+   "D01",
+   "D02",
+   "D03",
+   "D04",
+   "D05",
+   "D06",
+   "D07",
+   "D08"
+  ],
+  "frames": [
+   0,
+   1,
+   2
+  ],
+  "primary_frame": 0,
+  "boxes": "../EXP111_small_objects/annotations/dev/{layout}_f00.json",
+  "relations": "../EXP111_small_objects/annotations_relations/{layout}.json"
+ },
+ "smoke": {
+  "purpose": "format and GPU memory only on EXP110 dev P01-P04; no answer key is read, no accuracy is computed, answers are not printed",
+  "candidates": "../EXP111_small_objects/analysis/pipeline_eval_20261115T130407/structured_output.json"
+ },
+ "crop": {
+  "context_scale": 3.0,
+  "min_side_px": 160,
+  "enlarged_long_side_px": 768,
+  "source": "EXP111 s3 crop = EXP110 X4 oracle crop (set before EXP112)"
+ },
+ "overlay": "white numbered boxes on every candidate (EXP120 neutral_overlay)",
+ "state_prompt": "Look at the small pallet {where}. Which blocks are lying on top of this pallet? Count only blocks that sit on the pallet surface, not blocks on the floor next to it. Return JSON only: {{\"blocks_on_pallet\": [<\"red\" or \"blue\">, ...]}} (an empty list if the pallet is empty).",
+ "where": {
+  "Z-full": "marked with box number {k} in the image",
+  "Z-crop": "at the center of this image",
+  "Z-both": "marked with box number {k} in the first image; the second image is an enlarged view of the same pallet"
+ },
+ "state_max_new_tokens": 64,
+ "parse_rule": "JSON object with key blocks_on_pallet whose value is a list of strings, else invalid. Colours are compared after lower() and strip() only; any other string counts as a wrong colour, not as invalid.",
+ "b_rule": {
+  "queries": [
+   "q029",
+   "q031",
+   "q033",
+   "q035"
+  ],
+  "color_queries": {
+   "blue": "q031",
+   "red": "q033"
+  },
+  "prompt": "EXP110 config qwen.c1_prompt and c1_max_new_tokens (unchanged, as EXP111 s4)",
+  "state_rule": "LOADED if the centre of any predicted block box (any of the 4 queries) lies inside the pallet box; colours from the colour queries the same way (EXP111 s4 rule)"
+ },
+ "units": {
+  "primary": "16 small pallets of the 8 new dev layouts, frame 0 only",
+  "repeatability": "frames 1-2: same answer as frame 0 (state and colour set); never counted as extra samples",
+  "independent_unit": "layout (8); statistics resample layouts (cluster bootstrap), never pallets or frames",
+  "correct": "state (EMPTY/LOADED) correct on frame 0; an invalid output is not correct"
+ },
+ "errors": {
+  "A_E1": "empty pallet judged LOADED",
+  "B_E2": "loaded pallet judged EMPTY (priority error: can make an occupied pallet the chosen destination)",
+  "invalid_note": "invalid outputs are counted as E7, not as A or B"
+ },
+ "screening_rule": {
+  "fixed": "2026-11-15, user decision, before any EXP112 run",
+  "k": 3,
+  "net": "number of frame-0 pallets with correct state in the zoom condition minus the same number in Z-full (same 16 pallets)",
+  "eligible": "B_E2 count of the zoom condition <= B_E2 count of Z-full AND net >= k",
+  "choice": "at most one of Z-crop, Z-both: the eligible one with the larger net; tie -> the smaller median per-call latency on frame 0",
+  "none_eligible": "no condition is chosen; the dev result is reported as is",
+  "meaning": "dev screening only; not statistical significance and not hypothesis proof. The independent test criterion is fixed separately before the test run."
+ },
+ "bootstrap": {
+  "unit": "layout",
+  "n_boot": 2000,
+  "seed": 0,
+  "use": "descriptive CI of net (layout clusters), not a pass rule"
+ },
+ "destination_analysis": "Python selects from the per-pallet answers for 'the empty pallet', 'the pallet with blocks', 'the pallet with the blue block', 'the pallet with the red block' (EXP120 resolve rule) and compares with the same selection on the answer-key states (definitional, no geometry constants)"
+}

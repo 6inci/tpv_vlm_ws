@@ -1,0 +1,118 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "46fbe7cf16da1d1408f06f669dad908ded040c14916314008b69fe04fa1b35ff",
+  "image_path": "/home/binci/Pictures/Calibration/1calibration.png",
+  "image_sha256": "6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2712,
+  "n_output_tokens": 656,
+  "hit_max_new_tokens": false,
+  "latency_s": 19.975,
+  "wall_s": 20.09,
+  "peak_vram_gib": 8.981,
+  "raw_response": "{\n  \"purpose\": \"Move the red cube to an empty pallet\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": null,\n    \"bbox_2d\": null\n  },\n  \"source_relation\": \"none\",\n  \"destination_meaning\": \"Empty pallet for placing the red cube\",\n  \"destination_reference\": {\n    \"name_en\": \"empty pallet\",\n    \"bbox_2d\": [\n      584,\n      804,\n      655,\n      908\n    ],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"none\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Green walkway with footprints\",\n      \"visual_evidence\": [\n        \"green floor with white footprints\",\n        \"orange cones\"\n      ],\n      \"bbox_2d\": [\n        305,\n        60,\n        560,\n        280\n      ],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Yellow-bordered main robot travel area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [\n        220,\n        280,\n        655,\n        780\n      ],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"White-bordered conveyor and robot arm workstation\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot arms\"\n      ],\n      \"bbox_2d\": [\n        80,\n        260,\n        270,\n        720\n      ],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Yellow-bordered cargo storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"stacked boxes and barrels\"\n      ],\n      \"bbox_2d\": [\n        615,\n        430,\n        960,\n        560\n      ],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\n        \"white truck\",\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [\n        680,\n        0,\n        890,\n        180\n      ],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"White-bordered charging station\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"lightning bolt symbol\"\n      ],\n      \"bbox_2d\": [\n        660,\n        770,\n        800,\n        940\n      ],\n      \"robot_body_access\": \"allowed\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The red cube is not visible in the image, so its location is unknown.\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_001_U23678143",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/1calibration.png",
+  "image_sha256": "6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13",
+  "prompts": [
+   "red cube",
+   "empty pallet"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 74,
+  "wall_s": 0.58,
+  "peak_vram_gib": 1.969
+ },
+ {
+  "stage": "dino_roi_U23678143_truck_run_001_U23678143",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U23678143_inputs/roi_truck.png",
+  "image_sha256": "3e8457301cd70f494777fe73cb27f6417737787862005a176732cd53fd4a6ee6",
+  "prompts": [
+   "red cube",
+   "empty pallet"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 29,
+  "wall_s": 0.6,
+  "peak_vram_gib": 1.969
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "source_roles_v2",
+  "prompt_sha256": "f1aa3b925215a9051b03f8013e9ec6be6765718c9df8dc74fe8263e40ee8a8e5",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/inputs/source_1.png",
+  "image_sha256": "43c410d300ab0253a0e090fafc4571e204d56328527ac34253401ae771fed357",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2508,
+  "n_output_tokens": 195,
+  "hit_max_new_tokens": false,
+  "latency_s": 6.584,
+  "wall_s": 6.71,
+  "peak_vram_gib": 8.938,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 18,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"The red cube is the object that needs to be moved.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\n        \"orange cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange cone, not the red cube.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"The red cube is the object that needs to be moved.\"\n    }\n  ],\n  \"object_to_move_id\": 18,\n  \"reason\": \"The red cube is the target object to be moved, and it is located at candidate ID 18.\"\n}"
+ },
+ {
+  "stage": "source_2",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "source_roles_v2",
+  "prompt_sha256": "f1aa3b925215a9051b03f8013e9ec6be6765718c9df8dc74fe8263e40ee8a8e5",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/inputs/source_2.png",
+  "image_sha256": "98e49b8a5439ccbe2cae297e7d44308a9edad84382a29dc500cd0dc5f78aaa21",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2508,
+  "n_output_tokens": 89,
+  "hit_max_new_tokens": false,
+  "latency_s": 3.557,
+  "wall_s": 3.68,
+  "peak_vram_gib": 8.938,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"The red cube is the object that needs to be moved.\"\n    }\n  ],\n  \"object_to_move_id\": 1,\n  \"reason\": \"The red cube is the target object to be moved according to the instruction.\"\n}"
+ },
+ {
+  "stage": "destination_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "destination_roles_v2",
+  "prompt_sha256": "6ff91e6a6b52aa86103dad0893a2cf4a1ed03bcffb6a18d0e67fb8a54140e69a",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/inputs/destination_1.png",
+  "image_sha256": "51166b7e7deb525b89cef77f1fc6766149f7aad4a16e50d7203030d74d6bcd17",
+  "image_size": [
+   1560,
+   1328
+  ],
+  "n_input_tokens": 2646,
+  "n_output_tokens": 198,
+  "hit_max_new_tokens": false,
+  "latency_s": 6.745,
+  "wall_s": 6.86,
+  "peak_vram_gib": 8.968,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"a pallet with four cylindrical objects on it\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The pallet is already occupied by cylindrical objects and cannot be used as a destination for a red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"a rectangular grate with vertical slats\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The grate is empty and located in a walkway area, which is suitable for placing the red cube as it is not a robot travel zone or work cell.\"\n    }\n  ],\n  \"best_destination_id\": 2,\n  \"reason\": \"The grate is empty and located in a walkway area, which is suitable for placing the red cube.\"\n}"
+ }
+]

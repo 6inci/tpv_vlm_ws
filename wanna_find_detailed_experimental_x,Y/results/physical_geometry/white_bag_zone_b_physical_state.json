@@ -1,0 +1,298 @@
+{
+  "schema_version": "0.1",
+  "state_type": "OFFLINE_DEVELOPMENT_PHYSICAL_PLANNING_STATE",
+  "representation_status": "VALID",
+  "workspace_task_state_source": "/home/binci/vlm_ws/results/workspace_state/white_bag_zone_b_state.json",
+  "workspace_task_summary": {
+    "instruction": "흰색 가방을 B구역으로 이동시켜",
+    "target": "white bag",
+    "destination_zone": "zone_B",
+    "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE"
+  },
+  "physical_geometry": {
+    "robot": {
+      "id": "mecanum_base",
+      "geometry_status": "CONFIRMED",
+      "reference_frame": "base_link",
+      "axis_convention": {
+        "x_positive": "forward",
+        "y_positive": "left"
+      },
+      "reference_point": "base_link_origin",
+      "footprint_type": "rectangle",
+      "length_m": 0.29,
+      "width_m": 0.246,
+      "source_type": "EXISTING_ROS2_NAV2_CONFIG",
+      "source_path": "/home/binci/mecanum_ros2/src/mecanum_bringup/config/nav2_params.yaml",
+      "source_detail": "local/global costmap footprint at lines 216 and 254",
+      "source_footprint_m": [
+        [
+          0.145,
+          0.123
+        ],
+        [
+          0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          0.123
+        ]
+      ],
+      "geometry_readiness": "READY",
+      "footprint_m": [
+        [
+          0.145,
+          0.123
+        ],
+        [
+          0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          0.123
+        ]
+      ]
+    },
+    "gripper": {
+      "geometry_status": "UNKNOWN",
+      "reference_frame": "base_link",
+      "footprint_type": null,
+      "length_m": null,
+      "width_m": null,
+      "front_extension_m": null,
+      "open_width_m": null,
+      "closed_width_m": null,
+      "holding_offset_m": null,
+      "source_type": "PROJECT_AUDIT",
+      "source_path": "/home/binci/vlm_ws/docs/RESEARCH_SCOPE.md",
+      "source_detail": "front-mounted 1-DOF gripper is planned, but exact dimensions remain UNKNOWN",
+      "geometry_readiness": "NOT_READY",
+      "footprint_m": null
+    },
+    "target_object": {
+      "object_id": "white_bag",
+      "geometry_status": "UNKNOWN",
+      "footprint_type": null,
+      "length_m": null,
+      "width_m": null,
+      "diameter_m": null,
+      "source_type": "PROJECT_AUDIT",
+      "source_path": "/home/binci/vlm_ws",
+      "source_detail": "no human-measured footprint or defined bag loading state found",
+      "geometry_readiness": "NOT_READY",
+      "footprint_m": null
+    },
+    "planning_entities": [
+      {
+        "scene_entity_id": "entity_001",
+        "label": "office chair",
+        "semantic_type": "furniture",
+        "planning_role": "STATIC_OBSTACLE_CANDIDATE",
+        "world_coordinate": {
+          "x": -0.4353210926055908,
+          "y": 0.12099304795265198,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_002",
+        "label": "office chair",
+        "semantic_type": "furniture",
+        "planning_role": "STATIC_OBSTACLE_CANDIDATE",
+        "world_coordinate": {
+          "x": -0.19061477482318878,
+          "y": 1.7990260124206543,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_003",
+        "label": "person",
+        "semantic_type": "person",
+        "planning_role": "DYNAMIC_ENTITY",
+        "world_coordinate": {
+          "x": 1.7526438236236572,
+          "y": 0.0026241468731313944,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_004",
+        "label": "person",
+        "semantic_type": "person",
+        "planning_role": "DYNAMIC_ENTITY",
+        "world_coordinate": {
+          "x": -0.3763289153575897,
+          "y": 1.8965528011322021,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_005",
+        "label": "laptop",
+        "semantic_type": "workspace_element",
+        "planning_role": "UNASSIGNED",
+        "world_coordinate": {
+          "x": 2.297104835510254,
+          "y": 1.6418366432189941,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_006",
+        "label": "laptop",
+        "semantic_type": "workspace_element",
+        "planning_role": "UNASSIGNED",
+        "world_coordinate": {
+          "x": 2.0571112632751465,
+          "y": 1.5178039073944092,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_007",
+        "label": "red mug",
+        "semantic_type": "workspace_element",
+        "planning_role": "UNASSIGNED",
+        "world_coordinate": {
+          "x": 0.26729291677474976,
+          "y": 0.6573204398155212,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "INSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_008",
+        "label": "small robot",
+        "semantic_type": "movable_object",
+        "planning_role": "UNASSIGNED",
+        "world_coordinate": {
+          "x": 0.7020726799964905,
+          "y": 0.019278062507510185,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "INSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_009",
+        "label": "trophy",
+        "semantic_type": "workspace_element",
+        "planning_role": "UNASSIGNED",
+        "world_coordinate": {
+          "x": 0.6988818049430847,
+          "y": 1.4738563299179077,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "INSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_010",
+        "label": "desk",
+        "semantic_type": "furniture",
+        "planning_role": "STATIC_OBSTACLE_CANDIDATE",
+        "world_coordinate": {
+          "x": -0.5513485670089722,
+          "y": -0.4155998229980469,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      },
+      {
+        "scene_entity_id": "entity_011",
+        "label": "desk",
+        "semantic_type": "furniture",
+        "planning_role": "STATIC_OBSTACLE_CANDIDATE",
+        "world_coordinate": {
+          "x": 1.8742012977600098,
+          "y": 0.020295727998018265,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "geometry_status": "UNKNOWN",
+        "footprint_m": null,
+        "geometry_readiness": "NOT_READY",
+        "source": "STEP_07_REFERENCE_POINT_ONLY"
+      }
+    ]
+  },
+  "planning_geometry_readiness": {
+    "robot": "READY",
+    "gripper": "NOT_READY",
+    "target_object": "NOT_READY",
+    "static_obstacles": "NOT_READY",
+    "overall": "PARTIAL"
+  },
+  "collision_checking": {
+    "status": "NOT_RUN"
+  },
+  "planning": {
+    "status": "NOT_RUN"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "candidate_id": "mobile_robot_cand4",
+      "bbox_xyxy": [
+        1585.03,
+        619.74,
+        1814.01,
+        784.4
+      ],
+      "detector_score": 0.3559,
+      "detector_prompt": "mobile robot.",
+      "status": "yes",
+      "answer": {
+        "answer": "yes",
+        "observed_color": "black",
+        "observed_object": "wheeled mobile robot",
+        "reason": "The object is a small, mobile robot with wheels and a chassis designed for movement on the floor."
+      },
+      "crop": {
+        "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/first_vlm_navigation_path/results/20261119_001147_first_path/robot_crops/verify_robot_mobile_robot_cand4.png",
+        "crop_xyxy_raw": [
+          1241,
+          276,
+          1920,
+          1080
+        ],
+        "scale": 1.0,
+        "marker": "green rectangle = candidate box"
+      },
+      "call": {
+        "model": "Qwen/Qwen3-VL-4B-Instruct",
+        "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "prompt_id": "verify_object_v1",
+        "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+        "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/first_vlm_navigation_path/results/20261119_001147_first_path/robot_crops/verify_robot_mobile_robot_cand4.png",
+        "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"black\", \"observed_object\": \"wheeled mobile robot\", \"reason\": \"The object is a small, mobile robot with wheels and a chassis designed for movement on the floor.\"}",
+        "latency_s": 2.832,
+        "n_output_tokens": 52,
+        "hit_max_new_tokens": false,
+        "peak_vram_gib": 8.463,
+        "error": null
+      },
+      "stored_verification_in_v02_run": {
+        "status": "not_run",
+        "reason": "outside verify_top_k=3"
+      }
+    }
+  ]
+}

@@ -1,0 +1,544 @@
+{
+ "status": "DRAFT (원본 구역 초안이 DRAFT, 사용자 확인 필요)",
+ "frame": "env2_20261119 map m, floor z = 0",
+ "source": {
+  "file": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-15_zone_draft/semantic_zones_draft_v2.json",
+  "image": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP110_word_grounding/data/pilot/P01_cheese_2026-11-14-181534.jpg",
+  "register_image": "1_required/camera/register_20261119_194739/undistorted.png"
+ },
+ "source_sha256_image": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+ "homography_P01undist_to_register": {
+  "H": [
+   [
+    1.0078568180249885,
+    0.006781272875385052,
+    -18.342240187447604
+   ],
+   [
+    -0.0009757736753372537,
+    1.0104043582179192,
+    -3.7090260209484605
+   ],
+   [
+    2.973711542570564e-06,
+    3.2635083682469085e-06,
+    1.0
+   ]
+  ],
+  "inliers": 1147,
+  "median_residual_px": 0.764
+ },
+ "zones": [
+  {
+   "id": "Z01",
+   "name_ko": "보행 통로",
+   "role": "pedestrian_route",
+   "polygon_map_m": [
+    [
+     1.6555,
+     2.0156
+    ],
+    [
+     1.8612,
+     2.0144
+    ],
+    [
+     1.8709,
+     1.3925
+    ],
+    [
+     0.8251,
+     1.4027
+    ],
+    [
+     0.8232,
+     1.6098
+    ],
+    [
+     1.6408,
+     1.6039
+    ]
+   ],
+   "semantic_origin": "USER",
+   "access_draft": {
+    "robot": "unknown",
+    "human": "allowed"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     1002,
+     102
+    ],
+    [
+     1086,
+     102
+    ],
+    [
+     1103,
+     310
+    ],
+    [
+     636,
+     314
+    ],
+    [
+     648,
+     241
+    ],
+    [
+     997,
+     233
+    ]
+   ]
+  },
+  {
+   "id": "Z02",
+   "name_ko": "로봇 주행 구역",
+   "role": "robot_drivable_outer_area",
+   "polygon_map_m": [
+    [
+     0.6399,
+     1.3878
+    ],
+    [
+     3.201,
+     1.3624
+    ],
+    [
+     3.1575,
+     0.3239
+    ],
+    [
+     0.6121,
+     0.2745
+    ]
+   ],
+   "semantic_origin": "USER",
+   "access_draft": {
+    "robot": "allowed_in_principle",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     558,
+     323
+    ],
+    [
+     1693,
+     344
+    ],
+    [
+     1804,
+     825
+    ],
+    [
+     457,
+     824
+    ]
+   ]
+  },
+  {
+   "id": "Z03",
+   "name_ko": "중앙 화물 적치 구역",
+   "role": "cargo_staging",
+   "polygon_map_m": [
+    [
+     1.2683,
+     0.9878
+    ],
+    [
+     1.6411,
+     0.9829
+    ],
+    [
+     1.6469,
+     0.6754
+    ],
+    [
+     1.2647,
+     0.6759
+    ]
+   ],
+   "semantic_origin": "INFERRED",
+   "access_draft": {
+    "robot": "approach_only",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     816,
+     477
+    ],
+    [
+     998,
+     479
+    ],
+    [
+     1001,
+     625
+    ],
+    [
+     804,
+     623
+    ]
+   ]
+  },
+  {
+   "id": "Z04",
+   "name_ko": "자재 보관·적치 구역",
+   "role": "material_staging",
+   "polygon_map_m": [
+    [
+     2.0917,
+     0.9526
+    ],
+    [
+     3.2353,
+     0.9767
+    ],
+    [
+     3.1846,
+     0.7
+    ],
+    [
+     2.0803,
+     0.681
+    ]
+   ],
+   "semantic_origin": "INFERRED",
+   "access_draft": {
+    "robot": "approach_only",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     1222,
+     495
+    ],
+    [
+     1756,
+     503
+    ],
+    [
+     1769,
+     630
+    ],
+    [
+     1227,
+     625
+    ]
+   ]
+  },
+  {
+   "id": "Z05",
+   "name_ko": "충전 구역",
+   "role": "charging_area",
+   "polygon_map_m": [
+    [
+     2.182,
+     0.2602
+    ],
+    [
+     2.5821,
+     0.2684
+    ],
+    [
+     2.5582,
+     -0.0107
+    ],
+    [
+     2.1864,
+     -0.0253
+    ]
+   ],
+   "semantic_origin": "USER_AND_VISUAL",
+   "access_draft": {
+    "robot": "conditional_destination",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     1299,
+     853
+    ],
+    [
+     1516,
+     851
+    ],
+    [
+     1525,
+     1018
+    ],
+    [
+     1314,
+     1025
+    ]
+   ]
+  },
+  {
+   "id": "Z06",
+   "name_ko": "트럭 하역장",
+   "role": "loading_bay",
+   "polygon_map_m": [
+    [
+     2.6507,
+     2.0546
+    ],
+    [
+     3.2571,
+     2.1107
+    ],
+    [
+     3.1961,
+     1.6655
+    ],
+    [
+     2.6375,
+     1.6503
+    ]
+   ],
+   "semantic_origin": "USER_AND_VISUAL",
+   "access_draft": {
+    "robot": "conditional_destination",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     1402,
+     99
+    ],
+    [
+     1628,
+     99
+    ],
+    [
+     1655,
+     235
+    ],
+    [
+     1428,
+     226
+    ]
+   ]
+  },
+  {
+   "id": "Z07",
+   "name_ko": "왼쪽 컨베이어 작업셀",
+   "role": "robotic_workcell",
+   "polygon_map_m": [
+    [
+     0.0668,
+     1.4355
+    ],
+    [
+     0.6324,
+     1.4019
+    ],
+    [
+     0.5959,
+     0.3439
+    ],
+    [
+     -0.0087,
+     0.3734
+    ]
+   ],
+   "semantic_origin": "INFERRED",
+   "access_draft": {
+    "robot": "restricted",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     341,
+     320
+    ],
+    [
+     556,
+     318
+    ],
+    [
+     455,
+     787
+    ],
+    [
+     193,
+     765
+    ]
+   ]
+  },
+  {
+   "id": "Z08",
+   "name_ko": "상단 로봇 팔 작업셀",
+   "role": "robotic_workcell",
+   "polygon_map_m": [
+    [
+     0.3486,
+     2.0779
+    ],
+    [
+     1.3074,
+     2.0058
+    ],
+    [
+     1.3459,
+     1.6921
+    ],
+    [
+     0.3959,
+     1.7158
+    ]
+   ],
+   "semantic_origin": "INFERRED",
+   "access_draft": {
+    "robot": "restricted",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     502,
+     111
+    ],
+    [
+     861,
+     108
+    ],
+    [
+     870,
+     205
+    ],
+    [
+     489,
+     217
+    ]
+   ]
+  },
+  {
+   "id": "Z09",
+   "name_ko": "작업자 준비·사물함 구역",
+   "role": "worker_support",
+   "polygon_map_m": [
+    [
+     -0.2313,
+     2.279
+    ],
+    [
+     0.3199,
+     2.1889
+    ],
+    [
+     0.4046,
+     1.8207
+    ],
+    [
+     0.1294,
+     1.8502
+    ],
+    [
+     0.2265,
+     1.426
+    ],
+    [
+     -0.0661,
+     1.4496
+    ],
+    [
+     -0.084,
+     1.9171
+    ]
+   ],
+   "semantic_origin": "USER_AND_VISUAL",
+   "access_draft": {
+    "robot": "unknown",
+    "human": "allowed"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     329,
+     80
+    ],
+    [
+     501,
+     82
+    ],
+    [
+     501,
+     184
+    ],
+    [
+     405,
+     184
+    ],
+    [
+     399,
+     319
+    ],
+    [
+     295,
+     319
+    ],
+    [
+     339,
+     172
+    ]
+   ]
+  },
+  {
+   "id": "Z10",
+   "name_ko": "왼쪽 아래 선반 보관 구역",
+   "role": "rack_storage",
+   "polygon_map_m": [
+    [
+     -0.0143,
+     0.3672
+    ],
+    [
+     0.7884,
+     0.3042
+    ],
+    [
+     0.8142,
+     -0.0492
+    ],
+    [
+     0.0023,
+     0.0068
+    ]
+   ],
+   "semantic_origin": "INFERRED",
+   "access_draft": {
+    "robot": "unknown",
+    "human": "unknown"
+   },
+   "source_polygon_px_P01_raw": [
+    [
+     190,
+     768
+    ],
+    [
+     545,
+     811
+    ],
+    [
+     534,
+     1012
+    ],
+    [
+     155,
+     955
+    ]
+   ]
+  }
+ ],
+ "landmarks": [
+  {
+   "id": "L01",
+   "name_ko": "소화기 배치점",
+   "role": "fire_extinguisher_landmark",
+   "point_map_m": [
+    2.8383,
+    0.1564
+   ]
+  }
+ ]
+}

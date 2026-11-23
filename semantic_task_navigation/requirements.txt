@@ -1,0 +1,11 @@
+# GUI / orchestration environment (conda env "stnav_gui", Python 3.10.20).
+#   conda create -n stnav_gui python=3.10 -y
+#   /home/binci/miniconda3/envs/stnav_gui/bin/python -m pip install --no-user -r requirements.txt
+# Model inference does NOT use this file: it runs in the existing, unchanged "qwen_vl" env
+# (torch 2.13.0+cu130, transformers 5.16.1) through src/semantic_task_nav/perception/model_worker.py.
+PySide6==6.12.0
+opencv-python-headless==5.0.0.93   # headless: no bundled Qt that would clash with PySide6
+numpy==2.2.6
+PyYAML==6.0.3
+pillow==12.3.0
+pytest==9.2.0

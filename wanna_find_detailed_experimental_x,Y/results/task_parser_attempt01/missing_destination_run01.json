@@ -1,0 +1,30 @@
+{
+  "case_id": "missing_destination",
+  "category": "missing_destination",
+  "run": 1,
+  "instruction": "빨간 컵을 옮겨",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"red cup\",\"destination_phrase\":\"null\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "red cup",
+    "destination_phrase": "null"
+  },
+  "validated": {
+    "status": "DESTINATION_NOT_RESOLVED",
+    "raw_instruction": "빨간 컵을 옮겨",
+    "error_code": "ZONE_NOT_RESOLVED",
+    "reason": "destination is not a configured zone alias: null",
+    "parsed_fields": {
+      "action": "reposition",
+      "target_phrase": "red cup",
+      "destination_phrase": "null"
+    }
+  },
+  "integrated": null,
+  "inference_sec": 6.609305281999696,
+  "expected": {
+    "status": "TASK_INCOMPLETE",
+    "error_code": "MISSING_DESTINATION"
+  },
+  "matches_expected": false
+}

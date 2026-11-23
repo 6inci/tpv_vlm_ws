@@ -1,0 +1,96 @@
+{
+  "case_id": "valid_en_white_bag_zone_b",
+  "category": "valid",
+  "core_metric": true,
+  "run": 3,
+  "instruction": "Move the white bag to Zone B.",
+  "raw_model_output": "{\"action_phrase\":\"Move\",\"target_phrase\":\"the white bag\",\"destination_phrase\":\"Zone B\"}",
+  "parsed": {
+    "action_phrase": "Move",
+    "target_phrase": "the white bag",
+    "destination_phrase": "Zone B"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "Move the white bag to Zone B.",
+    "action": {
+      "surface_phrase": "Move",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target": {
+      "surface_phrase": "the white bag",
+      "grounding_phrase": "white bag",
+      "canonicalization_status": "KNOWN_ALIAS"
+    },
+    "destination": {
+      "surface_phrase": "Zone B",
+      "zone_id": "zone_B"
+    }
+  },
+  "integrated": {
+    "status": "VALID_TASK",
+    "language_status": "VALID_TASK",
+    "raw_instruction": "Move the white bag to Zone B.",
+    "action": {
+      "surface_phrase": "Move",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target": {
+      "surface_phrase": "the white bag",
+      "grounding_phrase": "white bag",
+      "canonicalization_status": "KNOWN_ALIAS",
+      "grounding": {
+        "status": "TARGET_FOUND",
+        "detected_label": "white bag",
+        "world_coordinate": {
+          "x": 1.3878140449523926,
+          "y": 0.5846943259239197,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "OUTSIDE",
+        "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/white_bag_run01.json"
+      }
+    },
+    "destination": {
+      "surface_phrase": "Zone B",
+      "zone_id": "zone_B",
+      "center": [
+        0.9,
+        0.3
+      ],
+      "polygon": [
+        [
+          0.6,
+          0.0
+        ],
+        [
+          1.2,
+          0.0
+        ],
+        [
+          1.2,
+          0.6
+        ],
+        [
+          0.6,
+          0.6
+        ]
+      ],
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "unit": "m"
+    },
+    "feasibility_status": "NOT_EVALUATED",
+    "path_status": "NOT_RUN"
+  },
+  "inference_sec": 7.803282149998267,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "white bag",
+    "zone_id": "zone_B"
+  },
+  "matches_expected": true
+}

@@ -1,0 +1,37 @@
+{
+ "id": "EXP111-s2-pilot",
+ "describe": true,
+ "description": "Definition: in this miniature warehouse, a \"small pallet\" is a flat gray square platform with a grid-like slatted surface, lying on the floor. It may look like a ventilation grille or a drain cover. Small colored cubes may sit on top of it.\n",
+ "started": "2026-11-15T12:50:13.274764+09:00",
+ "env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "transformers": "5.16.1",
+  "nvidia_driver": "580.178.04"
+ },
+ "config": {
+  "queries": [
+   "q025",
+   "q027",
+   "q024",
+   "q026"
+  ],
+  "size_gate_px": {
+   "min_side": 35,
+   "max_side": 75
+  },
+  "size_gate_note": "PROVISIONAL, set from dev answer sizes (small pallet 38-57 px) with margin. Replace with an expected-size model from physical size + homography when available.",
+  "nms_iou": 0.7,
+  "top_k": 15,
+  "source_run": "run02"
+ },
+ "qwen_model": "Qwen/Qwen3-VL-4B-Instruct",
+ "c6_prompt": "Numbered candidate boxes are drawn on this image. Which numbered boxes contain \"{q}\"? Select every box that contains it and no other box. Return JSON only, no prose: {{\"ids\": [<numbers>]}}. If no box contains it, return {{\"ids\": []}}.",
+ "sha256": {
+  "tools/s2_gated_pilot.py": "9996c7558cacfead2a0612dc9d8508644a446859350b1b845417f80e0df8abe3",
+  "config.json": "31cd395ec23b44bdd45469e9b421cca6f1f5f13bc8e817ca3fe26dc850128285"
+ }
+}

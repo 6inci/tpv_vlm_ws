@@ -1,0 +1,360 @@
+{
+  "status": "DRAFT - names from user answers (2026-11-14) + Claude suggestions; not frozen",
+  "image": "scene_with_robot_2026-11-14.png",
+  "marker_image": "candidates_numbered.png",
+  "note": "This registry is for evaluation (answer key / query words) only. It is never given to the VLM as input.",
+  "classes": [
+    {
+      "key": "storage_cubby",
+      "ko": "개인 보관함",
+      "en": "storage cubby",
+      "syn_ko": [
+        "수납장"
+      ],
+      "syn_en": [
+        "cubby shelf"
+      ],
+      "ids": [
+        1
+      ],
+      "area": "worker_area",
+      "mobility": "fixed",
+      "source": "user: 책장/사물함, worker-area name allowed; Claude chose name"
+    },
+    {
+      "key": "locker",
+      "ko": "사물함",
+      "en": "locker",
+      "syn_ko": [
+        "락커",
+        "옷장"
+      ],
+      "syn_en": [
+        "wardrobe"
+      ],
+      "ids": [
+        2
+      ],
+      "area": "worker_area",
+      "mobility": "fixed",
+      "source": "user"
+    },
+    {
+      "key": "workbench",
+      "ko": "작업대",
+      "en": "workbench",
+      "syn_ko": [
+        "작업 테이블"
+      ],
+      "syn_en": [
+        "work table"
+      ],
+      "ids": [
+        3
+      ],
+      "area": "worker_area",
+      "mobility": "fixed",
+      "source": "user 2026-11-14: 작업대 같은 것, 작업환경"
+    },
+    {
+      "key": "robot_arm",
+      "ko": "로봇 팔",
+      "en": "robot arm",
+      "syn_ko": [
+        "매니퓰레이터",
+        "산업용 로봇"
+      ],
+      "syn_en": [
+        "manipulator",
+        "industrial robot"
+      ],
+      "ids": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "mobility": "fixed",
+      "source": "user: 매니퓰레이터"
+    },
+    {
+      "key": "conveyor",
+      "ko": "컨베이어 벨트",
+      "en": "conveyor belt",
+      "syn_ko": [
+        "컨베이어"
+      ],
+      "syn_en": [
+        "conveyor"
+      ],
+      "ids": [
+        8
+      ],
+      "mobility": "fixed",
+      "source": "user"
+    },
+    {
+      "key": "small_pallet",
+      "ko": "소형 팔레트",
+      "en": "small pallet",
+      "syn_ko": [
+        "작은 회색 팔레트"
+      ],
+      "syn_en": [
+        "small gray pallet"
+      ],
+      "ids": [
+        9,
+        13
+      ],
+      "role": "pick/drop station of the task",
+      "mobility": "moved between frames",
+      "source": "user"
+    },
+    {
+      "key": "block",
+      "ko": "블록",
+      "en": "block",
+      "syn_ko": [
+        "큐브"
+      ],
+      "syn_en": [
+        "cube"
+      ],
+      "syn_excluded": {
+        "words": [
+          "화물",
+          "cargo"
+        ],
+        "reason": "too broad (boxes, truck load are also cargo); user decision 2026-11-14"
+      },
+      "ids": [
+        "on 9"
+      ],
+      "variants": [
+        "blue",
+        "red"
+      ],
+      "attributes": "currently 2 cubes (blue, red); count may change later -> annotate per frame, add variants if new colors appear",
+      "role": "transported object",
+      "mobility": "moved between frames",
+      "source": "user 2026-11-14: 지금은 두 개, 나중엔 미정"
+    },
+    {
+      "key": "storage_rack",
+      "ko": "적재 선반",
+      "en": "storage rack",
+      "syn_ko": [
+        "선반",
+        "랙"
+      ],
+      "syn_en": [
+        "shelf",
+        "rack"
+      ],
+      "ids": [
+        10,
+        11,
+        22,
+        23
+      ],
+      "mobility": "fixed",
+      "source": "user: 선반(물건 적재)"
+    },
+    {
+      "key": "truck",
+      "ko": "트럭",
+      "en": "truck",
+      "syn_ko": [
+        "화물차"
+      ],
+      "syn_en": [
+        "delivery truck"
+      ],
+      "ids": [
+        12
+      ],
+      "mobility": "fixed",
+      "source": "user"
+    },
+    {
+      "key": "box_stack",
+      "ko": "박스 더미",
+      "en": "stack of boxes",
+      "syn_ko": [
+        "상자",
+        "박스"
+      ],
+      "syn_en": [
+        "cardboard boxes",
+        "cartons"
+      ],
+      "ids": [
+        14
+      ],
+      "mobility": "fixed",
+      "source": "user: 박스?/상자?; Claude chose warehouse term"
+    },
+    {
+      "key": "cart",
+      "ko": "카트",
+      "en": "cart",
+      "syn_ko": [
+        "대차"
+      ],
+      "syn_en": [
+        "hand cart",
+        "platform cart"
+      ],
+      "ids": [
+        15,
+        16
+      ],
+      "mobility": "fixed",
+      "source": "user"
+    },
+    {
+      "key": "ibc_tank",
+      "ko": "IBC 탱크",
+      "en": "IBC tote",
+      "syn_ko": [
+        "액체 탱크",
+        "물탱크"
+      ],
+      "syn_en": [
+        "liquid tank",
+        "water tank"
+      ],
+      "ids": [
+        17
+      ],
+      "mobility": "fixed",
+      "source": "user: 물통처럼 생김; Claude: white tank in metal cage on pallet = IBC"
+    },
+    {
+      "key": "drum",
+      "ko": "드럼통",
+      "en": "drum",
+      "syn_ko": [
+        "드럼"
+      ],
+      "syn_en": [
+        "barrel",
+        "oil drum"
+      ],
+      "ids": [
+        18,
+        19,
+        20,
+        26
+      ],
+      "variants": [
+        "black",
+        "gray",
+        "blue",
+        "dark_green"
+      ],
+      "attributes": {
+        "18": "black",
+        "19": "gray",
+        "20": "blue",
+        "26": "dark_green"
+      },
+      "gt_unit": "one box per pallet group (individual drums not annotated)",
+      "mobility": "fixed",
+      "source": "user"
+    },
+    {
+      "key": "pallet",
+      "ko": "팔레트",
+      "en": "pallet",
+      "syn_ko": [],
+      "syn_en": [],
+      "ids": [
+        25,
+        "under drums 18/19/20/26",
+        "under box stack 14",
+        "under IBC 17"
+      ],
+      "query_gt_rule": "query 'pallet' -> every identifiable pallet {pallet, small_pallet}, incl. pallets under drums, box stack and IBC (criteria v2, user-approved 2026-11-14)",
+      "mobility": "fixed",
+      "source": "user"
+    },
+    {
+      "key": "charger",
+      "ko": "충전기",
+      "en": "charging station",
+      "syn_ko": [
+        "충전 스테이션"
+      ],
+      "syn_en": [
+        "charger"
+      ],
+      "ids": [
+        27,
+        28
+      ],
+      "mobility": "fixed",
+      "source": "user: 충전하는 곳; lightning-marked area itself = zone (next step)"
+    },
+    {
+      "key": "fire_extinguisher",
+      "ko": "소화기",
+      "en": "fire extinguisher",
+      "syn_ko": [],
+      "syn_en": [],
+      "ids": [
+        29
+      ],
+      "mobility": "fixed",
+      "source": "user"
+    },
+    {
+      "key": "traffic_cone",
+      "ko": "라바콘",
+      "en": "traffic cone",
+      "syn_ko": [
+        "콘",
+        "고깔"
+      ],
+      "syn_en": [
+        "cone",
+        "safety cone"
+      ],
+      "ids": [
+        "C1-C12"
+      ],
+      "mobility": "fixed",
+      "source": "user: 꼬깔"
+    },
+    {
+      "key": "loose_box",
+      "ko": "상자",
+      "en": "cardboard box",
+      "annotation_only": true,
+      "ids": [
+        "truck load box"
+      ],
+      "note": "answer-key label only (no own queries): positive for box synonyms (상자/박스/cardboard boxes/cartons), ignored for 'stack of boxes' name queries",
+      "source": "criteria v2, user-approved 2026-11-14"
+    }
+  ],
+  "not_queried": [
+    {
+      "id": 21,
+      "what": "mobile robot",
+      "reason": "pose from ArUco marker (user); detections on it by other queries still count as false positives"
+    }
+  ],
+  "pending": [],
+  "movable_between_layouts": "robot(21, ArUco), small pallets 9/13 + blocks (required); traffic cones, carts 15/16, box stack 14, some drums (agreed 2026-11-14)",
+  "zones_next_step": "user: 5S marking only partly painted; walkway, fire-extinguisher area and no-go areas are enough. Define in zone step (deterministic registry), not as VLM policy.",
+  "annotation_criteria": {
+    "version": "v2 (user-approved 2026-11-14)",
+    "rule_1": "every identifiable object of a registry class is a positive (all pallets, incl. under drums / box stack / IBC)",
+    "rule_2": "task roles (pick source / drop target) are NOT in the answer key; kept in a separate per-image task file for the reasoning experiment",
+    "rule_3": "ignore only when an object's boundary cannot be defined; whiteboard and drum-pallet ignores removed",
+    "rule_4": "truck load box = loose_box: positive for box synonym queries, ignore for 'stack of boxes' name queries",
+    "superseded": "v1 ignored drum pallets, whiteboard, truck load box"
+  }
+}

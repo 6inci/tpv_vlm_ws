@@ -1,0 +1,3497 @@
+{
+  "experiment_id": "task_plan_prototype",
+  "created": "2026-11-19T06:49:42",
+  "claims": {
+    "robot_task_success": "NOT_CLAIMABLE",
+    "grasp_or_placement_success": "NOT_CLAIMABLE",
+    "detection_accuracy": "NOT_COMPUTED",
+    "metric_validity": "PROVISIONAL floor transform with measured residuals; not validated for the installation"
+  },
+  "frames": {
+    "model_output": "Qwen boxes are 0-1000 normalised, converted to undistorted_image_px (v0.2 helper); DINO/HSV boxes are undistorted_image_px",
+    "pixel": "undistorted_image_px (E1; v0.2 labels it raw_image_px)",
+    "transformed": "floor_cm (PROVISIONAL) via the PROVISIONAL homography; BEV px = (cm + pad) * px_per_cm",
+    "world": "NOT available: no validated floor transform"
+  },
+  "inputs": {
+    "image": {
+      "path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+      "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+      "size": [
+        1920,
+        1080
+      ]
+    },
+    "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+    "qwen": {
+      "source": "STORED (no new Qwen call)",
+      "run": "20261118_203058_46d8",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "task_type": "transport_and_place",
+      "target": {
+        "class": "cube",
+        "color": "red",
+        "source_reference": null,
+        "source_relation": null
+      },
+      "target_parse_backend": "integration_adapter(v0.2 rule_based_parse for the target only)",
+      "actions_source": "fixed_template (not model output)",
+      "destination_inference": {
+        "model": "Qwen3-VL (stored L2 reply)",
+        "chosen_area_id": "area_5",
+        "function_name": "loading dock",
+        "box_px": [
+          1248.0,
+          0.0,
+          1824.0,
+          280.8
+        ],
+        "observed_evidence": [
+          "truck",
+          "cones",
+          "barriers"
+        ],
+        "reason": "The truck is the only vehicle visible that can receive outgoing shipments, and area_5 is the designated loading dock for vehicles.",
+        "decision": "proposed",
+        "confidence": "high",
+        "raw_response_sha256_16": "d4635d4a54f5806c"
+      },
+      "ok": true
+    },
+    "target_candidate": {
+      "status": "PROVISIONAL_TARGET",
+      "candidate_id": "target_cand1",
+      "bbox_xyxy_image_px": [
+        433.84,
+        416.56,
+        451.11,
+        431.84
+      ],
+      "score": 0.438,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_roi",
+        "grounding_dino_roi",
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "member_boxes": [
+        {
+          "source": "hsv_color_shape",
+          "bbox_xyxy": [
+            433.84,
+            416.56,
+            451.11,
+            431.84
+          ],
+          "score": null
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            431.68,
+            414.15,
+            452.07,
+            434.04
+          ],
+          "score": 0.438
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            420.7,
+            407.14,
+            468.44,
+            449.44
+          ],
+          "score": 0.349
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            430.84,
+            412.78,
+            452.37,
+            434.75
+          ],
+          "score": 0.2277
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            419.7,
+            406.02,
+            468.6,
+            450.62
+          ],
+          "score": 0.1198
+        }
+      ],
+      "shape_stats": {
+        "area_raw_px": 185.8,
+        "aspect": 1.13,
+        "solidity": 0.935
+      },
+      "selection_rule": "rank 1 of the stored v0.2 merged candidate list, provided >= 2 distinct source types (hsv_color_shape + a Grounding DINO source)",
+      "rule_gave_expected_id": true,
+      "stored_qwen_crop_gate": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "red",
+          "observed_object": "round object",
+          "reason": "The object is round, not cube-shaped."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_1.png",
+          "crop_xyxy_raw": [
+            401,
+            384,
+            483,
+            463
+          ],
+          "scale": 5.4634,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_1.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"round object\", \"reason\": \"The object is round, not cube-shaped.\"}",
+          "latency_s": 1.128,
+          "n_output_tokens": 38,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.37,
+          "error": null
+        }
+      },
+      "v02_decision_for_this_photo": "TARGET_NOT_FOUND",
+      "not_used_as": "evidence of detection accuracy or of pick-up success; the Qwen gate answer 'no' is preserved above",
+      "height_note": "the cube stands on the conveyor surface, not on the mat floor: its floor-plane projection is displaced by parallax (height UNKNOWN)"
+    },
+    "robot": {
+      "object_id": "mobile_robot_cand4",
+      "bbox_xyxy_image_px": [
+        1585.03,
+        619.74,
+        1814.01,
+        784.4
+      ],
+      "source": "grounding_dino 'mobile robot.' + Qwen crop check yes",
+      "detector_score": 0.3559,
+      "stored_run": "20261119_001504_first_path",
+      "outline_on_floor_cm": [
+        46.0,
+        32.4
+      ],
+      "outline_vs_user_size_note": "outline mapped to the floor vs the user-given 35 x 24 cm: it is larger (height parallax and/or wheels outside the given size) -> UNKNOWN, kept as a stress variant",
+      "start_candidates_image_px": {
+        "0": [
+          1699.5,
+          702.1
+        ],
+        "20": [
+          1680.1,
+          697.4
+        ],
+        "40": [
+          1660.6,
+          692.8
+        ]
+      }
+    },
+    "map_prior": {
+      "status": "MANUAL_MAP_PRIOR (DRAFT_UNCONFIRMED, hand-drawn; transferred by the first_vlm_navigation_path image registration)",
+      "source": "/home/binci/vlm_ws/semantic_task_navigation/experiments/first_vlm_navigation_path/results/20261119_001504_first_path/map_E1_transferred.json",
+      "zones_cm": {
+        "traversable": [
+          {
+            "id": "Z02",
+            "polygon": [
+              [
+                61.12211164659252,
+                63.96117293594223
+              ],
+              [
+                314.51206334806403,
+                66.3621430640798
+              ],
+              [
+                315.1737147808808,
+                176.6499835279057
+              ],
+              [
+                59.6866972613272,
+                178.36580041018425
+              ]
+            ]
+          }
+        ],
+        "static_obstacles": [
+          {
+            "id": "Z03",
+            "polygon": [
+              [
+                122.5367524077345,
+                104.93106115639956
+              ],
+              [
+                159.17753886940417,
+                105.60608041804375
+              ],
+              [
+                160.5597633648729,
+                137.62310306042133
+              ],
+              [
+                122.81713586752358,
+                137.2350519962252
+              ]
+            ]
+          },
+          {
+            "id": "Z04",
+            "polygon": [
+              [
+                204.04706532360146,
+                108.94633503355033
+              ],
+              [
+                319.9503819797174,
+                106.95738054982986
+              ],
+              [
+                316.09882187325985,
+                136.34625550679127
+              ],
+              [
+                203.77626002012354,
+                137.4185486480969
+              ]
+            ]
+          }
+        ],
+        "no_go": [
+          {
+            "id": "Z01",
+            "polygon": [
+              [
+                157.96909947178892,
+                0.07800058466516797
+              ],
+              [
+                178.0404720278506,
+                0.025011307714769202
+              ],
+              [
+                180.75825755427377,
+                63.33965460441354
+              ],
+              [
+                78.86684749092768,
+                62.42023046877368
+              ],
+              [
+                78.39416395608663,
+                41.481698720862944
+              ],
+              [
+                157.5726058284364,
+                41.78031275812344
+              ]
+            ]
+          },
+          {
+            "id": "Z07",
+            "polygon": [
+              [
+                6.669686313228083,
+                59.20784356295395
+              ],
+              [
+                60.40087158300759,
+                62.522212820354135
+              ],
+              [
+                58.05000982316405,
+                171.11309080494138
+              ],
+              [
+                -0.1850757757697294,
+                167.3013062527696
+              ]
+            ]
+          }
+        ]
+      },
+      "traversable_zones_clipped_by_canvas": [],
+      "rule": "only the traversable zone Z02 is drivable; static obstacles and no-go zones are subtracted; everything else is not drivable"
+    }
+  },
+  "floor_transform": {
+    "method": "local seam-line fits intersected at the mat-grid nodes -> DLT homography (cv2.findHomography, method 0, all nodes)",
+    "world_unit": "cm",
+    "mat_cm": 105,
+    "nodes": [
+      {
+        "node": "2,0",
+        "seed_px": [
+          1202,
+          60
+        ],
+        "used": true,
+        "xy_px": [
+          1200.079183979348,
+          61.96297654438681
+        ],
+        "shift_from_seed_px": [
+          -1.9,
+          2.0
+        ],
+        "vertical_fit": {
+          "n_samples": 31,
+          "n_inliers": 31,
+          "rms_px": 0.35
+        },
+        "horizontal_fit": {
+          "n_samples": 44,
+          "n_inliers": 37,
+          "rms_px": 1.68
+        },
+        "fit_residual_cm": 0.81,
+        "leave_one_out_cm": 4.54
+      },
+      {
+        "node": "1,1",
+        "seed_px": [
+          685,
+          469
+        ],
+        "used": true,
+        "xy_px": [
+          682.6050415997142,
+          472.2625327472531
+        ],
+        "shift_from_seed_px": [
+          -2.4,
+          3.3
+        ],
+        "vertical_fit": {
+          "n_samples": 61,
+          "n_inliers": 61,
+          "rms_px": 0.36
+        },
+        "horizontal_fit": {
+          "n_samples": 59,
+          "n_inliers": 57,
+          "rms_px": 1.27
+        },
+        "fit_residual_cm": 2.58,
+        "leave_one_out_cm": 5.13
+      },
+      {
+        "node": "2,1",
+        "seed_px": [
+          1236,
+          463
+        ],
+        "used": true,
+        "xy_px": [
+          1235.8104482067483,
+          464.26081828470143
+        ],
+        "shift_from_seed_px": [
+          -0.2,
+          1.3
+        ],
+        "vertical_fit": {
+          "n_samples": 54,
+          "n_inliers": 37,
+          "rms_px": 4.28
+        },
+        "horizontal_fit": {
+          "n_samples": 61,
+          "n_inliers": 60,
+          "rms_px": 1.13
+        },
+        "fit_residual_cm": 2.49,
+        "leave_one_out_cm": 3.22
+      },
+      {
+        "node": "3,1",
+        "seed_px": [
+          1767,
+          451
+        ],
+        "used": true,
+        "xy_px": [
+          1766.8506979100885,
+          450.63200084986147
+        ],
+        "shift_from_seed_px": [
+          -0.1,
+          -0.4
+        ],
+        "vertical_fit": {
+          "n_samples": 62,
+          "n_inliers": 27,
+          "rms_px": 4.72
+        },
+        "horizontal_fit": {
+          "n_samples": 31,
+          "n_inliers": 30,
+          "rms_px": 1.83
+        },
+        "fit_residual_cm": 0.99,
+        "leave_one_out_cm": 2.09
+      },
+      {
+        "node": "0,2",
+        "seed_px": [
+          72,
+          983
+        ],
+        "used": true,
+        "xy_px": [
+          68.1271225909832,
+          977.935852958407
+        ],
+        "shift_from_seed_px": [
+          -3.9,
+          -5.1
+        ],
+        "vertical_fit": {
+          "n_samples": 31,
+          "n_inliers": 29,
+          "rms_px": 1.16
+        },
+        "horizontal_fit": {
+          "n_samples": 31,
+          "n_inliers": 21,
+          "rms_px": 2.5
+        },
+        "fit_residual_cm": 4.48,
+        "leave_one_out_cm": 19.7
+      },
+      {
+        "node": "1,2",
+        "seed_px": [
+          625,
+          1030
+        ],
+        "used": true,
+        "xy_px": [
+          621.2806644622274,
+          1023.111930290152
+        ],
+        "shift_from_seed_px": [
+          -3.7,
+          -6.9
+        ],
+        "vertical_fit": {
+          "n_samples": 31,
+          "n_inliers": 31,
+          "rms_px": 0.37
+        },
+        "horizontal_fit": {
+          "n_samples": 62,
+          "n_inliers": 49,
+          "rms_px": 3.03
+        },
+        "fit_residual_cm": 4.86,
+        "leave_one_out_cm": 7.64
+      },
+      {
+        "node": "2,2",
+        "seed_px": [
+          1273,
+          1030
+        ],
+        "used": true,
+        "xy_px": [
+          1275.8203147858062,
+          1025.9256864779536
+        ],
+        "shift_from_seed_px": [
+          2.8,
+          -4.1
+        ],
+        "vertical_fit": {
+          "n_samples": 31,
+          "n_inliers": 31,
+          "rms_px": 0.32
+        },
+        "horizontal_fit": {
+          "n_samples": 62,
+          "n_inliers": 39,
+          "rms_px": 2.85
+        },
+        "fit_residual_cm": 5.22,
+        "leave_one_out_cm": 7.98
+      },
+      {
+        "node": "3,2",
+        "seed_px": [
+          1877,
+          982
+        ],
+        "used": true,
+        "xy_px": [
+          1876.1622037293891,
+          980.230110440465
+        ],
+        "shift_from_seed_px": [
+          -0.8,
+          -1.8
+        ],
+        "vertical_fit": {
+          "n_samples": 31,
+          "n_inliers": 25,
+          "rms_px": 1.98
+        },
+        "horizontal_fit": {
+          "n_samples": 31,
+          "n_inliers": 25,
+          "rms_px": 2.19
+        },
+        "fit_residual_cm": 4.05,
+        "leave_one_out_cm": 11.97
+      }
+    ],
+    "n_nodes_used": 8,
+    "accept_rule": {
+      "min_nodes": 8,
+      "max_fit_rms_cm": 4.0,
+      "max_seam_dev_cm": 4.0
+    },
+    "accepted": true,
+    "status": "PROVISIONAL_UNVALIDATED",
+    "H_img_to_floor_cm": [
+      [
+        0.24949985848408293,
+        0.06402733890237534,
+        -76.94939494298758
+      ],
+      [
+        0.009393995776614674,
+        0.3181181406638206,
+        -30.132148682325916
+      ],
+      [
+        4.52436793590954e-05,
+        0.0003723999788949748,
+        1.0
+      ]
+    ],
+    "fit_rms_cm": 3.57,
+    "fit_max_cm": 5.22,
+    "leave_one_out_max_cm": 19.7,
+    "independent_seam_check": [
+      {
+        "id": "V1",
+        "axis": "x",
+        "world_cm": 105,
+        "n_samples": 53,
+        "n_used": 51,
+        "mean_dev_cm": -2.55,
+        "p95_abs_dev_cm": 2.97,
+        "max_abs_dev_cm": 3.02
+      },
+      {
+        "id": "V2",
+        "axis": "x",
+        "world_cm": 210,
+        "n_samples": 79,
+        "n_used": 69,
+        "mean_dev_cm": 2.82,
+        "p95_abs_dev_cm": 3.42,
+        "max_abs_dev_cm": 3.5
+      },
+      {
+        "id": "H1",
+        "axis": "y",
+        "world_cm": 105,
+        "n_samples": 186,
+        "n_used": 159,
+        "mean_dev_cm": -0.21,
+        "p95_abs_dev_cm": 0.65,
+        "max_abs_dev_cm": 0.81
+      }
+    ],
+    "seam_max_abs_dev_cm": 3.5,
+    "footprint_margin_cm": 3.5,
+    "known_limits": [
+      "mat edges near the image border are visibly curved: residual lens distortion remains after the read-only undistortion; the nodes on the bottom mat row (image y > 975) have the largest residuals and lie outside the planned work band",
+      "points above the floor (cube on the conveyor, tops of boxes) are displaced by parallax: only floor-level features map correctly",
+      "mat gaps are ignored as the user stated; a gap of a few mm would shift the node positions"
+    ],
+    "legacy_2026_09_06_homography": "NOT USED (other layout, other undistorted frame 2016x1133)"
+  },
+  "targets_cm": {
+    "cube_candidate_polygon": [
+      [
+        49.3,
+        90.6
+      ],
+      [
+        53.0,
+        90.7
+      ],
+      [
+        53.5,
+        94.4
+      ],
+      [
+        49.9,
+        94.3
+      ]
+    ],
+    "loading_bay_polygon": [
+      [
+        257.0,
+        33.8
+      ],
+      [
+        310.1,
+        34.3
+      ],
+      [
+        309.5,
+        3.0
+      ],
+      [
+        254.3,
+        2.1
+      ]
+    ],
+    "qwen_box_polygon": [
+      [
+        221.9,
+        -17.4
+      ],
+      [
+        349.3,
+        -12.0
+      ],
+      [
+        333.7,
+        64.3
+      ],
+      [
+        217.4,
+        61.1
+      ]
+    ]
+  },
+  "robot_footprint": {
+    "user_size_cm": [
+      35,
+      24,
+      16
+    ],
+    "wheel_inclusion": "UNKNOWN (to be confirmed)",
+    "transform_margin_per_side_cm": 3.5,
+    "primary_extent_cm_by_heading": {
+      "0": [
+        42.0,
+        31.0
+      ],
+      "90": [
+        31.0,
+        42.0
+      ]
+    },
+    "motion": "mecanum omnidirectional: translation with the heading held fixed along each leg (forward / lateral / diagonal). Dynamics NOT validated.",
+    "headings_planned_deg": [
+      0,
+      90
+    ]
+  },
+  "bev_map": {
+    "frame": "bev_px",
+    "px_per_cm": 4,
+    "pad_cm": 10,
+    "size_px": [
+      1340,
+      920
+    ],
+    "cell_px": 8,
+    "layers_summary_primary_heading0": {
+      "coordinate_frame": "raw_image_px",
+      "map_mode_note": "image space; not metric",
+      "cell_px": 8,
+      "rows": 115,
+      "cols": 167,
+      "robot_radius_px": 62.0,
+      "robot_footprint": "rectangle 42.0 x 31.0 cm along x,y at a fixed heading (BEV px, 4 px/cm)",
+      "safety_margin_px": 40,
+      "cell_counts": {
+        "traversable": 7193,
+        "static_obstacle": 1140,
+        "no_go": 2283,
+        "dynamic_obstacle": 0,
+        "free": 6078,
+        "valid_robot_center": 1353
+      },
+      "layer_sha256": {
+        "traversable": "e44eaff373eb878fb5b7e5c2b4b65db92d628073289d25bd734529ac0d4b627e",
+        "static_obstacle": "3ea59b4d02b41b0209e078c5d64d08b4af859bc9bfddf027dd6c44f30e099bc3",
+        "no_go": "f01a616504a5bd52f708a69bed0c7f90ed0d3c100c8e682361aeace6dd84b612",
+        "dynamic_obstacle": "564b006373ca49bca8fd030fdf188d005440c2e970531e84038faf36c124247c",
+        "valid": "a69174c8eb829f56138ed5dad041e4d9559125b7ac8ba404c308a48623fa3b2b"
+      },
+      "dynamic_obstacles": [],
+      "frame_note": "BEV px of the PROVISIONAL floor transform; NOT raw_image_px (v0.2 labels in nested records say raw_image_px)"
+    }
+  },
+  "primary_variant": "conservative_margin",
+  "heading_alignment": {
+    "start": {
+      "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+      "ok": false,
+      "clearance_px": 79.0,
+      "needed_px": 104.4
+    },
+    "pickup_approach": {
+      "ok": false,
+      "clearance_px": 91.0,
+      "needed_px": 104.4
+    },
+    "facing_vs_planning_heading": {
+      "pickup_facing_direction_deg": -147.0,
+      "planning_heading_deg": 0,
+      "note": "the front gripper would have to face this direction; the plan holds an axis-aligned heading along each leg, so the facing angle is NOT satisfied/verified"
+    }
+  },
+  "margin_sweep": [
+    {
+      "margin_per_side_cm": 0.0,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 403.7
+    },
+    {
+      "margin_per_side_cm": 0.5,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 408.0
+    },
+    {
+      "margin_per_side_cm": 1.0,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 408.0
+    },
+    {
+      "margin_per_side_cm": 1.5,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 406.6
+    },
+    {
+      "margin_per_side_cm": 2.0,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 401.2
+    },
+    {
+      "margin_per_side_cm": 2.5,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 402.3
+    },
+    {
+      "margin_per_side_cm": 3.0,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 400.9
+    },
+    {
+      "margin_per_side_cm": 3.5,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 398.4
+    },
+    {
+      "margin_per_side_cm": 4.0,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 402.3
+    },
+    {
+      "margin_per_side_cm": 4.5,
+      "selected": "PATH_A_AND_B",
+      "total_length_cm": 403.6
+    },
+    {
+      "margin_per_side_cm": 5.0,
+      "selected": "NO_PATH_A",
+      "total_length_cm": null
+    },
+    {
+      "margin_per_side_cm": 5.5,
+      "selected": "NO_PATH_A",
+      "total_length_cm": null
+    },
+    {
+      "margin_per_side_cm": 6.0,
+      "selected": "NO_PATH_A",
+      "total_length_cm": null
+    },
+    {
+      "margin_per_side_cm": 6.5,
+      "selected": "NO_PATH_A",
+      "total_length_cm": null
+    },
+    {
+      "margin_per_side_cm": 7.0,
+      "selected": "NO_PATH_A",
+      "total_length_cm": null
+    },
+    {
+      "margin_per_side_cm": 7.5,
+      "selected": "NO_PATH_A",
+      "total_length_cm": null
+    },
+    {
+      "margin_per_side_cm": 8.0,
+      "selected": "NO_PATH_A",
+      "total_length_cm": null
+    }
+  ],
+  "plan_variants": {
+    "conservative_margin": {
+      "label": "conservative_margin",
+      "nominal_size_cm": [
+        35,
+        24
+      ],
+      "margin_per_side_cm": 3.5,
+      "start_image_px": [
+        1699.5,
+        702.1
+      ],
+      "start_cm": [
+        292.9,
+        156.3
+      ],
+      "start_status": "ESTIMATED (outline centre moved towards the principal point; heading UNKNOWN)",
+      "legs_A": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            42.0,
+            31.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": {
+              "cells_in_reach": 1126,
+              "cells_in_reach_traversable": 382,
+              "cells_accessible_collision_free": 46,
+              "cells_reachable_from_start": 46,
+              "nearest_valid_cell_to_anchor_px": 118.0
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              372.0,
+              492.0
+            ],
+            "xy_cm": [
+              83.0,
+              113.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 1367.88,
+            "facing_direction_deg": -147.0,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  83.0,
+                  113.0
+                ],
+                "distance_to_target_cm": 34.8,
+                "path_cost_px": 1367.88
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  111.0
+                ],
+                "distance_to_target_cm": 33.8,
+                "path_cost_px": 1375.88
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 32.9,
+                "path_cost_px": 1383.88
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  107.0
+                ],
+                "distance_to_target_cm": 32.0,
+                "path_cost_px": 1391.88
+              },
+              {
+                "xy_cm": [
+                  85.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 34.7,
+                "path_cost_px": 1377.45
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 29.5,
+            "n_reachable_collision_free_positions": 1353,
+            "body_to_target_gap_cm": 13.7,
+            "xy_image_px": [
+              582.2,
+              509.5
+            ],
+            "rotation_in_place_at_approach": {
+              "ok": false,
+              "clearance_px": 91.0,
+              "needed_px": 104.4
+            }
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                1212.0,
+                668.0
+              ],
+              [
+                460.0,
+                660.0
+              ],
+              [
+                444.0,
+                652.0
+              ],
+              [
+                372.0,
+                492.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                293.0,
+                157.0
+              ],
+              [
+                105.0,
+                155.0
+              ],
+              [
+                101.0,
+                153.0
+              ],
+              [
+                83.0,
+                113.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                1700.6,
+                705.7
+              ],
+              [
+                671.6,
+                704.8
+              ],
+              [
+                651.6,
+                695.1
+              ],
+              [
+                582.2,
+                509.5
+              ]
+            ],
+            "n_waypoints": 4,
+            "length_cm": 236.3,
+            "raw_grid_length_cm": 242.8,
+            "astar_cost": 1367.877,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 71.25,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 950,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 79.0,
+            "needed_px": 104.4
+          }
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            31.0,
+            42.0
+          ],
+          "goal": {
+            "status": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)",
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": null,
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": null,
+            "xy_cm": null,
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px"
+          },
+          "path": null,
+          "v02_validation": null,
+          "sweep_check": null,
+          "feasible": false,
+          "failure": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+          },
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 79.0,
+            "needed_px": 104.4
+          }
+        }
+      },
+      "legs_B": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            42.0,
+            31.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": {
+              "cells_in_reach": 2863,
+              "cells_in_reach_traversable": 500,
+              "cells_accessible_collision_free": 85,
+              "cells_reachable_from_start": 85,
+              "nearest_valid_cell_to_anchor_px": 195.7
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              972.0,
+              372.0
+            ],
+            "xy_cm": [
+              233.0,
+              83.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 902.02,
+            "facing_direction_deg": -52.5,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  233.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 54.8,
+                "path_cost_px": 902.02
+              },
+              {
+                "xy_cm": [
+                  235.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 53.9,
+                "path_cost_px": 913.22
+              },
+              {
+                "xy_cm": [
+                  237.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 53.2,
+                "path_cost_px": 924.42
+              },
+              {
+                "xy_cm": [
+                  239.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 52.4,
+                "path_cost_px": 935.62
+              },
+              {
+                "xy_cm": [
+                  239.0,
+                  85.0
+                ],
+                "distance_to_target_cm": 54.3,
+                "path_cost_px": 926.73
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 48.9,
+            "n_reachable_collision_free_positions": 1353,
+            "body_to_target_gap_cm": 37.8,
+            "xy_image_px": [
+              1332.1,
+              367.7
+            ]
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                372.0,
+                492.0
+              ],
+              [
+                444.0,
+                396.0
+              ],
+              [
+                972.0,
+                372.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                83.0,
+                113.0
+              ],
+              [
+                101.0,
+                89.0
+              ],
+              [
+                233.0,
+                83.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                582.2,
+                509.5
+              ],
+              [
+                682.8,
+                405.2
+              ],
+              [
+                1332.1,
+                367.7
+              ]
+            ],
+            "n_waypoints": 3,
+            "length_cm": 162.1,
+            "raw_grid_length_cm": 169.3,
+            "astar_cost": 902.017,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 67.6,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 651,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "heading_change_from_A": false
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            31.0,
+            42.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": {
+              "cells_in_reach": 10873,
+              "cells_in_reach_traversable": 4366,
+              "cells_accessible_collision_free": 257,
+              "cells_reachable_from_start": 20,
+              "nearest_valid_cell_to_anchor_px": 224.8
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              460.0,
+              396.0
+            ],
+            "xy_cm": [
+              105.0,
+              89.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 138.01,
+            "facing_direction_deg": -21.7,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  105.0,
+                  89.0
+                ],
+                "distance_to_target_cm": 161.7,
+                "path_cost_px": 138.01
+              },
+              {
+                "xy_cm": [
+                  105.0,
+                  91.0
+                ],
+                "distance_to_target_cm": 162.4,
+                "path_cost_px": 134.53
+              },
+              {
+                "xy_cm": [
+                  103.0,
+                  93.0
+                ],
+                "distance_to_target_cm": 165.0,
+                "path_cost_px": 119.72
+              },
+              {
+                "xy_cm": [
+                  105.0,
+                  93.0
+                ],
+                "distance_to_target_cm": 163.1,
+                "path_cost_px": 131.14
+              },
+              {
+                "xy_cm": [
+                  103.0,
+                  91.0
+                ],
+                "distance_to_target_cm": 164.3,
+                "path_cost_px": 124.67
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 161.1,
+            "n_reachable_collision_free_positions": 548,
+            "body_to_target_gap_cm": 145.1,
+            "xy_image_px": [
+              702.2,
+              404.8
+            ]
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                372.0,
+                492.0
+              ],
+              [
+                460.0,
+                396.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                83.0,
+                113.0
+              ],
+              [
+                105.0,
+                89.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                582.2,
+                509.5
+              ],
+              [
+                702.2,
+                404.8
+              ]
+            ],
+            "n_waypoints": 2,
+            "length_cm": 32.6,
+            "raw_grid_length_cm": 33.1,
+            "astar_cost": 138.007,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 91.0,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 132,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": false,
+          "failure": {
+            "stage": "heading_change",
+            "code": "ROTATION_CLEARANCE_NOT_MET",
+            "reason": "circumscribed disc needs 26.1 cm clearance at the pick-up approach, only 22.8 cm"
+          },
+          "heading_change_from_A": true,
+          "rotation_in_place_at_pickup_approach": {
+            "ok": false,
+            "clearance_px": 91.0,
+            "needed_px": 104.4
+          }
+        }
+      },
+      "selected": {
+        "status": "PATH_A_AND_B",
+        "A_heading_deg": 0,
+        "B_heading_deg": 0,
+        "total_length_cm": 398.4,
+        "rule": "per leg: among the feasible headings (v0.2 A*, v0.2 validator and whole-body sweep all pass) the smallest body-to-target gap first (the gap is what the unverified gripper must bridge), then the shortest path; B starts at the pick-up approach point"
+      }
+    },
+    "conservative_margin_start_shift20px": {
+      "label": "conservative_margin_start_shift20px",
+      "nominal_size_cm": [
+        35,
+        24
+      ],
+      "margin_per_side_cm": 3.5,
+      "start_image_px": [
+        1680.1,
+        697.4
+      ],
+      "start_cm": [
+        289.6,
+        155.4
+      ],
+      "start_status": "ESTIMATED (outline centre moved towards the principal point; heading UNKNOWN)",
+      "legs_A": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            42.0,
+            31.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": {
+              "cells_in_reach": 1126,
+              "cells_in_reach_traversable": 382,
+              "cells_accessible_collision_free": 46,
+              "cells_reachable_from_start": 46,
+              "nearest_valid_cell_to_anchor_px": 118.0
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              372.0,
+              492.0
+            ],
+            "xy_cm": [
+              83.0,
+              113.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 1348.51,
+            "facing_direction_deg": -147.0,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  83.0,
+                  113.0
+                ],
+                "distance_to_target_cm": 34.8,
+                "path_cost_px": 1348.51
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  111.0
+                ],
+                "distance_to_target_cm": 33.8,
+                "path_cost_px": 1356.51
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 32.9,
+                "path_cost_px": 1364.51
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  107.0
+                ],
+                "distance_to_target_cm": 32.0,
+                "path_cost_px": 1372.51
+              },
+              {
+                "xy_cm": [
+                  85.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 34.7,
+                "path_cost_px": 1358.08
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 29.5,
+            "n_reachable_collision_free_positions": 1353,
+            "body_to_target_gap_cm": 13.7,
+            "xy_image_px": [
+              582.2,
+              509.5
+            ],
+            "rotation_in_place_at_approach": {
+              "ok": false,
+              "clearance_px": 91.0,
+              "needed_px": 104.4
+            }
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                1196.0,
+                660.0
+              ],
+              [
+                460.0,
+                660.0
+              ],
+              [
+                444.0,
+                652.0
+              ],
+              [
+                372.0,
+                492.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                289.0,
+                155.0
+              ],
+              [
+                105.0,
+                155.0
+              ],
+              [
+                101.0,
+                153.0
+              ],
+              [
+                83.0,
+                113.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                1676.1,
+                695.6
+              ],
+              [
+                671.6,
+                704.8
+              ],
+              [
+                651.6,
+                695.1
+              ],
+              [
+                582.2,
+                509.5
+              ]
+            ],
+            "n_waypoints": 4,
+            "length_cm": 232.3,
+            "raw_grid_length_cm": 239.6,
+            "astar_cost": 1348.51,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 70.0,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 933,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 75.0,
+            "needed_px": 104.4
+          }
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            31.0,
+            42.0
+          ],
+          "goal": {
+            "status": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1198.5851725313053), np.float64(661.4039380611517)] is invalid (clearance 74.0px < robot radius)",
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": null,
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": null,
+            "xy_cm": null,
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px"
+          },
+          "path": null,
+          "v02_validation": null,
+          "sweep_check": null,
+          "feasible": false,
+          "failure": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1198.5851725313053), np.float64(661.4039380611517)] is invalid (clearance 74.0px < robot radius)"
+          },
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 75.0,
+            "needed_px": 104.4
+          }
+        }
+      },
+      "legs_B": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            42.0,
+            31.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": {
+              "cells_in_reach": 2863,
+              "cells_in_reach_traversable": 500,
+              "cells_accessible_collision_free": 85,
+              "cells_reachable_from_start": 85,
+              "nearest_valid_cell_to_anchor_px": 195.7
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              972.0,
+              372.0
+            ],
+            "xy_cm": [
+              233.0,
+              83.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 902.02,
+            "facing_direction_deg": -52.5,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  233.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 54.8,
+                "path_cost_px": 902.02
+              },
+              {
+                "xy_cm": [
+                  235.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 53.9,
+                "path_cost_px": 913.22
+              },
+              {
+                "xy_cm": [
+                  237.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 53.2,
+                "path_cost_px": 924.42
+              },
+              {
+                "xy_cm": [
+                  239.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 52.4,
+                "path_cost_px": 935.62
+              },
+              {
+                "xy_cm": [
+                  239.0,
+                  85.0
+                ],
+                "distance_to_target_cm": 54.3,
+                "path_cost_px": 926.73
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 48.9,
+            "n_reachable_collision_free_positions": 1353,
+            "body_to_target_gap_cm": 37.8,
+            "xy_image_px": [
+              1332.1,
+              367.7
+            ]
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                372.0,
+                492.0
+              ],
+              [
+                444.0,
+                396.0
+              ],
+              [
+                972.0,
+                372.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                83.0,
+                113.0
+              ],
+              [
+                101.0,
+                89.0
+              ],
+              [
+                233.0,
+                83.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                582.2,
+                509.5
+              ],
+              [
+                682.8,
+                405.2
+              ],
+              [
+                1332.1,
+                367.7
+              ]
+            ],
+            "n_waypoints": 3,
+            "length_cm": 162.1,
+            "raw_grid_length_cm": 169.3,
+            "astar_cost": 902.017,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 67.6,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 651,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "heading_change_from_A": false
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            31.0,
+            42.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": {
+              "cells_in_reach": 10873,
+              "cells_in_reach_traversable": 4366,
+              "cells_accessible_collision_free": 257,
+              "cells_reachable_from_start": 20,
+              "nearest_valid_cell_to_anchor_px": 224.8
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              460.0,
+              396.0
+            ],
+            "xy_cm": [
+              105.0,
+              89.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 138.01,
+            "facing_direction_deg": -21.7,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  105.0,
+                  89.0
+                ],
+                "distance_to_target_cm": 161.7,
+                "path_cost_px": 138.01
+              },
+              {
+                "xy_cm": [
+                  105.0,
+                  91.0
+                ],
+                "distance_to_target_cm": 162.4,
+                "path_cost_px": 134.53
+              },
+              {
+                "xy_cm": [
+                  103.0,
+                  93.0
+                ],
+                "distance_to_target_cm": 165.0,
+                "path_cost_px": 119.72
+              },
+              {
+                "xy_cm": [
+                  105.0,
+                  93.0
+                ],
+                "distance_to_target_cm": 163.1,
+                "path_cost_px": 131.14
+              },
+              {
+                "xy_cm": [
+                  103.0,
+                  91.0
+                ],
+                "distance_to_target_cm": 164.3,
+                "path_cost_px": 124.67
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 161.1,
+            "n_reachable_collision_free_positions": 548,
+            "body_to_target_gap_cm": 145.1,
+            "xy_image_px": [
+              702.2,
+              404.8
+            ]
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                372.0,
+                492.0
+              ],
+              [
+                460.0,
+                396.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                83.0,
+                113.0
+              ],
+              [
+                105.0,
+                89.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                582.2,
+                509.5
+              ],
+              [
+                702.2,
+                404.8
+              ]
+            ],
+            "n_waypoints": 2,
+            "length_cm": 32.6,
+            "raw_grid_length_cm": 33.1,
+            "astar_cost": 138.007,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 91.0,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 132,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": false,
+          "failure": {
+            "stage": "heading_change",
+            "code": "ROTATION_CLEARANCE_NOT_MET",
+            "reason": "circumscribed disc needs 26.1 cm clearance at the pick-up approach, only 22.8 cm"
+          },
+          "heading_change_from_A": true,
+          "rotation_in_place_at_pickup_approach": {
+            "ok": false,
+            "clearance_px": 91.0,
+            "needed_px": 104.4
+          }
+        }
+      },
+      "selected": {
+        "status": "PATH_A_AND_B",
+        "A_heading_deg": 0,
+        "B_heading_deg": 0,
+        "total_length_cm": 394.4,
+        "rule": "per leg: among the feasible headings (v0.2 A*, v0.2 validator and whole-body sweep all pass) the smallest body-to-target gap first (the gap is what the unverified gripper must bridge), then the shortest path; B starts at the pick-up approach point"
+      }
+    },
+    "conservative_margin_start_shift40px": {
+      "label": "conservative_margin_start_shift40px",
+      "nominal_size_cm": [
+        35,
+        24
+      ],
+      "margin_per_side_cm": 3.5,
+      "start_image_px": [
+        1660.6,
+        692.8
+      ],
+      "start_cm": [
+        286.3,
+        154.4
+      ],
+      "start_status": "ESTIMATED (outline centre moved towards the principal point; heading UNKNOWN)",
+      "legs_A": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            42.0,
+            31.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": {
+              "cells_in_reach": 1126,
+              "cells_in_reach_traversable": 382,
+              "cells_accessible_collision_free": 46,
+              "cells_reachable_from_start": 46,
+              "nearest_valid_cell_to_anchor_px": 118.0
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              372.0,
+              492.0
+            ],
+            "xy_cm": [
+              83.0,
+              113.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 1336.31,
+            "facing_direction_deg": -147.0,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  83.0,
+                  113.0
+                ],
+                "distance_to_target_cm": 34.8,
+                "path_cost_px": 1336.31
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  111.0
+                ],
+                "distance_to_target_cm": 33.8,
+                "path_cost_px": 1344.31
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 32.9,
+                "path_cost_px": 1352.31
+              },
+              {
+                "xy_cm": [
+                  83.0,
+                  107.0
+                ],
+                "distance_to_target_cm": 32.0,
+                "path_cost_px": 1360.31
+              },
+              {
+                "xy_cm": [
+                  85.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 34.7,
+                "path_cost_px": 1345.88
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 29.5,
+            "n_reachable_collision_free_positions": 1353,
+            "body_to_target_gap_cm": 13.7,
+            "xy_image_px": [
+              582.2,
+              509.5
+            ],
+            "rotation_in_place_at_approach": {
+              "ok": false,
+              "clearance_px": 91.0,
+              "needed_px": 104.4
+            }
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                1188.0,
+                660.0
+              ],
+              [
+                460.0,
+                660.0
+              ],
+              [
+                444.0,
+                652.0
+              ],
+              [
+                372.0,
+                492.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                287.0,
+                155.0
+              ],
+              [
+                105.0,
+                155.0
+              ],
+              [
+                101.0,
+                153.0
+              ],
+              [
+                83.0,
+                113.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                1664.9,
+                695.7
+              ],
+              [
+                671.6,
+                704.8
+              ],
+              [
+                651.6,
+                695.1
+              ],
+              [
+                582.2,
+                509.5
+              ]
+            ],
+            "n_waypoints": 4,
+            "length_cm": 230.3,
+            "raw_grid_length_cm": 237.6,
+            "astar_cost": 1336.31,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 70.0,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 925,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 72.0,
+            "needed_px": 104.4
+          }
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            31.0,
+            42.0
+          ],
+          "goal": {
+            "status": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1185.3589899230587), np.float64(657.6733343943571)] is invalid (clearance 74.0px < robot radius)",
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": null,
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": null,
+            "xy_cm": null,
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px"
+          },
+          "path": null,
+          "v02_validation": null,
+          "sweep_check": null,
+          "feasible": false,
+          "failure": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1185.3589899230587), np.float64(657.6733343943571)] is invalid (clearance 74.0px < robot radius)"
+          },
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 72.0,
+            "needed_px": 104.4
+          }
+        }
+      },
+      "legs_B": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            42.0,
+            31.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": {
+              "cells_in_reach": 2863,
+              "cells_in_reach_traversable": 500,
+              "cells_accessible_collision_free": 85,
+              "cells_reachable_from_start": 85,
+              "nearest_valid_cell_to_anchor_px": 195.7
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              972.0,
+              372.0
+            ],
+            "xy_cm": [
+              233.0,
+              83.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 902.02,
+            "facing_direction_deg": -52.5,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  233.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 54.8,
+                "path_cost_px": 902.02
+              },
+              {
+                "xy_cm": [
+                  235.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 53.9,
+                "path_cost_px": 913.22
+              },
+              {
+                "xy_cm": [
+                  237.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 53.2,
+                "path_cost_px": 924.42
+              },
+              {
+                "xy_cm": [
+                  239.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 52.4,
+                "path_cost_px": 935.62
+              },
+              {
+                "xy_cm": [
+                  239.0,
+                  85.0
+                ],
+                "distance_to_target_cm": 54.3,
+                "path_cost_px": 926.73
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 48.9,
+            "n_reachable_collision_free_positions": 1353,
+            "body_to_target_gap_cm": 37.8,
+            "xy_image_px": [
+              1332.1,
+              367.7
+            ]
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                372.0,
+                492.0
+              ],
+              [
+                444.0,
+                396.0
+              ],
+              [
+                972.0,
+                372.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                83.0,
+                113.0
+              ],
+              [
+                101.0,
+                89.0
+              ],
+              [
+                233.0,
+                83.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                582.2,
+                509.5
+              ],
+              [
+                682.8,
+                405.2
+              ],
+              [
+                1332.1,
+                367.7
+              ]
+            ],
+            "n_waypoints": 3,
+            "length_cm": 162.1,
+            "raw_grid_length_cm": 169.3,
+            "astar_cost": 902.017,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 67.6,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 651,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "heading_change_from_A": false
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            31.0,
+            42.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": {
+              "cells_in_reach": 10873,
+              "cells_in_reach_traversable": 4366,
+              "cells_accessible_collision_free": 257,
+              "cells_reachable_from_start": 20,
+              "nearest_valid_cell_to_anchor_px": 224.8
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              460.0,
+              396.0
+            ],
+            "xy_cm": [
+              105.0,
+              89.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 138.01,
+            "facing_direction_deg": -21.7,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  105.0,
+                  89.0
+                ],
+                "distance_to_target_cm": 161.7,
+                "path_cost_px": 138.01
+              },
+              {
+                "xy_cm": [
+                  105.0,
+                  91.0
+                ],
+                "distance_to_target_cm": 162.4,
+                "path_cost_px": 134.53
+              },
+              {
+                "xy_cm": [
+                  103.0,
+                  93.0
+                ],
+                "distance_to_target_cm": 165.0,
+                "path_cost_px": 119.72
+              },
+              {
+                "xy_cm": [
+                  105.0,
+                  93.0
+                ],
+                "distance_to_target_cm": 163.1,
+                "path_cost_px": 131.14
+              },
+              {
+                "xy_cm": [
+                  103.0,
+                  91.0
+                ],
+                "distance_to_target_cm": 164.3,
+                "path_cost_px": 124.67
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 161.1,
+            "n_reachable_collision_free_positions": 548,
+            "body_to_target_gap_cm": 145.1,
+            "xy_image_px": [
+              702.2,
+              404.8
+            ]
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                372.0,
+                492.0
+              ],
+              [
+                460.0,
+                396.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                83.0,
+                113.0
+              ],
+              [
+                105.0,
+                89.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                582.2,
+                509.5
+              ],
+              [
+                702.2,
+                404.8
+              ]
+            ],
+            "n_waypoints": 2,
+            "length_cm": 32.6,
+            "raw_grid_length_cm": 33.1,
+            "astar_cost": 138.007,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 91.0,
+            "required_px": 60.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 132,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": false,
+          "failure": {
+            "stage": "heading_change",
+            "code": "ROTATION_CLEARANCE_NOT_MET",
+            "reason": "circumscribed disc needs 26.1 cm clearance at the pick-up approach, only 22.8 cm"
+          },
+          "heading_change_from_A": true,
+          "rotation_in_place_at_pickup_approach": {
+            "ok": false,
+            "clearance_px": 91.0,
+            "needed_px": 104.4
+          }
+        }
+      },
+      "selected": {
+        "status": "PATH_A_AND_B",
+        "A_heading_deg": 0,
+        "B_heading_deg": 0,
+        "total_length_cm": 392.4,
+        "rule": "per leg: among the feasible headings (v0.2 A*, v0.2 validator and whole-body sweep all pass) the smallest body-to-target gap first (the gap is what the unverified gripper must bridge), then the shortest path; B starts at the pick-up approach point"
+      }
+    },
+    "nominal_no_margin": {
+      "label": "nominal_no_margin",
+      "nominal_size_cm": [
+        35,
+        24
+      ],
+      "margin_per_side_cm": 0.0,
+      "start_image_px": [
+        1699.5,
+        702.1
+      ],
+      "start_cm": [
+        292.9,
+        156.3
+      ],
+      "start_status": "ESTIMATED (outline centre moved towards the principal point; heading UNKNOWN)",
+      "legs_A": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            35.0,
+            24.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": {
+              "cells_in_reach": 901,
+              "cells_in_reach_traversable": 303,
+              "cells_accessible_collision_free": 49,
+              "cells_reachable_from_start": 49,
+              "nearest_valid_cell_to_anchor_px": 102.0
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              356.0,
+              492.0
+            ],
+            "xy_cm": [
+              79.0,
+              113.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 1101.71,
+            "facing_direction_deg": -143.3,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  79.0,
+                  113.0
+                ],
+                "distance_to_target_cm": 31.5,
+                "path_cost_px": 1101.71
+              },
+              {
+                "xy_cm": [
+                  79.0,
+                  111.0
+                ],
+                "distance_to_target_cm": 30.4,
+                "path_cost_px": 1109.71
+              },
+              {
+                "xy_cm": [
+                  79.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 29.3,
+                "path_cost_px": 1117.71
+              },
+              {
+                "xy_cm": [
+                  79.0,
+                  107.0
+                ],
+                "distance_to_target_cm": 28.4,
+                "path_cost_px": 1125.71
+              },
+              {
+                "xy_cm": [
+                  81.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 31.1,
+                "path_cost_px": 1110.72
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 25.5,
+            "n_reachable_collision_free_positions": 2322,
+            "body_to_target_gap_cm": 10.4,
+            "xy_image_px": [
+              562.4,
+              509.8
+            ],
+            "rotation_in_place_at_approach": {
+              "ok": false,
+              "clearance_px": 75.0,
+              "needed_px": 84.9
+            }
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                1212.0,
+                668.0
+              ],
+              [
+                460.0,
+                644.0
+              ],
+              [
+                356.0,
+                492.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                293.0,
+                157.0
+              ],
+              [
+                105.0,
+                151.0
+              ],
+              [
+                79.0,
+                113.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                1700.6,
+                705.7
+              ],
+              [
+                673.6,
+                685.1
+              ],
+              [
+                562.4,
+                509.8
+              ]
+            ],
+            "n_waypoints": 3,
+            "length_cm": 234.1,
+            "raw_grid_length_cm": 240.9,
+            "astar_cost": 1101.708,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 57.0,
+            "required_px": 46.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 940,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 79.0,
+            "needed_px": 84.9
+          }
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            24.0,
+            35.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": {
+              "cells_in_reach": 610,
+              "cells_in_reach_traversable": 187,
+              "cells_accessible_collision_free": 39,
+              "cells_reachable_from_start": 39,
+              "nearest_valid_cell_to_anchor_px": 78.0
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              340.0,
+              468.0
+            ],
+            "xy_cm": [
+              75.0,
+              107.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 1147.69,
+            "facing_direction_deg": -148.4,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  75.0,
+                  107.0
+                ],
+                "distance_to_target_cm": 24.9,
+                "path_cost_px": 1147.69
+              },
+              {
+                "xy_cm": [
+                  75.0,
+                  105.0
+                ],
+                "distance_to_target_cm": 23.9,
+                "path_cost_px": 1155.69
+              },
+              {
+                "xy_cm": [
+                  73.0,
+                  109.0
+                ],
+                "distance_to_target_cm": 24.3,
+                "path_cost_px": 1153.47
+              },
+              {
+                "xy_cm": [
+                  73.0,
+                  107.0
+                ],
+                "distance_to_target_cm": 23.2,
+                "path_cost_px": 1161.47
+              },
+              {
+                "xy_cm": [
+                  77.0,
+                  103.0
+                ],
+                "distance_to_target_cm": 25.0,
+                "path_cost_px": 1152.17
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 19.5,
+            "n_reachable_collision_free_positions": 1643,
+            "body_to_target_gap_cm": 9.5,
+            "xy_image_px": [
+              546.4,
+              483.9
+            ],
+            "rotation_in_place_at_approach": {
+              "ok": false,
+              "clearance_px": 59.0,
+              "needed_px": 84.9
+            }
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                1212.0,
+                668.0
+              ],
+              [
+                484.0,
+                668.0
+              ],
+              [
+                372.0,
+                540.0
+              ],
+              [
+                340.0,
+                468.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                293.0,
+                157.0
+              ],
+              [
+                111.0,
+                157.0
+              ],
+              [
+                83.0,
+                125.0
+              ],
+              [
+                75.0,
+                107.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                1700.6,
+                705.7
+              ],
+              [
+                702.5,
+                714.5
+              ],
+              [
+                575.0,
+                563.3
+              ],
+              [
+                546.4,
+                483.9
+              ]
+            ],
+            "n_waypoints": 4,
+            "length_cm": 244.2,
+            "raw_grid_length_cm": 248.6,
+            "astar_cost": 1147.689,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 59.0,
+            "required_px": 46.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 981,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 79.0,
+            "needed_px": 84.9
+          }
+        }
+      },
+      "legs_B": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            35.0,
+            24.0
+          ],
+          "goal": {
+            "status": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(340.0), np.float64(468.0)] is invalid (clearance 59.0px < robot radius)",
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": null,
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": null,
+            "xy_cm": null,
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px"
+          },
+          "path": null,
+          "v02_validation": null,
+          "sweep_check": null,
+          "feasible": false,
+          "failure": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(340.0), np.float64(468.0)] is invalid (clearance 59.0px < robot radius)"
+          },
+          "heading_change_from_A": true,
+          "rotation_in_place_at_pickup_approach": {
+            "ok": false,
+            "clearance_px": 59.0,
+            "needed_px": 84.9
+          }
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            24.0,
+            35.0
+          ],
+          "goal": {
+            "status": "GOAL_SELECTED",
+            "reason": null,
+            "purpose": "dropoff_approach",
+            "anchor": "loading_bay",
+            "stats": {
+              "cells_in_reach": 2955,
+              "cells_in_reach_traversable": 550,
+              "cells_accessible_collision_free": 98,
+              "cells_reachable_from_start": 98,
+              "nearest_valid_cell_to_anchor_px": 203.0
+            },
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": [
+              956.0,
+              372.0
+            ],
+            "xy_cm": [
+              229.0,
+              83.0
+            ],
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px",
+            "path_cost": 720.38,
+            "facing_direction_deg": -50.3,
+            "facing_note": "direction from the approach point towards the target centroid (x right, y down)",
+            "candidates_top_k": [
+              {
+                "xy_cm": [
+                  229.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 56.7,
+                "path_cost_px": 720.38
+              },
+              {
+                "xy_cm": [
+                  231.0,
+                  83.0
+                ],
+                "distance_to_target_cm": 55.7,
+                "path_cost_px": 728.78
+              },
+              {
+                "xy_cm": [
+                  233.0,
+                  85.0
+                ],
+                "distance_to_target_cm": 56.6,
+                "path_cost_px": 729.46
+              },
+              {
+                "xy_cm": [
+                  235.0,
+                  85.0
+                ],
+                "distance_to_target_cm": 55.8,
+                "path_cost_px": 737.86
+              },
+              {
+                "xy_cm": [
+                  237.0,
+                  85.0
+                ],
+                "distance_to_target_cm": 55.0,
+                "path_cost_px": 746.26
+              }
+            ],
+            "nearest_reachable_centre_to_target_cm": 50.8,
+            "n_reachable_collision_free_positions": 1643,
+            "body_to_target_gap_cm": 35.6,
+            "xy_image_px": [
+              1312.1,
+              368.1
+            ]
+          },
+          "path": {
+            "status": "PATH_FOUND",
+            "frame_note": "v0.2 plan() labels its record raw_image_px; waypoints_bev_px are BEV px",
+            "waypoints_bev_px": [
+              [
+                340.0,
+                468.0
+              ],
+              [
+                476.0,
+                388.0
+              ],
+              [
+                956.0,
+                372.0
+              ]
+            ],
+            "waypoints_cm": [
+              [
+                75.0,
+                107.0
+              ],
+              [
+                109.0,
+                87.0
+              ],
+              [
+                229.0,
+                83.0
+              ]
+            ],
+            "waypoints_image_px": [
+              [
+                546.4,
+                483.9
+              ],
+              [
+                722.4,
+                396.2
+              ],
+              [
+                1312.1,
+                368.1
+              ]
+            ],
+            "n_waypoints": 3,
+            "length_cm": 159.5,
+            "raw_grid_length_cm": 165.6,
+            "astar_cost": 720.382,
+            "planner": "SAFETY_COST_ASTAR"
+          },
+          "v02_validation": {
+            "valid": true,
+            "min_clearance_px": 59.0,
+            "required_px": 46.0,
+            "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+          },
+          "sweep_check": {
+            "ok": true,
+            "n_samples": 641,
+            "step_cm": 0.25,
+            "first_violation": null,
+            "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+          },
+          "feasible": true,
+          "failure": null,
+          "heading_change_from_A": false
+        }
+      },
+      "selected": {
+        "status": "PATH_A_AND_B",
+        "A_heading_deg": 90,
+        "B_heading_deg": 90,
+        "total_length_cm": 403.7,
+        "rule": "per leg: among the feasible headings (v0.2 A*, v0.2 validator and whole-body sweep all pass) the smallest body-to-target gap first (the gap is what the unverified gripper must bridge), then the shortest path; B starts at the pick-up approach point"
+      }
+    },
+    "outline_box_stress": {
+      "label": "outline_box_stress",
+      "nominal_size_cm": [
+        46.0,
+        32.4
+      ],
+      "margin_per_side_cm": 0.0,
+      "start_image_px": [
+        1699.5,
+        702.1
+      ],
+      "start_cm": [
+        292.9,
+        156.3
+      ],
+      "start_status": "ESTIMATED (outline centre moved towards the principal point; heading UNKNOWN)",
+      "legs_A": {
+        "0": {
+          "heading_deg": 0,
+          "footprint_extent_xy_cm": [
+            46.0,
+            32.4
+          ],
+          "goal": {
+            "status": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)",
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": null,
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": null,
+            "xy_cm": null,
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px"
+          },
+          "path": null,
+          "v02_validation": null,
+          "sweep_check": null,
+          "feasible": false,
+          "failure": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+          },
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 79.0,
+            "needed_px": 112.5
+          }
+        },
+        "90": {
+          "heading_deg": 90,
+          "footprint_extent_xy_cm": [
+            32.4,
+            46.0
+          ],
+          "goal": {
+            "status": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)",
+            "purpose": "pickup_approach",
+            "anchor": "cube_candidate",
+            "stats": null,
+            "reach": "NOT_A_REACH_CLAIM: gripper reach is UNVERIFIED; the distance the approach has to bridge is reported as body_to_target_gap_cm",
+            "xy_bev_px": null,
+            "xy_cm": null,
+            "frame_note": "v0.2 select_goal labels its output raw_image_px; the values are BEV px"
+          },
+          "path": null,
+          "v02_validation": null,
+          "sweep_check": null,
+          "feasible": false,
+          "failure": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+          },
+          "start_heading_alignment": {
+            "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+            "ok": false,
+            "clearance_px": 79.0,
+            "needed_px": 112.5
+          }
+        }
+      },
+      "legs_B": {},
+      "selected": {
+        "status": "NO_PATH_A",
+        "reason": {
+          "0": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+          },
+          "90": {
+            "stage": "approach_point",
+            "code": "START_IN_COLLISION",
+            "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+          }
+        }
+      }
+    }
+  },
+  "variant_summary": {
+    "conservative_margin": {
+      "selected": "PATH_A_AND_B",
+      "A": {
+        "0": [
+          true,
+          null
+        ],
+        "90": [
+          false,
+          "START_IN_COLLISION"
+        ]
+      },
+      "B": {
+        "0": [
+          true,
+          null
+        ],
+        "90": [
+          false,
+          "ROTATION_CLEARANCE_NOT_MET"
+        ]
+      }
+    },
+    "conservative_margin_start_shift20px": {
+      "selected": "PATH_A_AND_B",
+      "A": {
+        "0": [
+          true,
+          null
+        ],
+        "90": [
+          false,
+          "START_IN_COLLISION"
+        ]
+      },
+      "B": {
+        "0": [
+          true,
+          null
+        ],
+        "90": [
+          false,
+          "ROTATION_CLEARANCE_NOT_MET"
+        ]
+      }
+    },
+    "conservative_margin_start_shift40px": {
+      "selected": "PATH_A_AND_B",
+      "A": {
+        "0": [
+          true,
+          null
+        ],
+        "90": [
+          false,
+          "START_IN_COLLISION"
+        ]
+      },
+      "B": {
+        "0": [
+          true,
+          null
+        ],
+        "90": [
+          false,
+          "ROTATION_CLEARANCE_NOT_MET"
+        ]
+      }
+    },
+    "nominal_no_margin": {
+      "selected": "PATH_A_AND_B",
+      "A": {
+        "0": [
+          true,
+          null
+        ],
+        "90": [
+          true,
+          null
+        ]
+      },
+      "B": {
+        "0": [
+          false,
+          "START_IN_COLLISION"
+        ],
+        "90": [
+          true,
+          null
+        ]
+      }
+    },
+    "outline_box_stress": {
+      "selected": "NO_PATH_A",
+      "A": {
+        "0": [
+          false,
+          "START_IN_COLLISION"
+        ],
+        "90": [
+          false,
+          "START_IN_COLLISION"
+        ]
+      },
+      "B": {}
+    }
+  },
+  "virtual_steps": [
+    {
+      "step": "NAVIGATE_TO_PICKUP_APPROACH",
+      "path": "A",
+      "status": "PLANNED_NOT_EXECUTED",
+      "at_cm": [
+        292.9,
+        156.3
+      ]
+    },
+    {
+      "step": "VIRTUAL_PICKUP",
+      "status": "SIMULATED_NOT_EXECUTED",
+      "at_cm": [
+        83.0,
+        113.0
+      ],
+      "gripper_must_bridge_cm": 13.7,
+      "requires": [
+        "gripper reach >= the gap (UNVERIFIED)",
+        "grasp pose / cube size (UNMEASURED)",
+        "target confirmed (now PROVISIONAL_TARGET)"
+      ]
+    },
+    {
+      "step": "CARRY_TO_BAY_APPROACH",
+      "path": "B",
+      "status": "PLANNED_ASSUMING_PICKUP",
+      "at_cm": [
+        233.0,
+        83.0
+      ]
+    },
+    {
+      "step": "VIRTUAL_PLACEMENT",
+      "status": "SIMULATED_NOT_EXECUTED",
+      "at_cm": [
+        233.0,
+        83.0
+      ],
+      "gripper_must_bridge_cm": 37.8,
+      "requires": [
+        "gripper reach >= the gap (UNVERIFIED)",
+        "placement surface / boundary-crossing permission (UNDECIDED)"
+      ]
+    }
+  ],
+  "task_execution_simulated": {
+    "task_type": "transport_and_place",
+    "state": "WAITING_FOR_PICKUP_CONFIRMATION",
+    "path_b_status": "PLANNED_ASSUMING_PICKUP",
+    "requests": [
+      {
+        "action": "PICKUP_HANDOFF",
+        "target_object_id": "target_cand1",
+        "target_class": "cube",
+        "target_color": "red",
+        "approach_pose": {
+          "image_xy": [
+            582.213610182826,
+            509.4949351355648
+          ],
+          "heading_deg": -147.0,
+          "frame": "raw_image_px"
+        },
+        "approach_pose_metric": null,
+        "coordinate_frame": "raw_image_px",
+        "metric_note": "metric approach pose requires a validated ground map; image-space pose only",
+        "status": "PLANNED_VIRTUAL_NOT_EXECUTED",
+        "hardware_executable": false,
+        "hardware_block_reason": "PROVISIONAL_FLOOR_PLANE_BEV: no validated metric frame; hardware disabled by configuration",
+        "mode": "simulation"
+      },
+      {
+        "action": "PLACEMENT_HANDOFF",
+        "target_object_id": "target_cand1",
+        "target_class": "cube",
+        "target_color": "red",
+        "approach_pose": {
+          "image_xy": [
+            1332.085903377756,
+            367.74907231426954
+          ],
+          "heading_deg": -52.5,
+          "frame": "raw_image_px"
+        },
+        "approach_pose_metric": null,
+        "coordinate_frame": "raw_image_px",
+        "metric_note": "metric approach pose requires a validated ground map; image-space pose only",
+        "status": "PLANNED_VIRTUAL_NOT_EXECUTED",
+        "hardware_executable": false,
+        "hardware_block_reason": "PROVISIONAL_FLOOR_PLANE_BEV: no validated metric frame; hardware disabled by configuration",
+        "mode": "simulation"
+      }
+    ],
+    "history": [
+      {
+        "t": 1795038582.633949,
+        "state": "WAITING_FOR_PICKUP_CONFIRMATION",
+        "event": "created",
+        "source": "planner"
+      }
+    ],
+    "mode": "simulation",
+    "hardware_enabled": false,
+    "completed": false
+  },
+  "status_flags": {
+    "1_target_input": {
+      "state": "PROVISIONAL_TARGET",
+      "verified_detection": false,
+      "stored_qwen_crop_gate": "no",
+      "meaning": "temporary input to test the plan chain; not evidence of detection accuracy or pick-up success"
+    },
+    "2_approach_paths": {
+      "A_start_to_pickup_approach": "GENERATED",
+      "B_pickup_to_bay_approach": "GENERATED",
+      "A_failures_by_heading": {
+        "0": null,
+        "90": "START_IN_COLLISION"
+      },
+      "B_failures_by_heading": {
+        "0": null,
+        "90": "ROTATION_CLEARANCE_NOT_MET"
+      }
+    },
+    "3_approach_feasibility_verified": {
+      "verified": false,
+      "why": [
+        "gripper reach UNVERIFIED (distances the gripper would have to bridge are reported)",
+        "grasp pose / cube size UNMEASURED",
+        "start heading UNKNOWN; in-place rotation clearance not met at the start nor at the pick-up approach (see heading_alignment)"
+      ]
+    },
+    "4_pickup_and_placement": "VIRTUAL steps only (SIMULATED_NOT_EXECUTED); TaskExecution stays WAITING_FOR_PICKUP_CONFIRMATION",
+    "5_driving_space": {
+      "primary_footprint": "SUFFICIENT (paths A and B found, validated by v0.2 and by the whole-body sweep)",
+      "plan_survives_uniform_inflation_up_to_cm_per_side": 4.5,
+      "outline_box_stress": "NO_PATH_A"
+    },
+    "6_required_physical_information": [
+      {
+        "item": "robot outer dimensions incl. wheels and the real heading of the robot at the start",
+        "why": "35x24 cm is the user's initial value; the verified outline maps to ~46x32 cm on the floor (parallax and/or wheels)"
+      },
+      {
+        "item": "gripper reach, grasp pose, cube size and the height of the conveyor surface",
+        "why": "the approach points leave a gap the gripper must bridge; the target's floor projection is displaced by its height"
+      },
+      {
+        "item": "permission/geometry for the gripper to cross the drivable boundary and the placement surface of the bay",
+        "why": "the bay and the cube both lie outside the drivable zone Z02"
+      },
+      {
+        "item": "human-confirmed floor reference points (and a re-check of the intrinsics for the current installation)",
+        "why": "the floor transform is PROVISIONAL; mat edges are curved near the border (residual lens distortion)"
+      },
+      {
+        "item": "human confirmation of the DRAFT zone polygons (edge accuracy at the cm level)",
+        "why": "the footprint margin covers the transform error only, not an error of the hand-drawn polygon edges"
+      },
+      {
+        "item": "mecanum dynamics (acceleration, corner behaviour) and obstacle overhang beyond the floor outlines",
+        "why": "only the static whole-body footprint at a fixed heading is checked"
+      }
+    ]
+  },
+  "failures_and_unverified": {
+    "failed_or_blocked_legs": [
+      {
+        "variant": "conservative_margin",
+        "leg": "A",
+        "heading_deg": 90,
+        "stage": "approach_point",
+        "code": "START_IN_COLLISION",
+        "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+      },
+      {
+        "variant": "conservative_margin",
+        "leg": "B",
+        "heading_deg": 90,
+        "stage": "heading_change",
+        "code": "ROTATION_CLEARANCE_NOT_MET",
+        "reason": "circumscribed disc needs 26.1 cm clearance at the pick-up approach, only 22.8 cm"
+      },
+      {
+        "variant": "conservative_margin_start_shift20px",
+        "leg": "A",
+        "heading_deg": 90,
+        "stage": "approach_point",
+        "code": "START_IN_COLLISION",
+        "reason": "START_IN_COLLISION: start [np.float64(1198.5851725313053), np.float64(661.4039380611517)] is invalid (clearance 74.0px < robot radius)"
+      },
+      {
+        "variant": "conservative_margin_start_shift20px",
+        "leg": "B",
+        "heading_deg": 90,
+        "stage": "heading_change",
+        "code": "ROTATION_CLEARANCE_NOT_MET",
+        "reason": "circumscribed disc needs 26.1 cm clearance at the pick-up approach, only 22.8 cm"
+      },
+      {
+        "variant": "conservative_margin_start_shift40px",
+        "leg": "A",
+        "heading_deg": 90,
+        "stage": "approach_point",
+        "code": "START_IN_COLLISION",
+        "reason": "START_IN_COLLISION: start [np.float64(1185.3589899230587), np.float64(657.6733343943571)] is invalid (clearance 74.0px < robot radius)"
+      },
+      {
+        "variant": "conservative_margin_start_shift40px",
+        "leg": "B",
+        "heading_deg": 90,
+        "stage": "heading_change",
+        "code": "ROTATION_CLEARANCE_NOT_MET",
+        "reason": "circumscribed disc needs 26.1 cm clearance at the pick-up approach, only 22.8 cm"
+      },
+      {
+        "variant": "nominal_no_margin",
+        "leg": "B",
+        "heading_deg": 0,
+        "stage": "approach_point",
+        "code": "START_IN_COLLISION",
+        "reason": "START_IN_COLLISION: start [np.float64(340.0), np.float64(468.0)] is invalid (clearance 59.0px < robot radius)"
+      },
+      {
+        "variant": "outline_box_stress",
+        "leg": "A",
+        "heading_deg": 0,
+        "stage": "approach_point",
+        "code": "START_IN_COLLISION",
+        "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+      },
+      {
+        "variant": "outline_box_stress",
+        "leg": "A",
+        "heading_deg": 90,
+        "stage": "approach_point",
+        "code": "START_IN_COLLISION",
+        "reason": "START_IN_COLLISION: start [np.float64(1211.6759819846568), np.float64(665.1970618084989)] is invalid (clearance 80.1px < robot radius)"
+      }
+    ],
+    "primary_variant_note": "failures of non-selected headings are expected (the other heading does not fit the passages or the start); they are kept, not hidden",
+    "heading_alignment": {
+      "start": {
+        "note": "actual start heading UNKNOWN; rotation to the planning heading checked with the circumscribed disc (information only)",
+        "ok": false,
+        "clearance_px": 79.0,
+        "needed_px": 104.4
+      },
+      "pickup_approach": {
+        "ok": false,
+        "clearance_px": 91.0,
+        "needed_px": 104.4
+      },
+      "facing_vs_planning_heading": {
+        "pickup_facing_direction_deg": -147.0,
+        "planning_heading_deg": 0,
+        "note": "the front gripper would have to face this direction; the plan holds an axis-aligned heading along each leg, so the facing angle is NOT satisfied/verified"
+      }
+    },
+    "unmeasured_or_unverified": [
+      {
+        "item": "robot outer dimensions incl. wheels and the real heading of the robot at the start",
+        "why": "35x24 cm is the user's initial value; the verified outline maps to ~46x32 cm on the floor (parallax and/or wheels)"
+      },
+      {
+        "item": "gripper reach, grasp pose, cube size and the height of the conveyor surface",
+        "why": "the approach points leave a gap the gripper must bridge; the target's floor projection is displaced by its height"
+      },
+      {
+        "item": "permission/geometry for the gripper to cross the drivable boundary and the placement surface of the bay",
+        "why": "the bay and the cube both lie outside the drivable zone Z02"
+      },
+      {
+        "item": "human-confirmed floor reference points (and a re-check of the intrinsics for the current installation)",
+        "why": "the floor transform is PROVISIONAL; mat edges are curved near the border (residual lens distortion)"
+      },
+      {
+        "item": "human confirmation of the DRAFT zone polygons (edge accuracy at the cm level)",
+        "why": "the footprint margin covers the transform error only, not an error of the hand-drawn polygon edges"
+      },
+      {
+        "item": "mecanum dynamics (acceleration, corner behaviour) and obstacle overhang beyond the floor outlines",
+        "why": "only the static whole-body footprint at a fixed heading is checked"
+      }
+    ],
+    "floor_transform_limits": [
+      "mat edges near the image border are visibly curved: residual lens distortion remains after the read-only undistortion; the nodes on the bottom mat row (image y > 975) have the largest residuals and lie outside the planned work band",
+      "points above the floor (cube on the conveyor, tops of boxes) are displaced by parallax: only floor-level features map correctly",
+      "mat gaps are ignored as the user stated; a gap of a few mm would shift the node positions"
+    ],
+    "margin_sweep_stops_at_cm": 5.0
+  },
+  "figures": [
+    "01_task_plan_bev.png",
+    "02_task_plan_on_photo.png",
+    "03_floor_transform_check.png"
+  ],
+  "saved_inputs": [
+    "input_E1_undistorted.png",
+    "qwen_destination_raw_response.txt",
+    "qwen_destination_structured.json",
+    "target_candidate_qwen_gate_crop.png",
+    "target_candidate_record.json"
+  ],
+  "v02_code_fingerprint_before": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+  "v02_code_fingerprint_after": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+  "no_hardware_command": true
+}

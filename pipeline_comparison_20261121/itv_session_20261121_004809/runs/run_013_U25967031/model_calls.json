@@ -1,0 +1,58 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "46fbe7cf16da1d1408f06f669dad908ded040c14916314008b69fe04fa1b35ff",
+  "image_path": "/home/binci/Pictures/Calibration/7calibration.png",
+  "image_sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2712,
+  "n_output_tokens": 592,
+  "hit_max_new_tokens": false,
+  "latency_s": 18.898,
+  "wall_s": 19.02,
+  "peak_vram_gib": 8.981,
+  "raw_response": "{\n  \"purpose\": \"Move the red cube to an empty pallet\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"empty pallet\",\n    \"bbox_2d\": [\n      585,\n      807,\n      655,\n      907\n    ],\n    \"inferred\": true\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"Empty pallet\",\n  \"destination_reference\": {\n    \"name_en\": \"empty pallet\",\n    \"bbox_2d\": [\n      585,\n      807,\n      655,\n      907\n    ],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"on\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Main robot navigation area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [\n        250,\n        280,\n        650,\n        750\n      ],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Pedestrian walkway\",\n      \"visual_evidence\": [\n        \"green floor\",\n        \"white footprints\"\n      ],\n      \"bbox_2d\": [\n        300,\n        50,\n        560,\n        280\n      ],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Robot work cell\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"conveyor belt\"\n      ],\n      \"bbox_2d\": [\n        100,\n        260,\n        260,\n        720\n      ],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Material storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"stacked containers\"\n      ],\n      \"bbox_2d\": [\n        620,\n        430,\n        950,\n        550\n      ],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\n        \"white dashed lines\",\n        \"truck\"\n      ],\n      \"bbox_2d\": [\n        620,\n        0,\n        900,\n        280\n      ],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact location of the red cube is not visible in the image.\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_013_U25967031",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/7calibration.png",
+  "image_sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "prompts": [
+   "red cube",
+   "empty pallet"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 73,
+  "wall_s": 0.61,
+  "peak_vram_gib": 1.969
+ },
+ {
+  "stage": "dino_roi_U25967031_truck_run_013_U25967031",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U25967031_inputs/roi_truck.png",
+  "image_sha256": "80d95585c1b76d8cb71b33221052984f6bf132a96e31b464519dcde04c2ed26c",
+  "prompts": [
+   "red cube",
+   "empty pallet"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 37,
+  "wall_s": 0.59,
+  "peak_vram_gib": 1.958
+ }
+]

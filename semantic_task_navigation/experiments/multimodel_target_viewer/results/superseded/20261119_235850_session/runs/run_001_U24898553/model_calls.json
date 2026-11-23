@@ -1,0 +1,107 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "580ec8075a615d0e0ac16f3112f5c0310a14d4934bc9130c2981f86616bd0dc1",
+  "image_path": "/home/binci/Pictures/Calibration/4calibration.png",
+  "image_sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2718,
+  "n_output_tokens": 468,
+  "hit_max_new_tokens": false,
+  "latency_s": 18.642,
+  "wall_s": 18.84,
+  "peak_vram_gib": 7.115,
+  "raw_response": "{\n  \"purpose\": \"Move a red cube from near the truck to beside the conveyor belt.\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [747, 0, 880, 144]\n  },\n  \"source_relation\": \"near\",\n  \"destination_meaning\": \"Beside the conveyor belt\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [150, 297, 250, 440],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\"truck\", \"dashed white line\", \"orange cones\"],\n      \"bbox_2d\": [620, 0, 880, 190],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Robot driving area\",\n      \"visual_evidence\": [\"yellow outer boundary\", \"black floor\"],\n      \"bbox_2d\": [0, 0, 990, 990],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor belt and robot arm workcell\",\n      \"visual_evidence\": [\"white inner boundary\", \"conveyor belt\", \"robot arm\"],\n      \"bbox_2d\": [100, 250, 260, 720],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Green pedestrian walkway\",\n      \"visual_evidence\": [\"green floor\", \"footprint symbols\"],\n      \"bbox_2d\": [300, 50, 560, 270],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"Exact location of red cube not visible in image\",\n    \"Gripper reach capability not confirmed\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_001_U24898553",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/4calibration.png",
+  "image_sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+  "prompts": [
+   "truck",
+   "conveyor belt"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 61,
+  "wall_s": 0.73,
+  "peak_vram_gib": 1.969
+ },
+ {
+  "stage": "dino_roi_U24898553_conveyor_run_001_U24898553",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/results/20261119_235850_session/photos/U24898553_inputs/roi_conveyor.png",
+  "image_sha256": "718280c562b75f824b81c61214de27d783e79482010b9caffc55c10b7144aa05",
+  "prompts": [
+   "truck",
+   "conveyor belt"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 35,
+  "wall_s": 0.5,
+  "peak_vram_gib": 1.697
+ },
+ {
+  "stage": "dino_roi_U24898553_truck_run_001_U24898553",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/results/20261119_235850_session/photos/U24898553_inputs/roi_truck.png",
+  "image_sha256": "cffc8734feb5e3972e226206c13c53c43373df4f5abde823ec8799aacdbedbcb",
+  "prompts": [
+   "truck",
+   "conveyor belt"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 20,
+  "wall_s": 0.55,
+  "peak_vram_gib": 1.958
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_source_roles_v1",
+  "prompt_sha256": "a5a18b392cc3301dc0ff9ce28e52a65778d2916b5363669b3424da9016c1e06b",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/results/20261119_235850_session/runs/run_001_U24898553/inputs/source_1.png",
+  "image_sha256": "a40f1cc3fac31134d44d749f2594d2f74dafb6c4038e64c17ea9857e43cbfe13",
+  "image_size": [
+   1600,
+   886
+  ],
+  "n_input_tokens": 2272,
+  "n_output_tokens": 451,
+  "hit_max_new_tokens": false,
+  "latency_s": 16.192,
+  "wall_s": 16.29,
+  "peak_vram_gib": 6.975,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\"a red cube\"],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It is explicitly identified as a red cube in the model's output.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\"an orange object\", \"an orange traffic cone\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange object, not the red cube.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\"an orange object\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange object, not the red cube.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\"an orange traffic cone\"],\n      \"role\": \"other\",\n      \"reason\": \"It is an orange traffic cone, not the red cube.\"\n    }\n  ],\n  \"object_to_move_id\": 6,\n  \"reason\": \"Only candidate 6 is identified as a red cube in the model's output.\"\n}"
+ },
+ {
+  "stage": "siglip_images_destination",
+  "model": "google/siglip2-base-patch16-384",
+  "commit_hash": "f775b65a79762255128c981547af89addcfe0f88",
+  "n_images": 2,
+  "seconds": 0.11,
+  "device": "cuda:0",
+  "peak_vram_gib": 7.022
+ }
+]

@@ -1,0 +1,55 @@
+{
+ "photo": "photo_7",
+ "path_A_status": "VALID",
+ "path_B_status": "NOT_FOUND",
+ "path_B_basis": "grasp stop of Path A",
+ "status_meaning": {
+  "VALID": "path found and every collision / boundary check passed in the current map model",
+  "INVALID_PATH": "a path exists but a collision / boundary check failed",
+  "NOT_FOUND": "no valid path or stop pose under the current conditions",
+  "CONDITIONAL": "computed from an assumed start (grasp-pose candidate or robot start) because Path A is not valid",
+  "REVIEW_REQUIRED": "positions are provisional or a target is missing: user confirmation needed",
+  "UNVERIFIED": "physical conditions (gripper offset / reach, dynamics) not verified"
+ },
+ "path_A_checks": {
+  "passed": true,
+  "orthogonal_4_connected": true,
+  "segments_straight_between_waypoints": true,
+  "no_diagonal_segment_between_waypoints": true,
+  "cells_in_margin_cspace_for_arrival_and_departure_heading": {
+   "ok": true,
+   "violations": []
+  },
+  "whole_body_sweep_generic": {
+   "ok": true,
+   "n_samples": 842,
+   "first_violation": null,
+   "body": "margin body 39.0 x 28.0 cm (start-escape segment: nominal 35 x 24 cm)"
+  },
+  "whole_body_sweep_reused_footprint_nav": {
+   "ok": true,
+   "n_samples": 842
+  },
+  "v02_validate_path_inscribed_disc": {
+   "valid": true,
+   "min_clearance_px": 68.0,
+   "required_px": 55.4,
+   "note": "necessary condition only"
+  },
+  "rotation_events_ok": true,
+  "max_wheels_outside_yellow_px": 0,
+  "max_body_on_blocking_layer_px": 0,
+  "min_wheel_clearance_to_yellow_boundary_cm": 3.25,
+  "min_body_clearance_to_mapped_obstacle_cm": 3.0,
+  "max_body_overhang_beyond_yellow_cm": 1.0,
+  "max_body_overhang_area_cm2": 24.8,
+  "n_samples": 212,
+  "footprints": "NOMINAL wheel envelope and body (margin excluded)"
+ },
+ "path_B_checks": null,
+ "cause_A": null,
+ "cause_B": "B: the only collision-free stops on the target axis need the gripper to reach across {90: ['STATIC_OBSTACLE']} -> rejected",
+ "positions": "REVIEW_REQUIRED",
+ "grasp_placement": "UNVERIFIED",
+ "driving": "NOT_FOR_DRIVING (2.0 cm margin < position uncertainty)"
+}

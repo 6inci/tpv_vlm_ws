@@ -1,0 +1,50 @@
+{
+  "semantic_loading_region": null,
+  "semantic_regions_plausible": [],
+  "object_placement_region": null,
+  "robot_approach_region": null,
+  "selected_robot_goal": null,
+  "choice": null,
+  "chain": [
+    {
+      "region_id": "loading_area_candidate_1",
+      "source": "geometric_band:below",
+      "semantic": "no",
+      "semantic_reason": "The green outline is a walkway with cones, not the truck's loading/unloading zone.",
+      "placement": null,
+      "approach": null
+    },
+    {
+      "region_id": "loading_area_candidate_2",
+      "source": "geometric_band:above",
+      "semantic": "no",
+      "semantic_reason": "The green outline is above the truck's cab, not its cargo bed or loading zone.",
+      "placement": null,
+      "approach": null
+    },
+    {
+      "region_id": "loading_area_candidate_3",
+      "source": "geometric_band:left",
+      "semantic": "no",
+      "semantic_reason": "The green outline is a walkway, not the truck's loading/unloading area.",
+      "placement": null,
+      "approach": null
+    },
+    {
+      "region_id": "loading_area_candidate_4",
+      "source": "geometric_band:right",
+      "semantic": "no",
+      "semantic_reason": "The green area is adjacent to the truck but not its loading/unloading zone, as it lacks visual cues like designated markings or equipment typically found there.",
+      "placement": null,
+      "approach": null
+    }
+  ],
+  "failed_stage": "semantic_region",
+  "final_stage_status": "NO_LOADING_REGION_FOUND",
+  "claims": {
+    "semantic_loading_region": "NONE",
+    "object_placement_region": "GEOMETRIC_ONLY (surface and gripper reach unmeasured)",
+    "robot_approach_region": "NOT_RUN reach: None",
+    "robot_task_success": "NOT_CLAIMABLE (image-space plan only; reach/placement unmeasured; no execution)"
+  }
+}

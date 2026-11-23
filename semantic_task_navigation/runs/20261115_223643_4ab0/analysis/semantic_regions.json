@@ -1,0 +1,178 @@
+{
+  "truck_object": "truck_1",
+  "loading_area_candidates": [
+    {
+      "candidate_id": 1,
+      "side_of_truck_box": "below",
+      "polygon_xy": [
+        [
+          1424.3,
+          204.3
+        ],
+        [
+          1623.4,
+          204.3
+        ],
+        [
+          1623.4,
+          323.8
+        ],
+        [
+          1424.3,
+          323.8
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box"
+    },
+    {
+      "candidate_id": 2,
+      "side_of_truck_box": "above",
+      "polygon_xy": [
+        [
+          1424.3,
+          0
+        ],
+        [
+          1623.4,
+          0
+        ],
+        [
+          1623.4,
+          72.5
+        ],
+        [
+          1424.3,
+          72.5
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box"
+    },
+    {
+      "candidate_id": 3,
+      "side_of_truck_box": "left",
+      "polygon_xy": [
+        [
+          1304.8,
+          72.5
+        ],
+        [
+          1424.3,
+          72.5
+        ],
+        [
+          1424.3,
+          204.3
+        ],
+        [
+          1304.8,
+          204.3
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box"
+    },
+    {
+      "candidate_id": 4,
+      "side_of_truck_box": "right",
+      "polygon_xy": [
+        [
+          1623.4,
+          72.5
+        ],
+        [
+          1742.9,
+          72.5
+        ],
+        [
+          1742.9,
+          204.3
+        ],
+        [
+          1623.4,
+          204.3
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "generation": "axis-aligned band of depth 119.5 px adjacent to the truck box"
+    }
+  ],
+  "selection": {
+    "method": "vlm_choice_among_numbered_geometric_candidates",
+    "input_image": "analysis/region_select_input.png",
+    "input_crop": {
+      "crop_xyxy_raw": [
+        1224,
+        0,
+        1822,
+        403
+      ],
+      "scale": 1.4983
+    },
+    "call": {
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "prompt_id": "region_select_v1",
+      "prompt_sha256": "8c07156dc3101a3349ee2074a0339a385dc5d0257277248d056e8c20b4f56c4a",
+      "image_path": "analysis/region_select_input.png",
+      "raw_response": "{\n  \"selected_candidate\": 2,\n  \"evidence\": [\n    \"The cargo bed is located in area 2 and contains a load, indicating it is the loading/unloading area.\",\n    \"The truck is oriented such that the cargo bed faces area 2, which is typical for loading/unloading operations.\"\n  ],\n  \"uncertain\": []\n}",
+      "latency_s": 2.599,
+      "n_output_tokens": 75,
+      "hit_max_new_tokens": false,
+      "peak_vram_gib": 8.467,
+      "error": null
+    },
+    "output": {
+      "selected_candidate": 2,
+      "evidence": [
+        "The cargo bed is located in area 2 and contains a load, indicating it is the loading/unloading area.",
+        "The truck is oriented such that the cargo bed faces area 2, which is typical for loading/unloading operations."
+      ],
+      "uncertain": []
+    }
+  },
+  "selected_loading_region": {
+    "region_id": "loading_area_candidate_2",
+    "region_type": "loading_area",
+    "polygon_xy": [
+      [
+        1424.3,
+        0
+      ],
+      [
+        1623.4,
+        0
+      ],
+      [
+        1623.4,
+        72.5
+      ],
+      [
+        1424.3,
+        72.5
+      ]
+    ],
+    "coordinate_frame": "raw_image_px",
+    "reference_objects": [
+      "truck_1"
+    ],
+    "evidence": [
+      "The cargo bed is located in area 2 and contains a load, indicating it is the loading/unloading area.",
+      "The truck is oriented such that the cargo bed faces area 2, which is typical for loading/unloading operations."
+    ],
+    "verification_status": "unverified",
+    "source": "geometric_candidate+vlm_selection"
+  },
+  "validated_loading_region": null,
+  "prior_zone_consistency": [
+    {
+      "zone_id": "Z06",
+      "role": "loading_bay",
+      "confirmed": false,
+      "iou": 0.0
+    }
+  ],
+  "status": "REGION_SELECTED_UNVERIFIED",
+  "model_uncertainty": []
+}

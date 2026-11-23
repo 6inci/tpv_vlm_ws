@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "status": "ACQUISITION_TARGET_ONLY",
+  "evidence_class": "EXPERIMENT_DESIGN_NOT_OBSERVED_EVIDENCE",
+  "path": {
+    "path_id": "STEP17_D1_PRESERVED_CURRENT_PATH",
+    "source": "/home/binci/vlm_ws/results/dynamic_path_invalidation/scenario_results/D1.json",
+    "source_sha256": "b9e7069c65179602f8fb10526a9f7a6a14e68ccb6002c9835b17e9ab662a58d5",
+    "path_sha256": "17646cb8b5893a1c099c67ea2700c4fcd0a9367d13b1d83a19e705f2d19dcdc7",
+    "waypoint_count": 90,
+    "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+    "grid_resolution_m": 0.02,
+    "baseline_world_revision": 0,
+    "baseline_path_status": "VALID"
+  },
+  "target": {
+    "path_waypoint_index": 31,
+    "grid": {"row": 17, "col": 41},
+    "world_xy_m": [0.8300000000000001, 0.35000000000000003],
+    "cell_bounds_m": {
+      "x_min": 0.8200000000000001,
+      "x_max": 0.8400000000000001,
+      "y_min": 0.34,
+      "y_max": 0.36000000000000004
+    },
+    "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+    "baseline_cell_occupancy": 0,
+    "valid_robot_center_boundary_clearance_m": 0.225,
+    "legacy_workspace_inside": true,
+    "current_camera_visible_region": "UNVERIFIED_CAMERA_UNAVAILABLE"
+  },
+  "selection_method": {
+    "candidate_indices": "CANONICAL_PATH_INDICES_10_THROUGH_79",
+    "requirements": [
+      "BASELINE_CELL_FREE",
+      "BASELINE_PATH_VALID",
+      "INSIDE_VALID_ROBOT_CENTER_WORKSPACE",
+      "EXACT_GRID_CELL_DESIGN_SIMULATION_BLOCKS_SAME_PATH"
+    ],
+    "ranking": "MAXIMIZE_MINIMUM_VALID_ROBOT_CENTER_BOUNDARY_CLEARANCE_THEN_NEAREST_PATH_MIDPOINT",
+    "reason": "The selected canonical-path cell is free in the baseline, is not near the start or goal, maximizes workspace-boundary clearance among eligible cells, and is relevant under the existing collision transform."
+  },
+  "design_only_relevance_check": {
+    "software_invoked": [
+      "build_dynamic_collision_world",
+      "build_grid_map",
+      "validate_current_path"
+    ],
+    "temporary_representation": "IN_MEMORY_EXACT_GRID_CELL_ONLY",
+    "registered_as_observed_obstacle": false,
+    "expected_path_state_if_a_future_validated_observation_maps_to_this_cell": "BLOCKED",
+    "design_simulation_first_blocked_waypoint_index": 24,
+    "design_simulation_first_blocked_edge_index": 23,
+    "interpretation": "Placement relevance only. This is not detection, acquisition, semantic validation, metric evidence, or an observed blocking result."
+  },
+  "use_gate": "DO_NOT_PLACE_OR_PROCESS_UNTIL_GEOMETRY_COMPATIBILITY_AND_CAMERA_VISIBILITY_ARE_CONFIRMED",
+  "planner_config": {
+    "path": "/home/binci/vlm_ws/config/planner_baseline.json",
+    "sha256": "e31f60bd8336518ad8a35c7cab838da0b78d235b9d4ab1ef6310b346cf568e98"
+  }
+}

@@ -1,0 +1,72 @@
+모델 구조 정리용 파일 묶음 (2026-11-22T20:10:47 생성). 모두 원본의 복사본.
+
+
+[전체 흐름]
+- files/route_console_20261122/README.md: 다섯 단계 설명
+- files/route_console_20261122/engine.py: 다섯 단계를 잇는 코드 (Engine.run에서 시작)
+- files/route_console_20261122/config/console.yaml: Qwen 프롬프트, 장소 표, 규칙 값
+
+[② 장면 인식]
+- files/hybrid_exemplar_20261121/hybrid_pipeline.py: DINO 후보 크기 조건, SigLIP2 예시 비교
+- files/hybrid_exemplar_20261121/config.yaml: 모델 이름, 기준값
+- files/context_policy_20261122/extract.py: 사진 한 장에서 후보와 점수 뽑기
+
+[② 장면 인식 (DINO 세부)]
+- files/semantic_task_navigation/experiments/multimodel_target_viewer/mm_pipeline.py: DINO 호출 (MMViewer.photo, 312-366행)
+- files/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml: 추가 검출어, 모델 목록
+- files/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml: DINO 검출어와 기준값
+
+[③ 대상 결정]
+- files/context_policy_20261122/policy.py: 작업 공간, 5S 구역, 받침, 점유, 1·2위 차이
+- files/context_policy_20261122/common.py: 카메라, 구역, 작업 공간 띠
+- files/context_policy_20261122/config/policy.yaml: 규칙 설정
+- files/context_policy_20261122/data/dev/calibration.json: 판단 기준값
+- files/context_policy_20261122/zones/zones_env2.json: 5S 구역 (사람이 그린 지도 정보)
+
+[④ 좌표 변환]
+- files/nl_to_route_20261122/vendor/teammate_extra_20261120/1_required/pixel_to_map.py: 팀원 코드: 픽셀 -> 지도
+
+[⑤ 경로 생성]
+- files/nl_to_route_20261122/nl_to_path.py: 정차 자세, 4방향 A*
+- files/nl_to_route_20261122/config/nl_to_path.yaml: 경로 설정
+- files/nl_to_route_20261122/POLICIES.md: 경로 규칙 설명
+- files/nl_to_route_20261122/vendor/teammate_extra_20261120/2_optional/zones.json: 장소별 정차 자리 (팀원)
+- files/nl_to_route_20261122/vendor/teammate_extra_20261120/2_optional/robot_params.json: 차체 크기 (팀원)
+- files/nl_to_route_20261122/vendor/teammate_extra_20261120/2_optional/clearance_check.py: 경로 여유 검사 (팀원 코드)
+
+[실행 예]
+- files/route_console_20261122/runs/20261122_200350_20261120_220632_view/record.json: 실제 실행 1건의 모든 중간값
+- files/route_console_20261122/runs/20261122_200350_20261120_220632_view/overlay.jpg: 그 실행의 결과 그림
+- files/route_console_20261122/runs/20261122_200350_20261120_220632_view/1_현재위치_큐브파지.json: 경로 파일 1 (팀원 형식)
+- files/route_console_20261122/runs/20261122_200350_20261120_220632_view/2_큐브파지_팔레트배치.json: 경로 파일 2 (팀원 형식)
+
+[논문 그림]
+- files/figure/vlm_five_stages.pdf: 다섯 단계 이름
+
+원본 경로와 sha256:
+- /home/binci/vlm_ws/route_console_20261122/README.md  c543db535cf862969929c29200b287a3e9f563a38a057b9099760ae719189d87
+- /home/binci/vlm_ws/route_console_20261122/engine.py  3c54def86a70f3702837cb568ac8bcfb8df9f34401b462d7df8dae10ee4fe98b
+- /home/binci/vlm_ws/route_console_20261122/config/console.yaml  fad7b9246d1374ce18deb9a154e82a734414a8e0afbf0ca74305135141d85d09
+- /home/binci/vlm_ws/hybrid_exemplar_20261121/hybrid_pipeline.py  235c7537aae83704f95e41f99b6cfaa7ba90a142f7a27f155d9f6f3bea9405b7
+- /home/binci/vlm_ws/hybrid_exemplar_20261121/config.yaml  39d835e024432d9cea090da287eb7259dfef6592dd549fe48ef9465c2c1751a2
+- /home/binci/vlm_ws/context_policy_20261122/extract.py  771bc34f921288796b53255f4812d321e599773572f36ed81a1d76b25716f81f
+- /home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/mm_pipeline.py  cc635fd908e045b2094d8b672d81bbab076a38dd97f485ab0b1375c24bb0134d
+- /home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml  49e4e930cc86e6d4d88267407fe9bf20eb834fef185a0f62ba775247aa4165d6
+- /home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml  1912e83f071dca8d52961ce252348642ed8e2a6c7b30284316b4714545978211
+- /home/binci/vlm_ws/context_policy_20261122/policy.py  945d2b4744c0ea919d486136dd4284d1e869011ee58d8df23735714b9ae0da95
+- /home/binci/vlm_ws/context_policy_20261122/common.py  1d0eaabe4725364a38ef2f676b77fce88c7b608d860aaa28e20e06ca3de52e18
+- /home/binci/vlm_ws/context_policy_20261122/config/policy.yaml  9e1e30f5cff5066e78a77f56cef3606df7d4f20f7e00a00767595c3f1aa2fe9d
+- /home/binci/vlm_ws/context_policy_20261122/data/dev/calibration.json  cf666af258c1ecee3cdcef92b78521be4869ca0b1def5dc79d8838b3f8ccf82c
+- /home/binci/vlm_ws/context_policy_20261122/zones/zones_env2.json  2c33edb69893eaef3120becd81016dfd109a88e75dc8909ad5d88ced37134dbb
+- /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120/1_required/pixel_to_map.py  f52ce2fa58cc9ee3190f4d8294b8029e95425474769f224e83a1ff019c5c9322
+- /home/binci/vlm_ws/nl_to_route_20261122/nl_to_path.py  754cb2fab97818cca2fbed322b068aa282e633f47dfde7f390ed1fc1556744b7
+- /home/binci/vlm_ws/nl_to_route_20261122/config/nl_to_path.yaml  cd14f53ed050016cf081ae5f07f9d53c3ea95ca1bfb436dd2d433ce58f8a8db8
+- /home/binci/vlm_ws/nl_to_route_20261122/POLICIES.md  5ff64f9abbf6f90ecb710d2504bdbf72af28327f09c4dcb26cb6fcb6edf5d29d
+- /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120/2_optional/zones.json  c1f232a92e45a109c0f7545b27fd41fa729beac6a39a7907b00f20e5bdfbb88b
+- /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120/2_optional/robot_params.json  4f7b0174529de8b4daae757a191ddc7e07b86e260894a521d81c051e7e5c8dbf
+- /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120/2_optional/clearance_check.py  0d094fa5114eb9508420710ab83553ca8a191cd7090be191eddade039f1710e2
+- /home/binci/vlm_ws/route_console_20261122/runs/20261122_200350_20261120_220632_view/record.json  c9018cdd68a4ce6353ab774b2c78e7989c3fa0c30e9b7c90af1aafa29f39202c
+- /home/binci/vlm_ws/route_console_20261122/runs/20261122_200350_20261120_220632_view/overlay.jpg  bd7a1ac03c0a01ae40c1f82df06d9a1cfdc6f0a7bfd28cc2316c9c3e8ca2d88a
+- /home/binci/vlm_ws/route_console_20261122/runs/20261122_200350_20261120_220632_view/1_현재위치_큐브파지.json  2f268e4a0025c1263b38eadfcd536e53ad0fdb8cf18d938aa7e1a7b2bd439b37
+- /home/binci/vlm_ws/route_console_20261122/runs/20261122_200350_20261120_220632_view/2_큐브파지_팔레트배치.json  f82f498426feef2c413a4c00e5f3f9a6642d2ec7451936e9da208b074f602dcf
+- /home/binci/Pictures/vlm_five_stages.pdf  e69d9f39feff6186094cf9635d3fc0623f6cb50b1a0ee322a61a32c480f45dc6

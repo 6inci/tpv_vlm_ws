@@ -1,0 +1,802 @@
+{
+ "photo": {
+  "name": "photo_8",
+  "sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+  "earlier_id": "U26007129",
+  "current_file": "8calibration.png"
+ },
+ "photo_path_now": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+ "file_name_matches_config": false,
+ "positions": {
+  "robot_base_link": {
+   "image_px": [
+    1709.4,
+    695.8
+   ],
+   "floor_cm": [
+    294.9,
+    155.1
+   ],
+   "map_m": [
+    2.9488,
+    0.5491
+   ],
+   "projection": "z = 0 (height parallax not corrected)",
+   "yaw_map_deg": -178.1
+  },
+  "A_grasp_target": {
+   "image_px": [
+    542.0,
+    286.5
+   ],
+   "floor_cm": [
+    67.7,
+    58.4
+   ],
+   "map_m": [
+    0.6774,
+    1.5157
+   ],
+   "projection": "z = 0 (height parallax not corrected)"
+  },
+  "B_placement_target": {
+   "image_px": [
+    1574.5,
+    863.0
+   ],
+   "floor_cm": [
+    266.5,
+    186.1
+   ],
+   "map_m": [
+    2.6651,
+    0.2388
+   ],
+   "projection": "z = 0 (height parallax not corrected)"
+  }
+ },
+ "robot_estimate": {
+  "base_link_px": [
+   1709.4,
+   695.8
+  ],
+  "yaw_map_deg": -178.1,
+  "ecc_correlation": 0.9969,
+  "ecc_rotation_deg": -0.06,
+  "ecc_shift_px": [
+   0.5,
+   -0.6
+  ],
+  "method": "ECC euclidean alignment of the robot window to photo_5, applied to the photo_5 wheel reading; yaw = rear -> front (gripper) wheel pair",
+  "status": "PROVISIONAL (REVIEW_REQUIRED)"
+ },
+ "position_status": "PROVISIONAL (REVIEW_REQUIRED): STEP 4-A inventory, AI-preliminary cube label, ECC robot estimate; not user-approved",
+ "per_photo_obstacles": [
+  {
+   "role": "A cube pallet (target A, obstacle for wheels/body)",
+   "box_px": [
+    523,
+    275,
+    569,
+    315
+   ]
+  },
+  {
+   "role": "empty pallet 1 (target B, obstacle for wheels/body)",
+   "box_px": [
+    1549,
+    835,
+    1600,
+    891
+   ]
+  }
+ ],
+ "per_photo_obstacle_cells": 73,
+ "margin_cm": 2.0,
+ "path_A_status": "NOT_FOUND",
+ "path_B_status": "CONDITIONAL",
+ "path_B_basis": "CONDITIONAL: from the robot start (no grasp-pose candidate); not a task sequence",
+ "path_A": null,
+ "path_B": {
+  "strategy": "rotate_at_open_cell",
+  "rotation_cell": [
+   81,
+   95
+  ],
+  "length_cm": 208.0,
+  "n_raw_points": 105,
+  "n_turns": 3,
+  "events": [
+   {
+    "type": "rotate",
+    "at_index": 58,
+    "ok": true,
+    "direction": "ccw",
+    "from_yaw_map_deg": -178.1,
+    "to_yaw_map_deg": 270,
+    "step_deg": 1,
+    "per_direction": {
+     "ccw": {
+      "sweep_deg": 88.1,
+      "ok": true,
+      "first_blocked": null
+     },
+     "cw": {
+      "sweep_deg": 271.9,
+      "ok": true,
+      "first_blocked": null
+     }
+    },
+    "check": "margin body rasterised at every step on the PGM cells (static; dynamics not modelled)"
+   }
+  ],
+  "segments": [
+   {
+    "from_index": 0,
+    "to_index": 57,
+    "move": "-x_map",
+    "move_yaw_map_deg": 180.0,
+    "length_cm": 114.0,
+    "body_yaw_map_deg": -178.1,
+    "body": "margin",
+    "body_vs_move": "forward",
+    "constant_direction": true,
+    "body_vs_move_rule": "|move - body| <= 15.0 deg forward, >= 165.0 backward, else lateral"
+   },
+   {
+    "from_index": 57,
+    "to_index": 58,
+    "move": "+y_map",
+    "move_yaw_map_deg": 90.0,
+    "length_cm": 2.0,
+    "body_yaw_map_deg": -178.1,
+    "body": "margin",
+    "body_vs_move": "lateral",
+    "constant_direction": true,
+    "body_vs_move_rule": "|move - body| <= 15.0 deg forward, >= 165.0 backward, else lateral"
+   },
+   {
+    "from_index": 58,
+    "to_index": 61,
+    "move": "-y_map",
+    "move_yaw_map_deg": -90.0,
+    "length_cm": 6.0,
+    "body_yaw_map_deg": 270.0,
+    "body": "margin",
+    "body_vs_move": "forward",
+    "constant_direction": true,
+    "body_vs_move_rule": "|move - body| <= 15.0 deg forward, >= 165.0 backward, else lateral"
+   },
+   {
+    "from_index": 61,
+    "to_index": 104,
+    "move": "+x_map",
+    "move_yaw_map_deg": 0.0,
+    "length_cm": 86.0,
+    "body_yaw_map_deg": 270.0,
+    "body": "margin",
+    "body_vs_move": "lateral",
+    "constant_direction": true,
+    "body_vs_move_rule": "|move - body| <= 15.0 deg forward, >= 165.0 backward, else lateral"
+   }
+  ],
+  "poses": [
+   {
+    "kind": "start",
+    "index": 0,
+    "x_m": 2.95,
+    "y_m": 0.55,
+    "yaw_deg": -178.1,
+    "seq": 0,
+    "yaw_rad": -3.108431
+   },
+   {
+    "kind": "turn",
+    "index": 57,
+    "x_m": 1.81,
+    "y_m": 0.55,
+    "yaw_deg": -178.1,
+    "seq": 1,
+    "yaw_rad": -3.108431
+   },
+   {
+    "kind": "rotation_point",
+    "index": 58,
+    "x_m": 1.81,
+    "y_m": 0.57,
+    "yaw_deg": -178.1,
+    "seq": 2,
+    "yaw_rad": -3.108431
+   },
+   {
+    "kind": "rotate_in_place",
+    "index": 58,
+    "x_m": 1.81,
+    "y_m": 0.57,
+    "yaw_deg": 270.0,
+    "direction": "ccw",
+    "seq": 3,
+    "yaw_rad": 4.712389
+   },
+   {
+    "kind": "turn",
+    "index": 61,
+    "x_m": 1.81,
+    "y_m": 0.51,
+    "yaw_deg": 270.0,
+    "seq": 4,
+    "yaw_rad": 4.712389
+   },
+   {
+    "kind": "goal",
+    "index": 104,
+    "x_m": 2.67,
+    "y_m": 0.51,
+    "yaw_deg": 270.0,
+    "seq": 5,
+    "yaw_rad": 4.712389
+   }
+  ],
+  "checks": {
+   "orthogonal_4_connected": true,
+   "segments_straight_between_waypoints": true,
+   "no_diagonal_segment_between_waypoints": true,
+   "cells_in_margin_cspace_for_arrival_and_departure_heading": {
+    "ok": true,
+    "violations": []
+   },
+   "whole_body_sweep_generic": {
+    "ok": true,
+    "n_samples": 836,
+    "first_violation": null,
+    "body": "margin body 39.0 x 28.0 cm (start-escape segment: nominal 35 x 24 cm)"
+   },
+   "whole_body_sweep_reused_footprint_nav": {
+    "ok": true,
+    "n_samples": 836
+   },
+   "v02_validate_path_inscribed_disc": {
+    "valid": true,
+    "min_clearance_px": 68.0,
+    "required_px": 55.4,
+    "note": "necessary condition only"
+   },
+   "rotation_events_ok": true
+  },
+  "collision_checks_passed": true,
+  "nominal_footprint_metrics": {
+   "max_wheels_outside_yellow_px": 0,
+   "max_body_on_blocking_layer_px": 0,
+   "min_wheel_clearance_to_yellow_boundary_cm": 3.25,
+   "min_body_clearance_to_mapped_obstacle_cm": 3.0,
+   "max_body_overhang_beyond_yellow_cm": 1.0,
+   "max_body_overhang_area_cm2": 24.8,
+   "n_samples": 212,
+   "footprints": "NOMINAL wheel envelope and body (margin excluded)"
+  },
+  "baseline_v02_astar_4neighbours": {
+   "n_turns": 7,
+   "n_cells": 107,
+   "length_cm": 212.0
+  },
+  "raw_path_file": "path_B.csv"
+ },
+ "summary_A": null,
+ "summary_B": {
+  "length_cm": 208.0,
+  "direction_changes": 3,
+  "body_rotations": 1,
+  "rotations": [
+   {
+    "at_map": null,
+    "from": -178.1,
+    "to": 270,
+    "direction": "ccw",
+    "sweep_deg": 88.1
+   }
+  ],
+  "lateral_cm": 88.0,
+  "checks_passed": true,
+  "strategy": "rotate_at_open_cell"
+ },
+ "grasp_stop": null,
+ "place_stop": {
+  "target": "B placement target",
+  "pose_map": {
+   "x_m": 2.67,
+   "y_m": 0.51,
+   "yaw_deg": 270.0
+  },
+  "centre_to_target_along_heading_cm": 27.1,
+  "front_to_target_gap_cm": 9.6,
+  "lateral_offset_cm": 0.5,
+  "required_gripper_offset_if_dy0": {
+   "dx_m": 0.271,
+   "dy_m": 0.0,
+   "status": "DERIVED, not a measurement"
+  },
+  "gripper_alignment": "UNVERIFIED (gripper dx, dy not measured)",
+  "gripper_corridor": {
+   "samples": 21,
+   "layers_crossed": {
+    "NOT_DRIVABLE": 21
+   },
+   "static_obstacle_under_gripper_path": false,
+   "rule": "gripper may cross NOT_DRIVABLE / NO_GO (user decision 2026-11-19); the body may not. Gripper width/height UNKNOWN."
+  },
+  "nominal_footprints_at_stop": {
+   "wheels_outside_yellow_px": 0,
+   "body_on_blocking_layer_px": 0,
+   "wheel_clearance_to_yellow_boundary_cm": 3.25,
+   "body_clearance_to_mapped_obstacle_cm": 3.25,
+   "body_overhang_beyond_yellow_cm": 1.0,
+   "body_overhang_area_cm2": 24.8
+  }
+ },
+ "grasp_candidates": [
+  {
+   "yaw_map_deg": 0,
+   "facing": "+x_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 90,
+   "facing": "+y_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 180,
+   "facing": "-x_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 270,
+   "facing": "-y_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  }
+ ],
+ "place_candidates": [
+  {
+   "yaw_map_deg": 0,
+   "facing": "+x_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 90,
+   "facing": "+y_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 180,
+   "facing": "-x_map",
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "searched_cm": 150
+  },
+  {
+   "yaw_map_deg": 270,
+   "facing": "-y_map",
+   "status": "FEASIBLE_PLAN_GRASP_UNVERIFIED",
+   "searched_cm": 150,
+   "cell": [
+    84,
+    138
+   ],
+   "centre_floor_cm": [
+    267.0,
+    159.0
+   ],
+   "pose_map": {
+    "x_m": 2.67,
+    "y_m": 0.51,
+    "yaw_deg": 270.0
+   },
+   "centre_to_target_along_heading_cm": 27.1,
+   "lateral_offset_cm": 0.5,
+   "front_to_target_gap_cm": 9.6,
+   "required_gripper_offset_if_dy0": {
+    "dx_m": 0.271,
+    "dy_m": 0.0,
+    "status": "DERIVED, not a measurement"
+   },
+   "margin_body_free": true,
+   "nominal_body_free": true,
+   "gripper_corridor": {
+    "samples": 21,
+    "layers_crossed": {
+     "NOT_DRIVABLE": 21
+    },
+    "static_obstacle_under_gripper_path": false,
+    "rule": "gripper may cross NOT_DRIVABLE / NO_GO (user decision 2026-11-19); the body may not. Gripper width/height UNKNOWN."
+   },
+   "gripper_alignment_error_cm": null,
+   "gripper_alignment_status": "UNVERIFIED: gripper offset not measured (dx, dy = null)",
+   "gripper_line_crosses": [],
+   "leg_attempts": [
+    {
+     "leg": "B",
+     "start_yaw_map_deg": -178.1,
+     "goal_yaw_map_deg": 270,
+     "start_cell": [
+      82,
+      152
+     ],
+     "goal_cell": [
+      84,
+      138
+     ],
+     "strategy": "rotate_at_start",
+     "events": [
+      {
+       "type": "rotate",
+       "at_index": 0,
+       "ok": false,
+       "direction": null,
+       "from_yaw_map_deg": -178.1,
+       "to_yaw_map_deg": 270,
+       "step_deg": 1,
+       "per_direction": {
+        "ccw": {
+         "sweep_deg": 88.1,
+         "ok": false,
+         "first_blocked": {
+          "yaw_map_deg": -174.1,
+          "non_free_px": 6
+         }
+        },
+        "cw": {
+         "sweep_deg": 271.9,
+         "ok": false,
+         "first_blocked": {
+          "yaw_map_deg": 174.9,
+          "non_free_px": 6
+         }
+        }
+       },
+       "check": "margin body rasterised at every step on the PGM cells (static; dynamics not modelled)"
+      }
+     ],
+     "status": "ROTATION_BLOCKED_AT_START"
+    },
+    {
+     "leg": "B",
+     "start_yaw_map_deg": -178.1,
+     "goal_yaw_map_deg": 270,
+     "start_cell": [
+      82,
+      152
+     ],
+     "goal_cell": [
+      84,
+      138
+     ],
+     "strategy": "rotate_at_goal",
+     "events": [
+      {
+       "type": "rotate",
+       "at_index": 16,
+       "ok": false,
+       "direction": null,
+       "from_yaw_map_deg": -178.1,
+       "to_yaw_map_deg": 270,
+       "step_deg": 1,
+       "per_direction": {
+        "ccw": {
+         "sweep_deg": 88.1,
+         "ok": false,
+         "first_blocked": {
+          "yaw_map_deg": -170.2,
+          "non_free_px": 3
+         }
+        },
+        "cw": {
+         "sweep_deg": 271.9,
+         "ok": false,
+         "first_blocked": {
+          "yaw_map_deg": 169.9,
+          "non_free_px": 3
+         }
+        }
+       },
+       "check": "margin body rasterised at every step on the PGM cells (static; dynamics not modelled)"
+      }
+     ],
+     "status": "ROTATION_BLOCKED_AT_GOAL"
+    },
+    {
+     "leg": "B",
+     "start_yaw_map_deg": -178.1,
+     "goal_yaw_map_deg": 270,
+     "start_cell": [
+      82,
+      152
+     ],
+     "goal_cell": [
+      84,
+      138
+     ],
+     "strategy": "rotate_at_open_cell",
+     "events": [
+      {
+       "type": "rotate",
+       "at_index": 58,
+       "ok": true,
+       "direction": "ccw",
+       "from_yaw_map_deg": -178.1,
+       "to_yaw_map_deg": 270,
+       "step_deg": 1,
+       "per_direction": {
+        "ccw": {
+         "sweep_deg": 88.1,
+         "ok": true,
+         "first_blocked": null
+        },
+        "cw": {
+         "sweep_deg": 271.9,
+         "ok": true,
+         "first_blocked": null
+        }
+       },
+       "check": "margin body rasterised at every step on the PGM cells (static; dynamics not modelled)"
+      }
+     ],
+     "status": "PATH_FOUND",
+     "rotation_cell": [
+      81,
+      95
+     ],
+     "rotation_cell_rank": 70,
+     "n_escape_cells": 0,
+     "cell_yaw": [
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      -178.1,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0,
+      270.0
+     ],
+     "cell_body": [
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin",
+      "margin"
+     ],
+     "baseline_v02_astar_4neighbours": {
+      "n_turns": 7,
+      "n_cells": 107,
+      "length_cm": 212.0
+     }
+    }
+   ],
+   "leg_length_cm": 208.0
+  }
+ ],
+ "cause_A": "A: no collision-free stop on the target axis for any of 0/90/180/270 (wheel boundary / body / per-photo obstacles)",
+ "cause_B": null,
+ "reference_nearest_stop_A": {
+  "yaw_map_deg": 180,
+  "pose_map": {
+   "x_m": 0.83,
+   "y_m": 1.27,
+   "yaw_deg": 180.0
+  },
+  "centre_to_target_cm": 29.0,
+  "status": "REFERENCE_ONLY (not a grasp / placement pose)"
+ },
+ "reference_nearest_stop_B": null,
+ "straight_line_crossings": {
+  "robot_to_A": [
+   "Z04"
+  ],
+  "A_to_B": [
+   "Z03"
+  ]
+ },
+ "grasp_placement": "UNVERIFIED (gripper offset and reach not measured)",
+ "driving": "NOT_FOR_DRIVING (2.0 cm margin < position uncertainty)"
+}

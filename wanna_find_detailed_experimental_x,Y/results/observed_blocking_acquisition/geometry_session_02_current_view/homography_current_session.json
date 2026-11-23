@@ -1,0 +1,183 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T06:18:28.054315+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_raw.png",
+    "sha256": "1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299",
+    "width": 1920,
+    "height": 1080
+  },
+  "correspondence_artifact": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_points.json",
+    "sha256": "24d648feb8de81d5f825dbc09ea03bbcb1be2dc57f067792c3ed9e591fe2fab4"
+  },
+  "fixed_split_artifact": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_fit_holdout_split.json",
+    "sha256": "09a2741d78784e8b924e8728456647d4e43e9eaf683ce1be04898820b7af805f"
+  },
+  "tile_pitch_m": 0.6,
+  "world_frame": {
+    "origin_point_id": "G00",
+    "origin_definition": "lower-left clear tile-grid intersection of the selected visible workspace patch",
+    "x_axis": "rightward along the floor tile grid",
+    "y_axis": "away from the camera along the floor tile grid",
+    "coordinate_rule": "world_xy_m = [grid_i * 0.600, grid_j * 0.600]",
+    "provenance": "USER_DEFINED"
+  },
+  "intrinsic_compatibility": {
+    "status": "SUPPORTED_WITH_LIMITATION",
+    "same_required_camera_name": "hd_web_camera_ucamera001",
+    "current_camera_serial": "Ucamera001",
+    "same_native_resolution": [
+      1920,
+      1080
+    ],
+    "current_optical_controls": "No zoom/focus controls exposed; no UVC control was changed.",
+    "calibration_path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "calibration_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "limitation": "The calibration was reconstructed from screenshots and does not contain an independently recorded hardware serial, so RAW is retained as a comparison branch."
+  },
+  "status": "NEW_SESSION_GEOMETRY_VALIDATED",
+  "branches": [
+    {
+      "branch": "RAW_IMAGE_PX_TO_WORLD_XY",
+      "input_coordinate_domain": "RAW_IMAGE_PX",
+      "fitting_method": "OpenCV cv2.findHomography method=0 least-squares DLT",
+      "fit_point_count": 8,
+      "H_pixel_to_world": [
+        [
+          0.017117627787135412,
+          0.004745285800604552,
+          -18.02737986229399
+        ],
+        [
+          0.0007887769366473908,
+          -0.02292182204330431,
+          22.181660540865654
+        ],
+        [
+          0.00020721776427362056,
+          0.005879132893478777,
+          1.0
+        ]
+      ],
+      "homography_matrix_condition_number": 5275.943437208406,
+      "normalized_dlt_design_matrix_condition_number": 771.0680091854468,
+      "normalized_dlt_singular_values": [
+        8.07976554755321,
+        5.018162436352572,
+        3.807029059597461,
+        3.361446323641634,
+        2.735164137442692,
+        2.315799556293298,
+        1.8868736566930786,
+        1.645176057890779,
+        0.010478667836432018
+      ],
+      "development_geometry_gate": {
+        "rmse_threshold_m": 0.03,
+        "maximum_threshold_m": 0.05,
+        "rmse_pass": true,
+        "maximum_pass": true,
+        "result": "PASS"
+      }
+    },
+    {
+      "branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+      "input_coordinate_domain": "UNDISTORTED_IMAGE_PX",
+      "fitting_method": "OpenCV cv2.findHomography method=0 least-squares DLT",
+      "fit_point_count": 8,
+      "H_pixel_to_world": [
+        [
+          0.020800896821360014,
+          0.005878184522286158,
+          -21.968611982334647
+        ],
+        [
+          0.001134256334563113,
+          -0.0277824313148755,
+          26.716724256268026
+        ],
+        [
+          0.00044178334705740935,
+          0.007209919588215674,
+          1.0
+        ]
+      ],
+      "homography_matrix_condition_number": 5241.626253658012,
+      "normalized_dlt_design_matrix_condition_number": 1274.4053959395583,
+      "normalized_dlt_singular_values": [
+        8.082605967560479,
+        5.016082394889466,
+        3.810798482630073,
+        3.3607539009597,
+        2.736285950432629,
+        2.311241250715752,
+        1.8866552551667675,
+        1.6457896343537166,
+        0.006342256548279568
+      ],
+      "development_geometry_gate": {
+        "rmse_threshold_m": 0.03,
+        "maximum_threshold_m": 0.05,
+        "rmse_pass": true,
+        "maximum_pass": true,
+        "result": "PASS"
+      }
+    }
+  ],
+  "selected_branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+  "selection_reason": "Both branches passed; UNDISTORTED has the lower independent holdout RMSE.",
+  "selected_input_coordinate_domain": "UNDISTORTED_IMAGE_PX",
+  "selected_H_pixel_to_world": [
+    [
+      0.020800896821360014,
+      0.005878184522286158,
+      -21.968611982334647
+    ],
+    [
+      0.001134256334563113,
+      -0.0277824313148755,
+      26.716724256268026
+    ],
+    [
+      0.00044178334705740935,
+      0.007209919588215674,
+      1.0
+    ]
+  ],
+  "raw_to_selected_domain": {
+    "method": "cv2.undistortPoints with P=K",
+    "camera_matrix": [
+      [
+        1193.9285743624512,
+        0.0,
+        905.4672749500978
+      ],
+      [
+        0.0,
+        1191.56191006301,
+        513.000222084921
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "distortion_coefficients_k1_k2_p1_p2_k3": [
+      -0.20298479067273242,
+      0.13060299315148366,
+      0.027118263577020307,
+      0.003928149452520465,
+      -0.06119022290385212
+    ],
+    "output_camera_matrix": "same K"
+  },
+  "prohibited_inputs": {
+    "legacy_homography_used": false,
+    "aruco_correspondence_used": false,
+    "previous_session_pixels_used": false
+  }
+}

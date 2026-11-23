@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:20:15+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "PASS",
+  "result": "ID0_CAMERA_FRAME_POSE_ESTABLISHED",
+  "scope": "MARKER_POSE_IN_OPENCV_CAMERA_FRAME_ONLY_NOT_BASE_LINK_POSE",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+    "camera_stability": "CAMERA_SESSION_STABLE"
+  },
+  "id0_detection": {
+    "source_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/aruco_recheck_01.json",
+    "source_artifact_sha256": "58b98baabc15cb338d89f82e5ace31d05c365ac851925cdb4eae273db14f5569",
+    "coordinate_domain": "RAW_IMAGE_PX",
+    "image_points_tl_tr_br_bl": [[984.0,867.0],[1060.0,867.0],[1058.0,919.0],[978.0,920.0]],
+    "center_raw_px": [1020.0,893.25]
+  },
+  "physical_marker": {
+    "marker_id": 0,
+    "dictionary": "DICT_4X4_50",
+    "black_square_side_m": 0.188,
+    "side_provenance": "CONFIRMED_MEASURED_BY_USER",
+    "nominal_module_pitch_m": 0.030,
+    "nominal_pitch_role": "PRINT_LAYOUT_METADATA_ONLY",
+    "full_marker_side_inferred_from_pitch": false,
+    "floor_marker_length_reused": false
+  },
+  "calibration": {
+    "path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "image_size_px": [1920,1080],
+    "camera_matrix": [[1193.9285743624512,0.0,905.4672749500978],[0.0,1191.56191006301,513.000222084921],[0.0,0.0,1.0]],
+    "distortion_coefficients_k1_k2_p1_p2_k3": [-0.20298479067273242,0.13060299315148366,0.027118263577020307,0.003928149452520465,-0.06119022290385212],
+    "distortion_handling": "RAW image points and the existing distortion vector were passed directly to cv2.solvePnPGeneric/projectPoints.",
+    "policy": "Same supported calibration used by geometry_session_02; no recalibration or matrix change."
+  },
+  "marker_coordinate_definition": {
+    "origin": "ID0 black-square center",
+    "x_axis": "from left edge toward right edge in canonical marker orientation",
+    "y_axis": "from bottom edge toward top edge in canonical marker orientation",
+    "z_axis": "right-handed normal from marker plane",
+    "object_points_m_tl_tr_br_bl": [[-0.094,0.094,0.0],[0.094,0.094,0.0],[0.094,-0.094,0.0],[-0.094,-0.094,0.0]]
+  },
+  "solver": {
+    "implementation": "OpenCV cv2.solvePnPGeneric",
+    "opencv_version": "4.5.4",
+    "method": "SOLVEPNP_IPPE_SQUARE",
+    "existing_repository_pattern": "/home/binci/camera_calibration_1920x1080/aruco_pose_id0.py",
+    "existing_repository_pattern_sha256": "fc2566e46972546424a08fdab47eafb3183e08a75a42db57e63fcaf2a0a5fe16",
+    "solution_count": 2,
+    "selection_rule": "positive depth and minimum reprojection RMSE"
+  },
+  "selected_marker_to_camera_transform": {
+    "transform_meaning": "X_camera = R_camera_marker * X_marker + t_camera_marker",
+    "camera_axis_convention": "+x image-right, +y image-down, +z forward",
+    "rotation_vector_rad": [1.955475458190,0.056537108950,-0.206677135202],
+    "rotation_matrix": [[0.983555268428,0.136515763528,-0.118247538056],[-0.057317137538,-0.384939807248,-0.921160187232],[-0.171271070799,0.912789565620,-0.370784882652]],
+    "translation_m": [0.274208182786,0.906920445095,2.865975849983],
+    "marker_normal_in_camera": [-0.118247538056,-0.921160187232,-0.370784882652]
+  },
+  "reprojection_validation": {
+    "projected_points_px_tl_tr_br_bl": [[984.097560281621,867.358318479065],[1059.876596628739,866.638129698129],[1058.129788081648,919.400664663990],[977.897228177937,919.603486968339]],
+    "residual_vectors_px": [[0.097560281621,0.358318479065],[-0.123403371261,-0.361870301871],[0.129788081648,0.400664663990],[-0.102771822063,-0.396513031661]],
+    "corner_rmse_px": 0.396626524327,
+    "maximum_corner_error_px": 0.421161630622,
+    "alternative_solution_corner_rmse_px": 1.750435477010,
+    "result": "PASS_LOWEST_ERROR_IPPE_SQUARE_SOLUTION"
+  },
+  "downstream_policy": {
+    "called_base_link_pose": false,
+    "ground_homography_applied_to_id0_center": false,
+    "world_pose_computed": false
+  }
+}

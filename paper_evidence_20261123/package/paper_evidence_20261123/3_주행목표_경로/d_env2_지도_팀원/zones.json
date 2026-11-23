@@ -1,0 +1,190 @@
+{
+ "env": "env2_20261119",
+ "updated": "2026-11-20 18:10:00",
+ "commit": "d3a1d7c",
+ "map": "src/mecanum_bringup/maps/env2_20261119.yaml",
+ "frame": "map",
+ "units": "m",
+ "photo": "1_required/camera/register_20261119_194739/raw.png",
+ "extrinsic": "camera/env2_20261119/camera_extrinsic.npz",
+ "note": "할당 위치 = 그 구역 앞 주행 영역 안에서 로봇 중심(base_link)이 설 자리. 구역 자체는 노란 선 밖",
+ "zones": [
+  {
+   "name": "소화기",
+   "assigned_xy_m": [
+    2.8404,
+    0.4332
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 3.0,
+    "90": 0.8,
+    "180": 3.0,
+    "270": 0.8
+   },
+   "ok_headings": [
+    0,
+    180
+   ],
+   "rotate_in_place_min_cm": -100.0,
+   "rotate_in_place_ok": false,
+   "center_cost": 232
+  },
+  {
+   "name": "충전소",
+   "assigned_xy_m": [
+    2.3683,
+    0.4333
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 3.0,
+    "90": 0.8,
+    "180": 3.0,
+    "270": 0.8
+   },
+   "ok_headings": [
+    0,
+    180
+   ],
+   "rotate_in_place_min_cm": -100.0,
+   "rotate_in_place_ok": false,
+   "center_cost": 232
+  },
+  {
+   "name": "컨베이어",
+   "assigned_xy_m": [
+    0.8251,
+    0.841
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 3.0,
+    "90": 5.2,
+    "180": 3.0,
+    "270": 5.2
+   },
+   "ok_headings": [
+    0,
+    90,
+    180,
+    270
+   ],
+   "rotate_in_place_min_cm": -100.0,
+   "rotate_in_place_ok": false,
+   "center_cost": 215
+  },
+  {
+   "name": "보행자",
+   "assigned_xy_m": [
+    1.3407,
+    1.2065
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 3.1,
+    "90": 0.9,
+    "180": 3.1,
+    "270": 0.9
+   },
+   "ok_headings": [
+    0,
+    180
+   ],
+   "rotate_in_place_min_cm": -100.0,
+   "rotate_in_place_ok": false,
+   "center_cost": 232
+  },
+  {
+   "name": "하역장",
+   "assigned_xy_m": [
+    3.0009,
+    1.2165
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 3.1,
+    "90": 0.9,
+    "180": 3.1,
+    "270": 0.9
+   },
+   "ok_headings": [
+    0,
+    180
+   ],
+   "rotate_in_place_min_cm": -100.0,
+   "rotate_in_place_ok": false,
+   "center_cost": 232
+  },
+  {
+   "name": "팀원시작",
+   "assigned_xy_m": [
+    2.9718,
+    0.5035
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 4.3,
+    "90": 5.2,
+    "180": 4.3,
+    "270": 5.2
+   },
+   "ok_headings": [
+    0,
+    90,
+    180,
+    270
+   ],
+   "rotate_in_place_min_cm": -100.0,
+   "rotate_in_place_ok": false,
+   "center_cost": 212
+  },
+  {
+   "name": "큐브파지",
+   "assigned_xy_m": [
+    2.678,
+    0.4822
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 7.9,
+    "90": 5.7,
+    "180": 7.9,
+    "270": 5.7
+   },
+   "ok_headings": [
+    0,
+    90,
+    180,
+    270
+   ],
+   "rotate_in_place_min_cm": 1.2,
+   "rotate_in_place_ok": true,
+   "center_cost": 0
+  },
+  {
+   "name": "팔레트배치",
+   "assigned_xy_m": [
+    0.9578,
+    0.4475
+   ],
+   "in_drive_area": true,
+   "heading_clearance_cm": {
+    "0": 4.4,
+    "90": 2.2,
+    "180": 4.4,
+    "270": 2.2
+   },
+   "ok_headings": [
+    0,
+    90,
+    180,
+    270
+   ],
+   "rotate_in_place_min_cm": -100.0,
+   "rotate_in_place_ok": false,
+   "center_cost": 225
+  }
+ ],
+ "heading_note": "구역마다 0·90·180·270° 방향으로 섰을 때 몸체 여유(cm, 주행 쪽 판정과 같은 계산)와 제자리 회전 쓸기 최소 여유. ok_headings = 불가가 아닌 방향(여유 >= 1 cm 이고 중심 비용 < 253). 그리퍼는 넣지 않음"
+}

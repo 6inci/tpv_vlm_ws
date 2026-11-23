@@ -1,0 +1,133 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:08:32+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "PASS",
+  "result": "FLOOR_ARUCO_IDS_RECOVERED",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+    "coordinate_domain": "RAW_IMAGE_PX",
+    "width": 1920,
+    "height": 1080
+  },
+  "primary_detector_context": {
+    "dictionary": "DICT_4X4_50",
+    "parameters": "DetectorParameters_create defaults",
+    "detected_ids": [0],
+    "rejected_candidate_count": 25,
+    "rejected_candidates_matching_complete_floor_marker_boundaries": 0,
+    "primary_detector_modified": false
+  },
+  "recovery_method": {
+    "scope": "OFFLINE_FOCUSED_DIAGNOSTIC_ONLY",
+    "candidate_source": "Four visually evident floor-marker ROIs; black-square boundaries were image-bounded because no primary rejected quadrilateral covered a complete floor marker.",
+    "normalization": "Perspective warp each black-square quadrilateral to 240x240 px.",
+    "sampling": "6x6 cells; use the central 20x20 px of each 40x40 px warped cell.",
+    "threshold": "Otsu threshold over the 36 sampled cell means.",
+    "comparison": "Compare the inner 4x4 payload against canonical DICT_4X4_50 IDs 1-4 over all four rotations.",
+    "acceptance": "Best payload Hamming distance 0, second-best margin at least 6 bits, and at least 19 of 20 sampled border cells dark.",
+    "model_training": false
+  },
+  "user_confirmed_marker_definition": {
+    "dictionary": "DICT_4X4_50",
+    "physical_ids": [1, 2, 3, 4],
+    "black_square_side_m": 0.175,
+    "provenance": "PHYSICAL_USER_MEASUREMENT"
+  },
+  "geometry_provenance": {
+    "homography_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+    "homography_sha256": "070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da",
+    "pipeline": "RAW_IMAGE_PX -> existing cv2.undistortPoints(P=K) -> UNDISTORTED_IMAGE_PX -> existing validated H -> GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+    "homography_recomputed": false,
+    "aruco_used_to_refit_homography": false
+  },
+  "markers": [
+    {
+      "spatial_identity": "FAR_LEFT_FLOOR_MARKER",
+      "recovered_id": 3,
+      "raw_corners_px_tl_tr_br_bl": [[911, 521], [954, 522], [947, 542], [902, 541]],
+      "raw_center_px": [928.5, 531.5],
+      "undistorted_center_px": [928.4771649916034, 531.4642170315024],
+      "payload_4x4_bits": [[1,0,0,1],[1,0,0,1],[0,1,0,0],[0,1,1,0]],
+      "rotation_ccw_quarters": 0,
+      "best_payload_hamming": 0,
+      "second_best_payload_hamming": 7,
+      "hamming_margin": 7,
+      "dark_border_cells": 19,
+      "border_cell_count": 20,
+      "world_center_xy_m": [0.08939154153010338, 2.4808254884490157],
+      "world_corners_xy_m": [[0.00842394148735659,2.5733782340221123],[0.18187723758251603,2.564895716516018],[0.17163495417935354,2.3914083596115763],[-0.004976803774213647,2.398875479080648]],
+      "mapped_adjacent_side_lengths_m": [0.17366058571108256,0.17378943401426866,0.1767695418351668,0.17501654623413831],
+      "mean_side_m": 0.1748090269486641,
+      "absolute_error_vs_0_175_m": 0.00019097305133589093,
+      "relative_error_percent": 0.10912745790622339
+    },
+    {
+      "spatial_identity": "FAR_RIGHT_FLOOR_MARKER",
+      "recovered_id": 1,
+      "raw_corners_px_tl_tr_br_bl": [[1165, 522], [1209, 523], [1215, 543], [1169, 542]],
+      "raw_center_px": [1189.5, 532.5],
+      "undistorted_center_px": [1191.6894864307417, 530.7886182527291],
+      "payload_4x4_bits": [[0,0,0,0],[1,1,1,1],[1,0,0,1],[1,0,1,0]],
+      "rotation_ccw_quarters": 0,
+      "best_payload_hamming": 0,
+      "second_best_payload_hamming": 6,
+      "hamming_margin": 6,
+      "dark_border_cells": 19,
+      "border_cell_count": 20,
+      "world_center_xy_m": [1.1095114109624922, 2.48847047620772],
+      "world_corners_xy_m": [[1.0173133276066568,2.5775403259975347],[1.1910059841502425,2.5735933827778594],[1.2030962895504098,2.402348082959323],[1.0264519425727212,2.4056754664482267]],
+      "mapped_adjacent_side_lengths_m": [0.17373749537145788,0.17167157072331396,0.17667568253740037,0.17210765302972825],
+      "mean_side_m": 0.17354810041547514,
+      "absolute_error_vs_0_175_m": 0.0014518995845248517,
+      "relative_error_percent": 0.8296569054427725
+    },
+    {
+      "spatial_identity": "NEAR_LEFT_FLOOR_MARKER",
+      "recovered_id": 4,
+      "raw_corners_px_tl_tr_br_bl": [[831, 800], [893, 803], [886, 841], [820, 837]],
+      "raw_center_px": [857.5, 820.25],
+      "undistorted_center_px": [857.2096841289402, 817.9264565649237],
+      "payload_4x4_bits": [[0,1,0,1],[0,1,0,0],[1,0,0,1],[1,1,1,0]],
+      "rotation_ccw_quarters": 0,
+      "best_payload_hamming": 0,
+      "second_best_payload_hamming": 6,
+      "hamming_margin": 6,
+      "dark_border_cells": 19,
+      "border_cell_count": 20,
+      "world_center_xy_m": [0.0920906328206877, 0.6823959158811178],
+      "world_corners_xy_m": [[0.00026077960088962163,0.7714291635349281],[0.1824618314084876,0.7653289991323685],[0.1859262085777748,0.5950326990959728],[-0.0019223511228417887,0.6033864988649716]],
+      "mapped_adjacent_side_lengths_m": [0.18230314118394464,0.1703315347058706,0.1880342185671976,0.16805684517191297],
+      "mean_side_m": 0.17718143490723146,
+      "absolute_error_vs_0_175_m": 0.0021814349072314665,
+      "relative_error_percent": 1.2465342327036952
+    },
+    {
+      "spatial_identity": "NEAR_RIGHT_FLOOR_MARKER",
+      "recovered_id": 2,
+      "raw_corners_px_tl_tr_br_bl": [[1185, 808], [1251, 810], [1258, 847], [1192, 847]],
+      "raw_center_px": [1221.5, 828.0],
+      "undistorted_center_px": [1223.938610996313, 826.5126869433143],
+      "payload_4x4_bits": [[0,0,1,1],[0,0,1,1],[0,0,1,0],[1,1,0,1]],
+      "rotation_ccw_quarters": 0,
+      "best_payload_hamming": 0,
+      "second_best_payload_hamming": 6,
+      "hamming_margin": 6,
+      "dark_border_cells": 19,
+      "border_cell_count": 20,
+      "world_center_xy_m": [1.1132025535027423, 0.6856780860041178],
+      "world_corners_xy_m": [[1.015041609220326,0.771972056075331],[1.2019155558636971,0.7683215703628767],[1.2083742592801632,0.606718853699905],[1.0274953410300889,0.6014124913314658]],
+      "mapped_adjacent_side_lengths_m": [0.18690959841593566,0.16173173121770076,0.1809567366773126,0.17101362683016302],
+      "mean_side_m": 0.17515292328527798,
+      "absolute_error_vs_0_175_m": 0.00015292328527799492,
+      "relative_error_percent": 0.08738473444456854
+    }
+  ],
+  "sanity_check_summary": {
+    "reference_side_m": 0.175,
+    "marker_mean_sides_m_by_id": {"1": 0.17354810041547514, "2": 0.17515292328527798, "3": 0.1748090269486641, "4": 0.17718143490723146},
+    "maximum_mean_relative_error_percent": 1.2465342327036952,
+    "interpretation": "All four diagnostic black-square mappings agree with the user-measured 0.175 m side within 1.25%; this is a sanity check, not a Homography fit input."
+  }
+}

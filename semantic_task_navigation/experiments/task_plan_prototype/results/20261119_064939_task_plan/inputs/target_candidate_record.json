@@ -1,0 +1,121 @@
+{
+  "bbox_roi": {
+    "xyxy": [
+      653,
+      627,
+      679,
+      650
+    ],
+    "frame": "roi_local_px"
+  },
+  "bbox_xyxy": [
+    433.84,
+    416.56,
+    451.11,
+    431.84
+  ],
+  "score": 0.438,
+  "prompt": "red cube.",
+  "source": "hsv_color_shape",
+  "shape_stats": {
+    "area_raw_px": 185.8,
+    "aspect": 1.13,
+    "solidity": 0.935
+  },
+  "roi_index": 1,
+  "sources": [
+    "hsv_color_shape",
+    "grounding_dino_roi",
+    "grounding_dino_roi",
+    "grounding_dino_full_image",
+    "grounding_dino_full_image"
+  ],
+  "member_boxes": [
+    {
+      "source": "hsv_color_shape",
+      "bbox_xyxy": [
+        433.84,
+        416.56,
+        451.11,
+        431.84
+      ],
+      "score": null
+    },
+    {
+      "source": "grounding_dino_roi",
+      "bbox_xyxy": [
+        431.68,
+        414.15,
+        452.07,
+        434.04
+      ],
+      "score": 0.438
+    },
+    {
+      "source": "grounding_dino_roi",
+      "bbox_xyxy": [
+        420.7,
+        407.14,
+        468.44,
+        449.44
+      ],
+      "score": 0.349
+    },
+    {
+      "source": "grounding_dino_full_image",
+      "bbox_xyxy": [
+        430.84,
+        412.78,
+        452.37,
+        434.75
+      ],
+      "score": 0.2277
+    },
+    {
+      "source": "grounding_dino_full_image",
+      "bbox_xyxy": [
+        419.7,
+        406.02,
+        468.6,
+        450.62
+      ],
+      "score": 0.1198
+    }
+  ],
+  "candidate_id": "target_cand1",
+  "verification": {
+    "status": "no",
+    "answer": {
+      "answer": "no",
+      "observed_color": "red",
+      "observed_object": "round object",
+      "reason": "The object is round, not cube-shaped."
+    },
+    "description": "a small red cube",
+    "crop": {
+      "path": "analysis/roi/verify_target_1.png",
+      "crop_xyxy_raw": [
+        401,
+        384,
+        483,
+        463
+      ],
+      "scale": 5.4634,
+      "marker": "green rectangle = candidate box"
+    },
+    "call": {
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "prompt_id": "verify_object_v1",
+      "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+      "image_path": "analysis/roi/verify_target_1.png",
+      "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"round object\", \"reason\": \"The object is round, not cube-shaped.\"}",
+      "latency_s": 1.128,
+      "n_output_tokens": 38,
+      "hit_max_new_tokens": false,
+      "peak_vram_gib": 8.37,
+      "error": null
+    }
+  },
+  "coordinate_frame": "raw_image_px"
+}

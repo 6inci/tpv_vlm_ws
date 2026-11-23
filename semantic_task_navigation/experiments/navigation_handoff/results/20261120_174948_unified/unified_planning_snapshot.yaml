@@ -1,0 +1,41 @@
+# Unified Path A / Path B planning (user approval 2026-11-20). Declared BEFORE the first run of path_planning_unified.py.
+# ONE rule set for every photo = the STEP 4-B batch checks (path_planning_batch_step4b.py). The existing scripts, configs, results and the
+# hand-off package are NOT modified. Geometry, planner parameters and inputs are READ from navigation_config.yaml (not copied), so the
+# unified runs and the earlier runs cannot drift apart; only the policy below is declared here.
+experiment_id: navigation_handoff_unified
+base_config: navigation_config.yaml            # planning, robot, gripper, wheel_boundary_experiment.urdf, step4a.inventory, step4b_batch.robot_estimate
+photos: [photo_1, photo_3, photo_5]            # default photo list of path_planning_unified.py (--photos overrides)
+
+# ---- policy (planning_checks.check_policy refuses any value that would relax it)
+margin_cm: 2.0                                 # = step4b_batch.margin_cm, on the wheel envelope AND the body. Below the position uncertainty
+                                               # (wheel_boundary_experiment.position_uncertainty_cm 3.5) -> every result is NOT_FOR_DRIVING
+wheel_envelope: URDF                           # wheel envelope (+ margin) must lie on FREE cells of map.pgm (inside the yellow zone)
+body_blocking_codes: [STATIC_OBSTACLE, NO_GO, UNKNOWN]   # body (+ margin) must not overlap these; NOT_DRIVABLE overhang allowed, reported, UNVERIFIED
+per_photo_obstacles: "every STEP 4-A inventory pallet of the photo (cube pallet and empty pallets) blocks wheels and body; the static PGM is not changed"
+gripper_baseline:
+  check: 2D_FLOOR_BASELINE                     # straight floor-level centre line from the nominal body front to the target
+  step_cm: 0.5                                 # = gripper_line_hits / gripper_line_runs sampling
+  blocking_layers: [STATIC_OBSTACLE, OTHER_PER_PHOTO_OBJECT]   # a stop is rejected (GRIPPER_LINE_BLOCKED) when the line crosses one of these
+  # allowed under the line: NOT_DRIVABLE, NO_GO (user decision 2026-11-19), UNKNOWN, OUTSIDE_MAP, the target's own pallet
+  own_pallet: "the first inventory box that contains the target image point; none -> every pallet counts as another object"
+  max_reach_cm: null                           # NOT measured: no limit is invented; reach stays UNVERIFIED
+  gripper_3d: UNVERIFIED                       # width, height and 3D interference are not checked; passing the 2D line is NOT a grasp / placement claim
+planner: "4-connected A* with turn cost on the v0.2 edge cost (path_planning.plan_leg), static rotation check every planning.rotation_step_deg, whole-path sweep (path_planning.describe_leg): imported unchanged"
+conditional_B: "Path A not VALID -> Path B is DIAGNOSTIC only: from a collision-free grasp-pose candidate, else from the robot start; status CONDITIONAL, never a task sequence"
+
+# ---- inputs
+positions:
+  approved: "navigation_config approved_positions_dir/<photo>.yaml exists -> object_positions.load_approved (refuses a malformed file) -> USER_APPROVED"
+  provisional: "otherwise the STEP 4-B estimate (ECC robot vs photo_5, AI-preliminary cube label, first STEP 4-A empty pallet) -> PROVISIONAL, REVIEW_REQUIRED"
+  obstacles_status: "PROVISIONAL: STEP 4-A inventory is an AI reading (USER_CONFIRMATION_REQUIRED) for every photo, approved or not"
+
+# ---- earlier results each photo is compared with (read only, never re-run or modified)
+compare_previous:
+  photo_1: {run: results/20261120_055014_wheelbound_photo_1/m2.0_reduced/photo_1, rules: "wheel boundary, no per-photo obstacles, no gripper-line rule"}
+  photo_2: {run: results/20261120_080841_step4b_batch/photo_2, rules: STEP 4-B batch}
+  photo_3: {run: results/20261120_080841_step4b_batch/photo_3, rules: STEP 4-B batch}
+  photo_4: {run: results/20261120_080841_step4b_batch/photo_4, rules: STEP 4-B batch}
+  photo_5: {run: results/20261120_064258_wheelbound_photo_5/m2.0_reduced/photo_5, rules: "wheel boundary, no per-photo obstacles, no gripper-line rule"}
+  photo_6: {run: results/20261120_080841_step4b_batch/photo_6, rules: STEP 4-B batch}
+  photo_7: {run: results/20261120_080841_step4b_batch/photo_7, rules: STEP 4-B batch}
+  photo_8: {run: results/20261120_080841_step4b_batch/photo_8, rules: STEP 4-B batch}

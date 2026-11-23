@@ -1,0 +1,48 @@
+{
+  "purpose": "Move an object from the truck unloading area to the conveyor belt area.",
+  "source_object": {
+    "name_en": "stacked cardboard boxes"
+  },
+  "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [748, 0, 880, 148]
+  },
+  "source_relation": "on",
+  "destination_meaning": "Conveyor belt area",
+  "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [115, 298, 248, 448],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Truck unloading zone",
+      "visual_evidence": ["truck", "dashed white line", "orange cones"],
+      "bbox_2d": [620, 0, 880, 200],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Conveyor belt area",
+      "visual_evidence": ["conveyor belt", "white boundary", "robot arm"],
+      "bbox_2d": [115, 298, 248, 448],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Robot arm workcell",
+      "visual_evidence": ["robot arm", "white boundary", "conveyor belt"],
+      "bbox_2d": [115, 298, 248, 448],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Main robot driving area",
+      "visual_evidence": ["yellow boundary", "black floor"],
+      "bbox_2d": [0, 0, 1000, 1000],
+      "robot_body_access": "allowed"
+    }
+  ],
+  "uncertainty": [
+    "The exact location of the conveyor belt is inferred from context, not explicitly marked.",
+    "The gripper reach is unknown, so the robot's ability to move the object directly is uncertain."
+  ]
+}

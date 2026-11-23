@@ -1,0 +1,70 @@
+# hybrid_exemplar_20261121: mixed pipeline. Written BEFORE the first benchmark run (2026-11-21). Status: TESTING.
+# Roles:  Qwen3-VL-4B  = instruction -> closed-list slots (TEXT ONLY, no image, no box, no location)
+#         Grounding DINO + SigLIP2 base (multimodel_target_viewer photo stage, unchanged) = candidate boxes + facility check (truck, conveyor, robot)
+#         SigLIP2 so400m + site exemplar crops = which candidate is the cube / an empty small pallet (image-to-image, no text)
+#         Python = slot validation, graspable list, relation regions, occupancy, margins, no-placement zone, accessibility, commit or hold
+# Existing code is imported read-only. Nothing outside this folder is written.
+pipeline_base: /home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer
+reference_objects: /home/binci/vlm_ws/semantic_task_navigation/experiments/siglip_small_object_test   # run_test.load_reference(): AI-read boxes
+vlm_backend: qwen3vl_4b_bf16          # 4B was not worse than 8B on 11-20 and is faster
+rules: R1                              # only used by the unchanged near-landmark destination step (P3b role prompt)
+
+exemplar_model:
+  model_id: google/siglip2-so400m-patch14-384     # cached since 2026-11-20 (user approved download); no new download
+  dtype: float16
+  batch: 16
+
+# Compute filter: only DINO boxes whose longer side is in this range are embedded with so400m.
+# Reference boxes: cube 15-21 px, small pallet 42-56 px (AI-read, same 8 photos) -> wide margin. Development-derived (same 8 photos).
+candidate_gate: {min_side_px: 10, max_side_px: 90}
+
+exemplar:
+  views: [tight, context]              # same two crops as multimodel_target_viewer (config siglip.crops)
+  aggregate: mean                      # score = mean over bank exemplars of mean over views of cosine(candidate, exemplar)
+  # Bank = reference crops of the OTHER photos (leave-one-photo-out). An exemplar is also dropped when its pallet slot overlaps any
+  # pallet slot of the test photo (same physical place seen again). The test photo's boxes are used ONLY to drop exemplars.
+  same_place_iou: 0.3
+  classes:
+    cube: {reference_kind: cube}               # slot of a cube exemplar = the pad_with_cube box of its photo
+    empty_pallet: {reference_kind: empty_pad}
+
+decision:
+  nms_iou: 0.5
+  distinct_iou: 0.1                    # another candidate is a DIFFERENT object when IoU < 0.1 and neither box holds the other's centre
+  # cube: so400m single-exemplar values on the 8 photos: cube min 0.888, other boxes max 0.874, top-1 gap min 0.036 (2026-11-20 report)
+  cube_min_score: 0.88
+  min_margin: 0.02                     # top-1 minus best different object, both classes; below -> AMBIGUOUS (hold)
+  # empty pallet: no absolute threshold exists (so400m pallet min 0.826 < other max 0.875) -> rank + margin only
+
+graspable_classes: [cube]              # policy: what this robot's gripper is allowed to pick (11-21 comparison, failure #5)
+
+landmark_to_facility: {truck_loading_bay: truck, conveyor: conveyor, mobile_robot: robot}
+relation_to_tc: {near: near, "on": "on", none: near}   # task_context relation rule names; landmark given with no relation -> vicinity
+
+interpretation:
+  prompt_id: hybrid_slots_v1
+  max_new_tokens: 200
+  template: |
+    너는 작업지시를 정해진 항목으로 바꾸는 파서다. 이미지는 주어지지 않는다. 위치, 좌표, 박스를 만들지 마라.
+    작업지시: "{instruction}"
+
+    object (옮길 물체) 중 하나:
+    - "red cube": 빨간 큐브
+    - "any object": 종류를 말하지 않은 물체 (예: 물체, 물건, 짐)
+    - "other": 위 목록에 없는 물체
+    landmark (기준 시설) 중 하나:
+    - "truck_loading_bay": 트럭, 트럭 하역장, 하역장
+    - "conveyor": 컨베이어, 컨베이어 벨트, 생산 라인
+    - "mobile_robot": 이동 로봇
+    - "none": 기준 시설을 말하지 않음
+    - "other": 위 목록에 없는 기준
+    destination_kind (놓을 곳의 종류) 중 하나:
+    - "empty_pallet": 비어 있는 팔레트 위
+    - "near_landmark": 기준 시설 옆이나 근처의 바닥
+    - "other": 위 목록에 없음
+    relation (기준 시설과의 관계) 중 하나: "near" (옆, 근처, 주변), "on" (위), "none" (말하지 않음)
+
+    object_words와 destination_words에는 작업지시에 나온 말을 그대로 적는다.
+    Return JSON only, no prose:
+    {"object": "...", "object_words": "...", "source_landmark": "...", "source_relation": "...",
+     "destination_kind": "...", "destination_landmark": "...", "destination_relation": "...", "destination_words": "..."}

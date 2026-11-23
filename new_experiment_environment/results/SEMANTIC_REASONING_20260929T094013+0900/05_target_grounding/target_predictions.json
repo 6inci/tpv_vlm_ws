@@ -1,0 +1,739 @@
+{
+  "coordinate_systems": {
+    "target_pixel": "original_image_pixels",
+    "target_metric_xy": "synthetic_workspace_bottom_left_xy_m"
+  },
+  "synthetic_only": true,
+  "predictions": {
+    "structured_context": [
+      {
+        "task_id": "A01",
+        "instruction": "트럭 앞쪽의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_A",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is positioned in the loading area, and the adjacent pallet (q_004) is directly to its left, indicating the space between them is accessible for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "A02",
+        "instruction": "카트 오른쪽의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_A",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Material Area",
+        "supporting_objects": [
+          "q_024"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_024",
+            "predicate": "right_of",
+            "object_id": "q_002"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              255,
+              690
+            ],
+            [
+              895,
+              690
+            ],
+            [
+              895,
+              920
+            ],
+            [
+              255,
+              920
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          743,
+          710
+        ],
+        "target_metric_xy": {
+          "x": 1.0955698425264557,
+          "y": 0.6231282645789145,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": false
+        },
+        "support_level": "MEDIUM",
+        "evidence_summary": "Cart (q_024) is located in the material area, and the space to its right (adjacent to pallet q_002) is identified as a movable space for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "B01",
+        "instruction": "트럭과 가장 가까운 팔레트 사이의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_B",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "right_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its right, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "B02",
+        "instruction": "카트 옆 드럼통 근처의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_B",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Material Area",
+        "supporting_objects": [
+          "q_025",
+          "q_026",
+          "q_027",
+          "q_028"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_025",
+            "predicate": "right_of",
+            "object_id": "q_026"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              255,
+              690
+            ],
+            [
+              895,
+              690
+            ],
+            [
+              895,
+              920
+            ],
+            [
+              255,
+              920
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          743,
+          710
+        ],
+        "target_metric_xy": {
+          "x": 1.0955698425264557,
+          "y": 0.6231282645789145,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": false
+        },
+        "support_level": "MEDIUM",
+        "evidence_summary": "Barrels (q_025, q_026, q_027, q_028) are clustered in the material area, and the space adjacent to barrel q_025 (to its right) is identified as a movable space for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "B03",
+        "instruction": "두 선반 사이의 통로를 찾아 이동해.",
+        "task_type": "TYPE_B",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Storage Area",
+        "supporting_objects": [
+          "q_021",
+          "q_022"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_021",
+            "predicate": "left_of",
+            "object_id": "q_022"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              315,
+              67
+            ],
+            [
+              444,
+              67
+            ],
+            [
+              444,
+              290
+            ],
+            [
+              315,
+              290
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          375,
+          180
+        ],
+        "target_metric_xy": {
+          "x": -0.4472107496359051,
+          "y": 2.4230064192581784,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Two shelving units (q_021, q_022) are positioned side-by-side, and the space between them (the aisle) is the designated movable path for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "B04",
+        "instruction": "트럭의 왼쪽이면서 가까운 팔레트 앞쪽인 빈 공간으로 이동해.",
+        "task_type": "TYPE_B",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its left, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "B05",
+        "instruction": "워크벤치 뒤쪽의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_B",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Work Station",
+        "supporting_objects": [
+          "q_023"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_023",
+            "predicate": "right_of",
+            "object_id": "q_022"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              589,
+              118
+            ],
+            [
+              715,
+              118
+            ],
+            [
+              715,
+              290
+            ],
+            [
+              589,
+              290
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          650,
+          200
+        ],
+        "target_metric_xy": {
+          "x": 0.42398067297179043,
+          "y": 2.322309700750614,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "MEDIUM",
+        "evidence_summary": "Workbench (q_023) is positioned to the right of the shelving unit (q_022), and the space behind it (adjacent to the workbench) is identified as a movable space for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "C01",
+        "instruction": "트럭 옆 하역 작업이 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "right_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its right, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "C02",
+        "instruction": "부품 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Storage Area",
+        "supporting_objects": [
+          "q_021",
+          "q_022"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_021",
+            "predicate": "left_of",
+            "object_id": "q_022"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              315,
+              67
+            ],
+            [
+              444,
+              67
+            ],
+            [
+              444,
+              290
+            ],
+            [
+              315,
+              290
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          375,
+          180
+        ],
+        "target_metric_xy": {
+          "x": -0.4472107496359051,
+          "y": 2.4230064192581784,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Two shelving units (q_021, q_022) are positioned side-by-side, and the space between them (the aisle) is the designated movable path for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its left, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "C04",
+        "instruction": "자재 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Material Area",
+        "supporting_objects": [
+          "q_002",
+          "q_003",
+          "q_004",
+          "q_025",
+          "q_026",
+          "q_027",
+          "q_028"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_002",
+            "predicate": "left_of",
+            "object_id": "q_003"
+          },
+          {
+            "subject_id": "q_003",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              255,
+              690
+            ],
+            [
+              895,
+              690
+            ],
+            [
+              895,
+              920
+            ],
+            [
+              255,
+              920
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          743,
+          710
+        ],
+        "target_metric_xy": {
+          "x": 1.0955698425264557,
+          "y": 0.6231282645789145,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": false
+        },
+        "support_level": "MEDIUM",
+        "evidence_summary": "Material area contains multiple pallets (q_002, q_003, q_004) and barrels (q_025, q_026, q_027, q_028), and the space adjacent to pallet q_004 (to its right) is identified as a movable space for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "D01",
+        "instruction": "트럭에서 가장 가까운 팔레트 옆의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_D",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "right_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its right, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "D02",
+        "instruction": "컨베이어 옆 매니퓰레이터 앞의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_D",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its left, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      }
+    ],
+    "qwen": [],
+    "grounding_dino": [],
+    "yolo_world": []
+  }
+}

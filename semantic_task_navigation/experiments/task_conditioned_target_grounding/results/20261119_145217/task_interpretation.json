@@ -1,0 +1,522 @@
+{
+ "A1": {
+  "instruction": "T1",
+  "image": "full",
+  "image_rect_px": [
+   0,
+   0,
+   1920,
+   1080
+  ],
+  "parsed": {
+   "source_region": {
+    "description": "컨베이어 벨트 위에 빨간 큐브가 있는 구역",
+    "bbox_2d": null,
+    "bbox_image_px": null
+   },
+   "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": null,
+    "visible": "uncertain",
+    "bbox_image_px": null
+   },
+   "destination_region": {
+    "description": "출하 가능한 장소로, 출하 표시가 있는 구역",
+    "bbox_2d": null,
+    "bbox_image_px": null
+   },
+   "destination_target_candidates": [
+    {
+     "name_en": "white truck",
+     "name_ko": "흰색 트럭",
+     "bbox_2d": [
+      752,
+      0,
+      880,
+      143
+     ],
+     "state": "empty",
+     "role": "출하 목적지",
+     "suitability": "suitable",
+     "reason": "트럭은 출하용으로 설계된 장치로, 빨간 큐브를 운반할 수 있음",
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1689.6,
+      154.4
+     ]
+    },
+    {
+     "name_en": "green zone with white bird symbol",
+     "name_ko": "녹색 영역에 흰색 새 아이콘",
+     "bbox_2d": [
+      305,
+      58,
+      555,
+      280
+     ],
+     "state": "empty",
+     "role": "출하 영역",
+     "suitability": "possible",
+     "reason": "출하 표시가 있는 영역이지만, 트럭이 없는 경우 출하용으로 사용 가능",
+     "bbox_image_px": [
+      585.6,
+      62.6,
+      1065.6,
+      302.4
+     ]
+    },
+    {
+     "name_en": "black robot",
+     "name_ko": "검은색 로봇",
+     "bbox_2d": [
+      825,
+      577,
+      947,
+      720
+     ],
+     "state": "empty",
+     "role": "출하 도구",
+     "suitability": "unsuitable",
+     "reason": "로봇은 빨간 큐브를 운반하는 도구가 아니라 출하용으로 사용되지 않음",
+     "bbox_image_px": [
+      1584.0,
+      623.2,
+      1818.2,
+      777.6
+     ]
+    }
+   ],
+   "selected_destination": "white truck",
+   "spatial_context": [
+    "컨베이어 벨트는 왼쪽 상단에 위치하고, 트럭은 오른쪽 상단에 위치",
+    "출하 영역은 중앙 상단에 위치하고, 트럭은 출하 영역의 오른쪽에 위치",
+    "로봇은 오른쪽 하단에 위치하고, 출하 영역은 그 위에 위치"
+   ],
+   "task_reasoning": "빨간 큐브는 출하용으로 설계된 트럭에 배치되어야 하며, 트럭은 출하용으로 사용 가능한 장치",
+   "uncertainty": [
+    "빨간 큐브의 위치가 이미지에서 명확히 확인되지 않음",
+    "출하 영역의 정확한 위치가 이미지에서 명확히 확인되지 않음"
+   ]
+  },
+  "error": null
+ },
+ "A2": {
+  "instruction": "T1",
+  "image": "DST",
+  "image_rect_px": [
+   1104,
+   0,
+   1920,
+   425
+  ],
+  "parsed": {
+   "source_region": {
+    "description": "The conveyor belt area, though not visible, is implied by the task instruction.",
+    "bbox_2d": null,
+    "bbox_image_px": null
+   },
+   "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": null,
+    "visible": "no",
+    "bbox_image_px": null
+   },
+   "destination_region": {
+    "description": "The designated area for shipping the red cube, which is not visible in the image.",
+    "bbox_2d": null,
+    "bbox_image_px": null
+   },
+   "destination_target_candidates": [],
+   "selected_destination": null,
+   "spatial_context": [],
+   "task_reasoning": "The task requires moving a red cube from a conveyor to a shipping location, but no such object or designated area is visible in the image.",
+   "uncertainty": [
+    "The red cube is not visible in the image, so its location cannot be confirmed.",
+    "The designated shipping area is not visible, so its location cannot be confirmed."
+   ]
+  },
+  "error": null
+ },
+ "A3": {
+  "instruction": null,
+  "image": "full",
+  "image_rect_px": [
+   0,
+   0,
+   1920,
+   1080
+  ],
+  "parsed": {
+   "objects": [],
+   "support_candidates": [
+    {
+     "name_en": "black mat with yellow border",
+     "name_ko": "검은색 노란색 테두리가 있는 매트",
+     "bbox_2d": [
+      35,
+      5,
+      980,
+      956
+     ],
+     "state": "occupied",
+     "objects_on_top": [
+      "robot arms",
+      "trucks",
+      "cones",
+      "boxes",
+      "barrels",
+      "pallets",
+      "green mats",
+      "whiteboard",
+      "grids",
+      "charging station"
+     ],
+     "reason": "The entire scene is laid out on this mat, which serves as the base surface for all objects.",
+     "bbox_image_px": [
+      67.2,
+      5.4,
+      1881.6,
+      1032.5
+     ]
+    }
+   ],
+   "uncertainty": [
+    "The exact physical dimensions and material of the mat are not discernible from the image."
+   ]
+  },
+  "error": null
+ },
+ "T2": {
+  "instruction": "T2",
+  "image": "full",
+  "image_rect_px": [
+   0,
+   0,
+   1920,
+   1080
+  ],
+  "parsed": {
+   "source_region": {
+    "description": "컨베이어 벨트 주변의 작업장",
+    "bbox_2d": [
+     75,
+     266,
+     265,
+     730
+    ],
+    "bbox_image_px": [
+     144.0,
+     287.3,
+     508.8,
+     788.4
+    ]
+   },
+   "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": [
+     222,
+     380,
+     238,
+     405
+    ],
+    "visible": "yes",
+    "bbox_image_px": [
+     426.2,
+     410.4,
+     457.0,
+     437.4
+    ]
+   },
+   "destination_region": {
+    "description": "작업장 내 보관용 장소",
+    "bbox_2d": [
+     395,
+     400,
+     505,
+     575
+    ],
+    "bbox_image_px": [
+     758.4,
+     432.0,
+     969.6,
+     621.0
+    ]
+   },
+   "destination_target_candidates": [
+    {
+     "name_en": "stack of cardboard boxes",
+     "name_ko": "장방형 상자 스택",
+     "bbox_2d": [
+      418,
+      395,
+      482,
+      545
+     ],
+     "state": "occupied",
+     "role": "보관용 표면",
+     "suitability": "suitable",
+     "reason": "상자 스택은 빨간 큐브를 보관하기 적합한 표면이다.",
+     "bbox_image_px": [
+      802.6,
+      426.6,
+      925.4,
+      588.6
+     ]
+    },
+    {
+     "name_en": "green safety zone",
+     "name_ko": "녹색 안전 영역",
+     "bbox_2d": [
+      305,
+      200,
+      550,
+      280
+     ],
+     "state": "occupied",
+     "role": "안전 영역",
+     "suitability": "unsuitable",
+     "reason": "안전 영역은 작업용이 아니라 보관용이 아님.",
+     "bbox_image_px": [
+      585.6,
+      216.0,
+      1056.0,
+      302.4
+     ]
+    },
+    {
+     "name_en": "yellow marked area",
+     "name_ko": "노란 표시 영역",
+     "bbox_2d": [
+      395,
+      400,
+      505,
+      575
+     ],
+     "state": "occupied",
+     "role": "보관용 표면",
+     "suitability": "suitable",
+     "reason": "노란 표시 영역은 보관용으로 사용될 수 있음.",
+     "bbox_image_px": [
+      758.4,
+      432.0,
+      969.6,
+      621.0
+     ]
+    }
+   ],
+   "selected_destination": "stack of cardboard boxes",
+   "spatial_context": [
+    "컨베이어 벨트 주변에는 작업용 장비가 배치되어 있고, 빨간 큐브는 그 주변에 위치",
+    "보관용 장소는 중앙에 위치한 상자 스택과 노란 표시 영역이 있음",
+    "안전 영역은 작업용으로 사용되며 보관용이 아님"
+   ],
+   "task_reasoning": "빨간 큐브는 컨베이어 벨트에서 생산된 후 보관이 필요하며, 상자 스택은 보관용으로 적합한 표면이다.",
+   "uncertainty": [
+    "빨간 큐브의 정확한 위치가 이미지에서 명확하지 않음"
+   ]
+  },
+  "error": null
+ },
+ "T3": {
+  "instruction": "T3",
+  "image": "full",
+  "image_rect_px": [
+   0,
+   0,
+   1920,
+   1080
+  ],
+  "parsed": {
+   "source_region": {
+    "description": "Truck bed area with a box on it",
+    "bbox_2d": [
+     750,
+     0,
+     880,
+     145
+    ],
+    "bbox_image_px": [
+     1440.0,
+     0.0,
+     1689.6,
+     156.6
+    ]
+   },
+   "source_object": {
+    "name_en": "Box",
+    "bbox_2d": [
+     817,
+     18,
+     870,
+     55
+    ],
+    "visible": "yes",
+    "bbox_image_px": [
+     1568.6,
+     19.4,
+     1670.4,
+     59.4
+    ]
+   },
+   "destination_region": {
+    "description": "Conveyor belt area with robotic arms",
+    "bbox_2d": [
+     100,
+     265,
+     265,
+     725
+    ],
+    "bbox_image_px": [
+     192.0,
+     286.2,
+     508.8,
+     783.0
+    ]
+   },
+   "destination_target_candidates": [
+    {
+     "name_en": "Conveyor belt",
+     "name_ko": "컨베이어 벨트",
+     "bbox_2d": [
+      100,
+      265,
+      265,
+      725
+     ],
+     "state": "empty",
+     "role": "Target location for box",
+     "suitability": "suitable",
+     "reason": "The conveyor belt area is designated for receiving items from the truck.",
+     "bbox_image_px": [
+      192.0,
+      286.2,
+      508.8,
+      783.0
+     ]
+    },
+    {
+     "name_en": "Robotic arm",
+     "name_ko": "로봇 팔",
+     "bbox_2d": [
+      100,
+      265,
+      265,
+      725
+     ],
+     "state": "occupied",
+     "role": "Operational equipment",
+     "suitability": "possible",
+     "reason": "Robotic arms are present and may be involved in moving the box.",
+     "bbox_image_px": [
+      192.0,
+      286.2,
+      508.8,
+      783.0
+     ]
+    }
+   ],
+   "selected_destination": "Conveyor belt",
+   "spatial_context": [
+    "The truck is positioned at the top right, and the conveyor belt is at the bottom left.",
+    "The box is on the truck bed, and the conveyor belt is adjacent to the robotic arms.",
+    "The green path connects the truck area to the conveyor belt area."
+   ],
+   "task_reasoning": "The box must be moved from the truck bed to the conveyor belt area, which is the designated location for receiving items from the truck.",
+   "uncertainty": [
+    "The exact position of the box on the truck bed is not precisely known."
+   ]
+  },
+  "error": null
+ },
+ "T4": {
+  "instruction": "T4",
+  "image": "full",
+  "image_rect_px": [
+   0,
+   0,
+   1920,
+   1080
+  ],
+  "parsed": {
+   "source_region": {
+    "description": "컨베이어 벨트 주변의 작업 구역",
+    "bbox_2d": [
+     75,
+     266,
+     265,
+     730
+    ],
+    "bbox_image_px": [
+     144.0,
+     287.3,
+     508.8,
+     788.4
+    ]
+   },
+   "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": [
+     222,
+     380,
+     238,
+     404
+    ],
+    "visible": "yes",
+    "bbox_image_px": [
+     426.2,
+     410.4,
+     457.0,
+     436.3
+    ]
+   },
+   "destination_region": {
+    "description": "냉동 보관 창고",
+    "bbox_2d": [
+     54,
+     718,
+     270,
+     920
+    ],
+    "bbox_image_px": [
+     103.7,
+     775.4,
+     518.4,
+     993.6
+    ]
+   },
+   "destination_target_candidates": [
+    {
+     "name_en": "green metal shelving unit",
+     "name_ko": "녹색 금속 선반",
+     "bbox_2d": [
+      54,
+      718,
+      270,
+      920
+     ],
+     "state": "empty",
+     "role": "storage",
+     "suitability": "suitable",
+     "reason": "green shelving unit is designated for storage and is empty",
+     "bbox_image_px": [
+      103.7,
+      775.4,
+      518.4,
+      993.6
+     ]
+    }
+   ],
+   "selected_destination": "green metal shelving unit",
+   "spatial_context": [
+    "Red cube is located on the conveyor belt near the robotic arm.",
+    "Green shelving unit is positioned at the bottom left of the map, near the entrance to the refrigerated storage area."
+   ],
+   "task_reasoning": "The red cube is on the conveyor belt and needs to be moved to the refrigerated storage area, which is indicated by the green shelving unit.",
+   "uncertainty": [
+    "The exact location of the refrigerated storage area is not explicitly labeled, but the green shelving unit is the most likely candidate."
+   ]
+  },
+  "error": null
+ }
+}

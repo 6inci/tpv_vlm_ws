@@ -1,0 +1,552 @@
+{
+  "run_id": "20261118_154458_eval_68e0",
+  "prompt_version": "v3",
+  "split": "eval",
+  "note": "No accuracy is computed. dest_iou compares the model's own boxes with each other (consistency).",
+  "results": [
+    {
+      "image_id": "E1",
+      "condition": "A",
+      "status": "OK",
+      "n_output_tokens": 1611,
+      "latency_s": 48.982,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [
+        "observed_objects has 14 items, more than the requested 12"
+      ],
+      "decision": "proposed",
+      "n_objects": 14,
+      "n_areas": 6,
+      "place_needed": "unloading zone for the truck",
+      "reason": "The instruction asks to place a red cube at the truck's unloading zone, which is clearly marked by the white truck, orange cones, and designated parking lines in area_2.",
+      "n_unknown": 3,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cube on the conveyor belt",
+        "Whether the red cube is currently being produced or transported",
+        "The exact size or shape of the red cube"
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cube is physically present and accessible on the conveyor belt",
+        "Whether the truck is stationary and ready to receive the cube",
+        "Whether the path from the conveyor belt to the truck is clear and unobstructed"
+      ],
+      "objects": [
+        "robotic arm x3 (top-left and bottom-left corners)",
+        "truck x1 (top-right)",
+        "conveyor belt x1 (left side, near robotic arms)",
+        "stack of boxes x1 (center of the floor)",
+        "orange cone x12 (scattered across the floor)",
+        "green pathway x1 (top-center)",
+        "black cylindrical containers x4 (bottom-right and bottom-center)",
+        "blue cylindrical containers x4 (bottom-right)",
+        "white pallet x1 (bottom-right)",
+        "black vehicle x1 (bottom-right)",
+        "whiteboard x1 (bottom-center)",
+        "gray metal grate x1 (bottom-center)",
+        "green scaffolding x2 (top-center and bottom-left)",
+        "red object x1 (bottom-right)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: conveyor belt production zone (high)",
+        "area_2: truck unloading zone (high)",
+        "area_3: central storage area (medium)",
+        "area_4: material storage and handling zone (medium)",
+        "area_5: charging or power station (medium)",
+        "area_6: instruction or control station (medium)"
+      ],
+      "destination": {
+        "id": "area_2",
+        "function_name": "truck unloading zone",
+        "confidence": "high",
+        "inference": "This area is designated for truck operations, likely for unloading or loading cargo.",
+        "observed_evidence": [
+          "white truck model",
+          "orange cones marking a designated area",
+          "white dashed lines indicating parking or loading zone"
+        ],
+        "box_px": [
+          1209.6,
+          0.0,
+          1766.4,
+          302.4
+        ],
+        "area_frac_of_image": 0.0812,
+        "center_px": [
+          1488.0,
+          151.2
+        ],
+        "cites_truck": true,
+        "cites_floor_line_or_bay": true
+      },
+      "overlapping_other_proposed_areas": [],
+      "truck_areas_proposed": [
+        "area_2"
+      ]
+    },
+    {
+      "image_id": "E1",
+      "condition": "B",
+      "status": "OK",
+      "n_output_tokens": 1638,
+      "latency_s": 49.655,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [
+        "observed_objects has 14 items, more than the requested 12"
+      ],
+      "decision": "proposed",
+      "n_objects": 14,
+      "n_areas": 6,
+      "place_needed": "a designated unloading area for a truck",
+      "reason": "The instruction asks for a place where a truck is located, and area_2 is the only area with a truck and marked boundaries consistent with an unloading zone.",
+      "n_unknown": 4,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cube that needs to be moved",
+        "The exact function of the whiteboard's writing",
+        "The current state of the conveyor belt (whether it is active or not)",
+        "Whether the robotic arms are currently operating or idle"
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cube is present and located on the conveyor belt",
+        "Whether the truck is currently available for unloading",
+        "Whether the area is clear and accessible for the robot to move the cube"
+      ],
+      "objects": [
+        "robotic arm x3 (top-left and bottom-left corners)",
+        "truck x1 (top-right)",
+        "conveyor belt x1 (left side, near robotic arms)",
+        "stack of boxes x1 (center of the floor)",
+        "orange cone x12 (distributed across the floor)",
+        "green pathway x1 (top-center)",
+        "black cylindrical containers x4 (bottom-right and bottom-center)",
+        "blue cylindrical containers x6 (bottom-right)",
+        "white rectangular container x1 (bottom-right)",
+        "black vehicle x1 (bottom-right)",
+        "whiteboard x1 (bottom-center)",
+        "green scaffolding x2 (top-center and bottom-left)",
+        "gray grated floor x1 (bottom-center)",
+        "lightning symbol x1 (bottom-right)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: conveyor belt production zone (high)",
+        "area_2: truck unloading zone (high)",
+        "area_3: central storage or staging area (medium)",
+        "area_4: material storage zone (medium)",
+        "area_5: charging or power station (medium)",
+        "area_6: instruction or labeling area (medium)"
+      ],
+      "destination": {
+        "id": "area_2",
+        "function_name": "truck unloading zone",
+        "confidence": "high",
+        "inference": "This area is designated for truck unloading, as indicated by the truck's position and surrounding cones.",
+        "observed_evidence": [
+          "white truck model",
+          "orange cones marking a designated area",
+          "white dashed lines indicating parking or loading zone"
+        ],
+        "box_px": [
+          1209.6,
+          0.0,
+          1728.0,
+          302.4
+        ],
+        "area_frac_of_image": 0.0756,
+        "center_px": [
+          1468.8,
+          151.2
+        ],
+        "cites_truck": true,
+        "cites_floor_line_or_bay": true
+      },
+      "overlapping_other_proposed_areas": [],
+      "truck_areas_proposed": [
+        "area_2"
+      ]
+    },
+    {
+      "image_id": "E1",
+      "condition": "C1",
+      "status": "OK",
+      "n_output_tokens": 1606,
+      "latency_s": 48.132,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [
+        "observed_objects has 14 items, more than the requested 12"
+      ],
+      "decision": "proposed",
+      "n_objects": 14,
+      "n_areas": 6,
+      "place_needed": "unloading area for the truck",
+      "reason": "The instruction asks to place a red cube at the truck's unloading zone, which is clearly marked by the truck's position and surrounding cones.",
+      "n_unknown": 3,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cube",
+        "The exact position of the conveyor belt's output point",
+        "The current state of the conveyor belt (whether it is active or not)"
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cube is present and located on the conveyor belt",
+        "Whether the truck is stationary and ready to receive the cube",
+        "Whether the unloading zone is clear of obstructions"
+      ],
+      "objects": [
+        "robotic arm x3 (top-left and bottom-left corners)",
+        "truck x1 (top-right)",
+        "conveyor belt x1 (left side, near the robotic arms)",
+        "stack of boxes x1 (center of the floor)",
+        "orange traffic cones x12 (scattered across the floor)",
+        "green path x1 (top-center)",
+        "black barrels x4 (bottom-right, near a black vehicle)",
+        "blue barrels x6 (bottom-right, near a black vehicle)",
+        "white pallet x1 (bottom-right, near black barrels)",
+        "black vehicle x1 (bottom-right)",
+        "whiteboard x1 (bottom-center)",
+        "green scaffolding x2 (top-center and bottom-left)",
+        "gray grated floor x1 (bottom-center)",
+        "lightning symbol x1 (bottom-right)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: conveyor belt work cell (high)",
+        "area_2: loading/unloading zone for truck (high)",
+        "area_3: storage area (medium)",
+        "area_4: central staging area (medium)",
+        "area_5: emergency or power zone (low)",
+        "area_6: unloading zone for truck (medium)"
+      ],
+      "destination": {
+        "id": "area_2",
+        "function_name": "loading/unloading zone for truck",
+        "confidence": "high",
+        "inference": "The truck is parked here, and the cones and dashed lines suggest this is a designated area for loading or unloading goods.",
+        "observed_evidence": [
+          "truck",
+          "orange traffic cones",
+          "white dashed lines"
+        ],
+        "box_px": [
+          1209.6,
+          0.0,
+          1728.0,
+          302.4
+        ],
+        "area_frac_of_image": 0.0756,
+        "center_px": [
+          1468.8,
+          151.2
+        ],
+        "cites_truck": true,
+        "cites_floor_line_or_bay": true
+      },
+      "overlapping_other_proposed_areas": [],
+      "truck_areas_proposed": [
+        "area_2",
+        "area_6"
+      ]
+    },
+    {
+      "image_id": "E2",
+      "condition": "A",
+      "status": "OK",
+      "n_output_tokens": 1407,
+      "latency_s": 41.809,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [],
+      "decision": "proposed",
+      "n_objects": 11,
+      "n_areas": 6,
+      "place_needed": "unloading zone for the truck",
+      "reason": "The instruction specifies placing the red cube at the truck's unloading location, which is clearly marked by the truck and surrounding cones in area_2.",
+      "n_unknown": 3,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cube (it is not visible in the image)",
+        "The exact function of the whiteboard",
+        "The real size or scale of the model"
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cube is physically present and accessible",
+        "Whether the truck is capable of receiving the cube",
+        "Whether the path from the conveyor to the truck is clear"
+      ],
+      "objects": [
+        "robotic arm x4 (top-left and bottom-left corners)",
+        "truck x1 (top-right)",
+        "conveyor belt x1 (left side, inside a white-bordered zone)",
+        "stack of boxes x1 (center of the floor)",
+        "orange traffic cone x10 (scattered across the floor)",
+        "battery charging station x1 (bottom-right)",
+        "whiteboard x1 (bottom-center)",
+        "green pathway x1 (top-center)",
+        "barrier x2 (top-center and bottom-left)",
+        "pallet with barrels x3 (right side, near center)",
+        "robotic vehicle x1 (bottom-right)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: conveyor belt production zone (high)",
+        "area_2: truck unloading zone (high)",
+        "area_3: central storage area (medium)",
+        "area_4: material storage zone (medium)",
+        "area_5: charging station (high)",
+        "area_6: proposed unloading destination (high)"
+      ],
+      "destination": {
+        "id": "area_2",
+        "function_name": "truck unloading zone",
+        "confidence": "high",
+        "inference": "The truck is positioned here, and the cones suggest this is a designated loading/unloading area.",
+        "observed_evidence": [
+          "white truck parked with a yellow box in its bed",
+          "orange cones marking a designated area"
+        ],
+        "box_px": [
+          1200.0,
+          0.0,
+          1728.0,
+          302.4
+        ],
+        "area_frac_of_image": 0.077,
+        "center_px": [
+          1464.0,
+          151.2
+        ],
+        "cites_truck": true,
+        "cites_floor_line_or_bay": false
+      },
+      "overlapping_other_proposed_areas": [
+        {
+          "id": "area_6",
+          "function_name": "proposed unloading destination",
+          "iou": 1.0,
+          "other_inside_destination": 1.0
+        }
+      ],
+      "truck_areas_proposed": [
+        "area_2",
+        "area_6"
+      ]
+    },
+    {
+      "image_id": "E2",
+      "condition": "B",
+      "status": "OK",
+      "n_output_tokens": 1325,
+      "latency_s": 39.655,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [],
+      "decision": "proposed",
+      "n_objects": 10,
+      "n_areas": 6,
+      "place_needed": "unloading zone for a truck",
+      "reason": "The instruction asks to place an object at the truck's unloading zone, which is clearly marked and designated in the image with the truck parked and cones around it.",
+      "n_unknown": 3,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cubes (the object to be moved)",
+        "Whether the robotic arms are currently moving or have produced the cubes",
+        "The exact size or shape of the red cubes"
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cubes are actually present and located on the conveyor belt",
+        "Whether the robotic arms are currently operating and have produced the cubes",
+        "Whether the truck is accessible and ready to receive the cubes"
+      ],
+      "objects": [
+        "robotic arm x4 (top-left and bottom-left corners)",
+        "truck x1 (top-right)",
+        "stack of boxes x1 (center)",
+        "cones x10 (scattered across the floor)",
+        "barriers x2 (top-center and bottom-left)",
+        "battery charging station x1 (bottom-right)",
+        "whiteboard x1 (bottom-center)",
+        "pallets with containers x3 (right-center and bottom-center)",
+        "grate x2 (bottom-center and top-center)",
+        "red button x1 (bottom-left)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: production zone (high)",
+        "area_2: unloading zone (high)",
+        "area_3: storage area (medium)",
+        "area_4: charging station (high)",
+        "area_5: central work area (medium)",
+        "area_6: control or monitoring station (medium)"
+      ],
+      "destination": {
+        "id": "area_2",
+        "function_name": "unloading zone",
+        "confidence": "high",
+        "inference": "The truck is parked in a designated area with cones, indicating this is a designated unloading or loading zone.",
+        "observed_evidence": [
+          "truck",
+          "cones",
+          "marked parking space"
+        ],
+        "box_px": [
+          1344.0,
+          0.0,
+          1728.0,
+          302.4
+        ],
+        "area_frac_of_image": 0.056,
+        "center_px": [
+          1536.0,
+          151.2
+        ],
+        "cites_truck": true,
+        "cites_floor_line_or_bay": true
+      },
+      "overlapping_other_proposed_areas": [],
+      "truck_areas_proposed": [
+        "area_2"
+      ]
+    },
+    {
+      "image_id": "E2",
+      "condition": "C1",
+      "status": "OK",
+      "n_output_tokens": 1406,
+      "latency_s": 42.478,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [],
+      "decision": "proposed",
+      "n_objects": 11,
+      "n_areas": 6,
+      "place_needed": "loading/unloading zone for the truck",
+      "reason": "The instruction requires placing a red cube at the truck's unloading location, which is clearly marked by the truck, cones, and dashed lines in area_2.",
+      "n_unknown": 3,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cube (it is not visible in the image)",
+        "The exact function of the whiteboard text",
+        "The real size or scale of the model"
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cube is present and accessible",
+        "Whether the truck is stationary and ready to receive the cube",
+        "Whether the area is clear of obstructions for unloading"
+      ],
+      "objects": [
+        "robotic arm x4 (top-left and bottom-left corners)",
+        "truck x1 (top-right)",
+        "conveyor belt x1 (left side, near robotic arms)",
+        "stack of boxes x1 (center of the floor)",
+        "orange traffic cone x12 (distributed across the floor)",
+        "storage pallet x3 (right side, near the truck)",
+        "whiteboard x1 (bottom center)",
+        "charging station x1 (bottom-right)",
+        "green pathway x1 (top-center)",
+        "gray grated floor x2 (bottom center and bottom-right)",
+        "green metal racks x2 (top-center and bottom-left)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: production cell (high)",
+        "area_2: loading/unloading zone for truck (high)",
+        "area_3: storage area (high)",
+        "area_4: central staging area (medium)",
+        "area_5: charging station (high)",
+        "area_6: pedestrian/guided path (medium)"
+      ],
+      "destination": {
+        "id": "area_2",
+        "function_name": "loading/unloading zone for truck",
+        "confidence": "high",
+        "inference": "The truck is parked in a marked area with cones, indicating a designated loading/unloading zone.",
+        "observed_evidence": [
+          "truck",
+          "orange cones",
+          "white dashed lines"
+        ],
+        "box_px": [
+          1200.0,
+          0.0,
+          1766.4,
+          302.4
+        ],
+        "area_frac_of_image": 0.0826,
+        "center_px": [
+          1483.2,
+          151.2
+        ],
+        "cites_truck": true,
+        "cites_floor_line_or_bay": true
+      },
+      "overlapping_other_proposed_areas": [],
+      "truck_areas_proposed": [
+        "area_2"
+      ]
+    }
+  ],
+  "pairwise_destination_iou": [
+    {
+      "kind": "same_image_different_condition",
+      "image": "E1",
+      "a": "A",
+      "b": "B",
+      "dest_iou": 0.931
+    },
+    {
+      "kind": "same_image_different_condition",
+      "image": "E1",
+      "a": "A",
+      "b": "C1",
+      "dest_iou": 0.931
+    },
+    {
+      "kind": "same_image_different_condition",
+      "image": "E1",
+      "a": "B",
+      "b": "C1",
+      "dest_iou": 1.0
+    },
+    {
+      "kind": "same_image_different_condition",
+      "image": "E2",
+      "a": "A",
+      "b": "B",
+      "dest_iou": 0.727
+    },
+    {
+      "kind": "same_image_different_condition",
+      "image": "E2",
+      "a": "A",
+      "b": "C1",
+      "dest_iou": 0.932
+    },
+    {
+      "kind": "same_image_different_condition",
+      "image": "E2",
+      "a": "B",
+      "b": "C1",
+      "dest_iou": 0.678
+    },
+    {
+      "kind": "same_condition_different_image",
+      "condition": "A",
+      "a": "E1",
+      "b": "E2",
+      "dest_iou": 0.915
+    },
+    {
+      "kind": "same_condition_different_image",
+      "condition": "B",
+      "a": "E1",
+      "b": "E2",
+      "dest_iou": 0.741
+    },
+    {
+      "kind": "same_condition_different_image",
+      "condition": "C1",
+      "a": "E1",
+      "b": "E2",
+      "dest_iou": 0.915
+    }
+  ]
+}

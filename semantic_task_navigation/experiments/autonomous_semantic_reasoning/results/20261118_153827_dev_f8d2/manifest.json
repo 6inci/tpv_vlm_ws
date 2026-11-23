@@ -1,0 +1,109 @@
+{
+  "experiment_id": "ASR_PROBE_2026-11-18",
+  "run_id": "20261118_153827_dev_f8d2",
+  "split": "dev",
+  "status": "DONE",
+  "started": "2026-11-18T15:38:27+09:00",
+  "prompt_version": "v2",
+  "frozen_check": {
+    "ok": false,
+    "message": "prompts_frozen.json is missing; run `probe.py freeze` first"
+  },
+  "instruction": "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘.",
+  "generation": {
+    "max_new_tokens": 2400,
+    "do_sample": false
+  },
+  "prompts": {
+    "A": {
+      "sha256": "dfdb7a7dc7d983d78b4c6cd36c1f7625a8b42a72b90b4440c82f543b3f731a3b",
+      "n_chars": 2589
+    },
+    "B": {
+      "sha256": "b5b867b7d1f25c6a37b72dba4a718a708c9943a012a025d784a533f2e01379ab",
+      "n_chars": 3304
+    },
+    "C1": {
+      "sha256": "c34919ff1c4408c30a2cf7f530c2c285e4a03285af95c9c51ac80f717aa553c4",
+      "n_chars": 3523
+    }
+  },
+  "files_sha256": {
+    "config.yaml": "7e3871f97752d24bdd1d4339f312ef183bd883e45c9d72b47bf4d6babe77be58",
+    "prompts.yaml": "d12d2586cc86f672845aaeb4e3be15a256ae6ba97b3b9439e81495e6371b18cc",
+    "probe.py": "c595a1522360e17f96804ece8f8f1da355a8b98de3548626543023c054030870"
+  },
+  "existing_code_fingerprint": {
+    "sha256": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "n_files": 32,
+    "git_commit": null
+  },
+  "host": {
+    "python": "3.10.20",
+    "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35"
+  },
+  "images": [
+    {
+      "id": "D1",
+      "role": "dev",
+      "file": "data/images/undistorted_26007129092710.png",
+      "source_path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+      "sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d"
+    }
+  ],
+  "conditions": [
+    "A",
+    "B",
+    "C1"
+  ],
+  "results": [
+    {
+      "image_id": "D1",
+      "condition": "A",
+      "status": "OK",
+      "decision": "proposed",
+      "latency_s": 41.157,
+      "n_output_tokens": 1363,
+      "hit_max_new_tokens": false
+    },
+    {
+      "image_id": "D1",
+      "condition": "B",
+      "status": "OK",
+      "decision": "proposed",
+      "latency_s": 66.527,
+      "n_output_tokens": 2233,
+      "hit_max_new_tokens": false
+    },
+    {
+      "image_id": "D1",
+      "condition": "C1",
+      "status": "INVALID_RESPONSE",
+      "decision": null,
+      "latency_s": 71.865,
+      "n_output_tokens": 2400,
+      "hit_max_new_tokens": true
+    }
+  ],
+  "worker_env": {
+    "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+    "python_version": "3.10.20",
+    "pid": 29841,
+    "torch": "2.13.0+cu130",
+    "torch_cuda": "13.0",
+    "transformers": "5.16.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "loaded": {}
+  },
+  "model": {
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "requested_revision": null,
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "dtype": "torch.bfloat16",
+    "load_s": 4.69,
+    "allocated_gib": 8.266,
+    "peak_allocated_gib": 8.266
+  },
+  "finished": "2026-11-18T15:41:34+09:00"
+}

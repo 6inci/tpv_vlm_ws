@@ -1,0 +1,60 @@
+{
+  "result": "PASS",
+  "verification_type": "Static Obstacle Representation + Robot Collision Geometry",
+  "sources": {
+    "workspace": "/home/binci/vlm_ws/config/zones.json",
+    "robot_footprint": "/home/binci/vlm_ws/config/physical_geometry.json",
+    "static_obstacles": "/home/binci/vlm_ws/config/static_obstacles.json",
+    "manipulation_readiness": "/home/binci/vlm_ws/results/physical_geometry/physical_geometry_readiness.json"
+  },
+  "mode": "ROBOT_ONLY_TRANSLATIONAL_BASELINE",
+  "fixed_yaw_rad": 0.0,
+  "robot_half_extents_m": {
+    "x": 0.145,
+    "y": 0.123
+  },
+  "valid_robot_center_bounds": {
+    "x_min": 0.145,
+    "x_max": 1.055,
+    "y_min": 0.123,
+    "y_max": 1.677
+  },
+  "collision_obstacle_bounds": {
+    "x_min": 0.30500000000000005,
+    "x_max": 0.795,
+    "y_min": 0.527,
+    "y_max": 1.273
+  },
+  "touching_policy": "COLLISION",
+  "safety_margin_m": 0.0,
+  "representative_checks": {
+    "inside_collision_obstacle": {
+      "status": "COLLISION",
+      "reason": "STATIC_OBSTACLE",
+      "obstacle_id": "dev_obstacle_01"
+    },
+    "outside_collision_obstacle": {
+      "status": "COLLISION_FREE",
+      "reason": null,
+      "obstacle_id": null
+    },
+    "touching_collision_obstacle": {
+      "status": "COLLISION",
+      "reason": "STATIC_OBSTACLE",
+      "obstacle_id": "dev_obstacle_01"
+    },
+    "touching_workspace_boundary": {
+      "status": "COLLISION",
+      "reason": "WORKSPACE_BOUNDARY",
+      "obstacle_id": null
+    }
+  },
+  "overall_manipulation_geometry_readiness": "PARTIAL",
+  "robot_only_static_planning_geometry_readiness": "READY",
+  "continuous_metric_representation": true,
+  "occupancy_grid_generated": false,
+  "path_planning": "NOT_RUN",
+  "astar_implemented": false,
+  "dynamic_replanning_implemented": false,
+  "visualization": "/home/binci/vlm_ws/results/collision_geometry/static_collision_geometry_metric.png"
+}

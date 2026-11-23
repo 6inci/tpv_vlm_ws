@@ -1,0 +1,1194 @@
+{
+ "calls": [
+  {
+   "stage": "A_A1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_interpretation_v1",
+   "prompt_sha256": "525d145f8f30cb1b47644cd1837fb645b50442c2012eb5d29b9f39574a54102a",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2484,
+   "n_output_tokens": 673,
+   "hit_max_new_tokens": false,
+   "latency_s": 20.732,
+   "wall_s": 20.89,
+   "peak_vram_gib": 8.933,
+   "raw_response": "{\n  \"source_region\": {\n    \"description\": \"컨베이어 벨트 위에 빨간 큐브가 있는 구역\",\n    \"bbox_2d\": null\n  },\n  \"source_object\": {\n    \"name_en\": \"red cube\",\n    \"bbox_2d\": null,\n    \"visible\": \"uncertain\"\n  },\n  \"destination_region\": {\n    \"description\": \"출하 가능한 장소로, 출하 표시가 있는 구역\",\n    \"bbox_2d\": null\n  },\n  \"destination_target_candidates\": [\n    {\n      \"name_en\": \"white truck\",\n      \"name_ko\": \"흰색 트럭\",\n      \"bbox_2d\": [752, 0, 880, 143],\n      \"state\": \"empty\",\n      \"role\": \"출하 목적지\",\n      \"suitability\": \"suitable\",\n      \"reason\": \"트럭은 출하용으로 설계된 장치로, 빨간 큐브를 운반할 수 있음\"\n    },\n    {\n      \"name_en\": \"green zone with white bird symbol\",\n      \"name_ko\": \"녹색 영역에 흰색 새 아이콘\",\n      \"bbox_2d\": [305, 58, 555, 280],\n      \"state\": \"empty\",\n      \"role\": \"출하 영역\",\n      \"suitability\": \"possible\",\n      \"reason\": \"출하 표시가 있는 영역이지만, 트럭이 없는 경우 출하용으로 사용 가능\"\n    },\n    {\n      \"name_en\": \"black robot\",\n      \"name_ko\": \"검은색 로봇\",\n      \"bbox_2d\": [825, 577, 947, 720],\n      \"state\": \"empty\",\n      \"role\": \"출하 도구\",\n      \"suitability\": \"unsuitable\",\n      \"reason\": \"로봇은 빨간 큐브를 운반하는 도구가 아니라 출하용으로 사용되지 않음\"\n    }\n  ],\n  \"selected_destination\": \"white truck\",\n  \"spatial_context\": [\n    \"컨베이어 벨트는 왼쪽 상단에 위치하고, 트럭은 오른쪽 상단에 위치\",\n    \"출하 영역은 중앙 상단에 위치하고, 트럭은 출하 영역의 오른쪽에 위치\",\n    \"로봇은 오른쪽 하단에 위치하고, 출하 영역은 그 위에 위치\"\n  ],\n  \"task_reasoning\": \"빨간 큐브는 출하용으로 설계된 트럭에 배치되어야 하며, 트럭은 출하용으로 사용 가능한 장치\",\n  \"uncertainty\": [\n    \"빨간 큐브의 위치가 이미지에서 명확히 확인되지 않음\",\n    \"출하 영역의 정확한 위치가 이미지에서 명확히 확인되지 않음\"\n  ]\n}"
+  },
+  {
+   "stage": "A_A2",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_interpretation_v1",
+   "prompt_sha256": "525d145f8f30cb1b47644cd1837fb645b50442c2012eb5d29b9f39574a54102a",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/dst_roi_x2.png",
+   "image_sha256": "b33212452463882b6daf547516398309a516eca1ab8ba5d5d65be016347caf9b",
+   "image_size": [
+    1632,
+    850
+   ],
+   "n_input_tokens": 1821,
+   "n_output_tokens": 213,
+   "hit_max_new_tokens": false,
+   "latency_s": 6.44,
+   "wall_s": 6.52,
+   "peak_vram_gib": 8.757,
+   "raw_response": "{\n  \"source_region\": {\n    \"description\": \"The conveyor belt area, though not visible, is implied by the task instruction.\",\n    \"bbox_2d\": null\n  },\n  \"source_object\": {\n    \"name_en\": \"red cube\",\n    \"bbox_2d\": null,\n    \"visible\": \"no\"\n  },\n  \"destination_region\": {\n    \"description\": \"The designated area for shipping the red cube, which is not visible in the image.\",\n    \"bbox_2d\": null\n  },\n  \"destination_target_candidates\": [],\n  \"selected_destination\": null,\n  \"spatial_context\": [],\n  \"task_reasoning\": \"The task requires moving a red cube from a conveyor to a shipping location, but no such object or designated area is visible in the image.\",\n  \"uncertainty\": [\n    \"The red cube is not visible in the image, so its location cannot be confirmed.\",\n    \"The designated shipping area is not visible, so its location cannot be confirmed.\"\n  ]\n}"
+  },
+  {
+   "stage": "A_A3",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "neutral_inventory_v1",
+   "prompt_sha256": "796da4b19f48e628f5a96e7dee37062983ed3eb74c004644edca344628d60616",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2289,
+   "n_output_tokens": 196,
+   "hit_max_new_tokens": false,
+   "latency_s": 6.32,
+   "wall_s": 6.43,
+   "peak_vram_gib": 8.892,
+   "raw_response": "{\n  \"objects\": [],\n  \"support_candidates\": [\n    {\n      \"name_en\": \"black mat with yellow border\",\n      \"name_ko\": \"검은색 노란색 테두리가 있는 매트\",\n      \"bbox_2d\": [35, 5, 980, 956],\n      \"state\": \"occupied\",\n      \"objects_on_top\": [\n        \"robot arms\",\n        \"trucks\",\n        \"cones\",\n        \"boxes\",\n        \"barrels\",\n        \"pallets\",\n        \"green mats\",\n        \"whiteboard\",\n        \"grids\",\n        \"charging station\"\n      ],\n      \"reason\": \"The entire scene is laid out on this mat, which serves as the base surface for all objects.\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact physical dimensions and material of the mat are not discernible from the image.\"\n  ]\n}"
+  },
+  {
+   "stage": "A_T2",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_interpretation_v1",
+   "prompt_sha256": "204e9cf81f31e5e0597bf962b09e770c030fdcb493507ac39b2ea7dbc8902ed8",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2498,
+   "n_output_tokens": 668,
+   "hit_max_new_tokens": false,
+   "latency_s": 19.653,
+   "wall_s": 19.77,
+   "peak_vram_gib": 8.936,
+   "raw_response": "{\n  \"source_region\": {\n    \"description\": \"컨베이어 벨트 주변의 작업장\",\n    \"bbox_2d\": [75, 266, 265, 730]\n  },\n  \"source_object\": {\n    \"name_en\": \"red cube\",\n    \"bbox_2d\": [222, 380, 238, 405],\n    \"visible\": \"yes\"\n  },\n  \"destination_region\": {\n    \"description\": \"작업장 내 보관용 장소\",\n    \"bbox_2d\": [395, 400, 505, 575]\n  },\n  \"destination_target_candidates\": [\n    {\n      \"name_en\": \"stack of cardboard boxes\",\n      \"name_ko\": \"장방형 상자 스택\",\n      \"bbox_2d\": [418, 395, 482, 545],\n      \"state\": \"occupied\",\n      \"role\": \"보관용 표면\",\n      \"suitability\": \"suitable\",\n      \"reason\": \"상자 스택은 빨간 큐브를 보관하기 적합한 표면이다.\"\n    },\n    {\n      \"name_en\": \"green safety zone\",\n      \"name_ko\": \"녹색 안전 영역\",\n      \"bbox_2d\": [305, 200, 550, 280],\n      \"state\": \"occupied\",\n      \"role\": \"안전 영역\",\n      \"suitability\": \"unsuitable\",\n      \"reason\": \"안전 영역은 작업용이 아니라 보관용이 아님.\"\n    },\n    {\n      \"name_en\": \"yellow marked area\",\n      \"name_ko\": \"노란 표시 영역\",\n      \"bbox_2d\": [395, 400, 505, 575],\n      \"state\": \"occupied\",\n      \"role\": \"보관용 표면\",\n      \"suitability\": \"suitable\",\n      \"reason\": \"노란 표시 영역은 보관용으로 사용될 수 있음.\"\n    }\n  ],\n  \"selected_destination\": \"stack of cardboard boxes\",\n  \"spatial_context\": [\n    \"컨베이어 벨트 주변에는 작업용 장비가 배치되어 있고, 빨간 큐브는 그 주변에 위치\",\n    \"보관용 장소는 중앙에 위치한 상자 스택과 노란 표시 영역이 있음\",\n    \"안전 영역은 작업용으로 사용되며 보관용이 아님\"\n  ],\n  \"task_reasoning\": \"빨간 큐브는 컨베이어 벨트에서 생산된 후 보관이 필요하며, 상자 스택은 보관용으로 적합한 표면이다.\",\n  \"uncertainty\": [\n    \"빨간 큐브의 정확한 위치가 이미지에서 명확하지 않음\"\n  ]\n}"
+  },
+  {
+   "stage": "A_T3",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_interpretation_v1",
+   "prompt_sha256": "c8c514ea71bbb4c9236680d378ad0bf5828a1a84c25e728509bb1f4cf7f86be8",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2482,
+   "n_output_tokens": 487,
+   "hit_max_new_tokens": false,
+   "latency_s": 14.564,
+   "wall_s": 14.68,
+   "peak_vram_gib": 8.933,
+   "raw_response": "{\n  \"source_region\": {\n    \"description\": \"Truck bed area with a box on it\",\n    \"bbox_2d\": [750, 0, 880, 145]\n  },\n  \"source_object\": {\n    \"name_en\": \"Box\",\n    \"bbox_2d\": [817, 18, 870, 55],\n    \"visible\": \"yes\"\n  },\n  \"destination_region\": {\n    \"description\": \"Conveyor belt area with robotic arms\",\n    \"bbox_2d\": [100, 265, 265, 725]\n  },\n  \"destination_target_candidates\": [\n    {\n      \"name_en\": \"Conveyor belt\",\n      \"name_ko\": \"컨베이어 벨트\",\n      \"bbox_2d\": [100, 265, 265, 725],\n      \"state\": \"empty\",\n      \"role\": \"Target location for box\",\n      \"suitability\": \"suitable\",\n      \"reason\": \"The conveyor belt area is designated for receiving items from the truck.\"\n    },\n    {\n      \"name_en\": \"Robotic arm\",\n      \"name_ko\": \"로봇 팔\",\n      \"bbox_2d\": [100, 265, 265, 725],\n      \"state\": \"occupied\",\n      \"role\": \"Operational equipment\",\n      \"suitability\": \"possible\",\n      \"reason\": \"Robotic arms are present and may be involved in moving the box.\"\n    }\n  ],\n  \"selected_destination\": \"Conveyor belt\",\n  \"spatial_context\": [\n    \"The truck is positioned at the top right, and the conveyor belt is at the bottom left.\",\n    \"The box is on the truck bed, and the conveyor belt is adjacent to the robotic arms.\",\n    \"The green path connects the truck area to the conveyor belt area.\"\n  ],\n  \"task_reasoning\": \"The box must be moved from the truck bed to the conveyor belt area, which is the designated location for receiving items from the truck.\",\n  \"uncertainty\": [\n    \"The exact position of the box on the truck bed is not precisely known.\"\n  ]\n}"
+  },
+  {
+   "stage": "A_T4",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_interpretation_v1",
+   "prompt_sha256": "3a2322cb11900043d1c2b1cc67100588161a99d2ccdbef8c0ba5a07037549ba9",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2482,
+   "n_output_tokens": 395,
+   "hit_max_new_tokens": false,
+   "latency_s": 11.973,
+   "wall_s": 12.08,
+   "peak_vram_gib": 8.933,
+   "raw_response": "{\n  \"source_region\": {\n    \"description\": \"컨베이어 벨트 주변의 작업 구역\",\n    \"bbox_2d\": [75, 266, 265, 730]\n  },\n  \"source_object\": {\n    \"name_en\": \"red cube\",\n    \"bbox_2d\": [222, 380, 238, 404],\n    \"visible\": \"yes\"\n  },\n  \"destination_region\": {\n    \"description\": \"냉동 보관 창고\",\n    \"bbox_2d\": [54, 718, 270, 920]\n  },\n  \"destination_target_candidates\": [\n    {\n      \"name_en\": \"green metal shelving unit\",\n      \"name_ko\": \"녹색 금속 선반\",\n      \"bbox_2d\": [54, 718, 270, 920],\n      \"state\": \"empty\",\n      \"role\": \"storage\",\n      \"suitability\": \"suitable\",\n      \"reason\": \"green shelving unit is designated for storage and is empty\"\n    }\n  ],\n  \"selected_destination\": \"green metal shelving unit\",\n  \"spatial_context\": [\n    \"Red cube is located on the conveyor belt near the robotic arm.\",\n    \"Green shelving unit is positioned at the bottom left of the map, near the entrance to the refrigerated storage area.\"\n  ],\n  \"task_reasoning\": \"The red cube is on the conveyor belt and needs to be moved to the refrigerated storage area, which is indicated by the green shelving unit.\",\n  \"uncertainty\": [\n    \"The exact location of the refrigerated storage area is not explicitly labeled, but the green shelving unit is the most likely candidate.\"\n  ]\n}"
+  },
+  {
+   "stage": "B_Q_D1",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "prompts": [
+    "red cube",
+    "white truck",
+    "green zone with white bird symbol",
+    "black robot",
+    "black mat with yellow border",
+    "stack of cardboard boxes",
+    "green safety zone",
+    "yellow marked area",
+    "box",
+    "conveyor belt",
+    "robotic arm",
+    "green metal shelving unit"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 199,
+   "wall_s": 3.64,
+   "peak_vram_gib": 1.972
+  },
+  {
+   "stage": "B_Q_D2",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/src_roi_zoom.png",
+   "image_sha256": "defc2ab0a73f92ac722b99b7bd51592e44eb644a1a4c0045b066417b65423ce8",
+   "prompts": [
+    "red cube",
+    "white truck",
+    "green zone with white bird symbol",
+    "black robot",
+    "black mat with yellow border",
+    "stack of cardboard boxes",
+    "green safety zone",
+    "yellow marked area",
+    "box",
+    "conveyor belt",
+    "robotic arm",
+    "green metal shelving unit"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 197,
+   "wall_s": 3.17,
+   "peak_vram_gib": 1.842
+  },
+  {
+   "stage": "B_Q_D3",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/dst_roi_x2.png",
+   "image_sha256": "b33212452463882b6daf547516398309a516eca1ab8ba5d5d65be016347caf9b",
+   "prompts": [
+    "red cube",
+    "white truck",
+    "green zone with white bird symbol",
+    "black robot",
+    "black mat with yellow border",
+    "stack of cardboard boxes",
+    "green safety zone",
+    "yellow marked area",
+    "box",
+    "conveyor belt",
+    "robotic arm",
+    "green metal shelving unit"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 142,
+   "wall_s": 3.24,
+   "peak_vram_gib": 1.878
+  },
+  {
+   "stage": "B_V_D1",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 290,
+   "wall_s": 2.3,
+   "peak_vram_gib": 1.967
+  },
+  {
+   "stage": "B_V_D2",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/src_roi_zoom.png",
+   "image_sha256": "defc2ab0a73f92ac722b99b7bd51592e44eb644a1a4c0045b066417b65423ce8",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 193,
+   "wall_s": 2.13,
+   "peak_vram_gib": 1.837
+  },
+  {
+   "stage": "B_V_D3",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/dst_roi_x2.png",
+   "image_sha256": "b33212452463882b6daf547516398309a516eca1ab8ba5d5d65be016347caf9b",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 108,
+   "wall_s": 2.17,
+   "peak_vram_gib": 1.874
+  },
+  {
+   "stage": "C_role_m1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m1.png",
+   "image_sha256": "2947841aee8e5286949445fb8025b776d2c04e374a0f6564fe16c330e20ed898",
+   "image_size": [
+    831,
+    508
+   ],
+   "n_input_tokens": 565,
+   "n_output_tokens": 50,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.479,
+   "wall_s": 1.54,
+   "peak_vram_gib": 8.439,
+   "raw_response": "{\"object_type\": \"truck\", \"is_support_surface\": \"no\", \"load_state\": \"occupied\", \"objects_on_top\": [\"box\"], \"reason\": \"The truck is a vehicle designed for transport, not a support surface.\"}"
+  },
+  {
+   "stage": "C_role_m6",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m6.png",
+   "image_sha256": "1af1def98b4071a77f1b5ca65474954a5dd8990bbe95340d63f8106d21388955",
+   "image_size": [
+    428,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 53,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.514,
+   "wall_s": 1.55,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\n  \"object_type\": \"traffic cone\",\n  \"is_support_surface\": \"no\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The traffic cone is not a surface for supporting other objects.\"\n}"
+  },
+  {
+   "stage": "C_role_m8",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m8.png",
+   "image_sha256": "8cdabca6d573b1105e88e661419727b7847126fd1e140245dc227a62767675ab",
+   "image_size": [
+    425,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 47,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.322,
+   "wall_s": 1.38,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The traffic cone is not a surface for supporting other objects.\"}"
+  },
+  {
+   "stage": "C_role_m9",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m9.png",
+   "image_sha256": "685927a651ec9d6765a0154d1f08641f9347e1a48d439a9afbd825451e3d512d",
+   "image_size": [
+    467,
+    385
+   ],
+   "n_input_tokens": 329,
+   "n_output_tokens": 64,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.782,
+   "wall_s": 1.82,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\n  \"object_type\": \"metallic shelf\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"occupied\",\n  \"objects_on_top\": [\n    \"metallic shelf\"\n  ],\n  \"reason\": \"The green box highlights a shelf that is holding another shelf on top.\"\n}"
+  },
+  {
+   "stage": "C_role_m11",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m11.png",
+   "image_sha256": "1cea1b2d3ad31c81edbee7e1fc308399f2668ff0f8123fcd34e8fa4ff14d0903",
+   "image_size": [
+    428,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 50,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.405,
+   "wall_s": 1.46,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The traffic cone is a standalone object and not designed to support other items.\"}"
+  },
+  {
+   "stage": "C_role_m12",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m12.png",
+   "image_sha256": "b53ca0043e683158d9e27348bfbca4beb4711f72a8f8b1bb78d6ed09f57f0e4c",
+   "image_size": [
+    448,
+    239
+   ],
+   "n_input_tokens": 247,
+   "n_output_tokens": 69,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.882,
+   "wall_s": 1.94,
+   "peak_vram_gib": 8.355,
+   "raw_response": "{\"object_type\": \"rectangular box\", \"is_support_surface\": \"yes\", \"load_state\": \"occupied\", \"objects_on_top\": [\"wooden block\"], \"reason\": \"The green box encloses a wooden block resting on a flat surface, indicating it is being used as a support surface with an object on top.\"}"
+  },
+  {
+   "stage": "C_role_m13",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m13.png",
+   "image_sha256": "852da2d7521e8afadb8b23ba527a87ed7b3ef528b5388fdc77e7cef2c433661d",
+   "image_size": [
+    419,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 51,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.426,
+   "wall_s": 1.48,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The traffic cone is not designed to serve as a support surface for other objects.\"}"
+  },
+  {
+   "stage": "C_role_m18",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m18.png",
+   "image_sha256": "794a0f202dfa3f2b8b5f06fea18200e273ff9c7decb8864003b49eeeb2402165",
+   "image_size": [
+    416,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 50,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.415,
+   "wall_s": 1.46,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The traffic cone is a standalone object and not designed to support other items.\"}"
+  },
+  {
+   "stage": "C_role_m20",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m20.png",
+   "image_sha256": "274dddaeddf767fc8318363459e46b8737bbfed4089ea495c556d9909502e54d",
+   "image_size": [
+    416,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 50,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.41,
+   "wall_s": 1.45,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The traffic cone is a standalone object and not designed to support other items.\"}"
+  },
+  {
+   "stage": "C_role_m28",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m28.png",
+   "image_sha256": "8b3e86fd0ba674d8484b53ff3042547fc36f807de93c70fcd4028dcf58f73fcd",
+   "image_size": [
+    448,
+    423
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 49,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.38,
+   "wall_s": 1.43,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"grate\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The object is a grate, not a surface designed to support items.\"}"
+  },
+  {
+   "stage": "C_role_m40",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m40.png",
+   "image_sha256": "ba829c6c6b86c9331741cdee05a17b4db141550f5bf33a544a02953c12f2fc39",
+   "image_size": [
+    610,
+    469
+   ],
+   "n_input_tokens": 434,
+   "n_output_tokens": 74,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.094,
+   "wall_s": 2.14,
+   "peak_vram_gib": 8.405,
+   "raw_response": "{\n  \"object_type\": \"metallic structure with green frame\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green box encloses a structure with a flat top surface, which is designed to support objects, and no items are currently placed on it.\"\n}"
+  },
+  {
+   "stage": "C_role_m44",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m44.png",
+   "image_sha256": "f265f44a6223629080fe18f15fc8c8866d6fcc95f8164859faa33bcca199efc2",
+   "image_size": [
+    1753,
+    1080
+   ],
+   "n_input_tokens": 2019,
+   "n_output_tokens": 58,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.425,
+   "wall_s": 2.54,
+   "peak_vram_gib": 8.826,
+   "raw_response": "{\n  \"object_type\": \"concrete barrier\",\n  \"is_support_surface\": \"no\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green box highlights a solid concrete barrier, not a surface for supporting objects.\"\n}"
+  },
+  {
+   "stage": "C_role_m53",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m53.png",
+   "image_sha256": "3fb3c6f7a607adbbaa2ae1229d9c00e60de54303f8bd1086a5a66ad5fcfce2cb",
+   "image_size": [
+    448,
+    418
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 51,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.453,
+   "wall_s": 1.51,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The object is a traffic cone, not a surface designed to support other objects.\"}"
+  },
+  {
+   "stage": "C_role_m58",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m58.png",
+   "image_sha256": "931ad887e51a1ccabca8d4eedccb61dae8e729f98f350f07018c4917254fcd60",
+   "image_size": [
+    428,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 51,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.423,
+   "wall_s": 1.48,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"green scaffold\", \"is_support_surface\": \"yes\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green scaffold is designed to support objects and currently has no items on it.\"}"
+  },
+  {
+   "stage": "C_role_m63",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m63.png",
+   "image_sha256": "c81796d495356f7030f5237c00221dd4dcb1d04c0338d4a71d5383d7911d67a0",
+   "image_size": [
+    967,
+    620
+   ],
+   "n_input_tokens": 719,
+   "n_output_tokens": 60,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.829,
+   "wall_s": 1.89,
+   "peak_vram_gib": 8.48,
+   "raw_response": "{\n  \"object_type\": \"truck\",\n  \"is_support_surface\": \"no\",\n  \"load_state\": \"occupied\",\n  \"objects_on_top\": [\n    \"box\"\n  ],\n  \"reason\": \"The truck is a vehicle designed for transport, not a support surface.\"\n}"
+  },
+  {
+   "stage": "C_role_m2",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m2.png",
+   "image_sha256": "477b376efb41a683cc36aa7d83ddef71415836cdeb7d03cc73522e44de2f442a",
+   "image_size": [
+    1206,
+    1080
+   ],
+   "n_input_tokens": 1441,
+   "n_output_tokens": 63,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.264,
+   "wall_s": 2.35,
+   "peak_vram_gib": 8.672,
+   "raw_response": "{\n  \"object_type\": \"workbench\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"occupied\",\n  \"objects_on_top\": [\n    \"robot arm\"\n  ],\n  \"reason\": \"The green box contains a workbench with a robot arm positioned on it.\"\n}"
+  },
+  {
+   "stage": "C_role_m4",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m4.png",
+   "image_sha256": "07f7b0c9ee0611a9cc8f7ef5437a9b28d2e307e76068441baf10308e233a9e70",
+   "image_size": [
+    1114,
+    910
+   ],
+   "n_input_tokens": 1129,
+   "n_output_tokens": 59,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.001,
+   "wall_s": 2.07,
+   "peak_vram_gib": 8.589,
+   "raw_response": "{\n  \"object_type\": \"metallic shelving unit\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green-framed unit is designed to hold items and is currently empty.\"\n}"
+  },
+  {
+   "stage": "C_role_m7",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m7.png",
+   "image_sha256": "f6a90d57fbc21afaae535bbe068d28e4b6dee2a761f2d0244940d10155a1efd4",
+   "image_size": [
+    674,
+    555
+   ],
+   "n_input_tokens": 506,
+   "n_output_tokens": 66,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.891,
+   "wall_s": 1.94,
+   "peak_vram_gib": 8.424,
+   "raw_response": "{\n  \"object_type\": \"green mat with white symbol\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green mat is flat and appears to be designed for supporting objects, and no items are currently on it.\"\n}"
+  },
+  {
+   "stage": "C_role_m14",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m14.png",
+   "image_sha256": "acbbaf51cf38dff51fa8c79ae7a6e0bdf00dc8b0c43e5438756ec3ea02563c36",
+   "image_size": [
+    448,
+    443
+   ],
+   "n_input_tokens": 345,
+   "n_output_tokens": 62,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.712,
+   "wall_s": 1.75,
+   "peak_vram_gib": 8.381,
+   "raw_response": "{\"object_type\": \"red object\", \"is_support_surface\": \"yes\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green box highlights a red object that appears to be resting on a flat surface, with no other objects visible on top of it.\"}"
+  },
+  {
+   "stage": "C_role_m16",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m16.png",
+   "image_sha256": "a7c41a0382fb5f2dcb87fee5d670bbca10495aca47e0747f39b986af0663449c",
+   "image_size": [
+    448,
+    313
+   ],
+   "n_input_tokens": 289,
+   "n_output_tokens": 62,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.695,
+   "wall_s": 1.76,
+   "peak_vram_gib": 8.366,
+   "raw_response": "{\"object_type\": \"white tray\", \"is_support_surface\": \"yes\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green box highlights a white tray, which is a flat surface designed to hold items, and it currently has no objects on it.\"}"
+  },
+  {
+   "stage": "C_role_m17",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m17.png",
+   "image_sha256": "6e9e6d053736f243f1113ba0b091f9cd9edb5ca3afd4ce525fb1d957d3301e5f",
+   "image_size": [
+    440,
+    448
+   ],
+   "n_input_tokens": 345,
+   "n_output_tokens": 56,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.584,
+   "wall_s": 1.63,
+   "peak_vram_gib": 8.381,
+   "raw_response": "{\n  \"object_type\": \"floor marker\",\n  \"is_support_surface\": \"no\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green box contains a symbol, not a physical surface for supporting objects.\"\n}"
+  },
+  {
+   "stage": "C_role_m22",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m22.png",
+   "image_sha256": "a70d78e10c061201e2db7d9ca71063f3b630323121487402c7733a6712d2ee97",
+   "image_size": [
+    439,
+    448
+   ],
+   "n_input_tokens": 345,
+   "n_output_tokens": 51,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.43,
+   "wall_s": 1.49,
+   "peak_vram_gib": 8.381,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The traffic cone is a standalone object and not a surface for supporting other items.\"}"
+  },
+  {
+   "stage": "C_role_m25",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m25.png",
+   "image_sha256": "a44aa099eb6b80664bbda2c5276ca63fbe7495aa80a60d453cf984c46cbf6e8d",
+   "image_size": [
+    838,
+    611
+   ],
+   "n_input_tokens": 643,
+   "n_output_tokens": 49,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.508,
+   "wall_s": 1.57,
+   "peak_vram_gib": 8.46,
+   "raw_response": "{\"object_type\": \"green metal scaffold\", \"is_support_surface\": \"yes\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green scaffold is designed to support objects and is currently empty.\"}"
+  },
+  {
+   "stage": "C_role_m27",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m27.png",
+   "image_sha256": "e9f3c7cee6cd771d8b3ce746ef31e30153ec3c989f6697bf5cf23e0516ecc752",
+   "image_size": [
+    1276,
+    1080
+   ],
+   "n_input_tokens": 1509,
+   "n_output_tokens": 54,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.056,
+   "wall_s": 2.15,
+   "peak_vram_gib": 8.69,
+   "raw_response": "{\n  \"object_type\": \"workbench\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green box is a workbench with no objects on it.\"\n}"
+  },
+  {
+   "stage": "C_role_m29",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m29.png",
+   "image_sha256": "6ef46b3b2dc1e376c6c1c02b5567d1f9a6a6f7b44833df3374cc841832dea5b2",
+   "image_size": [
+    614,
+    541
+   ],
+   "n_input_tokens": 472,
+   "n_output_tokens": 48,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.405,
+   "wall_s": 1.45,
+   "peak_vram_gib": 8.415,
+   "raw_response": "{\"object_type\": \"green scaffold\", \"is_support_surface\": \"yes\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green scaffold is designed to support objects and is currently empty.\"}"
+  },
+  {
+   "stage": "C_role_m30",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m30.png",
+   "image_sha256": "ba0f6c529ab0b2a4cc65252e5930fd645ecb36f968e51daec18c77431582c788",
+   "image_size": [
+    1550,
+    1080
+   ],
+   "n_input_tokens": 1781,
+   "n_output_tokens": 54,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.192,
+   "wall_s": 2.31,
+   "peak_vram_gib": 8.762,
+   "raw_response": "{\n  \"object_type\": \"workbench\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green box is a workbench with no objects on it.\"\n}"
+  },
+  {
+   "stage": "C_role_m31",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m31.png",
+   "image_sha256": "8170fa5d95319b83ca5ea958f0b24fd23899758b03b58269bc66798a7f9377e2",
+   "image_size": [
+    614,
+    557
+   ],
+   "n_input_tokens": 472,
+   "n_output_tokens": 57,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.658,
+   "wall_s": 1.71,
+   "peak_vram_gib": 8.415,
+   "raw_response": "{\n  \"object_type\": \"green metal frame\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green frame is a structural support and currently has no objects on it.\"\n}"
+  },
+  {
+   "stage": "C_role_m32",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m32.png",
+   "image_sha256": "9d78a34412d872acb865e42324043f3fc8c64418c723b65c6693a85e71b03c44",
+   "image_size": [
+    407,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 55,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.561,
+   "wall_s": 1.62,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"green mat\", \"is_support_surface\": \"yes\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green mat is flat and appears to be designed as a support surface with no objects on it.\"}"
+  },
+  {
+   "stage": "C_role_m38",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m38.png",
+   "image_sha256": "9c2c121c4b77f83412764b558fc3f81d2480ccad9e20b1a948e2e58451335757",
+   "image_size": [
+    1426,
+    783
+   ],
+   "n_input_tokens": 1229,
+   "n_output_tokens": 55,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.936,
+   "wall_s": 2.03,
+   "peak_vram_gib": 8.616,
+   "raw_response": "{\n  \"object_type\": \"robot arms\",\n  \"is_support_surface\": \"no\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green box is a visual marker, not a physical support surface.\"\n}"
+  },
+  {
+   "stage": "C_role_m39",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m39.png",
+   "image_sha256": "11a1b3d770d8feec30c6db28517aec4d5933413cfb539a7ae7b9527c7e688189",
+   "image_size": [
+    688,
+    782
+   ],
+   "n_input_tokens": 677,
+   "n_output_tokens": 65,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.948,
+   "wall_s": 2.01,
+   "peak_vram_gib": 8.469,
+   "raw_response": "{\n  \"object_type\": \"robot arm\",\n  \"is_support_surface\": \"no\",\n  \"load_state\": \"occupied\",\n  \"objects_on_top\": [\n    \"orange object\"\n  ],\n  \"reason\": \"The green box highlights a robot arm holding an orange object, indicating it is occupied.\"\n}"
+  },
+  {
+   "stage": "C_role_m3",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m3.png",
+   "image_sha256": "6461715851132b56ce503df633f1b2371ffccdba546bf661df79a2f3d3f330c8",
+   "image_size": [
+    1792,
+    1028
+   ],
+   "n_input_tokens": 1941,
+   "n_output_tokens": 69,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.679,
+   "wall_s": 2.78,
+   "peak_vram_gib": 8.805,
+   "raw_response": "{\n  \"object_type\": \"green mat with white hand symbols\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"empty\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green mat is flat and appears to be designed as a surface for placement or movement, with no objects on it.\"\n}"
+  },
+  {
+   "stage": "C_role_m5",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m5.png",
+   "image_sha256": "eec49adb962ceecea6bc91c0de103d4587de75eba6d72204faa52789e4d24153",
+   "image_size": [
+    610,
+    659
+   ],
+   "n_input_tokens": 548,
+   "n_output_tokens": 63,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.86,
+   "wall_s": 1.91,
+   "peak_vram_gib": 8.435,
+   "raw_response": "{\n  \"object_type\": \"stack of boxes\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"occupied\",\n  \"objects_on_top\": [],\n  \"reason\": \"The green box encloses a stack of boxes, indicating it is a support surface with items on top.\"\n}"
+  },
+  {
+   "stage": "C_role_m10",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m10.png",
+   "image_sha256": "f3b7d12f5e5234e50c4c5f07252e55235ddcd5a98039993fdae928cd0c9ac09c",
+   "image_size": [
+    685,
+    808
+   ],
+   "n_input_tokens": 674,
+   "n_output_tokens": 48,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.49,
+   "wall_s": 1.57,
+   "peak_vram_gib": 8.468,
+   "raw_response": "{\"object_type\": \"robot\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green box outlines a robot, which is not a support surface.\"}"
+  },
+  {
+   "stage": "C_role_m15",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m15.png",
+   "image_sha256": "94009be99dfb1edf921dce6b9a111cdec7af5cf3b1f37d9937cc2f501e87de68",
+   "image_size": [
+    448,
+    419
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 45,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.276,
+   "wall_s": 1.33,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"button\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The object is a button, not a support surface.\"}"
+  },
+  {
+   "stage": "C_role_m19",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m19.png",
+   "image_sha256": "26309377db847c4f252a137095c31d8a16e930ce25b0e5b15f425b60b7c270fd",
+   "image_size": [
+    448,
+    448
+   ],
+   "n_input_tokens": 345,
+   "n_output_tokens": 49,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.391,
+   "wall_s": 1.43,
+   "peak_vram_gib": 8.381,
+   "raw_response": "{\"object_type\": \"button\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The object is a small button, not a surface for supporting other items.\"}"
+  },
+  {
+   "stage": "C_role_m21",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m21.png",
+   "image_sha256": "09f7c5dd7cd89cdfce73f6c0daaaa0dbd3d7f32c47e904424c532247f01f5c3e",
+   "image_size": [
+    803,
+    756
+   ],
+   "n_input_tokens": 749,
+   "n_output_tokens": 69,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.087,
+   "wall_s": 2.15,
+   "peak_vram_gib": 8.488,
+   "raw_response": "{\n  \"object_type\": \"stack of boxes\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"occupied\",\n  \"objects_on_top\": [\n    \"stack of boxes\"\n  ],\n  \"reason\": \"The green box outlines a stack of boxes, which is a support surface with objects on top.\"\n}"
+  },
+  {
+   "stage": "C_role_m23",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m23.png",
+   "image_sha256": "c21833fd904ca22152657cf26a87eb9b42ca509c5a498811026534d882ce95a3",
+   "image_size": [
+    509,
+    391
+   ],
+   "n_input_tokens": 341,
+   "n_output_tokens": 51,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.42,
+   "wall_s": 1.46,
+   "peak_vram_gib": 8.38,
+   "raw_response": "{\"object_type\": \"metallic platform\", \"is_support_surface\": \"yes\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The green box highlights a flat, open platform with no objects on top.\"}"
+  },
+  {
+   "stage": "C_role_m24",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m24.png",
+   "image_sha256": "9d7400d7d761b54fabdfb30dbff32096a5af99bc714987526e260bcf542eb54a",
+   "image_size": [
+    1650,
+    1080
+   ],
+   "n_input_tokens": 1917,
+   "n_output_tokens": 60,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.422,
+   "wall_s": 2.52,
+   "peak_vram_gib": 8.799,
+   "raw_response": "{\n  \"object_type\": \"pallet\",\n  \"is_support_surface\": \"yes\",\n  \"load_state\": \"occupied\",\n  \"objects_on_top\": [\n    \"blue barrels\"\n  ],\n  \"reason\": \"The green box highlights a pallet with blue barrels on top.\"\n}"
+  },
+  {
+   "stage": "C_role_m26",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m26.png",
+   "image_sha256": "4573fd93974cf4b4f5e88ef410e499afe86088177a48d5651ae9396d3c9fffee",
+   "image_size": [
+    448,
+    439
+   ],
+   "n_input_tokens": 345,
+   "n_output_tokens": 51,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.452,
+   "wall_s": 1.52,
+   "peak_vram_gib": 8.381,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The object is a traffic cone, not a surface designed to support other objects.\"}"
+  },
+  {
+   "stage": "C_role_m33",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "object_role_v1",
+   "prompt_sha256": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/role_crops/m33.png",
+   "image_sha256": "bc00e88f1866b1041638d5336def4eb01cc7ec4f933a032f3030949c869f7e46",
+   "image_size": [
+    420,
+    448
+   ],
+   "n_input_tokens": 331,
+   "n_output_tokens": 47,
+   "hit_max_new_tokens": false,
+   "latency_s": 1.319,
+   "wall_s": 1.37,
+   "peak_vram_gib": 8.377,
+   "raw_response": "{\"object_type\": \"traffic cone\", \"is_support_surface\": \"no\", \"load_state\": \"empty\", \"objects_on_top\": [], \"reason\": \"The traffic cone is not a surface for supporting other objects.\"}"
+  },
+  {
+   "stage": "D_select_T1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_selection_v1",
+   "prompt_sha256": "edaf8dbc323c17cc7bfbb30102f7962f7240eee1ac4e192197ceec856d33eb9d",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/selection_numbered_full.png",
+   "image_sha256": "35a99ee2200cf15d236d44ebf353f6fce889bc5463ca9653fa30e45dd754259d",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2287,
+   "n_output_tokens": 54,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.451,
+   "wall_s": 2.57,
+   "peak_vram_gib": 8.891,
+   "raw_response": "{\n  \"source_id\": null,\n  \"destination_id\": null,\n  \"candidates\": [],\n  \"reason\": \"빨간 큐브가 이미지에 나타나지 않아 출발점과 목적지가 확인 불가능\"\n}"
+  },
+  {
+   "stage": "D_select_T2",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_selection_v1",
+   "prompt_sha256": "4bf5ac403accaa50c27231d5abb283c6874279ffb0df9c25d95598bc976bfc72",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/selection_numbered_full.png",
+   "image_sha256": "35a99ee2200cf15d236d44ebf353f6fce889bc5463ca9653fa30e45dd754259d",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2301,
+   "n_output_tokens": 159,
+   "hit_max_new_tokens": false,
+   "latency_s": 5.362,
+   "wall_s": 5.47,
+   "peak_vram_gib": 8.894,
+   "raw_response": "{\n  \"source_id\": 10,\n  \"destination_id\": 21,\n  \"candidates\": [\n    {\n      \"id\": 10,\n      \"role\": \"source\",\n      \"reason\": \"빨간 큐브가 위치한 위치\"\n    },\n    {\n      \"id\": 21,\n      \"role\": \"destination\",\n      \"reason\": \"박스가 쌓인 장소는 보관용으로 적절한 장소\"\n    }\n  ],\n  \"reason\": \"빨간 큐브는 컨베이어에서 생산된 물체로 출하 전 보관이 필요하며, 박스가 쌓인 장소는 보관용으로 적절한 장소\"\n}"
+  },
+  {
+   "stage": "D_select_T3",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_selection_v1",
+   "prompt_sha256": "9e1c5080871aaaf477f64d0d6ad388ef8e612affdb2d5d8d96474776356d0bea",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/selection_numbered_full.png",
+   "image_sha256": "35a99ee2200cf15d236d44ebf353f6fce889bc5463ca9653fa30e45dd754259d",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2285,
+   "n_output_tokens": 146,
+   "hit_max_new_tokens": false,
+   "latency_s": 5.017,
+   "wall_s": 5.14,
+   "peak_vram_gib": 8.891,
+   "raw_response": "{\n  \"source_id\": 3,\n  \"destination_id\": 15,\n  \"candidates\": [\n    {\n      \"id\": 3,\n      \"role\": \"source\",\n      \"reason\": \"트럭 짐칸에 실린 상자\"\n    },\n    {\n      \"id\": 15,\n      \"role\": \"destination\",\n      \"reason\": \"컨베이어 쪽 작업 구역\"\n    }\n  ],\n  \"reason\": \"트럭 짐칸에 실린 상자를 컨베이어 쪽 작업 구역으로 옮기는 작업 지시에 따라 출발점과 목적지가 명확히 정의됨\"\n}"
+  },
+  {
+   "stage": "D_select_T4",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "task_selection_v1",
+   "prompt_sha256": "06991bbbb3ce513b0451d000d9dc9ad1317c8292adf3fc06f60defbb1ff73c09",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217/inputs/selection_numbered_full.png",
+   "image_sha256": "35a99ee2200cf15d236d44ebf353f6fce889bc5463ca9653fa30e45dd754259d",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2285,
+   "n_output_tokens": 54,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.433,
+   "wall_s": 2.56,
+   "peak_vram_gib": 8.891,
+   "raw_response": "{\n  \"source_id\": null,\n  \"destination_id\": null,\n  \"candidates\": [],\n  \"reason\": \"빨간 큐브가 이미지에 나타나지 않아 출발점과 목적지가 확인 불가능\"\n}"
+  }
+ ],
+ "worker_env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "pid": 13719,
+  "torch": "2.13.0+cu130",
+  "torch_cuda": "13.0",
+  "transformers": "5.16.1",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "loaded": {}
+ },
+ "swaps": [
+  {
+   "unloaded": [
+    "qwen"
+   ],
+   "for": "dino",
+   "t": 1795067625.6946793
+  },
+  {
+   "unloaded": [
+    "dino"
+   ],
+   "for": "qwen",
+   "t": 1795067643.380887
+  }
+ ],
+ "total_wall_s": 196.1,
+ "n_calls": {
+  "qwen_interpretation": 6,
+  "dino": 6,
+  "qwen_role": 40,
+  "qwen_selection": 4
+ }
+}

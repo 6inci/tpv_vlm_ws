@@ -1,0 +1,1355 @@
+{
+  "rois": [
+    {
+      "roi_index": 1,
+      "anchor": "full_image",
+      "transform": {
+        "from_frame": "roi_local_px",
+        "to_frame": "raw_image_px",
+        "crop_xyxy_raw": [
+          0,
+          0,
+          1920,
+          1080
+        ],
+        "scale": 1.0,
+        "zoom_size_wh": [
+          1920,
+          1080
+        ],
+        "formula": "raw = crop_offset + roi / scale"
+      },
+      "zoom_path": "analysis/roi/roi_1_zoom.png"
+    }
+  ],
+  "candidates": [
+    {
+      "bbox_roi": {
+        "xyxy": [
+          975,
+          866,
+          1009,
+          886
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        975.0,
+        866.0,
+        1009.0,
+        886.0
+      ],
+      "score": 0.4378,
+      "prompt": "small red block.",
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 341.5,
+        "aspect": 1.7,
+        "solidity": 0.672
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand1",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange",
+          "observed_object": "button",
+          "reason": "The object is an orange button, not a red cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_1.png",
+          "crop_xyxy_raw": [
+            924,
+            815,
+            1060,
+            937
+          ],
+          "scale": 3.2941,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_1.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"button\", \"reason\": \"The object is an orange button, not a red cube.\"}",
+          "latency_s": 1.306,
+          "n_output_tokens": 40,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1632,
+          898,
+          1684,
+          941
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1632.0,
+        898.0,
+        1684.0,
+        941.0
+      ],
+      "score": 0.4058,
+      "prompt": "small red block.",
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 1512.0,
+        "aspect": 1.21,
+        "solidity": 0.862
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand2",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "red",
+          "observed_object": "small red object with a white dot",
+          "reason": "The object is not a cube but appears to be a small red component with a white dot, likely a button or switch."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_2.png",
+          "crop_xyxy_raw": [
+            1554,
+            820,
+            1762,
+            1019
+          ],
+          "scale": 2.1538,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_2.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"small red object with a white dot\", \"reason\": \"The object is not a cube but appears to be a small red component with a white dot, likely a button or switch.\"}",
+          "latency_s": 1.907,
+          "n_output_tokens": 59,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          345,
+          213,
+          364,
+          245
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        345.0,
+        213.0,
+        364.0,
+        245.0
+      ],
+      "score": 0.1317,
+      "prompt": "red cube.",
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 365.0,
+        "aspect": 1.68,
+        "solidity": 0.884
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand3",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "red",
+          "observed_object": "object",
+          "reason": "The object is not a cube but appears to be a textured, irregularly shaped object."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_3.png",
+          "crop_xyxy_raw": [
+            297,
+            165,
+            412,
+            293
+          ],
+          "scale": 3.5,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_3.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"object\", \"reason\": \"The object is not a cube but appears to be a textured, irregularly shaped object.\"}",
+          "latency_s": 1.497,
+          "n_output_tokens": 46,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1757.35,
+        843.87,
+        1791.59,
+        880.77
+      ],
+      "score": 0.3549,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand4",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange",
+          "observed_object": "cone",
+          "reason": "The object is an orange traffic cone, not a red cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_4.png",
+          "crop_xyxy_raw": [
+            1702,
+            788,
+            1846,
+            936
+          ],
+          "scale": 3.027,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_4.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"cone\", \"reason\": \"The object is an orange traffic cone, not a red cube.\"}",
+          "latency_s": 1.374,
+          "n_output_tokens": 41,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.37,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        975.52,
+        198.27,
+        1001.38,
+        234.31
+      ],
+      "score": 0.2592,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand5",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange",
+          "observed_object": "cone",
+          "reason": "The object is an orange traffic cone, not a red cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_5.png",
+          "crop_xyxy_raw": [
+            921,
+            144,
+            1055,
+            288
+          ],
+          "scale": 3.1111,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_5.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"cone\", \"reason\": \"The object is an orange traffic cone, not a red cube.\"}",
+          "latency_s": 1.379,
+          "n_output_tokens": 41,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        599.31,
+        226.09,
+        631.31,
+        259.93
+      ],
+      "score": 0.2452,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand6",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange and white",
+          "observed_object": "traffic cone",
+          "reason": "The object is a traffic cone, not a red cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_6.png",
+          "crop_xyxy_raw": [
+            548,
+            175,
+            682,
+            310
+          ],
+          "scale": 3.3185,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_6.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange and white\", \"observed_object\": \"traffic cone\", \"reason\": \"The object is a traffic cone, not a red cube.\"}",
+          "latency_s": 1.433,
+          "n_output_tokens": 43,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.37,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        570.89,
+        277.53,
+        616.29,
+        319.73
+      ],
+      "score": 0.2378,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand7",
+      "verification": {
+        "status": "yes",
+        "answer": {
+          "answer": "yes",
+          "observed_color": "red",
+          "observed_object": "cube",
+          "reason": "The object inside the green box is a small red cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_7.png",
+          "crop_xyxy_raw": [
+            502,
+            209,
+            684,
+            387
+          ],
+          "scale": 2.4615,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_7.png",
+          "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"red\", \"observed_object\": \"cube\", \"reason\": \"The object inside the green box is a small red cube.\"}",
+          "latency_s": 1.34,
+          "n_output_tokens": 40,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.37,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1095.23,
+        198.3,
+        1125.36,
+        232.81
+      ],
+      "score": 0.2326,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand8",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange",
+          "observed_object": "traffic cone",
+          "reason": "The object is an orange traffic cone, not a red cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_8.png",
+          "crop_xyxy_raw": [
+            1043,
+            146,
+            1177,
+            284
+          ],
+          "scale": 3.2464,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_8.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"traffic cone\", \"reason\": \"The object is an orange traffic cone, not a red cube.\"}",
+          "latency_s": 1.393,
+          "n_output_tokens": 42,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.37,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1099.99,
+        266.52,
+        1131.85,
+        303.23
+      ],
+      "score": 0.232,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand9",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1294.29,
+        117.07,
+        1324.28,
+        155.79
+      ],
+      "score": 0.2134,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand10",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1306.07,
+        190.27,
+        1336.32,
+        231.64
+      ],
+      "score": 0.1973,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand11",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        842.96,
+        431.43,
+        958.7,
+        595.84
+      ],
+      "score": 0.1893,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand12",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1325.49,
+        282.39,
+        1358.66,
+        323.65
+      ],
+      "score": 0.1743,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand13",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        961.3,
+        514.87,
+        996.1,
+        563.72
+      ],
+      "score": 0.1736,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand14",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1681.97,
+        505.86,
+        1761.86,
+        598.54
+      ],
+      "score": 0.1675,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand15",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1648.82,
+        297.28,
+        1682.28,
+        338.06
+      ],
+      "score": 0.1624,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand16",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1424.23,
+        286.44,
+        1456.49,
+        326.71
+      ],
+      "score": 0.1602,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand17",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1108.62,
+        78.54,
+        1197.32,
+        205.13
+      ],
+      "score": 0.1493,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand18",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        632.92,
+        99.64,
+        1103.94,
+        316.52
+      ],
+      "score": 0.1485,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand19",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        694.5,
+        859.04,
+        898.75,
+        999.64
+      ],
+      "score": 0.1439,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand20",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1520.97,
+        290.72,
+        1553.75,
+        330.45
+      ],
+      "score": 0.1383,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand21",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1568.96,
+        548.72,
+        1661.69,
+        610.68
+      ],
+      "score": 0.1369,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand22",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        901.37,
+        77.73,
+        987.79,
+        202.05
+      ],
+      "score": 0.1368,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand23",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        362.69,
+        566.07,
+        397.77,
+        636.1
+      ],
+      "score": 0.1232,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand24",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        317.55,
+        195.21,
+        398.8,
+        313.74
+      ],
+      "score": 0.1173,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand25",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1423.6,
+        72.55,
+        1623.19,
+        204.4
+      ],
+      "score": 0.1162,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand26",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1492.2,
+        492.23,
+        1572.74,
+        590.73
+      ],
+      "score": 0.1087,
+      "prompt": "red cube.",
+      "phrase": "red",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand27",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        1224.38,
+        491.25,
+        1764.18,
+        624.04
+      ],
+      "score": 0.1044,
+      "prompt": "red cube.",
+      "phrase": "red",
+      "source": "grounding_dino_full_image",
+      "sources": [
+        "grounding_dino_full_image"
+      ],
+      "candidate_id": "target_cand28",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          604,
+          230,
+          617,
+          239
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        604.0,
+        230.0,
+        617.0,
+        239.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 92.0,
+        "aspect": 1.44,
+        "solidity": 0.989
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand29",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          584,
+          296,
+          597,
+          308
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        584.0,
+        296.0,
+        597.0,
+        308.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 104.0,
+        "aspect": 1.08,
+        "solidity": 0.924
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand30",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1425,
+          306,
+          1435,
+          315
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1425.0,
+        306.0,
+        1435.0,
+        315.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 58.0,
+        "aspect": 1.11,
+        "solidity": 0.921
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand31",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1320,
+          195,
+          1331,
+          205
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1320.0,
+        195.0,
+        1331.0,
+        205.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 71.0,
+        "aspect": 1.1,
+        "solidity": 0.916
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand32",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1320,
+          217,
+          1333,
+          224
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1320.0,
+        217.0,
+        1333.0,
+        224.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 57.5,
+        "aspect": 1.86,
+        "solidity": 0.913
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand33",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1777,
+          847,
+          1788,
+          863
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1777.0,
+        847.0,
+        1788.0,
+        863.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 106.5,
+        "aspect": 1.45,
+        "solidity": 0.887
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand34",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1307,
+          121,
+          1319,
+          131
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1307.0,
+        121.0,
+        1319.0,
+        131.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 68.5,
+        "aspect": 1.2,
+        "solidity": 0.884
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand35",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          601,
+          246,
+          615,
+          253
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        601.0,
+        246.0,
+        615.0,
+        253.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 56.5,
+        "aspect": 2.0,
+        "solidity": 0.869
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand36",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          365,
+          600,
+          372,
+          613
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        365.0,
+        600.0,
+        372.0,
+        613.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 44.5,
+        "aspect": 1.86,
+        "solidity": 0.824
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand37",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1759,
+          855,
+          1770,
+          875
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1759.0,
+        855.0,
+        1770.0,
+        875.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 111.0,
+        "aspect": 1.82,
+        "solidity": 0.79
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand38",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          1296,
+          141,
+          1312,
+          154
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        1296.0,
+        141.0,
+        1312.0,
+        154.0
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 102.0,
+        "aspect": 1.23,
+        "solidity": 0.776
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand39",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    }
+  ],
+  "n_candidates": 39,
+  "n_verified": 8,
+  "n_accepted": 1,
+  "description": "a small red cube",
+  "notes": [
+    "NO_VERIFIED_CONVEYOR: searched the full image without a conveyor ROI"
+  ],
+  "target": {
+    "object_id": "red_cube_1",
+    "class_name": "red_cube",
+    "bbox_xyxy": [
+      570.89,
+      277.53,
+      616.29,
+      319.73
+    ],
+    "coordinate_frame": "raw_image_px",
+    "score": 0.2378,
+    "score_note": "detector score; not a calibrated probability",
+    "image_frame_id": 1,
+    "model_name": "candidate:grounding_dino_full_image",
+    "model_version": null,
+    "prompt": "small red block.",
+    "source": "grounding_dino_full_image",
+    "knowledge": "observed_by_model",
+    "accepted": true,
+    "verification": {
+      "status": "yes",
+      "answer": {
+        "answer": "yes",
+        "observed_color": "red",
+        "observed_object": "cube",
+        "reason": "The object inside the green box is a small red cube."
+      },
+      "description": "a small red cube",
+      "crop": {
+        "path": "analysis/roi/verify_target_7.png",
+        "crop_xyxy_raw": [
+          502,
+          209,
+          684,
+          387
+        ],
+        "scale": 2.4615,
+        "marker": "green rectangle = candidate box"
+      },
+      "call": {
+        "model": "Qwen/Qwen3-VL-4B-Instruct",
+        "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+        "prompt_id": "verify_object_v1",
+        "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+        "image_path": "analysis/roi/verify_target_7.png",
+        "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"red\", \"observed_object\": \"cube\", \"reason\": \"The object inside the green box is a small red cube.\"}",
+        "latency_s": 1.34,
+        "n_output_tokens": 40,
+        "hit_max_new_tokens": false,
+        "peak_vram_gib": 8.37,
+        "error": null
+      }
+    },
+    "candidate_sources": [
+      "grounding_dino_full_image"
+    ],
+    "candidate_id": "target_cand7"
+  },
+  "status": "TARGET_SELECTED"
+}

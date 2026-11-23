@@ -1,0 +1,495 @@
+{
+  "ground_truth_available": false,
+  "predictions": {
+    "structured_context": [
+      {
+        "task_id": "C01",
+        "instruction": "트럭 옆 하역 작업이 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "right_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its right, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "C02",
+        "instruction": "부품 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Storage Area",
+        "supporting_objects": [
+          "q_021",
+          "q_022"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_021",
+            "predicate": "left_of",
+            "object_id": "q_022"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              315,
+              67
+            ],
+            [
+              444,
+              67
+            ],
+            [
+              444,
+              290
+            ],
+            [
+              315,
+              290
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          375,
+          180
+        ],
+        "target_metric_xy": {
+          "x": -0.4472107496359051,
+          "y": 2.4230064192581784,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Two shelving units (q_021, q_022) are positioned side-by-side, and the space between them (the aisle) is the designated movable path for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its left, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "C04",
+        "instruction": "자재 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Material Area",
+        "supporting_objects": [
+          "q_002",
+          "q_003",
+          "q_004",
+          "q_025",
+          "q_026",
+          "q_027",
+          "q_028"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_002",
+            "predicate": "left_of",
+            "object_id": "q_003"
+          },
+          {
+            "subject_id": "q_003",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              255,
+              690
+            ],
+            [
+              895,
+              690
+            ],
+            [
+              895,
+              920
+            ],
+            [
+              255,
+              920
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          743,
+          710
+        ],
+        "target_metric_xy": {
+          "x": 1.0955698425264557,
+          "y": 0.6231282645789145,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": false
+        },
+        "support_level": "MEDIUM",
+        "evidence_summary": "Material area contains multiple pallets (q_002, q_003, q_004) and barrels (q_025, q_026, q_027, q_028), and the space adjacent to pallet q_004 (to its right) is identified as a movable space for the task.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      }
+    ],
+    "qwen": [
+      {
+        "task_id": "C01",
+        "instruction": "트럭 옆 하역 작업이 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "QWEN_OBJECT_OUTPUT",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C02",
+        "instruction": "부품 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "QWEN_OBJECT_OUTPUT",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "QWEN_OBJECT_OUTPUT",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C04",
+        "instruction": "자재 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "QWEN_OBJECT_OUTPUT",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      }
+    ],
+    "grounding_dino": [
+      {
+        "task_id": "C01",
+        "instruction": "트럭 옆 하역 작업이 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "GROUNDING_DINO_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C02",
+        "instruction": "부품 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "GROUNDING_DINO_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "GROUNDING_DINO_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C04",
+        "instruction": "자재 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "GROUNDING_DINO_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      }
+    ],
+    "yolo_world": [
+      {
+        "task_id": "C01",
+        "instruction": "트럭 옆 하역 작업이 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "YOLO_WORLD_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C02",
+        "instruction": "부품 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "YOLO_WORLD_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "YOLO_WORLD_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "C04",
+        "instruction": "자재 보관 구역의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "YOLO_WORLD_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      }
+    ]
+  }
+}

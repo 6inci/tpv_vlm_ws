@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1",
+  "session_id": "geometry_session_02_current_view",
+  "source_image_sha256": "1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299",
+  "physical_definition": {
+    "tile_grid_pitch_m": 0.6,
+    "measurement": "center of one black grout line to center of the adjacent black grout line",
+    "provenance": "PHYSICAL_MEASUREMENT_USER_CONFIRMED"
+  },
+  "world_frame": {
+    "origin_point_id": "G00",
+    "origin_definition": "lower-left clear tile-grid intersection of the selected visible workspace patch",
+    "x_axis": "rightward along the floor tile grid",
+    "y_axis": "away from the camera along the floor tile grid",
+    "coordinate_rule": "world_xy_m = [grid_i * 0.600, grid_j * 0.600]",
+    "provenance": "USER_DEFINED"
+  },
+  "intrinsic_compatibility": {
+    "status": "SUPPORTED_WITH_LIMITATION",
+    "same_required_camera_name": "hd_web_camera_ucamera001",
+    "current_camera_serial": "Ucamera001",
+    "same_native_resolution": [1920, 1080],
+    "current_optical_controls": "No zoom/focus controls exposed; no UVC control was changed.",
+    "calibration_path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "calibration_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "limitation": "The calibration was reconstructed from screenshots and does not contain an independently recorded hardware serial, so RAW is retained as a comparison branch."
+  },
+  "extraction": {
+    "primary_domain": "UNDISTORTED_IMAGE_PX",
+    "undistortion_output_camera_matrix": "same camera_matrix K as calibration_result.json",
+    "method": "Gaussian-smoothed dark-grout center samples, two perspective line-family grouping, robust global linear center fit in the undistorted diagnostic domain, then analytic line intersection",
+    "manual_role": "Hough/visual evidence selected the three central X-family lines and six Y-family lines; point positions are computed from fitted line centers, not hand-clicked.",
+    "x_family_models_u_equals_a_v_plus_b": {
+      "i0": [-0.28576250062792863, 1058.271331554018],
+      "i1": [-0.07198003839322657, 1097.309409733623],
+      "i2": [0.1451657864582183, 1138.048516077195]
+    },
+    "y_family_models_v_equals_m_u_plus_b": {
+      "j0": [0.06278732616673816, 943.6776442934329],
+      "j2": [0.014533903743249124, 702.944036351576],
+      "j3": [0.007710072398388183, 612.0402211257756],
+      "j4": [0.0016550322106034339, 539.6097145327241],
+      "j5": [-0.0029134322990337826, 478.68254263843846],
+      "j6": [-0.007926696411731864, 429.7728884656712]
+    },
+    "line_center_fit_rmse_px": {
+      "i0": 0.3117001106,
+      "i1": 0.2934199384,
+      "i2": 0.2830804677,
+      "j0": 0.4422742976,
+      "j2": 0.5263113624,
+      "j3": 0.4209059090,
+      "j4": 0.3902003536,
+      "j5": 0.2881717036,
+      "j6": 0.2778858048
+    }
+  },
+  "accepted_points": [
+    {"id":"G00","grid_index":[0,0],"world_xy_m":[0.0,0.0],"raw_image_px":[776.917994389,992.806972481],"undistorted_image_px":[774.703710161,992.319218826],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true,"note":"selected origin; lower row visible left of the robot"},
+    {"id":"G02","grid_index":[0,2],"world_xy_m":[0.0,1.2],"raw_image_px":[853.851651975,716.904377498],"undistorted_image_px":[853.850037800,715.353810612],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G12","grid_index":[1,2],"world_xy_m":[0.6,1.2],"raw_image_px":[1046.057728113,719.890109692],"undistorted_image_px":[1045.617597167,718.140941861],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G22","grid_index":[2,2],"world_xy_m":[1.2,1.2],"raw_image_px":[1240.132145214,722.657123186],"undistorted_image_px":[1242.713849402,721.005519819],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G03","grid_index":[0,3],"world_xy_m":[0.0,1.8],"raw_image_px":[881.398339879,619.420005365],"undistorted_image_px":[881.431174625,618.836119296],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true,"note":"brown box is nearby but does not cover the intersection"},
+    {"id":"G13","grid_index":[1,3],"world_xy_m":[0.6,1.8],"raw_image_px":[1052.954764764,621.036310477],"undistorted_image_px":[1052.670529179,620.156387117],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G23","grid_index":[2,3],"world_xy_m":[1.2,1.8],"raw_image_px":[1225.867717144,623.204315912],"undistorted_image_px":[1228.270544077,621.510275945],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G14","grid_index":[1,4],"world_xy_m":[0.6,2.4],"raw_image_px":[1058.252240117,541.877941937],"undistorted_image_px":[1058.342202217,541.361304967],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true,"note":"outer intersections on this row were rejected because floor markers cover them"},
+    {"id":"G05","grid_index":[0,5],"world_xy_m":[0.0,3.0],"raw_image_px":[922.224710117,476.100143436],"undistorted_image_px":[922.249629815,475.995630779],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G15","grid_index":[1,5],"world_xy_m":[0.6,3.0],"raw_image_px":[1062.476020419,476.343409231],"undistorted_image_px":[1063.076758667,475.585340473],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G25","grid_index":[2,5],"world_xy_m":[1.2,3.0],"raw_image_px":[1203.602984717,477.727585611],"undistorted_image_px":[1207.026355353,475.165953069],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G06","grid_index":[0,6],"world_xy_m":[0.0,3.6],"raw_image_px":[937.444652686,423.025688890],"undistorted_image_px":[937.582122816,422.340959617],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G16","grid_index":[1,6],"world_xy_m":[0.6,3.6],"raw_image_px":[1065.812462377,422.826922052],"undistorted_image_px":[1066.983122786,421.315237175],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true},
+    {"id":"G26","grid_index":[2,6],"world_xy_m":[1.2,3.6],"raw_image_px":[1194.896985441,423.830478103],"undistorted_image_px":[1199.057098270,420.268326867],"local_visibility_quality":"GOOD","occlusion_status":"CLEAR","line_center_reliable":true}
+  ],
+  "rejected_points": [
+    {"id":"G10","grid_index":[1,0],"reason":"HIDDEN_BY_ROBOT_CHASSIS_AND_ELEVATED_MARKER"},
+    {"id":"G20","grid_index":[2,0],"reason":"HIDDEN_BY_PERSON_OR_CHAIR_REGION"},
+    {"id":"G01","grid_index":[0,1],"reason":"TOO_CLOSE_TO_OR_HIDDEN_BY_FLOOR_MARKER"},
+    {"id":"G11","grid_index":[1,1],"reason":"TOO_CLOSE_TO_ELEVATED_ROBOT_MARKER"},
+    {"id":"G21","grid_index":[2,1],"reason":"TOO_CLOSE_TO_OR_HIDDEN_BY_FLOOR_MARKER"},
+    {"id":"G04","grid_index":[0,4],"reason":"HIDDEN_BY_FLOOR_MARKER"},
+    {"id":"G24","grid_index":[2,4],"reason":"HIDDEN_BY_FLOOR_MARKER"}
+  ],
+  "aruco_used_as_correspondence": false,
+  "overlay_path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_detection_overlay.png"
+}

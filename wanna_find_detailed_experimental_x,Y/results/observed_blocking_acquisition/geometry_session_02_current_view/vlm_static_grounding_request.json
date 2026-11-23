@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T06:15:44+09:00",
+  "geometry_precondition": {
+    "status": "NEW_SESSION_GEOMETRY_VALIDATED",
+    "selected_branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+    "development_geometry_gate": "PASS"
+  },
+  "source_image": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_raw.png",
+  "source_image_sha256": "1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299",
+  "selected_target_before_inference": "small brown cardboard box on the floor near the center-left of the visible floor workspace",
+  "target_selection_reason": "Clearly visible floor object; not a person and not the robot marker.",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "local_files_only": true,
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 96,
+    "authorized_inference_runs": 1,
+    "retry_allowed": false
+  },
+  "prompt": "Locate only the small brown cardboard box on the floor near the center-left of the visible floor workspace. Do not select any person, robot, ArUco marker, furniture, or a storage box near the shelves. Output only one JSON object in exactly this form: {\"label\":\"concise visible object description\",\"bbox_2d\":[x1,y1,x2,y2]}. bbox_2d must be INTEGER coordinates normalized to the 0-1000 domain, with x1 < x2 and y1 < y2. Return the full visible-object bounding box. Do not estimate metric size, position, or confidence. Do not output explanation or markdown."
+}

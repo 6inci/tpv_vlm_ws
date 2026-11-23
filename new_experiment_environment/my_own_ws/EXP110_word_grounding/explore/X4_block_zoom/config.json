@@ -1,0 +1,28 @@
+{
+  "id": "EXP110-X4",
+  "status": "exploratory (dev only, not a registered condition)",
+  "question": "Do the task objects (blocks, small pallets) become findable if Qwen sees an enlarged crop instead of the full 1920x1080 image?",
+  "split": "dev",
+  "image_space": "raw (distorted) camera pixels 1920x1080; crop boxes in raw pixels; Qwen bbox_2d is 0-1000 normalised to the enlarged crop; mapped back as raw = crop_origin + crop_px / scale",
+  "prompt": "EXP110 config.json qwen.c1_prompt (unchanged)",
+  "max_new_tokens": "EXP110 config.json qwen.c1_max_new_tokens",
+  "modes": {
+    "oracle": {
+      "what": "crop around each ANSWER-KEY small pallet (upper bound: assumes the pallet location is already known)",
+      "queries": ["q028", "q029", "q030", "q031", "q032", "q033", "q034", "q035"],
+      "context_scale": 3.0,
+      "min_side_px": 160,
+      "enlarged_long_side_px": 768
+    },
+    "tiles": {
+      "what": "split the whole image into overlapping tiles, enlarge each, ask every tile (no prior knowledge)",
+      "queries": ["q024", "q025", "q026", "q027", "q028", "q029", "q030", "q031", "q032", "q033", "q034", "q035"],
+      "cols": 3,
+      "rows": 2,
+      "overlap_frac": 0.25,
+      "scale": 2.0
+    }
+  },
+  "merge_nms_iou": 0.5,
+  "invalid_rule": "strict: if any crop/tile answer for a query is invalid JSON, the query is invalid (failure). Lenient score (invalid crops dropped) is reported separately."
+}

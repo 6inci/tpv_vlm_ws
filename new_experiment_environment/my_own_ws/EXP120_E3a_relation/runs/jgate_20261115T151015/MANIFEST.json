@@ -1,0 +1,51 @@
+{
+ "id": "EXP120-jgate",
+ "started": "2026-11-15T15:10:15.422838+09:00",
+ "config_jgate": {
+  "fixed": "2026-11-15 14:40, before any J-gate result was computed. The detector outputs for the three reference queries were inspected first (DESIGN §5); the rule below reuses existing settings and was not adjusted to them.",
+  "naming_note": "plan v3 §8 defines J-gate as 'verify the J-vlm choice with the Python rule, abstain on disagreement' (= J-gate-agree here). The existence check Claude described on 2026-11-15 is a different gate (= J-gate-exist). Both are computed and named separately.",
+  "inputs": {
+   "oracle": "runs/oracle_20261115T140601",
+   "detected": "runs/detected_20261115T140601"
+  },
+  "referents": "referents_draft.json",
+  "gate_applies_to_relations": [
+   "closest_to",
+   "next_to"
+  ],
+  "existence_sources": {
+   "L": "predefined site object list (config site_vocabulary, written by a human before the experiment). Existence only, no position.",
+   "M": "prior map of fixed objects. In this dev it is built from the answer-key boxes of fixed objects (same as J-geo's map); a system claim needs a map made from the separate M00 capture.",
+   "D": "detector only: Grounding DINO run02 C2 output for the EXP110 English query whose text equals the parsed reference, boxes with score >= detector_threshold.",
+   "G": "per-image answer key (oracle diagnostic). Never a system result."
+  },
+  "detector_run": "../EXP110_word_grounding/results/run02/C2",
+  "detector_threshold": 0.5,
+  "detector_threshold_note": "EXP110 registered C2 threshold (DESIGN §12.1); not tuned here",
+  "detector_query_by_reference": {
+   "truck": "q043",
+   "charging station": "q079",
+   "forklift": "q091"
+  },
+  "detector_query_rule": "EXP110 English query with exactly the parsed reference text; no query -> treated as not confirmed (absent)",
+  "agree_sources": [
+   "M",
+   "D",
+   "G"
+  ],
+  "agree_note": "L has no positions, so J-gate-agree cannot use it.",
+  "exist_rule": "relation in gate_applies_to_relations and the reference is absent in the source -> abstain (reason reference_absent); otherwise the J-vlm answer passes unchanged",
+  "agree_rule": "J-vlm abstains -> abstain; J-vlm picks id k -> keep k only if J-geo with the source's reference positions also picks k, else abstain (reason disagree)"
+ },
+ "referents_status": "DRAFT by Claude 2026-11-15 from the answer-key positions and human-style judgement, NOT from the Python relation rule. Needs user review (referents_check_P0*.jpg). Boxes = EXP110 answer-key small_pallet boxes, raw distorted px.",
+ "sha256": {
+  "tools/jgate.py": "168dfd150ecd2c12ed28ad3f5d153f2a14ca4eaccb2d8419dbe21c40b7196bc6",
+  "tools/e3a_poc.py": "46ccb7e4725b6939ff0c578985b9380f941a26ffa5110c731ab75b93efa08acc",
+  "config.json": "122446f27ac42ca0d44147fa04eadf03ce1d52064fccd138d1eec777b46a2045",
+  "referents_draft.json": "6b8a81035702807dbea14a93e372a57a27a4ef92365256167e991aa3a2b46fac",
+  "runs/oracle_20261115T140601/rows.json": "0b8efe2b99b3a2490b8568b9574f5a80e4def77ace32e946de45044c5f7c9e10",
+  "runs/oracle_20261115T140601/parses.json": "b6c9cc607ae3650cd83d4af62dce09eb378e1936c8b3f1e06b47b2015d94f8c0",
+  "runs/detected_20261115T140601/rows.json": "51eb7fe58c62988e2bea42a0a2aad3f22e4cbdd31a0284e85da2a6acf04243b7",
+  "runs/detected_20261115T140601/parses.json": "b6c9cc607ae3650cd83d4af62dce09eb378e1936c8b3f1e06b47b2015d94f8c0"
+ }
+}

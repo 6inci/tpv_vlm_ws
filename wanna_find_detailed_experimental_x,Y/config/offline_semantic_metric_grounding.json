@@ -1,0 +1,21 @@
+{
+  "schema_version": "0.1",
+  "model_grounding_config": "/home/binci/vlm_ws/config/qwen_grounding.json",
+  "input_replay_manifest": "/home/binci/vlm_ws/config/offline_real_image_replay.json",
+  "scene_observation_directory": "/home/binci/vlm_ws/results/offline_image_replay/scene_monitor_observations",
+  "trigger_policy": "SEMANTIC_TRIGGER_TRUE_CONFIRMED_CANDIDATES_ONLY",
+  "semantic_prompt_version": "STEP22_REPRESENTATIVE_SINGLE_CANDIDATE_V3_INTEGER_0_1000",
+  "parser_policy": "FIRST_JSON_OBJECT_EXTRACTED_RAW_TEXT_PRESERVED",
+  "candidate_association": {
+    "minimum_associated_iou": 0.05,
+    "maximum_associated_center_distance_ratio": 0.08,
+    "minimum_weak_iou": 0.001,
+    "maximum_weak_center_distance_ratio": 0.15
+  },
+  "ground_reference_policy": "BOTTOM_CENTER",
+  "metric_geometry_policy": "ENFORCE_STEP21_IMAGE_POLICY_AND_EXISTING_LEGACY_PIPELINE",
+  "max_new_tokens": 3000,
+  "repeatability_image_count": 2,
+  "repeatability_runs": 2,
+  "parameter_status": "DEVELOPMENT_PARAMETER"
+}

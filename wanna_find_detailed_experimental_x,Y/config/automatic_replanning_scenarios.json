@@ -1,0 +1,100 @@
+{
+  "schema_version": "0.1",
+  "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+  "unit": "m",
+  "mode": "ROBOT_ONLY_TRANSLATIONAL_BASELINE",
+  "fixed_yaw_rad": 0.0,
+  "geometry_status": "DEVELOPMENT_SYNTHETIC",
+  "planner": "SAFETY_COST_ASTAR",
+  "workspace_bounds": {"x_min": 0.0, "x_max": 1.2, "y_min": 0.0, "y_max": 1.8},
+  "source_detail": "Explicit offline automatic-replanning scenarios; not live perception or robot execution.",
+  "scenarios": [
+    {
+      "scenario_id": "R1",
+      "description": "Obstacle away from the remaining active path keeps revision zero active.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "events": [
+        {"event_id": "R1_E1_add_away", "event_index": 1, "operation": "ADD", "robot_waypoint_index": 20, "expected_old_path_state": "VALID", "expected_replan_status": "NOT_RUN", "expected_system_action": "CONTINUE_CURRENT_PATH", "expected_active_path_revision": 0, "obstacle": {"id": "r1_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.15, "x_max": 0.25, "y_min": 1.35, "y_max": 1.45}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic obstacle away from the remaining path."}}
+      ]
+    },
+    {
+      "scenario_id": "R2",
+      "description": "Obstacle appears ahead and a left-side detour exists.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "events": [
+        {"event_id": "R2_E1_add_ahead", "event_index": 1, "operation": "ADD", "robot_waypoint_index": 20, "expected_old_path_state": "BLOCKED", "expected_replan_status": "REPLAN_SUCCESS", "expected_system_action": "SWITCH_TO_REPLANNED_PATH", "expected_active_path_revision": 1, "obstacle": {"id": "r2_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic obstacle across the future right-side path."}}
+      ]
+    },
+    {
+      "scenario_id": "R3",
+      "description": "An existing dynamic obstacle moves onto the remaining path and triggers a detour.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."},
+        {"id": "r3_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.15, "x_max": 0.25, "y_min": 1.35, "y_max": 1.45}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_INITIAL_STATE", "source_detail": "Synthetic initial obstacle away from the active path."}
+      ],
+      "events": [
+        {"event_id": "R3_E1_move_ahead", "event_index": 1, "operation": "MOVE", "robot_waypoint_index": 20, "expected_old_path_state": "BLOCKED", "expected_replan_status": "REPLAN_SUCCESS", "expected_system_action": "SWITCH_TO_REPLANNED_PATH", "expected_active_path_revision": 1, "obstacle": {"id": "r3_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic MOVE onto the future path."}}
+      ]
+    },
+    {
+      "scenario_id": "R4",
+      "description": "A full-width barrier leaves no path from the current pose to the goal.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "events": [
+        {"event_id": "R4_E1_add_barrier", "event_index": 1, "operation": "ADD", "robot_waypoint_index": 20, "expected_old_path_state": "BLOCKED", "expected_replan_status": "REPLAN_FAILED", "expected_system_action": "STOP", "expected_active_path_revision": 0, "obstacle": {"id": "r4_barrier", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.0, "x_max": 1.2, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic full-width barrier for deterministic NO_PATH."}}
+      ]
+    },
+    {
+      "scenario_id": "R5",
+      "description": "A near-path obstacle changes soft cost without hard invalidation.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "events": [
+        {"event_id": "R5_E1_add_near", "event_index": 1, "operation": "ADD", "robot_waypoint_index": 20, "expected_old_path_state": "VALID", "expected_replan_status": "NOT_RUN", "expected_system_action": "CONTINUE_CURRENT_PATH", "expected_active_path_revision": 0, "obstacle": {"id": "r5_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.65, "x_max": 0.75, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic near-path soft-cost-only obstacle."}}
+      ]
+    },
+    {
+      "scenario_id": "R6",
+      "description": "Two sequential obstacle states trigger path revisions one and two.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "events": [
+        {"event_id": "R6_E1_add_right", "event_index": 1, "operation": "ADD", "robot_waypoint_index": 20, "expected_old_path_state": "BLOCKED", "expected_replan_status": "REPLAN_SUCCESS", "expected_system_action": "SWITCH_TO_REPLANNED_PATH", "expected_active_path_revision": 1, "obstacle": {"id": "r6_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic right-side blocker causing the first replan."}},
+        {"event_id": "R6_E2_move_left", "event_index": 2, "operation": "MOVE", "robot_waypoint_index": 10, "expected_old_path_state": "BLOCKED", "expected_replan_status": "REPLAN_SUCCESS", "expected_system_action": "SWITCH_TO_REPLANNED_PATH", "expected_active_path_revision": 2, "obstacle": {"id": "r6_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.15, "x_max": 0.25, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic MOVE to block revision one while reopening the right detour."}}
+      ]
+    },
+    {
+      "scenario_id": "R7",
+      "description": "Removing the first blocker retains the still-valid replanned path.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "events": [
+        {"event_id": "R7_E1_add_right", "event_index": 1, "operation": "ADD", "robot_waypoint_index": 20, "expected_old_path_state": "BLOCKED", "expected_replan_status": "REPLAN_SUCCESS", "expected_system_action": "SWITCH_TO_REPLANNED_PATH", "expected_active_path_revision": 1, "obstacle": {"id": "r7_box", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic blocker causing one successful replan."}},
+        {"event_id": "R7_E2_remove_right", "event_index": 2, "operation": "REMOVE", "robot_waypoint_index": 10, "expected_old_path_state": "VALID", "expected_replan_status": "NOT_RUN", "expected_system_action": "CONTINUE_CURRENT_PATH", "expected_active_path_revision": 1, "obstacle": {"id": "r7_box", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic blocker removal; current revision remains active."}}
+      ]
+    }
+  ]
+}

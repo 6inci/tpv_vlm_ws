@@ -1,0 +1,932 @@
+{
+  "rois": [
+    {
+      "roi_index": 1,
+      "anchor": "conveyor_1",
+      "transform": {
+        "from_frame": "roi_local_px",
+        "to_frame": "raw_image_px",
+        "crop_xyxy_raw": [
+          0,
+          0,
+          758,
+          1063
+        ],
+        "scale": 1.5051740357478833,
+        "zoom_size_wh": [
+          1141,
+          1600
+        ],
+        "formula": "raw = crop_offset + roi / scale"
+      },
+      "zoom_path": "analysis/roi/roi_1_zoom.png"
+    }
+  ],
+  "candidates": [
+    {
+      "bbox_roi": {
+        "xyxy": [
+          653,
+          627,
+          679,
+          650
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        433.84,
+        416.56,
+        451.11,
+        431.84
+      ],
+      "score": 0.438,
+      "prompt": "red cube.",
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 185.8,
+        "aspect": 1.13,
+        "solidity": 0.935
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_roi",
+        "grounding_dino_roi",
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "member_boxes": [
+        {
+          "source": "hsv_color_shape",
+          "bbox_xyxy": [
+            433.84,
+            416.56,
+            451.11,
+            431.84
+          ],
+          "score": null
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            431.68,
+            414.15,
+            452.07,
+            434.04
+          ],
+          "score": 0.438
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            420.7,
+            407.14,
+            468.44,
+            449.44
+          ],
+          "score": 0.349
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            430.84,
+            412.78,
+            452.37,
+            434.75
+          ],
+          "score": 0.2277
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            419.7,
+            406.02,
+            468.6,
+            450.62
+          ],
+          "score": 0.1198
+        }
+      ],
+      "candidate_id": "target_cand1",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "red",
+          "observed_object": "round object",
+          "reason": "The object is round, not cube-shaped."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_1.png",
+          "crop_xyxy_raw": [
+            401,
+            384,
+            483,
+            463
+          ],
+          "scale": 5.4634,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_1.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"round object\", \"reason\": \"The object is round, not cube-shaped.\"}",
+          "latency_s": 1.129,
+          "n_output_tokens": 38,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.37,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          827,
+          340,
+          854,
+          353
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        549.44,
+        225.89,
+        567.38,
+        234.52
+      ],
+      "score": 0.3829,
+      "prompt": "small red block.",
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 75.9,
+        "aspect": 2.08,
+        "solidity": 0.775
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_roi",
+        "grounding_dino_roi",
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "member_boxes": [
+        {
+          "source": "hsv_color_shape",
+          "bbox_xyxy": [
+            549.44,
+            225.89,
+            567.38,
+            234.52
+          ],
+          "score": null
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            548.57,
+            204.49,
+            583.42,
+            241.55
+          ],
+          "score": 0.3829
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            552.06,
+            205.19,
+            571.48,
+            227.85
+          ],
+          "score": 0.2496
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            549.55,
+            204.01,
+            582.94,
+            241.53
+          ],
+          "score": 0.2708
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            551.58,
+            204.07,
+            570.73,
+            227.74
+          ],
+          "score": 0.1493
+        }
+      ],
+      "candidate_id": "target_cand2",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange",
+          "observed_object": "cone",
+          "reason": "The object is a traffic cone, not a cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_2.png",
+          "crop_xyxy_raw": [
+            517,
+            193,
+            599,
+            266
+          ],
+          "scale": 5.4634,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_2.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"cone\", \"reason\": \"The object is a traffic cone, not a cube.\"}",
+          "latency_s": 1.125,
+          "n_output_tokens": 39,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.363,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          428,
+          313,
+          451,
+          325
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        284.35,
+        207.95,
+        299.63,
+        215.92
+      ],
+      "score": 0.1469,
+      "prompt": "small red block.",
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 65.3,
+        "aspect": 1.92,
+        "solidity": 0.834
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_roi",
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "member_boxes": [
+        {
+          "source": "hsv_color_shape",
+          "bbox_xyxy": [
+            284.35,
+            207.95,
+            299.63,
+            215.92
+          ],
+          "score": null
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            281.26,
+            202.53,
+            302.54,
+            216.39
+          ],
+          "score": 0.1469
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            228.53,
+            155.34,
+            325.5,
+            290.43
+          ],
+          "score": 0.1258
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            243.82,
+            158.5,
+            283.25,
+            219.28
+          ],
+          "score": 0.1129
+        }
+      ],
+      "candidate_id": "target_cand3",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "red",
+          "observed_object": "rectangle",
+          "reason": "The object is a rectangular shape, not a cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_3.png",
+          "crop_xyxy_raw": [
+            252,
+            175,
+            331,
+            247
+          ],
+          "scale": 5.6709,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_3.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"rectangle\", \"reason\": \"The object is a rectangular shape, not a cube.\"}",
+          "latency_s": 1.12,
+          "n_output_tokens": 39,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        329.23,
+        380.91,
+        365.84,
+        443.86
+      ],
+      "score": 0.2283,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_roi",
+      "bbox_roi": {
+        "xyxy": [
+          495.55,
+          573.34,
+          550.66,
+          668.08
+        ],
+        "frame": "roi_local_px"
+      },
+      "roi_index": 1,
+      "sources": [
+        "grounding_dino_roi",
+        "grounding_dino_roi",
+        "grounding_dino_full_image",
+        "grounding_dino_full_image"
+      ],
+      "member_boxes": [
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            329.23,
+            380.91,
+            365.84,
+            443.86
+          ],
+          "score": 0.2283
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            269.1,
+            377.12,
+            365.88,
+            445.36
+          ],
+          "score": 0.1234
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            269.06,
+            376.8,
+            315.14,
+            440.06
+          ],
+          "score": 0.1036
+        },
+        {
+          "source": "grounding_dino_full_image",
+          "bbox_xyxy": [
+            329.52,
+            380.59,
+            365.91,
+            444.04
+          ],
+          "score": 0.1023
+        }
+      ],
+      "candidate_id": "target_cand4",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "purple",
+          "observed_object": "purple object",
+          "reason": "The object inside the green box is purple, not red."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_4.png",
+          "crop_xyxy_raw": [
+            234,
+            286,
+            460,
+            538
+          ],
+          "scale": 1.7778,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_4.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"purple\", \"observed_object\": \"purple object\", \"reason\": \"The object inside the green box is purple, not red.\"}",
+          "latency_s": 1.153,
+          "n_output_tokens": 41,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          386,
+          261,
+          424,
+          319
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        256.45,
+        173.4,
+        281.69,
+        211.94
+      ],
+      "score": 0.1412,
+      "prompt": "red cube.",
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 610.2,
+        "aspect": 1.53,
+        "solidity": 0.917
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape",
+        "grounding_dino_roi"
+      ],
+      "member_boxes": [
+        {
+          "source": "hsv_color_shape",
+          "bbox_xyxy": [
+            256.45,
+            173.4,
+            281.69,
+            211.94
+          ],
+          "score": null
+        },
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            243.74,
+            158.07,
+            281.86,
+            218.62
+          ],
+          "score": 0.1412
+        }
+      ],
+      "candidate_id": "target_cand5",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "red",
+          "observed_object": "irregularly shaped object",
+          "reason": "The object is not a cube but has an irregular, possibly organic shape."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_5.png",
+          "crop_xyxy_raw": [
+            198,
+            115,
+            339,
+            269
+          ],
+          "scale": 2.9091,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_5.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"irregularly shaped object\", \"reason\": \"The object is not a cube but has an irregular, possibly organic shape.\"}",
+          "latency_s": 1.303,
+          "n_output_tokens": 47,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        268.59,
+        376.41,
+        315.92,
+        441.83
+      ],
+      "score": 0.2096,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_roi",
+      "bbox_roi": {
+        "xyxy": [
+          404.27,
+          566.56,
+          475.52,
+          665.03
+        ],
+        "frame": "roi_local_px"
+      },
+      "roi_index": 1,
+      "sources": [
+        "grounding_dino_roi"
+      ],
+      "member_boxes": [
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            268.59,
+            376.41,
+            315.92,
+            441.83
+          ],
+          "score": 0.2096
+        }
+      ],
+      "candidate_id": "target_cand6",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange",
+          "observed_object": "object",
+          "reason": "The object inside the green box is orange, not red, and its shape is not a cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_6.png",
+          "crop_xyxy_raw": [
+            170,
+            278,
+            414,
+            539
+          ],
+          "scale": 1.7165,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_6.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"object\", \"reason\": \"The object inside the green box is orange, not red, and its shape is not a cube.\"}",
+          "latency_s": 1.337,
+          "n_output_tokens": 48,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        317.72,
+        459.72,
+        367.53,
+        592.08
+      ],
+      "score": 0.187,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_roi",
+      "bbox_roi": {
+        "xyxy": [
+          478.22,
+          691.96,
+          553.2,
+          891.18
+        ],
+        "frame": "roi_local_px"
+      },
+      "roi_index": 1,
+      "sources": [
+        "grounding_dino_roi"
+      ],
+      "member_boxes": [
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            317.72,
+            459.72,
+            367.53,
+            592.08
+          ],
+          "score": 0.187
+        }
+      ],
+      "candidate_id": "target_cand7",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "gray",
+          "observed_object": "metallic structure",
+          "reason": "The green box contains a gray metallic structure, not a red cube."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_7.png",
+          "crop_xyxy_raw": [
+            119,
+            261,
+            566,
+            790
+          ],
+          "scale": 1.0,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_7.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"gray\", \"observed_object\": \"metallic structure\", \"reason\": \"The green box contains a gray metallic structure, not a red cube.\"}",
+          "latency_s": 1.255,
+          "n_output_tokens": 44,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.381,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        293.97,
+        578.84,
+        330.99,
+        654.35
+      ],
+      "score": 0.1751,
+      "prompt": "red cube.",
+      "phrase": "red cube",
+      "source": "grounding_dino_roi",
+      "bbox_roi": {
+        "xyxy": [
+          442.48,
+          871.25,
+          498.2,
+          984.91
+        ],
+        "frame": "roi_local_px"
+      },
+      "roi_index": 1,
+      "sources": [
+        "grounding_dino_roi"
+      ],
+      "member_boxes": [
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            293.97,
+            578.84,
+            330.99,
+            654.35
+          ],
+          "score": 0.1751
+        }
+      ],
+      "candidate_id": "target_cand8",
+      "verification": {
+        "status": "no",
+        "answer": {
+          "answer": "no",
+          "observed_color": "orange",
+          "observed_object": "rectangular object",
+          "reason": "The object is orange, not red, and its shape is rectangular, not cubic."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_8.png",
+          "crop_xyxy_raw": [
+            180,
+            465,
+            444,
+            767
+          ],
+          "scale": 1.4834,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_8.png",
+          "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"rectangular object\", \"reason\": \"The object is orange, not red, and its shape is rectangular, not cubic.\"}",
+          "latency_s": 1.298,
+          "n_output_tokens": 47,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.363,
+          "error": null
+        }
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        588.07,
+        216.59,
+        712.38,
+        302.82
+      ],
+      "score": 0.1745,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_roi",
+      "bbox_roi": {
+        "xyxy": [
+          885.15,
+          326.01,
+          1072.26,
+          455.79
+        ],
+        "frame": "roi_local_px"
+      },
+      "roi_index": 1,
+      "sources": [
+        "grounding_dino_roi"
+      ],
+      "member_boxes": [
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            588.07,
+            216.59,
+            712.38,
+            302.82
+          ],
+          "score": 0.1745
+        }
+      ],
+      "candidate_id": "target_cand9",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_xyxy": [
+        340.17,
+        42.5,
+        449.73,
+        142.09
+      ],
+      "score": 0.1548,
+      "prompt": "small red block.",
+      "phrase": "small red block",
+      "source": "grounding_dino_roi",
+      "bbox_roi": {
+        "xyxy": [
+          512.02,
+          63.97,
+          676.92,
+          213.87
+        ],
+        "frame": "roi_local_px"
+      },
+      "roi_index": 1,
+      "sources": [
+        "grounding_dino_roi"
+      ],
+      "member_boxes": [
+        {
+          "source": "grounding_dino_roi",
+          "bbox_xyxy": [
+            340.17,
+            42.5,
+            449.73,
+            142.09
+          ],
+          "score": 0.1548
+        }
+      ],
+      "candidate_id": "target_cand10",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          833,
+          310,
+          854,
+          330
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        553.42,
+        205.96,
+        567.38,
+        219.24
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 123.8,
+        "aspect": 1.05,
+        "solidity": 0.863
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "member_boxes": [
+        {
+          "source": "hsv_color_shape",
+          "bbox_xyxy": [
+            553.42,
+            205.96,
+            567.38,
+            219.24
+          ],
+          "score": null
+        }
+      ],
+      "candidate_id": "target_cand11",
+      "verification": {
+        "status": "not_run",
+        "reason": "beyond max_candidates_to_verify=8"
+      },
+      "coordinate_frame": "raw_image_px"
+    }
+  ],
+  "n_candidates": 11,
+  "n_verified": 8,
+  "n_accepted": 0,
+  "description": "a small red cube",
+  "notes": [],
+  "target": null,
+  "status": "TARGET_NOT_FOUND"
+}

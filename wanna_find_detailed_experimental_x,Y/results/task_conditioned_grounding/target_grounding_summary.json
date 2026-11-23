@@ -1,0 +1,188 @@
+{
+  "result": "PASS",
+  "verification_type": "Task-Conditioned Target Grounding Verification",
+  "not_final_paper_accuracy": true,
+  "created_at": "2026-09-17T17:37:58.013183+09:00",
+  "image": "/home/binci/qwen_vision_test/photo_04.png",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "model_cache": "/home/binci/.cache/huggingface/hub/models--Qwen--Qwen3-VL-4B-Instruct",
+  "local_files_only": true,
+  "model_load_sec": 1.852393380999274,
+  "environment": {
+    "python": "3.10.20",
+    "torch": "2.13.0+cu130",
+    "transformers": "5.16.1",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU"
+  },
+  "reference_status": "PARTIAL_SEMANTIC_REFERENCE",
+  "association_rule": "reference bbox IoU >= 0.5; not an accuracy threshold",
+  "target_summaries": [
+    {
+      "reference_id": "ref_001",
+      "canonical_target": "red cup",
+      "run_count": 3,
+      "detection_count": 3,
+      "target_statuses": [
+        "TARGET_FOUND",
+        "TARGET_FOUND",
+        "TARGET_FOUND"
+      ],
+      "detected_labels": [
+        "red cup",
+        "red cup",
+        "red cup"
+      ],
+      "label_consistent": true,
+      "bbox_iou_vs_run01": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "reference_bbox_iou": [
+        0.9451945988880064,
+        0.9451945988880064,
+        0.9451945988880064
+      ],
+      "position_statuses": [
+        "REFERENCE_POSITION_MATCH",
+        "REFERENCE_POSITION_MATCH",
+        "REFERENCE_POSITION_MATCH"
+      ],
+      "semantic_statuses": [
+        "REFERENCE_ALIAS_MATCH",
+        "REFERENCE_ALIAS_MATCH",
+        "REFERENCE_ALIAS_MATCH"
+      ],
+      "world_xy_peak_to_peak_m": [
+        0.0,
+        0.0
+      ],
+      "active_workspace_statuses": [
+        "INSIDE",
+        "INSIDE",
+        "INSIDE"
+      ]
+    },
+    {
+      "reference_id": "ref_002",
+      "canonical_target": "white bag",
+      "run_count": 3,
+      "detection_count": 3,
+      "target_statuses": [
+        "TARGET_FOUND",
+        "TARGET_FOUND",
+        "TARGET_FOUND"
+      ],
+      "detected_labels": [
+        "white bag",
+        "white bag",
+        "white bag"
+      ],
+      "label_consistent": true,
+      "bbox_iou_vs_run01": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "reference_bbox_iou": [
+        0.9340607210626186,
+        0.9340607210626186,
+        0.9340607210626186
+      ],
+      "position_statuses": [
+        "REFERENCE_POSITION_MATCH",
+        "REFERENCE_POSITION_MATCH",
+        "REFERENCE_POSITION_MATCH"
+      ],
+      "semantic_statuses": [
+        "REFERENCE_ALIAS_MATCH",
+        "REFERENCE_ALIAS_MATCH",
+        "REFERENCE_ALIAS_MATCH"
+      ],
+      "world_xy_peak_to_peak_m": [
+        0.0,
+        0.0
+      ],
+      "active_workspace_statuses": [
+        "OUTSIDE",
+        "OUTSIDE",
+        "OUTSIDE"
+      ]
+    },
+    {
+      "reference_id": "ref_003",
+      "canonical_target": "gold trophy-like object",
+      "run_count": 3,
+      "detection_count": 3,
+      "target_statuses": [
+        "TARGET_FOUND",
+        "TARGET_FOUND",
+        "TARGET_FOUND"
+      ],
+      "detected_labels": [
+        "gold trophy-like object",
+        "gold trophy-like object",
+        "gold trophy-like object"
+      ],
+      "label_consistent": true,
+      "bbox_iou_vs_run01": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "reference_bbox_iou": [
+        0.9234184239733629,
+        0.9234184239733629,
+        0.9234184239733629
+      ],
+      "position_statuses": [
+        "REFERENCE_POSITION_MATCH",
+        "REFERENCE_POSITION_MATCH",
+        "REFERENCE_POSITION_MATCH"
+      ],
+      "semantic_statuses": [
+        "REFERENCE_ALIAS_MATCH",
+        "REFERENCE_ALIAS_MATCH",
+        "REFERENCE_ALIAS_MATCH"
+      ],
+      "world_xy_peak_to_peak_m": [
+        0.0,
+        0.0
+      ],
+      "active_workspace_statuses": [
+        "INSIDE",
+        "INSIDE",
+        "INSIDE"
+      ]
+    }
+  ],
+  "broad_vs_task_conditioned": [
+    {
+      "reference_id": "ref_001",
+      "canonical_target": "red cup",
+      "broad_scene_detected": true,
+      "broad_scene_result": "LABEL_MISMATCH",
+      "task_conditioned_detection_count": 3,
+      "task_conditioned_all_position_matches": true
+    },
+    {
+      "reference_id": "ref_002",
+      "canonical_target": "white bag",
+      "broad_scene_detected": false,
+      "broad_scene_result": "NO_BBOX_MATCH",
+      "task_conditioned_detection_count": 3,
+      "task_conditioned_all_position_matches": true
+    },
+    {
+      "reference_id": "ref_003",
+      "canonical_target": "gold trophy-like object",
+      "broad_scene_detected": true,
+      "broad_scene_result": "PASS",
+      "task_conditioned_detection_count": 3,
+      "task_conditioned_all_position_matches": true
+    }
+  ],
+  "human_alias_candidates": []
+}

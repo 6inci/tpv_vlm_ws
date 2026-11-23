@@ -1,0 +1,18 @@
+{
+ "interpretation_template": "작업지시: \"{instruction}\"\n주어진 작업지시를 수행하려면 어떤 물체를 어디에서 가져와 어디에 놓아야 하는가? 이미지에서 관찰되는 객체, 주변 설비, 작업 구역의 관계를 근거로 설명하라. 최종 배치에 사용할 물체나 표면이 무엇인지 구분하고, 확신할 수 없다면 가능한 후보와 불확실성을 제시하라.\n\nReturn JSON only, no prose:\n{\"source_region\": {\"description\": <short text>, \"bbox_2d\": [x1, y1, x2, y2] or null},\n \"source_object\": {\"name_en\": <short English noun phrase>, \"bbox_2d\": [x1, y1, x2, y2] or null, \"visible\": \"yes\" | \"no\" | \"uncertain\"},\n \"destination_region\": {\"description\": <short text>, \"bbox_2d\": [x1, y1, x2, y2] or null},\n \"destination_target_candidates\": [{\"name_en\": <short English noun phrase naming the object or surface>, \"name_ko\": <Korean name>,\n                                    \"bbox_2d\": [x1, y1, x2, y2] or null, \"state\": \"empty\" | \"occupied\" | \"unknown\", \"role\": <short text>,\n                                    \"suitability\": \"suitable\" | \"possible\" | \"unsuitable\", \"reason\": <one short sentence>}],\n \"selected_destination\": <name_en of the chosen candidate, or null>,\n \"spatial_context\": [<observed relations between objects, equipment and areas>],\n \"task_reasoning\": <short text>,\n \"uncertainty\": [<what cannot be determined>]}\nbbox_2d: integers normalized to 0-1000 relative to this image's width and height.\n",
+ "neutral": "이 이미지에서 관찰되는 물체와, 물건을 올려놓는 데 쓰일 수 있는 물체나 표면의 후보를 나열하라. 각 후보의 위치, 위에 무엇이 올려져 있는지(상태)와 시각적 근거를 설명하라.\n\nReturn JSON only, no prose:\n{\"objects\": [{\"name_en\": <short English noun phrase>, \"bbox_2d\": [x1, y1, x2, y2] or null, \"location_in_image\": <short text>}],\n \"support_candidates\": [{\"name_en\": <short English noun phrase>, \"name_ko\": <Korean name>, \"bbox_2d\": [x1, y1, x2, y2] or null,\n                         \"state\": \"empty\" | \"occupied\" | \"unknown\", \"objects_on_top\": [<English>], \"reason\": <one short sentence>}],\n \"uncertainty\": [<what cannot be determined>]}\nbbox_2d: integers normalized to 0-1000 relative to this image's width and height.\n",
+ "role": "초록색 상자로 표시된 물체를 보라. 물체의 종류, 그 물체가 다른 물건을 올려놓는 받침이나 작업면으로 쓰일 수 있는지, 현재 그 위에 다른 물체가 올려져 있는지 판단하라.\n\nReturn JSON only, no prose:\n{\"object_type\": <short English noun phrase>, \"is_support_surface\": \"yes\" | \"no\" | \"uncertain\",\n \"load_state\": \"empty\" | \"occupied\" | \"not_applicable\" | \"uncertain\", \"objects_on_top\": [<English>], \"reason\": <one short sentence>}\n",
+ "selection_template": "작업지시: \"{instruction}\"\n이미지의 번호가 붙은 초록색 상자는 자동 탐지된 후보 물체이다. 이 작업지시를 수행하려면 (1) 옮길 물체 자체이거나 옮길 물체가 놓여 있는 후보의 번호와 (2) 물체를 최종적으로 내려놓을 물체나 표면 후보의 번호를 고르라. 각 후보가 이 작업에서 어떤 역할을 하는지 판단하라. 적절한 후보가 없거나 판단할 수 없으면 null로 하라.\n\nReturn JSON only, no prose:\n{\"source_id\": <number or null>, \"destination_id\": <number or null>,\n \"candidates\": [{\"id\": <number>, \"role\": \"source\" | \"destination\" | \"not_relevant\" | \"uncertain\", \"reason\": <one short sentence>}],\n \"reason\": <one short sentence>}\n",
+ "instructions": {
+  "T1": "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "T2": "컨베이어에서 생산된 빨간 큐브를 바로 출하하지 말고, 작업장 안에서 잠시 보관할 수 있는 적절한 장소로 옮겨줘.",
+  "T3": "트럭 짐칸에 실린 상자를 내려서 컨베이어 쪽 작업 구역으로 옮겨줘.",
+  "T4": "컨베이어에서 생산된 빨간 큐브를 냉동 보관 창고에 넣어줘."
+ },
+ "sha256": {
+  "interpretation_template": "76dfa76c09d2b1ccb446e221239db9a0ee001592117c8c4dfddda5a84906197d",
+  "neutral": "796da4b19f48e628f5a96e7dee37062983ed3eb74c004644edca344628d60616",
+  "role": "974e690b13f7edaceba21448354c3545765b861f8e0d58261c1ab565ae0e0361",
+  "selection_template": "257a8c85aaab1d4ad8e9253fe418b2f34f2ce071eab5961b30ffb226c5f77a1a"
+ }
+}

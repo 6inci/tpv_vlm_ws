@@ -1,0 +1,205 @@
+{
+ "reference": {
+  "reference_target": {
+   "description_user": "트럭 앞쪽 콘 사이에 있는 회색 팔레트",
+   "bbox_xyxy_px": [
+    1593,
+    252,
+    1640,
+    287
+   ],
+   "status": "AI_DRAWN_FROM_USER_DESCRIPTION (to be confirmed by the user)",
+   "appearance_note": "grey, slatted top; could also be named a grate/grating. A similar grey slatted object lies at the bottom centre of the image (outside the shipment area)."
+  },
+  "match": {
+   "iou_match": 0.5,
+   "iou_partial": 0.1,
+   "type_keywords": [
+    "pallet",
+    "skid",
+    "팔레트"
+   ],
+   "alt_type_keywords": [
+    "grate",
+    "grating",
+    "grid",
+    "slatted",
+    "mat",
+    "격자",
+    "그레이팅",
+    "철망",
+    "배수"
+   ],
+   "qwen_box_max_area_ratio": 10
+  }
+ },
+ "discovery": {
+  "A_full_image": {
+   "candidates": [],
+   "parse_error": null,
+   "status": "NOT_DISCOVERED",
+   "reference_selected_by_qwen": false
+  },
+  "B_zone_crop": {
+   "candidates": [],
+   "parse_error": null,
+   "status": "NOT_DISCOVERED",
+   "reference_selected_by_qwen": false
+  }
+ },
+ "detection": {
+  "best_candidate": null,
+  "best_iou": 0.0,
+  "grade": "NO"
+ },
+ "detection_diagnostics": {
+  "THRESHOLD_LOW": {
+   "best_iou": 0.0,
+   "best": null,
+   "n_merged": 0,
+   "note": "diagnostic: never used by the selection"
+  },
+  "VOCABULARY": {
+   "best_iou": 0.85,
+   "best": {
+    "id": "m6",
+    "rank": 6,
+    "bbox_xyxy": [
+     1590.85,
+     250.44,
+     1640.76,
+     289.23
+    ],
+    "score": 0.3396,
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "table",
+     "truck bed"
+    ],
+    "conditions": [
+     "VOCABULARY_FULL",
+     "VOCABULARY_ROI_X2"
+    ]
+   },
+   "n_merged": 68,
+   "note": "diagnostic: never used by the selection; contains the reference type -> not open-ended"
+  }
+ },
+ "selection": {
+  "decision": "AMBIGUOUS",
+  "selected": null,
+  "iou_with_reference": 0.0,
+  "grade": "NO_SELECTION",
+  "reference_candidate_states": null
+ },
+ "grounding": null,
+ "navigation": {
+  "status": "NOT_RUN (no SELECTED target)",
+  "route": null
+ },
+ "reference_oracle_route_DIAGNOSTIC": {
+  "note": "route to the reference box itself (evaluation only; shows whether navigation would work if the reference were chosen)",
+  "bbox_xyxy": [
+   1593,
+   252,
+   1640,
+   287
+  ],
+  "floor_polygon_cm": [
+   [
+    288.7,
+    55.7
+   ],
+   [
+    298.2,
+    56.0
+   ],
+   [
+    296.9,
+    64.8
+   ],
+   [
+    287.4,
+    64.6
+   ]
+  ],
+  "floor_contact_cm": [
+   292.2,
+   64.7
+  ],
+  "floor_contact_rule": "bottom-centre of the box (image) -> floor cm; the box polygon projection is kept as the approach target",
+  "box_centre_projection_cm": [
+   292.8,
+   60.3
+  ],
+  "projection_spread_cm": 4.4,
+  "zones_containing_contact": [
+   "NONE (outside every DRAFT zone: not drivable)"
+  ],
+  "gap_polygon_to_drivable_zone_cm": 1.2,
+  "route_B": {
+   "path_B_feasible": true,
+   "heading_deg": 0,
+   "goal_cm": [
+    273.0,
+    83.0
+   ],
+   "goal_image_px": [
+    1533.4,
+    363.8
+   ],
+   "length_cm": 202.1,
+   "astar_cost": 1132.239,
+   "gap_cm": 6.2,
+   "v02_goal_score_cm": 318.31,
+   "note": null,
+   "waypoints_cm": [
+    [
+     83.0,
+     113.0
+    ],
+    [
+     101.0,
+     89.0
+    ],
+    [
+     273.0,
+     83.0
+    ]
+   ],
+   "footprint_extent_xy_cm": [
+    42.0,
+    31.0
+   ],
+   "whole_body_sweep_ok": true,
+   "v02_valid": true,
+   "layers": {
+    "px_per_cm": 4,
+    "body_px": 136016,
+    "on_static_obstacle_px": 0,
+    "on_no_go_px": 0,
+    "outside_drivable_px": 0,
+    "outside_workspace_px": 0,
+    "samples_off_canvas": 0,
+    "clear": true
+   }
+  },
+  "body_gap_to_contact_point_cm": 5.9
+ },
+ "stages": {
+  "Discovery": {
+   "A_full_image": "NOT_DISCOVERED",
+   "B_zone_crop": "NOT_DISCOVERED"
+  },
+  "Detection": "NO",
+  "Selection": "AMBIGUOUS -> NO_SELECTION",
+  "Grounding": "NOT_RUN",
+  "Navigation": "NOT_RUN (no SELECTED target)"
+ },
+ "first_failing_stage": "DISCOVERY: the model did not name or locate the reference",
+ "rates": "NOT COMPUTED (one photo)"
+}

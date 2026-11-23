@@ -1,0 +1,395 @@
+{
+ "run_id": "run_010_U25070552",
+ "created": "2026-11-21T07:14:52",
+ "instruction": "하역장 옆에 있는 물체를 컨베이어 벨트 옆에 놓아줘.",
+ "rules": "R1",
+ "pipeline": "hybrid_exemplar_20261121",
+ "vlm_backend": {
+  "key": "qwen3vl_4b_bf16",
+  "label": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "where": "v02_worker"
+ },
+ "exemplar_model": {
+  "model_id": "google/siglip2-so400m-patch14-384",
+  "dtype": "float16",
+  "batch": 16
+ },
+ "photo": {
+  "photo_id": "U25070552",
+  "path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "photo_detection": {
+  "how": "REPLAY: stored DINO candidates and facility boxes of 20261120_133027_run (same MMViewer photo stage)",
+  "file": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/photos/U25070552.json"
+ },
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "config": {
+  "hybrid": "/home/binci/vlm_ws/hybrid_exemplar_20261121/config.yaml",
+  "viewer": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml"
+ },
+ "model_called": true,
+ "source": {
+  "status": "NOT_FOUND",
+  "ids": [],
+  "boxes": [],
+  "why": "NOT_AT_REFERENCE: the cube (top-1 0.909, margin 0.052 >= 0.02) is not near 'truck_loading_bay'",
+  "class": "cube",
+  "exemplar": {
+   "s1": 0.9088,
+   "s2": 0.8564,
+   "top_id": "m15",
+   "top_box": [
+    431.68,
+    414.15,
+    452.07,
+    434.04
+   ]
+  },
+  "candidates": [
+   {
+    "id": "m15",
+    "bbox_xyxy": [
+     431.68,
+     414.15,
+     452.07,
+     434.04
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.909
+     ]
+    ]
+   },
+   {
+    "id": "m79",
+    "bbox_xyxy": [
+     1303.0,
+     93.95,
+     1312.33,
+     113.08
+    ],
+    "phrases": [
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.856
+     ]
+    ]
+   },
+   {
+    "id": "m23",
+    "bbox_xyxy": [
+     946.17,
+     849.09,
+     982.38,
+     885.61
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.845
+     ]
+    ]
+   },
+   {
+    "id": "m41",
+    "bbox_xyxy": [
+     552.06,
+     205.19,
+     571.48,
+     227.85
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.844
+     ]
+    ]
+   },
+   {
+    "id": "m67",
+    "bbox_xyxy": [
+     1687.44,
+     239.87,
+     1712.21,
+     272.11
+    ],
+    "phrases": [
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.827
+     ]
+    ]
+   }
+  ]
+ },
+ "destination": {
+  "status": "NOT_RUN"
+ },
+ "timing_s": {
+  "photo_stage_this_run": 0.0,
+  "exemplar": 0.0,
+  "slots": 0.0,
+  "source": 0.0
+ },
+ "exemplar": {
+  "bank_used": {
+   "cube": [
+    "U23678143:refobj_cube",
+    "U24768580:refobj_cube",
+    "U24837448:refobj_cube",
+    "U25967031:refobj_cube",
+    "U26007129:refobj_cube"
+   ],
+   "empty_pallet": [
+    "U23678143:refobj_empty_pad_0",
+    "U24768580:refobj_empty_pad_0",
+    "U24837448:refobj_empty_pad_0",
+    "U24898553:refobj_empty_pad_0",
+    "U26007129:refobj_empty_pad_0"
+   ]
+  },
+  "bank_dropped_same_place": [
+   "U24898553:refobj_cube",
+   "U25137685:refobj_cube",
+   "U25967031:refobj_empty_pad_0"
+  ],
+  "n_dino": 98,
+  "n_gated": 35,
+  "scores": {
+   "cube": {
+    "m3": 0.7644,
+    "m4": 0.7672,
+    "m5": 0.7537,
+    "m6": 0.7868,
+    "m7": 0.8116,
+    "m8": 0.8021,
+    "m10": 0.7759,
+    "m11": 0.8066,
+    "m12": 0.7985,
+    "m13": 0.8063,
+    "m14": 0.7886,
+    "m15": 0.9088,
+    "m17": 0.7393,
+    "m18": 0.7897,
+    "m21": 0.7887,
+    "m23": 0.845,
+    "m27": 0.8246,
+    "m29": 0.666,
+    "m32": 0.7946,
+    "m41": 0.8442,
+    "m42": 0.6899,
+    "m43": 0.8176,
+    "m47": 0.7224,
+    "m51": 0.7495,
+    "m54": 0.7065,
+    "m65": 0.7698,
+    "m67": 0.8271,
+    "m74": 0.8101,
+    "m79": 0.8564,
+    "m80": 0.7366,
+    "m83": 0.7793,
+    "m87": 0.7782,
+    "m94": 0.7964,
+    "m96": 0.6891,
+    "m98": 0.7137
+   },
+   "empty_pallet": {
+    "m3": 0.7738,
+    "m4": 0.7756,
+    "m5": 0.7663,
+    "m6": 0.7864,
+    "m7": 0.8032,
+    "m8": 0.7832,
+    "m10": 0.7841,
+    "m11": 0.7947,
+    "m12": 0.8081,
+    "m13": 0.8039,
+    "m14": 0.7844,
+    "m15": 0.7653,
+    "m17": 0.7712,
+    "m18": 0.7851,
+    "m21": 0.7846,
+    "m23": 0.808,
+    "m27": 0.8026,
+    "m29": 0.7382,
+    "m32": 0.8955,
+    "m41": 0.7864,
+    "m42": 0.7238,
+    "m43": 0.8152,
+    "m47": 0.7407,
+    "m51": 0.7538,
+    "m54": 0.737,
+    "m65": 0.7637,
+    "m67": 0.7863,
+    "m74": 0.8073,
+    "m79": 0.7952,
+    "m80": 0.776,
+    "m83": 0.7625,
+    "m87": 0.7711,
+    "m94": 0.7985,
+    "m96": 0.7235,
+    "m98": 0.7855
+   }
+  }
+ },
+ "slots": {
+  "parsed": {
+   "object": "any object",
+   "object_words": "물체",
+   "source_landmark": "truck_loading_bay",
+   "source_relation": "near",
+   "destination_kind": "near_landmark",
+   "destination_landmark": "conveyor",
+   "destination_relation": "near",
+   "destination_words": "컨베이어 벨트 옆"
+  },
+  "error": null
+ },
+ "references": {
+  "source": {
+   "name": "truck_loading_bay",
+   "class": "truck",
+   "box": [
+    1447.27,
+    0.19,
+    1687.36,
+    149.58
+   ],
+   "how": "DINO + SigLIP2 ('a truck' in top 1)",
+   "relation": "near",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     1303,
+     0,
+     1832,
+     294
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  },
+  "destination": {
+   "name": "conveyor",
+   "class": "conveyor",
+   "box": [
+    225.57,
+    272.97,
+    461.76,
+    766.68
+   ],
+   "how": "DINO + SigLIP2 ('a production line with a conveyor and robot arms' in top 1)",
+   "relation": "near",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     0,
+     0,
+     758,
+     1063
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  }
+ },
+ "stages": [
+  {
+   "name": "exemplar_scores",
+   "status": "OK",
+   "summary": "35 of 98 DINO candidates in the size gate; exemplars cube 5, empty_pallet 5 (dropped same place: 3)",
+   "model": "google/siglip2-so400m-patch14-384"
+  },
+  {
+   "name": "slots",
+   "status": "OK",
+   "summary": "object 'any object' (물체) | from: near truck_loading_bay | to: near_landmark (near conveyor)",
+   "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "truck_loading_bay [near] -> vicinity (DINO + SigLIP2 ('a truck' in top 1))",
+   "model": "Python"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "conveyor [near] -> vicinity (DINO + SigLIP2 ('a production line with a conveyor and robot arms' in top 1))",
+   "model": "Python"
+  },
+  {
+   "name": "source_decision",
+   "status": "FAILED",
+   "summary": "NOT_FOUND []: NOT_AT_REFERENCE: the cube (top-1 0.909, margin 0.052 >= 0.02) is not near 'truck_loading_bay'",
+   "model": "google/siglip2-so400m-patch14-384 + Python"
+  },
+  {
+   "name": "model_worker",
+   "status": "FAILED",
+   "summary": "REPLAY_NO_GPU: near-landmark destination needs SigLIP2 base + Qwen; not replayed",
+   "model": "-"
+  }
+ ],
+ "first_failure": "source_decision",
+ "wall_s": 0.0,
+ "models_used": {
+  "this_run": {},
+  "photo_preparation": {}
+ },
+ "handoff": {
+  "photo_id": "U25070552",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": null,
+  "destination": null
+ },
+ "narrative": [
+  "해석(Qwen 4B, 글자만): 옮길 것 'any object', 출발 기준 truck_loading_bay(near), 놓을 곳 near_landmark(near conveyor).",
+  "A: 찾지 못함/보류  - NOT_AT_REFERENCE: the cube (top-1 0.909, margin 0.052 >= 0.02) is not near 'truck_loading_bay'",
+  "B: 실행 안 됨  - "
+ ],
+ "files": {
+  "overlay": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/runs/run_010_U25070552/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/runs/run_010_U25070552/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/runs/run_010_U25070552/run.json"
+ },
+ "REPLAY": {
+  "slots": "ASSUMED_CORRECT_NOT_MODEL_OUTPUT",
+  "data": [
+   "/home/binci/vlm_ws/semantic_task_navigation/experiments/siglip_small_object_test/results/20261120_133027_run",
+   "/home/binci/vlm_ws/semantic_task_navigation/experiments/siglip_small_object_test/results/20261120_141616_followup_siglip_so400m"
+  ]
+ }
+}

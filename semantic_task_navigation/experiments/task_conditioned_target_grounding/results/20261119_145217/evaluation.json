@@ -1,0 +1,698 @@
+{
+ "reference": {
+  "objects": {
+   "P_SRC": {
+    "bbox_xyxy_px": [
+     422,
+     410,
+     468,
+     449
+    ],
+    "type": "small grey slatted pallet",
+    "state": "occupied (red object on top)",
+    "side": "source (next to the conveyor",
+    "under the robot-arm end)": null,
+    "basis": "user: '블록이 올라간 팔레트'; located by the AI; the stored v0.2 DINO box [420.7, 407.1, 468.4, 449.4] ('small red block') covers it"
+   },
+   "P_DST": {
+    "bbox_xyxy_px": [
+     1593,
+     252,
+     1640,
+     287
+    ],
+    "type": "small grey slatted pallet",
+    "state": "empty",
+    "side": "destination (between cones in front of the truck)",
+    "basis": "user: intended placement target of T1 (placement_target_grounding reference)"
+   },
+   "P_BOTTOM_EMPTY": {
+    "bbox_xyxy_px": [
+     992,
+     883,
+     1107,
+     997
+    ],
+    "type": "large light-grey pallet",
+    "state": "empty",
+    "side": "neither (bottom centre",
+    "outside the drivable zone)": null
+   },
+   "P_BOTTOM_DRUMS": {
+    "bbox_xyxy_px": [
+     1127,
+     872,
+     1247,
+     987
+    ],
+    "type": "dark pallet",
+    "state": "occupied (4 drums)",
+    "side": "neither (bottom centre)"
+   }
+  },
+  "match_iou": 0.5,
+  "interpretation_keywords": {
+   "source": [
+    "conveyor",
+    "컨베이어"
+   ],
+   "destination": [
+    "truck",
+    "loading",
+    "dock",
+    "shipping",
+    "shipment",
+    "ship",
+    "트럭",
+    "하역",
+    "출하",
+    "적재"
+   ]
+  },
+  "expected": {
+   "T1": {
+    "destination": "P_DST",
+    "source_support": "P_SRC"
+   },
+   "T2": {
+    "destination_not": "P_DST",
+    "acceptable": "a support outside the shipment area (storage / staging: central cargo stack, material staging, bottom pallets) or no unique choice (AMBIGUOUS)"
+   },
+   "T3": {
+    "destination_not": "P_DST",
+    "source": "the truck / the box on its bed",
+    "acceptable_destination": "anything on the conveyor side (centre inside the SRC region) or AMBIGUOUS"
+   },
+   "T4": {
+    "expected": "no selection (AMBIGUOUS / NOT_FOUND / UNVERIFIED); any SELECTED destination is a false selection"
+   }
+  }
+ },
+ "stage1_interpretation": {
+  "A1": {
+   "source_names_conveyor": true,
+   "destination_names_shipping": true,
+   "destination_box_on_area5": false,
+   "source_text": "컨베이어 벨트 위에 빨간 큐브가 있는 구역 red cube",
+   "destination_text": "출하 가능한 장소로, 출하 표시가 있는 구역"
+  },
+  "A2": {
+   "source_names_conveyor": true,
+   "destination_names_shipping": true,
+   "destination_box_on_area5": false,
+   "source_text": "the conveyor belt area, though not visible, is implied by the task instruction. red cube",
+   "destination_text": "the designated area for shipping the red cube, which is not visible in the image."
+  },
+  "A3": {
+   "status": "N/A (neutral)",
+   "error": null
+  },
+  "T2": {
+   "source_names_conveyor": true,
+   "destination_names_shipping": false,
+   "destination_box_on_area5": false,
+   "source_text": "컨베이어 벨트 주변의 작업장 red cube",
+   "destination_text": "작업장 내 보관용 장소"
+  },
+  "T3": {
+   "source_names_conveyor": false,
+   "destination_names_shipping": false,
+   "destination_box_on_area5": false,
+   "source_text": "truck bed area with a box on it box",
+   "destination_text": "conveyor belt area with robotic arms"
+  },
+  "T4": {
+   "source_names_conveyor": true,
+   "destination_names_shipping": false,
+   "destination_box_on_area5": false,
+   "source_text": "컨베이어 벨트 주변의 작업 구역 red cube",
+   "destination_text": "냉동 보관 창고"
+  }
+ },
+ "discovery": {
+  "P_SRC": {
+   "qwen_located_in": {
+    "T2": [
+     {
+      "kind": "source_object",
+      "name": "red cube",
+      "state": null,
+      "iou": 0.464
+     }
+    ],
+    "T4": [
+     {
+      "kind": "source_object",
+      "name": "red cube",
+      "state": null,
+      "iou": 0.445
+     }
+    ]
+   },
+   "dino_candidates": [
+    {
+     "id": "m50",
+     "iou": 0.919,
+     "phrase_sources": [
+      "existing_vocabulary",
+      "qwen_generated"
+     ],
+     "phrases": [
+      "box",
+      "cardboard box",
+      "container",
+      "pallet",
+      "red cube"
+     ],
+     "best_rank_by_condition": {
+      "Q_D2": 34,
+      "V_D2": 58
+     }
+    }
+   ]
+  },
+  "P_DST": {
+   "qwen_located_in": {},
+   "dino_candidates": [
+    {
+     "id": "m28",
+     "iou": 0.85,
+     "phrase_sources": [
+      "existing_vocabulary",
+      "qwen_generated"
+     ],
+     "phrases": [
+      "box",
+      "cardboard box",
+      "cart",
+      "container",
+      "conveyor belt",
+      "green safety zone",
+      "pallet",
+      "red cube",
+      "robotic arm",
+      "shelf",
+      "stack of cardboard boxes",
+      "table",
+      "truck bed",
+      "yellow marked area"
+     ],
+     "best_rank_by_condition": {
+      "Q_D1": 193,
+      "Q_D3": 22,
+      "V_D1": 162,
+      "V_D3": 13
+     }
+    }
+   ]
+  },
+  "P_BOTTOM_EMPTY": {
+   "qwen_located_in": {},
+   "dino_candidates": [
+    {
+     "id": "m45",
+     "iou": 0.927,
+     "phrase_sources": [
+      "existing_vocabulary",
+      "qwen_generated"
+     ],
+     "phrases": [
+      "box",
+      "cardboard box",
+      "cart",
+      "container",
+      "conveyor belt",
+      "pallet",
+      "shelf"
+     ],
+     "best_rank_by_condition": {
+      "Q_D1": 138,
+      "V_D1": 31
+     }
+    }
+   ]
+  },
+  "P_BOTTOM_DRUMS": {
+   "qwen_located_in": {},
+   "dino_candidates": [
+    {
+     "id": "m51",
+     "iou": 0.938,
+     "phrase_sources": [
+      "existing_vocabulary",
+      "qwen_generated"
+     ],
+     "phrases": [
+      "box",
+      "cardboard box",
+      "cart",
+      "container",
+      "pallet",
+      "shelf"
+     ],
+     "best_rank_by_condition": {
+      "Q_D1": 144,
+      "V_D1": 53
+     }
+    }
+   ]
+  }
+ },
+ "roles": {
+  "P_SRC": {
+   "analysed": false,
+   "expected_load": "occupied",
+   "answers": [],
+   "correct_load": null,
+   "support_yes": null
+  },
+  "P_DST": {
+   "analysed": true,
+   "expected_load": "empty",
+   "answers": [
+    {
+     "id": "m28",
+     "object_type": "grate",
+     "is_support_surface": "no",
+     "load_state": "empty",
+     "objects_on_top": [],
+     "reason": "The object is a grate, not a surface designed to support items."
+    }
+   ],
+   "correct_load": true,
+   "support_yes": false
+  },
+  "P_BOTTOM_EMPTY": {
+   "analysed": false,
+   "expected_load": "empty",
+   "answers": [],
+   "correct_load": null,
+   "support_yes": null
+  },
+  "P_BOTTOM_DRUMS": {
+   "analysed": false,
+   "expected_load": "occupied",
+   "answers": [],
+   "correct_load": null,
+   "support_yes": null
+  }
+ },
+ "selection": {
+  "T1": {
+   "destination_status": "AMBIGUOUS",
+   "destination": null,
+   "destination_matches": null,
+   "source": null,
+   "source_matches": null,
+   "destination_bucket": null,
+   "expected": {
+    "destination": "P_DST",
+    "source_support": "P_SRC"
+   },
+   "as_expected": false,
+   "qwen_roles_for_reference": {
+    "P_SRC": null,
+    "P_DST": null
+   }
+  },
+  "T2": {
+   "destination_status": "UNVERIFIED",
+   "destination": "m21",
+   "destination_matches": null,
+   "source": "m14",
+   "source_matches": null,
+   "destination_bucket": "OTHER",
+   "expected": {
+    "destination_not": "P_DST",
+    "acceptable": "a support outside the shipment area (storage / staging: central cargo stack, material staging, bottom pallets) or no unique choice (AMBIGUOUS)"
+   },
+   "as_expected": true,
+   "qwen_roles_for_reference": {
+    "P_SRC": null,
+    "P_DST": null
+   }
+  },
+  "T3": {
+   "destination_status": "SELECTED",
+   "destination": "m30",
+   "destination_matches": null,
+   "source": "m12",
+   "source_matches": null,
+   "destination_bucket": "SRC",
+   "expected": {
+    "destination_not": "P_DST",
+    "source": "the truck / the box on its bed",
+    "acceptable_destination": "anything on the conveyor side (centre inside the SRC region) or AMBIGUOUS"
+   },
+   "as_expected": true,
+   "qwen_roles_for_reference": {
+    "P_SRC": null,
+    "P_DST": null
+   }
+  },
+  "T4": {
+   "destination_status": "AMBIGUOUS",
+   "destination": null,
+   "destination_matches": null,
+   "source": null,
+   "source_matches": null,
+   "destination_bucket": null,
+   "expected": {
+    "expected": "no selection (AMBIGUOUS / NOT_FOUND / UNVERIFIED); any SELECTED destination is a false selection"
+   },
+   "as_expected": true,
+   "qwen_roles_for_reference": {
+    "P_SRC": null,
+    "P_DST": null
+   }
+  }
+ },
+ "ablation": [
+  {
+   "instruction": "T1",
+   "condition": "A_detection_only",
+   "status": "SELECTED",
+   "destination": "m1",
+   "bucket": "DST",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T1",
+   "condition": "B_detection_proximity",
+   "status": "SELECTED",
+   "destination": "m14",
+   "bucket": "SRC",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T1",
+   "condition": "C_semantic",
+   "status": "AMBIGUOUS",
+   "destination": null,
+   "bucket": "",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T1",
+   "condition": "D_semantic_navigation",
+   "status": "AMBIGUOUS",
+   "destination": null,
+   "bucket": "",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T2",
+   "condition": "A_detection_only",
+   "status": "SELECTED",
+   "destination": "m1",
+   "bucket": "DST",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T2",
+   "condition": "B_detection_proximity",
+   "status": "SELECTED",
+   "destination": "m14",
+   "bucket": "SRC",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T2",
+   "condition": "C_semantic",
+   "status": "UNVERIFIED",
+   "destination": "m21",
+   "bucket": "OTHER",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T2",
+   "condition": "D_semantic_navigation",
+   "status": "UNVERIFIED",
+   "destination": null,
+   "bucket": "",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T3",
+   "condition": "A_detection_only",
+   "status": "SELECTED",
+   "destination": "m1",
+   "bucket": "DST",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T3",
+   "condition": "B_detection_proximity",
+   "status": "SELECTED",
+   "destination": "m14",
+   "bucket": "SRC",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T3",
+   "condition": "C_semantic",
+   "status": "SELECTED",
+   "destination": "m30",
+   "bucket": "SRC",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T3",
+   "condition": "D_semantic_navigation",
+   "status": "NOT_EVALUATED",
+   "destination": null,
+   "bucket": "",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T4",
+   "condition": "A_detection_only",
+   "status": "SELECTED",
+   "destination": "m1",
+   "bucket": "DST",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T4",
+   "condition": "B_detection_proximity",
+   "status": "SELECTED",
+   "destination": "m14",
+   "bucket": "SRC",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T4",
+   "condition": "C_semantic",
+   "status": "AMBIGUOUS",
+   "destination": null,
+   "bucket": "",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  },
+  {
+   "instruction": "T4",
+   "condition": "D_semantic_navigation",
+   "status": "NOT_EVALUATED",
+   "destination": null,
+   "bucket": "",
+   "route_B_cm": "",
+   "gap_cm": "",
+   "matches": null
+  }
+ ],
+ "reference_oracle_route_DIAGNOSTIC": {
+  "bbox_xyxy": [
+   1593,
+   252,
+   1640,
+   287
+  ],
+  "floor_contact_cm": [
+   292.2,
+   64.7
+  ],
+  "floor_polygon_cm": [
+   [
+    288.7,
+    55.7
+   ],
+   [
+    298.2,
+    56.0
+   ],
+   [
+    296.9,
+    64.8
+   ],
+   [
+    287.4,
+    64.6
+   ]
+  ],
+  "zones_containing_contact": [
+   "NONE (outside every DRAFT zone)"
+  ],
+  "route_B": {
+   "path_B_feasible": true,
+   "heading_deg": 0,
+   "goal_cm": [
+    273.0,
+    83.0
+   ],
+   "goal_image_px": [
+    1533.4,
+    363.8
+   ],
+   "length_cm": 202.1,
+   "astar_cost": 1132.239,
+   "gap_cm": 6.2,
+   "v02_goal_score_cm": 318.31,
+   "note": null,
+   "waypoints_cm": [
+    [
+     83.0,
+     113.0
+    ],
+    [
+     101.0,
+     89.0
+    ],
+    [
+     273.0,
+     83.0
+    ]
+   ],
+   "footprint_extent_xy_cm": [
+    42.0,
+    31.0
+   ],
+   "whole_body_sweep_ok": true,
+   "v02_valid": true,
+   "layers": {
+    "px_per_cm": 4,
+    "body_px": 136016,
+    "on_static_obstacle_px": 0,
+    "on_no_go_px": 0,
+    "outside_drivable_px": 0,
+    "outside_workspace_px": 0,
+    "samples_off_canvas": 0,
+    "clear": true
+   }
+  },
+  "note": "floor contact = bottom-centre of the box; the support's top surface is higher (unknown) and is not the floor point"
+ },
+ "stages": {
+  "1_task_interpretation": "PASS",
+  "2_context_aware_discovery": "PASS",
+  "3_object_role": "UNVERIFIED (reference pallet not role-analysed)",
+  "4_task_conditioned_selection": "PARTIAL (T1 target not selected)",
+  "5_navigation": "UNVERIFIED (NOT_RUN (destination AMBIGUOUS))"
+ },
+ "hypotheses": {
+  "H1_task_conditioned_discovery": {
+   "qwen_task_conditioned_located_P_DST": false,
+   "qwen_neutral_located_P_DST": false,
+   "dino_best_rank_of_P_DST_by_condition": {
+    "Q_D1": 193,
+    "Q_D3": 22,
+    "V_D1": 162,
+    "V_D3": 13
+   },
+   "roi_improves_rank": {
+    "Q": true,
+    "V": true
+   },
+   "status": "PARTIAL"
+  },
+  "H2_object_role": {
+   "status": "UNVERIFIED (reference pallet not role-analysed)",
+   "roles": {
+    "P_SRC": {
+     "analysed": false,
+     "expected_load": "occupied",
+     "answers": [],
+     "correct_load": null,
+     "support_yes": null
+    },
+    "P_DST": {
+     "analysed": true,
+     "expected_load": "empty",
+     "answers": [
+      {
+       "id": "m28",
+       "object_type": "grate",
+       "is_support_surface": "no",
+       "load_state": "empty",
+       "objects_on_top": [],
+       "reason": "The object is a grate, not a surface designed to support items."
+      }
+     ],
+     "correct_load": true,
+     "support_yes": false
+    },
+    "P_BOTTOM_EMPTY": {
+     "analysed": false,
+     "expected_load": "empty",
+     "answers": [],
+     "correct_load": null,
+     "support_yes": null
+    },
+    "P_BOTTOM_DRUMS": {
+     "analysed": false,
+     "expected_load": "occupied",
+     "answers": [],
+     "correct_load": null,
+     "support_yes": null
+    }
+   }
+  },
+  "H3_task_dependent_selection": {
+   "status": "PARTIAL (T1 target not selected)",
+   "per_instruction": {
+    "T1": false,
+    "T2": true,
+    "T3": true,
+    "T4": true
+   },
+   "destinations": {
+    "T1": null,
+    "T2": "m21",
+    "T3": "m30",
+    "T4": null
+   }
+  },
+  "H4_navigation": {
+   "status": "UNVERIFIED (NOT_RUN (destination AMBIGUOUS))"
+  }
+ },
+ "rates": "NOT COMPUTED (one photo)"
+}

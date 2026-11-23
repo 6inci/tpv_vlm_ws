@@ -1,0 +1,183 @@
+{
+  "observed_objects": [
+    {
+      "label": "robotic arm",
+      "count": 4,
+      "location_in_image": "top-left and bottom-left corners",
+      "visible_evidence": "white and gray articulated arms mounted on bases"
+    },
+    {
+      "label": "truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "white cab with cargo bed, parked on marked area"
+    },
+    {
+      "label": "stack of boxes",
+      "count": 1,
+      "location_in_image": "center",
+      "visible_evidence": "brown cardboard boxes stacked on a pallet"
+    },
+    {
+      "label": "cones",
+      "count": 10,
+      "location_in_image": "scattered across the floor",
+      "visible_evidence": "orange traffic cones placed on the black floor"
+    },
+    {
+      "label": "barriers",
+      "count": 2,
+      "location_in_image": "top-center and bottom-left",
+      "visible_evidence": "green and gray modular barriers"
+    },
+    {
+      "label": "battery charging station",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "black robot with charging port, marked with lightning symbol"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "whiteboard with Korean writing"
+    },
+    {
+      "label": "pallets with containers",
+      "count": 3,
+      "location_in_image": "right-center and bottom-center",
+      "visible_evidence": "wooden pallets holding black, gray, and blue barrels"
+    },
+    {
+      "label": "grate",
+      "count": 2,
+      "location_in_image": "bottom-center and top-center",
+      "visible_evidence": "metal grates on the floor"
+    },
+    {
+      "label": "red button",
+      "count": 1,
+      "location_in_image": "bottom-left",
+      "visible_evidence": "small red button on a gray base"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "production zone",
+      "bbox_2d": [
+        75,
+        260,
+        270,
+        730
+      ],
+      "observed_evidence": [
+        "robotic arms",
+        "conveyor belt-like structure",
+        "purple and white equipment"
+      ],
+      "inference": "This area contains robotic arms and production equipment, suggesting it is where items are manufactured or assembled.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "unloading zone",
+      "bbox_2d": [
+        700,
+        0,
+        900,
+        280
+      ],
+      "observed_evidence": [
+        "truck",
+        "cones",
+        "marked parking space"
+      ],
+      "inference": "The truck is parked in a designated area with cones, indicating this is a designated unloading or loading zone.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_3",
+      "function_name": "storage area",
+      "bbox_2d": [
+        610,
+        430,
+        950,
+        730
+      ],
+      "observed_evidence": [
+        "pallets with containers",
+        "barriers",
+        "cones"
+      ],
+      "inference": "This area contains storage pallets and containers, suggesting it is for storing goods.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_4",
+      "function_name": "charging station",
+      "bbox_2d": [
+        660,
+        760,
+        970,
+        950
+      ],
+      "observed_evidence": [
+        "battery charging station",
+        "lightning symbol",
+        "green panels"
+      ],
+      "inference": "The charging station is clearly marked with a lightning symbol and has a robot nearby, indicating it is for charging equipment.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_5",
+      "function_name": "central work area",
+      "bbox_2d": [
+        270,
+        280,
+        660,
+        730
+      ],
+      "observed_evidence": [
+        "stack of boxes",
+        "grates",
+        "cones"
+      ],
+      "inference": "This area is centrally located and contains a stack of boxes and grates, suggesting it is a general work or transit area.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_6",
+      "function_name": "control or monitoring station",
+      "bbox_2d": [
+        330,
+        760,
+        460,
+        950
+      ],
+      "observed_evidence": [
+        "whiteboard",
+        "red button"
+      ],
+      "inference": "The whiteboard and red button suggest a control or monitoring station for operations.",
+      "confidence": "medium"
+    }
+  ],
+  "task_analysis": {
+    "place_needed_for_task": "unloading zone for a truck",
+    "decision": "proposed",
+    "destination_area_id": "area_2",
+    "reason": "The instruction asks to place an object at the truck's unloading zone, which is clearly marked and designated in the image with the truck parked and cones around it."
+  },
+  "unknown_from_image": [
+    "The location of the red cubes (the object to be moved)",
+    "Whether the robotic arms are currently moving or have produced the cubes",
+    "The exact size or shape of the red cubes"
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cubes are actually present and located on the conveyor belt",
+    "Whether the robotic arms are currently operating and have produced the cubes",
+    "Whether the truck is accessible and ready to receive the cubes"
+  ]
+}

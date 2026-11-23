@@ -1,0 +1,95 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "46fbe7cf16da1d1408f06f669dad908ded040c14916314008b69fe04fa1b35ff",
+  "image_path": "/home/binci/Pictures/Calibration/7calibration.png",
+  "image_sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2712,
+  "n_output_tokens": 470,
+  "hit_max_new_tokens": false,
+  "latency_s": 18.353,
+  "wall_s": 18.49,
+  "peak_vram_gib": 7.114,
+  "raw_response": "{\n  \"purpose\": \"Move a red cube to an empty pallet.\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"stacked cardboard boxes\",\n    \"bbox_2d\": [415, 392, 485, 542]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"empty pallet\",\n  \"destination_reference\": {\n    \"name_en\": \"pallet\",\n    \"bbox_2d\": [630, 430, 935, 542],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"on\",\n  \"zones_seen\": [\n    {\n      \"description\": \"robot driving area\",\n      \"visual_evidence\": [\"yellow outer boundary line\", \"black floor\"],\n      \"bbox_2d\": [25, 27, 985, 968],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"conveyor and robot arm workcell\",\n      \"visual_evidence\": [\"white inner boundary\", \"conveyor belt\", \"robot arms\"],\n      \"bbox_2d\": [100, 260, 265, 730],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"green pedestrian walkway\",\n      \"visual_evidence\": [\"green floor\", \"footprint symbols\"],\n      \"bbox_2d\": [300, 50, 550, 275],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"truck unloading zone\",\n      \"visual_evidence\": [\"truck\", \"dashed white lines\"],\n      \"bbox_2d\": [620, 0, 880, 170],\n      \"robot_body_access\": \"unknown\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact location of the red cube is not visible in the image.\",\n    \"The specific empty pallet destination is not clearly identified, inferred from context.\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_013_U25967031",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/7calibration.png",
+  "image_sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "prompts": [
+   "stacked cardboard boxes"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 28,
+  "wall_s": 0.31,
+  "peak_vram_gib": 1.916
+ },
+ {
+  "stage": "dino_roi_U25967031_conveyor_run_013_U25967031",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/photos/U25967031_inputs/roi_conveyor.png",
+  "image_sha256": "cf1e7a65f5a22f7515b093c1dc5519ac4d70727987bc95f9eb68aab7ca758abc",
+  "prompts": [
+   "stacked cardboard boxes"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 22,
+  "wall_s": 0.29,
+  "peak_vram_gib": 1.837
+ },
+ {
+  "stage": "dino_roi_U25967031_truck_run_013_U25967031",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/photos/U25967031_inputs/roi_truck.png",
+  "image_sha256": "80d95585c1b76d8cb71b33221052984f6bf132a96e31b464519dcde04c2ed26c",
+  "prompts": [
+   "stacked cardboard boxes"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 20,
+  "wall_s": 0.28,
+  "peak_vram_gib": 1.906
+ },
+ {
+  "stage": "destination_1",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_destination_roles_v1",
+  "prompt_sha256": "1d8fc15a7c3158f03f1faee0e9b341347ec9d312280eed01c99bdf49e8ac5666",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_013_U25967031/inputs/destination_1.png",
+  "image_sha256": "2c6db46bdf7c5efd0135c67ced1ca5eddd11c73b27a37382561829a3b42ac8d5",
+  "image_size": [
+   1600,
+   347
+  ],
+  "n_input_tokens": 1397,
+  "n_output_tokens": 407,
+  "hit_max_new_tokens": false,
+  "latency_s": 14.732,
+  "wall_s": 14.8,
+  "peak_vram_gib": 6.729,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"a small pallet\", \"a storage rack\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by barrels, not suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"a small pallet\", \"a barrel\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by barrels, not suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"a small pallet\", \"a wooden pallet\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by a storage rack, not suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"a small pallet\", \"a barrel\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by barrels, not suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\"a cart\", \"a small pallet\", \"a conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by a cart, not suitable for placing a red cube.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\"a cart\", \"an empty floor area\", \"a truck cargo bed\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"empty floor area with no obstruction, suitable for placing a red cube.\"\n    }\n  ],\n  \"best_destination_id\": 6,\n  \"reason\": \"Only candidate 6 has an empty floor area suitable for placing the red cube.\"\n}"
+ }
+]

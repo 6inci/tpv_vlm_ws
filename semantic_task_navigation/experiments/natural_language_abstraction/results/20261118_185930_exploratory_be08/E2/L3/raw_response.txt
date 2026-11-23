@@ -1,0 +1,179 @@
+{
+  "observed_objects": [
+    {
+      "label": "robotic arm",
+      "count": 4,
+      "location_in_image": "top-left and bottom-left corners",
+      "visible_evidence": "four white robotic arms mounted on bases, positioned near conveyor belts or workstations"
+    },
+    {
+      "label": "truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "a white model truck with a cargo bed, parked near a marked area"
+    },
+    {
+      "label": "stack of boxes",
+      "count": 1,
+      "location_in_image": "center",
+      "visible_evidence": "a stack of brown cardboard boxes on a yellow-bordered platform"
+    },
+    {
+      "label": "cones",
+      "count": 12,
+      "location_in_image": "distributed across the floor",
+      "visible_evidence": "orange traffic cones placed along pathways and around equipment"
+    },
+    {
+      "label": "barriers",
+      "count": 2,
+      "location_in_image": "top and bottom edges",
+      "visible_evidence": "green and gray modular barriers or scaffolding structures"
+    },
+    {
+      "label": "battery charging station",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "a marked area with a lightning bolt symbol and two green charging units"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "a whiteboard with Korean text, partially legible"
+    },
+    {
+      "label": "pallets with containers",
+      "count": 3,
+      "location_in_image": "right side, near center",
+      "visible_evidence": "three pallets with black, gray, and blue cylindrical containers"
+    },
+    {
+      "label": "robotic vehicle",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "a black, wheeled robotic vehicle with visible mechanical components"
+    },
+    {
+      "label": "grate",
+      "count": 2,
+      "location_in_image": "bottom-center and top-center",
+      "visible_evidence": "gray metal grates on the floor"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "production zone",
+      "bbox_2d": [75, 260, 265, 730],
+      "observed_evidence": [
+        "robotic arms",
+        "conveyor-like structure",
+        "barriers"
+      ],
+      "inference": "This area contains robotic arms and conveyor-like structures, suggesting it is where goods are manufactured or assembled.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "central staging area",
+      "bbox_2d": [265, 260, 630, 730],
+      "observed_evidence": [
+        "stack of boxes",
+        "grates",
+        "cones"
+      ],
+      "inference": "This area is centrally located with no specific equipment, suggesting it is a staging or waiting zone for goods before they are moved to the next stage.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_3",
+      "function_name": "storage and sorting zone",
+      "bbox_2d": [630, 420, 960, 730],
+      "observed_evidence": [
+        "pallets with containers",
+        "robotic vehicle",
+        "cones"
+      ],
+      "inference": "This area contains pallets with various containers and a robotic vehicle, indicating it is used for storage, sorting, or preparation for transport.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_4",
+      "function_name": "delivery zone",
+      "bbox_2d": [630, 0, 960, 260],
+      "observed_evidence": [
+        "truck",
+        "cones",
+        "marked parking area"
+      ],
+      "inference": "The presence of a truck and marked parking area suggests this is the designated zone for receiving or delivering goods.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_5",
+      "function_name": "charging station",
+      "bbox_2d": [630, 730, 960, 960],
+      "observed_evidence": [
+        "lightning bolt symbol",
+        "charging units"
+      ],
+      "inference": "The symbol and charging units indicate this is a designated area for recharging robotic vehicles or equipment.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_6",
+      "function_name": "information and control zone",
+      "bbox_2d": [265, 730, 630, 960],
+      "observed_evidence": [
+        "whiteboard",
+        "grates",
+        "cones"
+      ],
+      "inference": "The whiteboard and control-like elements suggest this area is for monitoring, instruction, or coordination of the logistics process.",
+      "confidence": "medium"
+    }
+  ],
+  "task_analysis": {
+    "inferred_task_purpose": "The instruction asks to transfer a red cube that has been produced to the next logistics stage.",
+    "info_given_by_instruction": [
+      "생산된 빨간 큐브를 다음 물류 단계로 전달해 줘."
+    ],
+    "info_added_by_you": [
+      {
+        "statement": "The red cube is not visible in the image, so its location is unknown.",
+        "basis": "image"
+      },
+      {
+        "statement": "The next logistics stage is likely the area where goods are sorted, stored, or prepared for transport.",
+        "basis": "general_knowledge"
+      },
+      {
+        "statement": "The production zone (area_1) is where the red cube was likely produced.",
+        "basis": "general_knowledge"
+      },
+      {
+        "statement": "The storage and sorting zone (area_3) is a logical next step after production.",
+        "basis": "general_knowledge"
+      },
+      {
+        "statement": "The delivery zone (area_4) is the final destination for outgoing goods.",
+        "basis": "general_knowledge"
+      }
+    ],
+    "place_needed_for_task": "A designated area for receiving or sorting goods after production.",
+    "decision": "proposed",
+    "destination_area_id": "area_3",
+    "reason": "The instruction requires moving a product to the next logistics stage, and area_3 contains storage and sorting equipment, making it the most logical next step after production."
+  },
+  "unknown_from_image": [
+    "The location of the red cube is not visible in the image.",
+    "The exact identity of the 'next logistics stage' is not specified in the image.",
+    "The current state of the robotic arms or vehicles is unknown."
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is present and located in the production zone (area_1).",
+    "Whether the robotic arms or vehicles are operational and capable of moving the cube.",
+    "Whether the destination area (area_3) is accessible and clear for the cube to be placed."
+  ]
+}

@@ -1,0 +1,12 @@
+You are given one original full-resolution workspace scene image. The candidate is a pixel-space change relative to a fixed reference. It is not an object detection.
+
+image_id: image_012_photo_06
+track_id: track_011
+candidate_bbox_px: [1430,222,2016,1092]
+
+Determine whether a currently visible physical entity occupies or overlaps this candidate. A change may instead be an old-object ghost, shadow, background/exposure change, or ambiguous fragment.
+
+Return JSON only with exactly one result for the supplied track_id:
+{"image_id":"image_012_photo_06","candidate_results":[{"track_id":"track_id copied exactly","candidate_bbox_px":[x1,y1,x2,y2],"status":"VISIBLE_ENTITY_FOUND|NO_VISIBLE_ENTITY|AMBIGUOUS","visible_label":"specific visible name or null","semantic_type":"movable_object|static_obstacle|person|furniture|workspace_element|unknown","object_bbox_normalized_1000":[x1,y1,x2,y2] or null,"confidence_note":"short note"}]}
+
+For VISIBLE_ENTITY_FOUND, return the full visible physical entity bbox, not the change candidate bbox. object_bbox_normalized_1000 must contain INTEGER coordinates in the normalized 0-1000 full-image domain. Valid example: [125,240,680,910]. Invalid: [0.125,0.240,0.680,0.910]. candidate_bbox_px is raw pixel metadata: copy it only into candidate_bbox_px and never copy raw pixel values into object_bbox_normalized_1000. Do not repair or rescale an invalid domain. For NO_VISIBLE_ENTITY or AMBIGUOUS, use null bbox. Preserve track_id and candidate_bbox_px exactly. Do not estimate metric coordinates, physical dimensions, navigation roles, paths, robot actions, or obstacle geometry.

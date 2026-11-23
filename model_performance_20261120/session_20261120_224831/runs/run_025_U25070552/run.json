@@ -1,0 +1,1112 @@
+{
+ "run_id": "run_025_U25070552",
+ "created": "2026-11-20T23:23:32",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "rules": "R1",
+ "vlm_backend": {
+  "key": "qwen3vl_4b_bf16",
+  "label": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "where": "v02_worker"
+ },
+ "photo": {
+  "photo_id": "U25070552",
+  "path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "photo_detection": {
+  "how": "fresh Grounding DINO this session (task_context vocabulary + red cube / traffic cone / mobile robot; full image + verified facility ROIs), IoU merge 0.5",
+  "file": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/photos/U25070552.json",
+  "cube": "stored red-cube candidates of this photo (candidate_retention_policy: HSV colour + DINO)"
+ },
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "config": {
+  "viewer": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml",
+  "task_context": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml"
+ },
+ "model_called": true,
+ "source": {
+  "candidates": [
+   {
+    "id": "cand_r5",
+    "bbox_xyxy": [
+     269.06,
+     376.8,
+     315.14,
+     440.06
+    ],
+    "phrases": null,
+    "siglip_top3": [
+     [
+      "a floor marking",
+      0.333
+     ],
+     [
+      "a conveyor belt",
+      0.161
+     ],
+     [
+      "an orange object",
+      0.156
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.385
+       ],
+       [
+        "an orange object",
+        0.27
+       ],
+       [
+        "a conveyor belt",
+        0.072
+       ]
+      ],
+      "sigmoid_top": 0.012
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.281
+       ],
+       [
+        "a conveyor belt",
+        0.25
+       ],
+       [
+        "a robot arm",
+        0.125
+       ]
+      ],
+      "sigmoid_top": 0.0323
+     }
+    ]
+   },
+   {
+    "id": "cand_r34",
+    "bbox_xyxy": [
+     269.1,
+     377.12,
+     365.88,
+     445.36
+    ],
+    "phrases": null,
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.501
+     ],
+     [
+      "a conveyor belt",
+      0.127
+     ],
+     [
+      "a floor marking",
+      0.089
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.512
+       ],
+       [
+        "a floor marking",
+        0.081
+       ],
+       [
+        "an orange object",
+        0.069
+       ]
+      ],
+      "sigmoid_top": 0.0164
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.489
+       ],
+       [
+        "a conveyor belt",
+        0.206
+       ],
+       [
+        "a floor marking",
+        0.097
+       ]
+      ],
+      "sigmoid_top": 0.1532
+     }
+    ]
+   },
+   {
+    "id": "cand_r4",
+    "bbox_xyxy": [
+     329.52,
+     380.59,
+     365.91,
+     444.04
+    ],
+    "phrases": null,
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.691
+     ],
+     [
+      "a conveyor belt",
+      0.062
+     ],
+     [
+      "a floor marking",
+      0.047
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.719
+       ],
+       [
+        "a cart",
+        0.045
+       ],
+       [
+        "a mobile robot",
+        0.039
+       ]
+      ],
+      "sigmoid_top": 0.0274
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.662
+       ],
+       [
+        "a conveyor belt",
+        0.111
+       ],
+       [
+        "a floor marking",
+        0.088
+       ]
+      ],
+      "sigmoid_top": 0.0764
+     }
+    ]
+   },
+   {
+    "id": "cand_r1",
+    "bbox_xyxy": [
+     434.0,
+     417.0,
+     451.0,
+     432.0
+    ],
+    "phrases": null,
+    "siglip_top3": [
+     [
+      "an orange object",
+      0.409
+     ],
+     [
+      "a red cube",
+      0.22
+     ],
+     [
+      "a metal grate",
+      0.112
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.677
+       ],
+       [
+        "a red cube",
+        0.237
+       ],
+       [
+        "a metal grate",
+        0.025
+       ]
+      ],
+      "sigmoid_top": 0.1681
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.21
+       ],
+       [
+        "a red cube",
+        0.203
+       ],
+       [
+        "a metal grate",
+        0.198
+       ]
+      ],
+      "sigmoid_top": 0.024
+     }
+    ]
+   },
+   {
+    "id": "cand_r30",
+    "bbox_xyxy": [
+     317.72,
+     459.72,
+     367.53,
+     592.08
+    ],
+    "phrases": null,
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.398
+     ],
+     [
+      "a truck",
+      0.178
+     ],
+     [
+      "a mobile robot",
+      0.125
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.687
+       ],
+       [
+        "an orange object",
+        0.093
+       ],
+       [
+        "a floor marking",
+        0.049
+       ]
+      ],
+      "sigmoid_top": 0.07
+     },
+     {
+      "top3": [
+       [
+        "a truck",
+        0.354
+       ],
+       [
+        "a mobile robot",
+        0.201
+       ],
+       [
+        "a conveyor belt",
+        0.134
+       ]
+      ],
+      "sigmoid_top": 0.0351
+     }
+    ]
+   },
+   {
+    "id": "cand_r17",
+    "bbox_xyxy": [
+     293.97,
+     578.84,
+     330.99,
+     654.35
+    ],
+    "phrases": null,
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.431
+     ],
+     [
+      "an orange object",
+      0.192
+     ],
+     [
+      "a conveyor belt",
+      0.073
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.309
+       ],
+       [
+        "a robot arm",
+        0.269
+       ],
+       [
+        "a cart",
+        0.084
+       ]
+      ],
+      "sigmoid_top": 0.0143
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.593
+       ],
+       [
+        "a conveyor belt",
+        0.096
+       ],
+       [
+        "an orange object",
+        0.076
+       ]
+      ],
+      "sigmoid_top": 0.0365
+     }
+    ]
+   }
+  ],
+  "numbering": {
+   "1": "cand_r5",
+   "2": "cand_r34",
+   "3": "cand_r4",
+   "4": "cand_r1",
+   "5": "cand_r30",
+   "6": "cand_r17"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_025_U25070552/inputs/source_1.png",
+    "view_rect": [
+     225,
+     272,
+     461,
+     766
+    ],
+    "numbers": [
+     1,
+     6
+    ],
+    "usable": true,
+    "problems": []
+   }
+  ],
+  "problems": [],
+  "ratings": {
+   "cand_r5": {
+    "id": 1,
+    "appearance": [
+     "a floor marking"
+    ],
+    "role": "other",
+    "reason": "It is a floor marking, not the red cube."
+   },
+   "cand_r34": {
+    "id": 2,
+    "appearance": [
+     "a robot arm"
+    ],
+    "role": "other",
+    "reason": "It is a robot arm, not the red cube."
+   },
+   "cand_r4": {
+    "id": 3,
+    "appearance": [
+     "a robot arm"
+    ],
+    "role": "other",
+    "reason": "It is a robot arm, not the red cube."
+   },
+   "cand_r1": {
+    "id": 4,
+    "appearance": [
+     "an orange object",
+     "a red cube"
+    ],
+    "role": "object_to_move",
+    "reason": "The red cube is clearly marked in this box."
+   },
+   "cand_r30": {
+    "id": 5,
+    "appearance": [
+     "a robot arm"
+    ],
+    "role": "other",
+    "reason": "It is a robot arm, not the red cube."
+   },
+   "cand_r17": {
+    "id": 6,
+    "appearance": [
+     "a robot arm",
+     "an orange object"
+    ],
+    "role": "other",
+    "reason": "It is an orange object, not the red cube."
+   }
+  },
+  "reply_reason": "The red cube is located within the green box labeled 4.",
+  "status": "SELECTED",
+  "numbers": [
+   4
+  ],
+  "why": "exactly one candidate rated object_to_move",
+  "ids": [
+   "cand_r1"
+  ],
+  "boxes": [
+   [
+    434.0,
+    417.0,
+    451.0,
+    432.0
+   ]
+  ],
+  "type_check": {
+   "status": "AGREE",
+   "why": "'a red cube' within SigLIP2 top 2 ('an orange object' 0.41, 'a red cube' 0.22)"
+  }
+ },
+ "destination": {
+  "candidates": [
+   {
+    "id": "m44",
+    "bbox_xyxy": [
+     1125.33,
+     870.69,
+     1250.44,
+     988.3
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "empty pallet",
+     "pallet",
+     "shelf",
+     "stacked cardboard boxes"
+    ],
+    "siglip_top3": [
+     [
+      "a manhole cover",
+      0.39
+     ],
+     [
+      "a small pallet",
+      0.378
+     ],
+     [
+      "a metal grate",
+      0.045
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.738
+       ],
+       [
+        "a storage rack",
+        0.066
+       ],
+       [
+        "a wooden pallet",
+        0.039
+       ]
+      ],
+      "sigmoid_top": 0.2915
+     },
+     {
+      "top3": [
+       [
+        "a manhole cover",
+        0.757
+       ],
+       [
+        "a floor marking",
+        0.074
+       ],
+       [
+        "a metal grate",
+        0.054
+       ]
+      ],
+      "sigmoid_top": 0.188
+     }
+    ]
+   },
+   {
+    "id": "m38",
+    "bbox_xyxy": [
+     988.54,
+     881.54,
+     1108.59,
+     999.29
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "conveyor belt",
+     "empty pallet",
+     "pallet",
+     "shelf",
+     "stacked cardboard boxes"
+    ],
+    "siglip_top3": [
+     [
+      "a metal grate",
+      0.393
+     ],
+     [
+      "a manhole cover",
+      0.351
+     ],
+     [
+      "a small pallet",
+      0.1
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a metal grate",
+        0.755
+       ],
+       [
+        "a small pallet",
+        0.187
+       ],
+       [
+        "a floor marking",
+        0.016
+       ]
+      ],
+      "sigmoid_top": 0.3368
+     },
+     {
+      "top3": [
+       [
+        "a manhole cover",
+        0.691
+       ],
+       [
+        "a mobile robot",
+        0.058
+       ],
+       [
+        "a floor marking",
+        0.055
+       ]
+      ],
+      "sigmoid_top": 0.153
+     }
+    ]
+   }
+  ],
+  "numbering": {
+   "1": "m44",
+   "2": "m38"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_025_U25070552/inputs/destination_1.png",
+    "view_rect": [
+     988,
+     748,
+     1376,
+     1080
+    ],
+    "numbers": [
+     1,
+     2
+    ],
+    "usable": true,
+    "problems": []
+   }
+  ],
+  "problems": [],
+  "ratings": {
+   "m44": {
+    "id": 1,
+    "appearance": [
+     "a manhole cover",
+     "a small pallet",
+     "a metal grate"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "The pallet is occupied by four cylindrical objects and cannot accept a red cube."
+   },
+   "m38": {
+    "id": 2,
+    "appearance": [
+     "a metal grate",
+     "a manhole cover",
+     "a small pallet"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "The pallet is empty and located in the robot travel area, suitable for placing the red cube."
+   }
+  },
+  "reply_reason": "The empty pallet at 2 is in the robot travel area and can accept the red cube.",
+  "status": "NOT_ACCESSIBLE",
+  "number": null,
+  "kind": null,
+  "why": "Qwen best 2 not accessible; suitable/possible [2] none accessible",
+  "id": null,
+  "bbox_xyxy": null,
+  "accessibility": {
+   "m38": {
+    "gap_to_drivable_cm": 11.2,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     203.0,
+     161.0
+    ],
+    "approach_goal_image_px": [
+     1200.1,
+     730.6
+    ],
+    "body_gap_cm": 16.2,
+    "floor_polygon_cm": [
+     [
+      164.7,
+      189.1
+     ],
+     [
+      185.8,
+      189.1
+     ],
+     [
+      185.4,
+      209.6
+     ],
+     [
+      164.9,
+      209.7
+     ]
+    ],
+    "accessible": false,
+    "why": "11.2 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   }
+  },
+  "policy_no_placement_frac": {
+   "m38": 0.0
+  },
+  "policy_excluded": [],
+  "tied_ids": []
+ },
+ "interpretation": {
+  "parsed": {
+   "purpose": "Move the red cube to an empty pallet",
+   "source_object": {
+    "name_en": "red cube"
+   },
+   "source_reference": {
+    "name_en": "robot arm",
+    "bbox_2d": [
+     116,
+     256,
+     238,
+     438
+    ],
+    "bbox_image_px": [
+     222.7,
+     276.5,
+     457.0,
+     473.0
+    ]
+   },
+   "source_relation": "on",
+   "destination_meaning": "Empty pallet for placing the red cube",
+   "destination_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [
+     585,
+     804,
+     654,
+     912
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     1123.2,
+     868.3,
+     1255.7,
+     985.0
+    ]
+   },
+   "destination_relation": "next_to",
+   "zones_seen": [
+    {
+     "description": "Robot operation cell with conveyor and robotic arms",
+     "visual_evidence": [
+      "white border",
+      "robot arms"
+     ],
+     "bbox_2d": [
+      77,
+      266,
+      267,
+      730
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Main robot travel zone",
+     "visual_evidence": [
+      "yellow border",
+      "black floor"
+     ],
+     "bbox_2d": [
+      267,
+      276,
+      654,
+      730
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "Material storage area",
+     "visual_evidence": [
+      "yellow border",
+      "stacked containers"
+     ],
+     "bbox_2d": [
+      620,
+      438,
+      956,
+      730
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Pedestrian walkway",
+     "visual_evidence": [
+      "green floor",
+      "footprint symbols"
+     ],
+     "bbox_2d": [
+      305,
+      56,
+      558,
+      276
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Truck unloading zone",
+     "visual_evidence": [
+      "white truck",
+      "white dashed lines"
+     ],
+     "bbox_2d": [
+      680,
+      0,
+      888,
+      276
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Empty pallet area",
+     "visual_evidence": [
+      "black floor",
+      "no object"
+     ],
+     "bbox_2d": [
+      585,
+      804,
+      654,
+      912
+     ],
+     "robot_body_access": "allowed"
+    }
+   ],
+   "uncertainty": [
+    "The reach of the gripper is not confirmed."
+   ]
+  },
+  "error": null
+ },
+ "references": {
+  "source": {
+   "name": "robot arm",
+   "class": null,
+   "box": [
+    225.57,
+    272.97,
+    461.76,
+    766.68
+   ],
+   "how": "snapped to stored conveyor (IoU 0.39)",
+   "relation": "on",
+   "region": {
+    "type": "containment",
+    "rect": [
+     225,
+     272,
+     461,
+     766
+    ]
+   }
+  },
+  "destination": {
+   "name": "empty pallet",
+   "class": null,
+   "box": [
+    1123.2,
+    868.3,
+    1255.7,
+    985.0
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "next_to",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     1003,
+     748,
+     1376,
+     1080
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  }
+ },
+ "interpretation_check": {
+  "mentioned_but_not_used": []
+ },
+ "siglip_labels": [
+  "a red cube",
+  "an orange object",
+  "an orange traffic cone",
+  "a small pallet",
+  "a wooden pallet",
+  "a metal grate",
+  "a manhole cover",
+  "a mobile robot",
+  "a truck",
+  "a truck cargo bed",
+  "a cardboard box",
+  "a stack of boxes",
+  "a conveyor belt",
+  "a production line with a conveyor and robot arms",
+  "a robot arm",
+  "a storage shelf",
+  "a storage rack",
+  "a barrel",
+  "a table",
+  "a cart",
+  "a whiteboard",
+  "an empty floor area",
+  "a floor marking",
+  "a green pedestrian walkway"
+ ],
+ "stages": [
+  {
+   "name": "interpretation",
+   "status": "OK",
+   "summary": "move 'red cube' | from: on 'robot arm' | to: next_to 'empty pallet' (Empty pallet for placing the red cube)",
+   "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+  },
+  {
+   "name": "detection",
+   "status": "OK",
+   "summary": "DINO called for new phrases ['robot arm']: 5 new candidates (106 on this photo)",
+   "model": "IDEA-Research/grounding-dino-tiny"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "'robot arm' [on] -> containment (snapped to stored conveyor (IoU 0.39))",
+   "model": "Python"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "'empty pallet' [next_to] -> vicinity (Qwen box (no stored object with enough overlap))",
+   "model": "Python"
+  },
+  {
+   "name": "interpretation_check",
+   "status": "OK",
+   "summary": "every facility named in the instruction is one of the interpreted references",
+   "model": "Python"
+  },
+  {
+   "name": "source_candidates",
+   "status": "OK",
+   "summary": "6 of 38 stored red-cube candidates inside the region",
+   "model": "stored HSV colour + DINO candidates (candidate_retention_policy)"
+  },
+  {
+   "name": "source_siglip",
+   "status": "OK",
+   "summary": "6 candidates compared with 24 labels (object crop + context crop)",
+   "model": "google/siglip2-base-patch16-384"
+  },
+  {
+   "name": "source_vlm_roles",
+   "status": "OK",
+   "summary": "reply usable",
+   "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+  },
+  {
+   "name": "source_decision",
+   "status": "OK",
+   "summary": "SELECTED ['cand_r1']: exactly one candidate rated object_to_move",
+   "model": "Python"
+  },
+  {
+   "name": "source_type_check",
+   "status": "OK",
+   "summary": "AGREE: 'a red cube' within SigLIP2 top 2 ('an orange object' 0.41, 'a red cube' 0.22)",
+   "model": "google/siglip2-base-patch16-384 + Python"
+  },
+  {
+   "name": "destination_candidates",
+   "status": "OK",
+   "summary": "2 DINO candidates inside the region (object to move excluded; 0 region-scale boxes not numbered)",
+   "model": "IDEA-Research/grounding-dino-tiny"
+  },
+  {
+   "name": "destination_siglip",
+   "status": "OK",
+   "summary": "2 candidates compared with 24 labels",
+   "model": "google/siglip2-base-patch16-384"
+  },
+  {
+   "name": "destination_vlm_roles",
+   "status": "OK",
+   "summary": "reply usable",
+   "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+  },
+  {
+   "name": "destination_policy",
+   "status": "OK",
+   "summary": "no-placement zone ['Z01']: none of 1 suitable/possible candidates inside",
+   "model": "Python"
+  },
+  {
+   "name": "destination_access",
+   "status": "OK",
+   "summary": "0 of 1 candidates accessible from the robot start",
+   "model": "Python"
+  },
+  {
+   "name": "destination_decision",
+   "status": "FAILED",
+   "summary": "NOT_ACCESSIBLE   NOT_ACCESSIBLE: Qwen best 2 not accessible; suitable/possible [2] none accessible",
+   "model": "Python"
+  },
+  {
+   "name": "selection_check",
+   "status": "OK",
+   "summary": "1 chosen id(s) exist among the detected candidates with identical boxes",
+   "model": "Python"
+  }
+ ],
+ "first_failure": "destination_decision",
+ "wall_s": 40.2,
+ "models_used": {
+  "this_run": {
+   "VLM": {
+    "Qwen/Qwen3-VL-4B-Instruct": 3
+   },
+   "Grounding DINO": {
+    "IDEA-Research/grounding-dino-tiny": 3
+   }
+  },
+  "photo_preparation": {
+   "Grounding DINO": {
+    "IDEA-Research/grounding-dino-tiny": 4
+   },
+   "SigLIP2": {
+    "google/siglip2-base-patch16-384": 4
+   }
+  }
+ },
+ "handoff": {
+  "photo_id": "U25070552",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": {
+   "id": "cand_r1",
+   "bbox_xyxy": [
+    434.0,
+    417.0,
+    451.0,
+    432.0
+   ],
+   "floor_polygon_cm": [
+    [
+     49.4,
+     90.7
+    ],
+    [
+     53.0,
+     90.8
+    ],
+    [
+     53.5,
+     94.4
+    ],
+    [
+     50.0,
+     94.3
+    ]
+   ]
+  },
+  "destination": null
+ },
+ "narrative": [
+  "작업지시 해석(Qwen3-VL-4B-Instruct (bf16, v0.2 worker)): 'red cube'을(를) 'robot arm' 위에서 'Empty pallet for placing the red cube'(기준: 'empty pallet' 옆)(으)로 옮기는 작업입니다.",
+  "출발 탐색 영역에서 후보 6개를 비교했고, cand_r1(VLM: an orange object, SigLIP2 최상위: an orange object 0.41)를 운반 대상 A로 선정했습니다.",
+  "VLM이 적합하다고 본 목적지 후보는 있었지만 모두 로봇이 접근할 수 없어 B를 확정하지 않았습니다. (Qwen best 2 not accessible; suitable/possible [2] none accessible)",
+  "계획 미확정: A는 정했지만 B가 정해지지 않아 이동·배치 단계를 만들지 않았습니다."
+ ],
+ "files": {
+  "overlay": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_025_U25070552/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_025_U25070552/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_025_U25070552/run.json"
+ }
+}

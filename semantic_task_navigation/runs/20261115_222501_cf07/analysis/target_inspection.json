@@ -1,0 +1,163 @@
+{
+  "rois": [
+    {
+      "roi_index": 1,
+      "anchor": "conveyor_1",
+      "transform": {
+        "from_frame": "roi_local_px",
+        "to_frame": "raw_image_px",
+        "crop_xyxy_raw": [
+          176,
+          164,
+          581,
+          922
+        ],
+        "scale": 2.1108179419525066,
+        "zoom_size_wh": [
+          855,
+          1600
+        ],
+        "formula": "raw = crop_offset + roi / scale"
+      },
+      "zoom_path": "analysis/roi/roi_1_zoom.png"
+    }
+  ],
+  "candidates": [
+    {
+      "bbox_roi": {
+        "xyxy": [
+          405,
+          161,
+          426,
+          176
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        367.87,
+        240.27,
+        377.82,
+        247.38
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 41.1,
+        "aspect": 1.4,
+        "solidity": 0.865
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand1",
+      "verification": {
+        "status": "not_run",
+        "reason": "IMAGE_DEMO: no model"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          354,
+          101,
+          399,
+          173
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        343.71,
+        211.85,
+        365.03,
+        245.96
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 413.1,
+        "aspect": 1.6,
+        "solidity": 0.853
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand2",
+      "verification": {
+        "status": "not_run",
+        "reason": "IMAGE_DEMO: no model"
+      },
+      "coordinate_frame": "raw_image_px"
+    },
+    {
+      "bbox_roi": {
+        "xyxy": [
+          398,
+          921,
+          415,
+          949
+        ],
+        "frame": "roi_local_px"
+      },
+      "bbox_xyxy": [
+        364.55,
+        600.32,
+        372.61,
+        613.59
+      ],
+      "score": null,
+      "prompt": null,
+      "source": "hsv_color_shape",
+      "shape_stats": {
+        "area_raw_px": 53.9,
+        "aspect": 1.65,
+        "solidity": 0.805
+      },
+      "roi_index": 1,
+      "sources": [
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand3",
+      "verification": {
+        "status": "not_run",
+        "reason": "IMAGE_DEMO: no model"
+      },
+      "coordinate_frame": "raw_image_px"
+    }
+  ],
+  "n_candidates": 3,
+  "n_verified": 0,
+  "n_accepted": 0,
+  "description": "a small red cube",
+  "notes": [],
+  "target": {
+    "object_id": "red_cube_1",
+    "class_name": "red_cube",
+    "bbox_xyxy": [
+      581.0,
+      284.0,
+      604.0,
+      308.0
+    ],
+    "coordinate_frame": "raw_image_px",
+    "score": null,
+    "score_note": null,
+    "image_frame_id": 1,
+    "model_name": null,
+    "model_version": null,
+    "prompt": null,
+    "source": "manual_test_data",
+    "knowledge": "manual_test_data",
+    "accepted": true,
+    "verification": {
+      "status": "not_run",
+      "reason": "IMAGE_DEMO manual input"
+    },
+    "provenance": "EXP110 annotation P06 label 'block' variant 'red'"
+  },
+  "status": "MANUAL_TARGET_IMAGE_DEMO"
+}

@@ -1,0 +1,151 @@
+schema: navigation_handoff/approved_positions/v1
+photo: photo_1
+photo_file: 1calibration.png
+photo_sha256: 6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13
+earlier_id: U23678143
+status: USER_APPROVED
+approved_at: '2026-11-20T05:36:56+09:00'
+approved_by: user (chat answers 2026-11-20; position picker GUI not used)
+notes:
+  image_frame: undistorted_px of the photo as stored (already undistorted; never undistort
+    again)
+  floor_projection: z = 0 through the PROVISIONAL E1 mat-seam floor transform (no
+    validated homography exists); height parallax not corrected
+  work_targets: grasp / placement work targets are where the GRIPPER CENTRE should
+    be; TEMPORARY = the object click unless set separately. Not a validated floor
+    position and not evidence that grasp or placement is possible
+A_cube:
+  object_image_px:
+  - 1563.0
+  - 875.0
+  grasp_target_image_px:
+  - 1563.0
+  - 875.0
+  grasp_target_source: SAME_AS_OBJECT_CLICK
+  grasp_target_status: UNVERIFIED
+  object:
+    image_px:
+    - 1563.0
+    - 875.0
+    floor_cm:
+    - 264.3
+    - 188.3
+    map_m:
+    - 2.6425
+    - 0.2175
+    projection: z = 0 (height parallax not corrected)
+  grasp_target:
+    image_px:
+    - 1563.0
+    - 875.0
+    floor_cm:
+    - 264.3
+    - 188.3
+    map_m:
+    - 2.6425
+    - 0.2175
+    projection: z = 0 (height parallax not corrected)
+B_placement:
+  pallet_image_px:
+  - 591.0
+  - 875.0
+  placement_target_image_px:
+  - 591.0
+  - 875.0
+  placement_target_source: SAME_AS_OBJECT_CLICK
+  placement_target_status: UNVERIFIED
+  pallet:
+    image_px:
+    - 591.0
+    - 875.0
+    floor_cm:
+    - 93.5
+    - 187.6
+    map_m:
+    - 0.9355
+    - 0.2238
+    projection: z = 0 (height parallax not corrected)
+  placement_target:
+    image_px:
+    - 591.0
+    - 875.0
+    floor_cm:
+    - 93.5
+    - 187.6
+    map_m:
+    - 0.9355
+    - 0.2238
+    projection: z = 0 (height parallax not corrected)
+robot:
+  base_link_image_px:
+  - 1708.0
+  - 701.0
+  base_link_source: AI_READING_CONFIRMED_BY_USER
+  base_link:
+    image_px:
+    - 1708.0
+    - 701.0
+    floor_cm:
+    - 294.5
+    - 156.1
+    map_m:
+    - 2.9446
+    - 0.539
+    projection: z = 0 (height parallax not corrected)
+  yaw_map_deg: -178.2
+  yaw_source: COMPUTED_FROM_WHEEL_AXIS_CONFIRMED_BY_USER
+  auto_estimate: null
+  base_link_note: base_link = centre of the 4 wheels at floor level (URDF); a box
+    centre includes height parallax
+provenance:
+  status: ESTIMATED positions read on the original photo and CONFIRMED by the user
+    in chat; not measured
+  user_view:
+    file: /home/binci/vlm_ws/semantic_task_navigation/experiments/navigation_handoff/data/approved_positions/evidence/photo_1_user_view_1086x612.png
+    sha256: 1322646f8b41f0ac649310610c94e61caf4c923edaef074af45d26d4bee3117b
+    size:
+    - 1086
+    - 612
+  photo_identification: 'user view matched to 1calibration.png by SIFT + RANSAC homography:
+    1059/1123 inliers, RMS 0.35 px; local NCC after alignment A area 0.71, B area
+    0.92 (other 7 photos <= 0.15). User first named photo 5; photo 5 lacks both objects.'
+  user_reported_display_px:
+    R:
+    - 990
+    - 420
+    A:
+    - 975
+    - 535
+    B:
+    - 320
+    - 520
+  user_points_mapped_by_homography_px:
+    R:
+    - 1701
+    - 712
+    A:
+    - 1676
+    - 903
+    B:
+    - 589
+    - 878
+  naive_scale_px_NOT_USED:
+    R:
+    - 1750
+    - 741
+    A:
+    - 1724
+    - 944
+    B:
+    - 566
+    - 918
+  confirmed_in_original_px:
+    R: 4-wheel centre [1708, 701] (AI reading, photo_5 reading shifted by the measured
+      robot-window offset)
+    A: red cube on the gray pallet next to the charging-station posts [1563, 875]
+    B: centre of the empty small gray pallet between the white board and the green
+      rack [591, 875]
+  A_note: the user's A point maps onto a different red object (red base, extinguisher-like
+    model, ~[1676, 910]); the user chose the red cube on the gray pallet
+  yaw_note: yaw_map -178.2 deg = direction from the rear wheel pair to the front (gripper)
+    wheel pair through the PROVISIONAL floor transform; not a plain 180

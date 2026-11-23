@@ -1,0 +1,45 @@
+{
+  "source_region": {
+    "description": "Truck bed area with a box on it",
+    "bbox_2d": [750, 0, 880, 145]
+  },
+  "source_object": {
+    "name_en": "Box",
+    "bbox_2d": [817, 18, 870, 55],
+    "visible": "yes"
+  },
+  "destination_region": {
+    "description": "Conveyor belt area with robotic arms",
+    "bbox_2d": [100, 265, 265, 725]
+  },
+  "destination_target_candidates": [
+    {
+      "name_en": "Conveyor belt",
+      "name_ko": "컨베이어 벨트",
+      "bbox_2d": [100, 265, 265, 725],
+      "state": "empty",
+      "role": "Target location for box",
+      "suitability": "suitable",
+      "reason": "The conveyor belt area is designated for receiving items from the truck."
+    },
+    {
+      "name_en": "Robotic arm",
+      "name_ko": "로봇 팔",
+      "bbox_2d": [100, 265, 265, 725],
+      "state": "occupied",
+      "role": "Operational equipment",
+      "suitability": "possible",
+      "reason": "Robotic arms are present and may be involved in moving the box."
+    }
+  ],
+  "selected_destination": "Conveyor belt",
+  "spatial_context": [
+    "The truck is positioned at the top right, and the conveyor belt is at the bottom left.",
+    "The box is on the truck bed, and the conveyor belt is adjacent to the robotic arms.",
+    "The green path connects the truck area to the conveyor belt area."
+  ],
+  "task_reasoning": "The box must be moved from the truck bed to the conveyor belt area, which is the designated location for receiving items from the truck.",
+  "uncertainty": [
+    "The exact position of the box on the truck bed is not precisely known."
+  ]
+}

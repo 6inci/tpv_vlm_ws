@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>객체 탐지 결과 요약</title>
+<style>
+:root { color-scheme: light dark; --bg:#0f172a; --panel:#111827; --text:#e5e7eb; --muted:#9ca3af; --good:#4ade80; --bad:#f87171; --warn:#fbbf24; --border:#334155; }
+* { box-sizing:border-box; }
+body { margin:0; font-family:system-ui, -apple-system, sans-serif; background:linear-gradient(135deg,#020617,#111827); color:var(--text); }
+main { max-width:1500px; margin:0 auto; padding:32px 20px 64px; }
+h1 { margin:0 0 8px; font-size:clamp(1.7rem,4vw,2.8rem); }
+.subtitle { color:var(--muted); margin:0 0 24px; }
+.summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin:24px 0; }
+.card { background:rgba(17,24,39,.9); border:1px solid var(--border); border-radius:14px; padding:18px; }
+.card h2 { margin:0 0 8px; font-size:1rem; }
+.card .value { font-size:1.8rem; font-weight:800; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; }
+figure { margin:0; overflow:hidden; border:1px solid var(--border); border-radius:14px; background:#0b1220; }
+figure img { display:block; width:100%; height:auto; object-fit:contain; aspect-ratio:4/3; background:#020617; }
+figcaption { padding:12px 14px; border-top:1px solid var(--border); }
+figcaption strong { display:block; margin-bottom:4px; }
+.table-wrap { overflow:auto; border:1px solid var(--border); border-radius:14px; background:rgba(17,24,39,.9); }
+table { width:100%; border-collapse:collapse; min-width:900px; }
+th, td { padding:12px 14px; border-bottom:1px solid var(--border); text-align:left; vertical-align:top; }
+th { background:#1f2937; position:sticky; top:0; }
+.status { font-weight:800; }
+.status.y { color:var(--good); }
+.status.n { color:var(--bad); }
+.status.u { color:var(--warn); }
+.note { color:var(--muted); font-size:.9rem; }
+.badge { display:inline-block; border-radius:999px; padding:3px 8px; font-size:.78rem; font-weight:700; }
+.badge.y { background:rgba(74,222,128,.12); color:var(--good); }
+.badge.n { background:rgba(248,113,113,.12); color:var(--bad); }
+.badge.u { background:rgba(251,191,36,.12); color:var(--warn); }
+footer { margin-top:28px; color:var(--muted); font-size:.9rem; }
+</style>
+</head>
+<body>
+<main>
+<h1>사진별 대상 객체 탐지 결과</h1>
+<p class="subtitle">대상: 팔레트(調査된 객체명을 palette로 표기), 물병, 선반 · 원본 사진은 수정하지 않고 5장만 비교했습니다.</p>
+<div class="summary">
+  <div class="card"><h2>전체 사진</h2><div class="value">5장</div></div>
+  <div class="card"><h2>YOLO World 판정</h2><div class="value">실측 가능</div></div>
+  <div class="card"><h2>Qwen 판정</h2><div class="value">GPU OOM</div></div>
+  <div class="card"><h2>Grounding DINO</h2><div class="value">패키지 미설치</div></div>
+  <div class="card"><h2>SAM2</h2><div class="value">패키지 미설치</div></div>
+</div>
+
+<section>
+<h2>사진별 원본</h2>
+<div class="grid">
+  <figure><img src="IMG_8557.jpeg" alt="IMG_8557"><figcaption><strong>IMG_8557</strong>선반과 물병이 보이는 장면으로 추정되며 팔레트는 없거나 뚜렷하지 않음.</figcaption></figure>
+  <figure><img src="IMG_8558.jpeg" alt="IMG_8558"><figcaption><strong>IMG_8558</strong>선반이 명확하고 물병이 일부 존재; 팔레트는 없음.</figcaption></figure>
+  <figure><img src="IMG_8559.jpeg" alt="IMG_8559"><figcaption><strong>IMG_8559</strong>선반과 물병이 함께 있으며 팔레트는 없음.</figcaption></figure>
+  <figure><img src="IMG_8560.jpeg" alt="IMG_8560"><figcaption><strong>IMG_8560</strong>물병이 여러 개 보이고 선반이 함께 존재; 팔레트는 없음.</figcaption></figure>
+  <figure><img src="IMG_8561.jpeg" alt="IMG_8561"><figcaption><strong>IMG_8561</strong>물병이 여러 개 보이고 선반 일부 존재; 팔레트는 없음.</figcaption></figure>
+</div>
+</section>
+
+<section>
+<h2>모델별 객체 존재 여부</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr><th>사진</th><th>팔레트</th><th>물병</th><th>선반</th><th>Qwen</th><th>YOLO World</th><th>Grounding DINO</th><th>SAM2</th></tr>
+</thead>
+<tbody>
+<tr><td>IMG_8557</td><td><span class="status n">없음</span></td><td><span class="status y">있음</span><span class="note">YOLO: bottle 0.107</span></td><td><span class="status y">있음</span><span class="note">YOLO: shelf 5개, 최고 0.183</span></td><td><span class="status u">실행 없음</span><span class="note">GPU OOM</span></td><td><span class="status y">감지</span></td><td><span class="status u">미실행</span></td><td><span class="status u">미실행</span></td></tr>
+<tr><td>IMG_8558</td><td><span class="status n">없음</span></td><td><span class="status y">있음</span><span class="note">YOLO: bottle 0.115</span></td><td><span class="status y">있음</span><span class="note">YOLO: shelf 4개, 최고 0.508</span></td><td><span class="status u">실행 없음</span><span class="note">GPU OOM</span></td><td><span class="status y">감지</span></td><td><span class="status u">미실행</span></td><td><span class="status u">미실행</span></td></tr>
+<tr><td>IMG_8559</td><td><span class="status n">없음</span></td><td><span class="status y">있음</span><span class="note">YOLO: bottle 3개, 최고 0.182</span></td><td><span class="status y">있음</span><span class="note">YOLO: shelf 10개, 최고 0.412</span></td><td><span class="status u">실행 없음</span><span class="note">GPU OOM</span></td><td><span class="status y">감지</span></td><td><span class="status u">미실행</span></td><td><span class="status u">미실행</span></td></tr>
+<tr><td>IMG_8560</td><td><span class="status n">없음</span></td><td><span class="status y">있음</span><span class="note">YOLO: bottle 8개, 최고 0.818</span></td><td><span class="status y">있음</span><span class="note">YOLO: shelf 9개, 최고 0.177</span></td><td><span class="status u">실행 없음</span><span class="note">GPU OOM</span></td><td><span class="status y">감지</span></td><td><span class="status u">미실행</span></td><td><span class="status u">미실행</span></td></tr>
+<tr><td>IMG_8561</td><td><span class="status n">없음</span></td><td><span class="status y">있음</span><span class="note">YOLO: bottle 16개, 최고 0.720</span></td><td><span class="status y">있음</span><span class="note">YOLO: shelf 2개, 최고 0.077</span></td><td><span class="status u">실행 없음</span><span class="note">GPU OOM</span></td><td><span class="status y">감지</span></td><td><span class="status u">미실행</span></td><td><span class="status u">미실행</span></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<section>
+<h2>결론</h2>
+<ul>
+<li><strong>팔레트:</strong> 5장 모두 관찰되지 않음. 단, 'pallet'을 'palette'로 해석한 경우 잘못된 클래스라면 별도 확인이 필요함.</li>
+<li><strong>물병:</strong> 5장 모두 감지됨. YOLO World가 0.051 이상으로 다수의 물병을 탐지했으며 8560·8561은 높은 확신도를 보임.</li>
+<li><strong>선반:</strong> 5장 모두 감지됨. 일부 사진에서 shelf 감지점이 낮은 confidence이며 중복 인식이 있었음.</li>
+<li><strong>모델 상태:</strong> Qwen은 GPU 메모리 부족(OOM), Grounding DINO와 SAM2는 패키지 미설치 상태라 결과를 생성하지 못함.</li>
+</ul>
+</section>
+
+<footer>
+  <div><strong>검증 기준:</strong> YOLO World 실제 탐지 결과를 사용했고, Qwen은 실행 중단 로그를 기준으로 상태를 기록했습니다. Grounding DINO/SAM2는 현재 환경에서 import되지 않아 '미실행'으로 표기했습니다.</div>
+  <div style="margin-top:8px;"><strong>원본 변경:</strong> 없음. 이 보고서만 새로 생성했습니다.</div>
+</footer>
+</main>
+</body>
+</html>

@@ -1,0 +1,63 @@
+# IMAGE_SPACE_DEMO: every length below is in raw image pixels and is an ASSUMPTION,
+# not a physical measurement. Replace with metric values once a validated ground map exists.
+coordinate_frame: raw_image_px
+cell_px: 8
+robot_radius_px: 35            # assumed robot footprint radius (image space)
+safety_margin_px: 40           # clearance beyond the footprint that still carries a risk cost
+safety_weight: 1.0
+planner: SAFETY_COST_ASTAR     # SAFETY_COST_ASTAR | DISTANCE_ONLY_ASTAR
+simplification: line_of_sight
+validation_tolerance_px: 8     # grid discretisation tolerance used by the pixel-level validator
+validation_sample_step_px: 2.0
+
+start_policy: detected_else_manual   # detected_else_manual | manual_only
+
+# score = path cost + distance_weight * distance to the object/region. distance_weight > 1 keeps the
+# hand-off pose close to the object (on-board cameras need it in view) unless the detour is large.
+# DEV NOTE 2026-11-15: 0.5 put the pickup pose at the far edge of the reach ring (~180 px away).
+goal_selection:
+  pickup:  {max_dist_px: 140, min_dist_px: 0, distance_weight: 1.5, top_k_report: 5}
+  dropoff: {max_dist_px: 180, min_dist_px: 0, distance_weight: 1.5, top_k_report: 5}
+
+# v0.2 destination chain: semantic region -> placement region -> robot approach region -> goal -> path
+destination:
+  # geometric_bands = v0.1 baseline (4 axis-aligned bands around the truck box)
+  # grounded_structure = workspace structures around the truck localised by Qwen3-VL grounding
+  #   (box only; accepted as a candidate after geometric association checks with the truck)
+  candidate_sources: [geometric_bands, grounded_structure]
+  # DEV NOTE 2026-11-17 (reference image = development data): "loading area of the truck" returned no
+  # box; "parking space of the truck" returned the painted bay around the truck. Both are kept.
+  structure_queries: ["loading area of the truck", "parking space of the truck"]
+  structure_min_truck_containment: 0.5   # fraction of the truck box inside the structure box
+  structure_max_area_ratio: 6.0          # structure box area / truck box area
+  structure_max_truck_iou: 0.95          # nearly identical to the truck box -> it is the truck, not an area
+  structure_dedup_iou: 0.7
+  judge_crop_margin_px: 120
+
+placement:
+  # object_placement_region = semantic region minus detected object footprints and map obstacles,
+  # eroded by half the target size. Geometry only: placement surface and gripper reach are UNMEASURED.
+  exclude_detected_classes: [truck, conveyor, mobile_robot]
+  default_margin_px: 8         # used when no target box is available (navigation tasks never place)
+  min_area_px: 150
+
+handoff_geometry:
+  # Not measured yet. Do not fill with guesses; until set, every approach goal is labelled provisional.
+  gripper_reach_px: null
+  onboard_camera_view_px: null
+  # goal_selection.*.max_dist_px below are DEV ASSUMPTIONS (image px) used as provisional reach.
+  provisional_reach_source: goal_selection.max_dist_px
+
+region_grounding:
+  band_ratio: 0.6              # candidate band depth = ratio * max(truck w, h)
+  min_band_px: 60
+  min_candidate_area_px: 1500
+  context_margin_px: 80        # crop margin around truck + candidates sent to the VLM
+  prior_match_iou: 0.3         # consistency check against a CONFIRMED prior zone only
+
+relations:
+  near_px: 150                 # image-space bbox gap threshold for "near"
+  contain_ratio: 0.8
+
+# Accepted detections of these classes become dynamic obstacles if they overlap the traversable region.
+dynamic_obstacle_classes: [truck, conveyor]

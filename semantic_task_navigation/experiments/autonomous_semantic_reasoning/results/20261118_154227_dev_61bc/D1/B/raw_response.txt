@@ -1,0 +1,186 @@
+{
+  "observed_objects": [
+    {
+      "label": "robotic arm",
+      "count": 4,
+      "location_in_image": "top-left and bottom-left corners",
+      "visible_evidence": "four white robotic arms mounted on bases, positioned near conveyor belts and workstations"
+    },
+    {
+      "label": "truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "a white and black model truck parked near a loading zone"
+    },
+    {
+      "label": "conveyor belt",
+      "count": 1,
+      "location_in_image": "left side, near robotic arms",
+      "visible_evidence": "a long white conveyor belt with robotic arms positioned along it"
+    },
+    {
+      "label": "stack of boxes",
+      "count": 1,
+      "location_in_image": "center of the floor",
+      "visible_evidence": "a stack of brown cardboard boxes on a yellow-bordered platform"
+    },
+    {
+      "label": "orange traffic cones",
+      "count": 12,
+      "location_in_image": "distributed around the floor, especially near green pathways and truck area",
+      "visible_evidence": "small orange cones placed on the black floor surface to mark boundaries or paths"
+    },
+    {
+      "label": "green pathway",
+      "count": 1,
+      "location_in_image": "top-center",
+      "visible_evidence": "a green strip with white hand symbols, flanked by gray structures and cones"
+    },
+    {
+      "label": "black barrels",
+      "count": 4,
+      "location_in_image": "bottom-right, near a black vehicle",
+      "visible_evidence": "four black cylindrical barrels on a pallet"
+    },
+    {
+      "label": "blue barrels",
+      "count": 4,
+      "location_in_image": "bottom-right, near black barrels",
+      "visible_evidence": "four blue cylindrical barrels on a pallet"
+    },
+    {
+      "label": "white pallet",
+      "count": 1,
+      "location_in_image": "bottom-right, near black barrels",
+      "visible_evidence": "a white rectangular pallet with a white container on it"
+    },
+    {
+      "label": "black vehicle",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "a black vehicle with visible wheels and a control panel"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "a whiteboard with Korean text written on it"
+    },
+    {
+      "label": "gray metal grate",
+      "count": 1,
+      "location_in_image": "bottom-center, near whiteboard",
+      "visible_evidence": "a gray metal grate on the floor"
+    },
+    {
+      "label": "green metal structure",
+      "count": 2,
+      "location_in_image": "top-center and bottom-left",
+      "visible_evidence": "two green metal structures resembling scaffolding or storage racks"
+    },
+    {
+      "label": "white container",
+      "count": 1,
+      "location_in_image": "bottom-right, near black barrels",
+      "visible_evidence": "a white rectangular container on a pallet"
+    },
+    {
+      "label": "red object",
+      "count": 1,
+      "location_in_image": "bottom-right, near black vehicle",
+      "visible_evidence": "a small red object on the floor"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "production and sorting zone",
+      "bbox_2d": [0, 250, 270, 750],
+      "observed_evidence": [
+        "conveyor belt",
+        "robotic arms",
+        "green metal structure"
+      ],
+      "inference": "This area contains equipment for manufacturing or sorting, indicated by the conveyor belt and robotic arms.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "loading/unloading zone",
+      "bbox_2d": [620, 0, 950, 280],
+      "observed_evidence": [
+        "truck",
+        "orange traffic cones",
+        "green pathway"
+      ],
+      "inference": "The presence of a truck and traffic cones suggests a designated area for vehicle loading or unloading.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_3",
+      "function_name": "storage and material handling area",
+      "bbox_2d": [620, 420, 950, 750],
+      "observed_evidence": [
+        "black barrels",
+        "blue barrels",
+        "white pallet",
+        "black vehicle"
+      ],
+      "inference": "This area contains various containers and a vehicle, indicating storage or material handling functions.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_4",
+      "function_name": "central work area",
+      "bbox_2d": [270, 250, 620, 750],
+      "observed_evidence": [
+        "stack of boxes",
+        "gray metal grate",
+        "whiteboard"
+      ],
+      "inference": "The central location with a stack of boxes and a whiteboard suggests a central work or staging area.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_5",
+      "function_name": "unloading and delivery zone",
+      "bbox_2d": [620, 750, 950, 950],
+      "observed_evidence": [
+        "black vehicle",
+        "red object",
+        "white container",
+        "gray metal grate"
+      ],
+      "inference": "This area contains a vehicle and containers, suggesting a zone for unloading or delivery operations.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_6",
+      "function_name": "proposed destination area for unloading",
+      "bbox_2d": [620, 0, 950, 280],
+      "observed_evidence": [
+        "truck",
+        "orange traffic cones",
+        "green pathway"
+      ],
+      "inference": "The truck is located here, and the area is marked with cones and a pathway, indicating it is the designated unloading zone.",
+      "confidence": "high"
+    }
+  ],
+  "task_analysis": {
+    "place_needed_for_task": "unloading zone for a truck",
+    "decision": "proposed",
+    "destination_area_id": "area_6",
+    "reason": "The instruction asks to unload a red cube from a conveyor belt to the truck's location, which is clearly marked as a designated unloading zone with traffic cones and a pathway."
+  },
+  "unknown_from_image": [
+    "The location of the red cube on the conveyor belt",
+    "The exact position of the robotic arm handling the red cube",
+    "The current state of the conveyor belt (whether it is active or idle)"
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is physically present on the conveyor belt",
+    "Whether the robotic arm is actively moving or has completed its task",
+    "Whether the truck is ready to receive the red cube"
+  ]
+}

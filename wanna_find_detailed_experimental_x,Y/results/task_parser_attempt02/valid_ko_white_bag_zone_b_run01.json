@@ -1,0 +1,36 @@
+{
+  "case_id": "valid_ko_white_bag_zone_b",
+  "category": "valid",
+  "run": 1,
+  "instruction": "흰색 가방을 B구역으로 이동시켜",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"흰색 가방\",\"destination_phrase\":\"B구역\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "흰색 가방",
+    "destination_phrase": "B구역"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "흰색 가방을 B구역으로 이동시켜",
+    "action": "reposition",
+    "target": {
+      "phrase": "흰색 가방"
+    },
+    "destination": {
+      "phrase": "B구역",
+      "zone_id": "zone_B"
+    }
+  },
+  "integrated": {
+    "status": "TARGET_GROUNDING_NOT_AVAILABLE",
+    "target_phrase": "흰색 가방"
+  },
+  "inference_sec": 6.883255819000624,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "white bag",
+    "zone_id": "zone_B"
+  },
+  "matches_expected": false
+}

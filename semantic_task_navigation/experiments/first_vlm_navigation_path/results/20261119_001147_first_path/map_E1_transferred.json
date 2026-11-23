@@ -1,0 +1,195 @@
+{
+  "schema_version": "stnav-map-0.1",
+  "map_id": "reference_scene_2026-11-14_zone_draft_v2__transferred_to_E1",
+  "coordinate_frame": "raw_image_px",
+  "image_size": [
+    1920,
+    1080
+  ],
+  "review_status": "DRAFT_UNCONFIRMED",
+  "map_status": "MANUAL_MAP_PRIOR (hand-drawn DRAFT zones, transformed into the E1 frame by a validated homography)",
+  "review_note": "Polygons are ported unchanged from a draft that says 'DRAFT - user must confirm'. A person must review them before experiments. Zone shapes are unchanged by the transfer; only their coordinates were mapped.",
+  "traversable": [
+    {
+      "id": "Z02",
+      "polygon": [
+        [
+          508.0,
+          308.5
+        ],
+        [
+          1729.5999755859375,
+          291.20001220703125
+        ],
+        [
+          1850.4000244140625,
+          809.2000122070312
+        ],
+        [
+          413.70001220703125,
+          826.2000122070312
+        ]
+      ]
+    }
+  ],
+  "static_obstacles": [
+    {
+      "id": "Z03",
+      "polygon": [
+        [
+          782.2000122070312,
+          471.0
+        ],
+        [
+          965.2999877929688,
+          470.8999938964844
+        ],
+        [
+          969.7000122070312,
+          617.0999755859375
+        ],
+        [
+          772.5999755859375,
+          617.5999755859375
+        ]
+      ]
+    },
+    {
+      "id": "Z04",
+      "polygon": [
+        [
+          1193.5,
+          481.8999938964844
+        ],
+        [
+          1797.4000244140625,
+          463.20001220703125
+        ],
+        [
+          1808.300048828125,
+          600.9000244140625
+        ],
+        [
+          1198.5999755859375,
+          613.4000244140625
+        ]
+      ]
+    }
+  ],
+  "no_go": [
+    {
+      "id": "Z01",
+      "polygon": [
+        [
+          967.9000244140625,
+          66.4000015258789
+        ],
+        [
+          1056.699951171875,
+          63.599998474121094
+        ],
+        [
+          1071.9000244140625,
+          293.6000061035156
+        ],
+        [
+          591.2000122070312,
+          300.70001220703125
+        ],
+        [
+          600.2000122070312,
+          221.6999969482422
+        ],
+        [
+          962.9000244140625,
+          213.8000030517578
+        ]
+      ]
+    },
+    {
+      "id": "Z07",
+      "polygon": [
+        [
+          262.5,
+          295.79998779296875
+        ],
+        [
+          505.6000061035156,
+          303.0
+        ],
+        [
+          411.3999938964844,
+          788.4000244140625
+        ],
+        [
+          109.5999984741211,
+          771.0
+        ]
+      ]
+    }
+  ],
+  "start_pose": null,
+  "reference_image": "/home/binci/vlm_ws/semantic_task_navigation/experiments/first_vlm_navigation_path/results/20261119_001147_first_path/reference_P01_warped_to_E1.png",
+  "reference_image_sha256": "7bf8a82e81ab72761148544a6ea5c510a676483e3a0680ed2f0ede4657d17e2c",
+  "reference_image_note": "P01 undistorted and warped into the E1 frame; check_alignment compares it with the E1 photo",
+  "alignment_check": {
+    "max_shift_px": 3.0,
+    "min_response": 0.3
+  },
+  "provenance": {
+    "source_map_id": "reference_scene_2026-11-14_zone_draft_v2",
+    "source_provenance": {
+      "source_file": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-15_zone_draft/semantic_zones_draft_v2.json",
+      "source_sha256": "18d2b78b8e1e639edf3d4aea4b003283fbfdd15e05467789ffff4ff111a6c426",
+      "source_status": "DRAFT - user must confirm",
+      "ported_on": "2026-11-15",
+      "knowledge": "manual_prior"
+    },
+    "transfer": {
+      "method": "SIFT + ratio test + RANSAC homography",
+      "n_matches": 2218,
+      "n_inliers": 1535,
+      "inlier_residual": {
+        "n": 1535,
+        "median_px": 0.669,
+        "rms_px": 0.859,
+        "p95_px": 1.559,
+        "max_px": 1.998
+      },
+      "holdout": {
+        "fit_left_test_right": {
+          "n": 864,
+          "median_px": 1.558,
+          "rms_px": 2.837,
+          "p95_px": 5.535,
+          "max_px": 6.531
+        },
+        "fit_right_test_left": {
+          "n": 671,
+          "median_px": 1.644,
+          "rms_px": 1.89,
+          "p95_px": 3.29,
+          "max_px": 4.106
+        },
+        "fit_top_test_bottom": {
+          "n": 920,
+          "median_px": 2.071,
+          "rms_px": 2.536,
+          "p95_px": 4.967,
+          "max_px": 6.105
+        },
+        "fit_bottom_test_top": {
+          "n": 615,
+          "median_px": 1.706,
+          "rms_px": 1.763,
+          "p95_px": 2.66,
+          "max_px": 3.395
+        }
+      }
+    },
+    "not_carried_over": [
+      "semantic_reference_zones (Z06)",
+      "start_pose"
+    ]
+  }
+}

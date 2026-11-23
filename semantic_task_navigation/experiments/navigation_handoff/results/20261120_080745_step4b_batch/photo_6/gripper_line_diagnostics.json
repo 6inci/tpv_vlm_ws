@@ -1,0 +1,158 @@
+{
+ "photo": "photo_6",
+ "rule": "step4b_batch.gripper_line_rule (config)",
+ "frame": "map_m (REP-103); floor_cm for raw samples",
+ "note": "diagnostic only, recomputed from path_plan.json candidates; 2D floor-level centre line; gripper width/height/3D UNVERIFIED",
+ "candidates": [
+  {
+   "leg": "A",
+   "yaw_map_deg": 0,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "A",
+   "yaw_map_deg": 90,
+   "status": "GRIPPER_LINE_BLOCKED",
+   "selected": false,
+   "stop_pose_map": {
+    "x_m": 2.93,
+    "y_m": 0.51,
+    "yaw_deg": 90.0
+   },
+   "body_front_map_m": [
+    2.93,
+    0.685
+   ],
+   "target_map_m": [
+    2.937,
+    1.502
+   ],
+   "front_to_target_gap_cm": 81.7,
+   "gripper_line_crosses_planner": [
+    "STATIC_OBSTACLE"
+   ],
+   "runs": [
+    {
+     "layer": "FREE",
+     "zones": [],
+     "from_floor_cm": [
+      293.0,
+      141.5
+     ],
+     "to_floor_cm": [
+      293.03,
+      138.01
+     ],
+     "length_cm": 3.5,
+     "from_map_m": [
+      2.93,
+      0.685
+     ],
+     "to_map_m": [
+      2.93,
+      0.72
+     ],
+     "blocking": false
+    },
+    {
+     "layer": "STATIC_OBSTACLE",
+     "zones": [
+      "Z04"
+     ],
+     "from_floor_cm": [
+      293.03,
+      137.51
+     ],
+     "to_floor_cm": [
+      293.3,
+      106.13
+     ],
+     "length_cm": 31.4,
+     "from_map_m": [
+      2.93,
+      0.725
+     ],
+     "to_map_m": [
+      2.933,
+      1.039
+     ],
+     "blocking": true
+    },
+    {
+     "layer": "FREE",
+     "zones": [],
+     "from_floor_cm": [
+      293.31,
+      105.63
+     ],
+     "to_floor_cm": [
+      293.64,
+      66.28
+     ],
+     "length_cm": 39.4,
+     "from_map_m": [
+      2.933,
+      1.044
+     ],
+     "to_map_m": [
+      2.936,
+      1.437
+     ],
+     "blocking": false
+    },
+    {
+     "layer": "TARGET_PALLET",
+     "zones": [],
+     "from_floor_cm": [
+      293.65,
+      65.78
+     ],
+     "to_floor_cm": [
+      293.7,
+      59.8
+     ],
+     "length_cm": 6.0,
+     "from_map_m": [
+      2.936,
+      1.442
+     ],
+     "to_map_m": [
+      2.937,
+      1.502
+     ],
+     "blocking": false
+    }
+   ],
+   "reason": "rejected: gripper baseline crosses Z04 31.4 cm"
+  },
+  {
+   "leg": "A",
+   "yaw_map_deg": 180,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  },
+  {
+   "leg": "A",
+   "yaw_map_deg": 270,
+   "status": "NO_COLLISION_FREE_POSE_ON_AXIS",
+   "selected": false,
+   "reason": "no collision-free stop on the target axis (searched 150 cm)"
+  }
+ ],
+ "reference_stops": {
+  "A": {
+   "yaw_map_deg": 0,
+   "pose_map": {
+    "x_m": 2.93,
+    "y_m": 1.27,
+    "yaw_deg": 0.0
+   },
+   "centre_to_target_cm": 23.2,
+   "status": "REFERENCE_ONLY (not a grasp / placement pose)"
+  },
+  "B": null
+ }
+}

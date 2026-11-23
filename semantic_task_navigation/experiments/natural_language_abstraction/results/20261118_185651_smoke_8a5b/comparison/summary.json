@@ -1,0 +1,262 @@
+{
+  "run_id": "20261118_185651_smoke_8a5b",
+  "split": "smoke",
+  "prompt_version": "n0",
+  "classification": "EXPLORATORY_DIAGNOSTIC",
+  "note": "Exploratory diagnostic. No accuracy is computed. dest_iou is None when either side withheld.",
+  "results": [
+    {
+      "image_id": "D1",
+      "condition": "L1",
+      "status": "INVALID_RESPONSE",
+      "n_output_tokens": 1585,
+      "latency_s": 48.11,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [],
+      "instruction": "빨간 큐브를 트럭이 있는 하역장으로 옮겨줘."
+    },
+    {
+      "image_id": "D1",
+      "condition": "L2",
+      "status": "OK",
+      "n_output_tokens": 1018,
+      "latency_s": 30.514,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [],
+      "decision": "withheld",
+      "n_objects": 11,
+      "n_areas": 1,
+      "place_needed": "A designated shipping zone or vehicle loading area.",
+      "reason": "The red cube is not visible in the image, and no specific area is marked as a shipping zone. The truck is a likely candidate, but no explicit instruction or visual cue confirms it as the designated destination.",
+      "n_unknown": 3,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cube",
+        "The exact function of the whiteboard",
+        "The current status of the robotic vehicle"
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cube is present and its current location",
+        "Whether the truck is accessible for loading",
+        "Whether the green pathway is clear for movement"
+      ],
+      "objects": [
+        "robotic arm x4 (top-left, left side, and bottom-left)",
+        "truck x1 (top-right)",
+        "stack of boxes x1 (center)",
+        "cones x12 (distributed across the floor)",
+        "whiteboard x1 (bottom-center)",
+        "robotic vehicle x1 (bottom-right)",
+        "barriers x2 (top-center and bottom-left)",
+        "pallets with containers x1 (right side)",
+        "charging station x1 (bottom-right)",
+        "grate x1 (bottom-center)",
+        "green pathway x1 (top-center)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: loading/unloading zone (high)"
+      ],
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "inferred_task_purpose": "Move a red cube to an appropriate location for shipment.",
+      "info_given_by_instruction": [
+        "The destination must be a place where the red cube can be shipped."
+      ],
+      "info_added_by_you": [
+        {
+          "statement": "The red cube is not visible in the image, so its location is unknown.",
+          "basis": "image"
+        },
+        {
+          "statement": "The truck is a likely destination for shipment.",
+          "basis": "general_knowledge"
+        },
+        {
+          "statement": "The green pathway may be a designated route for moving goods.",
+          "basis": "image"
+        },
+        {
+          "statement": "The area near the truck is a logical place for outgoing goods.",
+          "basis": "general_knowledge"
+        }
+      ],
+      "info_added_by_basis": {
+        "image": 2,
+        "general_knowledge": 2,
+        "assumption": 0
+      },
+      "given_claims_not_literally_in_instruction": [],
+      "objects_listed_with_count_0": [],
+      "area_boxes_px": {
+        "area_1": [
+          0.0,
+          0.0,
+          1920.0,
+          1080.0
+        ]
+      }
+    },
+    {
+      "image_id": "D1",
+      "condition": "L3",
+      "status": "OK",
+      "n_output_tokens": 1492,
+      "latency_s": 44.535,
+      "hit_max_new_tokens": false,
+      "consistency_issues": [],
+      "decision": "proposed",
+      "n_objects": 11,
+      "n_areas": 6,
+      "place_needed": "A designated area for outgoing material transfer, such as the truck loading zone.",
+      "reason": "The instruction requests delivery to the next logistics stage, and the truck loading zone is the most logical destination for outgoing materials in this model.",
+      "n_unknown": 3,
+      "n_physical_conditions": 3,
+      "unknown_from_image": [
+        "The location of the red cube is not visible in the image.",
+        "The exact function of the whiteboard is not clear from the image alone.",
+        "The current state of the robotic vehicle is unknown."
+      ],
+      "physical_conditions_to_verify": [
+        "Whether the red cube is present and located in the production zone.",
+        "Whether the robotic vehicle is operational and can carry the cube.",
+        "Whether the truck is ready to receive the cube."
+      ],
+      "objects": [
+        "robotic arm x4 (top-left, left side, and bottom-left)",
+        "truck x1 (top-right)",
+        "stack of boxes x1 (center)",
+        "cones x12 (distributed around the floor)",
+        "whiteboard x1 (bottom-center)",
+        "robotic vehicle x1 (bottom-right)",
+        "green pathway x1 (top-center)",
+        "storage racks x2 (top-center and bottom-left)",
+        "barrels x5 (bottom-right and center-right)",
+        "charging station x1 (bottom-right)",
+        "grate x1 (bottom-center)"
+      ],
+      "reports_red_cube": [],
+      "area_functions": [
+        "area_1: production zone (high)",
+        "area_2: central staging area (medium)",
+        "area_3: loading/unloading zone (high)",
+        "area_4: transportation corridor (high)",
+        "area_5: truck loading zone (high)",
+        "area_6: work instruction zone (medium)"
+      ],
+      "destination": {
+        "id": "area_5",
+        "function_name": "truck loading zone",
+        "confidence": "high",
+        "inference": "Truck and cones suggest a designated area for loading or unloading",
+        "observed_evidence": [
+          "truck",
+          "cones"
+        ],
+        "box_px": [
+          1267.2,
+          64.8,
+          1843.2,
+          280.8
+        ],
+        "area_frac_of_image": 0.06,
+        "center_px": [
+          1555.2,
+          172.8
+        ],
+        "cites_truck": true,
+        "cites_floor_line_or_bay": false
+      },
+      "overlapping_other_proposed_areas": [],
+      "truck_areas_proposed": [
+        "area_5"
+      ],
+      "instruction": "생산된 빨간 큐브를 다음 물류 단계로 전달해 줘.",
+      "inferred_task_purpose": "To move a red cube from the production area to the next logistics stage.",
+      "info_given_by_instruction": [
+        "생산된 빨간 큐브를 다음 물류 단계로 전달해 줘."
+      ],
+      "info_added_by_you": [
+        {
+          "statement": "The red cube is not visible in the image, so its location is unknown.",
+          "basis": "image"
+        },
+        {
+          "statement": "The next logistics stage is likely the area where materials are loaded onto the truck or stored for transport.",
+          "basis": "general_knowledge"
+        },
+        {
+          "statement": "The truck loading zone (area_5) is a logical destination for outgoing logistics.",
+          "basis": "general_knowledge"
+        }
+      ],
+      "info_added_by_basis": {
+        "image": 1,
+        "general_knowledge": 2,
+        "assumption": 0
+      },
+      "given_claims_not_literally_in_instruction": [],
+      "objects_listed_with_count_0": [],
+      "area_boxes_px": {
+        "area_1": [
+          144.0,
+          280.8,
+          508.8,
+          788.4
+        ],
+        "area_2": [
+          508.8,
+          280.8,
+          1267.2,
+          788.4
+        ],
+        "area_3": [
+          1267.2,
+          280.8,
+          1843.2,
+          788.4
+        ],
+        "area_4": [
+          508.8,
+          64.8,
+          1267.2,
+          280.8
+        ],
+        "area_5": [
+          1267.2,
+          64.8,
+          1843.2,
+          280.8
+        ],
+        "area_6": [
+          633.6,
+          788.4,
+          1267.2,
+          1036.8
+        ]
+      }
+    }
+  ],
+  "pairwise_destination_iou": [
+    {
+      "kind": "same_image_different_instruction",
+      "image": "D1",
+      "a": "L1",
+      "b": "L2",
+      "dest_iou": null
+    },
+    {
+      "kind": "same_image_different_instruction",
+      "image": "D1",
+      "a": "L1",
+      "b": "L3",
+      "dest_iou": null
+    },
+    {
+      "kind": "same_image_different_instruction",
+      "image": "D1",
+      "a": "L2",
+      "b": "L3",
+      "dest_iou": null
+    }
+  ]
+}

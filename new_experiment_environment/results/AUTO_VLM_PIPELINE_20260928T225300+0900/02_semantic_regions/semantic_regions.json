@@ -1,0 +1,400 @@
+{
+  "status": "PARTIAL",
+  "geometry_status": "IMAGE-PLANE / NON-METRIC",
+  "open_interpretation": [
+    {
+      "region_id": "robotic_workstation",
+      "semantic_label": "Robotics operation zone",
+      "supporting_objects": [
+        "White robotic arms",
+        "Conveyor belt",
+        "Red safety fence"
+      ],
+      "supporting_relations": [
+        "Robots positioned near conveyor and fence"
+      ],
+      "reasoning": "Robots and conveyor indicate automated material handling setup",
+      "confidence": 0.95,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "storage_area",
+      "semantic_label": "Inventory storage zone",
+      "supporting_objects": [
+        "Orange shelving units",
+        "Cardboard boxes",
+        "Blue bins"
+      ],
+      "supporting_relations": [
+        "Shelves hold boxes, bins, and tools"
+      ],
+      "reasoning": "Shelves and boxes indicate organized storage for inventory",
+      "confidence": 0.92,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "maintenance_station",
+      "semantic_label": "Tool and equipment maintenance area",
+      "supporting_objects": [
+        "Workbench",
+        "Laptop",
+        "Tools",
+        "Office chair"
+      ],
+      "supporting_relations": [
+        "Workbench with tools and laptop, chair nearby"
+      ],
+      "reasoning": "Workbench and tools suggest maintenance or configuration tasks",
+      "confidence": 0.85,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "transport_and_loading_zone",
+      "semantic_label": "Vehicle and pallet loading area",
+      "supporting_objects": [
+        "White truck",
+        "Pallets with boxes",
+        "Handcart",
+        "Barrels"
+      ],
+      "supporting_relations": [
+        "Truck, handcart, and pallets positioned for loading/unloading"
+      ],
+      "reasoning": "Vehicle and pallets indicate material transport and loading operations",
+      "confidence": 0.88,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "mobile_robot_zone",
+      "semantic_label": "Mobile robot operation area",
+      "supporting_objects": [
+        "Black wheeled mobile robot",
+        "Pallets with boxes",
+        "Barrels"
+      ],
+      "supporting_relations": [
+        "Robot positioned near pallets and barrels"
+      ],
+      "reasoning": "Mobile robot and surrounding pallets suggest autonomous navigation and transport",
+      "confidence": 0.87,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    }
+  ],
+  "target_taxonomy": [
+    {
+      "id": "region_storage",
+      "label": "Storage Area",
+      "polygon": [
+        [
+          268,
+          25
+        ],
+        [
+          590,
+          25
+        ],
+        [
+          590,
+          275
+        ],
+        [
+          268,
+          275
+        ]
+      ],
+      "confidence": 0.68,
+      "evidence_object_ids": [
+        "obj_001",
+        "obj_002"
+      ],
+      "reasoning": "coarse region inferred from grouped visible objects",
+      "polygon_px": [
+        [
+          388,
+          27
+        ],
+        [
+          854,
+          27
+        ],
+        [
+          854,
+          298
+        ],
+        [
+          388,
+          298
+        ]
+      ],
+      "source_type": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "id": "region_work",
+      "label": "Work Station",
+      "polygon": [
+        [
+          590,
+          60
+        ],
+        [
+          760,
+          60
+        ],
+        [
+          760,
+          300
+        ],
+        [
+          590,
+          300
+        ]
+      ],
+      "confidence": 0.68,
+      "evidence_object_ids": [
+        "obj_004"
+      ],
+      "reasoning": "coarse region inferred from grouped visible objects",
+      "polygon_px": [
+        [
+          854,
+          65
+        ],
+        [
+          1100,
+          65
+        ],
+        [
+          1100,
+          326
+        ],
+        [
+          854,
+          326
+        ]
+      ],
+      "source_type": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "id": "region_loading",
+      "label": "Loading Area",
+      "polygon": [
+        [
+          745,
+          85
+        ],
+        [
+          998,
+          85
+        ],
+        [
+          998,
+          510
+        ],
+        [
+          745,
+          510
+        ]
+      ],
+      "confidence": 0.68,
+      "evidence_object_ids": [
+        "obj_003",
+        "obj_005",
+        "obj_006",
+        "obj_007",
+        "obj_016"
+      ],
+      "reasoning": "coarse region inferred from grouped visible objects",
+      "polygon_px": [
+        [
+          1078,
+          92
+        ],
+        [
+          1444,
+          92
+        ],
+        [
+          1444,
+          553
+        ],
+        [
+          1078,
+          553
+        ]
+      ],
+      "source_type": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "id": "region_robot_work",
+      "label": "No-Go Zone",
+      "polygon": [
+        [
+          10,
+          140
+        ],
+        [
+          420,
+          255
+        ],
+        [
+          405,
+          480
+        ],
+        [
+          160,
+          470
+        ],
+        [
+          75,
+          675
+        ]
+      ],
+      "confidence": 0.68,
+      "evidence_object_ids": [
+        "obj_008",
+        "obj_009",
+        "obj_010"
+      ],
+      "reasoning": "coarse region inferred from grouped visible objects",
+      "polygon_px": [
+        [
+          14,
+          152
+        ],
+        [
+          608,
+          277
+        ],
+        [
+          586,
+          521
+        ],
+        [
+          232,
+          510
+        ],
+        [
+          109,
+          732
+        ]
+      ],
+      "source_type": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "id": "region_material",
+      "label": "Material Area",
+      "polygon": [
+        [
+          742,
+          540
+        ],
+        [
+          995,
+          540
+        ],
+        [
+          995,
+          965
+        ],
+        [
+          740,
+          965
+        ]
+      ],
+      "confidence": 0.68,
+      "evidence_object_ids": [
+        "obj_012",
+        "obj_014",
+        "obj_015"
+      ],
+      "reasoning": "coarse region inferred from grouped visible objects",
+      "polygon_px": [
+        [
+          1074,
+          586
+        ],
+        [
+          1440,
+          586
+        ],
+        [
+          1440,
+          1047
+        ],
+        [
+          1071,
+          1047
+        ]
+      ],
+      "source_type": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "id": "region_drop",
+      "label": "Drop Zone",
+      "polygon": [
+        [
+          213,
+          660
+        ],
+        [
+          376,
+          660
+        ],
+        [
+          376,
+          915
+        ],
+        [
+          213,
+          915
+        ]
+      ],
+      "confidence": 0.68,
+      "evidence_object_ids": [
+        "obj_013"
+      ],
+      "reasoning": "coarse region inferred from grouped visible objects",
+      "polygon_px": [
+        [
+          308,
+          716
+        ],
+        [
+          544,
+          716
+        ],
+        [
+          544,
+          993
+        ],
+        [
+          308,
+          993
+        ]
+      ],
+      "source_type": "MANUAL_OR_AGENT_INFERENCE"
+    }
+  ],
+  "comparison_source": "/home/binci/vlm_ws/new_experiment_environment/results/EXP002_semantic_region_eval/evaluation/semantic_region_comparison.json",
+  "comparison_summary": {
+    "reference_regions": 5,
+    "missed_reference_regions": [],
+    "extra_predicted_regions": [],
+    "performance_claim_status": "NOT_VALIDATED_PERFORMANCE"
+  }
+}

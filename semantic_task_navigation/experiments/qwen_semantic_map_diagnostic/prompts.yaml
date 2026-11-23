@@ -1,0 +1,78 @@
+# Prompt for the Qwen3-VL semantic-map diagnostic (version sm0). NEW prompt: no earlier frozen prompt is edited or reused.
+# It is frozen (prompt_frozen.json) before the single inference run.
+#
+# What the prompt may contain: the instruction (the user's own sentence), general guidance on HOW to analyse a scene, the
+# output format. What it must not contain (checked by test_probe_offline.py): where anything is, how many of anything there
+# are, names of facilities or objects of THIS scene (no truck, pallet, container, cone, dock, charging, ...), coordinates of
+# any expected answer, the manual semantic map, the driving map. The category names in the schema (mobile_robot,
+# other_vehicle, ...) are generic classes, not a statement that such an object is in the picture.
+
+prompt_version: sm0
+history:
+  - version: sm0
+    date: 2026-11-18
+    note: "initial text; written before the image was shown to any model; no output of this experiment has been seen"
+  - version: sm0
+    date: 2026-11-18
+    note: >-
+      Wording fixed three times BEFORE any inference, each time because test_probe_offline.py flagged a phrase that could be read as
+      scene information (a scene object name used as an example in a class definition; "one object"/"several objects" counting-like
+      phrases). A first frozen file (prompt sha256 42dfbbe7b0b683cb) was written while one such test still failed; it was superseded
+      before the model ever saw it (kept in superseded/). The version label stays sm0 because no model output exists for any of the texts.
+
+head: |
+  You are looking at a fixed overhead camera image of a miniature logistics work floor (a small-scale model of a work site).
+  A person gave this instruction (written in Korean):
+
+  "{instruction}"
+
+  Build a semantic map of the scene from the image alone. You are told nothing about what is in the scene: report only what you can actually see, and do not invent objects. Work in five parts and put each part into the JSON structure given at the end.
+
+  Coordinates are image coordinates: bbox_2d = [x_min, y_min, x_max, y_max], integers normalized to 0-1000 over the image width and height (0,0 is the top-left corner, 1000,1000 the bottom-right corner). You do not know the real size of anything: give no metric distances.
+
+  PART A - objects. List every physically separate object that you can distinguish as its own entry (obj_1, obj_2, ...), each with a box that fits exactly that object. Do not merge objects only because they are close together, touch each other, are stacked, or stand on the same floor marking, platform or carrier. Also do not split a single object into parts. If you cannot tell whether two things form a single object or are separate objects, list them separately and say so in "uncertainty_note". Give each object a short name, what it is probably used for ("estimated_function"), and the visible evidence. Painted lines, floor markings and flat symbols are not objects.
+
+  PART B - mobility. For every object, say whether it looks like a "mobile_robot" (a self-propelled machine that can drive around on its own wheels or tracks), an "other_vehicle", "static_equipment_or_goods" (equipment, stored goods, furniture and fixtures that are not self-propelled), "fixed_structure" (part of the building or of the floor structure) or "uncertain". This is only your visual impression, not a measurement; say what you saw that led to it. If a mobile robot is visible, it must have its own entry and its own box, and that box must not include neighbouring goods.
+
+  PART C - relations. List spatial or functional relations between objects, and between an object and a semantic area, that matter for understanding what each part of the space is used for: adjacency, "part_of" a facility, "on" or "inside" something, "used_with". For every relation say whether you "observed" it in the image or "inferred" it from general knowledge about work sites, and give the evidence.
+
+  PART D - semantic areas. List regions of floor that have a recognisable function (for example where something is stored, produced, handled or moved through). An area is a region, not an object: it is not an obstacle, its box may enclose objects, and it needs its own box (area_1, area_2, ...). Give each area a function name, a box, the ids of the objects related to it, and the evidence for the function. Do not copy an object's box as an area box unless the area really consists of only that object. Keep each area box as tight as the evidence allows.
+
+  PART E - destination. Decide what kind of place the instruction needs, and propose one area from PART D that suits it, or withhold the decision if the image does not give enough evidence. Do not invent a place.
+
+  Rules:
+  - "observed_evidence" and "function_evidence" are only what you can actually see in this image. "basis" says whether a statement is "observed" or "inferred". Keep them separate.
+  - Never repeat an entry: every entry must be a different thing at a different place. Stop listing objects when you run out of things you can distinguish; there is no minimum number.
+  - "uncertainty" is "low", "medium" or "high"; add a short note when it is not low.
+  - You are not controlling a robot and you do not plan paths.
+
+tail: |
+  Return one JSON object only (no prose, no markdown fence) with exactly this structure:
+  {
+    "scene_summary": "<one or two sentences>",
+    "objects": [
+      {"id": "obj_1", "name": "<short name>", "bbox_2d": [<x_min>, <y_min>, <x_max>, <y_max>],
+       "mobility": "mobile_robot" | "other_vehicle" | "static_equipment_or_goods" | "fixed_structure" | "uncertain",
+       "mobility_evidence": "<what you saw>", "estimated_function": "<probable use>",
+       "observed_evidence": ["<visible cue>"], "uncertainty": "low" | "medium" | "high", "uncertainty_note": "<why, or empty>"}
+    ],
+    "relations": [
+      {"id": "rel_1", "subject": "<obj_ or area_ id>", "relation": "adjacent_to" | "part_of" | "on" | "inside" | "used_with" | "near",
+       "object": "<obj_ or area_ id>", "basis": "observed" | "inferred", "evidence": "<why>"}
+    ],
+    "semantic_areas": [
+      {"id": "area_1", "function_name": "<what this floor area is for>", "bbox_2d": [<x_min>, <y_min>, <x_max>, <y_max>],
+       "related_objects": ["obj_1"], "function_evidence": ["<visible cue>"], "basis": "observed" | "inferred",
+       "uncertainty": "low" | "medium" | "high", "uncertainty_note": "<why, or empty>"}
+    ],
+    "destination": {
+      "interpreted_purpose": "<what the instruction wants the place to be for>",
+      "decision": "proposed" | "withheld",
+      "proposed_area_id": "<area_ id>" | null,
+      "selection_evidence": "<why this area suits the purpose>",
+      "related_objects": ["obj_1"], "related_areas": ["area_1"],
+      "unknowns": ["<what cannot be determined from the image>"]
+    },
+    "unverifiable_or_unclear": ["<things you could not make out>"]
+  }
+  Limits: at most 40 objects, 25 relations and 10 semantic areas.

@@ -1,0 +1,51 @@
+{
+ "created": "2026-11-22T18:36:48",
+ "rule": {
+  "support": "큐브 후보 둘레 받침 crop의 '큐브가 올라간 팔레트' 예시 점수 >= 기준. 기준 = 개발 8장 진짜 큐브의 최소값 - 0.01",
+  "pallet": "빈 팔레트 예시 점수 >= 기준. 기준 = 개발 8장 진짜 빈 팔레트의 최소값 - 0.01. 큐브 같은 박스(cube >= 0.88) 중심이 안에 있으면 점유로 제외"
+ },
+ "thresholds": {
+  "support": 0.8619,
+  "pallet": 0.8531
+ },
+ "positives": {
+  "support": [
+   0.8719,
+   0.8788,
+   0.9005,
+   0.9026,
+   0.9039,
+   0.9043,
+   0.906,
+   0.9126
+  ],
+  "pallet": [
+   0.8631,
+   0.8817,
+   0.8942,
+   0.8955,
+   0.8955,
+   0.8996,
+   0.9035,
+   0.9094
+  ]
+ },
+ "negatives_after_earlier_checks": {
+  "support": {
+   "n": 0,
+   "max": null,
+   "n_at_or_above_threshold": 0
+  },
+  "pallet": {
+   "n": 236,
+   "max": 0.8805,
+   "n_at_or_above_threshold": 6
+  }
+ },
+ "candidate_recall_dev": {
+  "cube": 8,
+  "empty_pallet": 8,
+  "n_cube": 8,
+  "n_empty_pallet": 8
+ }
+}

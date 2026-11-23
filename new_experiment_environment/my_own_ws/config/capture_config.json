@@ -1,0 +1,14 @@
+{
+  "device": null,
+  "device_note": "Set to the external camera path under /dev/v4l/by-id/ once connected (stable across reboots). null -> must pass --device.",
+  "width": 1920,
+  "height": 1080,
+  "fourcc": "MJPG",
+  "warmup_frames": 30,
+  "out_root": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/datasets/raw",
+  "calibration_json": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+  "calibration_status": "UNVALIDATED - reconstructed from 1536x864 chat screenshots (REAL_ENV_EXPERIMENT_PLAN 0.3). Teammate will recalibrate. Raw PNG is always saved; undistorted PNG is a convenience copy only.",
+  "undistort_convention": "cv2.initUndistortRectifyMap(K, D, None, K, (width, height)) - same as camera_calibration_1920x1080/compare_raw_undistorted.py",
+  "v4l2_controls_to_set": {},
+  "v4l2_controls_note": "Fill after connecting the camera (e.g. auto_exposure, white_balance_automatic, focus_automatic_continuous). Names differ per camera: run `v4l2-ctl -d <device> --list-ctrls`."
+}

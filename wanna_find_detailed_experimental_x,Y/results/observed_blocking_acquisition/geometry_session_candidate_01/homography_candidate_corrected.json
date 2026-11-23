@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1",
+  "analysis_time": "2026-09-21T03:03:42+09:00",
+  "status": "COMPUTED_REJECTED_FOR_USE_BY_HOLDOUT_VALIDATION",
+  "geometry_session_outcome": "GRID_LAYOUT_CONFLICT",
+  "source_image": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_raw.png",
+  "source_image_sha256": "d485d1ecaf2ad3bb89b3528b80622e3ec73f6bd2c6e22f2e50784aec24bcd088",
+  "source_coordinate_frame": "RAW_IMAGE_PX",
+  "target_coordinate_frame": "CURRENT_EXPERIMENT_WORLD_XY_M",
+  "unit": "m",
+  "homography_raw_image_to_world": [
+    [
+      0.018171362868524055,
+      0.004935182698919578,
+      -18.353187988604564
+    ],
+    [
+      0.0005186255423653811,
+      -0.023120296484943174,
+      24.14115501221389
+    ],
+    [
+      0.0003289013699613972,
+      0.006149701263002004,
+      1.0
+    ]
+  ],
+  "inverse_homography_world_to_raw_image": [
+    [
+      405.9298382572641,
+      278.69761625720827,
+      722.0242761196469
+    ],
+    [
+      -17.557759688843806,
+      -57.27113085559388,
+      1060.350383481584
+    ],
+    [
+      -0.025535902977054114,
+      0.26053631796422716,
+      1.0
+    ]
+  ],
+  "fitting_method": "cv2.findHomography RANSAC",
+  "ransac_reprojection_threshold_m": 0.02,
+  "opencv_rng_seed": 0,
+  "correspondence_count": 16,
+  "inlier_count": 15,
+  "fit_rmse_m": 0.008111338935199306,
+  "fit_max_residual_m": 0.015825843092562207,
+  "disambiguation_point_count": 6,
+  "disambiguation_rmse_m": 0.09021242180199962,
+  "holdout_point_count": 3,
+  "holdout_validation_status": "FAILED",
+  "holdout_rmse_m": 0.09313004434952565,
+  "holdout_maximum_error_m": 0.0964960356712493,
+  "difference_from_previous_failed_mapping": {
+    "anchor_changes": [
+      "ID2 corner1 -> corner2",
+      "ID4 corner1 -> corner2"
+    ],
+    "unchanged_anchors": [
+      "ID1 corner2",
+      "ID3 corner2"
+    ],
+    "orientation_change": "NONE; orientation index 0 remained the only low-fit proper rotation",
+    "near_marker_world_shift_m": [
+      0.0,
+      0.175
+    ],
+    "normalized_homography_delta_corrected_minus_previous": [
+      [
+        0.0008886812866431559,
+        0.0002474167204381426,
+        -0.9012604152562886
+      ],
+      [
+        0.00010856067721858997,
+        0.0015887160128105135,
+        -0.4263138044133754
+      ],
+      [
+        4.211149645294267e-05,
+        0.00033189487666602027,
+        0.0
+      ]
+    ],
+    "frobenius_norm_of_normalized_matrix_delta": 0.9970041597919156,
+    "previous_full_nine_point_rmse_m": 0.19372477129529064,
+    "corrected_full_nine_point_diagnostic_rmse_m": 0.0911953347770751,
+    "full_nine_point_rmse_reduction_m": 0.10252943651821554,
+    "full_nine_point_rmse_reduction_percent": 52.925310394060055
+  },
+  "use_policy": "DO_NOT_USE_FOR_METRIC_GROUNDING_OR_NAVIGATION",
+  "legacy_homography_reused": false,
+  "final_accuracy_claim": false,
+  "previous_failed_candidate_preserved_at": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/homography_candidate.json"
+}

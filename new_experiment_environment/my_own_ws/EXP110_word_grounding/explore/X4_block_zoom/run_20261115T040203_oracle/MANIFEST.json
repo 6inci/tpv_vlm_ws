@@ -1,0 +1,84 @@
+{
+ "id": "EXP110-X4",
+ "mode": "oracle",
+ "started": "2026-11-15T04:02:03.430179+09:00",
+ "argv": [
+  "explore/X4_block_zoom/x4_block_zoom.py",
+  "--mode",
+  "oracle",
+  "--out",
+  "explore/X4_block_zoom/run_20261115T040203_oracle"
+ ],
+ "env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "transformers": "5.16.1",
+  "nvidia_driver": "580.178.04"
+ },
+ "x4_config": {
+  "id": "EXP110-X4",
+  "status": "exploratory (dev only, not a registered condition)",
+  "question": "Do the task objects (blocks, small pallets) become findable if Qwen sees an enlarged crop instead of the full 1920x1080 image?",
+  "split": "dev",
+  "image_space": "raw (distorted) camera pixels 1920x1080; crop boxes in raw pixels; Qwen bbox_2d is 0-1000 normalised to the enlarged crop; mapped back as raw = crop_origin + crop_px / scale",
+  "prompt": "EXP110 config.json qwen.c1_prompt (unchanged)",
+  "max_new_tokens": "EXP110 config.json qwen.c1_max_new_tokens",
+  "modes": {
+   "oracle": {
+    "what": "crop around each ANSWER-KEY small pallet (upper bound: assumes the pallet location is already known)",
+    "queries": [
+     "q028",
+     "q029",
+     "q030",
+     "q031",
+     "q032",
+     "q033",
+     "q034",
+     "q035"
+    ],
+    "context_scale": 3.0,
+    "min_side_px": 160,
+    "enlarged_long_side_px": 768
+   },
+   "tiles": {
+    "what": "split the whole image into overlapping tiles, enlarge each, ask every tile (no prior knowledge)",
+    "queries": [
+     "q024",
+     "q025",
+     "q026",
+     "q027",
+     "q028",
+     "q029",
+     "q030",
+     "q031",
+     "q032",
+     "q033",
+     "q034",
+     "q035"
+    ],
+    "cols": 3,
+    "rows": 2,
+    "overlap_frac": 0.25,
+    "scale": 2.0
+   }
+  },
+  "merge_nms_iou": 0.5,
+  "invalid_rule": "strict: if any crop/tile answer for a query is invalid JSON, the query is invalid (failure). Lenient score (invalid crops dropped) is reported separately."
+ },
+ "c1_prompt": "Find every instance of \"{q}\" in this image. Return JSON only, no prose: {{\"objects\": [{{\"bbox_2d\": [x1, y1, x2, y2]}}]}} with integer coordinates normalized to 0-1000 relative to image width and height. If there is no such object, return {{\"objects\": []}}.",
+ "max_new_tokens": 1024,
+ "model": "Qwen/Qwen3-VL-4B-Instruct",
+ "sha256": {
+  "explore/X4_block_zoom/x4_block_zoom.py": "6bf188bc5b84d738870037b1e418e3ca2b320899f4cfd64a83faa62d4c3aee9b",
+  "explore/X4_block_zoom/config.json": "79d35a3980eb33ad338dccc64b58c4e85e207627df760c68c764d2d334908da2",
+  "tools/run_models.py": "a9239538d8f006882bb3c958322635641710ee49f50136ad00de7a0695cb8ea1",
+  "tools/score.py": "16050d4fcac7de814ae3e5a27616996f6b7c79c2941aa3a71ff24afc1728f906",
+  "config.json": "03ee3cd51c9e67dce26c230d1522c7478a2ea04ab8bbd7ec611db3e2827025c2",
+  "queries.json": "28cfb6106b2aa4521220100a9a189659620ab96bd3f557fe2f4561ab8324e9b3"
+ },
+ "python": "3.10.20",
+ "finished": "2026-11-15T04:03:20.220011+09:00"
+}

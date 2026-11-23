@@ -1,0 +1,972 @@
+{
+ "zones": [
+  {
+   "id": "Z02",
+   "layer": "traversable",
+   "name_ko": "로봇 주행 구역",
+   "role": "robot_drivable_outer_area",
+   "polygon_cm": [
+    [
+     61.1,
+     64.0
+    ],
+    [
+     314.5,
+     66.4
+    ],
+    [
+     315.2,
+     176.6
+    ],
+    [
+     59.7,
+     178.4
+    ]
+   ],
+   "source": "MANUAL_DRAFT (transferred, DRAFT_UNCONFIRMED)"
+  },
+  {
+   "id": "Z03",
+   "layer": "static_obstacles",
+   "name_ko": "중앙 화물 적치 구역",
+   "role": "cargo_staging",
+   "polygon_cm": [
+    [
+     122.5,
+     104.9
+    ],
+    [
+     159.2,
+     105.6
+    ],
+    [
+     160.6,
+     137.6
+    ],
+    [
+     122.8,
+     137.2
+    ]
+   ],
+   "source": "MANUAL_DRAFT (transferred, DRAFT_UNCONFIRMED)"
+  },
+  {
+   "id": "Z04",
+   "layer": "static_obstacles",
+   "name_ko": "자재 보관·적치 구역",
+   "role": "material_staging",
+   "polygon_cm": [
+    [
+     204.0,
+     108.9
+    ],
+    [
+     320.0,
+     107.0
+    ],
+    [
+     316.1,
+     136.3
+    ],
+    [
+     203.8,
+     137.4
+    ]
+   ],
+   "source": "MANUAL_DRAFT (transferred, DRAFT_UNCONFIRMED)"
+  },
+  {
+   "id": "Z01",
+   "layer": "no_go",
+   "name_ko": "보행 통로",
+   "role": "pedestrian_route",
+   "polygon_cm": [
+    [
+     158.0,
+     0.1
+    ],
+    [
+     178.0,
+     0.0
+    ],
+    [
+     180.8,
+     63.3
+    ],
+    [
+     78.9,
+     62.4
+    ],
+    [
+     78.4,
+     41.5
+    ],
+    [
+     157.6,
+     41.8
+    ]
+   ],
+   "source": "MANUAL_DRAFT (transferred, DRAFT_UNCONFIRMED)"
+  },
+  {
+   "id": "Z07",
+   "layer": "no_go",
+   "name_ko": "왼쪽 컨베이어 작업셀",
+   "role": "robotic_workcell",
+   "polygon_cm": [
+    [
+     6.7,
+     59.2
+    ],
+    [
+     60.4,
+     62.5
+    ],
+    [
+     58.1,
+     171.1
+    ],
+    [
+     -0.2,
+     167.3
+    ]
+   ],
+   "source": "MANUAL_DRAFT (transferred, DRAFT_UNCONFIRMED)"
+  },
+  {
+   "id": "loading_bay",
+   "name_ko": "트럭 하역 구획(점선)",
+   "polygon_cm": [
+    [
+     257.0,
+     33.8
+    ],
+    [
+     310.1,
+     34.3
+    ],
+    [
+     309.5,
+     3.0
+    ],
+    [
+     254.3,
+     2.1
+    ]
+   ],
+   "source": "GEOMETRY (stored Python dashed-line localization, E1)"
+  }
+ ],
+ "vlm_zones": [
+  {
+   "task": "E1_T1_R0",
+   "description": "Loading area with robotic arms",
+   "evidence": [
+    "robotic arms",
+    "conveyor",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    222.7,
+    275.4,
+    457.0,
+    783.0
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T1_R0",
+   "description": "Shipping area with white truck",
+   "evidence": [
+    "white truck",
+    "orange cones",
+    "white lines"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1209.6,
+    0.0,
+    1747.2,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T1_R0",
+   "description": "Central storage area",
+   "evidence": [
+    "stacked boxes",
+    "orange cone"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    764.2,
+    425.5,
+    969.6,
+    621.0
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T1_R0",
+   "description": "Material storage area",
+   "evidence": [
+    "barrels",
+    "pallets",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1190.4,
+    464.4,
+    1835.5,
+    788.4
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T1_R0",
+   "description": "Power station area",
+   "evidence": [
+    "lightning bolt symbol",
+    "green panels"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1276.8,
+    837.0,
+    1536.0,
+    1020.6
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T1_R0",
+   "description": "Loading dock area",
+   "evidence": [
+    "green loading zone",
+    "white arrows",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    585.6,
+    59.4,
+    1075.2,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T1_R1",
+   "description": "Pedestrian walkway",
+   "evidence": [
+    "green floor with footprints",
+    "no robot body allowed"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    585.6,
+    62.6,
+    1069.4,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T1_R1",
+   "description": "Robot navigation area",
+   "evidence": [
+    "yellow border",
+    "black floor"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    192.0,
+    302.4,
+    1248.0,
+    810.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T1_R1",
+   "description": "Conveyor and robot arm workstation",
+   "evidence": [
+    "white border",
+    "robot arms"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    149.8,
+    286.2,
+    514.6,
+    777.6
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T1_R1",
+   "description": "Goods storage area",
+   "evidence": [
+    "yellow border",
+    "stacked boxes and barrels"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    1186.6,
+    464.4,
+    1843.2,
+    777.6
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T1_R1",
+   "description": "Truck unloading zone",
+   "evidence": [
+    "white truck",
+    "white dashed lines"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    1324.8,
+    0.0,
+    1708.8,
+    291.6
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T1_R1",
+   "description": "Power station",
+   "evidence": [
+    "lightning bolt symbol",
+    "green panels"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    1267.2,
+    831.6,
+    1536.0,
+    1015.2
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T2_R0",
+   "description": "Main operational area with conveyor belt and robotic arms",
+   "evidence": [
+    "conveyor belt",
+    "robotic arms",
+    "orange cones",
+    "green path"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    0.0,
+    0.0,
+    960.0,
+    810.0
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T2_R0",
+   "description": "Storage and loading zone with truck and various containers",
+   "evidence": [
+    "truck",
+    "barrels",
+    "stacked boxes",
+    "orange cones",
+    "yellow lines"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    960.0,
+    0.0,
+    1920.0,
+    810.0
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T2_R0",
+   "description": "Control or instruction zone with whiteboard",
+   "evidence": [
+    "whiteboard",
+    "orange cone",
+    "gray grate"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    0.0,
+    810.0,
+    960.0,
+    1078.9
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T2_R1",
+   "description": "Pedestrian walkway with green floor and footprints",
+   "evidence": [
+    "green floor",
+    "footprint symbols"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    585.6,
+    62.6,
+    1069.4,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T2_R1",
+   "description": "Main robot travel zone (yellow border, black floor)",
+   "evidence": [
+    "yellow border",
+    "black floor"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    205.4,
+    276.5,
+    1872.0,
+    1026.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T2_R1",
+   "description": "Conveyor and robot arm workstation (white border)",
+   "evidence": [
+    "white border"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    205.4,
+    276.5,
+    445.4,
+    783.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T2_R1",
+   "description": "Cargo storage zone (yellow border)",
+   "evidence": [
+    "yellow border"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    1186.6,
+    464.4,
+    1872.0,
+    788.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T2_R1",
+   "description": "Truck unloading zone (white dashed lines)",
+   "evidence": [
+    "white dashed lines"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1305.6,
+    0.0,
+    1689.6,
+    291.6
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T2_R1",
+   "description": "Safety cones and boundary lines",
+   "evidence": [
+    "orange cones",
+    "white boundary lines"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    205.4,
+    0.0,
+    1872.0,
+    1026.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T3_R0",
+   "description": "Loading area with robotic arms",
+   "evidence": [
+    "robotic arms",
+    "orange cones",
+    "green path"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    224.6,
+    278.6,
+    480.0,
+    786.2
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T3_R0",
+   "description": "Central storage zone with stacked boxes",
+   "evidence": [
+    "stacked boxes",
+    "orange cone"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    764.2,
+    425.5,
+    969.6,
+    617.8
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T3_R0",
+   "description": "Right-side storage zone with barrels and pallets",
+   "evidence": [
+    "barrels",
+    "pallets",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1186.6,
+    464.4,
+    1833.6,
+    786.2
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T3_R0",
+   "description": "Bottom zone with whiteboard and charging station",
+   "evidence": [
+    "whiteboard",
+    "charging station",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    633.6,
+    840.2,
+    1261.4,
+    1034.6
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "E1_T3_R1",
+   "description": "Pedestrian walkway",
+   "evidence": [
+    "green floor with footprints",
+    "no robot body allowed"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    585.6,
+    62.6,
+    1069.4,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T3_R1",
+   "description": "Robot travel zone",
+   "evidence": [
+    "yellow border",
+    "black floor"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    205.4,
+    278.6,
+    1261.4,
+    786.2
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T3_R1",
+   "description": "Conveyor belt and robot arm workstation",
+   "evidence": [
+    "white border",
+    "robot arms"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    205.4,
+    278.6,
+    480.0,
+    786.2
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T3_R1",
+   "description": "Cargo storage area",
+   "evidence": [
+    "yellow border",
+    "stacked boxes and barrels"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    1190.4,
+    464.4,
+    1837.4,
+    594.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T3_R1",
+   "description": "Truck unloading zone",
+   "evidence": [
+    "white dashed lines",
+    "truck"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1190.4,
+    0.0,
+    1687.7,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "E1_T3_R1",
+   "description": "Robot charging station",
+   "evidence": [
+    "white border",
+    "lightning bolt symbol"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1267.2,
+    831.6,
+    1536.0,
+    1015.2
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "D1_T2_R0",
+   "description": "Main operational area with conveyor belt, robotic arms, and storage zones",
+   "evidence": [
+    "white lines",
+    "yellow boundary lines",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    71.0,
+    0.0,
+    1881.6,
+    1036.8
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "D1_T2_R0",
+   "description": "Storage zone with various containers and pallets",
+   "evidence": [
+    "yellow boundary lines",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1180.8,
+    453.6,
+    1843.2,
+    777.6
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "D1_T2_R0",
+   "description": "Truck parking zone",
+   "evidence": [
+    "white dashed lines",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1180.8,
+    0.0,
+    1843.2,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "D1_T2_R1",
+   "description": "Pedestrian walkway with green floor and footprints",
+   "evidence": [
+    "green floor",
+    "footprints"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    585.6,
+    62.6,
+    1075.2,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "D1_T2_R1",
+   "description": "Main robot travel area with yellow border",
+   "evidence": [
+    "yellow border",
+    "black floor"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    205.4,
+    280.8,
+    1872.0,
+    1026.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "D1_T2_R1",
+   "description": "Conveyor and robot arm workstation with white border",
+   "evidence": [
+    "white border"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    205.4,
+    280.8,
+    435.8,
+    783.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "D1_T2_R1",
+   "description": "Cargo storage area with yellow border",
+   "evidence": [
+    "yellow border"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    1186.6,
+    464.4,
+    1872.0,
+    783.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "D1_T2_R1",
+   "description": "Truck unloading zone with white dashed lines",
+   "evidence": [
+    "white dashed lines"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1186.6,
+    0.0,
+    1872.0,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "D1_T2_R1",
+   "description": "Safety cones and boundary lines",
+   "evidence": [
+    "safety cones",
+    "boundary lines"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    537.6,
+    199.8,
+    1872.0,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "P4_R_R0",
+   "description": "Left-side conveyor belt area with robotic arms",
+   "evidence": [
+    "white boundary lines",
+    "robotic arms",
+    "yellow safety lines"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    226.6,
+    289.4,
+    428.2,
+    777.6
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "P4_R_R0",
+   "description": "Right-side truck parking zone",
+   "evidence": [
+    "white dashed lines",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1205.8,
+    0.0,
+    1760.6,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "P4_R_R0",
+   "description": "Central storage zone with cardboard boxes",
+   "evidence": [
+    "yellow boundary lines",
+    "orange cones"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    745.0,
+    425.5,
+    969.6,
+    615.6
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "P4_R_R0",
+   "description": "Bottom-right charging station zone",
+   "evidence": [
+    "white boundary lines",
+    "lightning bolt symbol",
+    "green safety markers"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1282.6,
+    831.6,
+    1536.0,
+    1015.2
+   ],
+   "source": "VLM_RECOGNIZED (no rules)"
+  },
+  {
+   "task": "P4_R_R1",
+   "description": "Green pedestrian walkway with footprints",
+   "evidence": [
+    "green floor with white footprints",
+    "no robot body allowed"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    585.6,
+    62.6,
+    1069.4,
+    302.4
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "P4_R_R1",
+   "description": "Main robot travel zone (yellow border, black floor)",
+   "evidence": [
+    "yellow border",
+    "black floor"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    480.0,
+    291.6,
+    1862.4,
+    831.6
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "P4_R_R1",
+   "description": "Conveyor belt and robot arm work cell (white border)",
+   "evidence": [
+    "white border",
+    "robot arms and conveyor"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    224.6,
+    280.8,
+    422.4,
+    777.6
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "P4_R_R1",
+   "description": "Cargo storage area (yellow border)",
+   "evidence": [
+    "yellow border",
+    "stacks of barrels and pallets"
+   ],
+   "robot_body_access": "forbidden",
+   "bbox_image_px": [
+    1186.6,
+    464.4,
+    1843.2,
+    594.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "P4_R_R1",
+   "description": "Truck unloading zone (white dashed lines)",
+   "evidence": [
+    "white dashed lines",
+    "truck parked"
+   ],
+   "robot_body_access": "allowed",
+   "bbox_image_px": [
+    1200.0,
+    0.0,
+    1708.8,
+    291.6
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  },
+  {
+   "task": "P4_R_R1",
+   "description": "Safety cones and boundary lines",
+   "evidence": [
+    "orange cones",
+    "white and yellow boundary lines"
+   ],
+   "robot_body_access": "unknown",
+   "bbox_image_px": [
+    480.0,
+    0.0,
+    1862.4,
+    1026.0
+   ],
+   "source": "VLM_RECOGNIZED (with R1 rules)"
+  }
+ ]
+}

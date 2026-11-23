@@ -1,0 +1,39 @@
+{
+  "case_id": "unsupported_action_en_regression",
+  "category": "unsupported_action_regression",
+  "core_metric": false,
+  "run": 1,
+  "instruction": "Rotate the red cup.",
+  "raw_model_output": "{\"action_phrase\":\"Rotate\",\"target_phrase\":\"the red cup\",\"destination_phrase\":null}",
+  "parsed": {
+    "action_phrase": "Rotate",
+    "target_phrase": "the red cup",
+    "destination_phrase": null
+  },
+  "validated": {
+    "status": "UNSUPPORTED_ACTION",
+    "raw_instruction": "Rotate the red cup.",
+    "error_code": "UNSUPPORTED_ACTION",
+    "reason": "raw instruction contains unsupported action phrase: rotate",
+    "parsed_fields": {
+      "action_phrase": "Rotate",
+      "target_phrase": "the red cup",
+      "destination_phrase": null
+    },
+    "action": {
+      "surface_phrase": "rotate",
+      "canonical": null,
+      "resolution_status": "UNSUPPORTED_ACTION_RAW_GUARD"
+    },
+    "target_grounding_status": "NOT_RUN",
+    "zone_resolution_status": "NOT_RUN",
+    "path_status": "NOT_RUN"
+  },
+  "integrated": null,
+  "inference_sec": 5.357050245998835,
+  "expected": {
+    "status": "UNSUPPORTED_ACTION",
+    "error_code": "UNSUPPORTED_ACTION"
+  },
+  "matches_expected": true
+}

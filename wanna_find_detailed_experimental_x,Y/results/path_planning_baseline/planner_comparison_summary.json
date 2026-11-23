@@ -1,0 +1,83 @@
+{
+  "result": "PASS",
+  "verification_type": "Binary Occupancy Grid + Safety Cost Layer + 8-Connected A* Baseline",
+  "sources": {
+    "collision_world": "/home/binci/vlm_ws/results/collision_geometry/static_collision_world.json",
+    "planner_config": "/home/binci/vlm_ws/config/planner_baseline.json"
+  },
+  "mode": "ROBOT_ONLY_TRANSLATIONAL_BASELINE",
+  "fixed_yaw_rad": 0.0,
+  "parameter_status": "DEVELOPMENT_PARAMETER",
+  "grid": {
+    "resolution_m": 0.02,
+    "rows": 90,
+    "cols": 60,
+    "free_cell_count": 2638,
+    "occupied_cell_count": 2762,
+    "additional_inflation_m": 0.0
+  },
+  "safety_cost": {
+    "radius_m": 0.2,
+    "weight": 2.0,
+    "representation": "OFFLINE_DEVELOPMENT_SAFETY_COST_LAYER",
+    "nav2_costmap2d": false
+  },
+  "start": [
+    0.2,
+    0.3
+  ],
+  "goal": [
+    0.95,
+    1.5
+  ],
+  "start_cell_center_m": [
+    0.21,
+    0.31
+  ],
+  "goal_cell_center_m": [
+    0.9500000000000001,
+    1.51
+  ],
+  "mapping_policy": "HALF_OPEN_CONTAINING_CELL_CENTER",
+  "neighbor_order": [
+    "N",
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW"
+  ],
+  "distance_only_astar": {
+    "path_found": true,
+    "path_length_m": 1.740832611206853,
+    "planning_time_ms": 4.400767000333872,
+    "minimum_clearance_m": 0.015000000000000013,
+    "accumulated_safety_risk": 1.3553861186766394,
+    "nodes_expanded": 1286,
+    "number_of_waypoints": 81,
+    "total_objective_cost": 1.7408326112068526
+  },
+  "safety_cost_astar": {
+    "path_found": true,
+    "path_length_m": 1.8462741699796958,
+    "planning_time_ms": 5.867756997758988,
+    "minimum_clearance_m": 0.065,
+    "accumulated_safety_risk": 0.48710494831847284,
+    "nodes_expanded": 1765,
+    "number_of_waypoints": 90,
+    "total_objective_cost": 2.820484066616641
+  },
+  "both_paths_collision_free": true,
+  "semantic_reconstruction_identical": true,
+  "path_smoothing": "NOT_RUN",
+  "dynamic_replanning": "NOT_RUN",
+  "real_robot_execution": "NOT_RUN",
+  "manipulation": "NOT_RUN",
+  "visualizations": {
+    "binary_occupancy_grid": "/home/binci/vlm_ws/results/path_planning_baseline/binary_occupancy_grid.png",
+    "safety_costmap": "/home/binci/vlm_ws/results/path_planning_baseline/safety_costmap.png",
+    "astar_path_comparison": "/home/binci/vlm_ws/results/path_planning_baseline/astar_path_comparison.png"
+  }
+}

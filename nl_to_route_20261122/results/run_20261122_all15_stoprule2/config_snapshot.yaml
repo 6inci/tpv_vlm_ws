@@ -1,0 +1,40 @@
+# 자연어 지시 -> A/B -> env2 지도 좌표 -> 정차 자세 -> 경로 -> 사진 위 그림. 2026-11-22 첫 실행 전에 작성.
+# 좌표: 사진 픽셀 = 공유 사진 묶음의 편 사진 픽셀(K_photo, 왜곡 없음). 지도 = env2_20261119 (m), 바닥 z = 0.
+#       yaw = +x에서 반시계, 차체 앞(그리퍼 쪽)이 향하는 방향.
+perception:
+  pipeline: /home/binci/vlm_ws/hybrid_exemplar_20261121     # HybridViewer 그대로 (기준값 0.88 / 0.02, 크기 10-90 px)
+  skip_old_camera_checks: true      # 옛 카메라 기준 '놓지 말 구역'·접근성은 이 사진 묶음에 맞지 않음 -> env2 정차 자세 단계가 대신함
+photo_set:
+  dir: /home/binci/vlm_ws/env2_photos_20261120/photos
+  pose: /home/binci/vlm_ws/env2_photos_20261120/camera_pose/photoset_20261120_pose.json
+teammate_bundle: /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120   # 지도, robot_params.json, clearance_check.py (바꾸지 않음)
+default_instruction: "빨간 큐브를 비어 있는 팔레트로 옮겨줘."
+objects:                            # 박스 중심을 이 높이 평면으로 투영 (팀원 실측 2026-11-20: 큐브 2.5 cm, 팔레트 높이 1 cm)
+  cube: {z_top_m: 0.035, half_depth_m: 0.0125}         # 팔레트 1 + 큐브 2.5 cm. 그리퍼 끝 -> 큐브 앞면까지 모자란 거리를 잰다
+  empty_pallet: {z_top_m: 0.010, half_depth_m: 0.0}    # 놓는 점 = 팔레트 윗면 가운데
+  floor_point: {z_top_m: 0.0, half_depth_m: 0.0}       # 시설 옆 바닥 (I2의 B)
+start:                              # 15장 모두 로봇이 같은 자리 (마커 꼭짓점 1 px 안)
+  pixel: [1514.6, 730.4]            # 바퀴 4개 윗부분 중심. 20261120_215746_view.png에서 눈으로 읽음 (AI, 추정)
+  z_m: 0.06                         # 바퀴 윗부분 높이 (추정, 실측 아님). 1 cm 틀리면 약 0.7 cm 어긋남
+  yaw_deg: 180                      # 그리퍼(흰 집게)가 사진 왼쪽 = 지도 -x
+  marker: {dictionary: DICT_4X4_50, id: 0, corners_px: [[1509, 729], [1504, 678], [1553, 680], [1559, 730]], max_shift_px: 3.0}   # 로봇이 움직이지 않았는지 확인용
+stop_pose:
+  yaws_deg: [0, 90, 180, 270]
+  min_body_clearance_m: 0.03        # 팀원 판정 '좋음' 기준 (1 cm 미만 불가, 3 cm 미만 빠듯함)
+  max_lateral_offset_m: 0.02        # 물체 중심이 차체 정면 선에서 벗어나도 되는 거리 (추정). 넘으면 표시만 함
+  min_reach_gap_m: 0.0              # 그리퍼 끝이 물체 앞면(놓는 점)을 넘지 않음
+  select: "그리퍼 끝 가운데 -> 물체 앞면 점 거리 최소"
+  # 2026-11-22 첫 GPU 실행(results/run_20261122_all15) 뒤 변경: 처음엔 옆 어긋남 2 cm 이내만 허용해 모서리 근처 물체(왼쪽 위 D 모서리)에서
+  # 정차 자세가 아예 없었다. 시각화가 목표라 가장 가까운 자세를 고르고 옆 어긋남·모자란 거리를 표시하도록 바꿈. 인식 기준값은 바꾸지 않음.
+planner:                            # env2 지도 1 cm 칸, 4방향 이동, 차체 방향은 출발·도착 두 가지 (회전 한 번) = 팀원 경로 규칙
+  min_body_clearance_m: 0.03
+  start_relax_radius_m: 0.05        # 로봇이 지금 서 있는 곳 둘레 5 cm는 '불가'만 아니면 지나감
+  rotate_body_margin_m: 0.03        # 제자리 회전: 몸체 반대각선 + 3 cm (팀원 요청: 쓸기 여유 3 cm 이상)
+  rotate_gripper_inside_m: 0.0      # 회전 중 그리퍼 끝 선(차체 폭 전체)이 노란 선 안에 있음
+  allow_rotate_at_start: false      # 팀원 형식에서 회전은 경유점이나 도착점에서만
+  strafe_cost_factor: 2.0           # 옆걸음 1 cm = 전진 2 cm (팀원 요청: 긴 옆걸음 피하기)
+  turn_cost_m: 0.05                 # 꺾을 때마다 5 cm에 해당하는 비용
+  rotate_cost_m: 0.10
+draw:
+  font: /usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+  font_bold: /usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc

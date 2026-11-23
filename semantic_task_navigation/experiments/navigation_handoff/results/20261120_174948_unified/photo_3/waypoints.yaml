@@ -1,0 +1,105 @@
+frame_id: map
+status: A VALID, B VALID; positions PROVISIONAL / REVIEW_REQUIRED; obstacles PROVISIONAL;
+  grasp/placement UNVERIFIED; NOT_FOR_DRIVING (margin 2.0 cm < position uncertainty
+  3.5 cm)
+note: yaw = body heading (gripper side), not the movement direction
+path_B_basis: grasp stop of Path A
+path_B_role: TASK_SEQUENCE
+path_A:
+- kind: start
+  index: 0
+  x_m: 2.93
+  y_m: 0.53
+  yaw_deg: -176.6
+  seq: 0
+  yaw_rad: -3.082251
+- kind: turn
+  index: 104
+  x_m: 0.85
+  y_m: 0.53
+  yaw_deg: -176.6
+  seq: 1
+  yaw_rad: -3.082251
+- kind: rotation_point
+  index: 105
+  x_m: 0.85
+  y_m: 0.55
+  yaw_deg: -176.6
+  seq: 2
+  yaw_rad: -3.082251
+- kind: rotate_in_place
+  index: 105
+  x_m: 0.85
+  y_m: 0.55
+  yaw_deg: 270.0
+  direction: ccw
+  seq: 3
+  yaw_rad: 4.712389
+- kind: turn
+  index: 106
+  x_m: 0.83
+  y_m: 0.55
+  yaw_deg: 270.0
+  seq: 4
+  yaw_rad: 4.712389
+- kind: goal
+  index: 108
+  x_m: 0.83
+  y_m: 0.51
+  yaw_deg: 270.0
+  seq: 5
+  yaw_rad: 4.712389
+path_B:
+- kind: start
+  index: 0
+  x_m: 0.83
+  y_m: 0.51
+  yaw_deg: 270.0
+  seq: 0
+  yaw_rad: 4.712389
+- kind: turn
+  index: 50
+  x_m: 1.83
+  y_m: 0.51
+  yaw_deg: 270.0
+  seq: 1
+  yaw_rad: 4.712389
+- kind: rotation_point
+  index: 84
+  x_m: 1.83
+  y_m: 1.19
+  yaw_deg: 270.0
+  seq: 2
+  yaw_rad: 4.712389
+- kind: rotate_in_place
+  index: 84
+  x_m: 1.83
+  y_m: 1.19
+  yaw_deg: 90.0
+  direction: ccw
+  seq: 3
+  yaw_rad: 1.570796
+- kind: turn
+  index: 86
+  x_m: 1.83
+  y_m: 1.23
+  yaw_deg: 90.0
+  seq: 4
+  yaw_rad: 1.570796
+- kind: goal
+  index: 92
+  x_m: 1.95
+  y_m: 1.23
+  yaw_deg: 90.0
+  seq: 5
+  yaw_rad: 1.570796
+grasp_stop_pose:
+  x_m: 0.83
+  y_m: 0.51
+  yaw_deg: 270.0
+  status: UNVERIFIED
+place_stop_pose:
+  x_m: 1.95
+  y_m: 1.23
+  yaw_deg: 90.0
+  status: UNVERIFIED

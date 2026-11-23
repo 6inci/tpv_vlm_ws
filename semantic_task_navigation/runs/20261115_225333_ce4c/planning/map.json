@@ -1,0 +1,237 @@
+{
+  "spec": {
+    "schema_version": "stnav-map-0.1",
+    "map_id": "reference_scene_2026-11-14_zone_draft_v2",
+    "coordinate_frame": "raw_image_px",
+    "image_size": [
+      1920,
+      1080
+    ],
+    "review_status": "DRAFT_UNCONFIRMED",
+    "review_note": "Polygons are ported unchanged from a draft that says 'DRAFT - user must confirm'. A person must review them before experiments.",
+    "provenance": {
+      "source_file": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-15_zone_draft/semantic_zones_draft_v2.json",
+      "source_sha256": "18d2b78b8e1e639edf3d4aea4b003283fbfdd15e05467789ffff4ff111a6c426",
+      "source_status": "DRAFT - user must confirm",
+      "ported_on": "2026-11-15",
+      "knowledge": "manual_prior"
+    },
+    "reference_image": "config/maps/reference_scene_map.reference_P01.jpg",
+    "reference_image_sha256": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+    "reference_image_note": "Copy of EXP110 P01 (same fixed camera session 2026-11-14). The draft polygons were drawn on this frame.",
+    "alignment_check": {
+      "max_shift_px": 3.0,
+      "min_response": 0.3
+    },
+    "traversable": [
+      {
+        "id": "Z02",
+        "polygon": [
+          [
+            558,
+            323
+          ],
+          [
+            1693,
+            344
+          ],
+          [
+            1804,
+            825
+          ],
+          [
+            457,
+            824
+          ]
+        ],
+        "origin": "zone draft Z02 robot_drivable_outer_area (semantic_origin USER): area inside the yellow boundary",
+        "source": "manual_prior"
+      }
+    ],
+    "static_obstacles": [
+      {
+        "id": "Z03",
+        "polygon": [
+          [
+            816,
+            477
+          ],
+          [
+            998,
+            479
+          ],
+          [
+            1001,
+            625
+          ],
+          [
+            804,
+            623
+          ]
+        ],
+        "origin": "zone draft Z03 cargo_staging (INFERRED); routing_constraints_draft.robot_obstacle_islands",
+        "source": "manual_prior"
+      },
+      {
+        "id": "Z04",
+        "polygon": [
+          [
+            1222,
+            495
+          ],
+          [
+            1756,
+            503
+          ],
+          [
+            1769,
+            630
+          ],
+          [
+            1227,
+            625
+          ]
+        ],
+        "origin": "zone draft Z04 material_staging (INFERRED); routing_constraints_draft.robot_obstacle_islands",
+        "source": "manual_prior"
+      }
+    ],
+    "no_go": [
+      {
+        "id": "Z01",
+        "polygon": [
+          [
+            1002,
+            102
+          ],
+          [
+            1086,
+            102
+          ],
+          [
+            1103,
+            310
+          ],
+          [
+            636,
+            314
+          ],
+          [
+            648,
+            241
+          ],
+          [
+            997,
+            233
+          ]
+        ],
+        "origin": "zone draft Z01 pedestrian_route (USER); robot access unknown -> treated as no-go",
+        "source": "manual_prior"
+      },
+      {
+        "id": "Z07",
+        "polygon": [
+          [
+            341,
+            320
+          ],
+          [
+            556,
+            318
+          ],
+          [
+            455,
+            787
+          ],
+          [
+            193,
+            765
+          ]
+        ],
+        "origin": "zone draft Z07 robotic_workcell (INFERRED, robot: restricted)",
+        "source": "manual_prior"
+      }
+    ],
+    "start_pose": {
+      "xy": [
+        700,
+        740
+      ],
+      "source": "manual_prior",
+      "note": "No mobile robot is visible in the reference image; manual start for IMAGE_SPACE_DEMO only."
+    },
+    "semantic_reference_zones": [
+      {
+        "id": "Z06",
+        "role": "loading_bay",
+        "polygon": [
+          [
+            1402,
+            99
+          ],
+          [
+            1628,
+            99
+          ],
+          [
+            1655,
+            235
+          ],
+          [
+            1428,
+            226
+          ]
+        ],
+        "confirmed": false,
+        "semantic_origin": "USER_AND_VISUAL",
+        "use": "consistency check of the VLM-selected loading region only; never used for planning or given to the VLM"
+      }
+    ]
+  },
+  "source_file": "config/maps/reference_scene_map.json",
+  "spec_sha256": "079a304811e638733637b1043d6f4c3586af3193fb91cf969443f3ebf32ce486",
+  "alignment": {
+    "status": "ALIGNED",
+    "shift_px": [
+      -0.145,
+      -0.425
+    ],
+    "response": 0.9143,
+    "thresholds": {
+      "max_shift_px": 3.0,
+      "min_response": 0.3
+    },
+    "reference_image": "config/maps/reference_scene_map.reference_P01.jpg"
+  },
+  "build_params": {
+    "cell_px": 8,
+    "robot_radius_px": 35,
+    "safety_margin_px": 40
+  },
+  "summary": {
+    "coordinate_frame": "raw_image_px",
+    "map_mode_note": "image space; not metric",
+    "cell_px": 8,
+    "rows": 135,
+    "cols": 240,
+    "robot_radius_px": 35,
+    "robot_footprint": "disc (assumed, image space)",
+    "safety_margin_px": 40,
+    "cell_counts": {
+      "traversable": 9522,
+      "static_obstacle": 1519,
+      "no_go": 2463,
+      "dynamic_obstacle": 0,
+      "free": 8040,
+      "valid_robot_center": 5318
+    },
+    "layer_sha256": {
+      "traversable": "391d06a0f320aa1878b8be774cb4330f854e334e5bae84e37ccffdafbf3d11a7",
+      "static_obstacle": "12f56c2fa7a455d66dfbf5f8285812204c4988b4c4977ff762133a42c4492c4b",
+      "no_go": "383a9b9198c834e5772af635898099322df5877629a221d916d231fe775b36d5",
+      "dynamic_obstacle": "a02c08481cae7e9bdb4aeca674f4f44aa25125a398f179c42d4180531a599cd8",
+      "valid": "14a668e89a29b91e6e86cff73ef3dc37df5864b1c917a23e22a95e283300b471"
+    },
+    "dynamic_obstacles": []
+  }
+}

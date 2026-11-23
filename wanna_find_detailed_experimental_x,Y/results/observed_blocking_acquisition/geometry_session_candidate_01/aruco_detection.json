@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1",
+  "status": "AVAILABLE",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_raw.png",
+    "sha256": "d485d1ecaf2ad3bb89b3528b80622e3ec73f6bd2c6e22f2e50784aec24bcd088",
+    "coordinate_frame": "RAW_IMAGE_PX",
+    "width": 1920,
+    "height": 1080
+  },
+  "detector": {
+    "implementation": "OpenCV cv2.aruco.detectMarkers",
+    "opencv_version": "4.5.4",
+    "dictionary": "DICT_4X4_50",
+    "parameters": "DetectorParameters_create defaults",
+    "existing_reference_implementations": [
+      "/home/binci/camera_calibration_1920x1080/aruco_pose.py",
+      "/home/binci/camera_calibration_1920x1080/aruco_pose_id0.py"
+    ]
+  },
+  "detection_order": [2, 4, 0, 3, 1],
+  "detected_ids_sorted": [0, 1, 2, 3, 4],
+  "detected_marker_count": 5,
+  "rejected_candidate_count": 27,
+  "markers": [
+    {
+      "marker_id": 0,
+      "status": "DETECTED",
+      "corners_raw_px": [[927.0, 934.0], [1007.0, 930.0], [1011.0, 985.0], [925.0, 992.0]],
+      "center_raw_px": [967.5, 960.25],
+      "role": "ROBOT_MARKER",
+      "role_evidence": [
+        "Visible on the raised robot chassis in the captured reference frame.",
+        "Existing repository reference targets ArUco ID 0 and documents a top-mounted robot marker."
+      ],
+      "floor_geometry_eligible": false
+    },
+    {
+      "marker_id": 1,
+      "status": "DETECTED",
+      "corners_raw_px": [[1129.0, 544.0], [1172.0, 544.0], [1178.0, 565.0], [1132.0, 566.0]],
+      "center_raw_px": [1152.75, 554.75],
+      "role": "FLOOR_REFERENCE_MARKER",
+      "floor_plane_status": "VISUALLY_CONFIRMED_FROM_REFERENCE_FRAME",
+      "workspace_reference_intent": "PENDING_USER_CONFIRMATION",
+      "floor_geometry_eligible": "PENDING_PHYSICAL_ROLE_AND_WORLD_MEASUREMENTS"
+    },
+    {
+      "marker_id": 2,
+      "status": "DETECTED",
+      "corners_raw_px": [[1166.0, 1015.0], [1238.0, 1013.0], [1244.0, 1067.0], [1169.0, 1069.0]],
+      "center_raw_px": [1204.25, 1041.0],
+      "role": "FLOOR_REFERENCE_MARKER",
+      "floor_plane_status": "VISUALLY_CONFIRMED_FROM_REFERENCE_FRAME",
+      "workspace_reference_intent": "PENDING_USER_CONFIRMATION",
+      "floor_geometry_eligible": "PENDING_PHYSICAL_ROLE_AND_WORLD_MEASUREMENTS"
+    },
+    {
+      "marker_id": 3,
+      "status": "DETECTED",
+      "corners_raw_px": [[818.0, 547.0], [862.0, 547.0], [855.0, 568.0], [809.0, 567.0]],
+      "center_raw_px": [836.0, 557.25],
+      "role": "FLOOR_REFERENCE_MARKER",
+      "floor_plane_status": "VISUALLY_CONFIRMED_FROM_REFERENCE_FRAME",
+      "workspace_reference_intent": "PENDING_USER_CONFIRMATION",
+      "floor_geometry_eligible": "PENDING_PHYSICAL_ROLE_AND_WORLD_MEASUREMENTS"
+    },
+    {
+      "marker_id": 4,
+      "status": "DETECTED",
+      "corners_raw_px": [[667.0, 1004.0], [734.0, 1008.0], [721.0, 1060.0], [651.0, 1055.0]],
+      "center_raw_px": [693.25, 1031.75],
+      "role": "FLOOR_REFERENCE_MARKER",
+      "floor_plane_status": "VISUALLY_CONFIRMED_FROM_REFERENCE_FRAME",
+      "workspace_reference_intent": "PENDING_USER_CONFIRMATION",
+      "floor_geometry_eligible": "PENDING_PHYSICAL_ROLE_AND_WORLD_MEASUREMENTS"
+    }
+  ],
+  "floor_reference_marker_candidates": [1, 2, 3, 4],
+  "robot_marker_ids": [0],
+  "unknown_marker_ids": [],
+  "visualization": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/aruco_detection_overlay.png",
+    "sha256": "457e44b2d4957b11a3127efbd60ba82d9ceb4d39cee3e78a51b83664d9ad4c06"
+  }
+}

@@ -1,0 +1,295 @@
+{
+ "run_id": "run_013_U25967031",
+ "created": "2026-11-21T01:00:16",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "rules": "R1",
+ "photo": {
+  "photo_id": "U25967031",
+  "path": "/home/binci/Pictures/Calibration/7calibration.png",
+  "sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "detection_reused": "fresh DINO this session (vocabulary; full image + verified conveyor / truck ROIs), IoU merge 0.5",
+ "cube_candidates": "stored red-cube candidates (candidate_retention_policy, HSV + DINO)",
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "policy": {
+  "config": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml",
+  "prompt_ids": [
+   "task_context_v1",
+   "source_roles_v2",
+   "destination_roles_v2"
+  ],
+  "rules_text": "이 작업장의 운영 규칙(사용자 초안, 확인 전):\n- 초록색 바닥에 발자국 표시가 있는 통로는 보행자 통로이며 로봇 본체가 들어갈 수 없다.\n- 노란 외곽선 안의 넓은 검은 바닥은 로봇 주행 구역이다. 로봇 본체는 이 구역 안에서만 움직인다.\n- 흰 테두리 안의 컨베이어·로봇 팔 작업셀에는 로봇 본체가 들어갈 수 없다.\n- 노란 테두리 안의 화물 적치 구역과 자재 보관 구역에는 로봇 본체가 들어가지 않고 접근만 한다.\n- 트럭과 흰색 점선 구획은 트럭 하역장이다.\n- 안전 콘과 바닥 경계선은 작업공간을 나누는 표시일 수 있다.\n- 로봇은 주행 구역에 정차한 채 인접한 구역의 물체를 집거나 놓을 수 있다(그리퍼 도달 거리는 확인되지 않았다).\n",
+  "viewer_config": {
+   "photo_dir": "/home/binci/Pictures/Calibration",
+   "results_dir": "results",
+   "reuse": {
+    "task_context_config": "../task_context_2d_navigation/config.yaml"
+   },
+   "whole_image_when_no_reference": true,
+   "max_role_calls_per_side": 3,
+   "goal_region": {
+    "region_words": [
+     "floor",
+     "area",
+     "zone",
+     "marking",
+     "road",
+     "ground",
+     "lane",
+     "region",
+     "space",
+     "surface",
+     "mat",
+     "dock",
+     "bay",
+     "path",
+     "walkway",
+     "aisle"
+    ],
+    "min_image_frac": 0.03
+   },
+   "default_rules": "R1"
+  }
+ },
+ "model_called": true,
+ "source": {
+  "status": "NOT_FOUND",
+  "ids": [],
+  "why": "no candidate inside the search region"
+ },
+ "destination": {
+  "status": "NOT_FOUND",
+  "why": "no candidate inside the destination region"
+ },
+ "interpretation": {
+  "parsed": {
+   "purpose": "Move the red cube to an empty pallet",
+   "source_object": {
+    "name_en": "red cube"
+   },
+   "source_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [
+     585,
+     807,
+     655,
+     907
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     1123.2,
+     871.6,
+     1257.6,
+     979.6
+    ]
+   },
+   "source_relation": "on",
+   "destination_meaning": "Empty pallet",
+   "destination_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [
+     585,
+     807,
+     655,
+     907
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     1123.2,
+     871.6,
+     1257.6,
+     979.6
+    ]
+   },
+   "destination_relation": "on",
+   "zones_seen": [
+    {
+     "description": "Main robot navigation area",
+     "visual_evidence": [
+      "yellow border",
+      "black floor"
+     ],
+     "bbox_2d": [
+      250,
+      280,
+      650,
+      750
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "Pedestrian walkway",
+     "visual_evidence": [
+      "green floor",
+      "white footprints"
+     ],
+     "bbox_2d": [
+      300,
+      50,
+      560,
+      280
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Robot work cell",
+     "visual_evidence": [
+      "white border",
+      "conveyor belt"
+     ],
+     "bbox_2d": [
+      100,
+      260,
+      260,
+      720
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Material storage area",
+     "visual_evidence": [
+      "yellow border",
+      "stacked containers"
+     ],
+     "bbox_2d": [
+      620,
+      430,
+      950,
+      550
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Truck unloading zone",
+     "visual_evidence": [
+      "white dashed lines",
+      "truck"
+     ],
+     "bbox_2d": [
+      620,
+      0,
+      900,
+      280
+     ],
+     "robot_body_access": "forbidden"
+    }
+   ],
+   "uncertainty": [
+    "The exact location of the red cube is not visible in the image."
+   ]
+  },
+  "error": null,
+  "raw_file": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_013_U25967031/qwen/interpretation.txt"
+ },
+ "references": {
+  "source": {
+   "name": "empty pallet",
+   "class": null,
+   "box": [
+    1123.2,
+    871.6,
+    1257.6,
+    979.6
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "on",
+   "region": {
+    "type": "containment",
+    "rect": [
+     1123,
+     871,
+     1257,
+     979
+    ]
+   }
+  },
+  "destination": {
+   "name": "empty pallet",
+   "class": null,
+   "box": [
+    1123.2,
+    871.6,
+    1257.6,
+    979.6
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "on",
+   "region": {
+    "type": "containment",
+    "rect": [
+     1123,
+     871,
+     1257,
+     979
+    ]
+   }
+  }
+ },
+ "stages": [
+  {
+   "name": "interpretation",
+   "status": "OK",
+   "summary": "move 'red cube' | source: on 'empty pallet' | destination: on 'empty pallet' | purpose: Move the red cube to an empty pallet"
+  },
+  {
+   "name": "detection",
+   "status": "OK",
+   "summary": "new phrases ['red cube', 'empty pallet']: 9 new candidates; 81 detector candidates on this photo"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "'empty pallet' [on] -> containment [1123, 871, 1257, 979] (Qwen box (no stored object with enough overlap))"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "'empty pallet' [on] -> containment [1123, 871, 1257, 979] (Qwen box (no stored object with enough overlap))"
+  },
+  {
+   "name": "source_candidates",
+   "status": "FAILED",
+   "summary": "0 of 21 red-cube candidates (stored red-cube candidates (candidate_retention_policy, HSV + DINO)) inside the region"
+  },
+  {
+   "name": "destination_candidates",
+   "status": "FAILED",
+   "summary": "0 detector candidates inside the region (1 region-scale boxes not numbered; the object to move excluded)"
+  }
+ ],
+ "first_failure": "source_candidates",
+ "wall_s": 46.2,
+ "model_calls": {
+  "n_qwen": 1,
+  "n_dino": 2,
+  "models": [
+   "IDEA-Research/grounding-dino-tiny @ a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "Qwen/Qwen3-VL-4B-Instruct @ ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  ],
+  "file": "model_calls.json"
+ },
+ "handoff": {
+  "photo_id": "U25967031",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": null,
+  "destination": null
+ },
+ "files": {
+  "overlay": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_013_U25967031/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_013_U25967031/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_013_U25967031/run.json"
+ }
+}

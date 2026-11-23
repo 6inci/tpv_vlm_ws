@@ -1,0 +1,44 @@
+{
+  "status": "TESTING",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "image": "IMG_8558.jpeg",
+  "upright_size": [
+    3024,
+    4032
+  ],
+  "coordinate_system": "upright distorted image pixels",
+  "seconds": 49.11093876300038,
+  "prompt": "Find visible miniature or full-size logistics pallets, water bottles, and storage shelves/racks in this image. A pallet is a slatted platform for carrying goods, not a painting palette. White 3D-printed models count. Return JSON only: {\"objects\":[{\"label\":\"pallet\",\"bbox_2d\":[x1,y1,x2,y2]}]}. Each label must be exactly one of \"pallet\", \"water bottle\", or \"shelf\". The example label \"pallet\" is only an example, choose the correct single label for each object. Coordinates are integers normalized to 0..1000 relative to the entire displayed upright image. Include every distinct visible target; no unrelated objects. If none, return an empty objects list.",
+  "detections": [
+    {
+      "label": "pallet",
+      "bbox_px": [
+        0.0,
+        2499.84,
+        2207.52,
+        4032.0
+      ],
+      "bbox_normalized_1000": [
+        0,
+        620,
+        730,
+        1000
+      ]
+    },
+    {
+      "label": "pallet",
+      "bbox_px": [
+        937.44,
+        1036.224,
+        2449.44,
+        2842.56
+      ],
+      "bbox_normalized_1000": [
+        310,
+        257,
+        810,
+        705
+      ]
+    }
+  ]
+}

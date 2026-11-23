@@ -1,0 +1,82 @@
+# Semantic context map + footprint-aware navigation cost map + task-aware decision on E1 (offline).
+# Declared BEFORE the run it governs. No model call, no GPU, no hardware, nothing outside this folder is modified.
+# (Name check: differs from the existing experiments/semantic_to_navigation_integration, which is the earlier v0.2 E1 run reused here.)
+experiment_id: semantic_navigation_integration
+results_dir: results
+command: "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+
+# Everything geometric is taken from task_route_integration.build_context (read only): image + sha256, PROVISIONAL floor transform,
+# DRAFT map (MANUAL_MAP_PRIOR), stored robot start, stored truck / conveyor / cone boxes, stored Qwen L2 reply, Python bay + free floor.
+route_config: ../task_route_integration/config.yaml
+stored:
+  route_run: ../task_route_integration/results/20261119_082047_route                 # earlier path A/B (comparison only)
+  retention_run: ../candidate_retention_policy/results/20261119_073841_retention      # 38 E1 target candidates + states (stored Qwen answers)
+  crop_comparison_run: ../qwen_crop_comparison/results/20261119_075541_crop_comparison # Qwen views A/B/C for 4 candidates
+  placement_reach_run: ../placement_reach_map/results/20261119_085302_reach            # reference only (stop pose / gap of the last study)
+  funnel_config: ../cube_candidate_funnel/config.yaml                                 # AI_PRELIMINARY_REVIEW label (reported, never used to decide)
+  draft_zone_source: /home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-15_zone_draft/semantic_zones_draft_v2.json  # zone names/roles (read only)
+photo_id: U25070552
+
+# New Qwen calls: NONE. The stored replies already give the destination (L2), the functional areas with boxes, and crop verdicts for the robot,
+# conveyor, truck, cones and 4 cube candidates. Spatial relations are computed in Python from detector boxes and the provisional floor frame.
+model_calls: 0
+
+# ---------------------------------------------------------------- Experiment 1: semantic context map
+context:
+  provenance: [INSTRUCTION_GIVEN, VLM_INFERRED, GEOMETRY_DERIVED]          # who asserts the relation
+  evidence_kinds: [INSTRUCTION_GIVEN, VLM_INFERRED, VLM_CROP_VERIFIED, DETECTOR_OBSERVED, GEOMETRY_DERIVED, MANUAL_MAP_PRIOR]
+  statuses: [SUPPORTED, UNVERIFIED, UNKNOWN]   # SUPPORTED = the computed condition holds on its stated basis; UNVERIFIED = stated, not checkable here
+  # thresholds REUSED from v0.2 config/planning.yaml relations (image space): near_px 150, contain_ratio 0.8
+  image_relations_from_v02: true
+  floor_adjacent_cm: 5        # floor-level 'adjacent_to': gap <= the floor-transform deviation bound (3.5 cm) rounded up to 5 cm
+  tall_objects: [truck, conveyor, mobile_robot]   # image boxes of tall objects are NOT floor footprints: image-space relations only
+  excluded_vlm_areas: {area_1: "box covers the whole image (0,0,1000,1000): not localising"}
+
+# ---------------------------------------------------------------- Experiment 2: navigation cost map
+cost_map:
+  robot_cm: [35, 24, 16]                     # user-given size; footprint = 35 x 24 + measured transform margin per side
+  headings_deg: [0, 90]                      # fixed heading per map; start heading is UNKNOWN (both maps are conditional on it)
+  primary_heading_deg: 0                     # heading of the earlier selected route plans
+  cost: "v0.2 cost_field (Dijkstra, identical edge costs to v0.2 A*: SAFETY_COST_ASTAR, 8-connected, no diagonal corner cutting)"
+  also_distance_only: true                   # DISTANCE_ONLY edge costs -> grid geodesic length (cm)
+  heading_change: "only at reachable cells whose circumscribed disc is free (v0.2-style conservative rotation test); rotation adds no length (time/dynamics NOT modelled)"
+  consistency_samples: 40                    # random reachable cells re-planned with v0.2 A* (seeded)
+  consistency_seed: 0
+  abs_tol: 1.0e-6
+  cell_classes: [REACHABLE, UNREACHABLE_DISCONNECTED, UNREACHABLE_FOOTPRINT, STATIC_OBSTACLE, NO_GO, UNKNOWN_UNVERIFIED, OUTSIDE_WORKSPACE]
+
+# ---------------------------------------------------------------- Experiment 3: decision + ablation
+# Lexicographic, evidence-tier policy. Factors are ordinal levels (higher = better). A candidate is SELECTED only when its tuple of DECISIVE
+# factors is strictly greater than the next candidate's; tie-breakers order the list but never decide. Ties -> AMBIGUOUS (tied set kept).
+# Navigation is placed AFTER the semantic factor, so a short path can never outrank a candidate with stronger visual/semantic evidence.
+# DEVELOPMENT RULE: written after earlier studies had exposed the E1 candidate positions. It is evaluated on the same photo, so nothing here is
+# a generalisation result. The binary semantic variant (declared here, run always) shows how much the decision depends on the 'on > near' grading.
+decision:
+  visual_level: {VLM_ACCEPTED: 3, PROBABLE: 2, PENDING_VERIFICATION: 1, REJECTED: 0}   # stored retention states (stored Qwen view A only)
+  plannable_min_visual_level: 2
+  crop_views_role: "recorded; a disagreement between stored views A/B/C is reported as a reason for VERIFY_REQUIRED; never changes the state"
+  semantic_source_level:
+    graded: {"on": 2, "near": 1, "none": 0}  # PRIMARY: candidate box inside the instruction's source object box (on, 2D) > within near_px > none
+    binary: {"on": 1, "near": 1, "none": 0}  # SENSITIVITY  (keys quoted: YAML 1.1 reads a bare 'on' as the boolean true)
+  navigation:
+    feasible: "path A (start -> pick-up approach) AND path B (pick-up approach -> placement approach) generated and validated (v0.2 A*, v0.2 validator, whole-body sweep)"
+    tie_break: [body_to_target_gap_cm, v02_goal_score]   # order only (gripper reach unknown: the gap is not a feasibility gate)
+  conditions:
+    A_visual: {decisive: [visual], gate: plannable}
+    B_visual_semantic: {decisive: [visual, semantic], gate: plannable}
+    C_visual_semantic_navigation: {decisive: [visual, semantic, nav_feasible], gate: plannable, on_infeasible_top: DEFERRED_NAVIGATION}
+    D_navigation_only: {decisive: [neg_v02_goal_score], gate: none, role: "baseline: simple distance-based choice over ALL candidates"}
+  destination:
+    candidates: "all stored Qwen functional areas (area_1..area_6), same set in every condition"
+    semantic: [vlm_chosen, grounded_to_observed_bay]     # Qwen chose it (VLM_INFERRED); Python bay inside its box >= contain_ratio (GEOMETRY_DERIVED)
+    placement_target: "free floor of the bay (stored bay localization, margin_0px) when the chosen area is grounded to the bay; else the area box"
+  approach:
+    slack_cm: 6               # same as task_plan_prototype (nearest reachable pose + path-cost tie-break inside this band)
+    distance_weight: 1.5      # v0.2 goal_selection distance_weight
+  never: CONFIRMED            # nothing is promoted; VLM_ACCEPTED would still be VERIFY_REQUIRED
+
+claims:
+  task_success: NOT_CLAIMABLE
+  detection_or_relation_accuracy: NOT_COMPUTED (no human ground truth; the 8 cube labels are AI_PRELIMINARY_REVIEW)
+  generalisation: NONE (policy developed and evaluated on the same photo)
+  physical_safety: NOT CLAIMED (PROVISIONAL floor transform, DRAFT map)

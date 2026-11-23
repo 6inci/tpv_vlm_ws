@@ -1,0 +1,2740 @@
+{
+  "diagnostic_only": true,
+  "accepted_calibration_modified": false,
+  "original_corner_prior_analysis": {
+    "common_focal_scale": [
+      {
+        "percent": -2.0,
+        "marker_rmse_px": 5.7824,
+        "holdout_rmse_px": 8.3797,
+        "H_world_rmse_m": 0.069272
+      },
+      {
+        "percent": -1.0,
+        "marker_rmse_px": 5.5214,
+        "holdout_rmse_px": 7.9645,
+        "H_world_rmse_m": 0.066028
+      },
+      {
+        "percent": -0.5,
+        "marker_rmse_px": 5.3931,
+        "holdout_rmse_px": 7.759,
+        "H_world_rmse_m": 0.064419
+      },
+      {
+        "percent": 0.0,
+        "marker_rmse_px": 5.2663,
+        "holdout_rmse_px": 7.5549,
+        "H_world_rmse_m": 0.062819
+      },
+      {
+        "percent": 0.5,
+        "marker_rmse_px": 5.141,
+        "holdout_rmse_px": 7.3523,
+        "H_world_rmse_m": 0.061229
+      },
+      {
+        "percent": 1.0,
+        "marker_rmse_px": 5.0172,
+        "holdout_rmse_px": 7.151,
+        "H_world_rmse_m": 0.059647
+      },
+      {
+        "percent": 2.0,
+        "marker_rmse_px": 4.7744,
+        "holdout_rmse_px": 6.7528,
+        "H_world_rmse_m": 0.056511
+      }
+    ],
+    "principal_point_single_axis_summary": {
+      "cx_minus20_px": {
+        "marker_rmse_px": 5.2718,
+        "holdout_rmse_px": 7.525,
+        "H_world_rmse_m": 0.062457
+      },
+      "cx_plus20_px": {
+        "marker_rmse_px": 5.2671,
+        "holdout_rmse_px": 7.5857,
+        "H_world_rmse_m": 0.063205
+      },
+      "cy_minus20_px": {
+        "marker_rmse_px": 5.3812,
+        "holdout_rmse_px": 7.6754,
+        "H_world_rmse_m": 0.063745
+      },
+      "cy_plus20_px": {
+        "marker_rmse_px": 5.1486,
+        "holdout_rmse_px": 7.4316,
+        "H_world_rmse_m": 0.061879
+      }
+    },
+    "best_joint_grid_setting": {
+      "grid": "common focal -2..+2 percent; cx,cy offsets -20,-10,0,+10,+20 px",
+      "setting": {
+        "focal_percent": 2.0,
+        "cx_offset_px": -20,
+        "cy_offset_px": 20
+      },
+      "marker_rmse_px": 4.670901493,
+      "tile14_rmse_px": 7.536964241,
+      "holdout6_rmse_px": 6.609229408,
+      "H_world_rmse_m": 0.055278249,
+      "camera_world_xyz_m": [
+        0.8263975517,
+        -1.9858281989,
+        2.2495907737
+      ],
+      "assessment": "best lies on +2 percent boundary and remains far from strong validation"
+    },
+    "opposing_independent_planar_evidence": {
+      "PnP_direction": "+2 percent focal improves the rigid-pose diagnostics",
+      "same_frozen_split_direct_H_direction": "-2 percent focal plus cx=-20,cy=-10 gives best diagnostic H holdout",
+      "direct_H_best_holdout_rmse_mm": 3.644409,
+      "direct_H_best_holdout_max_mm": 6.05288,
+      "conclusion": "A single small focal correction does not consistently explain both models."
+    }
+  },
+  "method_c_grid": [
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.854505563351239,
+        -1.8844669966268919,
+        2.1794267860769745
+      ],
+      "marker_rmse_px": 5.7885972159753925,
+      "holdout_rmse_px": 8.484539608622145,
+      "homography_pixel_rmse_px": 10.170253704779796,
+      "homography_world_rmse_m": 0.054631377574296425,
+      "normalized_composite": 3.3806923153480644
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8528894804123957,
+        -1.8782711183455723,
+        2.1783167616551045
+      ],
+      "marker_rmse_px": 5.725639777674796,
+      "holdout_rmse_px": 8.422284593483282,
+      "homography_pixel_rmse_px": 10.061057727108947,
+      "homography_world_rmse_m": 0.054202972288892266,
+      "normalized_composite": 3.3480428467043453
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8512917933139934,
+        -1.8722440754632206,
+        2.1772307868171428
+      ],
+      "marker_rmse_px": 5.661810625769973,
+      "holdout_rmse_px": 8.359329558861607,
+      "homography_pixel_rmse_px": 9.951376073967872,
+      "homography_world_rmse_m": 0.053772253224677026,
+      "normalized_composite": 3.315076404504488
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8497121892848809,
+        -1.866384954545365,
+        2.176170574342758
+      ],
+      "marker_rmse_px": 5.597112253581073,
+      "holdout_rmse_px": 8.295664204145764,
+      "homography_pixel_rmse_px": 9.84120093152046,
+      "homography_world_rmse_m": 0.0533390954077945,
+      "normalized_composite": 3.281791251964845
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8481503372675635,
+        -1.8606928588991751,
+        2.1751378034324205
+      ],
+      "marker_rmse_px": 5.531547516554366,
+      "holdout_rmse_px": 8.231278609276968,
+      "homography_pixel_rmse_px": 9.73052281252711,
+      "homography_world_rmse_m": 0.05290337014591521,
+      "normalized_composite": 3.248185588039836
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8497700016181233,
+        -1.8816865125153717,
+        2.177355845179266
+      ],
+      "marker_rmse_px": 5.779035557541692,
+      "holdout_rmse_px": 8.50280096218445,
+      "homography_pixel_rmse_px": 10.201428223771616,
+      "homography_world_rmse_m": 0.054715326138386616,
+      "normalized_composite": 3.3846835326354627
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8482136192878218,
+        -1.8754943358784955,
+        2.1762366394178363
+      ],
+      "marker_rmse_px": 5.716173740355251,
+      "holdout_rmse_px": 8.440783665085485,
+      "homography_pixel_rmse_px": 10.092103388369631,
+      "homography_world_rmse_m": 0.054287744902352955,
+      "normalized_composite": 3.352069890477284
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.846674803955764,
+        -1.8694708622777734,
+        2.1751415739919113
+      ],
+      "marker_rmse_px": 5.65242740922161,
+      "holdout_rmse_px": 8.378059478604609,
+      "homography_pixel_rmse_px": 9.982296260919469,
+      "homography_world_rmse_m": 0.05385783547218049,
+      "normalized_composite": 3.319136235381092
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8451532555942532,
+        -1.863615170639572,
+        2.174072351805565
+      ],
+      "marker_rmse_px": 5.587798376549006,
+      "holdout_rmse_px": 8.314617718468494,
+      "homography_pixel_rmse_px": 9.87199808950843,
+      "homography_world_rmse_m": 0.05342547016299861,
+      "normalized_composite": 3.285880542589531
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": -10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.84364865711695,
+        -1.8579263570175364,
+        2.173030642234101
+      ],
+      "marker_rmse_px": 5.522288799035235,
+      "holdout_rmse_px": 8.25044808133209,
+      "homography_pixel_rmse_px": 9.761198482360989,
+      "homography_world_rmse_m": 0.052990517700348315,
+      "normalized_composite": 3.252300723355206
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 0,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8450692294044702,
+        -1.8790756626537033,
+        2.175414366166181
+      ],
+      "marker_rmse_px": 5.77100088015879,
+      "holdout_rmse_px": 8.521140899911233,
+      "homography_pixel_rmse_px": 10.232461431820317,
+      "homography_world_rmse_m": 0.05480074302829798,
+      "normalized_composite": 3.3889686059291413
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 0,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8435719940403895,
+        -1.8728867846320916,
+        2.174286358856897
+      ],
+      "marker_rmse_px": 5.708241461495674,
+      "holdout_rmse_px": 8.459358290273642,
+      "homography_pixel_rmse_px": 10.12302330744743,
+      "homography_world_rmse_m": 0.05437398670994391,
+      "normalized_composite": 3.356393443178801
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 0,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8420914892985887,
+        -1.8668664869974778,
+        2.1731825781417795
+      ],
+      "marker_rmse_px": 5.644585684760255,
+      "holdout_rmse_px": 8.396862511240952,
+      "homography_pixel_rmse_px": 10.013106369666627,
+      "homography_world_rmse_m": 0.053944889837555195,
+      "normalized_composite": 3.323495503836433
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 0,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8406274284414682,
+        -1.8610138415169488,
+        2.172104717642236
+      ],
+      "marker_rmse_px": 5.580034743367246,
+      "holdout_rmse_px": 8.33364253506578,
+      "homography_pixel_rmse_px": 9.902701011986064,
+      "homography_world_rmse_m": 0.053513322274273196,
+      "normalized_composite": 3.2902725018570225
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 0,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8391795088411818,
+        -1.8553279374413219,
+        2.1710544374979213
+      ],
+      "marker_rmse_px": 5.514590158767946,
+      "holdout_rmse_px": 8.269687715779751,
+      "homography_pixel_rmse_px": 9.791796019961902,
+      "homography_world_rmse_m": 0.05307915041624483,
+      "normalized_composite": 3.256722087669729
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8404012446786029,
+        -1.8766338285073196,
+        2.1736009450016684
+      ],
+      "marker_rmse_px": 5.7644988230183545,
+      "holdout_rmse_px": 8.539535986010048,
+      "homography_pixel_rmse_px": 10.263331716982952,
+      "homography_world_rmse_m": 0.05488753875259437,
+      "normalized_composite": 3.393543152307388
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8389626326657018,
+        -1.8704478381912009,
+        2.1724644990548043
+      ],
+      "marker_rmse_px": 5.701848062016791,
+      "holdout_rmse_px": 8.477984390020238,
+      "homography_pixel_rmse_px": 10.153794987207723,
+      "homography_world_rmse_m": 0.05446160515634889,
+      "normalized_composite": 3.3610088373791775
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8375399080812238,
+        -1.8644303156116346,
+        2.171352361694871
+      ],
+      "marker_rmse_px": 5.6382900794648565,
+      "holdout_rmse_px": 8.41571392488047,
+      "homography_pixel_rmse_px": 10.043783023542229,
+      "homography_world_rmse_m": 0.05403332072947161,
+      "normalized_composite": 3.3281492620750885
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8361327979771427,
+        -1.8585803258268498,
+        2.1702662178430705
+      ],
+      "marker_rmse_px": 5.573825510321625,
+      "holdout_rmse_px": 8.35271325644477,
+      "homography_pixel_rmse_px": 9.933285446125565,
+      "homography_world_rmse_m": 0.053602553130160574,
+      "normalized_composite": 3.2949619048138317
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8347410146280446,
+        -1.85289695170691,
+        2.1692077189815167
+      ],
+      "marker_rmse_px": 5.508455303003027,
+      "holdout_rmse_px": 8.288971433589118,
+      "homography_pixel_rmse_px": 9.822290297281066,
+      "homography_world_rmse_m": 0.053169166665637334,
+      "normalized_composite": 3.261444181135422
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8357640591597764,
+        -1.8743604346060132,
+        2.171914266674472
+      ],
+      "marker_rmse_px": 5.759534060771231,
+      "holdout_rmse_px": 8.557964410336321,
+      "homography_pixel_rmse_px": 10.29401892556835,
+      "homography_world_rmse_m": 0.05497562994896619,
+      "normalized_composite": 3.398402976017583
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8343835773571885,
+        -1.8681769137832205,
+        2.170769729384784
+      ],
+      "marker_rmse_px": 5.696997715566913,
+      "holdout_rmse_px": 8.496639569713127,
+      "homography_pixel_rmse_px": 10.184397460137419,
+      "homography_world_rmse_m": 0.054550514065678346,
+      "normalized_composite": 3.3659116118648247
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8330181336175277,
+        -1.8621617583035808,
+        2.169649578615532
+      ],
+      "marker_rmse_px": 5.633544287436203,
+      "holdout_rmse_px": 8.434590731480073,
+      "homography_pixel_rmse_px": 10.074304445988378,
+      "homography_world_rmse_m": 0.054123039182288044,
+      "normalized_composite": 3.3330927869720726
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8316674692373167,
+        -1.856314026939399,
+        2.1685554911602765
+      ],
+      "marker_rmse_px": 5.569173911987473,
+      "holdout_rmse_px": 8.37180628926033,
+      "homography_pixel_rmse_px": 9.963728808970183,
+      "homography_world_rmse_m": 0.053693070987862204,
+      "normalized_composite": 3.299943769072528
+    },
+    {
+      "common_focal_scale_percent": -2,
+      "cx_offset_px": 20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8303313117968084,
+        -1.8506327965753644,
+        2.1674891104108522
+      ],
+      "marker_rmse_px": 5.5038870254517684,
+      "holdout_rmse_px": 8.30827502125405,
+      "homography_pixel_rmse_px": 9.852657925339575,
+      "homography_world_rmse_m": 0.0532604719296801,
+      "normalized_composite": 3.266461763839041
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.854613211087613,
+        -1.915028870946345,
+        2.1965452100863994
+      ],
+      "marker_rmse_px": 5.514914649861091,
+      "holdout_rmse_px": 8.07173226333291,
+      "homography_pixel_rmse_px": 9.668302637793593,
+      "homography_world_rmse_m": 0.05208702042427471,
+      "normalized_composite": 3.2169768382484127
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8530209968500992,
+        -1.9088808174036116,
+        2.1954555375668705
+      ],
+      "marker_rmse_px": 5.4532140278043215,
+      "holdout_rmse_px": 8.010610922331333,
+      "homography_pixel_rmse_px": 9.56187091619124,
+      "homography_world_rmse_m": 0.05166716250695521,
+      "normalized_composite": 3.1850295028676117
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8514467799099177,
+        -1.9028994855577928,
+        2.1943902861554205
+      ],
+      "marker_rmse_px": 5.390675887881752,
+      "holdout_rmse_px": 7.948814765543407,
+      "homography_pixel_rmse_px": 9.454960794634504,
+      "homography_world_rmse_m": 0.051244997336923184,
+      "normalized_composite": 3.1527760254413404
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8498902504826484,
+        -1.897083984864206,
+        2.193351122015401
+      ],
+      "marker_rmse_px": 5.327303524960147,
+      "holdout_rmse_px": 7.886334982867065,
+      "homography_pixel_rmse_px": 9.347564256847145,
+      "homography_world_rmse_m": 0.05082040423195967,
+      "normalized_composite": 3.1202150004877076
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8483510818267817,
+        -1.891433441497114,
+        2.192339678857502
+      ],
+      "marker_rmse_px": 5.263100676779854,
+      "holdout_rmse_px": 7.8231632257626575,
+      "homography_pixel_rmse_px": 9.23967188226063,
+      "homography_world_rmse_m": 0.05039325942607185,
+      "normalized_composite": 3.087345014592567
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8499302493192608,
+        -1.9122727549105745,
+        2.194481073349542
+      ],
+      "marker_rmse_px": 5.5046635791159,
+      "holdout_rmse_px": 8.088871089710539,
+      "homography_pixel_rmse_px": 9.698039162839406,
+      "homography_world_rmse_m": 0.05216497578676412,
+      "normalized_composite": 3.2205255114868114
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8483965086281773,
+        -1.906128301243263,
+        2.1933825253155668
+      ],
+      "marker_rmse_px": 5.443034722692492,
+      "holdout_rmse_px": 8.027968525987689,
+      "homography_pixel_rmse_px": 9.591476354477871,
+      "homography_world_rmse_m": 0.051745873500000386,
+      "normalized_composite": 3.1886065825201073
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8468799556314641,
+        -1.9001504375649263,
+        2.192308481441878
+      ],
+      "marker_rmse_px": 5.380554791436293,
+      "holdout_rmse_px": 7.966383756062283,
+      "homography_pixel_rmse_px": 9.484437252274093,
+      "homography_world_rmse_m": 0.051324446496781494,
+      "normalized_composite": 3.156378113668959
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8453802933885096,
+        -1.8943382662184183,
+        2.191260598466326
+      ],
+      "marker_rmse_px": 5.317226368538473,
+      "holdout_rmse_px": 7.904107569893393,
+      "homography_pixel_rmse_px": 9.376912944950906,
+      "homography_world_rmse_m": 0.05090057145263948,
+      "normalized_composite": 3.1238384080760353
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": -10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8438972091340893,
+        -1.8886909066180868,
+        2.1902405007285677
+      ],
+      "marker_rmse_px": 5.253052456976102,
+      "holdout_rmse_px": 7.841131215885457,
+      "homography_pixel_rmse_px": 9.268893144197794,
+      "homography_world_rmse_m": 0.05047412206736985,
+      "normalized_composite": 3.0909857590379044
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 0,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8452812802724754,
+        -1.9096844160357076,
+        2.1925451792492634
+      ],
+      "marker_rmse_px": 5.495989593487133,
+      "holdout_rmse_px": 8.106169209236986,
+      "homography_pixel_rmse_px": 9.72773275823873,
+      "homography_world_rmse_m": 0.05224485936439785,
+      "normalized_composite": 3.2243994092244552
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 0,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8438054725878827,
+        -1.9035431677907972,
+        2.1914381197069424
+      ],
+      "marker_rmse_px": 5.4344407900039835,
+      "holdout_rmse_px": 8.045483858649911,
+      "homography_pixel_rmse_px": 9.621055142584316,
+      "homography_world_rmse_m": 0.05182651957623168,
+      "normalized_composite": 3.192512107672578
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 0,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8423460361869097,
+        -1.8975683874922171,
+        2.190355643324456
+      ],
+      "marker_rmse_px": 5.3720283701445055,
+      "holdout_rmse_px": 7.984109547657961,
+      "homography_pixel_rmse_px": 9.513903545204608,
+      "homography_world_rmse_m": 0.051405839945707334,
+      "normalized_composite": 3.1603121741139217
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 0,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8409026874666818,
+        -1.8917591708123396,
+        2.1892993979791604
+      ],
+      "marker_rmse_px": 5.308754268449903,
+      "holdout_rmse_px": 7.922036707381127,
+      "homography_pixel_rmse_px": 9.4062682410094,
+      "homography_world_rmse_m": 0.05098269476089353,
+      "normalized_composite": 3.127797647083101
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 0,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8394751280771324,
+        -1.8861146308208279,
+        2.188270999200919
+      ],
+      "marker_rmse_px": 5.244620817989821,
+      "holdout_rmse_px": 7.859256224971595,
+      "homography_pixel_rmse_px": 9.298138154012273,
+      "homography_world_rmse_m": 0.05055695543746211,
+      "normalized_composite": 3.0949665536819215
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8406643550957148,
+        -1.9072632468894914,
+        2.190736156309607
+      ],
+      "marker_rmse_px": 5.48889852675659,
+      "holdout_rmse_px": 8.123601301547824,
+      "homography_pixel_rmse_px": 9.757359774405124,
+      "homography_world_rmse_m": 0.05232657257955323,
+      "normalized_composite": 3.2285937121609205
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8392459693408829,
+        -1.901124802276366,
+        2.18962093330646
+      ],
+      "marker_rmse_px": 5.427437592080137,
+      "holdout_rmse_px": 8.063130927819724,
+      "homography_pixel_rmse_px": 9.650582747683883,
+      "homography_world_rmse_m": 0.05190899904284866,
+      "normalized_composite": 3.196740980093308
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8378431322992884,
+        -1.8951527134906123,
+        2.1885303686209525
+      ],
+      "marker_rmse_px": 5.365101540371493,
+      "holdout_rmse_px": 8.001965463598204,
+      "homography_pixel_rmse_px": 9.543334259171163,
+      "homography_world_rmse_m": 0.051489072891522956,
+      "normalized_composite": 3.164572833205697
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8364555741568672,
+        -1.8893460699485907,
+        2.187466101824553
+      ],
+      "marker_rmse_px": 5.301891719587691,
+      "holdout_rmse_px": 7.940095019209271,
+      "homography_pixel_rmse_px": 9.43560384883571,
+      "homography_world_rmse_m": 0.05106666626926978,
+      "normalized_composite": 3.1320870713442432
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.835083011378237,
+        -1.8837039787638292,
+        2.1864297401872896
+      ],
+      "marker_rmse_px": 5.237809856915343,
+      "holdout_rmse_px": 7.877510159217274,
+      "homography_pixel_rmse_px": 9.327379730625209,
+      "homography_world_rmse_m": 0.05064164854578406,
+      "normalized_composite": 3.0992814816611762
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.836077538894967,
+        -1.9050086823596342,
+        2.1890527199735565
+      ],
+      "marker_rmse_px": 5.483395162541539,
+      "holdout_rmse_px": 8.141143744113684,
+      "homography_pixel_rmse_px": 9.78689811794296,
+      "homography_world_rmse_m": 0.05241002331451122,
+      "normalized_composite": 3.233103791769949
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8347160938402693,
+        -1.8988726327814356,
+        2.187929666788241
+      ],
+      "marker_rmse_px": 5.42202945100211,
+      "holdout_rmse_px": 8.080885497651144,
+      "homography_pixel_rmse_px": 9.68003626190956,
+      "homography_world_rmse_m": 0.051993216910994414,
+      "normalized_composite": 3.2012883096474885
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8333693693527436,
+        -1.892902837069371,
+        2.186831343428494
+      ],
+      "marker_rmse_px": 5.359778184869385,
+      "holdout_rmse_px": 8.019926643376664,
+      "homography_pixel_rmse_px": 9.572705672945242,
+      "homography_world_rmse_m": 0.051574047486562226,
+      "normalized_composite": 3.169154942177329
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8320371098178128,
+        -1.8870983787726283,
+        2.185759381704628
+      ],
+      "marker_rmse_px": 5.296642186525323,
+      "holdout_rmse_px": 7.958257006006576,
+      "homography_pixel_rmse_px": 9.464895232781283,
+      "homography_world_rmse_m": 0.051152385272663595,
+      "normalized_composite": 3.1367012756119186
+    },
+    {
+      "common_focal_scale_percent": -1,
+      "cx_offset_px": 20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8307190468774707,
+        -1.8814583594122207,
+        2.184715381166166
+      ],
+      "marker_rmse_px": 5.232622640347405,
+      "holdout_rmse_px": 7.895866863236651,
+      "homography_pixel_rmse_px": 9.356592520605293,
+      "homography_world_rmse_m": 0.0507280978199014,
+      "normalized_composite": 3.103924882568891
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8546801581444663,
+        -1.9303209341763017,
+        2.2051194640112097
+      ],
+      "marker_rmse_px": 5.380018694785078,
+      "holdout_rmse_px": 7.867611953062563,
+      "homography_pixel_rmse_px": 9.421134675266273,
+      "homography_world_rmse_m": 0.05082835494257912,
+      "normalized_composite": 3.1362234514139633
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8530995767498388,
+        -1.924196353656201,
+        2.204039858893051
+      ],
+      "marker_rmse_px": 5.318944571591409,
+      "holdout_rmse_px": 7.807055216735684,
+      "homography_pixel_rmse_px": 9.31604684486709,
+      "homography_world_rmse_m": 0.05041266770582041,
+      "normalized_composite": 3.1046222770598795
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8515367978952879,
+        -1.9182374588225386,
+        2.202984851742621
+      ],
+      "marker_rmse_px": 5.257050262409927,
+      "holdout_rmse_px": 7.745836762254005,
+      "homography_pixel_rmse_px": 9.210484447574071,
+      "homography_world_rmse_m": 0.04999467822256891,
+      "normalized_composite": 3.072720509330235
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.849991513443323,
+        -1.9124433703365615,
+        2.2019560861237255
+      ],
+      "marker_rmse_px": 5.194339504864383,
+      "holdout_rmse_px": 7.683948555436336,
+      "homography_pixel_rmse_px": 9.1044394479014,
+      "homography_world_rmse_m": 0.049574268083823744,
+      "normalized_composite": 3.0405169297533816
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8484633989206747,
+        -1.9068132255522512,
+        2.2009551736950566
+      ],
+      "marker_rmse_px": 5.130816522839958,
+      "holdout_rmse_px": 7.621383066162199,
+      "homography_pixel_rmse_px": 8.997902531749322,
+      "homography_world_rmse_m": 0.04915131609597097,
+      "normalized_composite": 3.0080103399601343
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.850022867391333,
+        -1.9275767857360995,
+        2.203058751423532
+      ],
+      "marker_rmse_px": 5.369397690994679,
+      "holdout_rmse_px": 7.884166338611434,
+      "homography_pixel_rmse_px": 9.450151849255025,
+      "homography_world_rmse_m": 0.05090319748122969,
+      "normalized_composite": 3.1395428125501432
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8485001617605601,
+        -1.9214557550472096,
+        2.201970417268817
+      ],
+      "marker_rmse_px": 5.308382955094484,
+      "holdout_rmse_px": 7.82381867048464,
+      "homography_pixel_rmse_px": 9.344931069758807,
+      "homography_world_rmse_m": 0.05048822981237019,
+      "normalized_composite": 3.1079661319329848
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8469944585451421,
+        -1.9155002787505264,
+        2.2009067605015336
+      ],
+      "marker_rmse_px": 5.246534067696393,
+      "holdout_rmse_px": 7.762801614966128,
+      "homography_pixel_rmse_px": 9.239237208250223,
+      "homography_world_rmse_m": 0.05007094089071175,
+      "normalized_composite": 3.076085274431371
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8455054624832963,
+        -1.909709470641611,
+        2.1998694154762672
+      ],
+      "marker_rmse_px": 5.183854036481751,
+      "holdout_rmse_px": 7.7011067279853656,
+      "homography_pixel_rmse_px": 9.133061351504843,
+      "homography_world_rmse_m": 0.04965120968763171,
+      "normalized_composite": 3.0438987272192644
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8440328630654553,
+        -1.9040824615458691,
+        2.198859984698555
+      ],
+      "marker_rmse_px": 5.120346329558116,
+      "holdout_rmse_px": 7.638726064630277,
+      "homography_pixel_rmse_px": 9.02639333184282,
+      "homography_world_rmse_m": 0.0492289124876435,
+      "normalized_composite": 3.0114049945418415
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8453991814352323,
+        -1.9249995016470192,
+        2.2011256796012066
+      ],
+      "marker_rmse_px": 5.3603803858647225,
+      "holdout_rmse_px": 7.900922184485284,
+      "homography_pixel_rmse_px": 9.479176166036437,
+      "homography_world_rmse_m": 0.050980207689341646,
+      "normalized_composite": 3.1432037252748035
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8439338175272217,
+        -1.9188816305823475,
+        2.2000289729010003
+      ],
+      "marker_rmse_px": 5.299434113508207,
+      "holdout_rmse_px": 7.840782788169433,
+      "homography_pixel_rmse_px": 9.373839148368763,
+      "homography_world_rmse_m": 0.05056596967781911,
+      "normalized_composite": 3.1116550630852164
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8424846494377924,
+        -1.9129291922496576,
+        2.198957019162343
+      ],
+      "marker_rmse_px": 5.237640770281853,
+      "holdout_rmse_px": 7.779966996073958,
+      "homography_pixel_rmse_px": 9.268030794653598,
+      "homography_world_rmse_m": 0.050149393889695734,
+      "normalized_composite": 3.0797989615904124
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8410513952503649,
+        -1.90714129400309,
+        2.197911444082133
+      ],
+      "marker_rmse_px": 5.175002697615085,
+      "holdout_rmse_px": 7.718465995939327,
+      "homography_pixel_rmse_px": 9.161741394333879,
+      "homography_world_rmse_m": 0.04973035693041568,
+      "normalized_composite": 3.0476336405002176
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8396337588355103,
+        -1.9015170605381484,
+        2.1968938415603745
+      ],
+      "marker_rmse_px": 5.1115226734761166,
+      "holdout_rmse_px": 7.656271470581882,
+      "homography_pixel_rmse_px": 9.054960005690369,
+      "homography_world_rmse_m": 0.049308732812420784,
+      "normalized_composite": 3.0151573339582924
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8408071773753775,
+        -1.922588480047458,
+        2.1993188930723386
+      ],
+      "marker_rmse_px": 5.35297280358759,
+      "holdout_rmse_px": 7.91785320783294,
+      "homography_pixel_rmse_px": 9.508182951159942,
+      "homography_world_rmse_m": 0.0510592824374424,
+      "normalized_composite": 3.147201167004477
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.839398650323026,
+        -1.9164733713167676,
+        2.1982141547968497
+      ],
+      "marker_rmse_px": 5.2921036255744855,
+      "holdout_rmse_px": 7.857920598747277,
+      "homography_pixel_rmse_px": 9.402745521103931,
+      "homography_world_rmse_m": 0.05064578102464546,
+      "normalized_composite": 3.1156837717634187
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8380055066372343,
+        -1.9105235835378158,
+        2.1971342414146573
+      ],
+      "marker_rmse_px": 5.2303755298076675,
+      "holdout_rmse_px": 7.797305233017959,
+      "homography_pixel_rmse_px": 9.296838761957348,
+      "homography_world_rmse_m": 0.05022992780389037,
+      "normalized_composite": 3.083855999277923
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8366274781752567,
+        -1.9047382180210244,
+        2.1960807705061547
+      ],
+      "marker_rmse_px": 5.1677902544352445,
+      "holdout_rmse_px": 7.73599796886755,
+      "homography_pixel_rmse_px": 9.190452243903788,
+      "homography_world_rmse_m": 0.04981159725682935,
+      "normalized_composite": 3.0517158278846397
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8352642835667974,
+        -1.8991163937048725,
+        2.1950553279022773
+      ],
+      "marker_rmse_px": 5.104349952355298,
+      "holdout_rmse_px": 7.673990156245729,
+      "homography_pixel_rmse_px": 9.083574328253672,
+      "homography_world_rmse_m": 0.049390661361814574,
+      "normalized_composite": 3.0192612481133727
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.836244946341428,
+        -1.920343161017961,
+        2.197637122243199
+      ],
+      "marker_rmse_px": 5.34717986598057,
+      "holdout_rmse_px": 7.934934857896987,
+      "homography_pixel_rmse_px": 9.537149132889423,
+      "homography_world_rmse_m": 0.05114032520549992,
+      "normalized_composite": 3.151530305377965
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8348927808067053,
+        -1.914230410757249,
+        2.196524678995423
+      ],
+      "marker_rmse_px": 5.286395973580881,
+      "holdout_rmse_px": 7.875206922128927,
+      "homography_pixel_rmse_px": 9.431626298643746,
+      "homography_world_rmse_m": 0.05072756442570288,
+      "normalized_composite": 3.1200471658504814
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8335551808863697,
+        -1.9082828797707516,
+        2.1954371291151036
+      ],
+      "marker_rmse_px": 5.224742411950497,
+      "holdout_rmse_px": 7.814790503847216,
+      "homography_pixel_rmse_px": 9.325636402541349,
+      "homography_world_rmse_m": 0.05031244030575845,
+      "normalized_composite": 3.0882510383779582
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.832231892601693,
+        -1.902499663698097,
+        2.1943760825975525
+      ],
+      "marker_rmse_px": 5.162220378084539,
+      "holdout_rmse_px": 7.753676167583615,
+      "homography_pixel_rmse_px": 9.219168371388294,
+      "homography_world_rmse_m": 0.04989482543479541,
+      "normalized_composite": 3.056139685231661
+    },
+    {
+      "common_focal_scale_percent": -0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8309226496854232,
+        -1.896879876069558,
+        2.1933431177305325
+      ],
+      "marker_rmse_px": 5.098831464165485,
+      "holdout_rmse_px": 7.6918549668994185,
+      "homography_pixel_rmse_px": 9.112209944267871,
+      "homography_world_rmse_m": 0.04947458998392281,
+      "normalized_composite": 3.023710879031226
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8547556373976068,
+        -1.9456203461071395,
+        2.213703690994395
+      ],
+      "marker_rmse_px": 5.246417323516848,
+      "holdout_rmse_px": 7.665020404458485,
+      "homography_pixel_rmse_px": 9.17646102307692,
+      "homography_world_rmse_m": 0.04957862798185283,
+      "normalized_composite": 3.0562018252989502
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8531864938154956,
+        -1.9395189525747274,
+        2.21263408117011
+      ],
+      "marker_rmse_px": 5.185969200924996,
+      "holdout_rmse_px": 7.605027590671556,
+      "homography_pixel_rmse_px": 9.072692765868668,
+      "homography_world_rmse_m": 0.04916704629927028,
+      "normalized_composite": 3.0249439297003433
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8516349609808807,
+        -1.933582222263615,
+        2.211589240468855
+      ],
+      "marker_rmse_px": 5.124718428359701,
+      "holdout_rmse_px": 7.544386528962436,
+      "homography_pixel_rmse_px": 8.968453937092756,
+      "homography_world_rmse_m": 0.04875316860632439,
+      "normalized_composite": 2.9933910965410253
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8501007324937799,
+        -1.927809286882514,
+        2.210570790311113
+      ],
+      "marker_rmse_px": 5.062669217639789,
+      "holdout_rmse_px": 7.483089984875842,
+      "homography_pixel_rmse_px": 8.863736533776592,
+      "homography_world_rmse_m": 0.0483368788505747,
+      "normalized_composite": 2.961542309391404
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8485834862127168,
+        -1.922199294797669,
+        2.209580320749489
+      ],
+      "marker_rmse_px": 4.999826312658888,
+      "holdout_rmse_px": 7.42113127217675,
+      "homography_pixel_rmse_px": 8.758531394877265,
+      "homography_world_rmse_m": 0.04791805848377107,
+      "normalized_composite": 2.9293966000845106
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8501236099517078,
+        -1.9428880246358662,
+        2.2116464153658413
+      ],
+      "marker_rmse_px": 5.2354085687539955,
+      "holdout_rmse_px": 7.680973500809921,
+      "homography_pixel_rmse_px": 9.204757439975829,
+      "homography_world_rmse_m": 0.04965027302153319,
+      "normalized_composite": 3.0592860043828445
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8486117545609124,
+        -1.9367901314616376,
+        2.2105682188988345
+      ],
+      "marker_rmse_px": 5.175007111815665,
+      "holdout_rmse_px": 7.62117984728254,
+      "homography_pixel_rmse_px": 9.100853863999971,
+      "homography_world_rmse_m": 0.04923937345759332,
+      "normalized_composite": 3.028048540128735
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8471167191734417,
+        -1.9308567706800652,
+        2.2095148674792457
+      ],
+      "marker_rmse_px": 5.113788608088614,
+      "holdout_rmse_px": 7.560729983362554,
+      "homography_pixel_rmse_px": 8.996480587801729,
+      "homography_world_rmse_m": 0.048826157310674224,
+      "normalized_composite": 2.996512363626402
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8456382102858451,
+        -1.9250870673706006,
+        2.2084879735289444
+      ],
+      "marker_rmse_px": 5.05175651912863,
+      "holdout_rmse_px": 7.499616253456465,
+      "homography_pixel_rmse_px": 8.891628745096854,
+      "homography_world_rmse_m": 0.04841050592334949,
+      "normalized_composite": 2.96467616022503
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": -10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8441759196986605,
+        -1.9194801635926029,
+        2.2074891181593435
+      ],
+      "marker_rmse_px": 4.988914809890528,
+      "holdout_rmse_px": 7.437831543468023,
+      "homography_pixel_rmse_px": 8.786288332595054,
+      "homography_world_rmse_m": 0.04799229822987785,
+      "normalized_composite": 2.932538659365535
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 0,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8455248061825742,
+        -1.9403216649749293,
+        2.2097161837644363
+      ],
+      "marker_rmse_px": 5.226031224364565,
+      "holdout_rmse_px": 7.697171548418264,
+      "homography_pixel_rmse_px": 9.233111786010348,
+      "homography_world_rmse_m": 0.049724332151598064,
+      "normalized_composite": 3.062728531087581
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 0,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8440697114000767,
+        -1.9342268861673735,
+        2.2086297498694583
+      ],
+      "marker_rmse_px": 5.1656863224864145,
+      "holdout_rmse_px": 7.637577052821631,
+      "homography_pixel_rmse_px": 9.129090086412432,
+      "homography_world_rmse_m": 0.04931412817909004,
+      "normalized_composite": 3.0315153406200785
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 0,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8426306397235397,
+        -1.9282965185222782,
+        2.2075682332995066
+      ],
+      "marker_rmse_px": 5.10451105465367,
+      "holdout_rmse_px": 7.577319070981049,
+      "homography_pixel_rmse_px": 9.024599874259138,
+      "homography_world_rmse_m": 0.048901589681484656,
+      "normalized_composite": 3.0
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 0,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8412073109923004,
+        -1.9225296808971646,
+        2.2065332380162324
+      ],
+      "marker_rmse_px": 5.042508196580397,
+      "holdout_rmse_px": 7.516389568565703,
+      "homography_pixel_rmse_px": 8.919631499831459,
+      "homography_world_rmse_m": 0.048486595649664274,
+      "normalized_composite": 2.968180923422558
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 0,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8397994313440342,
+        -1.9169255094273323,
+        2.2055263367242115
+      ],
+      "marker_rmse_px": 4.979681000761945,
+      "holdout_rmse_px": 7.454781046955335,
+      "homography_pixel_rmse_px": 8.81417419686368,
+      "homography_world_rmse_m": 0.0480690227506111,
+      "normalized_composite": 2.93605656546352
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.840957328719671,
+        -1.9379206708393601,
+        2.2079116565369934
+      ],
+      "marker_rmse_px": 5.218291573822792,
+      "holdout_rmse_px": 7.713587287235689,
+      "homography_pixel_rmse_px": 9.261498354113263,
+      "homography_world_rmse_m": 0.049800697681568494,
+      "normalized_composite": 3.066524190238538
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8395584958433655,
+        -1.9318286135673581,
+        2.2068173193306926
+      ],
+      "marker_rmse_px": 5.158012699131861,
+      "holdout_rmse_px": 7.654191241913088,
+      "homography_pixel_rmse_px": 9.1573748370898,
+      "homography_world_rmse_m": 0.049391199587714575,
+      "normalized_composite": 3.035338842665551
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8381748836094497,
+        -1.9259008560602133,
+        2.205747968275987
+      ],
+      "marker_rmse_px": 5.096891244487934,
+      "holdout_rmse_px": 7.594125106573304,
+      "homography_pixel_rmse_px": 9.05278430951361,
+      "homography_world_rmse_m": 0.04897935166135217,
+      "normalized_composite": 3.0038482470706422
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8368062256073606,
+        -1.9201365113351714,
+        2.2047051994024374
+      ],
+      "marker_rmse_px": 5.034929363728177,
+      "holdout_rmse_px": 7.533380507542081,
+      "homography_pixel_rmse_px": 8.947716415756199,
+      "homography_world_rmse_m": 0.04856503078354317,
+      "normalized_composite": 2.9720505728154474
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8354522426713731,
+        -1.914534709961392,
+        2.2036905775310873
+      ],
+      "marker_rmse_px": 4.9721296630891905,
+      "holdout_rmse_px": 7.471949601920933,
+      "homography_pixel_rmse_px": 8.842159703358186,
+      "homography_world_rmse_m": 0.04814811159252129,
+      "normalized_composite": 2.9399440263990466
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8364192942775773,
+        -1.9356844875055286,
+        2.20623157887633
+      ],
+      "marker_rmse_px": 5.2121947392087025,
+      "holdout_rmse_px": 7.730195222067969,
+      "homography_pixel_rmse_px": 9.28989308479597,
+      "homography_world_rmse_m": 0.04987926866790869,
+      "normalized_composite": 3.070667954615937
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8350762538141656,
+        -1.9295947525869317,
+        2.2051296584960594
+      ],
+      "marker_rmse_px": 5.151990948251595,
+      "holdout_rmse_px": 7.6709962729342065,
+      "homography_pixel_rmse_px": 9.185683233983067,
+      "homography_world_rmse_m": 0.04947048379213905,
+      "normalized_composite": 3.039513761173584
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8337476264910766,
+        -1.9236692160801363,
+        2.2040527898208904
+      ],
+      "marker_rmse_px": 5.09093349239911,
+      "holdout_rmse_px": 7.611121288370903,
+      "homography_pixel_rmse_px": 9.081008186413454,
+      "homography_world_rmse_m": 0.04905933641233185,
+      "normalized_composite": 3.008051564462851
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8324331600185193,
+        -1.9179069855198543,
+        2.2030025614666644
+      ],
+      "marker_rmse_px": 5.029023966970512,
+      "holdout_rmse_px": 7.55056159192964,
+      "homography_pixel_rmse_px": 8.975856955858912,
+      "homography_world_rmse_m": 0.048645701530856615,
+      "normalized_composite": 2.976279314595245
+    },
+    {
+      "common_focal_scale_percent": 0,
+      "cx_offset_px": 20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8311325902534602,
+        -1.9123071862437635,
+        2.2019805308837843
+      ],
+      "marker_rmse_px": 4.966264397690968,
+      "holdout_rmse_px": 7.48930903376671,
+      "homography_pixel_rmse_px": 8.870217478097365,
+      "homography_world_rmse_m": 0.04822945198467368,
+      "normalized_composite": 2.9441949960479006
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8548394912130501,
+        -1.9609270558489527,
+        2.2222978488678202
+      ],
+      "marker_rmse_px": 5.114110264599811,
+      "holdout_rmse_px": 7.4639646131227035,
+      "homography_pixel_rmse_px": 8.934250301454094,
+      "homography_world_rmse_m": 0.04833779437793109,
+      "normalized_composite": 2.9769093528156594
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8532815947491948,
+        -1.9548485682728793,
+        2.221238162458666
+      ],
+      "marker_rmse_px": 5.054288280552708,
+      "holdout_rmse_px": 7.404535705306093,
+      "homography_pixel_rmse_px": 8.831778181211549,
+      "homography_world_rmse_m": 0.04793025583893587,
+      "normalized_composite": 2.9459921638827247
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8517411201696655,
+        -1.9489337347440379,
+        2.2202034107891935
+      ],
+      "marker_rmse_px": 4.9936814270530885,
+      "holdout_rmse_px": 7.344472428573024,
+      "homography_pixel_rmse_px": 8.72883967126242,
+      "homography_world_rmse_m": 0.04752042881216795,
+      "normalized_composite": 2.914785815720558
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8502177628944234,
+        -1.943181697860938,
+        2.2191951935810663
+      ],
+      "marker_rmse_px": 4.932294424570154,
+      "holdout_rmse_px": 7.283768374903485,
+      "homography_pixel_rmse_px": 8.625426851188816,
+      "homography_world_rmse_m": 0.04710819968513482,
+      "normalized_composite": 2.8832895097615125
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8487112031705433,
+        -1.9375916168361234,
+        2.2182150797151223
+      ],
+      "marker_rmse_px": 4.870132574242865,
+      "holdout_rmse_px": 7.22241773060403,
+      "homography_pixel_rmse_px": 8.521530758483568,
+      "homography_world_rmse_m": 0.0466934526293329,
+      "normalized_composite": 2.851502524156997
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8502323278027543,
+        -1.9582064233873515,
+        2.220244021671432
+      ],
+      "marker_rmse_px": 5.102695104759265,
+      "holdout_rmse_px": 7.479298396056529,
+      "homography_pixel_rmse_px": 8.961823625380214,
+      "homography_world_rmse_m": 0.048406151257291516,
+      "normalized_composite": 2.9797520578701553
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8487311419562205,
+        -1.952131387274139,
+        2.2191758870755356
+      ],
+      "marker_rmse_px": 5.042906686041246,
+      "holdout_rmse_px": 7.420058508346588,
+      "homography_pixel_rmse_px": 8.859213298265674,
+      "homography_world_rmse_m": 0.04799925586853959,
+      "normalized_composite": 2.9488510756106003
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8472465965305397,
+        -1.9462198748930821,
+        2.2181327597801523
+      ],
+      "marker_rmse_px": 4.982318544862285,
+      "holdout_rmse_px": 7.360175979898402,
+      "homography_pixel_rmse_px": 8.75613684393712,
+      "homography_world_rmse_m": 0.047590049820069966,
+      "normalized_composite": 2.9176569617718537
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8457783998527522,
+        -1.9404710224400006,
+        2.217116230713431
+      ],
+      "marker_rmse_px": 4.920934628946035,
+      "holdout_rmse_px": 7.299643968927103,
+      "homography_pixel_rmse_px": 8.652585490240833,
+      "homography_world_rmse_m": 0.047178416900855134,
+      "normalized_composite": 2.8861686147769277
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": -10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8443262460818247,
+        -1.9348839830330338,
+        2.2161278600212175
+      ],
+      "marker_rmse_px": 4.858759435065039,
+      "holdout_rmse_px": 7.23845621938467,
+      "homography_pixel_rmse_px": 8.54854944089308,
+      "homography_world_rmse_m": 0.046764238761070394,
+      "normalized_composite": 2.854385004429628
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.845658013621051,
+        -1.955650860301874,
+        2.2183166468675335
+      ],
+      "marker_rmse_px": 5.092940210488133,
+      "holdout_rmse_px": 7.494922040176829,
+      "homography_pixel_rmse_px": 8.98950647968938,
+      "homography_world_rmse_m": 0.04847717612874147,
+      "normalized_composite": 2.982970408159285
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8442130172222544,
+        -1.9495788938432872,
+        2.217240406252747
+      ],
+      "marker_rmse_px": 5.033196085048174,
+      "holdout_rmse_px": 7.435871993346453,
+      "homography_pixel_rmse_px": 8.88677567982364,
+      "homography_world_rmse_m": 0.048070940920684146,
+      "normalized_composite": 2.952089807639907
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.842783873930532,
+        -1.9436703303607281,
+        2.216189242043405
+      ],
+      "marker_rmse_px": 4.972638494125011,
+      "holdout_rmse_px": 7.376171747605416,
+      "homography_pixel_rmse_px": 8.783579387246911,
+      "homography_world_rmse_m": 0.04766237566361155,
+      "normalized_composite": 2.9209124560475095
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8413703054041379,
+        -1.9379243000384538,
+        2.2151647368996943
+      ],
+      "marker_rmse_px": 4.911270677904711,
+      "holdout_rmse_px": 7.3158140706077965,
+      "homography_pixel_rmse_px": 8.679908057675835,
+      "homography_world_rmse_m": 0.04725136180157867,
+      "normalized_composite": 2.889436976093089
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 0,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8399720200887999,
+        -1.9323399502678769,
+        2.214168442753918
+      ],
+      "marker_rmse_px": 4.849096396163494,
+      "holdout_rmse_px": 7.254792308210272,
+      "homography_pixel_rmse_px": 8.575751140316275,
+      "homography_world_rmse_m": 0.04683777871479307,
+      "normalized_composite": 2.857662057055358
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.841114676411784,
+        -1.953259775885364,
+        2.2165144004356656
+      ],
+      "marker_rmse_px": 5.084852199489692,
+      "holdout_rmse_px": 7.5108072927976615,
+      "homography_pixel_rmse_px": 9.017272114160345,
+      "homography_world_rmse_m": 0.04855075673044281,
+      "normalized_composite": 2.986559007394328
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8397253768757293,
+        -1.9471904906670034,
+        2.2154303812800884
+      ],
+      "marker_rmse_px": 5.0251627087552535,
+      "holdout_rmse_px": 7.4519471840827345,
+      "homography_pixel_rmse_px": 8.914437681010465,
+      "homography_world_rmse_m": 0.048145195505990376,
+      "normalized_composite": 2.9557026933381625
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8383511378412898,
+        -1.941284497450336,
+        2.2143715043674845
+      ],
+      "marker_rmse_px": 4.964647148503405,
+      "holdout_rmse_px": 7.392430016185814,
+      "homography_pixel_rmse_px": 8.81113875778592,
+      "homography_world_rmse_m": 0.047737287624456906,
+      "normalized_composite": 2.9245463647449355
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8369916946849714,
+        -1.9355409207743974,
+        2.213339344605454
+      ],
+      "marker_rmse_px": 4.903308116425778,
+      "holdout_rmse_px": 7.332248206420139,
+      "homography_pixel_rmse_px": 8.707365105308279,
+      "homography_world_rmse_m": 0.0473269124273157,
+      "normalized_composite": 2.893088395222115
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8356467704801684,
+        -1.9299589026474748,
+        2.2123354462232605
+      ],
+      "marker_rmse_px": 4.841148702714638,
+      "holdout_rmse_px": 7.271394743736655,
+      "homography_pixel_rmse_px": 8.60310549502899,
+      "homography_world_rmse_m": 0.046913947264597515,
+      "normalized_composite": 2.8613272206708515
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8366004580416753,
+        -1.951032620608744,
+        2.2148360421781117
+      ],
+      "marker_rmse_px": 5.078436461783303,
+      "holdout_rmse_px": 7.526927697083838,
+      "homography_pixel_rmse_px": 9.04509546929616,
+      "homography_world_rmse_m": 0.048626787671605484,
+      "normalized_composite": 2.99051264312659
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8352663916702234,
+        -1.9449656220786238,
+        2.213744558355317
+      ],
+      "marker_rmse_px": 5.018811557869938,
+      "holdout_rmse_px": 7.468256959098647,
+      "homography_pixel_rmse_px": 8.942173412916489,
+      "homography_world_rmse_m": 0.04822191124056076,
+      "normalized_composite": 2.9596842643707335
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8339465884049316,
+        -1.9390618145593628,
+        2.2126782795169464
+      ],
+      "marker_rmse_px": 4.9583491445403,
+      "holdout_rmse_px": 7.408922984661319,
+      "homography_pixel_rmse_px": 8.838788232857807,
+      "homography_world_rmse_m": 0.047814674321341684,
+      "normalized_composite": 2.928552966118989
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8326407976926801,
+        -1.9333203172879678,
+        2.2116387733237692
+      ],
+      "marker_rmse_px": 4.897051241692399,
+      "holdout_rmse_px": 7.3489178781512345,
+      "homography_pixel_rmse_px": 8.734929070036674,
+      "homography_world_rmse_m": 0.04740495438448763,
+      "normalized_composite": 2.8971168987967415
+    },
+    {
+      "common_focal_scale_percent": 0.5,
+      "cx_offset_px": 20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8313487575436974,
+        -1.9277402672107602,
+        2.2106275768022057
+      ],
+      "marker_rmse_px": 4.834920337184498,
+      "holdout_rmse_px": 7.2882343099062,
+      "homography_pixel_rmse_px": 8.630584092527432,
+      "homography_world_rmse_m": 0.04699262697869867,
+      "normalized_composite": 2.8653742713973864
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.854931565679903,
+        -1.9762410129900454,
+        2.230901894721787
+      ],
+      "marker_rmse_px": 4.983098524993176,
+      "holdout_rmse_px": 7.264453469416166,
+      "homography_pixel_rmse_px": 8.694472506310172,
+      "homography_world_rmse_m": 0.04710581544269041,
+      "normalized_composite": 2.898344079818349
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.853384729863838,
+        -1.9701851552312089,
+        2.2298520601029765
+      ],
+      "marker_rmse_px": 4.923903504806491,
+      "holdout_rmse_px": 7.205589174130626,
+      "homography_pixel_rmse_px": 8.593273973499574,
+      "homography_world_rmse_m": 0.0467022604175813,
+      "normalized_composite": 2.8677653538073975
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8518551299619541,
+        -1.96429195538779,
+        2.2288273204619586
+      ],
+      "marker_rmse_px": 4.863941684556361,
+      "holdout_rmse_px": 7.146104838189938,
+      "homography_pixel_rmse_px": 8.491613444262557,
+      "homography_world_rmse_m": 0.04629642577621645,
+      "normalized_composite": 2.836903386205944
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8503424632890408,
+        -1.9585605667914239,
+        2.2278292542547464
+      ],
+      "marker_rmse_px": 4.80321833123389,
+      "holdout_rmse_px": 7.085994909986742,
+      "homography_pixel_rmse_px": 8.389483129525882,
+      "homography_world_rmse_m": 0.0458882004305662,
+      "normalized_composite": 2.805757613090038
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8488464125311398,
+        -1.95299015933653,
+        2.226859409613501
+      ],
+      "marker_rmse_px": 4.741739344272244,
+      "holdout_rmse_px": 7.025254480599874,
+      "homography_pixel_rmse_px": 8.28687431011028,
+      "homography_world_rmse_m": 0.045477471348672326,
+      "normalized_composite": 2.774327576188071
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.850348875263551,
+        -1.9735319341813433,
+        2.228851526161292
+      ],
+      "marker_rmse_px": 4.971257394228422,
+      "holdout_rmse_px": 7.279148623339628,
+      "homography_pixel_rmse_px": 8.72131942144059,
+      "homography_world_rmse_m": 0.047170786978321916,
+      "normalized_composite": 2.900938561240052
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8488581822820176,
+        -1.9674794795730253,
+        2.227793378013925
+      ],
+      "marker_rmse_px": 4.912082422136038,
+      "holdout_rmse_px": 7.220462939153731,
+      "homography_pixel_rmse_px": 8.61997926022341,
+      "homography_world_rmse_m": 0.04676783446587499,
+      "normalized_composite": 2.8703716409665847
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8473839529302254,
+        -1.9615895531229453,
+        2.22676039416823
+      ],
+      "marker_rmse_px": 4.852125313616683,
+      "holdout_rmse_px": 7.161148615153341,
+      "homography_pixel_rmse_px": 8.51817675779822,
+      "homography_world_rmse_m": 0.04636257852295453,
+      "normalized_composite": 2.83951730157027
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8459258974310075,
+        -1.9558613019772149,
+        2.2257541444863773
+      ],
+      "marker_rmse_px": 4.7913905381535855,
+      "holdout_rmse_px": 7.101199651869697,
+      "homography_pixel_rmse_px": 8.415903282040668,
+      "homography_world_rmse_m": 0.04595490546098963,
+      "normalized_composite": 2.808374670368728
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": -10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8444837123443866,
+        -1.9502938901395526,
+        2.2247761685661565
+      ],
+      "marker_rmse_px": 4.729883162993767,
+      "holdout_rmse_px": 7.040610682011118,
+      "homography_pixel_rmse_px": 8.313149285546352,
+      "homography_world_rmse_m": 0.04554469971433897,
+      "normalized_composite": 2.7769429737941924
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 0,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8457986661691543,
+        -1.9709870422612412,
+        2.2269270234307137
+      ],
+      "marker_rmse_px": 4.961106574917616,
+      "holdout_rmse_px": 7.294180070396036,
+      "homography_pixel_rmse_px": 8.74832839019163,
+      "homography_world_rmse_m": 0.047238688442258925,
+      "normalized_composite": 2.9039265218011274
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 0,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.844363601217893,
+        -1.964937613144806,
+        2.2258608970962834
+      ],
+      "marker_rmse_px": 4.901963243954541,
+      "holdout_rmse_px": 7.235674673205458,
+      "homography_pixel_rmse_px": 8.646864930832075,
+      "homography_world_rmse_m": 0.046836359218753155,
+      "normalized_composite": 2.8733759307172972
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 0,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.842944222049359,
+        -1.959050591945222,
+        2.224820001114723
+      ],
+      "marker_rmse_px": 4.8420235833639715,
+      "holdout_rmse_px": 7.17653277911273,
+      "homography_pixel_rmse_px": 8.544939213936107,
+      "homography_world_rmse_m": 0.0464317056903753,
+      "normalized_composite": 2.8425341123392114
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 0,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8415402521975397,
+        -1.9533251199987136,
+        2.223805897267429
+      ],
+      "marker_rmse_px": 4.781291331160979,
+      "holdout_rmse_px": 7.116747984900578,
+      "homography_pixel_rmse_px": 8.442541843930497,
+      "homography_world_rmse_m": 0.04602461182269737,
+      "normalized_composite": 2.8113999128058667
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 0,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8401514024520571,
+        -1.9477603557715106,
+        2.2228201171266657
+      ],
+      "marker_rmse_px": 4.719770790701298,
+      "holdout_rmse_px": 7.056314510196773,
+      "homography_pixel_rmse_px": 8.339662524718493,
+      "homography_world_rmse_m": 0.04561495976965697,
+      "normalized_composite": 2.7799722714225856
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8412790908439007,
+        -1.9686057520971403,
+        2.225127077955901
+      ],
+      "marker_rmse_px": 4.952653100928372,
+      "holdout_rmse_px": 7.3095185493106145,
+      "homography_pixel_rmse_px": 8.775471605870683,
+      "homography_world_rmse_m": 0.04730940299110969,
+      "normalized_composite": 2.9073023965695723
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8398991674042311,
+        -1.9625589644314845,
+        2.224053294480643
+      ],
+      "marker_rmse_px": 4.893552651416192,
+      "holdout_rmse_px": 7.251194372203482,
+      "homography_pixel_rmse_px": 8.673902276375935,
+      "homography_world_rmse_m": 0.0469077145590409,
+      "normalized_composite": 2.8767723910212544
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8385341468693827,
+        -1.9566744741691864,
+        2.223004804318279
+      ],
+      "marker_rmse_px": 4.8336428530787625,
+      "holdout_rmse_px": 7.192226566236103,
+      "homography_pixel_rmse_px": 8.57187119570335,
+      "homography_world_rmse_m": 0.04650368388062798,
+      "normalized_composite": 2.8459477225350374
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8371837664522442,
+        -1.9509514171882665,
+        2.2219831616723993
+      ],
+      "marker_rmse_px": 4.772926778662112,
+      "holdout_rmse_px": 7.132608365594535,
+      "homography_pixel_rmse_px": 8.46936828203861,
+      "homography_world_rmse_m": 0.046097192819111385,
+      "normalized_composite": 2.814826983026223
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8358477514953107,
+        -1.94538894674738,
+        2.2209898905877865
+      ],
+      "marker_rmse_px": 4.71140803632723,
+      "holdout_rmse_px": 7.072333619066752,
+      "homography_pixel_rmse_px": 8.366382567593396,
+      "homography_world_rmse_m": 0.04568812148980878,
+      "normalized_composite": 2.783408852238181
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8367883158799967,
+        -1.9663875193492855,
+        2.223450463971442
+      ],
+      "marker_rmse_px": 4.945902704375053,
+      "holdout_rmse_px": 7.325136623563189,
+      "homography_pixel_rmse_px": 8.802722993836403,
+      "homography_world_rmse_m": 0.04738282076152207,
+      "normalized_composite": 2.9110607983367354
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8354630759969441,
+        -1.9603429831603352,
+        2.2223693311591552
+      ],
+      "marker_rmse_px": 4.886856016340667,
+      "holdout_rmse_px": 7.266993915712337,
+      "homography_pixel_rmse_px": 8.7010643840552,
+      "homography_world_rmse_m": 0.0469817875804751,
+      "normalized_composite": 2.880555380953148
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8341519515868572,
+        -1.954460643781054,
+        2.221313551693524
+      ],
+      "marker_rmse_px": 4.826988161019459,
+      "holdout_rmse_px": 7.208201156091872,
+      "homography_pixel_rmse_px": 8.59894494592439,
+      "homography_world_rmse_m": 0.046578397134899356,
+      "normalized_composite": 2.8497522399418296
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8328546938760127,
+        -1.9487396319605703,
+        2.220284672693757
+      ],
+      "marker_rmse_px": 4.766301612038538,
+      "holdout_rmse_px": 7.148751254642479,
+      "homography_pixel_rmse_px": 8.496353986321806,
+      "homography_world_rmse_m": 0.04617252941863508,
+      "normalized_composite": 2.8186497393180896
+    },
+    {
+      "common_focal_scale_percent": 1,
+      "cx_offset_px": 20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8315710430528493,
+        -1.9431790960581972,
+        2.219284211165048
+      ],
+      "marker_rmse_px": 4.7047993512238815,
+      "holdout_rmse_px": 7.088637728670408,
+      "homography_pixel_rmse_px": 8.393279940358699,
+      "homography_world_rmse_m": 0.04576406273932452,
+      "normalized_composite": 2.7872463262128258
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8551397789273166,
+        -2.006890470133139,
+        2.248139475305989
+      ],
+      "marker_rmse_px": 4.724972100287397,
+      "holdout_rmse_px": 6.870111418491962,
+      "homography_pixel_rmse_px": 8.222102808919768,
+      "homography_world_rmse_m": 0.04466830214033954,
+      "normalized_composite": 2.743390906895802
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8536145213467974,
+        -2.0008790626204966,
+        2.247109130524068
+      ],
+      "marker_rmse_px": 4.667036530386211,
+      "holdout_rmse_px": 6.812381701630482,
+      "homography_pixel_rmse_px": 8.123387394548763,
+      "homography_world_rmse_m": 0.044272546812677775,
+      "normalized_composite": 2.7134837971463908
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.852106136269337,
+        -1.9950283589179865,
+        2.2461041856746298
+      ],
+      "marker_rmse_px": 4.608371366634001,
+      "holdout_rmse_px": 6.754062135685538,
+      "homography_pixel_rmse_px": 8.024219509591495,
+      "homography_world_rmse_m": 0.04387453394601031,
+      "normalized_composite": 2.683305774702822
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8506143249961797,
+        -1.9893375333578747,
+        2.245126177937983
+      ],
+      "marker_rmse_px": 4.548983098668846,
+      "holdout_rmse_px": 6.695148986986601,
+      "homography_pixel_rmse_px": 7.92459177124504,
+      "homography_world_rmse_m": 0.04347415776490326,
+      "normalized_composite": 2.65285680010029
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8491387752194024,
+        -1.9838057767117925,
+        2.2441766151749616
+      ],
+      "marker_rmse_px": 4.488878963469283,
+      "holdout_rmse_px": 6.6356392694521675,
+      "homography_pixel_rmse_px": 7.824496080844116,
+      "homography_world_rmse_m": 0.04307131107647477,
+      "normalized_composite": 2.6221369996198027
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8506048932939079,
+        -2.0042041026557755,
+        2.2460960498687568
+      ],
+      "marker_rmse_px": 4.712216268051391,
+      "holdout_rmse_px": 6.88346554833295,
+      "homography_pixel_rmse_px": 8.247482741714867,
+      "homography_world_rmse_m": 0.04472618230234101,
+      "normalized_composite": 2.745466661162748
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.849134671547383,
+        -1.9981960034334274,
+        2.245057650012728
+      ],
+      "marker_rmse_px": 4.654272292438274,
+      "holdout_rmse_px": 6.825892652315146,
+      "homography_pixel_rmse_px": 8.148617174228317,
+      "homography_world_rmse_m": 0.04433094250395388,
+      "normalized_composite": 2.715561962574644
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8476805680665771,
+        -1.9923484794992623,
+        2.244044713299211
+      ],
+      "marker_rmse_px": 4.595582328520138,
+      "holdout_rmse_px": 6.767720590993937,
+      "homography_pixel_rmse_px": 8.049297568444878,
+      "homography_world_rmse_m": 0.04393341789513218,
+      "normalized_composite": 2.6853817363315615
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8462422970366881,
+        -1.9866606994078957,
+        2.243058768698374
+      ],
+      "marker_rmse_px": 4.536152011553665,
+      "holdout_rmse_px": 6.708945149811774,
+      "homography_pixel_rmse_px": 7.949515706918103,
+      "homography_world_rmse_m": 0.043533500069044835,
+      "normalized_composite": 2.654925619641597
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": -10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8448195599269324,
+        -1.9811318484230038,
+        2.2421013159217376
+      ],
+      "marker_rmse_px": 4.4759876829716285,
+      "holdout_rmse_px": 6.649562847256804,
+      "homography_pixel_rmse_px": 7.849262664729076,
+      "homography_world_rmse_m": 0.043131079247106734,
+      "normalized_composite": 2.6241934064046957
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 0,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8461017722801842,
+        -2.001680186305257,
+        2.244177332217724
+      ],
+      "marker_rmse_px": 4.701214608678971,
+      "holdout_rmse_px": 6.89725385648259,
+      "homography_pixel_rmse_px": 8.273133004558268,
+      "homography_world_rmse_m": 0.04478754280606912,
+      "normalized_composite": 2.747973321448625
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 0,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8446860841375187,
+        -1.9956750259075071,
+        2.243131199604295
+      ],
+      "marker_rmse_px": 4.643275634590013,
+      "holdout_rmse_px": 6.839841276774318,
+      "homography_pixel_rmse_px": 8.174136989965268,
+      "homography_world_rmse_m": 0.044392847433052274,
+      "normalized_composite": 2.7180763054629473
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 0,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8432857549938599,
+        -1.9898303216956905,
+        2.242110590415441
+      ],
+      "marker_rmse_px": 4.58457548974014,
+      "holdout_rmse_px": 6.781821019206089,
+      "homography_pixel_rmse_px": 8.074685914274918,
+      "homography_world_rmse_m": 0.04399584325124807,
+      "normalized_composite": 2.6878995507403793
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 0,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8419005122824441,
+        -1.984145236793423,
+        2.24111702590023
+      ],
+      "marker_rmse_px": 4.525119022781634,
+      "holdout_rmse_px": 6.723188434594609,
+      "homography_pixel_rmse_px": 7.97477080583186,
+      "homography_world_rmse_m": 0.04359641948158605,
+      "normalized_composite": 2.657442399457831
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 0,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8405300715695317,
+        -1.9786189512825083,
+        2.2401519981054983
+      ],
+      "marker_rmse_px": 4.464911749778739,
+      "holdout_rmse_px": 6.663939593683007,
+      "homography_pixel_rmse_px": 7.874381994396959,
+      "homography_world_rmse_m": 0.04319446401923081,
+      "normalized_composite": 2.62670434214352
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 10,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8416286165271938,
+        -1.9993181470721932,
+        2.2423820441116633
+      ],
+      "marker_rmse_px": 4.6919752674638335,
+      "holdout_rmse_px": 6.911445016072271,
+      "homography_pixel_rmse_px": 8.299023626746425,
+      "homography_world_rmse_m": 0.04485225762333275,
+      "normalized_composite": 2.7509050281630874
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 10,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8402669874398828,
+        -1.9933155500709225,
+        2.2413284875118533
+      ],
+      "marker_rmse_px": 4.634054428370591,
+      "holdout_rmse_px": 6.854195463730128,
+      "homography_pixel_rmse_px": 8.199915947890053,
+      "homography_world_rmse_m": 0.04445813219394007,
+      "normalized_composite": 2.7210207067739898
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 10,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8389199535371794,
+        -1.9874732997651074,
+        2.2403005118589157
+      ],
+      "marker_rmse_px": 4.575358483828019,
+      "holdout_rmse_px": 6.796330505363523,
+      "homography_pixel_rmse_px": 8.100352720494728,
+      "homography_world_rmse_m": 0.04406167721307337,
+      "normalized_composite": 2.69085284285075
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 10,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8375872558322939,
+        -1.9817905541716057,
+        2.2392996311599225
+      ],
+      "marker_rmse_px": 4.515891564587201,
+      "holdout_rmse_px": 6.737845100511184,
+      "homography_pixel_rmse_px": 8.000324296688797,
+      "homography_world_rmse_m": 0.043662779777676734,
+      "normalized_composite": 2.660400511361351
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 10,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.836268624279118,
+        -1.9762664884946854,
+        2.238327330271138
+      ],
+      "marker_rmse_px": 4.455658432775127,
+      "holdout_rmse_px": 6.678734916857826,
+      "homography_pixel_rmse_px": 7.8998203392667135,
+      "homography_world_rmse_m": 0.04326132570491796,
+      "normalized_composite": 2.6296629280357013
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 20,
+      "cy_offset_px": -20,
+      "camera_center_world_m": [
+        0.8371836408231106,
+        -1.9971174509654301,
+        2.24070898811876
+      ],
+      "marker_rmse_px": 4.684504914191249,
+      "holdout_rmse_px": 6.926009574830458,
+      "homography_pixel_rmse_px": 8.325126446211337,
+      "homography_world_rmse_m": 0.044920207870191964,
+      "normalized_composite": 2.7542560804636276
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 20,
+      "cy_offset_px": -10,
+      "camera_center_world_m": [
+        0.8358756241582002,
+        -1.9911170363838795,
+        2.239648303749264
+      ],
+      "marker_rmse_px": 4.62661505160013,
+      "holdout_rmse_px": 6.868925035127363,
+      "homography_pixel_rmse_px": 8.225925024499873,
+      "homography_world_rmse_m": 0.04452667474733835,
+      "normalized_composite": 2.724389217230015
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 20,
+      "cy_offset_px": 0,
+      "camera_center_world_m": [
+        0.8345814347468823,
+        -1.985276868792733,
+        2.238613255241902
+      ],
+      "marker_rmse_px": 4.567937427706008,
+      "holdout_rmse_px": 6.811218127204575,
+      "homography_pixel_rmse_px": 8.126268092214067,
+      "homography_world_rmse_m": 0.04413079456586625,
+      "normalized_composite": 2.6942354175017624
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 20,
+      "cy_offset_px": 10,
+      "camera_center_world_m": [
+        0.8333008274840933,
+        -1.979596101405472,
+        2.2376053498314854
+      ],
+      "marker_rmse_px": 4.508475524714135,
+      "holdout_rmse_px": 6.752883459900214,
+      "homography_pixel_rmse_px": 8.026145400915466,
+      "homography_world_rmse_m": 0.04373245253658763,
+      "normalized_composite": 2.663793516362698
+    },
+    {
+      "common_focal_scale_percent": 2,
+      "cx_offset_px": 20,
+      "cy_offset_px": 20,
+      "camera_center_world_m": [
+        0.8320335469746172,
+        -1.974073904832888,
+        2.2366260656479526
+      ],
+      "marker_rmse_px": 4.448233423188875,
+      "holdout_rmse_px": 6.693916339671969,
+      "homography_pixel_rmse_px": 7.925546022306193,
+      "homography_world_rmse_m": 0.04333153263622283,
+      "normalized_composite": 2.633062482851061
+    }
+  ],
+  "method_c_best_composite": {
+    "common_focal_scale_percent": 2,
+    "cx_offset_px": -20,
+    "cy_offset_px": 20,
+    "camera_center_world_m": [
+      0.8491387752194024,
+      -1.9838057767117925,
+      2.2441766151749616
+    ],
+    "marker_rmse_px": 4.488878963469283,
+    "holdout_rmse_px": 6.6356392694521675,
+    "homography_pixel_rmse_px": 7.824496080844116,
+    "homography_world_rmse_m": 0.04307131107647477,
+    "normalized_composite": 2.6221369996198027
+  },
+  "interpretation": "The limited grid cannot make marker, frozen holdout, and accepted-H consistency jointly strong; it is not a replacement calibration."
+}

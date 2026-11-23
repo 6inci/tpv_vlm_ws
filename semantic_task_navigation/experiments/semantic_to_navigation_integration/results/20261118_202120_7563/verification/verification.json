@@ -1,0 +1,78 @@
+{
+  "note": "Python / detector checks of the VLM proposal. The VLM output itself is in vlm_proposal/.",
+  "checks": [
+    {
+      "id": "V1",
+      "name": "proposal is a valid, non-scene-sized region in this image",
+      "status": "VERIFIED",
+      "required": true,
+      "basis": "python_geometry",
+      "detail": {
+        "box_px": [
+          1248.0,
+          810.0,
+          1824.0,
+          1026.0
+        ],
+        "area_frac_of_image": 0.06,
+        "max_area_frac": 0.25,
+        "min_side_px": 216.0,
+        "inside_image": true
+      }
+    },
+    {
+      "id": "V2",
+      "name": "the objects cited as evidence exist in the image (anchor object required)",
+      "status": "FAILED",
+      "required": true,
+      "basis": "detector+vlm_crop_verification (v0.2 detections / ad-hoc DINO)",
+      "detail": {
+        "cited": [],
+        "anchor_cited": false,
+        "unverifiable_evidence": [
+          "lightning bolt symbol",
+          "red cube marker (assumed)",
+          "whiteboard nearby"
+        ],
+        "note": "an anchor (truck) must be cited AND verified; uncited overlap with the truck is not evidence"
+      }
+    },
+    {
+      "id": "V3",
+      "name": "region is geometrically associated with the verified anchor (v0.2 association rules)",
+      "status": "FAILED",
+      "required": true,
+      "basis": "python_geometry (v0.2 structure_* thresholds)",
+      "detail": {
+        "truck_containment": 0.0,
+        "gap_to_truck_px": 604.4,
+        "area_ratio_to_truck": 4.739,
+        "iou_with_truck": 0.0,
+        "association_distance_px": 119.2,
+        "reject_reason": "not associated with the verified truck (neither contains it nor lies within one band depth)"
+      }
+    },
+    {
+      "id": "V4",
+      "name": "v0.2 region_judge accepts the adopted region",
+      "status": "NOT_RUN",
+      "required": true,
+      "basis": "vlm_judge_same_model",
+      "detail": {
+        "reason": "an earlier required check failed"
+      }
+    }
+  ],
+  "refinement": null,
+  "cones": null,
+  "semantic_decision": {
+    "status": "SEMANTIC_NOT_VERIFIED",
+    "reasons": [
+      "V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules)",
+      "V2 FAILED: the objects cited as evidence exist in the image (anchor object required)",
+      "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+    ],
+    "evidence_failed": true
+  },
+  "adopted": null
+}

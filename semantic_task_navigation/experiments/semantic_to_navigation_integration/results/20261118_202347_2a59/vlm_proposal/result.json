@@ -1,0 +1,250 @@
+{
+  "image_id": "integration",
+  "image_role": "integration",
+  "condition": "L2",
+  "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "prior_condition": "A",
+  "classification": "EXPLORATORY_DIAGNOSTIC",
+  "prompt_version": "n0",
+  "prompt_sha256": "3ab876f263fefd093619942b393d5bdc220f155454324a5d9c847a1083d88e97",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "image_file": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_202347_2a59/input/raw_frame.png",
+  "model_input_audit": {
+    "worker_call_keys": [
+      "image_path",
+      "max_new_tokens",
+      "prompt"
+    ],
+    "n_images": 1,
+    "prompt_sha256": "3ab876f263fefd093619942b393d5bdc220f155454324a5d9c847a1083d88e97"
+  },
+  "call": {
+    "latency_s": 47.142,
+    "n_input_tokens": 2909,
+    "n_output_tokens": 1590,
+    "hit_max_new_tokens": false,
+    "peak_allocated_gib": 9.023,
+    "image_size": [
+      1920,
+      1080
+    ],
+    "max_new_tokens": 2800,
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  },
+  "status": "OK",
+  "error": null,
+  "consistency_issues": [],
+  "structured": {
+    "observed_objects": [
+      {
+        "label": "robotic arm",
+        "count": 3,
+        "location_in_image": "top-left and bottom-left corners",
+        "visible_evidence": "three white and gray robotic arms mounted on bases, positioned near conveyor belts and storage units"
+      },
+      {
+        "label": "truck",
+        "count": 1,
+        "location_in_image": "top-right",
+        "visible_evidence": "white and black model truck with a cargo bed, parked near orange cones"
+      },
+      {
+        "label": "stack of boxes",
+        "count": 1,
+        "location_in_image": "center of the floor",
+        "visible_evidence": "three brown cardboard boxes stacked on a pallet, surrounded by a yellow square"
+      },
+      {
+        "label": "cones",
+        "count": 12,
+        "location_in_image": "distributed across the floor",
+        "visible_evidence": "orange traffic cones placed along pathways and around objects"
+      },
+      {
+        "label": "barriers",
+        "count": 2,
+        "location_in_image": "top and bottom edges",
+        "visible_evidence": "green and gray modular barriers, likely for safety or zoning"
+      },
+      {
+        "label": "battery charging station",
+        "count": 1,
+        "location_in_image": "bottom-right",
+        "visible_evidence": "a square area with a lightning bolt symbol and two green panels, likely for charging"
+      },
+      {
+        "label": "whiteboard",
+        "count": 1,
+        "location_in_image": "bottom-center",
+        "visible_evidence": "a whiteboard with Korean text, partially legible"
+      },
+      {
+        "label": "pallets with containers",
+        "count": 1,
+        "location_in_image": "right side",
+        "visible_evidence": "multiple pallets with black, gray, and blue cylindrical containers"
+      },
+      {
+        "label": "robotic vehicle",
+        "count": 1,
+        "location_in_image": "bottom-right",
+        "visible_evidence": "a black, wheeled robot with visible sensors and a control panel"
+      },
+      {
+        "label": "conveyor belt",
+        "count": 1,
+        "location_in_image": "left side",
+        "visible_evidence": "a long white conveyor belt with robotic arms positioned above it"
+      },
+      {
+        "label": "grate",
+        "count": 1,
+        "location_in_image": "bottom-center",
+        "visible_evidence": "a gray metal grate on the floor"
+      }
+    ],
+    "functional_areas": [
+      {
+        "id": "area_1",
+        "function_name": "loading/unloading zone",
+        "bbox_2d": [
+          0,
+          0,
+          1000,
+          1000
+        ],
+        "observed_evidence": [
+          "robotic arms",
+          "truck",
+          "cones",
+          "barriers",
+          "conveyor belt",
+          "pallets with containers",
+          "robotic vehicle",
+          "whiteboard",
+          "grate",
+          "stack of boxes"
+        ],
+        "inference": "This is a simulated logistics floor with multiple zones for material handling, including loading, unloading, and storage.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_2",
+        "function_name": "conveyor belt processing area",
+        "bbox_2d": [
+          75,
+          260,
+          270,
+          730
+        ],
+        "observed_evidence": [
+          "conveyor belt",
+          "robotic arms"
+        ],
+        "inference": "Robotic arms are positioned to interact with the conveyor belt, suggesting material processing or sorting.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_3",
+        "function_name": "storage zone",
+        "bbox_2d": [
+          320,
+          400,
+          650,
+          750
+        ],
+        "observed_evidence": [
+          "stack of boxes",
+          "grate",
+          "whiteboard"
+        ],
+        "inference": "The central area with the stack of boxes and grate suggests a designated storage or staging area.",
+        "confidence": "medium"
+      },
+      {
+        "id": "area_4",
+        "function_name": "charging station",
+        "bbox_2d": [
+          650,
+          750,
+          1000,
+          950
+        ],
+        "observed_evidence": [
+          "battery charging station",
+          "robotic vehicle"
+        ],
+        "inference": "The lightning bolt symbol and green panels indicate a designated area for charging robots or equipment.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_5",
+        "function_name": "loading dock",
+        "bbox_2d": [
+          650,
+          0,
+          950,
+          260
+        ],
+        "observed_evidence": [
+          "truck",
+          "cones",
+          "barriers"
+        ],
+        "inference": "The truck is parked near cones and barriers, indicating a designated loading or unloading zone for vehicles.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_6",
+        "function_name": "material staging area",
+        "bbox_2d": [
+          650,
+          400,
+          950,
+          750
+        ],
+        "observed_evidence": [
+          "pallets with containers"
+        ],
+        "inference": "Pallets with various containers suggest a staging area for materials before they are moved or processed.",
+        "confidence": "medium"
+      }
+    ],
+    "task_analysis": {
+      "inferred_task_purpose": "The instruction asks to move a red cube to an appropriate location for shipment.",
+      "info_given_by_instruction": [
+        "The destination must be a place where the red cube can be shipped out."
+      ],
+      "info_added_by_you": [
+        {
+          "statement": "The red cube is not visible in the image, so its location is unknown.",
+          "basis": "image"
+        },
+        {
+          "statement": "The truck in area_5 is a likely candidate for receiving shipped goods.",
+          "basis": "general_knowledge"
+        },
+        {
+          "statement": "The area near the truck (area_5) is the most logical place for outgoing shipments.",
+          "basis": "general_knowledge"
+        }
+      ],
+      "place_needed_for_task": "A designated loading/unloading zone for outgoing shipments.",
+      "decision": "proposed",
+      "destination_area_id": "area_5",
+      "reason": "The truck is the only vehicle visible that can receive outgoing shipments, and area_5 is the designated loading dock for vehicles."
+    },
+    "unknown_from_image": [
+      "The location of the red cube is not visible in the image.",
+      "The exact function of the whiteboard is not clear.",
+      "The size or type of the red cube is not visible."
+    ],
+    "physical_conditions_to_verify": [
+      "Whether the red cube is present and accessible in the environment.",
+      "Whether the truck is operational and ready to receive the red cube.",
+      "Whether the area_5 is clear and unobstructed for loading."
+    ]
+  },
+  "decision": "proposed"
+}

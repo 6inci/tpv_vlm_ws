@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:20:15+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "REWORK",
+  "result": "ROBOT_POSE_INPUTS_INCOMPLETE",
+  "resolved_inputs": {
+    "id0_black_square_side_m": 0.188,
+    "floor_marker_black_square_side_m": 0.175,
+    "nominal_module_pitch_m": 0.030,
+    "id0_camera_frame_pose": "ESTABLISHED",
+    "id0_side_measurement_requested_again": false
+  },
+  "missing_human_measurements": {
+    "measurement_frame": {
+      "origin": "base_link/chassis reference center",
+      "x": "robot forward",
+      "y": "robot left",
+      "z": "upward"
+    },
+    "id0_center_relative_to_base_link": {
+      "x_cm": null,
+      "x_sign": "positive if ID0 center is forward of base_link",
+      "y_cm": null,
+      "y_sign": "positive if ID0 center is left of base_link",
+      "z_cm": null,
+      "z_definition": "ID0 marker-center height above the chosen ground/base reference"
+    },
+    "marker_orientation": {
+      "required": "Identify which canonical ID0 marker edge or +axis points toward robot +x, including any yaw offset in degrees.",
+      "yaw_offset_deg": null
+    }
+  },
+  "missing_system_evidence": {
+    "current_camera_world_3d_relation": "One validated T_camera_world or T_world_camera tied to GEOMETRY_SESSION_02_TILE_GRID_WORLD is required."
+  },
+  "robot_base_pose": {
+    "available": false,
+    "artifact_created": false
+  },
+  "current_goal": {
+    "status": "NOT_STARTED",
+    "result": "WAITING_FOR_CURRENT_WORLD_GOAL",
+    "explicit_current_world_goal_found": false
+  },
+  "goal_candidate_visualization": {
+    "created": false,
+    "reason": "Purpose B is conditional on robot base pose availability; the robot pose remains unresolved."
+  },
+  "execution_counts": {
+    "qwen_inference_runs": 0,
+    "planner_runs": 0,
+    "path_generation_runs": 0,
+    "step17_runs": 0,
+    "step18_runs": 0,
+    "step19_runs": 0,
+    "ros_nav2_runs": 0,
+    "robot_motion_commands": 0
+  }
+}

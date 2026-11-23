@@ -1,0 +1,89 @@
+{
+  "H1_FLOOR_MARKER_CORNER_LOCALIZATION_ERROR": {
+    "for": [
+      "Independent Methods A/C move corners by mean 1.85/1.81 px and maxima 5.01/4.28 px.",
+      "Source floor markers are only about 20 px (far) and 39 px (near) high."
+    ],
+    "against": [
+      "Method C produces 0.174877 m mean side under accepted H, yet strict PnP validations remain poor."
+    ],
+    "confidence": "MEDIUM"
+  },
+  "H2_CURRENT_IMAGE_STORED_KD_COMPATIBILITY_ERROR": {
+    "for": [
+      "Calibration was reconstructed from screenshots; original raw calibration frames and historical active sensor state are unavailable.",
+      "Accepted H normalized columns violate one rigid calibrated-plane constraints: 14.41% norm mismatch and 86.45 deg angle."
+    ],
+    "against": [
+      "Camera name/native resolution and current full-frame MJPG mode agree; no direct identity mismatch was found.",
+      "Limited K grid does not produce a jointly strong validation."
+    ],
+    "confidence": "HIGH"
+  },
+  "H3_FLOOR_MARKER_WORLD_CORNER_REGISTRATION_ERROR": {
+    "for": [
+      "Accepted-H-implied touch offsets reach 10.736 mm."
+    ],
+    "against": [
+      "Replacing declared marker XY by accepted-H-implied XY improves marker RMSE only 5.266 to 5.127 px and holdout 7.555 to 7.509 px.",
+      "Monte Carlo indicates roughly 61-66 mm registration error would be needed."
+    ],
+    "confidence": "LOW"
+  },
+  "H4_MARKER_PHYSICAL_NONPLANARITY": {
+    "for": [
+      "Paper flatness was not measured."
+    ],
+    "against": [
+      "1-5 mm simulated Z deviations are far too small; linear scale estimates require about 41-93 mm for marker residual magnitude."
+    ],
+    "confidence": "LOW"
+  },
+  "H5_WRONG_CORNER_SEMANTICS": {
+    "for": [
+      "Recovered corners were manually bounded at low pixel height."
+    ],
+    "against": [
+      "Canonical orientation is rotation 0 with Hamming distance 0; current visual/canonical/world touch meanings coincide; opposite bottom corner causes 172-186 mm error."
+    ],
+    "confidence": "LOW"
+  },
+  "H6_CAMERA_MODEL_LIMITATION": {
+    "for": [
+      "Removing tangential terms improves rigid marker/tile metrics and residuals are strongly correlated with image location.",
+      "Stored full D remains best for direct frozen-split planar H, showing a rigid-model-versus-planar tension."
+    ],
+    "against": [
+      "No tested D variant yields strict validation and full D is superior in the accepted planar control."
+    ],
+    "confidence": "HIGH"
+  },
+  "H7_PLANAR_PNP_NUMERICAL_DEGENERACY": {
+    "for": [
+      "All control points are coplanar."
+    ],
+    "against": [
+      "Physical and mirror IPPE branches are separated by 6.766 m and 116.58 deg; Jacobian rank is 6; +/-1 px noise changes height only about 4 mm std, not the observed failure."
+    ],
+    "confidence": "LOW"
+  },
+  "H8_PIXEL_DOMAIN_MISMATCH": {
+    "for": [
+      "Tile and marker observations originate from two stable captures."
+    ],
+    "against": [
+      "All domains trace consistently; cross-frame projective correction is only 0.173 px RMS and changes holdout 7.555 to 7.519 px."
+    ],
+    "confidence": "LOW"
+  },
+  "H9_MULTIPLE_SMALL_ERRORS_COMBINE": {
+    "for": [
+      "Corner localization, calibration provenance/model tension, and millimetric registration offsets all have measurable contributions.",
+      "No single tested correction passes marker + independent tile + accepted-H checks."
+    ],
+    "against": [
+      "Exact contribution weights cannot be uniquely identified from one planar view."
+    ],
+    "confidence": "HIGH"
+  }
+}

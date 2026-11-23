@@ -1,0 +1,140 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:36:36+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "REWORK",
+  "result": "CAMERA_WORLD_SE3_VALIDATION_FAILED",
+  "scope": "PLANAR_CALIBRATED_PNP_CANDIDATE_ENUMERATION_AND_DIAGNOSTIC_REFINEMENT",
+  "inputs": {
+    "correspondence_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/floor_marker_world_corners.json",
+    "correspondence_count": 16,
+    "world_point_domain": "GEOMETRY_SESSION_02_TILE_GRID_WORLD_XYZ_M_Z_EQUALS_ZERO",
+    "image_point_domain": "RAW_IMAGE_PX",
+    "calibration_path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "calibration_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "camera_matrix": [[1193.9285743624512, 0.0, 905.4672749500978], [0.0, 1191.56191006301, 513.000222084921], [0.0, 0.0, 1.0]],
+    "distortion_coefficients_k1_k2_p1_p2_k3": [-0.20298479067273242, 0.13060299315148366, 0.027118263577020307, 0.003928149452520465, -0.06119022290385212],
+    "domain_policy": "RAW corner pixels were passed with the stored distortion vector. Undistorted pixels were not mixed with distortion coefficients."
+  },
+  "solver": {
+    "implementation": "OpenCV 4.5.4 cv2.solvePnPGeneric",
+    "primary_method": "SOLVEPNP_IPPE",
+    "planar_ambiguity_handling": "Enumerate and evaluate both IPPE solutions; do not accept the first result implicitly.",
+    "diagnostic_refinement": "cv2.solvePnPRefineLM initialized from the physically plausible IPPE solution",
+    "solver_cross_checks": [
+      "Direct SOLVEPNP_ITERATIVE converged to the same refined solution.",
+      "Normalized-undistorted IPPE reproduced the RAW-plus-distortion IPPE solutions.",
+      "SOLVEPNP_SQPNP returned a nearby but not better solution; SOLVEPNP_EPNP was worse."
+    ],
+    "tile_points_used_in_fit": false
+  },
+  "ippe_candidates": [
+    {
+      "candidate_id": "IPPE_0",
+      "transform_meaning": "X_camera = R_camera_world * X_world + t_camera_world",
+      "rotation_vector_rad": [2.003488641652, 0.095877190342, -0.174547154884],
+      "translation_m": [-0.336682735569, 1.138355670064, 2.733236244316],
+      "rotation_matrix_camera_from_world": [
+        [0.986026451233, 0.14602270121, -0.080182343448],
+        [-0.010661079824, -0.42502033604, -0.905121016953],
+        [-0.166247342374, 0.893328094646, -0.417524533974]
+      ],
+      "camera_center_world_xyz_m": [0.79850744531, -1.90868909443, 2.144546820154],
+      "camera_height_above_floor_m": 2.144546820154,
+      "camera_forward_axis_in_world": [-0.166247342374, 0.893328094646, -0.417524533974],
+      "corner_depth_range_camera_z_m": [3.069736, 5.033556],
+      "all_correspondences_positive_depth": true,
+      "physical_orientation_plausible": true,
+      "fit_reprojection": {"point_count": 16, "mean_error_px": 5.695472, "rmse_px": 5.942699, "maximum_error_px": 8.494261},
+      "disposition": "REFINE_AND_VALIDATE"
+    },
+    {
+      "candidate_id": "IPPE_1",
+      "transform_meaning": "X_camera = R_camera_world * X_world + t_camera_world",
+      "rotation_vector_rad": [-2.239352448618, 0.038868326224, 0.08125437587],
+      "translation_m": [-0.075385197559, 1.574773522715, 4.944454738806],
+      "rotation_matrix_camera_from_world": [
+        [0.997381262959, -0.056504452596, -0.045142697465],
+        [0.000314636476, -0.620785852618, 0.783980118494],
+        [-0.072322315377, -0.781941284258, -0.619142399349]
+      ],
+      "camera_center_world_xyz_m": [0.432286717345, 4.839610813073, 1.823327346351],
+      "camera_height_above_floor_m": 1.823327346351,
+      "camera_forward_axis_in_world": [-0.072322315377, -0.781941284258, -0.619142399349],
+      "corner_depth_range_camera_z_m": [2.844169, 4.47529],
+      "all_correspondences_positive_depth": true,
+      "physical_orientation_plausible": false,
+      "fit_reprojection": {"point_count": 16, "mean_error_px": 59.825433, "rmse_px": 63.381646, "maximum_error_px": 99.797597},
+      "independent_tile_holdout_rmse_px": 194.984572,
+      "disposition": "REJECTED",
+      "rejection_reasons": [
+        "Camera lies far on the positive-Y side of the workspace and looks toward negative Y, contrary to the established session geometry.",
+        "Marker-corner reprojection error is extreme.",
+        "Independent tile validation error is extreme."
+      ]
+    }
+  ],
+  "refined_diagnostic_candidate": {
+    "candidate_id": "IPPE_0_REFINED_LM",
+    "selected_for_validation": true,
+    "accepted_as_camera_world_se3": false,
+    "transform_meaning": "X_camera = R_camera_world * X_world + t_camera_world",
+    "rotation_vector_rad": [2.0138975413303415, 0.09350395983354828, -0.1821269741765696],
+    "translation_m": [-0.33142933204524816, 1.164624254756007, 2.7980526114706525],
+    "rotation_matrix_camera_from_world": [
+      [0.9852904485552465, 0.1469647230420713, -0.08720150323801246],
+      [-0.01479081867578036, -0.43502849400630206, -0.9002951966358085],
+      [-0.17024677285840695, 0.8883420397480782, -0.426455691423531]
+    ],
+    "T_camera_world_diagnostic_only": [
+      [0.9852904485552465, 0.1469647230420713, -0.08720150323801246, -0.33142933204524816],
+      [-0.01479081867578036, -0.43502849400630206, -0.9002951966358085, 1.164624254756007],
+      [-0.17024677285840695, 0.8883420397480782, -0.426455691423531, 2.7980526114706525],
+      [0.0, 0.0, 0.0, 1.0]
+    ],
+    "T_world_camera_diagnostic_only": [
+      [0.9852904485552465, -0.01479081867578036, -0.17024677285840695, 0.8201393288036568],
+      [0.1469647230420713, -0.43502849400630206, 0.8883420397480782, -1.9302746085745104],
+      [-0.08720150323801246, -0.9002951966358085, -0.426455691423531, 2.212849947535009],
+      [0.0, 0.0, 0.0, 1.0]
+    ],
+    "camera_center_world_xyz_m": [0.8201393288036568, -1.9302746085745104, 2.212849947535009],
+    "camera_height_above_floor_m": 2.212849947535009,
+    "camera_forward_axis_in_world": [-0.17024677285840695, 0.8883420397480782, -0.426455691423531],
+    "corner_depth_range_camera_z_m": [3.126761707889, 5.085533363822],
+    "all_correspondences_positive_depth": true,
+    "physical_orientation_plausible": true,
+    "fit_reprojection": {
+      "point_count": 16,
+      "mean_error_px": 4.905646318129,
+      "rmse_px": 5.266286015402,
+      "maximum_error_px": 8.713555427016,
+      "points": [
+        {"point_id": "ID1_C0_TOP_LEFT", "observed_raw_px": [1165, 522], "predicted_raw_px": [1160.806428656, 521.548101519], "residual_predicted_minus_observed_px": [-4.193571344, -0.451898481], "error_px": 4.217849316},
+        {"point_id": "ID1_C1_TOP_RIGHT", "observed_raw_px": [1209, 523], "predicted_raw_px": [1203.423368409, 521.49717019], "residual_predicted_minus_observed_px": [-5.576631591, -1.50282981], "error_px": 5.775579394},
+        {"point_id": "ID1_C2_BOTTOM_RIGHT_TOUCH", "observed_raw_px": [1215, 543], "predicted_raw_px": [1206.960360767, 540.786131248], "residual_predicted_minus_observed_px": [-8.039639233, -2.213868752], "error_px": 8.338885648},
+        {"point_id": "ID1_C3_BOTTOM_LEFT", "observed_raw_px": [1169, 542], "predicted_raw_px": [1162.914334997, 540.773111353], "residual_predicted_minus_observed_px": [-6.085665003, -1.226888647], "error_px": 6.208105531},
+        {"point_id": "ID2_C0_TOP_LEFT", "observed_raw_px": [1185, 808], "predicted_raw_px": [1189.677997192, 807.010247644], "residual_predicted_minus_observed_px": [4.677997192, -0.989752356], "error_px": 4.78155492},
+        {"point_id": "ID2_C1_TOP_RIGHT", "observed_raw_px": [1251, 810], "predicted_raw_px": [1253.056665406, 808.318614947], "residual_predicted_minus_observed_px": [2.056665406, -1.681385053], "error_px": 2.656487961},
+        {"point_id": "ID2_C2_BOTTOM_RIGHT_TOUCH", "observed_raw_px": [1258, 847], "predicted_raw_px": [1260.053889173, 851.577200395], "residual_predicted_minus_observed_px": [2.053889173, 4.577200395], "error_px": 5.016893879},
+        {"point_id": "ID2_C3_BOTTOM_LEFT", "observed_raw_px": [1192, 847], "predicted_raw_px": [1193.621137774, 849.977464478], "residual_predicted_minus_observed_px": [1.621137774, 2.977464478], "error_px": 3.39018914},
+        {"point_id": "ID3_C0_TOP_LEFT", "observed_raw_px": [911, 521], "predicted_raw_px": [916.509005596, 523.419966118], "residual_predicted_minus_observed_px": [5.509005596, 2.419966118], "error_px": 6.017090548},
+        {"point_id": "ID3_C1_TOP_RIGHT", "observed_raw_px": [954, 522], "predicted_raw_px": [957.3160729, 522.927657108], "residual_predicted_minus_observed_px": [3.3160729, 0.927657108], "error_px": 3.443383102},
+        {"point_id": "ID3_C2_BOTTOM_RIGHT", "observed_raw_px": [947, 542], "predicted_raw_px": [952.730018719, 541.788555713], "residual_predicted_minus_observed_px": [5.730018719, -0.211444287], "error_px": 5.733918661},
+        {"point_id": "ID3_C3_BOTTOM_LEFT_TOUCH", "observed_raw_px": [902, 541], "predicted_raw_px": [910.631419495, 542.193585222], "residual_predicted_minus_observed_px": [8.631419495, 1.193585222], "error_px": 8.713555427},
+        {"point_id": "ID4_C0_TOP_LEFT", "observed_raw_px": [831, 800], "predicted_raw_px": [831.211757094, 797.921923897], "residual_predicted_minus_observed_px": [0.211757094, -2.078076103], "error_px": 2.088837322},
+        {"point_id": "ID4_C1_TOP_RIGHT", "observed_raw_px": [893, 803], "predicted_raw_px": [890.130022366, 799.664216968], "residual_predicted_minus_observed_px": [-2.869977634, -3.335783032], "error_px": 4.400479526},
+        {"point_id": "ID4_C2_BOTTOM_RIGHT", "observed_raw_px": [886, 841], "predicted_raw_px": [880.201206801, 840.67847982], "residual_predicted_minus_observed_px": [-5.798793199, -0.32152018], "error_px": 5.807699871},
+        {"point_id": "ID4_C3_BOTTOM_LEFT_TOUCH", "observed_raw_px": [820, 837], "predicted_raw_px": [818.746411571, 838.427540995], "residual_predicted_minus_observed_px": [-1.253588429, 1.427540995], "error_px": 1.899830845}
+      ]
+    },
+    "disposition": "PHYSICALLY_PLAUSIBLE_DIAGNOSTIC_ONLY_REJECTED_BY_INDEPENDENT_VALIDATION"
+  },
+  "acceptance": {
+    "camera_world_se3_validated": false,
+    "reason": "The plausible candidate fails independent tile and validated-Homography consistency checks; a plausible pose is not sufficient for promotion to a validated transform.",
+    "camera_world_se3_artifact_created": false,
+    "id0_world_pose_composition_allowed": false
+  },
+  "execution_boundaries": {"homography_recomputed": false, "qwen_inference_runs": 0, "planner_runs": 0, "step18_runs": 0, "ros_nav2_runs": 0, "robot_motion_commands": 0}
+}

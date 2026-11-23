@@ -1,0 +1,45 @@
+# SigLIP2 small-object test (2026-11-20). Declared BEFORE any model call of this experiment.
+# Question: on the same 8 photos and with the same Grounding DINO pass as before, does SigLIP2 (instead of Qwen) identify the
+# small pallets (grey slatted pads) and the red cubes that DINO finds?
+# No install, no download, no change to any existing file. Existing conda envs and the cached weights are used as they are.
+experiment_id: siglip_small_object_test
+results_dir: results
+
+# The per-photo stage of multimodel_target_viewer is reused unchanged (read-only import of mm_pipeline.MMViewer.photo):
+#   Grounding DINO (v0.2 worker, qwen_vl env, IDEA-Research/grounding-dino-tiny): reference facilities + task_context vocabulary
+#     + extra phrases, full image + verified-facility ROIs, IoU merge 0.5 -> ph["dino"]
+#   SigLIP2 (mm_worker, qwen_vl_q4 env, google/siglip2-base-patch16-384, fp16): facility check (replaces the Qwen crop check)
+#     and type ranking of every DINO candidate over the label list of multimodel_target_viewer/config.yaml (tight + context crop)
+# No VLM (Qwen) call is made in this experiment.
+pipeline: ../multimodel_target_viewer            # its config.yaml holds the DINO phrases, SigLIP2 model, labels, crops
+
+# Evaluation reference: AI PRELIMINARY REVIEW, NOT human ground truth (checked visually by the AI before this run). Read only.
+reference:
+  status: AI_PRELIMINARY_REVIEW (user confirmation required)
+  photos: ../cube_candidate_funnel/config.yaml                                   # 8 photos identified by sha256
+  cubes: ../cube_candidate_funnel/config.yaml                                    # labels: red cube boxes (15-21 px)
+  pads: ../navigation_handoff/results/20261120_062203_step4a_photo_survey/survey.json   # cube.box_px = pad under the cube,
+                                                                                 # pallets_empty[].box_px = empty pad (42-56 px)
+  # POST-HOC CORRECTION (2026-11-20, after the follow-up run 20261120_134533): an object missing from the reference, found because the
+  # exemplar search ranked it 1st in all 5 photo_6 folds, then checked visually by the AI on all 8 photos. STEP 4-A surveyed only around
+  # the yellow zone. Runs scored before this correction keep their files; re-evaluations go to <run>/reeval_<time>/.
+  additions:
+    U25137685:
+      - {kind: empty_pad, box: [420, 408, 468, 450], note: "photo_6: empty pad on the conveyor stand (the pad under photo_5's cube, cube removed)"}
+  # Checked and NOT added: the larger grey slatted panel at the bottom centre [988, 881, 1108, 999] (all photos, about 120 px; pallet or
+  # floor grate UNKNOWN) stays a non-reference candidate, i.e. it counts as a distractor (conservative).
+
+evaluation:
+  detection_iou: 0.5            # DETECTED: some DINO candidate has IoU >= 0.5 with the reference box
+  detection_iou_lenient: 0.3    # reported only (a 17 px cube box moves IoU a lot per pixel)
+  groups:                       # a reference object is IDENTIFIED when the SigLIP2 combined top-1 label of its matched candidate is in its group
+    pallet: [a small pallet, a wooden pallet]
+    cube: [a red cube]
+  object_group: {cube: cube, pad_with_cube: pallet, empty_pad: pallet}
+  also_report_top_k: 2          # multimodel_target_viewer type check uses top 2 (tuned on E1, not validated)
+  oracle_crop: true             # SigLIP2 on the reference box itself (same crops): separates detection failures from naming failures
+  # DINO candidates whose SigLIP2 top-1 is in a group but that match no reference are LISTED (NOT_IN_REFERENCE) for review.
+  # The reference covers only the small pads and cubes, so this is NOT a false-positive rate (large pallets in the staging area are real pallets).
+
+# Qwen baseline: the stored Qwen replies (task_context_2d_navigation/results/20261119_174000) name candidates by number and id
+# but do not store the candidate boxes, so they cannot be linked to the reference objects here. No Qwen comparison in this run.

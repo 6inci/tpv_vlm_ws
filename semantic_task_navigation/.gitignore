@@ -1,0 +1,51 @@
+# Python cache / build
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+
+# Secrets (.env.example is tracked)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+credentials*.json
+secrets/
+
+# Temporary logs
+*.log
+logs/
+tmp/
+
+# Model weights / caches (reuse existing ~/.cache/huggingface and ~/weights by path; never copy here)
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.gguf
+models/
+weights/
+hf_cache/
+.cache/
+
+# Test / tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# runs/ and assets/reference/ are intentionally NOT ignored yet.
+# Decide tracking policy before the first experiment run, e.g.:
+#   runs/                 # ignore all run outputs
+#   runs/**/*.jpg         # keep JSON/metrics, ignore images
+#   (or use git-lfs for assets/reference/*.jpg)

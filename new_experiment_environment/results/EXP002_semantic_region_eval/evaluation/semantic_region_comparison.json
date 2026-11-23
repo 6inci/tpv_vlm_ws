@@ -1,0 +1,466 @@
+{
+  "experiment_id": "EXP002",
+  "step_id": "STEP03_REFERENCE_CANDIDATE_VS_QWEN_EVALUATION",
+  "step_result": "PASS",
+  "evaluation_type": "PRELIMINARY_REFERENCE_CANDIDATE_BASED_DIAGNOSTIC",
+  "performance_claim_status": "NOT_VALIDATED_PERFORMANCE",
+  "created_at": "2026-09-27T18:09:52.441627+09:00",
+  "sources": {
+    "reference": {
+      "path": "/home/binci/vlm_ws/new_experiment_environment/results/EXP002_semantic_region_eval/reference/reference_annotation_candidate.json",
+      "sha256": "f16e43179cdebd04bb467a08b81e5804a54a5c583b7e870ef02453247e35ded4",
+      "provenance": "REFERENCE_GT_CANDIDATE"
+    },
+    "prediction": {
+      "path": "/home/binci/vlm_ws/new_experiment_environment/results/EXP002_semantic_region_eval/model_output/semantic_region_prediction.json",
+      "sha256": "f36b2ee94f0a413c8ddb638c7e780fb6f0a37498139246b7e12ad36a32d8a16d",
+      "provenance": "POSTPROCESSED"
+    },
+    "raw_model_output": {
+      "path": "/home/binci/vlm_ws/new_experiment_environment/results/EXP002_semantic_region_eval/model_output/semantic_region_raw.txt",
+      "sha256": "437db0432d5dfca5d598ce94b9fdf73428055016730d2a0c14c3aa4b849a43ae",
+      "provenance": "MODEL_OUTPUT"
+    }
+  },
+  "matching_method": {
+    "unit": "semantic_region",
+    "assignment": "ONE_TO_ONE",
+    "polygon_used": false,
+    "criteria": [
+      "semantic function",
+      "supporting objects",
+      "supporting relations",
+      "functional context",
+      "reasoning"
+    ],
+    "status_vocabulary": [
+      "MATCH",
+      "PARTIAL_MATCH",
+      "NO_MATCH",
+      "UNKNOWN"
+    ],
+    "judgment_provenance": "MANUAL_OR_AGENT_INFERENCE"
+  },
+  "region_correspondence": [
+    {
+      "reference_region_id": "region_storage",
+      "reference_label": "Storage Area",
+      "matched_prediction_id": "storage_area",
+      "predicted_label": "Inventory storage zone",
+      "match_status": "MATCH",
+      "semantic_match_reason": "Both describe organized inventory storage centered on loaded shelving.",
+      "supporting_object_consistency": "SUBSTANTIAL",
+      "supporting_relation_consistency": "PARTIAL",
+      "functional_context_agreement": "SUBSTANTIAL",
+      "evidence_interpretation": "Racks/shelves, boxes, and blue bins agree; prediction containment evidence is compatible with reference rack adjacency but not identical.",
+      "uncertainty": "Reference boundary is preliminary and prediction has no polygon.",
+      "reference_supporting_objects": [
+        {
+          "id": "obj_001",
+          "label": "left storage rack with boxes and bins"
+        },
+        {
+          "id": "obj_002",
+          "label": "right storage rack with boxes and bins"
+        }
+      ],
+      "prediction_supporting_objects": [
+        "Orange shelving units",
+        "Cardboard boxes",
+        "Blue bins"
+      ],
+      "reference_supporting_relations": [
+        {
+          "id": "rel_001",
+          "relation": "obj_001 adjacent_to obj_002"
+        }
+      ],
+      "prediction_supporting_relations": [
+        "Shelves hold boxes, bins, and tools"
+      ],
+      "reference_reason": "Two adjacent loaded racks, repeated boxes/bins, and the surrounding shelf-access space jointly indicate storage use.",
+      "prediction_reasoning": "Shelves and boxes indicate organized storage for inventory",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "reference_region_id": "region_work",
+      "reference_label": "Work Station",
+      "matched_prediction_id": "maintenance_station",
+      "predicted_label": "Tool and equipment maintenance area",
+      "match_status": "PARTIAL_MATCH",
+      "semantic_match_reason": "The same workbench/chair area is identified, but the prediction specializes the broader Work Station as maintenance/configuration.",
+      "supporting_object_consistency": "SUBSTANTIAL",
+      "supporting_relation_consistency": "SUBSTANTIAL",
+      "functional_context_agreement": "PARTIAL",
+      "evidence_interpretation": "Workbench, laptop/tools, chair, and chair-near-workbench evidence align; functional role is narrower in the prediction.",
+      "uncertainty": "The image alone cannot confirm whether maintenance is the intended primary function.",
+      "reference_supporting_objects": [
+        {
+          "id": "obj_004",
+          "label": "tool workbench"
+        },
+        {
+          "id": "obj_019",
+          "label": "black workbench chair"
+        }
+      ],
+      "prediction_supporting_objects": [
+        "Workbench",
+        "Laptop",
+        "Tools",
+        "Office chair"
+      ],
+      "reference_supporting_relations": [
+        {
+          "id": "rel_002",
+          "relation": "obj_019 in_front_of obj_004"
+        },
+        {
+          "id": "rel_003",
+          "relation": "obj_004 adjacent_to obj_002"
+        }
+      ],
+      "prediction_supporting_relations": [
+        "Workbench with tools and laptop, chair nearby"
+      ],
+      "reference_reason": "A tool/laptop workbench, its chair, adjacency to storage, and usable operator space jointly indicate a work station.",
+      "prediction_reasoning": "Workbench and tools suggest maintenance or configuration tasks",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "reference_region_id": "region_loading",
+      "reference_label": "Loading Area",
+      "matched_prediction_id": "transport_and_loading_zone",
+      "predicted_label": "Vehicle and pallet loading area",
+      "match_status": "PARTIAL_MATCH",
+      "semantic_match_reason": "Truck/pallet loading function agrees, but the prediction merges handcart/barrel material evidence and omits cone-based bay evidence.",
+      "supporting_object_consistency": "PARTIAL",
+      "supporting_relation_consistency": "PARTIAL",
+      "functional_context_agreement": "SUBSTANTIAL",
+      "evidence_interpretation": "Truck, boxed pallets, and loading/unloading relation agree; cones are absent and material-area objects broaden the predicted scope.",
+      "uncertainty": "Without polygons, the extent of the predicted merged loading/transport region is unknown.",
+      "reference_supporting_objects": [
+        {
+          "id": "obj_003",
+          "label": "white delivery truck"
+        },
+        {
+          "id": "obj_005",
+          "label": "left traffic cone"
+        },
+        {
+          "id": "obj_006",
+          "label": "upper-right traffic cone"
+        },
+        {
+          "id": "obj_007",
+          "label": "lower-right traffic cone"
+        },
+        {
+          "id": "obj_016",
+          "label": "right pallet with cardboard boxes"
+        }
+      ],
+      "prediction_supporting_objects": [
+        "White truck",
+        "Pallets with boxes",
+        "Handcart",
+        "Barrels"
+      ],
+      "reference_supporting_relations": [
+        {
+          "id": "rel_004",
+          "relation": "obj_016 near obj_003"
+        },
+        {
+          "id": "rel_005",
+          "relation": "obj_005 near obj_003"
+        },
+        {
+          "id": "rel_006",
+          "relation": "obj_006 near obj_003"
+        },
+        {
+          "id": "rel_007",
+          "relation": "obj_007 near obj_016"
+        }
+      ],
+      "prediction_supporting_relations": [
+        "Truck, handcart, and pallets positioned for loading/unloading"
+      ],
+      "reference_reason": "Truck, nearby boxed pallet, three boundary cones, and open handling space form a coherent loading bay.",
+      "prediction_reasoning": "Vehicle and pallets indicate material transport and loading operations",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "reference_region_id": "region_robot_work",
+      "reference_label": "No-Go Zone",
+      "matched_prediction_id": "robotic_workstation",
+      "predicted_label": "Robotics operation zone",
+      "match_status": "MATCH",
+      "semantic_match_reason": "Both describe the manipulator/conveyor/fence cluster as a functional robot operation area.",
+      "supporting_object_consistency": "SUBSTANTIAL",
+      "supporting_relation_consistency": "SUBSTANTIAL",
+      "functional_context_agreement": "SUBSTANTIAL",
+      "evidence_interpretation": "Robotic arms, conveyor, safety fence, and their near/grouped arrangement substantially agree.",
+      "uncertainty": "Prediction emphasizes operation while reference emphasizes restriction; both concern the same functional cluster.",
+      "reference_supporting_objects": [
+        {
+          "id": "obj_008",
+          "label": "upper-left robotic manipulator"
+        },
+        {
+          "id": "obj_009",
+          "label": "upper-center robotic manipulator"
+        },
+        {
+          "id": "obj_010",
+          "label": "lower-left robotic manipulator"
+        },
+        {
+          "id": "obj_017",
+          "label": "red safety fence"
+        },
+        {
+          "id": "obj_018",
+          "label": "mobile conveyor platform"
+        }
+      ],
+      "prediction_supporting_objects": [
+        "White robotic arms",
+        "Conveyor belt",
+        "Red safety fence"
+      ],
+      "reference_supporting_relations": [
+        {
+          "id": "rel_008",
+          "relation": "obj_008 grouped_with obj_009"
+        },
+        {
+          "id": "rel_009",
+          "relation": "obj_018 adjacent_to obj_008"
+        },
+        {
+          "id": "rel_010",
+          "relation": "obj_008 adjacent_to obj_017"
+        }
+      ],
+      "prediction_supporting_relations": [
+        "Robots positioned near conveyor and fence"
+      ],
+      "reference_reason": "Multiple manipulators, adjacent conveyor equipment, and a safety fence define a preliminary restricted robot-work area.",
+      "prediction_reasoning": "Robots and conveyor indicate automated material handling setup",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "reference_region_id": "region_material",
+      "reference_label": "Material Area",
+      "matched_prediction_id": "mobile_robot_zone",
+      "predicted_label": "Mobile robot operation area",
+      "match_status": "PARTIAL_MATCH",
+      "semantic_match_reason": "Pallet/drum transport context overlaps, but the prediction centers the mobile robot rather than material staging and omits the cart.",
+      "supporting_object_consistency": "PARTIAL",
+      "supporting_relation_consistency": "PARTIAL",
+      "functional_context_agreement": "PARTIAL",
+      "evidence_interpretation": "Pallets/barrels and near relations overlap; reference cart/container evidence and staging function are not fully represented.",
+      "uncertainty": "No polygon is available to determine whether the prediction covers the right-side material area or a broader central robot area.",
+      "reference_supporting_objects": [
+        {
+          "id": "obj_012",
+          "label": "blue handcart with box"
+        },
+        {
+          "id": "obj_014",
+          "label": "pallet with gray containers"
+        },
+        {
+          "id": "obj_015",
+          "label": "pallet with blue and gray drums"
+        }
+      ],
+      "prediction_supporting_objects": [
+        "Black wheeled mobile robot",
+        "Pallets with boxes",
+        "Barrels"
+      ],
+      "reference_supporting_relations": [
+        {
+          "id": "rel_011",
+          "relation": "obj_012 near obj_014"
+        },
+        {
+          "id": "rel_012",
+          "relation": "obj_014 adjacent_to obj_015"
+        }
+      ],
+      "prediction_supporting_relations": [
+        "Robot positioned near pallets and barrels"
+      ],
+      "reference_reason": "Loaded cart plus adjacent container/drum pallets and surrounding handling space jointly indicate material staging.",
+      "prediction_reasoning": "Mobile robot and surrounding pallets suggest autonomous navigation and transport",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    }
+  ],
+  "missed_reference_regions": [],
+  "extra_predicted_regions": [],
+  "scope_behaviors": [
+    {
+      "prediction_id": "transport_and_loading_zone",
+      "behavior": "MERGED_REGION_BEHAVIOR",
+      "diagnosis": "Combines loading evidence with handcart/barrel material evidence that spans two reference concepts.",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "prediction_id": "mobile_robot_zone",
+      "behavior": "ROLE_REINTERPRETATION",
+      "diagnosis": "Interprets shared pallet/barrel evidence as mobile-robot operation rather than material staging.",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    }
+  ],
+  "shortcut_diagnostic": [
+    {
+      "prediction_id": "robotic_workstation",
+      "semantic_label": "Robotics operation zone",
+      "diagnostic": "LOW_SHORTCUT_CONCERN",
+      "single_object_dependence_indication": false,
+      "multi_object_evidence": [
+        "White robotic arms",
+        "Conveyor belt",
+        "Red safety fence"
+      ],
+      "relation_evidence": [
+        "Robots positioned near conveyor and fence"
+      ],
+      "functional_context_evidence": "Robots and conveyor indicate automated material handling setup",
+      "diagnostic_reason": "Uses robotic arms, conveyor, fence, and a spatial relation.",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "prediction_id": "storage_area",
+      "semantic_label": "Inventory storage zone",
+      "diagnostic": "LOW_SHORTCUT_CONCERN",
+      "single_object_dependence_indication": false,
+      "multi_object_evidence": [
+        "Orange shelving units",
+        "Cardboard boxes",
+        "Blue bins"
+      ],
+      "relation_evidence": [
+        "Shelves hold boxes, bins, and tools"
+      ],
+      "functional_context_evidence": "Shelves and boxes indicate organized storage for inventory",
+      "diagnostic_reason": "Uses shelves, boxes, bins, containment, and storage context.",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "prediction_id": "maintenance_station",
+      "semantic_label": "Tool and equipment maintenance area",
+      "diagnostic": "LOW_SHORTCUT_CONCERN",
+      "single_object_dependence_indication": false,
+      "multi_object_evidence": [
+        "Workbench",
+        "Laptop",
+        "Tools",
+        "Office chair"
+      ],
+      "relation_evidence": [
+        "Workbench with tools and laptop, chair nearby"
+      ],
+      "functional_context_evidence": "Workbench and tools suggest maintenance or configuration tasks",
+      "diagnostic_reason": "Uses workbench, laptop, tools, chair, and their co-location.",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "prediction_id": "transport_and_loading_zone",
+      "semantic_label": "Vehicle and pallet loading area",
+      "diagnostic": "LOW_SHORTCUT_CONCERN",
+      "single_object_dependence_indication": false,
+      "multi_object_evidence": [
+        "White truck",
+        "Pallets with boxes",
+        "Handcart",
+        "Barrels"
+      ],
+      "relation_evidence": [
+        "Truck, handcart, and pallets positioned for loading/unloading"
+      ],
+      "functional_context_evidence": "Vehicle and pallets indicate material transport and loading operations",
+      "diagnostic_reason": "Uses truck, pallets, handcart/barrels, and loading relation, though scope is merged.",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    },
+    {
+      "prediction_id": "mobile_robot_zone",
+      "semantic_label": "Mobile robot operation area",
+      "diagnostic": "POSSIBLE_SHORTCUT",
+      "single_object_dependence_indication": true,
+      "multi_object_evidence": [
+        "Black wheeled mobile robot",
+        "Pallets with boxes",
+        "Barrels"
+      ],
+      "relation_evidence": [
+        "Robot positioned near pallets and barrels"
+      ],
+      "functional_context_evidence": "Mobile robot and surrounding pallets suggest autonomous navigation and transport",
+      "diagnostic_reason": "Label and reasoning are anchored on one mobile robot; surrounding pallet/barrel evidence is generic and spatial extent is unavailable.",
+      "provenance": "MANUAL_OR_AGENT_INFERENCE"
+    }
+  ],
+  "localization_evaluation": {
+    "polygon_iou": {
+      "status": "NOT_AVAILABLE",
+      "reason": "MODEL_OUTPUT provided no region polygons",
+      "provenance": "POSTPROCESSED"
+    },
+    "region_overlap": {
+      "status": "NOT_AVAILABLE",
+      "reason": "MODEL_OUTPUT provided no region polygons",
+      "provenance": "POSTPROCESSED"
+    },
+    "centroid_error": {
+      "status": "NOT_AVAILABLE",
+      "reason": "MODEL_OUTPUT provided no region polygons",
+      "provenance": "POSTPROCESSED"
+    },
+    "boundary_precision": {
+      "status": "NOT_AVAILABLE",
+      "reason": "MODEL_OUTPUT provided no region polygons",
+      "provenance": "POSTPROCESSED"
+    },
+    "spatial_coverage_accuracy": {
+      "status": "NOT_AVAILABLE",
+      "reason": "MODEL_OUTPUT provided no region polygons",
+      "provenance": "POSTPROCESSED"
+    }
+  },
+  "preliminary_descriptive_counts": {
+    "reference_region_count": 5,
+    "prediction_region_count": 5,
+    "match_count": 2,
+    "partial_match_count": 3,
+    "no_match_count": 0,
+    "unknown_count": 0,
+    "unmatched_reference_count": 0,
+    "unmatched_prediction_count": 0,
+    "metric_scope": "PRELIMINARY_REFERENCE_CANDIDATE_BASED",
+    "provenance": "POSTPROCESSED"
+  },
+  "candidate_agreement_ratio": {
+    "status": "NOT_COMPUTED",
+    "reason": "Avoided arbitrary weighting of PARTIAL_MATCH in a single candidate-annotated scene."
+  },
+  "provenance": {
+    "reference_content": "REFERENCE_GT_CANDIDATE",
+    "prediction_content": "MODEL_OUTPUT",
+    "parsed_prediction": "POSTPROCESSED",
+    "exact_counts_and_coverage": "POSTPROCESSED",
+    "semantic_correspondence_judgment": "MANUAL_OR_AGENT_INFERENCE",
+    "shortcut_diagnostic": "MANUAL_OR_AGENT_INFERENCE"
+  },
+  "limitations": [
+    "Reference is not USER_VALIDATED_GROUND_TRUTH.",
+    "Prediction has no polygons, so localization metrics are unavailable.",
+    "Semantic matches are manual diagnostic judgments from one scene.",
+    "Counts are descriptive and are not precision, recall, F1, or final accuracy."
+  ]
+}

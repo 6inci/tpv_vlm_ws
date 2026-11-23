@@ -1,0 +1,292 @@
+{
+  "author": "AI reviewer (Claude)",
+  "recorded_at": "2026-11-18T22:43:05+09:00",
+  "status": "PRELIMINARY AI REVIEW from the overlay images; not human ground truth. Matching is by eye. No IoU, accuracy or success rate is computed; the counts below only describe correspondence.",
+  "reviewer_inventory_entries": 43,
+  "qwen_entries_total": 76,
+  "qwen_entries_distinct": 26,
+  "qwen_entries_exact_duplicates": {
+    "count": 50,
+    "of": "obj_26 (name + box identical)",
+    "first": "obj_27",
+    "last": "obj_76"
+  },
+  "reviewer_entries_with_a_corresponding_qwen_entry": [
+    "C01",
+    "C02",
+    "C05",
+    "C06",
+    "C07",
+    "C08",
+    "C11",
+    "R01",
+    "R02",
+    "R03",
+    "R04",
+    "R05",
+    "R06",
+    "R07",
+    "R13",
+    "R14",
+    "R15",
+    "R16",
+    "R21",
+    "R22",
+    "R24",
+    "R25",
+    "R27",
+    "R28",
+    "R29"
+  ],
+  "n_reviewer_entries_covered": 25,
+  "reviewer_entries_without_a_qwen_entry": [
+    {
+      "id": "R08",
+      "name": "beige drawer cabinet"
+    },
+    {
+      "id": "R09",
+      "name": "stack of dark grey drawers"
+    },
+    {
+      "id": "R10",
+      "name": "orange/green shelf cart with items"
+    },
+    {
+      "id": "R11",
+      "name": "grey cage container (green frame), top centre"
+    },
+    {
+      "id": "R12",
+      "name": "grey cage container (green frame), top right of the green path"
+    },
+    {
+      "id": "R17",
+      "name": "red cube on a grey grate tile"
+    },
+    {
+      "id": "R18",
+      "name": "small grey grate tile (top right, among cones)"
+    },
+    {
+      "id": "R19",
+      "name": "trolley cart 1 (goods row)"
+    },
+    {
+      "id": "R20",
+      "name": "trolley cart 2 (goods row)"
+    },
+    {
+      "id": "R23",
+      "name": "grey barrels on an orange pallet (goods row)"
+    },
+    {
+      "id": "R26",
+      "name": "dark barrels on a black pallet (bottom centre)"
+    },
+    {
+      "id": "C03",
+      "name": "orange traffic cone #3"
+    },
+    {
+      "id": "C04",
+      "name": "orange traffic cone #4"
+    },
+    {
+      "id": "C09",
+      "name": "orange traffic cone #9"
+    },
+    {
+      "id": "C10",
+      "name": "orange traffic cone #10"
+    },
+    {
+      "id": "C12",
+      "name": "orange traffic cone #12"
+    },
+    {
+      "id": "C13",
+      "name": "orange traffic cone #13"
+    },
+    {
+      "id": "R30",
+      "name": "caster wheel/stand on the floor outside the mat (top left)"
+    }
+  ],
+  "n_reviewer_entries_not_covered": 18,
+  "cones": {
+    "reviewer": 13,
+    "covered_by_distinct_entries": 7
+  },
+  "qwen_entry_judgements": {
+    "obj_1": {
+      "reviewer_entry": "R05",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_2": {
+      "reviewer_entry": "R06",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": "box also covers part of the table above the arm"
+    },
+    "obj_3": {
+      "reviewer_entry": "R03",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_4": {
+      "reviewer_entry": "R04",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_5": {
+      "reviewer_entry": "R02",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": "vehicle class correct"
+    },
+    "obj_6": {
+      "reviewer_entry": "R13",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_7": {
+      "reviewer_entry": "R07",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": "box overlaps the two arm boxes (same facility)"
+    },
+    "obj_8": {
+      "reviewer_entry": null,
+      "box": "box_too_wide",
+      "name": "not_an_object",
+      "note": "a painted floor path listed as an object (fixed_structure); its box also covers the base of a robot arm"
+    },
+    "obj_9": {
+      "reviewer_entry": "C11",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_10": {
+      "reviewer_entry": "R22",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": "\"black_barrel\": barrels on a pallet, pallet not separate"
+    },
+    "obj_11": {
+      "reviewer_entry": "R24",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_12": {
+      "reviewer_entry": "R21",
+      "box": "box_ok",
+      "name": "name_vague",
+      "note": "\"white_container\" for the white tank"
+    },
+    "obj_13": {
+      "reviewer_entry": "R01",
+      "box": "box_ok",
+      "name": "name_WRONG",
+      "note": "the mecanum robot: own entry, tight box, NOT merged with the goods row; named \"black_truck\", class other_vehicle (not mobile_robot); evidence \"black cab and trailer / loaded with cargo\" is not what the picture shows"
+    },
+    "obj_14": {
+      "reviewer_entry": "R14+R15",
+      "box": "box_merges_two_objects",
+      "name": "name_vague",
+      "note": "two adjacent cage containers in ONE box"
+    },
+    "obj_15": {
+      "reviewer_entry": "R16",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_16": {
+      "reviewer_entry": "R25",
+      "box": "box_ok",
+      "name": "name_vague",
+      "note": "slatted pallet named \"gray_grate\""
+    },
+    "obj_17": {
+      "reviewer_entry": "R29",
+      "box": "box_ok_for_another_object",
+      "name": "name_WRONG",
+      "note": "named \"red_cube\" but it is a different small red object; the actual red cube (R17) has no entry"
+    },
+    "obj_18": {
+      "reviewer_entry": "R27",
+      "box": "box_ok",
+      "name": "name_WRONG",
+      "note": "green panel stand named \"green_light\""
+    },
+    "obj_19": {
+      "reviewer_entry": "R28",
+      "box": "box_ok",
+      "name": "name_WRONG",
+      "note": "green panel stand named \"white_light\""
+    },
+    "obj_20": {
+      "reviewer_entry": null,
+      "box": "box_ok",
+      "name": "not_an_object",
+      "note": "a flat floor symbol (lightning bolt) listed as an object (fixed_structure)"
+    },
+    "obj_21": {
+      "reviewer_entry": "C01",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_22": {
+      "reviewer_entry": "C02",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_23": {
+      "reviewer_entry": "C05",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_24": {
+      "reviewer_entry": "C06",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_25": {
+      "reviewer_entry": "C07",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": ""
+    },
+    "obj_26": {
+      "reviewer_entry": "C08",
+      "box": "box_ok",
+      "name": "name_ok",
+      "note": "last distinct entry; entries 27-76 repeat it exactly"
+    }
+  },
+  "counts": {
+    "entries_total_distinct": 26,
+    "floor_marking_listed_as_object": 2,
+    "wrong_name": 4,
+    "box_merges_two_objects": 1
+  },
+  "robot": {
+    "independent_entry": "obj_13",
+    "merged_with_neighbours": false,
+    "class_given": "other_vehicle",
+    "mobile_robot_entries": 0,
+    "name_given": "black_truck"
+  }
+}

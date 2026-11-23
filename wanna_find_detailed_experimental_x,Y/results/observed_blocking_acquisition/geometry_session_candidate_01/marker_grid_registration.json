@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "result": "PARTIAL",
+  "status": "WAITING_FOR_MARKER_GRID_ASSIGNMENT_CONFIRMATION",
+  "floor_marker_ids": [1, 2, 3, 4],
+  "excluded_robot_marker_ids": [0],
+  "corner_order": "EXISTING_OPENCV_DETECTION_ORDER_0_1_2_3",
+  "candidate_assignment": {
+    "certainty": "INFERRED_NOT_CONFIRMED",
+    "relative_grid_frame_only": true,
+    "tile_pitch_m": 0.6,
+    "marker_side_m": 0.175,
+    "anchors": [
+      {
+        "marker_id": 4,
+        "corner_index": 1,
+        "raw_image_px": [734.0, 1008.0],
+        "relative_grid_ij": [0, 0],
+        "relative_metric_xy_m": [0.0, 0.0]
+      },
+      {
+        "marker_id": 2,
+        "corner_index": 1,
+        "raw_image_px": [1238.0, 1013.0],
+        "relative_grid_ij": [2, 0],
+        "relative_metric_xy_m": [1.2, 0.0]
+      },
+      {
+        "marker_id": 3,
+        "corner_index": 2,
+        "raw_image_px": [855.0, 568.0],
+        "relative_grid_ij": [0, 4],
+        "relative_metric_xy_m": [0.0, 2.4]
+      },
+      {
+        "marker_id": 1,
+        "corner_index": 2,
+        "raw_image_px": [1178.0, 565.0],
+        "relative_grid_ij": [2, 4],
+        "relative_metric_xy_m": [1.2, 2.4]
+      }
+    ],
+    "orientation": {
+      "all_floor_markers_candidate_common_alignment": true,
+      "corner_0_to_1": "+X",
+      "corner_2_to_1": "+Y",
+      "certainty": "IMAGE_DERIVED_PENDING_HUMAN_CONFIRMATION"
+    },
+    "candidate_relative_metric_corners_xy_m": {
+      "1": [[1.025, 2.575], [1.2, 2.575], [1.2, 2.4], [1.025, 2.4]],
+      "2": [[1.025, 0.0], [1.2, 0.0], [1.2, -0.175], [1.025, -0.175]],
+      "3": [[-0.175, 2.575], [0.0, 2.575], [0.0, 2.4], [-0.175, 2.4]],
+      "4": [[-0.175, 0.0], [0.0, 0.0], [0.0, -0.175], [-0.175, -0.175]]
+    },
+    "candidate_coordinate_warning": "These are relative candidate coordinates only. They are not accepted world coordinates and are not Homography inputs until the mapping and absolute origin are confirmed."
+  },
+  "ambiguity_evidence": {
+    "marker_white_border_occludes_grid_intersections": true,
+    "far_anchor_row_mean_undistorted_y_px": 565.7,
+    "adjacent_visible_far_grid_line_center_undistorted_y_px_approx": 576.4,
+    "far_difference_px_approx": 10.7,
+    "near_anchor_row_mean_undistorted_y_px": 1011.5,
+    "adjacent_visible_near_grid_line_center_undistorted_y_px_approx": 1024.3,
+    "near_difference_px_approx": 12.8,
+    "interpretation": "The candidate mapping is plausible, but the single image does not prove that the detected black-square corner rather than an occluded outer-border corner is the measured tile-intersection anchor."
+  },
+  "absolute_world_origin": "UNRESOLVED",
+  "accepted_metric_correspondence_count": 0,
+  "candidate_metric_correspondence_count_not_accepted": 16,
+  "homography_status": "NOT_COMPUTED_ASSIGNMENT_NOT_UNIQUE",
+  "minimal_required_human_confirmation": "Confirm or correct this single mapping: ID4 corner1=(0,0), ID2 corner1=(2,0), ID3 corner2=(0,4), ID1 corner2=(2,4), where indices are the existing OpenCV detected-corner order and (0,0) is the selected world origin.",
+  "visualization": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/tile_grid_registration_overlay.png",
+    "sha256": "20e9b53ef52926d8ef289b55dcc425709efdca373484b6aefd67bf0c8700362a",
+    "role": "RELATIVE_ASSIGNMENT_DIAGNOSTIC_ONLY"
+  },
+  "legacy_homography_reused": false,
+  "qwen_inference_runs": 0,
+  "navigation": "NOT_RUN",
+  "step32": "NOT_STARTED"
+}

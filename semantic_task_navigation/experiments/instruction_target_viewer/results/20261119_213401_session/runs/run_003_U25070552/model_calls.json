@@ -1,0 +1,96 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "90ea525248eddda994b186ad2904a8dc200c5dcfb2ae1f2c3ca2c4f5791f29d6",
+  "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2713,
+  "n_output_tokens": 611,
+  "hit_max_new_tokens": false,
+  "latency_s": 18.468,
+  "wall_s": 18.59,
+  "peak_vram_gib": 8.982,
+  "raw_response": "{\n  \"purpose\": \"Place the red cube in an empty cargo area\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"robot arm\",\n    \"bbox_2d\": [117, 256, 238, 430]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"Empty cargo area\",\n  \"destination_reference\": {\n    \"name_en\": \"empty cargo area\",\n    \"bbox_2d\": [585, 430, 957, 560],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Pedestrian walkway\",\n      \"visual_evidence\": [\n        \"green floor\",\n        \"footprint symbols\"\n      ],\n      \"bbox_2d\": [305, 58, 557, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Robot travel area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [250, 280, 657, 750],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor and robot arm workstation\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot arms\"\n      ],\n      \"bbox_2d\": [77, 265, 270, 720],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Cargo storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"stacked boxes\",\n        \"barrels\"\n      ],\n      \"bbox_2d\": [617, 430, 957, 560],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\n        \"white truck\",\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [657, 0, 890, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Empty cargo area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"empty space\"\n      ],\n      \"bbox_2d\": [617, 430, 957, 560],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The reach of the gripper is not confirmed.\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_003_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "prompts": [
+   "robot arm",
+   "empty cargo area"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 50,
+  "wall_s": 0.57,
+  "peak_vram_gib": 1.969
+ },
+ {
+  "stage": "dino_roi_U25070552_conveyor_run_003_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213401_session/photos/U25070552_inputs/roi_conveyor.png",
+  "image_sha256": "defc2ab0a73f92ac722b99b7bd51592e44eb644a1a4c0045b066417b65423ce8",
+  "prompts": [
+   "robot arm",
+   "empty cargo area"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 37,
+  "wall_s": 0.58,
+  "peak_vram_gib": 1.838
+ },
+ {
+  "stage": "dino_roi_U25070552_truck_run_003_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213401_session/photos/U25070552_inputs/roi_truck.png",
+  "image_sha256": "11df1597a6db75dbdc72ea76e6c09cdbb35b5e345e9c171813bba834852b6864",
+  "prompts": [
+   "robot arm",
+   "empty cargo area"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 25,
+  "wall_s": 0.56,
+  "peak_vram_gib": 1.958
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "source_roles_v2",
+  "prompt_sha256": "edacb6ddd207a3b81e898b5c825dd3b2c181257b1ac29299f78132b3f8c624b9",
+  "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213401_session/runs/run_003_U25070552/inputs/source_1.png",
+  "image_sha256": "41509086a3980bf1b099b9de8bc681e52ba1f622306fbb325312847b5129a196",
+  "image_size": [
+   764,
+   1600
+  ],
+  "n_input_tokens": 1672,
+  "n_output_tokens": 292,
+  "hit_max_new_tokens": false,
+  "latency_s": 8.658,
+  "wall_s": 8.73,
+  "peak_vram_gib": 8.716,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a non-red object and not the target to move.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a non-red object and not the target to move.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"It matches the description of the red cube that needs to be moved.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a non-red object and not the target to move.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"purple and orange object\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"It is a non-red object and not the target to move.\"\n    }\n  ],\n  \"object_to_move_id\": 4,\n  \"reason\": \"The red cube is the only object matching the target description and must be moved.\"\n}"
+ }
+]

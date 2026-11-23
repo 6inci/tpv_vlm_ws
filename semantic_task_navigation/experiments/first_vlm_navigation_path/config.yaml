@@ -1,0 +1,57 @@
+# First real VLM -> path run (image space, no hardware). Everything here is declared BEFORE the run it governs.
+# Nothing below changes v0.2 (config/*.yaml, src/) or a frozen Qwen prompt; v0.2 values are read, not copied, except where named.
+experiment_id: first_vlm_navigation_path
+instruction: "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+image: /home/binci/Pictures/Calibration/undistorted_25070552942982.png
+image_sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605
+results_dir: results
+
+# STORED results that are reused (read-only). No new semantic inference is made.
+stored:
+  qwen_run: ../semantic_to_navigation_integration/results/20261118_203058_46d8       # Qwen L2 reply + DINO/Qwen-checked truck, conveyor
+  cone_run: ../semantic_to_navigation_integration/results/20261118_203426_260d       # six cones checked near the proposal
+  bay_localization: ../semantic_evidence_verification/results/20261118_231429_bay_localization   # Python-computed painted bay
+  proposal_area_id: area_5                                                           # the area Qwen itself chose as destination
+
+# Robot start. The user's task text says the robot is in the lower right of E1: that coarse window (not a coordinate) selects among STORED
+# Grounding DINO "mobile robot." candidates. Candidates are checked by the v0.2 Qwen crop check in descending score, first "yes" wins.
+robot:
+  search_window_xyxy: [960, 540, 1920, 1080]     # lower-right quadrant of the 1920x1080 image
+  stored_candidate_class: mobile_robot
+  # The visible outline of a tall object is displaced away from the image's principal point, so the floor point below the robot lies
+  # between the outline centre and the principal point. Planning is repeated with the start moved this far towards the principal point.
+  start_shift_toward_principal_point_px: [0, 20, 40]
+  footprint_discs_px:
+    assumed_v02: from_v02_config                  # planning.yaml robot_radius_px (ASSUMPTION in v0.2, not measured)
+    image_inscribed: half_of_shorter_box_side     # stress test only: radius of the circle inscribed in the verified robot box
+
+# Map prior transfer: v0.2 DRAFT map (drawn on the raw reference photo P01) -> this photo.
+# Floor is planar, both photos are undistorted with the same read-only calibration, so they are related by a homography.
+map_transfer:
+  sift_features: 8000
+  ratio_test: 0.75
+  ransac_threshold_px: 2.0
+  ransac_seed: 0
+  accept:                                   # all must hold, otherwise the map is NOT used and no path is claimed
+    min_inliers: 300
+    max_inlier_rms_px: 2.0
+    holdout_median_px: 3.0                   # fit on one half of the image, measure on the other half (4 splits)
+    holdout_p95_px: 8.0
+    v02_check_alignment: ALIGNED             # v0.2 check_alignment (<= 3 px shift, response >= 0.3) on the warped reference
+  yellow_edge_check: {search_px: 30, sample_step_px: 20}   # informational: hand-drawn DRAFT edge vs painted yellow line
+
+# Pale yellow floor tape in this photo (HSV, OpenCV scale). Used only to test the finished path, never to build the map.
+# min_saturation was 25 in the first run; it missed pale (over-exposed) tape pixels (S 16-22) just above the selected goal. It was lowered to 15
+# after that observation. A fuller tape mask can only make the path check stricter, never more lenient.
+yellow:
+  hue: [22, 38]
+  min_saturation: 15
+  min_value: 140
+  min_component_px: 60
+
+path_checks:
+  swept_step_px: 1.0
+
+# Diagnostic only (not the result): if the image-inscribed stress radius finds no goal, the reach is relaxed to (nearest valid cell distance
+# + this many grid cells) to learn what reach would be needed. The collision radius is NOT relaxed.
+stress_reach_relax_cells: 2

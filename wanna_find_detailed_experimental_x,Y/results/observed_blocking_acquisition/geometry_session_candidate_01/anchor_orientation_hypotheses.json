@@ -1,0 +1,670 @@
+{
+  "schema_version": "0.1",
+  "analysis_time": "2026-09-21T03:03:42+09:00",
+  "status": "DISCRETE_SEARCH_COMPLETED",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_raw.png",
+    "sha256": "d485d1ecaf2ad3bb89b3528b80622e3ec73f6bd2c6e22f2e50784aec24bcd088",
+    "coordinate_frame": "RAW_IMAGE_PX"
+  },
+  "inputs": {
+    "aruco_detection": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/aruco_detection.json",
+    "previous_failed_mapping": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/metric_correspondences.json",
+    "tile_evidence": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/homography_independent_validation.json"
+  },
+  "confirmed_physical_facts": {
+    "marker_black_detected_square_side_m": 0.175,
+    "tile_pitch_m": 0.6,
+    "floor_marker_ids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "excluded_robot_marker_ids": [
+      0
+    ],
+    "one_detected_black_square_corner_per_marker_is_on_a_tile_intersection": true,
+    "white_or_paper_border_offset_m": 0.0
+  },
+  "primary_grid_layout_under_test": {
+    "1": [
+      2,
+      4
+    ],
+    "2": [
+      2,
+      0
+    ],
+    "3": [
+      0,
+      4
+    ],
+    "4": [
+      0,
+      0
+    ]
+  },
+  "search_space": {
+    "marker_count": 4,
+    "anchor_corner_choices_per_marker": 4,
+    "proper_rotation_choices_per_marker": 4,
+    "mirrored_choices_included": 0,
+    "sub_marker_offsets_included": 0,
+    "hypothesis_count": 65536,
+    "evaluated_count": 65536,
+    "numerically_degenerate_count": 0,
+    "orientation_definitions": [
+      {
+        "orientation_index": 0,
+        "proper_rotation_degrees": 0,
+        "mirrored": false,
+        "corner_0_to_1_world_direction": "+X",
+        "corner_0_to_3_world_direction": "-Y"
+      },
+      {
+        "orientation_index": 1,
+        "proper_rotation_degrees": 90,
+        "mirrored": false,
+        "corner_0_to_1_world_direction": "+Y",
+        "corner_0_to_3_world_direction": "+X"
+      },
+      {
+        "orientation_index": 2,
+        "proper_rotation_degrees": 180,
+        "mirrored": false,
+        "corner_0_to_1_world_direction": "-X",
+        "corner_0_to_3_world_direction": "+Y"
+      },
+      {
+        "orientation_index": 3,
+        "proper_rotation_degrees": 270,
+        "mirrored": false,
+        "corner_0_to_1_world_direction": "-Y",
+        "corner_0_to_3_world_direction": "-X"
+      }
+    ],
+    "fit_scoring_method": "cv2.findHomography method=0 using all 16 marker corners; RANSAC was intentionally not used for selection so inconsistent marker corners could not be hidden as outliers.",
+    "low_marker_fit_gate": "maximum all-point marker residual <= 0.020 m, matching the prior candidate RANSAC threshold as an audit gate"
+  },
+  "tile_point_split_fixed_before_selection": {
+    "disambiguation_rule": "grid column i in {0,2}",
+    "disambiguation_count": 6,
+    "disambiguation_grid_ij": [
+      [
+        0,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "holdout_rule": "grid column i == 1",
+    "holdout_count": 3,
+    "holdout_grid_ij": [
+      [
+        1,
+        1
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        1,
+        3
+      ]
+    ],
+    "holdout_metrics_visible_to_selection": false,
+    "independence_limitation": "The holdout uses the independent center vertical line family, but all points originate from the same stored image and line-extraction pipeline."
+  },
+  "search_summary": {
+    "low_marker_fit_candidate_count": 17,
+    "low_marker_fit_rejected_count": 65519,
+    "all_low_marker_fit_candidates_used_orientation_index": 0,
+    "selected_candidate_is_unique_best_under_gate": true,
+    "selected_to_second_disambiguation_rmse_gap_m": 0.04525770107585375
+  },
+  "eligible_candidates_ranked": [
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 1,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.007794112084551601,
+      "marker_fit_max_residual_m": 0.012744835196662972,
+      "disambiguation_rmse_m": 0.09064065656280879,
+      "disambiguation_max_error_m": 0.09463567278031154
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 2,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.009799445042918862,
+      "marker_fit_max_residual_m": 0.015453600038411421,
+      "disambiguation_rmse_m": 0.13589835763866254,
+      "disambiguation_max_error_m": 0.17033236856313802
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 3,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.009947094723010247,
+      "marker_fit_max_residual_m": 0.01637802324974485,
+      "disambiguation_rmse_m": 0.15543808962500216,
+      "disambiguation_max_error_m": 0.19334747907280592
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 4,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.012095501436241426,
+      "marker_fit_max_residual_m": 0.018246780347827236,
+      "disambiguation_rmse_m": 0.16760696938753042,
+      "disambiguation_max_error_m": 0.2090277432520978
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 5,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.011935785343822081,
+      "marker_fit_max_residual_m": 0.0183703035927141,
+      "disambiguation_rmse_m": 0.17848069216490553,
+      "disambiguation_max_error_m": 0.23460170086575116
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 6,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.006975536111176974,
+      "marker_fit_max_residual_m": 0.011194513141828856,
+      "disambiguation_rmse_m": 0.19269698346617842,
+      "disambiguation_max_error_m": 0.23614137251798578
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 7,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.007794097101703418,
+      "marker_fit_max_residual_m": 0.012744835697495127,
+      "disambiguation_rmse_m": 0.21647568693477398,
+      "disambiguation_max_error_m": 0.22123654790771285
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 8,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.009161734668319727,
+      "marker_fit_max_residual_m": 0.012459336673352844,
+      "disambiguation_rmse_m": 0.21767779538176865,
+      "disambiguation_max_error_m": 0.24164285664726215
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 9,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.009319575714359913,
+      "marker_fit_max_residual_m": 0.016740012954712256,
+      "disambiguation_rmse_m": 0.2303810995043722,
+      "disambiguation_max_error_m": 0.2901751956589671
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 10,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 2,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.011418706745471678,
+      "marker_fit_max_residual_m": 0.016764116620479986,
+      "disambiguation_rmse_m": 0.24658227206566402,
+      "disambiguation_max_error_m": 0.3192266282052082
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 11,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.012095491789719356,
+      "marker_fit_max_residual_m": 0.01824678197325398,
+      "disambiguation_rmse_m": 0.25833586200185593,
+      "disambiguation_max_error_m": 0.2894925815141382
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 12,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.007794133935642492,
+      "marker_fit_max_residual_m": 0.012744838778309663,
+      "disambiguation_rmse_m": 0.2635691667113142,
+      "disambiguation_max_error_m": 0.26711796257411996
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 13,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 3,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.006975519358495305,
+      "marker_fit_max_residual_m": 0.011194459397771615,
+      "disambiguation_rmse_m": 0.2752796191477115,
+      "disambiguation_max_error_m": 0.3094743041609027
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 14,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.009799462442030461,
+      "marker_fit_max_residual_m": 0.015453597748252383,
+      "disambiguation_rmse_m": 0.28233828525137006,
+      "disambiguation_max_error_m": 0.30124358033551646
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 15,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.009947111840923992,
+      "marker_fit_max_residual_m": 0.01637801924648034,
+      "disambiguation_rmse_m": 0.2922587059030208,
+      "disambiguation_max_error_m": 0.31587698581463425
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 16,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 1,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.011935799542108773,
+      "marker_fit_max_residual_m": 0.01837037900129107,
+      "disambiguation_rmse_m": 0.30518401176498167,
+      "disambiguation_max_error_m": 0.3427388338965661
+    },
+    {
+      "rank_by_disambiguation_among_low_fit_candidates": 17,
+      "assignments": [
+        {
+          "marker_id": 1,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 2,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 3,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        },
+        {
+          "marker_id": 4,
+          "anchor_corner_index": 0,
+          "orientation_index": 0
+        }
+      ],
+      "marker_fit_rmse_m": 0.007794118952836318,
+      "marker_fit_max_residual_m": 0.012744839279164375,
+      "disambiguation_rmse_m": 0.32880799845368863,
+      "disambiguation_max_error_m": 0.3336790377882557
+    }
+  ],
+  "selected_for_post_selection_recompute": {
+    "rank_by_disambiguation_among_low_fit_candidates": 1,
+    "assignments": [
+      {
+        "marker_id": 1,
+        "anchor_corner_index": 2,
+        "orientation_index": 0
+      },
+      {
+        "marker_id": 2,
+        "anchor_corner_index": 2,
+        "orientation_index": 0
+      },
+      {
+        "marker_id": 3,
+        "anchor_corner_index": 2,
+        "orientation_index": 0
+      },
+      {
+        "marker_id": 4,
+        "anchor_corner_index": 2,
+        "orientation_index": 0
+      }
+    ],
+    "marker_fit_rmse_m": 0.007794112084551601,
+    "marker_fit_max_residual_m": 0.012744835196662972,
+    "disambiguation_rmse_m": 0.09064065656280879,
+    "disambiguation_max_error_m": 0.09463567278031154
+  },
+  "holdout_result": "SEALED_IN_SEPARATE_POST_SELECTION_ARTIFACT"
+}

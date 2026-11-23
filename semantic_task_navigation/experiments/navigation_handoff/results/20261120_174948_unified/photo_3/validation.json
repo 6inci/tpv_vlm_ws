@@ -1,0 +1,93 @@
+{
+ "photo": "photo_3",
+ "input_status": "PROVISIONAL",
+ "path_A_status": "VALID",
+ "path_B_status": "VALID",
+ "path_B_basis": "grasp stop of Path A",
+ "path_B_role": "TASK_SEQUENCE",
+ "status_meaning": {
+  "VALID": "path found and every collision / boundary check passed in the current map model",
+  "INVALID_PATH": "a path exists but a collision / boundary check failed",
+  "NOT_FOUND": "no valid path or stop pose under the current conditions",
+  "CONDITIONAL": "DIAGNOSTIC: computed from an assumed start (grasp-pose candidate or robot start) because Path A is not valid; not a task sequence",
+  "REVIEW_REQUIRED": "positions are provisional or a target is missing: user confirmation needed",
+  "UNVERIFIED": "physical conditions (gripper reach / width / height / 3D interference, dynamics) not verified"
+ },
+ "path_A_checks": {
+  "passed": true,
+  "orthogonal_4_connected": true,
+  "segments_straight_between_waypoints": true,
+  "no_diagonal_segment_between_waypoints": true,
+  "cells_in_margin_cspace_for_arrival_and_departure_heading": {
+   "ok": true,
+   "violations": []
+  },
+  "whole_body_sweep_generic": {
+   "ok": true,
+   "n_samples": 868,
+   "first_violation": null,
+   "body": "margin body 39.0 x 28.0 cm (start-escape segment: nominal 35 x 24 cm)"
+  },
+  "whole_body_sweep_reused_footprint_nav": {
+   "ok": true,
+   "n_samples": 868
+  },
+  "v02_validate_path_inscribed_disc": {
+   "valid": true,
+   "min_clearance_px": 76.0,
+   "required_px": 55.4,
+   "note": "necessary condition only"
+  },
+  "rotation_events_ok": true,
+  "max_wheels_outside_yellow_px": 0,
+  "max_body_on_blocking_layer_px": 0,
+  "min_wheel_clearance_to_yellow_boundary_cm": 5.25,
+  "min_body_clearance_to_mapped_obstacle_cm": 3.25,
+  "max_body_overhang_beyond_yellow_cm": 0.0,
+  "max_body_overhang_area_cm2": 0.0,
+  "n_samples": 220,
+  "footprints": "NOMINAL wheel envelope and body (margin excluded)"
+ },
+ "path_B_checks": {
+  "passed": true,
+  "orthogonal_4_connected": true,
+  "segments_straight_between_waypoints": true,
+  "no_diagonal_segment_between_waypoints": true,
+  "cells_in_margin_cspace_for_arrival_and_departure_heading": {
+   "ok": true,
+   "violations": []
+  },
+  "whole_body_sweep_generic": {
+   "ok": true,
+   "n_samples": 740,
+   "first_violation": null,
+   "body": "margin body 39.0 x 28.0 cm (start-escape segment: nominal 35 x 24 cm)"
+  },
+  "whole_body_sweep_reused_footprint_nav": {
+   "ok": true,
+   "n_samples": 740
+  },
+  "v02_validate_path_inscribed_disc": {
+   "valid": true,
+   "min_clearance_px": 68.0,
+   "required_px": 55.4,
+   "note": "necessary condition only"
+  },
+  "rotation_events_ok": true,
+  "max_wheels_outside_yellow_px": 0,
+  "max_body_on_blocking_layer_px": 0,
+  "min_wheel_clearance_to_yellow_boundary_cm": 3.25,
+  "min_body_clearance_to_mapped_obstacle_cm": 3.25,
+  "max_body_overhang_beyond_yellow_cm": 1.0,
+  "max_body_overhang_area_cm2": 24.8,
+  "n_samples": 188,
+  "footprints": "NOMINAL wheel envelope and body (margin excluded)"
+ },
+ "cause_A": null,
+ "cause_B": null,
+ "positions": "PROVISIONAL / REVIEW_REQUIRED",
+ "obstacles": "PROVISIONAL",
+ "grasp_placement": "UNVERIFIED",
+ "gripper_3d": "UNVERIFIED: 2D floor-level centre line only; gripper reach, width, height and 3D clearance are not measured",
+ "driving": "NOT_FOR_DRIVING (margin 2.0 cm < position uncertainty 3.5 cm)"
+}

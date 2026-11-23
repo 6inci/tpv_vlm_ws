@@ -1,0 +1,54 @@
+# Autonomous Semantic Reasoning Probe -- run configuration (2026-11-18).
+# Independent of the v0.2 pipeline: nothing here is read by src/semantic_task_nav, and the probe only
+# *imports* the existing model worker client. Prompts live in prompts.yaml.
+
+experiment_id: ASR_PROBE_2026-11-18
+status: TESTING          # AGENTS.md state vocabulary
+
+# The user's own natural-language instruction, verbatim from config/app.yaml `default_command`.
+# It contains the words "트럭" and "하역장" because they are part of the instruction (not an answer key).
+instruction: "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘."
+
+conditions: [A, B, C1]   # prompt text differs ONLY in the prior-knowledge block (see prompts.yaml)
+
+generation:
+  max_new_tokens: 2400   # structured JSON with objects + areas; truncation is reported, never repaired
+  do_sample: false       # fixed inside perception/model_worker.py (greedy); recorded here for the manifest
+
+results_dir: results     # relative to this folder; every run gets a NEW folder, nothing is overwritten
+
+# Photos: distortion-corrected frames of the same miniature site, captured 2026-11-17 (file mtime
+# 16:54-17:33), stored in ~/Pictures/Calibration. Copies live in data/images/ (hash-checked at run time).
+# All photos share ONE physical layout; what differs between them is the small red cube (on a grey
+# pallet tile). They are therefore different cube *positions*, not different scenes.
+#   role dev  : used to check output format / pipeline. Any prompt change made after seeing a dev output
+#               is recorded in prompts.yaml `history`.
+#   role eval : prompts are frozen (prompts_frozen.json) BEFORE the first eval run; no tuning on these.
+# `cube_xy_px` and `cube_note` are a reviewer's visual note (red-colour blob + crop check). They are NEVER
+# given to the model and are not ground truth for the destination.
+images:
+  - id: D1
+    role: dev
+    file: data/images/undistorted_26007129092710.png
+    source_path: /home/binci/Pictures/Calibration/undistorted_26007129092710.png
+    sha256: 7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d
+    cube_xy_px: [541, 287]
+    cube_note: "upper-left, outside the long yellow floor line; the image the user once started a v0.2 run on (run 20261117_222422_e316, cancelled)"
+  - id: E1
+    role: eval
+    file: data/images/undistorted_25070552942982.png
+    source_path: /home/binci/Pictures/Calibration/undistorted_25070552942982.png
+    sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605
+    cube_xy_px: [442, 424]
+    cube_note: "at the end of the left production line, next to its robot arm"
+  - id: E2
+    role: eval
+    file: data/images/undistorted_24837448431552.png
+    source_path: /home/binci/Pictures/Calibration/undistorted_24837448431552.png
+    sha256: 9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba
+    cube_xy_px: [539, 862]
+    cube_note: "lower-left, beside the green cage containers"
+
+# Hash of the v0.2 development image (assets/reference/warehouse_scene_reference_01.jpg == EXP110 P06).
+# The probe refuses to run an image with this hash.
+excluded_image_sha256_prefix: d1984a19d56443e5

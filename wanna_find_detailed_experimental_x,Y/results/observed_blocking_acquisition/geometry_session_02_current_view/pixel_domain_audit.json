@@ -1,0 +1,143 @@
+{
+  "verdict": "NO_ACCIDENTAL_PIXEL_DOMAIN_MIXING_FOUND",
+  "datasets": [
+    {
+      "dataset": "reference_aruco_recheck_01.png",
+      "classification": "RAW_IMAGE_PX",
+      "evidence": "1920x1080 direct MJPG decode; resize/crop/rotation/undistortion/software_warp all false"
+    },
+    {
+      "dataset": "floor ArUco recovered corners IDs1-4",
+      "classification": "RAW_IMAGE_PX",
+      "use": "passed with stored K and D to PnP; 240x240 warps were identity-decoding diagnostics only"
+    },
+    {
+      "dataset": "tile-grid observations raw_image_px",
+      "classification": "RAW_IMAGE_PX"
+    },
+    {
+      "dataset": "tile-grid observations undistorted_image_px",
+      "classification": "UNDISTORTED_IMAGE_PX",
+      "conversion": "cv2.undistortPoints(raw,K,D,P=K)"
+    },
+    {
+      "dataset": "Homography RAW branch fit and holdout",
+      "classification": "RAW_IMAGE_PX"
+    },
+    {
+      "dataset": "selected Homography fit and holdout",
+      "classification": "UNDISTORTED_IMAGE_PX",
+      "output_camera_matrix": "K"
+    },
+    {
+      "dataset": "ID0 solvePnP corners",
+      "classification": "RAW_IMAGE_PX",
+      "use": "stored K plus full D"
+    },
+    {
+      "dataset": "calibration K",
+      "classification": "RAW_IMAGE_PX",
+      "definition": "raw 1920x1080 coordinates after reversing screenshot window offset and 1536x864 to 1920x1080 scale"
+    },
+    {
+      "dataset": "calibration D",
+      "classification": "NORMALIZED_CAMERA_COORDINATE",
+      "definition": "OpenCV plumb_bob k1,k2,p1,p2,k3 paired with raw K"
+    },
+    {
+      "dataset": "normalized-undistorted IPPE cross-check",
+      "classification": "NORMALIZED_CAMERA_COORDINATE",
+      "role": "solver cross-check only; reproduced raw-plus-D solutions"
+    }
+  ],
+  "forbidden_mix_checks": {
+    "raw_pixels_plus_undistorted_K": false,
+    "undistorted_pixels_plus_D": false,
+    "scaled_K_plus_native_image": false,
+    "stored_new_camera_matrix_plus_current_RAW_points": false
+  },
+  "current_session_new_camera_matrix_policy": "NOT_USED; current undistortion uses P=K",
+  "current_opencv_4_5_4_getOptimalNewCameraMatrix_diagnostic_only": {
+    "image_size_px": [
+      1920,
+      1080
+    ],
+    "alpha_0": {
+      "new_camera_matrix": [
+        [
+          1068.9805908203125,
+          0.0,
+          905.4217847675536
+        ],
+        [
+          0.0,
+          1144.6549072265625,
+          533.699037467908
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "roi": [
+        0,
+        0,
+        1919,
+        1079
+      ]
+    },
+    "alpha_1": {
+      "new_camera_matrix": [
+        [
+          900.51025390625,
+          0.0,
+          867.5628559460165
+        ],
+        [
+          0.0,
+          926.6731567382812,
+          609.5846756505998
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "roi": [
+        105,
+        178,
+        1617,
+        874
+      ]
+    },
+    "used_by_session_02": false,
+    "note": "These runtime-derived matrices were calculated only to audit behavior; substituting either into current geometry would be a domain/model change."
+  },
+  "legacy_new_camera_matrix_is_separate": {
+    "path": "/home/binci/qwen_vision_test/homography_12pt_undistorted.json",
+    "image_size_px": [
+      2016,
+      1133
+    ],
+    "new_camera_matrix": [
+      [
+        947.482035864133,
+        0.0,
+        912.8160309951584
+      ],
+      [
+        0.0,
+        974.8753961641811,
+        639.2311577877094
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "used_in_session_02": false
+  }
+}

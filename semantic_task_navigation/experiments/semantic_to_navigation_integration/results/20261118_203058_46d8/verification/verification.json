@@ -1,0 +1,300 @@
+{
+  "note": "Python / detector checks of the VLM proposal. The VLM output itself is in vlm_proposal/.",
+  "checks": [
+    {
+      "id": "V1",
+      "name": "proposal is a valid, non-scene-sized region in this image",
+      "status": "VERIFIED",
+      "required": true,
+      "basis": "python_geometry",
+      "detail": {
+        "box_px": [
+          1248.0,
+          0.0,
+          1824.0,
+          280.8
+        ],
+        "area_frac_of_image": 0.078,
+        "max_area_frac": 0.25,
+        "min_side_px": 280.8,
+        "inside_image": true
+      }
+    },
+    {
+      "id": "V2",
+      "name": "the objects cited as evidence exist in the image (anchor object required)",
+      "status": "VERIFIED",
+      "required": true,
+      "basis": "detector+vlm_crop_verification (v0.2 detections / ad-hoc DINO)",
+      "detail": {
+        "cited": [
+          {
+            "class": "truck",
+            "terms_found": [
+              "truck"
+            ],
+            "anchor": true,
+            "source": "v02_detection",
+            "found": [
+              "truck_1"
+            ],
+            "status": "VERIFIED"
+          },
+          {
+            "class": "traffic_cone",
+            "terms_found": [
+              "cone"
+            ],
+            "anchor": false,
+            "source": "dino_verify",
+            "found": null,
+            "status": "NOT_RUN"
+          }
+        ],
+        "anchor_cited": true,
+        "unverifiable_evidence": [
+          "barriers"
+        ],
+        "note": "an anchor (truck) must be cited AND verified; uncited overlap with the truck is not evidence"
+      }
+    },
+    {
+      "id": "V3",
+      "name": "region is geometrically associated with the verified anchor (v0.2 association rules)",
+      "status": "VERIFIED",
+      "required": true,
+      "basis": "python_geometry (v0.2 structure_* thresholds)",
+      "detail": {
+        "truck_containment": 1.0,
+        "gap_to_truck_px": 0.0,
+        "area_ratio_to_truck": 4.509,
+        "iou_with_truck": 0.222,
+        "association_distance_px": 144.1,
+        "reject_reason": null
+      }
+    },
+    {
+      "id": "V3b",
+      "name": "spatial precision of the adopted region",
+      "status": "FAILED",
+      "required": true,
+      "basis": "python_geometry (box clipped to the truck association zone)",
+      "detail": {
+        "basis": "coarse_clipped_to_association_zone",
+        "area_ratio_to_truck": 4.077,
+        "note": "proposal is 4.077x the truck box and could not be tightened by evidence grounding (limit 2.5x without refinement)",
+        "clipped_box_px": [
+          1303.2,
+          0.0,
+          1824.0,
+          280.8
+        ],
+        "refinement_attempts": 0
+      }
+    },
+    {
+      "id": "V4",
+      "name": "v0.2 region_judge accepts the adopted region",
+      "status": "NOT_RUN",
+      "required": true,
+      "basis": "vlm_judge_same_model",
+      "detail": {
+        "reason": "an earlier required check failed"
+      }
+    }
+  ],
+  "refinement": {
+    "enabled": true,
+    "queries": [
+      "barriers",
+      "loading dock"
+    ],
+    "attempts": [],
+    "chosen": null,
+    "log": [
+      {
+        "query": "barriers",
+        "raw_response": "{\"objects\": [{\"bbox_2d\": [55, 718, 267, 913]},{\"bbox_2d\": [555, 33, 602, 164]},{\"bbox_2d\": [448, 33, 496, 164]},{\"bbox_2d\": [177, 42, 225, 128]},{\"bbox_2d\": [120, 98, 175, 170]},{\"bbox_2d\": [117, 138, 170, 270]},{\"bbox_2d\": [117, 138, 170, 270]}]}",
+        "error": null,
+        "boxes": [
+          {
+            "bbox_xyxy": [
+              105.6,
+              775.4,
+              512.6,
+              986.0
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              1065.6,
+              35.6,
+              1155.8,
+              177.1
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              860.2,
+              35.6,
+              952.3,
+              177.1
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              339.8,
+              45.4,
+              432.0,
+              138.2
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              230.4,
+              105.8,
+              336.0,
+              183.6
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              224.6,
+              149.0,
+              326.4,
+              291.6
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              224.6,
+              149.0,
+              326.4,
+              291.6
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          }
+        ]
+      },
+      {
+        "query": "loading dock",
+        "raw_response": "{\"objects\": [{\"bbox_2d\": [55, 718, 267, 914]},{\"bbox_2d\": [448, 37, 497, 168]},{\"bbox_2d\": [555, 37, 603, 168]},{\"bbox_2d\": [177, 37, 227, 130]},{\"bbox_2d\": [120, 100, 177, 168]}]}",
+        "error": null,
+        "boxes": [
+          {
+            "bbox_xyxy": [
+              105.6,
+              775.4,
+              512.6,
+              987.1
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              860.2,
+              40.0,
+              954.2,
+              181.4
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              1065.6,
+              40.0,
+              1157.8,
+              181.4
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              339.8,
+              40.0,
+              435.8,
+              140.4
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          },
+          {
+            "bbox_xyxy": [
+              230.4,
+              108.0,
+              339.8,
+              181.4
+            ],
+            "accepted": false,
+            "reject_reason": "only 0.00 of the box lies inside the VLM proposal"
+          }
+        ]
+      }
+    ]
+  },
+  "cones": null,
+  "semantic_decision": {
+    "status": "SEMANTIC_NOT_VERIFIED",
+    "reasons": [
+      "V3b FAILED: spatial precision of the adopted region",
+      "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+    ],
+    "evidence_failed": false
+  },
+  "adopted": {
+    "basis": "coarse_clipped_to_association_zone",
+    "box_px": [
+      1303.2,
+      0.0,
+      1824.0,
+      280.8
+    ],
+    "polygon_xy": [
+      [
+        1303.2,
+        0.0
+      ],
+      [
+        1824.0,
+        0.0
+      ],
+      [
+        1824.0,
+        280.8
+      ],
+      [
+        1303.2,
+        280.8
+      ]
+    ],
+    "vlm_box_px": [
+      1248.0,
+      0.0,
+      1824.0,
+      280.8
+    ],
+    "truck_box_px": [
+      1447.3,
+      0.2,
+      1687.4,
+      149.6
+    ],
+    "fraction_of_vlm_box_kept": 0.904
+  }
+}

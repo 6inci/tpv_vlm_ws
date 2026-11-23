@@ -1,0 +1,8 @@
+Analyze only the attached image as an indoor industrial or logistics work environment. Identify functionally meaningful spatial regions directly from visual evidence.
+
+Do not decide a region from one object alone. Consider combinations of visible objects, their spatial relationships, surrounding usable space, and functional context. Do not force regions when evidence is weak. Choose semantic labels yourself; no label list or target region count is provided.
+
+Return JSON only, without markdown, using this schema:
+{"scene_summary":"concise description","regions":[{"region_id":"short unique id","semantic_label":"model-chosen functional label","supporting_objects":["visible object descriptions"],"supporting_relations":["concise visible spatial relations"],"reasoning":"20 words or fewer","confidence":0.0,"polygon_normalized":[[x,y],[x,y],[x,y]]}]}
+
+Coordinates are integers normalized from 0 to 1000 over the original full image. Use a polygon only when you can estimate a meaningful boundary; otherwise set polygon_normalized to null. Keep all fields concise and include only well-supported regions. Do not provide metric coordinates, paths, obstacle maps, or hidden objects.

@@ -1,0 +1,158 @@
+{
+  "experiment_id": "EXP002",
+  "step_id": "STEP02_QWEN_SEMANTIC_REGION_DIRECT_INFERENCE",
+  "step_result": "PARTIAL",
+  "source_type": "POSTPROCESSED",
+  "raw_source_type": "MODEL_OUTPUT",
+  "selected_attempt": 1,
+  "source_image": "/home/binci/vlm_ws/new_experiment_environment/approximate_environment.png",
+  "source_image_sha256": "02a4e79589db3c15529b372768ef349b4ef2e4ebe2efb2454f605be43eb95a95",
+  "image_size_px": [
+    1448,
+    1086
+  ],
+  "coordinate_system": "original_image_normalized_0_1000",
+  "geometry_status": "IMAGE_COORDINATE_NON_METRIC",
+  "model": {
+    "identifier": "Qwen/Qwen3-VL-4B-Instruct",
+    "cache_path": "/home/binci/.cache/huggingface/hub/models--Qwen--Qwen3-VL-4B-Instruct",
+    "environment": "/home/binci/miniconda3/envs/qwen_vl",
+    "device": "cpu",
+    "dtype": "torch.bfloat16",
+    "python": "3.10.20",
+    "torch": "2.13.0+cu130",
+    "transformers": "5.16.1",
+    "opencv": "5.0.0",
+    "model_load_seconds": 0.47357719700085,
+    "generation": {
+      "do_sample": false,
+      "max_new_tokens": 1600
+    }
+  },
+  "blind_inference": {
+    "reference_used_as_model_input": false,
+    "image_inputs": [
+      "/home/binci/vlm_ws/new_experiment_environment/approximate_environment.png"
+    ],
+    "selected_prompt": "Analyze only the attached image as an indoor industrial or logistics work environment. Identify functionally meaningful spatial regions directly from visual evidence.\n\nDo not decide a region from one object alone. Consider combinations of visible objects, their spatial relationships, surrounding usable space, and functional context. Do not force regions when evidence is weak. Choose semantic labels yourself; no label list or target region count is provided.\n\nReturn JSON only, without markdown, using this schema:\n{\"scene_summary\":\"concise description\",\"regions\":[{\"region_id\":\"short unique id\",\"semantic_label\":\"model-chosen functional label\",\"supporting_objects\":[\"visible object descriptions\"],\"supporting_relations\":[\"concise visible spatial relations\"],\"reasoning\":\"20 words or fewer\",\"confidence\":0.0,\"polygon_normalized\":[[x,y],[x,y],[x,y]]}]}\n\nCoordinates are integers normalized from 0 to 1000 over the original full image. Use a polygon only when you can estimate a meaningful boundary; otherwise set polygon_normalized to null. Keep all fields concise and include only well-supported regions. Do not provide metric coordinates, paths, obstacle maps, or hidden objects.",
+    "prompt_sha256": "5103e6574839d0ed68e05c12040c95bfe6488fbb8bab625469c7b6863c065e1b",
+    "leakage_check": "PASS"
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "prompt": "Analyze only the attached image as an indoor industrial or logistics work environment. Identify functionally meaningful spatial regions directly from visual evidence.\n\nDo not decide a region from one object alone. Consider combinations of visible objects, their spatial relationships, surrounding usable space, and functional context. Do not force regions when evidence is weak. Choose semantic labels yourself; no label list or target region count is provided.\n\nReturn JSON only, without markdown, using this schema:\n{\"scene_summary\":\"concise description\",\"regions\":[{\"region_id\":\"short unique id\",\"semantic_label\":\"model-chosen functional label\",\"supporting_objects\":[\"visible object descriptions\"],\"supporting_relations\":[\"concise visible spatial relations\"],\"reasoning\":\"20 words or fewer\",\"confidence\":0.0,\"polygon_normalized\":[[x,y],[x,y],[x,y]]}]}\n\nCoordinates are integers normalized from 0 to 1000 over the original full image. Use a polygon only when you can estimate a meaningful boundary; otherwise set polygon_normalized to null. Keep all fields concise and include only well-supported regions. Do not provide metric coordinates, paths, obstacle maps, or hidden objects.",
+      "prompt_sha256": "5103e6574839d0ed68e05c12040c95bfe6488fbb8bab625469c7b6863c065e1b",
+      "max_new_tokens": 1600,
+      "generated_tokens": 574,
+      "finish_reason_equivalent": "eos_token",
+      "inference_seconds": 199.796728892994,
+      "raw_nonempty": true,
+      "json_complete": true,
+      "validation_error": null,
+      "raw_artifact": "/home/binci/vlm_ws/new_experiment_environment/results/EXP002_semantic_region_eval/model_output/semantic_region_raw.txt"
+    }
+  ],
+  "scene_summary": "Indoor logistics simulation with robotic systems, storage, and transport equipment",
+  "regions": [
+    {
+      "region_id": "robotic_workstation",
+      "semantic_label": "Robotics operation zone",
+      "supporting_objects": [
+        "White robotic arms",
+        "Conveyor belt",
+        "Red safety fence"
+      ],
+      "supporting_relations": [
+        "Robots positioned near conveyor and fence"
+      ],
+      "reasoning": "Robots and conveyor indicate automated material handling setup",
+      "confidence": 0.95,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "storage_area",
+      "semantic_label": "Inventory storage zone",
+      "supporting_objects": [
+        "Orange shelving units",
+        "Cardboard boxes",
+        "Blue bins"
+      ],
+      "supporting_relations": [
+        "Shelves hold boxes, bins, and tools"
+      ],
+      "reasoning": "Shelves and boxes indicate organized storage for inventory",
+      "confidence": 0.92,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "maintenance_station",
+      "semantic_label": "Tool and equipment maintenance area",
+      "supporting_objects": [
+        "Workbench",
+        "Laptop",
+        "Tools",
+        "Office chair"
+      ],
+      "supporting_relations": [
+        "Workbench with tools and laptop, chair nearby"
+      ],
+      "reasoning": "Workbench and tools suggest maintenance or configuration tasks",
+      "confidence": 0.85,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "transport_and_loading_zone",
+      "semantic_label": "Vehicle and pallet loading area",
+      "supporting_objects": [
+        "White truck",
+        "Pallets with boxes",
+        "Handcart",
+        "Barrels"
+      ],
+      "supporting_relations": [
+        "Truck, handcart, and pallets positioned for loading/unloading"
+      ],
+      "reasoning": "Vehicle and pallets indicate material transport and loading operations",
+      "confidence": 0.88,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    },
+    {
+      "region_id": "mobile_robot_zone",
+      "semantic_label": "Mobile robot operation area",
+      "supporting_objects": [
+        "Black wheeled mobile robot",
+        "Pallets with boxes",
+        "Barrels"
+      ],
+      "supporting_relations": [
+        "Robot positioned near pallets and barrels"
+      ],
+      "reasoning": "Mobile robot and surrounding pallets suggest autonomous navigation and transport",
+      "confidence": 0.87,
+      "polygon_normalized": null,
+      "polygon_px": null,
+      "semantic_fields_source_type": "MODEL_OUTPUT",
+      "pixel_coordinates_source_type": "NOT_AVAILABLE"
+    }
+  ],
+  "postprocessing": [
+    "extract first complete JSON object",
+    "schema validation",
+    "finite/range coordinate validation",
+    "deterministic normalized-to-pixel conversion"
+  ],
+  "semantic_completion_policy": "No labels, regions, evidence, relations, reasoning, confidence, or polygons were added or corrected."
+}

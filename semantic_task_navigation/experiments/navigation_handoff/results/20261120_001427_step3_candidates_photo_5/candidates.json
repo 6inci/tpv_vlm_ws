@@ -1,0 +1,224 @@
+{
+ "photo": {
+  "name": "photo_5",
+  "path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "earlier_id": "U25070552"
+ },
+ "map_run": "/home/binci/vlm_ws/semantic_task_navigation/experiments/navigation_handoff/results/20261120_000114_step2_map",
+ "status": "CANDIDATES_ONLY",
+ "note": "shown to the user for confirmation; not planning input",
+ "candidates": {
+  "robot": [
+   {
+    "id": "R_BOX",
+    "image_px": [
+     1699.5,
+     702.1
+    ],
+    "floor_cm": [
+     292.9,
+     156.3
+    ],
+    "map_m": [
+     2.9292,
+     0.537
+    ],
+    "projection": "z = 0 (height parallax not corrected)",
+    "bbox_image_px": [
+     1585.03,
+     619.74,
+     1814.01,
+     784.4
+    ],
+    "source": "stored detection grounding_dino 'mobile robot.' + Qwen crop check yes; point = outline (box) centre",
+    "knowledge": "ESTIMATED"
+   },
+   {
+    "id": "R_WHEELS",
+    "image_px": [
+     1709.0,
+     697.0
+    ],
+    "floor_cm": [
+     294.8,
+     155.3
+    ],
+    "map_m": [
+     2.9477,
+     0.5468
+    ],
+    "projection": "z = 0 (height parallax not corrected)",
+    "source": "AI visual estimate: mean of the 4 mecanum-wheel image centres (1647,637) (1665,760) (1755,632) (1768,757); URDF base_link = centre of the wheels at floor level; wheel centres are ~4 cm above the floor",
+    "knowledge": "ESTIMATED"
+   }
+  ],
+  "heading_options": [
+   {
+    "id": "H180",
+    "yaw_map_deg": 180,
+    "basis": "AI visual: white claw-like parts protrude beyond the left wheels (image left = -x_map)"
+   },
+   {
+    "id": "H0",
+    "yaw_map_deg": 0,
+    "basis": "the opposite direction"
+   }
+  ],
+  "cube": [
+   {
+    "id": "C1",
+    "image_px": [
+     442.5,
+     424.5
+    ],
+    "floor_cm": [
+     51.5,
+     92.6
+    ],
+    "map_m": [
+     0.5147,
+     1.1742
+    ],
+    "projection": "z = 0 (height parallax not corrected)",
+    "bbox_image_px": [
+     434.0,
+     417.0,
+     451.0,
+     432.0
+    ],
+    "retention_state": "PROBABLE",
+    "source_types": [
+     "grounding_dino_full_image",
+     "grounding_dino_roi",
+     "hsv_color_shape"
+    ],
+    "point": "box centre",
+    "source": "candidate_retention_policy (stored DINO + HSV candidates; Qwen gate answers kept there)"
+   },
+   {
+    "id": "C3",
+    "image_px": [
+     269.0,
+     193.0
+    ],
+    "floor_cm": [
+     2.3,
+     31.2
+    ],
+    "map_m": [
+     0.0233,
+     1.7883
+    ],
+    "projection": "z = 0 (height parallax not corrected)",
+    "bbox_image_px": [
+     257.0,
+     174.0,
+     281.0,
+     212.0
+    ],
+    "retention_state": "PROBABLE",
+    "source_types": [
+     "grounding_dino_full_image",
+     "grounding_dino_roi",
+     "hsv_color_shape"
+    ],
+    "point": "box centre",
+    "source": "candidate_retention_policy (stored DINO + HSV candidates; Qwen gate answers kept there)"
+   },
+   {
+    "id": "C6",
+    "image_px": [
+     291.5,
+     212.0
+    ],
+    "floor_cm": [
+     8.6,
+     36.7
+    ],
+    "map_m": [
+     0.0856,
+     1.7333
+    ],
+    "projection": "z = 0 (height parallax not corrected)",
+    "bbox_image_px": [
+     285.0,
+     208.0,
+     298.0,
+     216.0
+    ],
+    "retention_state": "PROBABLE",
+    "source_types": [
+     "grounding_dino_roi",
+     "hsv_color_shape"
+    ],
+    "point": "box centre",
+    "source": "candidate_retention_policy (stored DINO + HSV candidates; Qwen gate answers kept there)"
+   }
+  ],
+  "placement": [
+   {
+    "id": "P_DST",
+    "image_px": [
+     1616.5,
+     269.5
+    ],
+    "floor_cm": [
+     292.8,
+     60.3
+    ],
+    "map_m": [
+     2.9282,
+     1.4968
+    ],
+    "projection": "z = 0 (height parallax not corrected)",
+    "bbox_image_px": [
+     1593,
+     252,
+     1640,
+     287
+    ],
+    "type": "small grey slatted pallet",
+    "state": "empty",
+    "point": "box centre",
+    "source": "AI_DRAWN box (task_conditioned_target_grounding), not human-confirmed"
+   },
+   {
+    "id": "BAY",
+    "image_px": [
+     1539.2,
+     113.3
+    ],
+    "floor_cm": [
+     282.7,
+     18.3
+    ],
+    "map_m": [
+     2.8272,
+     1.9168
+    ],
+    "projection": "z = 0 (height parallax not corrected)",
+    "polygon_image_px": [
+     [
+      1426.7,
+      172.5
+     ],
+     [
+      1680.3,
+      168.0
+     ],
+     [
+      1653.4,
+      56.2
+     ],
+     [
+      1399.7,
+      60.7
+     ]
+    ],
+    "point": "centroid of the floor marking corners (on the floor)",
+    "source": "Python floor-marking localisation (FLOOR_MARKING_ESTABLISHED)"
+   }
+  ]
+ }
+}

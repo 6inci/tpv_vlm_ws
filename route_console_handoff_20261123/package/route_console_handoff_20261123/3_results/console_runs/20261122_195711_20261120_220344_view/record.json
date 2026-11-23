@@ -1,0 +1,632 @@
+{
+ "created": "2026-11-22T19:57:09",
+ "instruction": "하역장 옆에서 빨간 큐브를 챙겨 충전소 옆으로 이동시켜줘",
+ "photo": "/home/binci/Pictures/Calibration/map_images/20261120_220344_view.png",
+ "photo_sha256": "6d0fee8b59e37ed6b5ffeb0f6218f62f03544b0483dba3f3972fccbf99b2a79c",
+ "mode": "사진",
+ "config": "/home/binci/vlm_ws/route_console_20261122/config/console.yaml",
+ "frames": {
+  "pixel": "편 사진 픽셀 (K_photo, 왜곡 없음)",
+  "map": "env2_20261119 m, 바닥 z = 0",
+  "yaw": "+x에서 반시계, 차체 앞 = 그리퍼"
+ },
+ "stages": {
+  "interpret": {
+   "prompt_id": "console_slots_v2b",
+   "prompt": "너는 이동 로봇의 작업지시를 정해진 항목으로 바꾸는 파서다. 이미지는 주어지지 않는다. 위치, 좌표, 박스를 만들지 마라.\n작업지시: \"하역장 옆에서 빨간 큐브를 챙겨 충전소 옆으로 이동시켜줘\"\n\ntask (할 일) 중 하나:\n- \"transport\": 물체를 집어서 다른 곳에 놓는다\n- \"go_to\": 로봇만 이동한다 (옮길 물체 없음)\nobject (옮길 물체) 중 하나:\n- \"red cube\": 빨간 큐브\n- \"any object\": 종류를 말하지 않은 물체 (예: 물체, 물건, 짐)\n- \"none\": 옮길 물체가 없음\n- \"other\": 위 목록에 없는 종류를 말한 물체 (예: 상자, 드럼, 팔레트 자체)\n장소 이름 (아래 항목에 쓰는 값):\n- \"truck_loading_bay\": 트럭, 하역장, 트럭 하역장\n- \"conveyor\": 컨베이어, 컨베이어 벨트, 생산 라인\n- \"charging_station\": 충전소, 충전 구역\n- \"fire_extinguisher\": 소화기\n- \"walkway\": 보행자 통로, 보행로\n- \"central_storage\": 중앙 적치 구역, 가운데 상자 더미\n- \"material_storage\": 자재 보관 구역, 적치대\n- \"robot_arm_cell\": 로봇 팔 작업셀\n- \"locker\": 사물함, 작업자 준비 구역\n- \"shelf\": 선반\n- \"none\": 말하지 않음\n- \"other\": 위 목록에 없는 장소\nobject_near: 옮길 물체가 어느 장소 옆에 있다고 했는지 (장소 이름 하나)\nstart: 로봇이 어느 장소에서 출발한다고 했는지 (장소 이름 하나. 말하지 않았으면 \"none\" = 지금 위치)\ndestination_kind (도착지 종류) 중 하나:\n- \"empty_pallet\": 비어 있는 팔레트\n- \"place\": 위 목록의 장소\n- \"other\": 위 목록에 없음\ndestination_place: destination_kind가 \"place\"이면 장소 이름, 아니면 \"none\"\nwords: 작업지시에서 물체와 장소를 가리킨 말을 그대로 적는다\n\nReturn JSON only, no prose:\n{\"task\": \"...\", \"object\": \"...\", \"object_near\": \"...\", \"start\": \"...\", \"destination_kind\": \"...\", \"destination_place\": \"...\", \"words\": \"...\"}\n",
+   "raw": "{\"task\": \"transport\", \"object\": \"red cube\", \"object_near\": \"truck_loading_bay\", \"start\": \"none\", \"destination_kind\": \"place\", \"destination_place\": \"charging_station\", \"words\": \"하역장 옆에서 빨간 큐브를 챙겨 충전소 옆으로 이동시켜줘\"}",
+   "slots": {
+    "task": "transport",
+    "object": "red cube",
+    "object_near": "truck_loading_bay",
+    "start": "none",
+    "destination_kind": "place",
+    "destination_place": "charging_station",
+    "words": "하역장 옆에서 빨간 큐브를 챙겨 충전소 옆으로 이동시켜줘"
+   },
+   "error": null,
+   "seconds": 2.3
+  },
+  "perceive": {
+   "photo_id": "20261120_220344_view",
+   "source": "저장된 인식 자료 (context_policy data/test, 같은 사진·같은 모델로 미리 계산)",
+   "n_dino": 232,
+   "n_gated": 104,
+   "bank": {
+    "bank_used": {
+     "cube": 8,
+     "empty_pallet": 8,
+     "loaded_pallet": 8
+    },
+    "bank_dropped_same_place": 0
+   }
+  },
+  "decide": {
+   "A": {
+    "status": "NOT_FOUND",
+    "why": "no candidate",
+    "id": null,
+    "box": null,
+    "s1": null,
+    "s2": null,
+    "n_survivors": 0,
+    "top_before_policy": [
+     {
+      "id": "m59",
+      "score": 0.9132,
+      "failed_at": "장소 옆"
+     },
+     {
+      "id": "m43",
+      "score": 0.8619,
+      "failed_at": "큐브 예시"
+     },
+     {
+      "id": "m75",
+      "score": 0.8602,
+      "failed_at": "작업 공간"
+     },
+     {
+      "id": "m163",
+      "score": 0.8516,
+      "failed_at": "작업 공간"
+     },
+     {
+      "id": "m133",
+      "score": 0.8509,
+      "failed_at": "큐브 예시"
+     }
+    ],
+    "survivors_ranked": []
+   },
+   "B": {
+    "status": "SELECTED",
+    "why": "지도의 장소 '충전소' (팀원 정차 자리)",
+    "id": null,
+    "box": null,
+    "place": "charging_station"
+   }
+  }
+ },
+ "result": {
+  "status": "HOLD",
+  "stage": "decide",
+  "why": "옮길 물체를 확정하지 못함: 조건을 모두 통과한 후보가 없음. 상위 후보: m59(점수 0.913) 장소 옆: 하역장 구역까지 47 cm (한도 30 cm); m43(점수 0.862) 큐브 예시: 0.862 (기준 0.88)"
+ },
+ "plan": {
+  "task": "transport",
+  "object": "red cube",
+  "near_zone": "Z06",
+  "near_place": "truck_loading_bay",
+  "start_place": null,
+  "dest_kind": "place",
+  "dest_place": "charging_station"
+ },
+ "geometry": {
+  "start": null,
+  "objects": {},
+  "stops": {},
+  "legs": [],
+  "names": {}
+ },
+ "overlay": {
+  "zones": [
+   {
+    "id": "Z01",
+    "name": "보행 통로",
+    "polygon_px": [
+     [
+      987.4,
+      114.3
+     ],
+     [
+      1066.5,
+      112.6
+     ],
+     [
+      1077.8,
+      332.4
+     ],
+     [
+      648.8,
+      333.4
+     ],
+     [
+      657.8,
+      258.1
+     ],
+     [
+      981.4,
+      254.8
+     ]
+    ],
+    "polygon_m": [
+     [
+      1.6555,
+      2.0156
+     ],
+     [
+      1.8612,
+      2.0144
+     ],
+     [
+      1.8709,
+      1.3925
+     ],
+     [
+      0.8251,
+      1.4027
+     ],
+     [
+      0.8232,
+      1.6098
+     ],
+     [
+      1.6408,
+      1.6039
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z03",
+    "name": "중앙 화물 적치 구역",
+    "polygon_px": [
+     [
+      817.4,
+      498.6
+     ],
+     [
+      980.9,
+      500.7
+     ],
+     [
+      983.3,
+      640.9
+     ],
+     [
+      807.2,
+      639.0
+     ]
+    ],
+    "polygon_m": [
+     [
+      1.2683,
+      0.9878
+     ],
+     [
+      1.6411,
+      0.9829
+     ],
+     [
+      1.6469,
+      0.6754
+     ],
+     [
+      1.2647,
+      0.6759
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z04",
+    "name": "자재 보관·적치 구역",
+    "polygon_px": [
+     [
+      1184.6,
+      514.1
+     ],
+     [
+      1724.2,
+      503.4
+     ],
+     [
+      1733.0,
+      635.5
+     ],
+     [
+      1187.9,
+      640.1
+     ]
+    ],
+    "polygon_m": [
+     [
+      2.0917,
+      0.9526
+     ],
+     [
+      3.2353,
+      0.9767
+     ],
+     [
+      3.1846,
+      0.7
+     ],
+     [
+      2.0803,
+      0.681
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z05",
+    "name": "충전 구역",
+    "polygon_px": [
+     [
+      1255.5,
+      860.6
+     ],
+     [
+      1465.0,
+      860.8
+     ],
+     [
+      1477.0,
+      1027.6
+     ],
+     [
+      1272.2,
+      1029.7
+     ]
+    ],
+    "polygon_m": [
+     [
+      2.182,
+      0.2602
+     ],
+     [
+      2.5821,
+      0.2684
+     ],
+     [
+      2.5582,
+      -0.0107
+     ],
+     [
+      2.1864,
+      -0.0253
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z06",
+    "name": "트럭 하역장",
+    "polygon_px": [
+     [
+      1376.1,
+      91.4
+     ],
+     [
+      1618.0,
+      66.5
+     ],
+     [
+      1632.6,
+      221.1
+     ],
+     [
+      1393.2,
+      231.0
+     ]
+    ],
+    "polygon_m": [
+     [
+      2.6507,
+      2.0546
+     ],
+     [
+      3.2571,
+      2.1107
+     ],
+     [
+      3.1961,
+      1.6655
+     ],
+     [
+      2.6375,
+      1.6503
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z07",
+    "name": "왼쪽 컨베이어 작업셀",
+    "polygon_px": [
+     [
+      355.6,
+      324.8
+     ],
+     [
+      572.4,
+      334.6
+     ],
+     [
+      482.2,
+      798.5
+     ],
+     [
+      212.6,
+      778.1
+     ]
+    ],
+    "polygon_m": [
+     [
+      0.0668,
+      1.4355
+     ],
+     [
+      0.6324,
+      1.4019
+     ],
+     [
+      0.5959,
+      0.3439
+     ],
+     [
+      -0.0087,
+      0.3734
+     ]
+    ],
+    "excluded": false
+   },
+   {
+    "id": "Z08",
+    "name": "상단 로봇 팔 작업셀",
+    "polygon_px": [
+     [
+      507.1,
+      107.3
+     ],
+     [
+      855.1,
+      120.8
+     ],
+     [
+      864.5,
+      225.6
+     ],
+     [
+      501.3,
+      224.2
+     ]
+    ],
+    "polygon_m": [
+     [
+      0.3486,
+      2.0779
+     ],
+     [
+      1.3074,
+      2.0058
+     ],
+     [
+      1.3459,
+      1.6921
+     ],
+     [
+      0.3959,
+      1.7158
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z09",
+    "name": "작업자 준비·사물함 구역",
+    "polygon_px": [
+     [
+      320.7,
+      53.0
+     ],
+     [
+      503.8,
+      73.9
+     ],
+     [
+      511.3,
+      189.0
+     ],
+     [
+      412.8,
+      181.5
+     ],
+     [
+      416.0,
+      327.5
+     ],
+     [
+      306.5,
+      320.3
+     ],
+     [
+      341.6,
+      161.7
+     ]
+    ],
+    "polygon_m": [
+     [
+      -0.2313,
+      2.279
+     ],
+     [
+      0.3199,
+      2.1889
+     ],
+     [
+      0.4046,
+      1.8207
+     ],
+     [
+      0.1294,
+      1.8502
+     ],
+     [
+      0.2265,
+      1.426
+     ],
+     [
+      -0.0661,
+      1.4496
+     ],
+     [
+      -0.084,
+      1.9171
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z10",
+    "name": "왼쪽 아래 선반 보관 구역",
+    "polygon_px": [
+     [
+      209.3,
+      781.2
+     ],
+     [
+      568.6,
+      821.1
+     ],
+     [
+      554.9,
+      1019.3
+     ],
+     [
+      168.5,
+      973.4
+     ]
+    ],
+    "polygon_m": [
+     [
+      -0.0143,
+      0.3672
+     ],
+     [
+      0.7884,
+      0.3042
+     ],
+     [
+      0.8142,
+      -0.0492
+     ],
+     [
+      0.0023,
+      0.0068
+     ]
+    ],
+    "excluded": true
+   }
+  ],
+  "drive_px": [
+   [
+    483.9,
+    833.4
+   ],
+   [
+    1773.3,
+    862.8
+   ],
+   [
+    1666.4,
+    335.7
+   ],
+   [
+    584.6,
+    352.9
+   ]
+  ],
+  "drive_m": [
+   [
+    0.6119,
+    0.2773
+   ],
+   [
+    3.1527,
+    0.2773
+   ],
+   [
+    3.2057,
+    1.3681
+   ],
+   [
+    0.6705,
+    1.3528
+   ]
+  ],
+  "candidates": {
+   "A": [
+    {
+     "id": "m59",
+     "box": [
+      1229.06,
+      307.7,
+      1249.92,
+      331.75
+     ],
+     "score": 0.913,
+     "failed_at": "장소 옆"
+    },
+    {
+     "id": "m43",
+     "box": [
+      1218.04,
+      300.46,
+      1256.82,
+      337.19
+     ],
+     "score": 0.862,
+     "failed_at": "큐브 예시"
+    },
+    {
+     "id": "m75",
+     "box": [
+      962.72,
+      234.45,
+      983.56,
+      253.13
+     ],
+     "score": 0.86,
+     "failed_at": "작업 공간"
+    }
+   ],
+   "B": []
+  },
+  "targets": {},
+  "poses": {},
+  "legs": []
+ },
+ "model_calls": [
+  {
+   "stage": "console_slots",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "console_slots_v2b",
+   "prompt_sha256": "5ae5678de20f5bc4e844a44f3ec018252d7d1742e6f2f6b5b9f19205a7377f74",
+   "image_path": null,
+   "n_input_tokens": 622,
+   "n_output_tokens": 80,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.296,
+   "wall_s": 2.32,
+   "peak_vram_gib": 8.429,
+   "raw_response": "{\"task\": \"transport\", \"object\": \"red cube\", \"object_near\": \"truck_loading_bay\", \"start\": \"none\", \"destination_kind\": \"place\", \"destination_place\": \"charging_station\", \"words\": \"하역장 옆에서 빨간 큐브를 챙겨 충전소 옆으로 이동시켜줘\"}"
+  }
+ ],
+ "wall_s": 2.5,
+ "summary": [
+  "지시: 하역장 옆에서 빨간 큐브를 챙겨 충전소 옆으로 이동시켜줘",
+  "결과: 보류 - 옮길 물체를 확정하지 못함: 조건을 모두 통과한 후보가 없음. 상위 후보: m59(점수 0.913) 장소 옆: 하역장 구역까지 47 cm (한도 30 cm); m43(점수 0.862) 큐브 예시: 0.862 (기준 0.88)"
+ ],
+ "export": {
+  "dir": "/home/binci/vlm_ws/route_console_20261122/runs/20261122_195711_20261120_220344_view",
+  "files": [
+   "waypoints.csv",
+   "overlay.jpg"
+  ],
+  "teammate_check": []
+ }
+}

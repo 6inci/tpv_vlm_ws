@@ -1,0 +1,151 @@
+{
+ "status": "DRAFT by Claude 2026-11-15 from the answer-key positions and human-style judgement, NOT from the Python relation rule. Needs user review (referents_check_P0*.jpg). Boxes = EXP110 answer-key small_pallet boxes, raw distorted px.",
+ "answer_values": "a small_pallet box, or \"none\" (no object satisfies the phrase) / \"unknown\" (reference not present); for e06 any null answer counts as correct",
+ "P01": {
+  "e01": [
+   582,
+   273,
+   628,
+   314
+  ],
+  "e02": "none",
+  "e03": [
+   593,
+   841,
+   647,
+   898
+  ],
+  "e04": [
+   582,
+   273,
+   628,
+   314
+  ],
+  "e05": [
+   582,
+   273,
+   628,
+   314
+  ],
+  "e06": "unknown"
+ },
+ "P02": {
+  "e01": [
+   1149,
+   277,
+   1195,
+   315
+  ],
+  "e02": [
+   1537,
+   851,
+   1587,
+   908
+  ],
+  "e03": [
+   1149,
+   277,
+   1195,
+   315
+  ],
+  "e04": [
+   1537,
+   851,
+   1587,
+   908
+  ],
+  "e05": [
+   1537,
+   851,
+   1587,
+   908
+  ],
+  "e06": "unknown"
+ },
+ "P03": {
+  "e01": [
+   1582,
+   292,
+   1631,
+   337
+  ],
+  "e02": "none",
+  "e03": [
+   394,
+   691,
+   444,
+   741
+  ],
+  "e04": [
+   1582,
+   292,
+   1631,
+   337
+  ],
+  "e05": [
+   1582,
+   292,
+   1631,
+   337
+  ],
+  "e06": "unknown"
+ },
+ "P04": {
+  "e01": [
+   1582,
+   292,
+   1631,
+   337
+  ],
+  "e02": "none",
+  "e03": [
+   580,
+   278,
+   626,
+   319
+  ],
+  "e04": [
+   1582,
+   292,
+   1631,
+   337
+  ],
+  "e05": [
+   1582,
+   292,
+   1631,
+   337
+  ],
+  "e06": "unknown"
+ },
+ "notes": {
+  "P01 e01": "neither pallet is near the truck; 'closest' still picks the upper-left loaded pallet (about 930 px vs 1160 px from the truck)",
+  "e02": "only P02 has a pallet beside the chargers"
+ },
+ "review_flags": {
+  "legend": "clear = 사람이 봐도 답이 하나로 정해짐 / judgment = 사용자 판단 필요 (대안 답을 alt에 적음). 정답 값 자체는 이 필드로 바뀌지 않는다.",
+  "P01": {
+   "e01": {
+    "flag": "judgment",
+    "alt": "none",
+    "why": "두 팔레트 모두 트럭에서 멀다(트럭 길이의 4배 이상). '가장 가까운'은 최상급이라 왼쪽 위(1)가 답이지만, 가까이 있어야 한다고 보면 '없음'이 될 수 있다."
+   },
+   "e06": {
+    "flag": "clear",
+    "why": "지게차가 없다. 카트(손수레)를 지게차로 혼동할 수 있으나 정답은 '확인 불가'."
+   }
+  },
+  "P02": {
+   "e01": {
+    "flag": "clear",
+    "why": "위쪽 가운데 빈 팔레트(1)가 트럭에 더 가깝다. 바로 붙어 있지는 않다(트럭 길이 약 1.3배)."
+   }
+  },
+  "dataset": [
+   "P01, P03, P04에서는 트럭에 가장 가까운 팔레트가 곧 블록이 있는 팔레트다. e01을 맞혀도 '적재된 것을 고르는 습관'과 구분되지 않는다. 둘이 갈리는 것은 P02 하나뿐이다.",
+   "e02(충전소 옆)의 정답이 있는 사진은 P02 하나뿐이다. 나머지 3장은 '없음'이 정답이다.",
+   "후보가 2개뿐이라, 정답이 있는 항목에서 항상 하나를 고르면 우연으로 50%를 맞힌다.",
+   "아래쪽 큰 회색 팔레트, 드럼 밑 팔레트는 소형 팔레트가 아니다. oracle 조건에서는 후보에 들어가지 않는다."
+  ]
+ }
+}

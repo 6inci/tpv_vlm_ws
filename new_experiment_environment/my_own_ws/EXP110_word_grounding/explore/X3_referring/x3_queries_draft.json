@@ -1,0 +1,122 @@
+{
+ "id": "EXP110-X3",
+ "status": "DRAFT by Claude 2026-11-15. Run on dev 2026-11-15 on user instruction ('해줘') with referents as drafted; referents still need the user's visual check (run dir referents_check_*.png).",
+ "question": "Can the system pick ONE specific object (e.g. registry #10) from a phrase that uses a relation or state, instead of a bare class word?",
+ "referent_resolution": {
+  "fixed": "registry id -> registry_id_to_box_dev.json (map_registry_ids.py): nearest answer-key box of the same class (and drum colour). Registry centers were eyeballed on an UNDISTORTED screenshot while answer boxes are raw distorted pixels, so they are used only to pick an identity, never as geometry; every pick is shown in referents_check_*.png for visual confirmation.",
+  "movable": "rule on each image's answer key (small pallet containing / not containing block centers)"
+ },
+ "queries": [
+  {
+   "rid": "r01",
+   "en": "the shelf next to the truck",
+   "ko": "트럭 옆 선반",
+   "referent": {
+    "fixed_id": 11
+   },
+   "note": "rack 11 is the top shelf nearest the truck; confirm 'next to' is acceptable"
+  },
+  {
+   "rid": "r02",
+   "en": "the left one of the two shelves at the top",
+   "ko": "위쪽 선반 두 개 중 왼쪽 선반",
+   "referent": {
+    "fixed_id": 10
+   }
+  },
+  {
+   "rid": "r03",
+   "en": "the shelf in the bottom-left corner",
+   "ko": "왼쪽 아래 구석의 선반",
+   "referent": {
+    "fixed_id": 22,
+    "also_accept_fixed_ids": [
+     23
+    ]
+   },
+   "note": "22 and 23 are both bottom-left; may be ambiguous"
+  },
+  {
+   "rid": "r04",
+   "en": "the cart next to the IBC tote",
+   "ko": "IBC 탱크 옆 카트",
+   "referent": {
+    "fixed_id": 16
+   }
+  },
+  {
+   "rid": "r05",
+   "en": "the left cart",
+   "ko": "왼쪽 카트",
+   "referent": {
+    "fixed_id": 15
+   }
+  },
+  {
+   "rid": "r06",
+   "en": "the upper charging station",
+   "ko": "위쪽 충전기",
+   "referent": {
+    "fixed_id": 27
+   }
+  },
+  {
+   "rid": "r07",
+   "en": "the robot arm next to the conveyor belt",
+   "ko": "컨베이어 벨트 옆 로봇 팔",
+   "referent": {
+    "fixed_id": 7,
+    "also_accept_fixed_ids": [
+     6
+    ]
+   },
+   "note": "6 is also close to the conveyor; confirm"
+  },
+  {
+   "rid": "r08",
+   "en": "the empty pallet",
+   "ko": "빈 팔레트",
+   "referent": {
+    "fixed_id": 25,
+    "also_accept_movable_rule": "small_pallet containing no block center"
+   },
+   "note": "added before run: \"pallet\" includes small_pallet in config multi_class_targets, so an empty small pallet is a defensible reading"
+  },
+  {
+   "rid": "r09",
+   "en": "the drum next to the IBC tote",
+   "ko": "IBC 탱크 옆 드럼통",
+   "referent": {
+    "fixed_id": 18
+   },
+   "note": "relation vs colour: 18 is the black drum group"
+  },
+  {
+   "rid": "r10",
+   "en": "the small pallet with blocks on it",
+   "ko": "블록이 올려진 소형 팔레트",
+   "referent": {
+    "movable_rule": "small_pallet containing >=1 block center"
+   }
+  },
+  {
+   "rid": "r11",
+   "en": "the empty small pallet",
+   "ko": "비어 있는 소형 팔레트",
+   "referent": {
+    "movable_rule": "small_pallet containing no block center"
+   }
+  },
+  {
+   "rid": "r12",
+   "en": "the shelf next to the forklift",
+   "ko": "지게차 옆 선반",
+   "referent": {
+    "absent": true
+   },
+   "note": "no forklift in the scene -> correct answer is none"
+  }
+ ],
+ "scoring_proposal": "target-reaching: success if the first returned box's center lies inside a referent box (absent: valid answer with no box). 'primary' = fixed_id / movable rule only; 'lenient' also accepts also_accept_* (ambiguities flagged before the run). Invalid output = failure. Conditions C1 and C6-dino (config c6.variants.dino), new calls.",
+ "cost_estimate": "12 queries x 2 langs x 4 dev images x 2 conditions ~ 200 Qwen calls ~ 10 min"
+}

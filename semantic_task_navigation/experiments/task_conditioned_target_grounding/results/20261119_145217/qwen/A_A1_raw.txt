@@ -1,0 +1,55 @@
+{
+  "source_region": {
+    "description": "컨베이어 벨트 위에 빨간 큐브가 있는 구역",
+    "bbox_2d": null
+  },
+  "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": null,
+    "visible": "uncertain"
+  },
+  "destination_region": {
+    "description": "출하 가능한 장소로, 출하 표시가 있는 구역",
+    "bbox_2d": null
+  },
+  "destination_target_candidates": [
+    {
+      "name_en": "white truck",
+      "name_ko": "흰색 트럭",
+      "bbox_2d": [752, 0, 880, 143],
+      "state": "empty",
+      "role": "출하 목적지",
+      "suitability": "suitable",
+      "reason": "트럭은 출하용으로 설계된 장치로, 빨간 큐브를 운반할 수 있음"
+    },
+    {
+      "name_en": "green zone with white bird symbol",
+      "name_ko": "녹색 영역에 흰색 새 아이콘",
+      "bbox_2d": [305, 58, 555, 280],
+      "state": "empty",
+      "role": "출하 영역",
+      "suitability": "possible",
+      "reason": "출하 표시가 있는 영역이지만, 트럭이 없는 경우 출하용으로 사용 가능"
+    },
+    {
+      "name_en": "black robot",
+      "name_ko": "검은색 로봇",
+      "bbox_2d": [825, 577, 947, 720],
+      "state": "empty",
+      "role": "출하 도구",
+      "suitability": "unsuitable",
+      "reason": "로봇은 빨간 큐브를 운반하는 도구가 아니라 출하용으로 사용되지 않음"
+    }
+  ],
+  "selected_destination": "white truck",
+  "spatial_context": [
+    "컨베이어 벨트는 왼쪽 상단에 위치하고, 트럭은 오른쪽 상단에 위치",
+    "출하 영역은 중앙 상단에 위치하고, 트럭은 출하 영역의 오른쪽에 위치",
+    "로봇은 오른쪽 하단에 위치하고, 출하 영역은 그 위에 위치"
+  ],
+  "task_reasoning": "빨간 큐브는 출하용으로 설계된 트럭에 배치되어야 하며, 트럭은 출하용으로 사용 가능한 장치",
+  "uncertainty": [
+    "빨간 큐브의 위치가 이미지에서 명확히 확인되지 않음",
+    "출하 영역의 정확한 위치가 이미지에서 명확히 확인되지 않음"
+  ]
+}

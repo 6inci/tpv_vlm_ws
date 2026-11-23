@@ -1,0 +1,40 @@
+# 맥락 정책 실험 (2026-11-22). 기존 폴더는 읽기만 하고, 쓰는 파일은 모두 이 폴더 안에 둔다.
+# 좌표: 사진 픽셀 = 각 사진 묶음의 편 사진 픽셀(왜곡 없음). 지도 = env2_20261119 (m), 바닥 z = 0.
+teammate_bundle: /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120
+zones_source:
+  file: /home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-15_zone_draft/semantic_zones_draft_v2.json   # 5S 구역 초안 (P01 원본=왜곡 있는 픽셀, DRAFT)
+  image: /home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP110_word_grounding/data/pilot/P01_cheese_2026-11-14-181534.jpg
+  register_image: 1_required/camera/register_20261119_194739/undistorted.png     # 팀원 등록 사진 (newK = K, 자세 알려짐)
+photo_sets:
+  dev:      # 기준값을 정하는 사진 (옛 카메라, newK = K). 정답 = siglip_small_object_test 기준 박스 (AI 판독, 이전부터 사용)
+    dir: /home/binci/Pictures/Calibration
+    pose: photo5                      # 팀원 photo5_pose.json (8장 모두 5calibration.png와 1.5 px 안)
+  test:     # 시험 사진 (공유 환경 15장, alpha 0 newK). 사용자가 ~/Downloads/맵사진_전달(2차)/전달/ 에서 준 것과 sha256 같음
+    dir: /home/binci/vlm_ws/env2_photos_20261120/photos
+    pose: /home/binci/vlm_ws/env2_photos_20261120/camera_pose/photoset_20261120_pose.json
+extract:                  # extract.py (GPU). 실행 전에 적음
+  band_max_m: 0.15        # 작업 공간 띠 폭. 개발 사진의 실제 큐브·팔레트는 노란 선 밖 3.5–10.9 cm (최대 + 약 4 cm)
+  tile_px: 200            # 띠를 덮는 타일 (사방 반 타일씩 넓혀 400 px)
+  zoom: 2                 # 타일을 2배로 키워 DINO에 넣음 (작은 팔레트 놓침 보완)
+  band_phrases: ["small pallet", "pallet", "red cube", "traffic cone", "grey grate"]
+  support_scale: 2.4      # 받침 확인 crop = 후보 박스 긴 변 x 2.4 정사각형 (개발 기준 박스: 큐브가 올라간 팔레트 / 큐브 ≈ 50/21)
+  candidate_gate: {min_side_px: 10, max_side_px: 90}   # 기존 혼합 구조와 같음
+  exemplar_classes: {cube: cube, empty_pallet: empty_pad, loaded_pallet: pad_with_cube}   # 예시 묶음 (개발 8장 기준 박스)
+policy:                   # policy.py (모델 없음). 실행 전에 적음. 순서대로 걸러서 남은 후보끼리 비교한다
+  excluded_zones: [Z01, Z03, Z04, Z05, Z06, Z08, Z09, Z10]   # 물체 대상이 될 수 없는 5S 구역: 보행 통로, 적치 2곳, 충전, 트럭, 상단 작업셀, 사물함, 선반
+  # 2026-11-22 변경 (첫 실행 results/*_183505, *_183508 뒤): Z07(왼쪽 컨베이어 작업셀)을 뺌.
+  #  근거: 개발 사진 5·6의 실제 큐브·빈 팔레트가 노란 선 밖 10.4–11.0 cm, Z07 초안 다각형 안에 있음(초안 경계가 노란 선을 따라 그려짐).
+  #  과제 설계상 "컨베이어 벨트 옆에 놓아줘"(I2)가 가리키는 자리도 이 띠다. Z07 안쪽 깊은 곳은 띠 규칙(15 cm)으로 여전히 제외됨.
+  #  시험 사진 220134·220344의 놓침도 같은 원인이었다 (시험 사진은 이미 원인을 본 상태라 독립 시험이 아님).
+  band_max_m: 0.15        # 작업 공간 = 노란 선 밖 0–15 cm (extract와 같음)
+  z_top_m: {cube: 0.035, empty_pallet: 0.010}       # 박스 중심을 이 높이로 지도에 투영 (팀원 실측)
+  cube_min_score: 0.88    # 기존 혼합 구조와 같음
+  min_margin: 0.02        # 기존과 같음 (남은 후보끼리 1·2위 차이)
+  nms_iou: 0.5
+  distinct_iou: 0.1
+  support_rule: "큐브 후보 둘레 받침 crop의 '큐브가 올라간 팔레트' 예시 점수 >= 기준. 기준 = 개발 8장 진짜 큐브의 최소값 - 0.01"
+  pallet_rule: "빈 팔레트 예시 점수 >= 기준. 기준 = 개발 8장 진짜 빈 팔레트의 최소값 - 0.01. 큐브 같은 박스(cube >= 0.88) 중심이 안에 있으면 점유로 제외"
+  calibrate_margin: 0.01
+  match_px: 20            # 채점: 고른 박스 중심이 정답 중심에서 20 px 안이면 맞음
+  named_zones: {Z06: 하역장, Z05: 충전소, Z07: 컨베이어, Z01: 보행 통로, Z09: 사물함, Z10: 선반, Z03: 중앙 적치, Z04: 자재 적치, Z08: 로봇 팔 작업셀}
+  near_max_cm: 30         # "X 옆" = 구역 X 다각형까지 30 cm 이내 (EXP120 J-geo처럼 Python이 거리로 판정, 기록용)

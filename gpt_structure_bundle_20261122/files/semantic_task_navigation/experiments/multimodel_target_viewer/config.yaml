@@ -1,0 +1,126 @@
+# Multi-model target viewer (independent experiment; the instruction_target_viewer program is imported read-only, never modified).
+# Roles: Grounding DINO = where are candidates | SigLIP2 = what kind of object is each candidate (relative image-text similarity)
+#        VLM = what does the instruction mean, which candidate is the object to move / the place to put it | Python = checks and policy.
+# No object id, coordinate or answer of any photo is written here. Labels are generic object types of this kind of workplace.
+photo_dir: /home/binci/Pictures/Calibration          # read only
+results_dir: results                                 # one new session folder per program start
+reuse:
+  task_context_config: ../task_context_2d_navigation/config.yaml    # interpretation prompt, rules R1, relation rules, policy (read only)
+
+# ------------------------------------------------------------------ models
+worker:                                              # new worker process (mm_worker.py) for SigLIP2 and the 8B VLM
+  python: /home/binci/miniconda3/envs/qwen_vl_q4/bin/python      # existing env, used as is (bitsandbytes 0.50.2, transformers 5.16.1)
+  startup_timeout_s: 120
+  request_timeout_s: 900
+siglip:
+  model_id: google/siglip2-base-patch16-384      # 1.5 GB; so400m-patch14-384 (4.5 GB) is the stronger option but took ~2 h to download here (0.6 MB/s)
+  dtype: float16
+  text_template: "This is a photo of {label}."
+  batch: 16
+  crops:                                             # every candidate is compared twice: the object alone and the object in its surroundings
+    tight: {pad_ratio: 0.10, min_px: 24}
+    context: {pad_ratio: 1.0, min_px: 96}
+  labels:                                            # generic object types (relative ranking among THESE labels only)
+    - a red cube
+    - an orange object
+    - an orange traffic cone
+    - a small pallet
+    - a wooden pallet
+    - a metal grate
+    - a manhole cover
+    - a mobile robot
+    - a truck
+    - a truck cargo bed
+    - a cardboard box
+    - a stack of boxes
+    - a conveyor belt
+    - a production line with a conveyor and robot arms     # v0.2 verification wording of the conveyor facility (models.yaml DEV NOTE)
+    - a robot arm
+    - a storage shelf
+    - a storage rack
+    - a barrel
+    - a table
+    - a cart
+    - a whiteboard
+    - an empty floor area
+    - a floor marking
+    - a green pedestrian walkway
+  # SigLIP2 verification of the reference facilities proposed by DINO (replaces the Qwen crop check of instruction_target_viewer)
+  # conveyor: the DINO 'conveyor' box of this workplace is the whole production line (conveyor + robot arms). SigLIP2 base ranked 'a conveyor belt'
+  # only 3rd for it in E1 (2nd run), so the v0.2 wording (models.yaml: "a conveyor or a production line containing a conveyor ...") is used. Set after E1.
+  reference_labels: {conveyor: a production line with a conveyor and robot arms, truck: a truck, robot: a mobile robot}
+  # top 1 (not 2): with top 2, P4's storage-area box (SigLIP2: 1 floor marking, 2 production line) was accepted as the conveyor (session
+  # 20261119_235850). With top 1 the E1 decisions are unchanged (verified boxes were all top 1, the rejected box stays rejected). Set after E1 + P4.
+  reference_check_top_k: 1
+  # DINO proposals per facility are IoU-merged, then checked by detector score up to the v0.2 verify_top_k (conveyor 8, truck 3, robot 3); first verified wins
+  # A type check: the instruction's object label must be within the top k combined labels of the chosen candidate. k = 2 was set AFTER a
+  # smoke test on E1 stored cube candidates (the cube-like candidate ranked 'an orange object' 1st, 'a red cube' 2nd; cone / orange parts had
+  # no 'a red cube' in their top 2) -> same top-2 rule as the reference check. Tuned on E1: not validated.
+  type_check_top_k: 2
+  generic_nouns: [object, objects, item, items, thing, things, goods, product, products, cargo, stuff, load]   # no type check for these
+
+vlm_backends:                                        # selectable in the GUI; the first is the default
+  qwen3vl_8b_nf4:
+    label: "Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)"
+    model_id: Qwen/Qwen3-VL-8B-Instruct
+    revision: 0c351dd01ed87e9c1b53cbc748cba10e6187ff3b     # the cached snapshot (no refs/main in the cache; same revision as EXP110-X6 M3)
+    where: mm_worker
+    quantization: nf4
+  qwen3vl_4b_bf16:
+    label: "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+    model_id: Qwen/Qwen3-VL-4B-Instruct
+    where: v02_worker
+# Not available in this session: paid APIs (no API key configured; calling one needs the user's approval of model, price and image upload).
+
+# ------------------------------------------------------------------ detection
+detection:
+  extra_phrases: [red cube, traffic cone, mobile robot]   # added to the task_context vocabulary for the per-photo DINO pass
+reference_classes:                                   # VLM reference name -> facility (exact rule in mm_pipeline.ref_class)
+  conveyor: [conveyor, 컨베이어]
+  truck: [truck, 트럭]
+  robot_exact: [robot, the robot, mobile robot, wheeled robot, agv, amr, 로봇, 이동로봇, 이동 로봇]
+
+# ------------------------------------------------------------------ VLM role prompts (new for this architecture)
+roles:
+  max_new_tokens: 2048
+  source_prompt_id: mm_source_roles_v1
+  source_template: |
+    작업지시: "{instruction}"
+    {rules_block}이 이미지는 출발지 기준("{reference}") 주변의 탐색 영역을 확대한 것이다. 후보마다 번호와 테두리가 그려져 있다.
+    테두리와 번호는 위치 표시일 뿐이며, 테두리의 색은 물체의 색이 아니다. 테두리 안에 있는 실제 물체를 보고 판단하라.
+    아래는 이미지-텍스트 비교 모델(SigLIP2)이 각 후보 이미지를 정해진 물체 종류 목록과 비교한 상대 점수 상위 3개이다. 참고 정보이며 틀릴 수 있다.
+    {siglip_hints}
+    각 후보가 무엇으로 보이는지와, 이 작업지시에서 옮겨야 할 물체("{source_object}")에 해당하는지 판단하라. 목적지는 판단하지 않는다.
+    여러 후보가 똑같이 해당하면 모두 object_to_move로 표시하라. 1번부터 {n}번까지 모든 번호를 한 번씩 평가하라.
+
+    Return JSON only, no prose:
+    {"candidates": [{"id": <number>, "appearance": [<English>], "role": "object_to_move" | "other" | "uncertain", "reason": <one short sentence>}],
+     "object_to_move_id": <number or null>, "reason": <one short sentence>}
+  destination_prompt_id: mm_destination_roles_v1
+  destination_template: |
+    작업지시: "{instruction}"
+    {rules_block}옮길 물체는 "{source_object}"이며 이미 정해져 있다. 여기서는 그 물체를 내려놓을 대상만 평가한다.
+    이 이미지는 목적지 기준("{reference}") 주변의 탐색 영역을 확대한 것이다. 후보마다 번호와 테두리가 그려져 있다.
+    테두리와 번호는 위치 표시일 뿐이며, 테두리의 색은 물체의 색이 아니다. 테두리 안에 있는 실제 물체나 바닥을 보고 판단하라.
+    아래는 이미지-텍스트 비교 모델(SigLIP2)이 각 후보 이미지를 정해진 물체 종류 목록과 비교한 상대 점수 상위 3개이다. 참고 정보이며 틀릴 수 있다.
+    {siglip_hints}
+    각 후보에 대해 (1) 무엇으로 보이는지, (2) 위에 다른 물체가 놓여 있는지(적재 상태), (3) 옮긴 물체를 내려놓을 수 있는 면과 여유 공간이 있는지,
+    (4) 작업 목적과 주변 구역에 비추어 내려놓는 곳으로 적절한지를 판단하라. 1번부터 {n}번까지 모든 번호를 한 번씩 평가하라.
+
+    Return JSON only, no prose:
+    {"candidates": [{"id": <number>, "appearance": [<English>], "load_state": "empty" | "occupied" | "uncertain",
+                     "placement_role": "suitable" | "possible" | "unsuitable", "reason": <one short sentence>}],
+     "best_destination_id": <number or null>, "reason": <one short sentence>}
+
+# ------------------------------------------------------------------ Python checks and policy
+checks:
+  degenerate_min_candidates: 5        # a reply that gives the SAME appearance + role + load state to every one of >= this many candidates is rejected
+  duplicate_iou: 0.7                  # tied candidates that are all pairwise duplicates of one box -> one object (highest detector score kept)
+  facility_words: {conveyor: [컨베이어, conveyor], truck: [트럭, truck], robot: [로봇, robot]}   # instruction words -> facility (interpretation check)
+  no_placement_zones: [Z01]           # DRAFT pedestrian route: user rule "초록색 보행 동선은 물품 배치 장소로 사용하지 않는다"; >= 50 % of the floor footprint inside -> excluded
+  no_placement_min_frac: 0.5
+max_role_calls_per_side: 3
+goal_region:
+  region_words: [floor, area, zone, marking, road, ground, lane, region, space, surface, mat, dock, bay, path, walkway, aisle]
+  min_image_frac: 0.03
+default_rules: R1

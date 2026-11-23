@@ -1,0 +1,62 @@
+# route_console_20261122/engine.py 발췌 (공간 관계를 누가 판단하는지 보여 주는 부분만, 원문 그대로)
+
+## task_plan: Qwen 항목 -> 실행 계획 (116-151행)
+def task_plan(sl):
+    """항목 -> 실행 계획 또는 보류 이유. 해석이 서로 맞지 않거나 지원하지 않는 요청이면 경로를 만들지 않는다.
+    보정 규칙(기록함): 옮길 물체가 없는 이동인데 '물체 옆 장소'만 있고 출발 장소가 비었으면, 그 장소를 출발 장소로 본다.
+      예) "하역장에서 충전소로 이동해" -> Qwen이 하역장을 object_near에 넣은 경우 (2026-11-22 사용자 실행에서 확인)"""
+    p = {"task": sl["task"], "object": sl["object"], "near_zone": None, "near_place": None, "start_place": None,
+         "dest_kind": sl["destination_kind"], "dest_place": None, "corrections": []}
+    if sl["task"] == "go_to" and sl["object"] == "none" and sl["object_near"] not in ("none", "other") and sl["start"] == "none":
+        sl = {**sl, "start": sl["object_near"], "object_near": "none"}
+        p["corrections"].append(f"옮길 물체가 없어 '{PLACES[sl['start']]['name']}'을(를) 출발 장소로 봄 (해석에서는 물체 옆 장소로 나옴)")
+    if sl["task"] == "transport":
+        if sl["object"] == "none":
+            return None, "옮길 물체가 없는데 '옮기기'로 해석됨 (해석이 서로 맞지 않음)"
+        if sl["object"] not in CFG["graspable_objects"]:
+            return None, "이 로봇이 집을 수 있는 물체는 빨간 큐브뿐"
+    elif sl["object"] not in ("none",):
+        return None, "물체를 말했는데 '로봇만 이동'으로 해석됨 (해석이 서로 맞지 않음)"
+    if sl["object_near"] not in ("none",):
+        pl = PLACES.get(sl["object_near"])
+        if not pl or not pl["zone"]:
+            return None, f"'{sl['object_near']}' 옆을 판단할 구역이 지도에 없음"
+        p["near_zone"], p["near_place"] = pl["zone"], sl["object_near"]
+    if sl["start"] not in ("none",):
+        pl = PLACES.get(sl["start"])
+        if not pl or not pl["stop"]:
+            return None, f"출발 장소 '{sl['start']}'에 정해진 정차 자리가 없음"
+        p["start_place"] = sl["start"]
+    if sl["destination_kind"] == "other":
+        return None, "도착지가 빈 팔레트나 지도에 있는 장소가 아님"
+    if sl["destination_kind"] == "place":
+        if sl["destination_place"] in ("none", "other"):
+            return None, "도착지를 말하지 않았거나 지도에 없는 장소임"
+        pl = PLACES.get(sl["destination_place"])
+        if not pl or not pl["stop"]:
+            return None, f"도착 장소 '{sl['destination_place']}'에 정해진 정차 자리가 없음"
+        p["dest_place"] = sl["destination_place"]
+    return p, None
+
+## Engine.decide: '장소 옆' 판단 (246-266행)
+    def decide(self, plan, perc):
+        rows = copy.deepcopy(perc["rows"])
+        out = {"A": None, "B": None}
+        if plan["task"] == "transport":
+            if plan["near_zone"]:
+                poly = self.zones[plan["near_zone"]]["polygon_map_m"]
+                for r in rows.values():
+                    d = CM._poly_dist(r["cube_map_xy_m"], poly) * 100
+                    ok = d <= CFG["near_max_cm"]
+                    r["A_checks"].append({"check": "장소 옆", "ok": bool(ok),
+                                          "detail": f"{PLACES[plan['near_place']]['name']} 구역까지 {max(d, 0):.0f} cm (한도 {CFG['near_max_cm']} cm)"})
+                    if r["A_pass"] and not ok:
+                        r["A_pass"], r["A_failed_at"] = False, "장소 옆"
+            out["A"] = POL.decide(rows, "A", "cube")
+        if plan["dest_kind"] == "empty_pallet":
+            out["B"] = POL.decide(rows, "B", "empty_pallet")
+        else:
+            pl = PLACES[plan["dest_place"]]
+            out["B"] = {"status": "SELECTED", "why": f"지도의 장소 '{pl['name']}' (팀원 정차 자리)", "id": None, "box": None, "place": plan["dest_place"]}
+        out["rows"] = rows
+        return out

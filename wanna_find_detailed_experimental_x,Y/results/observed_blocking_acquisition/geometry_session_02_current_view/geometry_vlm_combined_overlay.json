@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T06:35:10+09:00",
+  "purpose": "VISUALIZATION_ONLY",
+  "geometry_session": "geometry_session_02_current_view",
+  "output": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/geometry_vlm_combined_overlay.png",
+    "sha256": "d99eadff9f89472af77458800c074a06c74a11f4874b00c77bfde1d9c7a2edba",
+    "width": 1920,
+    "height": 1080
+  },
+  "source_artifacts": [
+    {"file":"reference_raw.png","sha256":"1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299"},
+    {"file":"tile_grid_points.json","sha256":"24d648feb8de81d5f825dbc09ea03bbcb1be2dc57f067792c3ed9e591fe2fab4"},
+    {"file":"tile_grid_fit_holdout_split.json","sha256":"09a2741d78784e8b924e8728456647d4e43e9eaf683ce1be04898820b7af805f"},
+    {"file":"homography_current_session.json","sha256":"070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da"},
+    {"file":"homography_current_session_validation.json","sha256":"6c374640b400a4d241fd34d8db23bc5360d66c8561d4c6a6c8c4e4618d13f89e"},
+    {"file":"vlm_metric_grounding.json","sha256":"ad8b44c2a59423198c6cf4d2c471a9ed2819bf7609db4e1dda26f65deba6dab7"},
+    {"file":"aruco_detection.json","sha256":"512f8feca8998316528ed2367c0361b3f17bc0093aaa841d3eced46c972d9e1e"}
+  ],
+  "layers": [
+    {"name":"ORIGINAL_CAMERA_FRAME","style":"unchanged RAW 1920x1080 background"},
+    {"name":"FIT","point_ids":["G00","G02","G22","G03","G23","G05","G25","G16"],"style":"magenta filled circle with white outline"},
+    {"name":"HOLDOUT","point_ids":["G12","G13","G14","G15","G06","G26"],"style":"orange diamond with white outline"},
+    {"name":"WORLD_ORIGIN_AND_AXES","origin":"G00","style":"WORLD ORIGIN label; short +X yellow and +Y cyan arrows","axis_direction_source":"stored grid-point vectors only"},
+    {"name":"VLM_OBJECT","label":"small brown cardboard box on the floor","bbox_raw_image_px":[892.8,621.0,944.64,653.4],"style":"green rectangle and metric label"},
+    {"name":"GROUND_REFERENCE","policy":"BBOX_BOTTOM_CENTER_DEVELOPMENT_GROUND_REFERENCE","raw_image_px":[918.72,653.4],"world_xy_m":[0.1594835965362156,1.5764884784994297],"style":"red bullseye and callout"},
+    {"name":"ROBOT_MARKER","marker_id":0,"style":"cyan polygon and center","ground_homography_applied":false},
+    {"name":"INFORMATION_PANEL","pixel_domain":"UNDISTORTED_IMAGE_PX -> WORLD_XY","tile_pitch_m":0.6,"fit_rmse_mm":3.552,"holdout_rmse_mm":4.060,"holdout_max_mm":7.035,"existing_qwen_run_count":1}
+  ],
+  "execution_boundaries": {
+    "new_frame_capture": false,
+    "qwen_inference_runs_this_task": 0,
+    "homography_recomputed": false,
+    "geometry_modified": false,
+    "fit_holdout_split_modified": false,
+    "navigation_run": false,
+    "step32_started": false
+  }
+}

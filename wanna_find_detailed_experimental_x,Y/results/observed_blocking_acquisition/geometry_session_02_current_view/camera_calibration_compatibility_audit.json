@@ -1,0 +1,154 @@
+{
+  "classification": "SUPPORTED_WITH_LIMITATION",
+  "calibration_provenance": {
+    "compatibility_classification": "SUPPORTED_WITH_LIMITATION",
+    "calibration_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "resolution_px": [
+      1920,
+      1080
+    ],
+    "selected_frames": 18,
+    "checkerboard_inner_corners": [
+      5,
+      3
+    ],
+    "square_size_mm": 40.0,
+    "rms_reprojection_error_px": 0.20571622922708746,
+    "K": [
+      [
+        1193.9285743624512,
+        0.0,
+        905.4672749500978
+      ],
+      [
+        0.0,
+        1191.56191006301,
+        513.000222084921
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "D_k1_k2_p1_p2_k3": [
+      -0.20298479067273242,
+      0.13060299315148366,
+      0.027118263577020307,
+      0.003928149452520465,
+      -0.06119022290385212
+    ],
+    "distortion_model": "plumb_bob",
+    "same_camera_support": [
+      "ROS YAML names hd_web_camera_ucamera001",
+      "current exact by-id serial is Ucamera001",
+      "both calibration target domain and current native capture are 1920x1080"
+    ],
+    "limitations": [
+      "Calibration was reconstructed from screenshots; original raw/webm calibration frames were unavailable.",
+      "The LIVE-window offset and 1536x864 to 1920x1080 scaling were analytically removed.",
+      "Calibration metadata contains no independently recorded hardware serial or historical UVC control snapshot.",
+      "Historical focus, firmware-internal processing, MJPG mode, and active sensor area cannot be independently confirmed."
+    ],
+    "archived_overlay_dimensions": {
+      "selected_corner_overlays_count": 18,
+      "selected_corner_overlay_size_px": [
+        1920,
+        1080
+      ],
+      "final_good_validation_overlays_count": 4,
+      "validation_overlay_size_px": [
+        1536,
+        864
+      ],
+      "interpretation": "Consistent with the report's explicit screenshot-coordinate reconstruction; these are overlays, not preserved native calibration frames."
+    },
+    "principal_point_diagnostic": {
+      "image_center_px": [
+        959.5,
+        539.5
+      ],
+      "offset_px": [
+        -54.03272504990218,
+        -26.499777915078994
+      ],
+      "offset_percent_of_frame": [
+        -2.8142044296824054,
+        -2.4536831402850923
+      ],
+      "assessment": "plausible but not independently physically validated"
+    },
+    "focal_consistency": {
+      "fx_over_fy": 1.0019861866005066,
+      "difference_percent": 0.19861866005066453
+    }
+  },
+  "current_uvc_and_image_pipeline": {
+    "identity": "Ucamera001",
+    "usb_vendor_product": "05a3:9331",
+    "driver": "uvcvideo 6.8.12",
+    "current_recheck_by_id": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "current_node_at_recheck": "/dev/video7",
+    "native_mode": "MJPG 1920x1080 30fps",
+    "native_mode_supported": true,
+    "v4l2_crop_bounds_px": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "v4l2_crop_default_px": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "pixel_aspect": [
+      1,
+      1
+    ],
+    "current_capture_transformations": {
+      "resize": false,
+      "crop": false,
+      "rotation": false,
+      "undistortion": false,
+      "software_warp": false
+    },
+    "capture_transports": {
+      "reference_raw": "PipeWire shared Ucamera001 source negotiated image/jpeg 1920x1080 30/1, saved one JPEG then lossless PNG decoded",
+      "reference_aruco_recheck_01": "direct V4L2 by-id image/jpeg 1920x1080 30/1 then jpegdec/pngenc",
+      "transport_consistency_result": "STATIC_REGISTRATION_PASS"
+    },
+    "geometry_controls": {
+      "zoom": "NOT_EXPOSED",
+      "pan": "NOT_EXPOSED",
+      "tilt": "NOT_EXPOSED",
+      "focus_absolute": "NOT_EXPOSED",
+      "focus_auto": "NOT_EXPOSED",
+      "exposure": "NOT_EXPOSED",
+      "digital_zoom": "NOT_EXPOSED",
+      "roi": "NOT_EXPOSED"
+    },
+    "controls_modified": false,
+    "limitation": "No exposed framing/focus control or current crop supports a software framing change, but absent historical controls cannot prove identical firmware-internal state."
+  },
+  "cross_frame_domain_effect": {
+    "tile_source": "reference_raw.png",
+    "marker_source": "reference_aruco_recheck_01.png",
+    "camera_stability_registration": {
+      "inlier_ratio": 0.9577940348902645,
+      "inlier_rmse_px": 0.36236608,
+      "scale_delta_percent": 0.00463291361428,
+      "rotation_deg": -0.0003158518,
+      "maximum_representative_displacement_px": 0.324687
+    },
+    "tile_point_registration_displacement_px": {
+      "mean": 0.17079500683949803,
+      "rmse": 0.17305768756399867,
+      "maximum": 0.2578562555036474
+    },
+    "baseline_se3_tile_holdout_rmse_px_using_reference_points": 7.554916654300632,
+    "baseline_se3_tile_holdout_rmse_px_using_registration_predicted_fresh_points": 7.51880454891537,
+    "conclusion": "Cross-frame reuse contributes much less than one pixel and cannot explain the 5-15 px failure."
+  }
+}

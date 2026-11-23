@@ -1,0 +1,98 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "46fbe7cf16da1d1408f06f669dad908ded040c14916314008b69fe04fa1b35ff",
+  "image_path": "/home/binci/Pictures/Calibration/2calibration.png",
+  "image_sha256": "dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2712,
+  "n_output_tokens": 614,
+  "hit_max_new_tokens": false,
+  "latency_s": 19.111,
+  "wall_s": 19.24,
+  "peak_vram_gib": 8.981,
+  "raw_response": "{\n  \"purpose\": \"Move the red cube to an empty pallet\",\n  \"source_object\": {\n    \"name_en\": \"red cube\"\n  },\n  \"source_reference\": {\n    \"name_en\": null,\n    \"bbox_2d\": null\n  },\n  \"source_relation\": \"none\",\n  \"destination_meaning\": \"Empty pallet for placing the red cube\",\n  \"destination_reference\": {\n    \"name_en\": \"empty pallet\",\n    \"bbox_2d\": [584, 804, 654, 904],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Green pedestrian walkway with footprints\",\n      \"visual_evidence\": [\n        \"green floor with footprints\",\n        \"no robot body allowed\"\n      ],\n      \"bbox_2d\": [305, 58, 560, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Yellow-bordered main robot travel area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"robot body allowed\"\n      ],\n      \"bbox_2d\": [100, 270, 970, 950],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"White-bordered conveyor and robot arm workstation\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot body forbidden\"\n      ],\n      \"bbox_2d\": [100, 270, 260, 720],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Yellow-bordered cargo storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"robot body not allowed, only access\"\n      ],\n      \"bbox_2d\": [615, 430, 950, 560],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\n        \"white truck\",\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [615, 0, 890, 270],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Safety cones and boundary lines\",\n      \"visual_evidence\": [\n        \"orange cones\",\n        \"white and yellow lines\"\n      ],\n      \"bbox_2d\": [100, 0, 970, 950],\n      \"robot_body_access\": \"unknown\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The red cube is not visible in the image, so its location is unknown.\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_003_U24768580",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/2calibration.png",
+  "image_sha256": "dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a",
+  "prompts": [
+   "red cube",
+   "empty pallet"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 67,
+  "wall_s": 0.59,
+  "peak_vram_gib": 1.969
+ },
+ {
+  "stage": "dino_roi_U24768580_truck_run_003_U24768580",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U24768580_inputs/roi_truck.png",
+  "image_sha256": "92f21dc4c94f5192399706a3bf7254f76623c8782288d7d9369e401b5eb43045",
+  "prompts": [
+   "red cube",
+   "empty pallet"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 36,
+  "wall_s": 0.6,
+  "peak_vram_gib": 1.958
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "source_roles_v2",
+  "prompt_sha256": "f1aa3b925215a9051b03f8013e9ec6be6765718c9df8dc74fe8263e40ee8a8e5",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_003_U24768580/inputs/source_1.png",
+  "image_sha256": "36470fd5db8970d4175a4dba7fa166673bf9ba2849fdad72013825fea6a4434f",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2508,
+  "n_output_tokens": 91,
+  "hit_max_new_tokens": false,
+  "latency_s": 3.648,
+  "wall_s": 3.77,
+  "peak_vram_gib": 8.938,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"red cube\"\n      ],\n      \"role\": \"object_to_move\",\n      \"reason\": \"The red cube is the object that needs to be moved.\"\n    }\n  ],\n  \"object_to_move_id\": 17,\n  \"reason\": \"The red cube is the target object to be moved according to the instruction.\"\n}"
+ },
+ {
+  "stage": "destination_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "destination_roles_v2",
+  "prompt_sha256": "6ff91e6a6b52aa86103dad0893a2cf4a1ed03bcffb6a18d0e67fb8a54140e69a",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_003_U24768580/inputs/destination_1.png",
+  "image_sha256": "b10b74a12188df592b0a9a008e0c760cf71265d8bbdf3fe33532a449f3546d32",
+  "image_size": [
+   1552,
+   1328
+  ],
+  "n_input_tokens": 2604,
+  "n_output_tokens": 187,
+  "hit_max_new_tokens": false,
+  "latency_s": 6.466,
+  "wall_s": 6.58,
+  "peak_vram_gib": 8.957,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"a pallet with four cylindrical objects on it\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"The pallet is already occupied by cylindrical objects and cannot be used as an empty pallet.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"a rectangular grating with vertical slats\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"The grating is empty and located in the robot travel area, which allows the robot to place an object there.\"\n    }\n  ],\n  \"best_destination_id\": 2,\n  \"reason\": \"The grating is empty and within the robot travel area, making it suitable for placing the red cube.\"\n}"
+ }
+]

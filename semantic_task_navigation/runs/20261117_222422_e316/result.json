@@ -1,0 +1,454 @@
+{
+  "schema_version": "stnav-result-0.1",
+  "run_id": "20261117_222422_e316",
+  "analysis_mode": "LOCAL_ONLY",
+  "map_mode": "IMAGE_SPACE_DEMO",
+  "metric_output_enabled": false,
+  "command": "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘.",
+  "frame": {
+    "frame_id": 3,
+    "timestamp": 1794921502.9767063,
+    "timestamp_iso": "2026-11-17T22:18:22.976",
+    "source": {
+      "kind": "image",
+      "path": "/home/binci/Pictures/undistorted_26007129092710.png",
+      "camera_model": null,
+      "camera_model_from": "EXIF Model tag",
+      "width": 1920,
+      "height": 1080
+    },
+    "width": 1920,
+    "height": 1080,
+    "coordinate_frame": "raw_image_px",
+    "raw_frame_png": "input/raw_frame.png",
+    "decoded_pixels_sha256": "8f37d18462e87e71284a2cd7c1ec56c8cbc277c906dbe233e48f0dd007dd2172"
+  },
+  "calibration": {
+    "map_mode": "IMAGE_SPACE_DEMO",
+    "metric_output_enabled": false,
+    "undistort_view_available": false,
+    "undistort_view_note": "intrinsics validity for the current install is UNVERIFIED; view only",
+    "camera_model": null,
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "checks": [
+      {
+        "check": "resolution",
+        "expected": [
+          1920,
+          1080
+        ],
+        "actual": [
+          1920,
+          1080
+        ],
+        "ok": true
+      },
+      {
+        "check": "camera_model",
+        "expected": "HD Web Camera",
+        "actual": null,
+        "ok": false
+      }
+    ],
+    "reasons": [
+      "camera model unknown or different from the calibrated camera",
+      "intrinsics not validated for the current camera installation",
+      "homography status: not_available (no validated floor-plane transform)"
+    ],
+    "intrinsics": {
+      "file": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+      "sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+      "width": 1920,
+      "height": 1080,
+      "camera_matrix": [
+        [
+          1193.9285743624512,
+          0.0,
+          905.4672749500978
+        ],
+        [
+          0.0,
+          1191.56191006301,
+          513.000222084921
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dist_coeffs": [
+        -0.20298479067273242,
+        0.13060299315148366,
+        0.027118263577020307,
+        0.003928149452520465,
+        -0.06119022290385212
+      ],
+      "rms_px": 0.20571622922708746,
+      "calibrated_on": "2026-08-14"
+    },
+    "homography_file": null,
+    "homography_status": "not_available"
+  },
+  "steps": [
+    {
+      "name": "parse_task",
+      "label": "명령 해석",
+      "status": "OK",
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "input_summary": "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘.",
+      "output_summary": "transport_and_place: target=red cube (produced_by conveyor); destination=loading_area near truck",
+      "duration_s": 15.016,
+      "error": null,
+      "next": "analyze_scene",
+      "started_at": "2026-11-17T22:24:22"
+    },
+    {
+      "name": "analyze_scene",
+      "label": "장면 이해",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": 20.038,
+      "error": "stopped by user (worker terminated)",
+      "next": "detect_objects",
+      "started_at": "2026-11-17T22:24:37"
+    },
+    {
+      "name": "detect_objects",
+      "label": "객체 탐지·검증",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "inspect_target"
+    },
+    {
+      "name": "inspect_target",
+      "label": "대상(빨간 큐브) 정밀 확인",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "build_scene_graph"
+    },
+    {
+      "name": "build_scene_graph",
+      "label": "공간 관계",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "build_navigation_map"
+    },
+    {
+      "name": "build_navigation_map",
+      "label": "지도 생성",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "infer_destination"
+    },
+    {
+      "name": "infer_destination",
+      "label": "의미적 하역장 추론",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "assess_placement"
+    },
+    {
+      "name": "assess_placement",
+      "label": "배치 가능 영역",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "select_pickup_pose"
+    },
+    {
+      "name": "select_pickup_pose",
+      "label": "픽업 접근 위치",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "select_dropoff_pose"
+    },
+    {
+      "name": "select_dropoff_pose",
+      "label": "하역 접근 영역·목표",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "plan_path"
+    },
+    {
+      "name": "plan_path",
+      "label": "경로계획",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "validate_path"
+    },
+    {
+      "name": "validate_path",
+      "label": "경로 검증",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "create_handoff_request"
+    },
+    {
+      "name": "create_handoff_request",
+      "label": "작업 인계",
+      "status": "CANCELLED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": "save_results"
+    },
+    {
+      "name": "save_results",
+      "label": "결과 저장",
+      "status": "OK",
+      "model": "artifacts",
+      "input_summary": "run 20261117_222422_e316",
+      "output_summary": "/home/binci/vlm_ws/semantic_task_navigation/runs/20261117_222422_e316 (result.json, manifest.json, figures)",
+      "duration_s": null,
+      "error": "stopped by user",
+      "next": null,
+      "started_at": "2026-11-17T22:24:57"
+    }
+  ],
+  "overall_status": "CANCELLED",
+  "status_reasons": [
+    "analyze_scene: stopped by user (worker terminated)",
+    "detect_objects: stopped by user",
+    "inspect_target: stopped by user",
+    "build_scene_graph: stopped by user",
+    "build_navigation_map: stopped by user",
+    "infer_destination: stopped by user",
+    "assess_placement: stopped by user",
+    "select_pickup_pose: stopped by user",
+    "select_dropoff_pose: stopped by user",
+    "plan_path: stopped by user",
+    "validate_path: stopped by user",
+    "create_handoff_request: stopped by user",
+    "save_results: stopped by user"
+  ],
+  "status_note": "PLAN_COMPLETE = both approach poses and paths exist and passed validation in image space; it does not mean the robot moved or grasped anything.",
+  "task": {
+    "task_type": "transport_and_place",
+    "target": {
+      "class": "cube",
+      "color": "red",
+      "source_reference": "conveyor",
+      "source_relation": "produced_by"
+    },
+    "destination": {
+      "region_type": "loading_area",
+      "reference_object": "truck"
+    },
+    "actions": [
+      "detect_target",
+      "locate_pickup_region",
+      "navigate_to_pickup",
+      "handoff_to_local_grasping",
+      "confirm_pickup",
+      "navigate_to_loading_area",
+      "handoff_to_placement",
+      "verify_completion"
+    ],
+    "actions_source": "fixed_template (not model output)",
+    "parser": {
+      "backend": "qwen3_vl_local",
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "prompt_id": "task_parse_v1",
+      "raw_response": "{\n  \"status\": \"ok\",\n  \"task_type\": \"transport_and_place\",\n  \"target\": {\n    \"class\": \"cube\",\n    \"color\": \"red\",\n    \"count\": 1,\n    \"source_reference\": \"conveyor_belt\",\n    \"source_relation\": \"produced_by\"\n  },\n  \"destination\": {\n    \"region_type\": \"unloading_area\",\n    \"reference_object\": \"truck\"\n  },\n  \"reason\": \"The robot should pick up a red cube produced by the conveyor belt and place it at the unloading area near the truck.\"\n}",
+      "parsed_output": {
+        "status": "ok",
+        "task_type": "transport_and_place",
+        "target": {
+          "class": "cube",
+          "color": "red",
+          "count": 1,
+          "source_reference": "conveyor_belt",
+          "source_relation": "produced_by"
+        },
+        "destination": {
+          "region_type": "unloading_area",
+          "reference_object": "truck"
+        },
+        "reason": "The robot should pick up a red cube produced by the conveyor belt and place it at the unloading area near the truck."
+      },
+      "normalization_notes": []
+    }
+  },
+  "task_parse": null,
+  "scene_analysis": null,
+  "detections": null,
+  "target_inspection": null,
+  "start": null,
+  "start_error": null,
+  "scene_graph": null,
+  "region_grounding": null,
+  "map": null,
+  "goals": {},
+  "paths": {},
+  "validation": {},
+  "handoff": null,
+  "destination": {
+    "semantic_loading_region": null,
+    "semantic_regions_plausible": [],
+    "object_placement_region": null,
+    "robot_approach_region": null,
+    "selected_robot_goal": null,
+    "goal_reach_check": null,
+    "choice": null,
+    "chain": [],
+    "failed_stage": "semantic_region",
+    "final_stage_status": "NOT_RUN",
+    "claims": {
+      "semantic_loading_region": "NONE",
+      "object_placement_region": "GEOMETRIC_ONLY (surface and gripper reach unmeasured)",
+      "robot_approach_region": "NOT_RUN reach: None",
+      "robot_task_success": "NOT_CLAIMABLE (image-space plan only; reach/placement unmeasured; no execution)"
+    }
+  },
+  "evaluation_record": {
+    "note": "automatic statuses only; accuracy needs ground truth (scripts/evaluate_run.py). Planning success is not robot execution success.",
+    "task_parsing": {
+      "backend": "qwen3_vl_local",
+      "status": "OK",
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "object_grounding": {
+      "accepted": [],
+      "target_status": null,
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "semantic_grounding": {
+      "status": null,
+      "selected": null,
+      "prior_zone_consistency": null,
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "destination_chain": {
+      "final_stage_status": "NOT_RUN",
+      "failed_stage": "semantic_region",
+      "ground_truth": null
+    },
+    "goal_selection": {
+      "pickup": null,
+      "dropoff": null
+    },
+    "path_planning": {},
+    "end_to_end_planning": {
+      "status": "CANCELLED",
+      "uses_manual_inputs": [
+        "navigation map",
+        "robot footprint, reach distances"
+      ],
+      "automatic_perception": true,
+      "counts_as_automatic_e2e": false
+    }
+  },
+  "provenance": {
+    "manual_inputs": [
+      {
+        "item": "navigation map",
+        "source": "config/maps/reference_scene_map.json",
+        "review_status": "DRAFT_UNCONFIRMED",
+        "knowledge": "manual_prior"
+      },
+      {
+        "item": "robot footprint, reach distances",
+        "source": "config/planning.yaml (image-space assumptions)",
+        "knowledge": "manual_prior"
+      }
+    ],
+    "auto_inferred": [
+      "task parse (LLM)",
+      "scene description (VLM)",
+      "object candidates (detector) + verification (VLM)",
+      "target selection",
+      "loading-area choice (VLM)"
+    ],
+    "deterministic": [
+      "coordinate transforms",
+      "relations",
+      "map",
+      "goal selection",
+      "A* + simplification",
+      "validation"
+    ]
+  },
+  "timing": {
+    "total_s": 35.165,
+    "per_step_s": {
+      "parse_task": 15.016,
+      "analyze_scene": 20.038,
+      "detect_objects": null,
+      "inspect_target": null,
+      "build_scene_graph": null,
+      "build_navigation_map": null,
+      "infer_destination": null,
+      "assess_placement": null,
+      "select_pickup_pose": null,
+      "select_dropoff_pose": null,
+      "plan_path": null,
+      "validate_path": null,
+      "create_handoff_request": null,
+      "save_results": null
+    }
+  },
+  "internal_error": null,
+  "figures": {
+    "01_raw": "figures/01_raw.png",
+    "02_detections": "figures/02_detections.png",
+    "03_red_cube_roi": "figures/03_red_cube_roi.png",
+    "04_semantic_regions": "figures/04_semantic_regions.png",
+    "05_occupancy_map": "figures/05_occupancy_map.png",
+    "06_pickup_path": "figures/06_pickup_path.png",
+    "07_delivery_path": "figures/07_delivery_path.png",
+    "08_final_overview": "figures/08_final_overview.png",
+    "09_object_relationship": "figures/09_object_relationship.png",
+    "10_traversable_map": "figures/10_traversable_map.png",
+    "11_destination_chain": "figures/11_destination_chain.png"
+  }
+}

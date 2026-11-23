@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.1",
+  "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+  "unit": "m",
+  "mode": "ROBOT_ONLY_TRANSLATIONAL_BASELINE",
+  "fixed_yaw_rad": 0.0,
+  "geometry_status": "DEVELOPMENT_SYNTHETIC",
+  "current_path_source_planner": "SAFETY_COST_ASTAR",
+  "workspace_bounds": {"x_min": 0.0, "x_max": 1.2, "y_min": 0.0, "y_max": 1.8},
+  "source_detail": "Explicit offline development events for deterministic path invalidation; not camera or VLM observations.",
+  "scenarios": [
+    {
+      "scenario_id": "D1",
+      "description": "A new obstacle appears away from the current path.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "initial_goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_static_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "initial_dynamic_obstacles": [],
+      "events": [
+        {"event_id": "D1_add_away", "event_index": 1, "operation": "ADD", "expected_path_state": "VALID", "obstacle": {"id": "dynamic_box_01", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.15, "x_max": 0.25, "y_min": 1.35, "y_max": 1.45}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic ADD away from the current path."}}
+      ]
+    },
+    {
+      "scenario_id": "D2",
+      "description": "A new obstacle appears directly on the current path.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "initial_goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_static_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "initial_dynamic_obstacles": [],
+      "events": [
+        {"event_id": "D2_add_on_path", "event_index": 1, "operation": "ADD", "expected_path_state": "BLOCKED", "obstacle": {"id": "dynamic_box_02", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic ADD across the current path."}}
+      ]
+    },
+    {
+      "scenario_id": "D3",
+      "description": "An existing dynamic obstacle moves onto the current path.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "initial_goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_static_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "initial_dynamic_obstacles": [
+        {"id": "dynamic_box_03", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.15, "x_max": 0.25, "y_min": 1.35, "y_max": 1.45}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_INITIAL_STATE", "source_detail": "Synthetic initial obstacle away from the current path."}
+      ],
+      "events": [
+        {"event_id": "D3_move_onto_path", "event_index": 1, "operation": "MOVE", "expected_path_state": "BLOCKED", "obstacle": {"id": "dynamic_box_03", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic MOVE onto the current path."}}
+      ]
+    },
+    {
+      "scenario_id": "D4",
+      "description": "A blocking obstacle is added and then removed from the same current path.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "initial_goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_static_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "initial_dynamic_obstacles": [],
+      "events": [
+        {"event_id": "D4_add_blocker", "event_index": 1, "operation": "ADD", "expected_path_state": "BLOCKED", "obstacle": {"id": "dynamic_box_04", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic ADD across the current path."}},
+        {"event_id": "D4_remove_blocker", "event_index": 2, "operation": "REMOVE", "expected_path_state": "VALID", "obstacle": {"id": "dynamic_box_04", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic REMOVE of the blocking obstacle."}}
+      ]
+    },
+    {
+      "scenario_id": "D5",
+      "description": "A dynamic obstacle moves onto and then away from the same current path.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "initial_goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_static_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "initial_dynamic_obstacles": [
+        {"id": "dynamic_box_05", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.15, "x_max": 0.25, "y_min": 1.35, "y_max": 1.45}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_INITIAL_STATE", "source_detail": "Synthetic initial obstacle away from the current path."}
+      ],
+      "events": [
+        {"event_id": "D5_move_onto_path", "event_index": 1, "operation": "MOVE", "expected_path_state": "BLOCKED", "obstacle": {"id": "dynamic_box_05", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.88, "x_max": 0.92, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic MOVE onto the current path."}},
+        {"event_id": "D5_move_away", "event_index": 2, "operation": "MOVE", "expected_path_state": "VALID", "obstacle": {"id": "dynamic_box_05", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.15, "x_max": 0.25, "y_min": 1.35, "y_max": 1.45}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic MOVE away from the current path."}}
+      ]
+    },
+    {
+      "scenario_id": "D6",
+      "description": "A new obstacle raises safety risk near the path without hard collision.",
+      "initial_start": {"x": 0.2, "y": 0.3, "status": "DEVELOPMENT_DEFINED"},
+      "initial_goal": {"x": 0.95, "y": 1.5, "status": "DEVELOPMENT_DEFINED"},
+      "initial_static_obstacles": [
+        {"id": "dev_obstacle_01", "state_role": "STATIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_DEVELOPMENT_CONFIG", "source_detail": "STEP 14 baseline synthetic obstacle."}
+      ],
+      "initial_dynamic_obstacles": [],
+      "events": [
+        {"event_id": "D6_add_near_path", "event_index": 1, "operation": "ADD", "expected_path_state": "VALID", "obstacle": {"id": "dynamic_box_06", "state_role": "DYNAMIC_OBSTACLE", "geometry_status": "DEVELOPMENT_SYNTHETIC", "shape": "axis_aligned_rectangle", "bounds": {"x_min": 0.65, "x_max": 0.75, "y_min": 0.85, "y_max": 0.95}, "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE", "unit": "m", "source_type": "EXPLICIT_OFFLINE_EVENT", "source_detail": "Synthetic ADD near the current path for a soft-cost-only change."}}
+      ]
+    }
+  ]
+}

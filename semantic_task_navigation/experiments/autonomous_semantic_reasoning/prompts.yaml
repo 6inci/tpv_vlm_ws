@@ -1,0 +1,106 @@
+# Prompt text for the three conditions. The ONLY difference between conditions is the `prior` block:
+#   A  : image + instruction                                  (no background knowledge)
+#   B  : A + general 5S principles
+#   C1 : A + general work-site space-management rules
+# Everything else (head, tail/schema, image, model, decoding) is identical.
+#
+# Content rules (checked by test_probe_offline.py):
+#   - no colour, coordinate, equipment position or zone of THIS site; no candidate regions;
+#   - no query phrase chosen on a development image; no map / boundary / robot-reach information.
+# The instruction text is inserted at {instruction}.
+#
+# Honesty note: the person who wrote these texts had seen the site. The wording of B and especially C1
+# was written WITHOUT copying anything from the scene, but it was not written blind; C1 states the
+# general convention that a loading/unloading area is a marked place where a vehicle stops. Treat C1 as
+# a stronger hint than B, not as a neutral condition.
+
+prompt_version: v3
+history:
+  - version: v0
+    date: 2026-11-18
+    note: "initial text, written before any model output was seen"
+  - version: v1
+    date: 2026-11-18
+    note: >-
+      Changed after the dev run results/20261118_153327_dev_bb28 (image D1 only). In v0, conditions B and C1
+      returned empty observed_objects/functional_areas and "withheld" because "no red cube is visible",
+      while A returned a full answer: the instruction did not say what "withheld" refers to. v1 changes the
+      COMMON head only (two rules: always list what you see; "withheld" concerns only the destination place,
+      not whether the carried object is visible). The prior blocks (A/B/C1) and the tail are unchanged.
+      The v0 outputs are kept as they are in the dev run folder and reported.
+  - version: v2
+    date: 2026-11-18
+    note: >-
+      Changed after the dev run results/20261118_153510_dev_4563 (image D1 only). Under v1, condition B
+      repeated the same observed_objects entry until the 2400-token limit (INVALID_RESPONSE, kept as is);
+      A and C1 were valid. v2 adds one COMMON head rule ("list each object or area only once; never repeat
+      an entry"). Prior blocks and tail unchanged.
+  - version: v3
+    date: 2026-11-18
+    note: >-
+      Changed after the dev run results/20261118_153827_dev_f8d2 (image D1 only). Under v2, condition C1
+      looped inside observed_objects (46 entries: "orange cone"/"green barrier" repeated with shifting boxes
+      until the token limit, so functional_areas was never reached; INVALID_RESPONSE, kept as is) and B
+      listed 25 objects. Every loop so far (v1 B, v2 C1) was an instance-level object list with boxes.
+      v3 changes the COMMON output format only: observed_objects becomes a kind-level inventory
+      {label, count, location_in_image, visible_evidence} without boxes (the task asks for objects, boxes are
+      only required for the proposed areas), and the repeat rule says "each KIND once". Prior blocks A/B/C1
+      unchanged. FINAL format change: prompts are frozen after the v3 dev run; any condition that still
+      fails is reported as a result, not tuned away.
+
+head: |
+  You are looking at a fixed overhead camera image of a miniature logistics work floor (a small-scale model of a work site).
+  A person gave this instruction (written in Korean):
+
+  "{instruction}"
+
+  Decide, from the image, which place on the floor the instruction asks for, and propose that place yourself. You are not given any list of candidate places.
+
+  Rules:
+  - "observed_evidence" is only what you can actually see in this image. "inference" is what you conclude from it. Keep them separate.
+  - Do not describe objects or markings that you cannot see.
+  - Coordinates are image coordinates: bbox_2d = [x_min, y_min, x_max, y_max], integers normalized to 0-1000 over the image width and height (0,0 is the top-left corner, 1000,1000 the bottom-right corner).
+  - You do not know the real size of anything. Do not give metric distances.
+  - Always list the main objects and floor areas that you can see, even if you end up withholding the decision. List each kind of object only once (use "count" when there are several identical items) and each floor area only once; never repeat an entry.
+  - If you cannot identify a suitable destination place from the image alone, do not invent a box: set "decision" to "withheld", set "destination_area_id" to null and explain why in "reason". "decision" concerns only the destination place; it does not depend on whether the object to be carried is visible in the image.
+  - You are not controlling a robot and you do not plan paths. Describe what you see and what the task needs.
+
+prior:
+  A: ""
+  B: |
+    Background knowledge (general; not specific to this image. Use it only if it helps you, and never treat it as something you can see):
+    The 5S method is a general principle for organizing a workplace:
+    1. Sort: separate what is needed from what is not needed.
+    2. Set in order: give each item and each activity a designated place, and make that place easy to recognize.
+    3. Shine: keep the workplace clean and inspected.
+    4. Standardize: use the same visible rules, labels and markings everywhere.
+    5. Sustain: keep following the rules as a habit.
+    In a workplace organized this way, each area has a specific purpose, and what an area is for is usually shown by markings, labels, or the equipment placed in or next to it.
+  C1: |
+    Background knowledge (general rules for managing space at a work site; not specific to this image. Use them only if they help you, and never treat them as something you can see):
+    - A site is divided into zones with different functions, for example travel lanes, work cells around equipment, storage or staging areas, and loading/unloading areas for vehicles.
+    - The boundary of a zone is usually shown by floor markings or physical barriers, and the same kind of zone is marked the same way.
+    - Travel lanes are kept clear. Goods are not left in a travel lane, and a work cell is not used to store goods that do not belong to its equipment.
+    - A loading/unloading area is placed where a vehicle stops, so that goods can be handed between the vehicle and the floor without blocking the travel lanes. It is usually a marked area, and it is not the vehicle itself.
+    - Goods are placed inside the marked boundary of the zone they belong to.
+
+tail: |
+  Return one JSON object only (no prose, no markdown fence) with exactly this structure:
+  {
+    "observed_objects": [
+      {"label": "<kind of object or equipment>", "count": <how many of this kind>, "location_in_image": "<where, in words>", "visible_evidence": "<what you see>"}
+    ],
+    "functional_areas": [
+      {"id": "area_1", "function_name": "<what this floor area is used for>", "bbox_2d": [<x_min>, <y_min>, <x_max>, <y_max>],
+       "observed_evidence": ["<visible cue>"], "inference": "<why you think so>", "confidence": "high" | "medium" | "low"}
+    ],
+    "task_analysis": {
+      "place_needed_for_task": "<what kind of place the instruction needs>",
+      "decision": "proposed" | "withheld",
+      "destination_area_id": "<id from functional_areas>" | null,
+      "reason": "<one or two sentences>"
+    },
+    "unknown_from_image": ["<information that cannot be determined from this image>"],
+    "physical_conditions_to_verify": ["<what a separate physical check must confirm before a robot could do this task; you cannot confirm these from the image>"]
+  }
+  Limits: at most 12 kinds in observed_objects and at most 6 functional_areas. Include the area you propose as the destination in functional_areas.

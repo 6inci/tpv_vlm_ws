@@ -1,0 +1,569 @@
+{
+ "summary": {
+  "PASS": 18,
+  "FAIL": 0,
+  "NOT_STARTED": 1
+ },
+ "checks": [
+  {
+   "id": "photos_resolved_by_hash",
+   "item": "8 photos identified by sha256 (file names changed)",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "photo_1": {
+     "file": "1calibration.png",
+     "earlier_id": "U23678143"
+    },
+    "photo_2": {
+     "file": "2calibration.png",
+     "earlier_id": "U24768580"
+    },
+    "photo_3": {
+     "file": "3calibration.png",
+     "earlier_id": "U24837448"
+    },
+    "photo_4": {
+     "file": "4calibration.png",
+     "earlier_id": "U24898553"
+    },
+    "photo_5": {
+     "file": "5calibration.png",
+     "earlier_id": "U25070552"
+    },
+    "photo_6": {
+     "file": "6calibration.png",
+     "earlier_id": "U25137685"
+    },
+    "photo_7": {
+     "file": "7calibration.png",
+     "earlier_id": "U25967031"
+    },
+    "photo_8": {
+     "file": "8calibration.png",
+     "earlier_id": "U26007129"
+    }
+   }
+  },
+  {
+   "id": "camera_alignment_8_photos",
+   "item": "every photo has the camera pose of the reference photo (v0.2 check_alignment, phase correlation)",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "photo_1": {
+     "status": "ALIGNED",
+     "shift_px": [
+      0.548,
+      1.405
+     ],
+     "response": 0.7802
+    },
+    "photo_2": {
+     "status": "ALIGNED",
+     "shift_px": [
+      0.009,
+      0.174
+     ],
+     "response": 0.7702
+    },
+    "photo_3": {
+     "status": "ALIGNED",
+     "shift_px": [
+      -0.036,
+      0.046
+     ],
+     "response": 0.8025
+    },
+    "photo_4": {
+     "status": "ALIGNED",
+     "shift_px": [
+      -0.046,
+      -0.145
+     ],
+     "response": 0.8779
+    },
+    "photo_5": {
+     "status": "ALIGNED",
+     "shift_px": [
+      0.0,
+      0.0
+     ],
+     "response": 1.0
+    },
+    "photo_6": {
+     "status": "ALIGNED",
+     "shift_px": [
+      0.015,
+      0.008
+     ],
+     "response": 0.881
+    },
+    "photo_7": {
+     "status": "ALIGNED",
+     "shift_px": [
+      0.124,
+      0.588
+     ],
+     "response": 0.8502
+    },
+    "photo_8": {
+     "status": "ALIGNED",
+     "shift_px": [
+      0.114,
+      0.047
+     ],
+     "response": 0.845
+    }
+   }
+  },
+  {
+   "id": "floor_transform_reproduced",
+   "item": "E1 mat-seam transform recomputed with the reused function equals the stored one",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "accepted": true,
+    "status": "PROVISIONAL_UNVALIDATED",
+    "max_floor_deviation_cm_at_nodes": 0.0
+   }
+  },
+  {
+   "id": "reference_points_mat_nodes",
+   "item": "image -> map error at the mat-grid nodes (known 105 cm geometry; these nodes are USED in the fit)",
+   "status": "PASS",
+   "knowledge": "PROVISIONAL: not independent of the fit; no human-measured reference point exists",
+   "detail": {
+    "n": 8,
+    "rms_cm": 3.57,
+    "max_cm": 5.22,
+    "leave_one_out_max_cm": 19.7,
+    "nodes": [
+     {
+      "node": "2,0",
+      "image_px": [
+       1200.08,
+       61.96
+      ],
+      "known_map_m": [
+       2.1,
+       2.1
+      ],
+      "projected_map_m": [
+       2.1018,
+       2.0921
+      ],
+      "error_cm": 0.81,
+      "leave_one_out_cm": 4.54
+     },
+     {
+      "node": "1,1",
+      "image_px": [
+       682.61,
+       472.26
+      ],
+      "known_map_m": [
+       1.05,
+       1.05
+      ],
+      "projected_map_m": [
+       1.0242,
+       1.0516
+      ],
+      "error_cm": 2.58,
+      "leave_one_out_cm": 5.13
+     },
+     {
+      "node": "2,1",
+      "image_px": [
+       1235.81,
+       464.26
+      ],
+      "known_map_m": [
+       2.1,
+       1.05
+      ],
+      "projected_map_m": [
+       2.1249,
+       1.0488
+      ],
+      "error_cm": 2.49,
+      "leave_one_out_cm": 3.22
+     },
+     {
+      "node": "3,1",
+      "image_px": [
+       1766.85,
+       450.63
+      ],
+      "known_map_m": [
+       3.15,
+       1.05
+      ],
+      "projected_map_m": [
+       3.1475,
+       1.0596
+      ],
+      "error_cm": 0.99,
+      "leave_one_out_cm": 2.09
+     },
+     {
+      "node": "0,2",
+      "image_px": [
+       68.13,
+       977.94
+      ],
+      "known_map_m": [
+       0.0,
+       0.0
+      ],
+      "projected_map_m": [
+       0.0195,
+       0.0404
+      ],
+      "error_cm": 4.48,
+      "leave_one_out_cm": 19.7
+     },
+     {
+      "node": "1,2",
+      "image_px": [
+       621.28,
+       1023.11
+      ],
+      "known_map_m": [
+       1.05,
+       0.0
+      ],
+      "projected_map_m": [
+       1.0188,
+       -0.0373
+      ],
+      "error_cm": 4.86,
+      "leave_one_out_cm": 7.64
+     },
+     {
+      "node": "2,2",
+      "image_px": [
+       1275.82,
+       1025.93
+      ],
+      "known_map_m": [
+       2.1,
+       0.0
+      ],
+      "projected_map_m": [
+       2.1327,
+       -0.0407
+      ],
+      "error_cm": 5.22,
+      "leave_one_out_cm": 7.98
+     },
+     {
+      "node": "3,2",
+      "image_px": [
+       1876.16,
+       980.23
+      ],
+      "known_map_m": [
+       3.15,
+       0.0
+      ],
+      "projected_map_m": [
+       3.1306,
+       0.0356
+      ],
+      "error_cm": 4.05,
+      "leave_one_out_cm": 11.97
+     }
+    ]
+   }
+  },
+  {
+   "id": "reference_independent_seams",
+   "item": "inner mat seams NOT used in the fit, mapped to the floor, deviation from the known 105/210 cm lines",
+   "status": "PASS",
+   "knowledge": "PROVISIONAL",
+   "detail": {
+    "seams": [
+     {
+      "id": "V1",
+      "axis": "x",
+      "world_cm": 105,
+      "n_samples": 53,
+      "n_used": 51,
+      "mean_dev_cm": -2.55,
+      "p95_abs_dev_cm": 2.97,
+      "max_abs_dev_cm": 3.02
+     },
+     {
+      "id": "V2",
+      "axis": "x",
+      "world_cm": 210,
+      "n_samples": 79,
+      "n_used": 69,
+      "mean_dev_cm": 2.82,
+      "p95_abs_dev_cm": 3.42,
+      "max_abs_dev_cm": 3.5
+     },
+     {
+      "id": "H1",
+      "axis": "y",
+      "world_cm": 105,
+      "n_samples": 186,
+      "n_used": 159,
+      "mean_dev_cm": -0.21,
+      "p95_abs_dev_cm": 0.65,
+      "max_abs_dev_cm": 0.81
+     }
+    ],
+    "max_abs_dev_cm": 3.5,
+    "declared_limit_cm": 4.0
+   }
+  },
+  {
+   "id": "map_origin_and_extent",
+   "item": "mat corners in the map frame: node(0,2) -> (0,0), node(3,2) -> (3.15,0), node(3,0) -> (3.15,2.10), node(0,0) -> (0,2.10)",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "got_m": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3.15,
+      0.0
+     ],
+     [
+      3.15,
+      2.1
+     ],
+     [
+      0.0,
+      2.1
+     ]
+    ],
+    "expected_m": [
+     [
+      0.0,
+      0.0
+     ],
+     [
+      3.15,
+      0.0
+     ],
+     [
+      3.15,
+      2.1
+     ],
+     [
+      0.0,
+      2.1
+     ]
+    ]
+   }
+  },
+  {
+   "id": "axes_and_handedness",
+   "item": "at the workspace centre: image right ~ +x_map (yaw ~0), image up (away from the camera) ~ +y_map (yaw ~+90), right-handed",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "yaw_map_of_image_right_deg": -1.1,
+    "yaw_map_of_image_up_deg": 91.1,
+    "z_of_right_x_up": 0.001833,
+    "far_side_is_higher_in_image": true,
+    "note": "the small deviation from 0 / 90 deg is the tilt of the mat grid in the photo (perspective); map axes follow the mats"
+   }
+  },
+  {
+   "id": "yaw_convention",
+   "item": "yaw_map = -yaw_floor (floor yaw counts from image right towards image down)",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "0": 0.0,
+    "90": -90.0,
+    "-90": 90.0,
+    "180": 180.0,
+    "45": -45.0
+   }
+  },
+  {
+   "id": "grid_convention",
+   "item": "every cell centre: floor route == Nav2 origin/row-flip route, and map -> cell returns the same cell",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "max_centre_difference_m": 4.440892098500626e-16,
+    "rows": 115,
+    "cols": 168,
+    "resolution_m": 0.02,
+    "origin_m": [
+     -0.1,
+     -0.1,
+     0.0
+    ],
+    "extent_floor_cm": [
+     -10.0,
+     -10.0,
+     326.0,
+     220.0
+    ],
+    "row0": "top image row = largest y_map (Nav2 map_server)"
+   }
+  },
+  {
+   "id": "layers",
+   "item": "cell counts per layer; free area of the conservative cells vs the 0.25 cm raster of the same polygons",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "cell_counts": {
+     "FREE": 5810,
+     "STATIC_OBSTACLE": 1204,
+     "NO_GO": 2466,
+     "NOT_DRIVABLE": 7268,
+     "UNKNOWN": 2572
+    },
+    "free_area_cells_m2": 2.324,
+    "free_area_raster_m2": 2.4238,
+    "free_area_lost_by_cell_rule_pct": 4.12,
+    "workspace_area_m2": 6.6281,
+    "zones": {
+     "traversable": [
+      "Z02"
+     ],
+     "static_obstacles": [
+      "Z03",
+      "Z04"
+     ],
+     "no_go": [
+      "Z01",
+      "Z07"
+     ]
+    }
+   }
+  },
+  {
+   "id": "free_sealed_from_unknown",
+   "item": "no FREE cell touches an UNKNOWN cell (8-neighbourhood): a planner that allows unknown space cannot leave the map",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "free_cells_touching_unknown": 0
+   }
+  },
+  {
+   "id": "static_map_has_no_movable_objects",
+   "item": "only DRAFT zone layers are written; robot, cubes and pallets are not",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "sources": [
+     "reference_scene_2026-11-14_zone_draft_v2__transferred_to_E1",
+     "layers traversable/static_obstacles/no_go"
+    ],
+    "movable_objects_written": []
+   }
+  },
+  {
+   "id": "yaml_format",
+   "item": "map.yaml has the Nav2 map_server keys and types; image path resolves next to the yaml",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "image": "map.pgm",
+    "mode": "trinary",
+    "resolution": 0.02,
+    "origin": [
+     -0.1,
+     -0.1,
+     0.0
+    ],
+    "negate": 0,
+    "occupied_thresh": 0.65,
+    "free_thresh": 0.196
+   }
+  },
+  {
+   "id": "pgm_format",
+   "item": "map.pgm re-read by an independent parser: P5, maxval 255, size = grid, payload = w*h, values in {0, 205, 254}",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "magic": "P5",
+    "width": 168,
+    "height": 115,
+    "maxval": 255,
+    "payload_bytes": 19320,
+    "values": {
+     "0": 10938,
+     "205": 2572,
+     "254": 5810
+    }
+   }
+  },
+  {
+   "id": "pgm_second_reader",
+   "item": "PIL reads the same pixels",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "mode": "L",
+    "shape": [
+     115,
+     168
+    ]
+   }
+  },
+  {
+   "id": "nav2_trinary_interpretation",
+   "item": "Nav2 trinary rule applied to the file gives FREE->0, UNKNOWN->-1, every other layer->100 (lethal)",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "free": 5810,
+    "occupied": 10938,
+    "unknown": 2572
+   }
+  },
+  {
+   "id": "resolution_vs_size",
+   "item": "PGM size x resolution = map extent in metres",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "width_m": 3.36,
+    "height_m": 2.3
+   }
+  },
+  {
+   "id": "nav2_map_server_load",
+   "item": "ros2 run nav2_map_server map_server with this yaml",
+   "status": "NOT_STARTED",
+   "knowledge": "UNKNOWN",
+   "detail": "not run: nav2 is not installed on this PC; user decision 2026-11-19 = format validation only (load test on request)"
+  },
+  {
+   "id": "environment_unchanged",
+   "item": "v0.2 code, reused files and photos have the same sha256 after the run",
+   "status": "PASS",
+   "knowledge": "CONFIRMED",
+   "detail": {
+    "v02_code_fingerprint": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "photos_unchanged": {
+     "photo_1": true,
+     "photo_2": true,
+     "photo_3": true,
+     "photo_4": true,
+     "photo_5": true,
+     "photo_6": true,
+     "photo_7": true,
+     "photo_8": true
+    }
+   }
+  }
+ ]
+}

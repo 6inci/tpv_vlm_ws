@@ -1,0 +1,744 @@
+{
+ "run_id": "run_001_U23678143",
+ "created": "2026-11-21T00:48:37",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "rules": "R1",
+ "photo": {
+  "photo_id": "U23678143",
+  "path": "/home/binci/Pictures/Calibration/1calibration.png",
+  "sha256": "6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "detection_reused": "fresh DINO this session (vocabulary; full image + verified conveyor / truck ROIs), IoU merge 0.5",
+ "cube_candidates": "stored red-cube candidates (candidate_retention_policy, HSV + DINO)",
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "policy": {
+  "config": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml",
+  "prompt_ids": [
+   "task_context_v1",
+   "source_roles_v2",
+   "destination_roles_v2"
+  ],
+  "rules_text": "이 작업장의 운영 규칙(사용자 초안, 확인 전):\n- 초록색 바닥에 발자국 표시가 있는 통로는 보행자 통로이며 로봇 본체가 들어갈 수 없다.\n- 노란 외곽선 안의 넓은 검은 바닥은 로봇 주행 구역이다. 로봇 본체는 이 구역 안에서만 움직인다.\n- 흰 테두리 안의 컨베이어·로봇 팔 작업셀에는 로봇 본체가 들어갈 수 없다.\n- 노란 테두리 안의 화물 적치 구역과 자재 보관 구역에는 로봇 본체가 들어가지 않고 접근만 한다.\n- 트럭과 흰색 점선 구획은 트럭 하역장이다.\n- 안전 콘과 바닥 경계선은 작업공간을 나누는 표시일 수 있다.\n- 로봇은 주행 구역에 정차한 채 인접한 구역의 물체를 집거나 놓을 수 있다(그리퍼 도달 거리는 확인되지 않았다).\n",
+  "viewer_config": {
+   "photo_dir": "/home/binci/Pictures/Calibration",
+   "results_dir": "results",
+   "reuse": {
+    "task_context_config": "../task_context_2d_navigation/config.yaml"
+   },
+   "whole_image_when_no_reference": true,
+   "max_role_calls_per_side": 3,
+   "goal_region": {
+    "region_words": [
+     "floor",
+     "area",
+     "zone",
+     "marking",
+     "road",
+     "ground",
+     "lane",
+     "region",
+     "space",
+     "surface",
+     "mat",
+     "dock",
+     "bay",
+     "path",
+     "walkway",
+     "aisle"
+    ],
+    "min_image_frac": 0.03
+   },
+   "default_rules": "R1"
+  }
+ },
+ "model_called": true,
+ "source": {
+  "status": "AMBIGUOUS",
+  "numbers": [
+   18,
+   20,
+   21
+  ],
+  "why": "3 candidates rated object_to_move (tie; no first-pick)",
+  "ids": [
+   "cand_r21",
+   "cand_r6",
+   "cand_r9"
+  ],
+  "boxes": [
+   [
+    1792.0,
+    841.0,
+    1820.0,
+    869.0
+   ],
+   [
+    1552.0,
+    865.0,
+    1573.0,
+    883.0
+   ],
+   [
+    1643.0,
+    889.0,
+    1706.0,
+    934.0
+   ]
+  ],
+  "ratings": {
+   "cand_r21": {
+    "id": 18,
+    "appearance": [
+     "red cube"
+    ],
+    "role": "object_to_move",
+    "reason": "The red cube is the object that needs to be moved."
+   },
+   "cand_r16": {
+    "id": 19,
+    "appearance": [
+     "orange cone"
+    ],
+    "role": "other",
+    "reason": "It is an orange cone, not the red cube."
+   },
+   "cand_r6": {
+    "id": 20,
+    "appearance": [
+     "red cube"
+    ],
+    "role": "object_to_move",
+    "reason": "The red cube is the object that needs to be moved."
+   },
+   "cand_r9": {
+    "id": 21,
+    "appearance": [
+     "red cube"
+    ],
+    "role": "object_to_move",
+    "reason": "The red cube is the object that needs to be moved."
+   }
+  },
+  "numbering": {
+   "1": "cand_r12",
+   "2": "cand_r13",
+   "3": "cand_r14",
+   "4": "cand_r3",
+   "5": "cand_r19",
+   "6": "cand_r15",
+   "7": "cand_r8",
+   "8": "cand_r2",
+   "9": "cand_r1",
+   "10": "cand_r5",
+   "11": "cand_r4",
+   "12": "cand_r18",
+   "13": "cand_r7",
+   "14": "cand_r10",
+   "15": "cand_r17",
+   "16": "cand_r20",
+   "17": "cand_r11",
+   "18": "cand_r21",
+   "19": "cand_r16",
+   "20": "cand_r6",
+   "21": "cand_r9"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/inputs/source_1.png",
+    "view_rect": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "numbers": [
+     1,
+     20
+    ],
+    "error": null
+   },
+   {
+    "path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/inputs/source_2.png",
+    "view_rect": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "numbers": [
+     21,
+     21
+    ],
+    "error": null
+   }
+  ],
+  "reply_reason": "The red cube is the target object to be moved, and it is located at candidate ID 18. | The red cube is the target object to be moved according to the instruction.",
+  "candidates": [
+   {
+    "id": "cand_r12",
+    "bbox_xyxy": [
+     1295.0,
+     77.0,
+     1308.0,
+     88.0
+    ]
+   },
+   {
+    "id": "cand_r13",
+    "bbox_xyxy": [
+     1282.0,
+     97.0,
+     1298.0,
+     115.0
+    ]
+   },
+   {
+    "id": "cand_r14",
+    "bbox_xyxy": [
+     1300.0,
+     163.0,
+     1309.0,
+     174.0
+    ]
+   },
+   {
+    "id": "cand_r3",
+    "bbox_xyxy": [
+     255.0,
+     175.0,
+     283.0,
+     218.0
+    ]
+   },
+   {
+    "id": "cand_r19",
+    "bbox_xyxy": [
+     1076.0,
+     178.0,
+     1089.0,
+     190.0
+    ]
+   },
+   {
+    "id": "cand_r15",
+    "bbox_xyxy": [
+     1285.0,
+     179.0,
+     1299.0,
+     198.0
+    ]
+   },
+   {
+    "id": "cand_r8",
+    "bbox_xyxy": [
+     1073.0,
+     198.0,
+     1080.0,
+     211.0
+    ]
+   },
+   {
+    "id": "cand_r2",
+    "bbox_xyxy": [
+     288.0,
+     207.0,
+     300.0,
+     215.0
+    ]
+   },
+   {
+    "id": "cand_r1",
+    "bbox_xyxy": [
+     554.0,
+     210.0,
+     569.0,
+     220.0
+    ]
+   },
+   {
+    "id": "cand_r5",
+    "bbox_xyxy": [
+     573.0,
+     223.0,
+     582.0,
+     237.0
+    ]
+   },
+   {
+    "id": "cand_r4",
+    "bbox_xyxy": [
+     551.0,
+     228.0,
+     567.0,
+     240.0
+    ]
+   },
+   {
+    "id": "cand_r18",
+    "bbox_xyxy": [
+     1697.0,
+     245.0,
+     1705.0,
+     261.0
+    ]
+   },
+   {
+    "id": "cand_r7",
+    "bbox_xyxy": [
+     1438.0,
+     258.0,
+     1448.0,
+     268.0
+    ]
+   },
+   {
+    "id": "cand_r10",
+    "bbox_xyxy": [
+     1677.0,
+     262.0,
+     1689.0,
+     277.0
+    ]
+   },
+   {
+    "id": "cand_r17",
+    "bbox_xyxy": [
+     1416.0,
+     268.0,
+     1429.0,
+     287.0
+    ]
+   },
+   {
+    "id": "cand_r20",
+    "bbox_xyxy": [
+     1311.0,
+     271.0,
+     1319.0,
+     286.0
+    ]
+   },
+   {
+    "id": "cand_r11",
+    "bbox_xyxy": [
+     1817.0,
+     837.0,
+     1835.0,
+     858.0
+    ]
+   },
+   {
+    "id": "cand_r21",
+    "bbox_xyxy": [
+     1792.0,
+     841.0,
+     1820.0,
+     869.0
+    ]
+   },
+   {
+    "id": "cand_r16",
+    "bbox_xyxy": [
+     946.0,
+     851.0,
+     983.0,
+     885.0
+    ]
+   },
+   {
+    "id": "cand_r6",
+    "bbox_xyxy": [
+     1552.0,
+     865.0,
+     1573.0,
+     883.0
+    ]
+   },
+   {
+    "id": "cand_r9",
+    "bbox_xyxy": [
+     1643.0,
+     889.0,
+     1706.0,
+     934.0
+    ]
+   }
+  ]
+ },
+ "destination": {
+  "status": "NOT_ACCESSIBLE",
+  "number": null,
+  "kind": null,
+  "why": "Qwen best 2 not accessible; suitable/possible [2] none accessible",
+  "id": null,
+  "bbox_xyxy": null,
+  "ratings": {
+   "m25": {
+    "id": 1,
+    "appearance": [
+     "a pallet with four cylindrical objects on it"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "The pallet is already occupied by cylindrical objects and cannot be used as a destination for a red cube."
+   },
+   "m19": {
+    "id": 2,
+    "appearance": [
+     "a rectangular grate with vertical slats"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "The grate is empty and located in a walkway area, which is suitable for placing the red cube as it is not a robot travel zone or work cell."
+   }
+  },
+  "numbering": {
+   "1": "m25",
+   "2": "m19"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/inputs/destination_1.png",
+    "view_rect": [
+     988,
+     748,
+     1378,
+     1080
+    ],
+    "numbers": [
+     1,
+     2
+    ],
+    "error": null
+   }
+  ],
+  "reply_reason": "The grate is empty and located in a walkway area, which is suitable for placing the red cube.",
+  "candidates": [
+   {
+    "id": "m25",
+    "bbox_xyxy": [
+     1125.36,
+     872.46,
+     1250.42,
+     989.12
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "empty pallet",
+     "pallet"
+    ]
+   },
+   {
+    "id": "m19",
+    "bbox_xyxy": [
+     988.24,
+     882.52,
+     1108.34,
+     1000.87
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "empty pallet",
+     "pallet",
+     "red cube",
+     "shelf"
+    ]
+   }
+  ],
+  "accessibility": {
+   "m19": {
+    "gap_to_drivable_cm": 11.5,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     205.0,
+     161.0
+    ],
+    "approach_goal_image_px": [
+     1211.1,
+     730.5
+    ],
+    "body_gap_cm": 16.6,
+    "floor_polygon_cm": [
+     [
+      164.6,
+      189.2
+     ],
+     [
+      185.7,
+      189.3
+     ],
+     [
+      185.3,
+      209.9
+     ],
+     [
+      164.9,
+      209.9
+     ]
+    ],
+    "accessible": false,
+    "why": "11.5 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   }
+  },
+  "tied_ids": []
+ },
+ "interpretation": {
+  "parsed": {
+   "purpose": "Move the red cube to an empty pallet",
+   "source_object": {
+    "name_en": "red cube"
+   },
+   "source_reference": {
+    "name_en": null,
+    "bbox_2d": null,
+    "bbox_image_px": null
+   },
+   "source_relation": "none",
+   "destination_meaning": "Empty pallet for placing the red cube",
+   "destination_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [
+     584,
+     804,
+     655,
+     908
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     1121.3,
+     868.3,
+     1257.6,
+     980.6
+    ]
+   },
+   "destination_relation": "none",
+   "zones_seen": [
+    {
+     "description": "Green walkway with footprints",
+     "visual_evidence": [
+      "green floor with white footprints",
+      "orange cones"
+     ],
+     "bbox_2d": [
+      305,
+      60,
+      560,
+      280
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Yellow-bordered main robot travel area",
+     "visual_evidence": [
+      "yellow border",
+      "black floor"
+     ],
+     "bbox_2d": [
+      220,
+      280,
+      655,
+      780
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "White-bordered conveyor and robot arm workstation",
+     "visual_evidence": [
+      "white border",
+      "robot arms"
+     ],
+     "bbox_2d": [
+      80,
+      260,
+      270,
+      720
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Yellow-bordered cargo storage area",
+     "visual_evidence": [
+      "yellow border",
+      "stacked boxes and barrels"
+     ],
+     "bbox_2d": [
+      615,
+      430,
+      960,
+      560
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Truck unloading zone",
+     "visual_evidence": [
+      "white truck",
+      "white dashed lines"
+     ],
+     "bbox_2d": [
+      680,
+      0,
+      890,
+      180
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "White-bordered charging station",
+     "visual_evidence": [
+      "white border",
+      "lightning bolt symbol"
+     ],
+     "bbox_2d": [
+      660,
+      770,
+      800,
+      940
+     ],
+     "robot_body_access": "allowed"
+    }
+   ],
+   "uncertainty": [
+    "The red cube is not visible in the image, so its location is unknown."
+   ]
+  },
+  "error": null,
+  "raw_file": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/qwen/interpretation.txt"
+ },
+ "references": {
+  "source": {
+   "name": null,
+   "class": null,
+   "box": null,
+   "how": "no Qwen box",
+   "relation": "none",
+   "region": {
+    "type": "WHOLE_IMAGE",
+    "rect": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "rule": "the instruction names no reference (viewer rule, not task_context)"
+   }
+  },
+  "destination": {
+   "name": "empty pallet",
+   "class": null,
+   "box": [
+    1121.3,
+    868.3,
+    1257.6,
+    980.6
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "none",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     1001,
+     748,
+     1378,
+     1080
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  }
+ },
+ "stages": [
+  {
+   "name": "interpretation",
+   "status": "OK",
+   "summary": "move 'red cube' | source: none 'None' | destination: none 'empty pallet' | purpose: Move the red cube to an empty pallet"
+  },
+  {
+   "name": "detection",
+   "status": "OK",
+   "summary": "new phrases ['red cube', 'empty pallet']: 12 new candidates; 80 detector candidates on this photo"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "'None' [none] -> WHOLE_IMAGE [0, 0, 1920, 1080] (no Qwen box)"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "'empty pallet' [none] -> vicinity [1001, 748, 1378, 1080] (Qwen box (no stored object with enough overlap))"
+  },
+  {
+   "name": "source_candidates",
+   "status": "OK",
+   "summary": "21 of 21 red-cube candidates (stored red-cube candidates (candidate_retention_policy, HSV + DINO)) inside the region"
+  },
+  {
+   "name": "source_roles",
+   "status": "OK",
+   "summary": "Qwen reply valid"
+  },
+  {
+   "name": "source_decision",
+   "status": "UNCERTAIN",
+   "summary": "AMBIGUOUS ['cand_r21', 'cand_r6', 'cand_r9']: 3 candidates rated object_to_move (tie; no first-pick)"
+  },
+  {
+   "name": "destination_candidates",
+   "status": "OK",
+   "summary": "2 detector candidates inside the region (0 region-scale boxes not numbered; the object to move excluded)"
+  },
+  {
+   "name": "destination_roles",
+   "status": "OK",
+   "summary": "Qwen reply valid"
+  },
+  {
+   "name": "accessibility",
+   "status": "OK",
+   "summary": "0 of 1 suitable/possible candidates accessible"
+  },
+  {
+   "name": "destination_decision",
+   "status": "FAILED",
+   "summary": "NOT_ACCESSIBLE  : Qwen best 2 not accessible; suitable/possible [2] none accessible"
+  }
+ ],
+ "first_failure": "source_decision",
+ "wall_s": 72.9,
+ "model_calls": {
+  "n_qwen": 4,
+  "n_dino": 2,
+  "models": [
+   "IDEA-Research/grounding-dino-tiny @ a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "Qwen/Qwen3-VL-4B-Instruct @ ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  ],
+  "file": "model_calls.json"
+ },
+ "handoff": {
+  "photo_id": "U23678143",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": null,
+  "destination": null
+ },
+ "files": {
+  "overlay": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_001_U23678143/run.json"
+ }
+}

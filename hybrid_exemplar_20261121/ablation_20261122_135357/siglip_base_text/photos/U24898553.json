@@ -1,0 +1,2240 @@
+{
+ "photo_id": "U24898553",
+ "path": "/home/binci/Pictures/Calibration/4calibration.png",
+ "sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+ "size": [
+  1920,
+  1080
+ ],
+ "calls": [],
+ "alignment": {
+  "status": "ALIGNED",
+  "shift_px": [
+   -0.046,
+   -0.145
+  ],
+  "response": 0.8779,
+  "thresholds": {
+   "max_shift_px": 3.0,
+   "min_response": 0.3
+  },
+  "reference_image": "/home/binci/Pictures/Calibration/5calibration.png"
+ },
+ "refs": {
+  "conveyor": {
+   "box": [
+    226.68,
+    288.69,
+    422.97,
+    765.1
+   ],
+   "checked": [
+    {
+     "bbox_xyxy": [
+      1191.85,
+      466.52,
+      1807.03,
+      613.03
+     ],
+     "dino_score": 0.3608,
+     "siglip_top3": [
+      [
+       "a floor marking",
+       0.289
+      ],
+      [
+       "a production line with a conveyor and robot arms",
+       0.237
+      ],
+      [
+       "a mobile robot",
+       0.186
+      ]
+     ],
+     "verified": false
+    },
+    {
+     "bbox_xyxy": [
+      226.68,
+      288.69,
+      422.97,
+      765.1
+     ],
+     "dino_score": 0.27,
+     "siglip_top3": [
+      [
+       "a production line with a conveyor and robot arms",
+       0.526
+      ],
+      [
+       "a mobile robot",
+       0.139
+      ],
+      [
+       "a conveyor belt",
+       0.13
+      ]
+     ],
+     "verified": true
+    }
+   ],
+   "how": "DINO + SigLIP2 ('a production line with a conveyor and robot arms' in top 1)"
+  },
+  "truck": {
+   "box": [
+    1447.07,
+    0.19,
+    1687.53,
+    150.43
+   ],
+   "checked": [
+    {
+     "bbox_xyxy": [
+      1447.07,
+      0.19,
+      1687.53,
+      150.43
+     ],
+     "dino_score": 0.5694,
+     "siglip_top3": [
+      [
+       "a truck",
+       0.45
+      ],
+      [
+       "a floor marking",
+       0.192
+      ],
+      [
+       "a truck cargo bed",
+       0.125
+      ]
+     ],
+     "verified": true
+    }
+   ],
+   "how": "DINO + SigLIP2 ('a truck' in top 1)"
+  },
+  "robot": {
+   "box": [
+    1582.27,
+    619.38,
+    1814.03,
+    784.51
+   ],
+   "checked": [
+    {
+     "bbox_xyxy": [
+      1582.27,
+      619.38,
+      1814.03,
+      784.51
+     ],
+     "dino_score": 0.3518,
+     "siglip_top3": [
+      [
+       "a mobile robot",
+       0.865
+      ],
+      [
+       "a production line with a conveyor and robot arms",
+       0.025
+      ],
+      [
+       "a small pallet",
+       0.024
+      ]
+     ],
+     "verified": true
+    }
+   ],
+   "how": "DINO + SigLIP2 ('a mobile robot' in top 1)",
+   "start_img": [
+    1698.15,
+    701.9449999999999
+   ]
+  }
+ },
+ "dino": [
+  {
+   "id": "m1",
+   "bbox_xyxy": [
+    1447.87,
+    0.0,
+    1687.76,
+    148.89
+   ],
+   "score": 0.7271,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "traffic cone",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m2",
+   "bbox_xyxy": [
+    225.38,
+    280.95,
+    424.33,
+    764.58
+   ],
+   "score": 0.5746,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "floor marking",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m3",
+   "bbox_xyxy": [
+    809.41,
+    425.64,
+    925.61,
+    590.59
+   ],
+   "score": 0.519,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m4",
+   "bbox_xyxy": [
+    1309.52,
+    250.96,
+    1341.71,
+    294.16
+   ],
+   "score": 0.5122,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m5",
+   "bbox_xyxy": [
+    1284.26,
+    155.34,
+    1316.92,
+    200.31
+   ],
+   "score": 0.5063,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m6",
+   "bbox_xyxy": [
+    1069.79,
+    248.92,
+    1101.32,
+    286.28
+   ],
+   "score": 0.5062,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m7",
+   "bbox_xyxy": [
+    1415.03,
+    248.74,
+    1450.32,
+    292.49
+   ],
+   "score": 0.5052,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m8",
+   "bbox_xyxy": [
+    1280.94,
+    69.0,
+    1312.5,
+    113.77
+   ],
+   "score": 0.5025,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m9",
+   "bbox_xyxy": [
+    941.25,
+    176.35,
+    966.21,
+    215.98
+   ],
+   "score": 0.4938,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m10",
+   "bbox_xyxy": [
+    1525.0,
+    244.52,
+    1560.57,
+    288.88
+   ],
+   "score": 0.4844,
+   "phrases": [
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m11",
+   "bbox_xyxy": [
+    1302.01,
+    154.74,
+    1317.2,
+    200.84
+   ],
+   "score": 0.4829,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "traffic cone",
+    "truck bed"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m12",
+   "bbox_xyxy": [
+    1064.99,
+    173.28,
+    1096.06,
+    210.24
+   ],
+   "score": 0.4803,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m13",
+   "bbox_xyxy": [
+    1677.04,
+    242.0,
+    1712.88,
+    284.8
+   ],
+   "score": 0.4752,
+   "phrases": [
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m14",
+   "bbox_xyxy": [
+    549.37,
+    204.71,
+    582.97,
+    241.55
+   ],
+   "score": 0.4484,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m15",
+   "bbox_xyxy": [
+    429.37,
+    15.31,
+    823.02,
+    184.96
+   ],
+   "score": 0.4386,
+   "phrases": [
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m16",
+   "bbox_xyxy": [
+    1582.93,
+    14.38,
+    1677.16,
+    60.49
+   ],
+   "score": 0.43,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m17",
+   "bbox_xyxy": [
+    1604.18,
+    251.89,
+    1623.59,
+    272.33
+   ],
+   "score": 0.4288,
+   "phrases": [
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m18",
+   "bbox_xyxy": [
+    1302.01,
+    68.7,
+    1312.19,
+    113.07
+   ],
+   "score": 0.4257,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "shelf",
+    "traffic cone",
+    "truck bed"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m19",
+   "bbox_xyxy": [
+    340.28,
+    42.77,
+    448.81,
+    141.79
+   ],
+   "score": 0.4091,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m20",
+   "bbox_xyxy": [
+    946.28,
+    848.9,
+    982.54,
+    885.65
+   ],
+   "score": 0.3978,
+   "phrases": [
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m21",
+   "bbox_xyxy": [
+    108.72,
+    775.22,
+    510.53,
+    986.35
+   ],
+   "score": 0.3934,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m22",
+   "bbox_xyxy": [
+    1065.42,
+    36.7,
+    1155.76,
+    177.99
+   ],
+   "score": 0.3877,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m23",
+   "bbox_xyxy": [
+    928.45,
+    508.47,
+    963.86,
+    556.15
+   ],
+   "score": 0.3843,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m24",
+   "bbox_xyxy": [
+    1642.73,
+    884.98,
+    1708.92,
+    934.03
+   ],
+   "score": 0.3785,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m25",
+   "bbox_xyxy": [
+    1793.1,
+    832.21,
+    1832.94,
+    868.08
+   ],
+   "score": 0.3587,
+   "phrases": [
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m26",
+   "bbox_xyxy": [
+    1585.86,
+    246.27,
+    1635.23,
+    285.68
+   ],
+   "score": 0.3568,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m27",
+   "bbox_xyxy": [
+    863.38,
+    41.92,
+    952.63,
+    181.43
+   ],
+   "score": 0.3565,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m28",
+   "bbox_xyxy": [
+    1582.27,
+    619.38,
+    1814.03,
+    784.51
+   ],
+   "score": 0.3518,
+   "phrases": [
+    "cart",
+    "mobile robot",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m29",
+   "bbox_xyxy": [
+    290.87,
+    798.77,
+    509.21,
+    985.31
+   ],
+   "score": 0.3443,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m30",
+   "bbox_xyxy": [
+    273.71,
+    658.12,
+    395.37,
+    761.47
+   ],
+   "score": 0.3092,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m31",
+   "bbox_xyxy": [
+    227.04,
+    563.67,
+    395.96,
+    762.38
+   ],
+   "score": 0.3061,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m32",
+   "bbox_xyxy": [
+    449.72,
+    76.03,
+    539.46,
+    166.67
+   ],
+   "score": 0.2969,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m33",
+   "bbox_xyxy": [
+    1381.38,
+    474.15,
+    1471.69,
+    573.47
+   ],
+   "score": 0.2928,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m34",
+   "bbox_xyxy": [
+    1299.16,
+    492.87,
+    1382.73,
+    582.4
+   ],
+   "score": 0.2912,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m35",
+   "bbox_xyxy": [
+    1219.0,
+    498.86,
+    1300.45,
+    588.64
+   ],
+   "score": 0.2878,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m36",
+   "bbox_xyxy": [
+    665.12,
+    854.03,
+    866.05,
+    995.45
+   ],
+   "score": 0.2746,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m37",
+   "bbox_xyxy": [
+    227.08,
+    154.27,
+    327.16,
+    289.49
+   ],
+   "score": 0.274,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m38",
+   "bbox_xyxy": [
+    988.33,
+    881.45,
+    1108.65,
+    999.23
+   ],
+   "score": 0.2694,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m39",
+   "bbox_xyxy": [
+    664.05,
+    854.41,
+    707.11,
+    989.76
+   ],
+   "score": 0.2614,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m40",
+   "bbox_xyxy": [
+    772.36,
+    425.6,
+    969.77,
+    619.97
+   ],
+   "score": 0.2612,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m41",
+   "bbox_xyxy": [
+    244.73,
+    282.33,
+    423.99,
+    472.99
+   ],
+   "score": 0.2607,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m42",
+   "bbox_xyxy": [
+    1191.86,
+    466.79,
+    1807.33,
+    613.36
+   ],
+   "score": 0.2565,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m43",
+   "bbox_xyxy": [
+    588.23,
+    218.16,
+    707.66,
+    303.61
+   ],
+   "score": 0.2513,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "pallet",
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m44",
+   "bbox_xyxy": [
+    339.77,
+    338.95,
+    423.53,
+    473.81
+   ],
+   "score": 0.2447,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m45",
+   "bbox_xyxy": [
+    1125.13,
+    870.71,
+    1250.64,
+    988.03
+   ],
+   "score": 0.2327,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m46",
+   "bbox_xyxy": [
+    1549.52,
+    0.02,
+    1687.33,
+    109.43
+   ],
+   "score": 0.2296,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m47",
+   "bbox_xyxy": [
+    280.73,
+    87.59,
+    334.11,
+    165.9
+   ],
+   "score": 0.2222,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m48",
+   "bbox_xyxy": [
+    109.21,
+    774.7,
+    314.18,
+    966.01
+   ],
+   "score": 0.22,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m49",
+   "bbox_xyxy": [
+    245.98,
+    282.05,
+    356.59,
+    380.51
+   ],
+   "score": 0.2187,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m50",
+   "bbox_xyxy": [
+    1279.85,
+    839.53,
+    1530.67,
+    1024.87
+   ],
+   "score": 0.2136,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m51",
+   "bbox_xyxy": [
+    1192.81,
+    467.68,
+    1854.6,
+    835.67
+   ],
+   "score": 0.2129,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m52",
+   "bbox_xyxy": [
+    327.47,
+    378.83,
+    365.11,
+    444.17
+   ],
+   "score": 0.211,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m53",
+   "bbox_xyxy": [
+    432.16,
+    24.32,
+    571.95,
+    167.03
+   ],
+   "score": 0.2108,
+   "phrases": [
+    "cart",
+    "container",
+    "mobile robot",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m54",
+   "bbox_xyxy": [
+    1586.68,
+    625.38,
+    1691.6,
+    782.67
+   ],
+   "score": 0.2104,
+   "phrases": [
+    "cart",
+    "mobile robot",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m55",
+   "bbox_xyxy": [
+    726.37,
+    85.48,
+    808.51,
+    166.27
+   ],
+   "score": 0.2089,
+   "phrases": [
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m56",
+   "bbox_xyxy": [
+    294.11,
+    579.74,
+    330.19,
+    655.06
+   ],
+   "score": 0.2087,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m57",
+   "bbox_xyxy": [
+    622.11,
+    832.24,
+    707.1,
+    1028.29
+   ],
+   "score": 0.2074,
+   "phrases": [
+    "cardboard box",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m58",
+   "bbox_xyxy": [
+    1470.39,
+    467.92,
+    1573.51,
+    576.7
+   ],
+   "score": 0.1986,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m59",
+   "bbox_xyxy": [
+    243.79,
+    158.78,
+    281.41,
+    218.59
+   ],
+   "score": 0.1921,
+   "phrases": [
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m60",
+   "bbox_xyxy": [
+    622.24,
+    833.12,
+    1274.64,
+    1035.55
+   ],
+   "score": 0.1919,
+   "phrases": [
+    "cardboard box",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m61",
+   "bbox_xyxy": [
+    317.16,
+    460.24,
+    367.56,
+    592.08
+   ],
+   "score": 0.1879,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m62",
+   "bbox_xyxy": [
+    551.71,
+    204.82,
+    570.73,
+    228.77
+   ],
+   "score": 0.1863,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m63",
+   "bbox_xyxy": [
+    586.62,
+    62.57,
+    1070.01,
+    304.16
+   ],
+   "score": 0.1796,
+   "phrases": [
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m64",
+   "bbox_xyxy": [
+    666.02,
+    15.63,
+    812.05,
+    166.02
+   ],
+   "score": 0.1782,
+   "phrases": [
+    "cart",
+    "mobile robot",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m65",
+   "bbox_xyxy": [
+    1448.35,
+    2.95,
+    1566.5,
+    146.02
+   ],
+   "score": 0.178,
+   "phrases": [
+    "cart",
+    "container",
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m66",
+   "bbox_xyxy": [
+    1271.05,
+    806.1,
+    1878.8,
+    1030.03
+   ],
+   "score": 0.1747,
+   "phrases": [
+    "cardboard box",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m67",
+   "bbox_xyxy": [
+    1201.16,
+    56.89,
+    1730.71,
+    299.6
+   ],
+   "score": 0.1698,
+   "phrases": [
+    "shelf",
+    "table"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m68",
+   "bbox_xyxy": [
+    1568.29,
+    470.39,
+    1683.48,
+    586.37
+   ],
+   "score": 0.1669,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m69",
+   "bbox_xyxy": [
+    268.85,
+    377.44,
+    310.94,
+    443.52
+   ],
+   "score": 0.1641,
+   "phrases": [
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m70",
+   "bbox_xyxy": [
+    265.83,
+    124.84,
+    318.26,
+    193.61
+   ],
+   "score": 0.1592,
+   "phrases": [
+    "cardboard box",
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m71",
+   "bbox_xyxy": [
+    1302.0,
+    286.1,
+    1729.89,
+    295.14
+   ],
+   "score": 0.1578,
+   "phrases": [
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m72",
+   "bbox_xyxy": [
+    1687.92,
+    241.74,
+    1712.33,
+    271.91
+   ],
+   "score": 0.1564,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m73",
+   "bbox_xyxy": [
+    1703.53,
+    469.43,
+    1800.59,
+    570.95
+   ],
+   "score": 0.1556,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "pallet",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m74",
+   "bbox_xyxy": [
+    268.25,
+    404.92,
+    285.73,
+    443.43
+   ],
+   "score": 0.155,
+   "phrases": [
+    "traffic cone"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m75",
+   "bbox_xyxy": [
+    267.84,
+    375.99,
+    365.26,
+    449.99
+   ],
+   "score": 0.1501,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "pallet",
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m76",
+   "bbox_xyxy": [
+    636.64,
+    464.88,
+    1263.64,
+    837.8
+   ],
+   "score": 0.1466,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m77",
+   "bbox_xyxy": [
+    0.47,
+    0.0,
+    89.82,
+    172.05
+   ],
+   "score": 0.1438,
+   "phrases": [
+    "cart"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m78",
+   "bbox_xyxy": [
+    1426.07,
+    249.13,
+    1447.81,
+    279.98
+   ],
+   "score": 0.1413,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m79",
+   "bbox_xyxy": [
+    1224.03,
+    297.54,
+    1771.63,
+    474.87
+   ],
+   "score": 0.1397,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m80",
+   "bbox_xyxy": [
+    240.19,
+    374.59,
+    366.09,
+    651.36
+   ],
+   "score": 0.1372,
+   "phrases": [
+    "cardboard box",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m81",
+   "bbox_xyxy": [
+    1696.21,
+    624.99,
+    1761.41,
+    723.1
+   ],
+   "score": 0.1371,
+   "phrases": [
+    "container"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m82",
+   "bbox_xyxy": [
+    681.58,
+    305.33,
+    1237.17,
+    476.16
+   ],
+   "score": 0.1349,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m83",
+   "bbox_xyxy": [
+    1308.51,
+    239.31,
+    1717.53,
+    293.77
+   ],
+   "score": 0.131,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m84",
+   "bbox_xyxy": [
+    411.48,
+    471.57,
+    686.43,
+    825.4
+   ],
+   "score": 0.1244,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m85",
+   "bbox_xyxy": [
+    1394.36,
+    56.94,
+    1687.72,
+    179.99
+   ],
+   "score": 0.1239,
+   "phrases": [
+    "floor marking",
+    "pallet"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m86",
+   "bbox_xyxy": [
+    432.02,
+    23.35,
+    707.88,
+    122.33
+   ],
+   "score": 0.1226,
+   "phrases": [
+    "cart"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m87",
+   "bbox_xyxy": [
+    1064.29,
+    62.57,
+    1222.03,
+    300.7
+   ],
+   "score": 0.1223,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m88",
+   "bbox_xyxy": [
+    1555.95,
+    51.95,
+    1685.85,
+    109.17
+   ],
+   "score": 0.12,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m89",
+   "bbox_xyxy": [
+    1113.86,
+    254.56,
+    1160.37,
+    293.43
+   ],
+   "score": 0.1199,
+   "phrases": [
+    "pallet"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m90",
+   "bbox_xyxy": [
+    226.36,
+    588.02,
+    251.12,
+    648.86
+   ],
+   "score": 0.1197,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m91",
+   "bbox_xyxy": [
+    264.09,
+    283.1,
+    329.25,
+    360.86
+   ],
+   "score": 0.1196,
+   "phrases": [
+    "container"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m92",
+   "bbox_xyxy": [
+    1788.01,
+    0.0,
+    1832.0,
+    120.78
+   ],
+   "score": 0.1122,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m93",
+   "bbox_xyxy": [
+    317.24,
+    526.28,
+    378.66,
+    664.0
+   ],
+   "score": 0.1106,
+   "phrases": [
+    "cardboard box",
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m94",
+   "bbox_xyxy": [
+    232.64,
+    792.82,
+    315.13,
+    964.44
+   ],
+   "score": 0.1105,
+   "phrases": [
+    "container",
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m95",
+   "bbox_xyxy": [
+    434.12,
+    73.57,
+    707.53,
+    186.53
+   ],
+   "score": 0.1102,
+   "phrases": [
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m96",
+   "bbox_xyxy": [
+    1302.01,
+    0.47,
+    1312.86,
+    115.27
+   ],
+   "score": 0.1095,
+   "phrases": [
+    "cart",
+    "mobile robot"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m97",
+   "bbox_xyxy": [
+    1488.23,
+    3.0,
+    1513.11,
+    51.39
+   ],
+   "score": 0.1094,
+   "phrases": [
+    "red cube",
+    "traffic cone"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m98",
+   "bbox_xyxy": [
+    244.0,
+    58.11,
+    1223.32,
+    309.41
+   ],
+   "score": 0.1077,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m99",
+   "bbox_xyxy": [
+    487.7,
+    316.47,
+    700.95,
+    477.54
+   ],
+   "score": 0.1067,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_conveyor_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m100",
+   "bbox_xyxy": [
+    1302.0,
+    177.75,
+    1316.2,
+    200.59
+   ],
+   "score": 0.1033,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m101",
+   "bbox_xyxy": [
+    1302.0,
+    94.36,
+    1311.56,
+    112.93
+   ],
+   "score": 0.1011,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m102",
+   "bbox_xyxy": [
+    1786.19,
+    0.0,
+    1832.0,
+    294.98
+   ],
+   "score": 0.1007,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  }
+ ],
+ "phrases_done": [],
+ "cube": null,
+ "cube_how": "not used",
+ "detection_how": "REPLAY: stored DINO candidates and facility boxes of 20261120_133027_run (same MMViewer photo stage)"
+}

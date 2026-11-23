@@ -1,0 +1,52 @@
+{
+  "status": "OK",
+  "output": {
+    "scene_type": "industrial simulation setup",
+    "observed_equipment": [
+      "robot arms",
+      "conveyor belt",
+      "loading docks",
+      "traffic cones",
+      "pallets",
+      "electrical outlets"
+    ],
+    "transport_objects": [
+      "truck",
+      "stacked boxes",
+      "barrels",
+      "pallets with barrels",
+      "pallets with containers"
+    ],
+    "task_relevant_objects": [
+      "red cube",
+      "loading area near truck",
+      "conveyor belt",
+      "robot arms"
+    ],
+    "evidence": [
+      "robot arms are positioned near conveyor belt",
+      "truck is parked near loading area",
+      "stacked boxes and barrels are on pallets",
+      "red cube is not visible in the image"
+    ],
+    "uncertain": [
+      "location of red cube",
+      "whether red cube is produced by conveyor",
+      "exact task sequence or timing"
+    ]
+  },
+  "call": {
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "prompt_id": "scene_analysis_v1",
+    "prompt_sha256": "a4601f37e1e8d7280f7a3f61fbaf81782c3af4de6c8f9684f66d94e61c77bd74",
+    "image_path": "input/raw_frame.png",
+    "raw_response": "{\n  \"scene_type\": \"industrial simulation setup\",\n  \"observed_equipment\": [\n    \"robot arms\",\n    \"conveyor belt\",\n    \"loading docks\",\n    \"traffic cones\",\n    \"pallets\",\n    \"electrical outlets\"\n  ],\n  \"transport_objects\": [\n    \"truck\",\n    \"stacked boxes\",\n    \"barrels\",\n    \"pallets with barrels\",\n    \"pallets with containers\"\n  ],\n  \"task_relevant_objects\": [\n    \"red cube\",\n    \"loading area near truck\",\n    \"conveyor belt\",\n    \"robot arms\"\n  ],\n  \"evidence\": [\n    \"robot arms are positioned near conveyor belt\",\n    \"truck is parked near loading area\",\n    \"stacked boxes and barrels are on pallets\",\n    \"red cube is not visible in the image\"\n  ],\n  \"uncertain\": [\n    \"location of red cube\",\n    \"whether red cube is produced by conveyor\",\n    \"exact task sequence or timing\"\n  ]\n}",
+    "latency_s": 8.256,
+    "n_output_tokens": 212,
+    "hit_max_new_tokens": false,
+    "peak_vram_gib": 8.87,
+    "error": null
+  },
+  "note": "free-text model description; not ground truth"
+}

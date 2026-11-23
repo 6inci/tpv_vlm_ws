@@ -1,0 +1,69 @@
+{
+  "result": "PASS",
+  "interpretation": "BBox parsing and verified raw-to-undistorted-to-world integration succeeded. The stored world value used a different legacy distorted-image Homography and was rounded.",
+  "source": "/home/binci/qwen_vision_test/photo_04_objects_world.json",
+  "legacy_bbox_normalized_0_1000": [
+    447,
+    527,
+    483,
+    595
+  ],
+  "new_parsed_bbox_normalized_0_1000": [
+    447.0,
+    527.0,
+    483.0,
+    595.0
+  ],
+  "legacy_bottom_center_pixel_rounded": [
+    937.4,
+    674.1
+  ],
+  "new_bottom_center_pixel": [
+    937.44,
+    674.135
+  ],
+  "legacy_world_xy_m_rounded": [
+    0.265,
+    0.662
+  ],
+  "new_verified_geometry_world_xy_m": [
+    0.26729291677474976,
+    0.6573204398155212
+  ],
+  "new_minus_legacy_world_xy_m": [
+    0.0022929167747497425,
+    -0.004679560184478793
+  ],
+  "difference_norm_m": 0.005211118004429372,
+  "grounding": {
+    "target_query": "red cup",
+    "label": "빨간 컵",
+    "bbox_model_normalized_0_1000": [
+      447.0,
+      527.0,
+      483.0,
+      595.0
+    ],
+    "bbox_pixel_raw": [
+      901.152,
+      597.091,
+      973.728,
+      674.135
+    ],
+    "reference_point_type": "bbox_bottom_center",
+    "raw_reference_pixel": {
+      "u": 937.44,
+      "v": 674.135
+    },
+    "undistorted_reference_pixel": {
+      "u": 902.7538452148438,
+      "v": 744.5928344726562
+    },
+    "world_coordinate": {
+      "x": 0.26729291677474976,
+      "y": 0.6573204398155212,
+      "unit": "m",
+      "frame": "LEGACY_WORKSPACE_COORDINATE"
+    }
+  }
+}

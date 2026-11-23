@@ -1,0 +1,44 @@
+{
+  "case_id": "unknown_destination",
+  "category": "unknown_destination",
+  "core_metric": true,
+  "run": 1,
+  "instruction": "빨간 컵을 왼쪽으로 옮겨",
+  "raw_model_output": "{\"action_phrase\":\"옮겨\",\"target_phrase\":\"빨간 컵\",\"destination_phrase\":\"왼쪽\"}",
+  "parsed": {
+    "action_phrase": "옮겨",
+    "target_phrase": "빨간 컵",
+    "destination_phrase": "왼쪽"
+  },
+  "validated": {
+    "status": "DESTINATION_NOT_RESOLVED",
+    "raw_instruction": "빨간 컵을 왼쪽으로 옮겨",
+    "error_code": "ZONE_NOT_RESOLVED",
+    "reason": "destination is not a configured zone alias: 왼쪽",
+    "parsed_fields": {
+      "action_phrase": "옮겨",
+      "target_phrase": "빨간 컵",
+      "destination_phrase": "왼쪽"
+    },
+    "action": {
+      "surface_phrase": "옮겨",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target_grounding_status": "NOT_RUN",
+    "zone_resolution_status": "ZONE_NOT_RESOLVED",
+    "path_status": "NOT_RUN",
+    "target": {
+      "surface_phrase": "빨간 컵",
+      "grounding_phrase": "red cup",
+      "canonicalization_status": "KNOWN_ALIAS"
+    }
+  },
+  "integrated": null,
+  "inference_sec": 6.021927869998763,
+  "expected": {
+    "status": "DESTINATION_NOT_RESOLVED",
+    "error_code": "ZONE_NOT_RESOLVED"
+  },
+  "matches_expected": true
+}

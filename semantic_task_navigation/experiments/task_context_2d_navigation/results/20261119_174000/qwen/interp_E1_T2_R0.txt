@@ -1,0 +1,54 @@
+{
+  "purpose": "Move a red cube from near the conveyor belt to an appropriate storage location near the truck.",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [106, 255, 238, 725]
+  },
+  "source_relation": "next_to",
+  "destination_meaning": "Appropriate storage location near the truck",
+  "destination_reference": {
+    "name_en": "truck",
+    "bbox_2d": [752, 0, 880, 145],
+    "inferred": false
+  },
+  "destination_relation": "near",
+  "zones_seen": [
+    {
+      "description": "Main operational area with conveyor belt and robotic arms",
+      "visual_evidence": [
+        "conveyor belt",
+        "robotic arms",
+        "orange cones",
+        "green path"
+      ],
+      "bbox_2d": [0, 0, 500, 750],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Storage and loading zone with truck and various containers",
+      "visual_evidence": [
+        "truck",
+        "barrels",
+        "stacked boxes",
+        "orange cones",
+        "yellow lines"
+      ],
+      "bbox_2d": [500, 0, 1000, 750],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Control or instruction zone with whiteboard",
+      "visual_evidence": [
+        "whiteboard",
+        "orange cone",
+        "gray grate"
+      ],
+      "bbox_2d": [0, 750, 500, 999],
+      "robot_body_access": "forbidden"
+    }
+  ],
+  "uncertainty": []
+}

@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:36:36+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "PASS",
+  "result": "CURRENT_WORLD_GOAL_CANDIDATES_CREATED",
+  "scope": "UNRANKED_VISUALIZATION_CANDIDATES_ONLY",
+  "world_frame": "GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+  "ground_plane_z_m": 0.0,
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+    "coordinate_domain": "RAW_IMAGE_PX"
+  },
+  "geometry_provenance": {
+    "tile_grid_points_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_points.json",
+    "tile_grid_points_sha256": "24d648feb8de81d5f825dbc09ea03bbcb1be2dc57f067792c3ed9e591fe2fab4",
+    "validated_homography_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+    "validated_homography_sha256": "070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da",
+    "selected_mapping": "RAW_IMAGE_PX_TO_EXISTING_UNDISTORTION_TO_UNDISTORTED_IMAGE_PX_TO_VALIDATED_HOMOGRAPHY_TO_WORLD_XY",
+    "homography_recomputed": false,
+    "camera_world_se3_required": false,
+    "candidate_pixel_source": "Existing accepted tile-grid intersection RAW observations"
+  },
+  "selection_policy": {
+    "candidate_count": 4,
+    "requirements_applied": [
+      "Accepted visible tile-grid intersection inside validated geometry",
+      "Local visibility GOOD and occlusion CLEAR in the existing tile artifact",
+      "Not directly on ID0 robot marker polygon",
+      "Not directly on a registered manual object reference point",
+      "Not directly on visually obvious fixed furniture at the marked pixel"
+    ],
+    "ranking_performed": false,
+    "single_goal_selected": false,
+    "physical_safety_claimed": false,
+    "reachability_claimed": false,
+    "robot_footprint_clearance_checked": false,
+    "planner_used": false
+  },
+  "candidates": [
+    {
+      "label": "GOAL_A",
+      "grid_id": "G12",
+      "world_xyz_m": [0.6, 1.2, 0.0],
+      "overlay_raw_image_px": [1046.057728113, 719.890109692],
+      "tile_visibility": "GOOD",
+      "tile_occlusion": "CLEAR",
+      "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP",
+      "rank": null,
+      "selected": false
+    },
+    {
+      "label": "GOAL_B",
+      "grid_id": "G13",
+      "world_xyz_m": [0.6, 1.8, 0.0],
+      "overlay_raw_image_px": [1052.954764764, 621.036310477],
+      "tile_visibility": "GOOD",
+      "tile_occlusion": "CLEAR",
+      "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP",
+      "rank": null,
+      "selected": false
+    },
+    {
+      "label": "GOAL_C",
+      "grid_id": "G15",
+      "world_xyz_m": [0.6, 3.0, 0.0],
+      "overlay_raw_image_px": [1062.476020419, 476.343409231],
+      "tile_visibility": "GOOD",
+      "tile_occlusion": "CLEAR",
+      "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP",
+      "rank": null,
+      "selected": false
+    },
+    {
+      "label": "GOAL_D",
+      "grid_id": "G25",
+      "world_xyz_m": [1.2, 3.0, 0.0],
+      "overlay_raw_image_px": [1203.602984717, 477.727585611],
+      "tile_visibility": "GOOD",
+      "tile_occlusion": "CLEAR",
+      "visual_screening": "VISIBLE_FLOOR_INTERSECTION_NO_DIRECT_REGISTERED_ENTITY_OVERLAP_RIGHT_FURNITURE_CLEARANCE_NOT_QUANTIFIED",
+      "rank": null,
+      "selected": false
+    }
+  ],
+  "preserved_manual_object_references": [
+    {"object": "UMBRELLA", "world_xy_m": [0.89, 0.87], "overlay_raw_image_px": [1140.398794394, 786.0743833227]},
+    {"object": "KEYBOARD", "world_xy_m": [0.225, 1.03], "overlay_raw_image_px": [918.6695540882, 749.2476685718]},
+    {"object": "CUP", "world_xy_m": [0.76, 2.14], "overlay_raw_image_px": [1099.227079919, 574.3876475982]},
+    {"object": "BOX", "world_xy_m": [0.11, 1.69], "overlay_raw_image_px": [908.3738074219, 635.7520020013]}
+  ],
+  "robot_marker_context": {
+    "marker_id": 0,
+    "observed_raw_corners_px_tl_tr_br_bl": [[984, 867], [1060, 867], [1058, 919], [978, 920]],
+    "label": "ROBOT MARKER ID0 - BASE POSE UNRESOLVED",
+    "ground_homography_applied": false
+  },
+  "output_overlay": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/current_world_goal_candidates_overlay.png",
+  "current_goal_status": "WAITING_FOR_USER_SELECTION_AND_FUTURE_SAFETY_VALIDATION",
+  "execution_boundaries": {"qwen_inference_runs": 0, "planner_runs": 0, "step17_runs": 0, "step18_runs": 0, "step19_runs": 0, "ros_nav2_runs": 0, "robot_motion_commands": 0}
+}

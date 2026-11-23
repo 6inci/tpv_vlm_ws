@@ -1,0 +1,149 @@
+{
+  "obstacle_state": {
+    "world_revision": 1,
+    "obstacles": [
+      {
+        "id": "dev_obstacle_01",
+        "state_role": "STATIC_OBSTACLE",
+        "geometry_status": "DEVELOPMENT_SYNTHETIC",
+        "shape": "axis_aligned_rectangle",
+        "bounds": {
+          "x_min": 0.45,
+          "x_max": 0.65,
+          "y_min": 0.65,
+          "y_max": 1.15
+        },
+        "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+        "unit": "m",
+        "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+        "source_detail": "STEP 14 baseline synthetic obstacle."
+      },
+      {
+        "id": "dynamic_box_02",
+        "state_role": "DYNAMIC_OBSTACLE",
+        "geometry_status": "DEVELOPMENT_SYNTHETIC",
+        "shape": "axis_aligned_rectangle",
+        "bounds": {
+          "x_min": 0.88,
+          "x_max": 0.92,
+          "y_min": 0.85,
+          "y_max": 0.95
+        },
+        "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+        "unit": "m",
+        "source_type": "EXPLICIT_OFFLINE_EVENT",
+        "source_detail": "Synthetic ADD across the current path."
+      }
+    ]
+  },
+  "collision_world": {
+    "schema_version": "0.1",
+    "mode": "ROBOT_ONLY_TRANSLATIONAL_BASELINE",
+    "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+    "unit": "m",
+    "touching_policy": "COLLISION",
+    "safety_margin_m": 0.0,
+    "robot": {
+      "reference_frame": "base_link",
+      "axis_convention": {
+        "x_positive": "forward",
+        "y_positive": "left"
+      },
+      "footprint_m": [
+        [
+          0.145,
+          0.123
+        ],
+        [
+          0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          0.123
+        ]
+      ],
+      "half_extents_m": {
+        "x": 0.145,
+        "y": 0.123
+      },
+      "fixed_yaw_rad": 0.0,
+      "geometry_status": "CONFIRMED",
+      "source_path": "/home/binci/mecanum_ros2/src/mecanum_bringup/config/nav2_params.yaml"
+    },
+    "workspace": {
+      "raw_bounds": {
+        "x_min": 0.0,
+        "x_max": 1.2,
+        "y_min": 0.0,
+        "y_max": 1.8
+      },
+      "valid_robot_center_bounds": {
+        "x_min": 0.145,
+        "x_max": 1.055,
+        "y_min": 0.123,
+        "y_max": 1.677
+      }
+    },
+    "static_obstacles": [
+      {
+        "id": "dev_obstacle_01",
+        "geometry_status": "DEVELOPMENT_SYNTHETIC",
+        "planning_role": "STATIC_OBSTACLE",
+        "shape": "axis_aligned_rectangle",
+        "raw_bounds": {
+          "x_min": 0.45,
+          "x_max": 0.65,
+          "y_min": 0.65,
+          "y_max": 1.15
+        },
+        "collision_bounds": {
+          "x_min": 0.30500000000000005,
+          "x_max": 0.795,
+          "y_min": 0.527,
+          "y_max": 1.273
+        },
+        "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+        "source_detail": "STEP 14 baseline synthetic obstacle.",
+        "state_role": "STATIC_OBSTACLE"
+      },
+      {
+        "id": "dynamic_box_02",
+        "geometry_status": "DEVELOPMENT_SYNTHETIC",
+        "planning_role": "STATIC_OBSTACLE",
+        "shape": "axis_aligned_rectangle",
+        "raw_bounds": {
+          "x_min": 0.88,
+          "x_max": 0.92,
+          "y_min": 0.85,
+          "y_max": 0.95
+        },
+        "collision_bounds": {
+          "x_min": 0.735,
+          "x_max": 1.065,
+          "y_min": 0.727,
+          "y_max": 1.073
+        },
+        "source_type": "EXPLICIT_OFFLINE_EVENT",
+        "source_detail": "Synthetic ADD across the current path.",
+        "state_role": "DYNAMIC_OBSTACLE"
+      }
+    ],
+    "readiness": {
+      "overall_manipulation_geometry_readiness": "PARTIAL",
+      "robot_only_static_planning_geometry_readiness": "READY"
+    },
+    "collision_query": {
+      "status": "AVAILABLE",
+      "representation": "CONTINUOUS_METRIC_RECTANGLES"
+    },
+    "path_planning": {
+      "status": "NOT_RUN"
+    },
+    "world_revision": 1
+  }
+}

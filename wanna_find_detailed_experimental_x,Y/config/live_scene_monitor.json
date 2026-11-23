@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "camera_selector": {
+    "policy": "EXACT_EXTERNAL_BY_ID_ONLY",
+    "device_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "required_identity_substring": "Ucamera001",
+    "forbidden_fallback_identity_substrings": ["HP_True_Vision", "HP True Vision"],
+    "allow_fallback": false
+  },
+  "preferred_width": 640,
+  "preferred_height": 480,
+  "preferred_fps": 30.0,
+  "reference_mode": "EXPLICIT_FIXED_REFERENCE",
+  "warmup_frames": 30,
+  "maximum_reference_attempts": 60,
+  "reference_stability_required_count": 3,
+  "reference_stability_threshold_ratio": 0.01,
+  "pixel_difference_threshold": 25,
+  "minimum_component_area_px": 80,
+  "minimum_component_area_ratio": 0.0002,
+  "global_change_threshold": 0.35,
+  "preprocess": {
+    "gaussian_kernel_size": 5
+  },
+  "morphology": {
+    "kernel_size": 3,
+    "open_iterations": 0,
+    "close_iterations": 1
+  },
+  "tracking": {
+    "minimum_track_confirmations": 2,
+    "minimum_iou": 0.1,
+    "maximum_centroid_distance_px": 60.0,
+    "maximum_missing_frames": 2
+  },
+  "ignore_regions_px": [],
+  "live_validation": {
+    "maximum_frames": 150,
+    "maximum_saved_sample_frames": 3
+  },
+  "semantic_trigger_policy": "CONFIRMED_LOCAL_PIXEL_TRACK_ONLY",
+  "parameter_status": "DEVELOPMENT_PARAMETER",
+  "source_detail": "STEP 20 fixed-camera pixel-space monitoring baseline. No VLM, metric grounding, planner injection, ROS, or robot execution."
+}

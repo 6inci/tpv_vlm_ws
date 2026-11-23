@@ -1,0 +1,137 @@
+# Task context -> reference objects -> spatial-relation search -> roles -> source / destination -> 2D maps -> paths A, B.
+# Declared BEFORE any model call of this folder. Existing Qwen3-VL-4B + Grounding DINO only (v0.2 worker, sequential, exclusive GPU).
+# Nothing outside this folder is modified. evaluation_reference.yaml is read only by evaluate(), after decisions and routes are written.
+experiment_id: task_context_2d_navigation
+results_dir: results
+image_dir: /home/binci/Pictures/Calibration
+reference_photo: U25070552                       # E1: the floor transform and the transferred DRAFT map are fitted on it
+
+# ---------------------------------------------------------------- STEP A: images and instructions (fixed before inference)
+# Same fixed floor layout in all 8 session photos (camera aligned with E1, v0.2 check_alignment); the cube, the small pallets and the robot
+# are placed differently. Two photos besides E1 were chosen for contrasting arrangements. The other five are NOT evaluated here.
+tasks:
+  - {task_id: E1_T1, photo: U25070552, file: undistorted_25070552942982.png, type: semantic_destination,
+     instruction: "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+     source_reference: conveyor, destination_reference: "not stated (shipping facility to be inferred)", relation: "from (produced by) / none"}
+  - {task_id: E1_T2, photo: U25070552, file: undistorted_25070552942982.png, type: spatial_relation,
+     instruction: "컨베이어 옆에 있는 빨간 큐브를 트럭 근처의 적절한 적치 장소로 옮겨줘.",
+     source_reference: conveyor, destination_reference: truck, relation: "next_to / near"}
+  - {task_id: E1_T3, photo: U25070552, file: undistorted_25070552942982.png, type: role_reversal,
+     instruction: "트럭에 실린 상자를 컨베이어 옆 작업 구역으로 가져와.",
+     source_reference: truck, destination_reference: conveyor, relation: "on (loaded) / next_to"}
+  - {task_id: D1_T2, photo: U26007129, file: undistorted_26007129092710.png, type: spatial_relation (other arrangement),
+     instruction: "컨베이어 옆에 있는 빨간 큐브를 트럭 근처의 적절한 적치 장소로 옮겨줘.",
+     source_reference: conveyor, destination_reference: truck, relation: "next_to / near"}
+  - {task_id: P4_R, photo: U24898553, file: undistorted_24898553897872.png, type: role_reversal (other arrangement),
+     instruction: "트럭 근처에 놓인 빨간 큐브를 컨베이어 옆 작업 구역으로 가져와.",
+     source_reference: truck, destination_reference: conveyor, relation: "near / next_to"}
+
+# ---------------------------------------------------------------- reuse
+reuse:
+  route_config: ../task_route_integration/config.yaml                                 # floor transform, DRAFT map, stored E1 objects, robot start (E1)
+  first_path_config: ../first_vlm_navigation_path/config.yaml                          # robot search window (lower right) and shift rule
+  e1_candidates: ../task_conditioned_target_grounding/results/20261119_145217/all_candidates.json   # stored DINO candidates of E1 (no new E1 DINO)
+  retention_run: ../candidate_retention_policy/results/20261119_073841_retention      # stored red-cube candidates of every photo (HSV; E1 also DINO)
+  semnav_run: ../semantic_navigation_integration/results/20261119_111050_semnav       # earlier E1 path B (bay free floor) for comparison
+  draft_zone_source: /home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-15_zone_draft/semantic_zones_draft_v2.json
+  vocabulary: [pallet, truck bed, cardboard box, shelf, table, cart, container, floor marking]   # existing placement_target_grounding vocabulary
+
+# ---------------------------------------------------------------- STEP B: interpretation and relation search
+interpretation:
+  prompt_id: task_context_v1
+  max_new_tokens: 1536
+  template: |
+    작업지시: "{instruction}"
+    {rules_block}이미지를 보고 이 작업지시를 해석하라. 옮길 물체, 출발지의 기준 물체와 공간 관계, 목적지의 의미와 기준 물체·공간 관계, 작업 목적을 구분하라.
+    기준 물체가 명령에 직접 나오지 않으면 이미지에서 작업 목적과 관련된 설비를 추론하라. 바닥 표시, 경계선, 안전 콘, 표지처럼 구역을 나누는 시각적 단서가 보이면 함께 기록하라.
+
+    Return JSON only, no prose:
+    {"purpose": <short text>,
+     "source_object": {"name_en": <short English noun phrase>},
+     "source_reference": {"name_en": <English noun or null>, "bbox_2d": [x1, y1, x2, y2] or null},
+     "source_relation": "next_to" | "near" | "on" | "from" | "none",
+     "destination_meaning": <short text>,
+     "destination_reference": {"name_en": <English noun or null>, "bbox_2d": [x1, y1, x2, y2] or null, "inferred": true | false},
+     "destination_relation": "next_to" | "near" | "on" | "none",
+     "zones_seen": [{"description": <short text>, "visual_evidence": [<text>], "bbox_2d": [x1, y1, x2, y2] or null,
+                     "robot_body_access": "allowed" | "forbidden" | "unknown"}],
+     "uncertainty": [<text>]}
+    bbox_2d: integers normalized to 0-1000 relative to this image's width and height.
+  # R1: the operating rules of THIS workplace, written from the DRAFT zone definitions (user draft, not confirmed). No object id, no coordinate,
+  # no statement about which object is the placement target. Not a universal 5S rule.
+  rules_R1: |
+    이 작업장의 운영 규칙(사용자 초안, 확인 전):
+    - 초록색 바닥에 발자국 표시가 있는 통로는 보행자 통로이며 로봇 본체가 들어갈 수 없다.
+    - 노란 외곽선 안의 넓은 검은 바닥은 로봇 주행 구역이다. 로봇 본체는 이 구역 안에서만 움직인다.
+    - 흰 테두리 안의 컨베이어·로봇 팔 작업셀에는 로봇 본체가 들어갈 수 없다.
+    - 노란 테두리 안의 화물 적치 구역과 자재 보관 구역에는 로봇 본체가 들어가지 않고 접근만 한다.
+    - 트럭과 흰색 점선 구획은 트럭 하역장이다.
+    - 안전 콘과 바닥 경계선은 작업공간을 나누는 표시일 수 있다.
+    - 로봇은 주행 구역에 정차한 채 인접한 구역의 물체를 집거나 놓을 수 있다(그리퍼 도달 거리는 확인되지 않았다).
+relations:
+  # relation -> search region (declared). vicinity = v0.2 make_roi around the reference box (same rule for every reference);
+  # on = the reference box itself (candidate box >= 50 % inside it). 'none' with a reference -> vicinity; no grounded reference -> NO_REFERENCE
+  # (the relation search cannot run; recorded as a failure of the reference stage, no whole-image fallback).
+  vicinity: [next_to, near, from]
+  containment: ["on"]                # quoted: YAML 1.1 reads a bare on as the boolean true
+  containment_min: 0.5
+  reference_classes: {conveyor: [conveyor, 컨베이어], truck: [truck, 트럭]}   # Qwen reference name -> detection class (v0.2 class names)
+  snap_iou: 0.3
+  region_scale_frac: 0.5
+  max_numbered: 20
+
+# ---------------------------------------------------------------- detection (new photos only; E1 reuses stored candidates)
+detection:
+  thresholds: {box: 0.10, text: 0.10}
+  max_area_frac: 0.25
+  merge_iou: 0.5
+  reference_verify_max: 3            # Qwen crop check (v0.2 verify_box) of the reference / robot candidates in score order, first 'yes' wins
+  phrases: "vocabulary + the source object name and the reference names of this photo's interpretations (lower-case)"
+
+# ---------------------------------------------------------------- STEP D: roles and selection
+roles:
+  max_new_tokens: 2048
+  source_prompt_id: source_roles_v2
+  source_template: |
+    작업지시: "{instruction}"
+    {rules_block}이 이미지는 출발지 기준 물체("{reference}") 주변의 탐색 영역을 확대한 것이다. 번호가 붙은 초록색 상자는 자동 탐지된 후보이다.
+    각 후보가 무엇으로 보이는지와, 이 작업지시에서 옮겨야 할 물체("{source_object}")에 해당하는지 판단하라. 목적지는 판단하지 않는다.
+    여러 후보가 똑같이 해당하면 모두 object_to_move로 표시하라.
+
+    Return JSON only, no prose:
+    {"candidates": [{"id": <number>, "appearance": [<English>], "role": "object_to_move" | "other" | "uncertain", "reason": <one short sentence>}],
+     "object_to_move_id": <number or null>, "reason": <one short sentence>}
+  destination_prompt_id: destination_roles_v2
+  destination_template: |
+    작업지시: "{instruction}"
+    {rules_block}옮길 물체는 "{source_object}"이며 이미 정해져 있다. 여기서는 그 물체를 내려놓을 대상만 평가한다. 옮길 물체가 이 이미지에 보이는지는 판단하지 않는다.
+    이 이미지는 목적지 기준 물체("{reference}") 주변의 탐색 영역을 확대한 것이다. 번호가 붙은 초록색 상자는 자동 탐지된 후보이다.
+    각 후보에 대해 (1) 무엇으로 보이는지(확실하지 않으면 가능한 해석을 모두), (2) 위에 다른 물체가 놓여 있는지, (3) 옮긴 물체를 내려놓는 데 쓸 수 있는지를 작업 목적과 주변 구역의 관계를 근거로 판단하라.
+    물체의 정확한 이름을 모르더라도, 물건을 올려놓을 수 있는 형태라면 그 근거를 적어라.
+
+    Return JSON only, no prose:
+    {"candidates": [{"id": <number>, "appearance": [<English>], "load_state": "empty" | "occupied" | "uncertain",
+                     "placement_role": "suitable" | "possible" | "unsuitable", "reason": <one short sentence>}],
+     "best_destination_id": <number or null>, "reason": <one short sentence>}
+# General work policy (user, fixed before the run; identical for every image and condition):
+#  source:      candidates rated object_to_move: exactly one -> SELECTED; several -> AMBIGUOUS (no first-pick); none -> NOT_FOUND.
+#  destination: Python accessibility per candidate = its floor polygon within adjacent_cm of a drivable zone AND a footprint-valid approach pose
+#               reachable from the robot start (the body never enters a non-drivable zone; the gripper reach is NOT verified).
+#               Tier1 = suitable & accessible, Tier2 = possible & accessible. Qwen's best in Tier1 -> SELECTED. Otherwise the alternatives:
+#               exactly one Tier1 -> SELECTED (ALTERNATIVE); several Tier1 -> AMBIGUOUS; no Tier1: exactly one Tier2 -> SELECTED (ALTERNATIVE, possible),
+#               several -> AMBIGUOUS; nothing accessible -> NOT_ACCESSIBLE. 'unsuitable' is never selected.
+policy:
+  adjacent_cm: 5                     # semnav floor 'adjacent_to' (floor-transform deviation bound 3.5 cm rounded up)
+conditions:
+  C1_no_relation: "no reference ROI, no Qwen role call: source = top visual-evidence level (ties -> AMBIGUOUS); destination = highest detector score in the whole image (naive)"
+  C2_relation_R0: "reference ROI + Qwen roles without workplace rules + accessibility policy"
+  C3_relation_R1: "reference ROI + Qwen roles WITH the workplace rules (R1) + accessibility policy"
+
+# ---------------------------------------------------------------- STEP E/F: maps and paths
+maps:
+  occupancy: "from the transferred DRAFT layers (aligned photos, same floor layout): occupied = static obstacles (Z03, Z04); free = drivable Z02 and the pedestrian route Z01 minus obstacles; unknown = the rest (incl. the conveyor workcell Z07: equipment not measured)"
+  per_photo_objects: "small objects (cube, small pallets) are targets, not obstacles; no object position of another photo is reused"
+route:
+  robot_cm: [35, 24]
+  diagnostic_when_ambiguous: true    # conditional paths for tied candidates are drawn and labelled DIAGNOSTIC_ONLY
+claims: {generalisation: "NONE (one layout, three arrangements)", task_success: NOT_CLAIMABLE}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:20:15+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "REWORK",
+  "result": "ROBOT_POSE_WAITING_FOR_CAMERA_WORLD_3D_RELATION",
+  "question": "Can the validated planar metric geometry be promoted to a defensible current camera/world SE(3) relation for an elevated ID0 marker?",
+  "inputs": {
+    "calibration_path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "calibration_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "homography_path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+    "homography_sha256": "070784635e67daf5a53ece37e7e06c9af89761d160b439c418b882dbe5a550da",
+    "tile_points_path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_points.json",
+    "tile_points_sha256": "24d648feb8de81d5f825dbc09ea03bbcb1be2dc57f067792c3ed9e591fe2fab4",
+    "fit_holdout_split_sha256": "09a2741d78784e8b924e8728456647d4e43e9eaf683ce1be04898820b7af805f",
+    "fit_point_ids": ["G00","G02","G22","G03","G23","G05","G25","G16"],
+    "holdout_point_ids": ["G12","G13","G14","G15","G06","G26"]
+  },
+  "planar_homography_fact": {
+    "selected_domain": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+    "tile_holdout_rmse_m": 0.004060,
+    "tile_holdout_maximum_m": 0.007035,
+    "validated_use": "GROUND_PLANE_XY_MAPPING",
+    "validated_as_full_3d_extrinsic": false
+  },
+  "homography_decomposition_diagnostic": {
+    "method": "Invert H_world_from_undistorted_pixel, premultiply by K^-1, normalize first two rotation columns, then orthonormalize by SVD.",
+    "pre_orthonormal_column_norms": [1.072064252581,0.927935747419],
+    "pre_orthonormal_singular_values": [1.077915631540,0.992902723609,0.921132131826],
+    "orthonormalized_rotation_camera_from_world": [[0.991912610142,0.115453547732,-0.052724303297],[0.013970115323,-0.512192906478,-0.858756812160],[-0.126151534751,0.851075146429,-0.509663502137]],
+    "translation_camera_from_world_m": [-0.339292654882,1.255764905928,3.115395437940],
+    "implied_camera_center_world_xyz_m": [0.712017398203,-1.969069210785,2.648311048036],
+    "relative_reconstruction_residual": 0.026370366660,
+    "interpretation": "Plausible pose, but the metric Homography and fixed K do not satisfy a single rigid calibrated-camera decomposition closely enough to promote this diagnostic to validated SE(3)."
+  },
+  "physically_constrained_pose_fit_diagnostic": {
+    "method": "cv2.solvePnP SOLVEPNP_ITERATIVE on the existing eight frozen fit tile intersections with Z=0; validate on the six frozen holdout points.",
+    "rotation_vector_world_to_camera_rad": [2.021323550634,0.106399921417,-0.153786298520],
+    "rotation_matrix_camera_from_world": [[0.987752090813,0.143235031760,-0.061883218812],[0.007411434186,-0.439229767125,-0.898344189225],[-0.155855310263,0.886882707774,-0.434911697836]],
+    "translation_camera_from_world_m": [-0.318883482332,1.155059397121,2.809924361563],
+    "implied_camera_center_world_xyz_m": [0.744358812883,-1.939061570689,2.239976336180],
+    "fit_reprojection_rmse_px": 8.508780767846,
+    "fit_reprojection_max_px": 11.229757417597,
+    "holdout_reprojection_rmse_px": 7.032647429295,
+    "holdout_reprojection_max_px": 11.638874384673,
+    "interpretation": "The rigid pose is physically plausible but does not reproduce the frozen image correspondences with sufficient independent pixel consistency."
+  },
+  "consistency_assessment": {
+    "camera_height_difference_between_diagnostics_m": 0.408334711856,
+    "existing_calibration_limitation": "Calibration was reconstructed from screenshots and has no independently recorded camera serial.",
+    "camera_world_transform_accepted": false,
+    "reason": "The planar XY transform remains validated, but the available K/H/tile evidence yields materially different and insufficiently validated 3D camera poses."
+  },
+  "minimum_additional_evidence": "One validated current-session T_camera_world or T_world_camera tied to G00/+X/+Y/+Z, obtained from an independently measured extrinsic target or equivalent 3D reference. Do not infer camera height or tilt from the planar H alone.",
+  "homography_recomputed": false
+}

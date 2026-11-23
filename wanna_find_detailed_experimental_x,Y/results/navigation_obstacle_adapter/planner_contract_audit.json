@@ -1,0 +1,28 @@
+{
+  "schema_version": "0.1",
+  "step15": {
+    "grid_resolution_m": 0.02,
+    "grid_resolution_matches_artifact": true,
+    "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+    "occupied_cell_representation": "BINARY_GRID",
+    "point_projection_helper": "vlm_reposition.planning.metric_to_grid",
+    "robot_footprint_handling": "CONTINUOUS_COLLISION_GEOMETRY_BEFORE_GRID_DISCRETIZATION",
+    "additional_inflation_m": 0.0,
+    "safety_cost_radius_m": 0.2
+  },
+  "step17": {
+    "accepted_geometry": "DEVELOPMENT_SYNTHETIC_AXIS_ALIGNED_RECTANGLE",
+    "point_observation_directly_accepted": false,
+    "adapter_output_injected": false
+  },
+  "step18": {
+    "dependency": "STEP17_RECTANGLE_COLLISION_WORLD_AND_GRID",
+    "called": false
+  },
+  "step19": {
+    "identity_dependency": "OBSTACLE_ID_PLUS_OBSERVATION_INDEX_AND_LOGICAL_TIME",
+    "track_id_bridge_defined": false,
+    "called": false
+  },
+  "step25n_boundary": "A separately approved bridge must map this observation into the STEP17 contract."
+}

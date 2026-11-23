@@ -1,0 +1,22 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "1cad753189ffc9b513901b1a4ec6f3b8bbfd9f46842309bbe166fb691345e3a5",
+  "image_path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2720,
+  "n_output_tokens": 548,
+  "hit_max_new_tokens": false,
+  "latency_s": 17.525,
+  "wall_s": 17.65,
+  "peak_vram_gib": 8.983,
+  "raw_response": "{\n  \"purpose\": \"Move an object from the unloading area to the conveyor belt area\",\n  \"source_object\": {\n    \"name_en\": \"stack of boxes\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"unloading area\",\n    \"bbox_2d\": [750, 0, 880, 145]\n  },\n  \"source_relation\": \"in\",\n  \"destination_meaning\": \"conveyor belt area\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt area\",\n    \"bbox_2d\": [100, 265, 265, 725],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Pedestrian walkway\",\n      \"visual_evidence\": [\n        \"green floor with footprints\",\n        \"no robot body allowed\"\n      ],\n      \"bbox_2d\": [305, 55, 555, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Robot travel zone\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [100, 265, 650, 725],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor belt area\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"robot arms\"\n      ],\n      \"bbox_2d\": [100, 265, 265, 725],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Unloading area\",\n      \"visual_evidence\": [\n        \"white truck\",\n        \"white dashed lines\"\n      ],\n      \"bbox_2d\": [750, 0, 880, 145],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Material storage area\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"stacks of barrels and containers\"\n      ],\n      \"bbox_2d\": [620, 430, 950, 550],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact reach of the gripper is not confirmed.\"\n  ]\n}"
+ }
+]

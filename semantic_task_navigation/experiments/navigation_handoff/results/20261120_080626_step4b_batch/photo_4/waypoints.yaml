@@ -1,0 +1,57 @@
+frame_id: map
+status: A NOT_FOUND, B CONDITIONAL; positions PROVISIONAL / REVIEW_REQUIRED; grasp/placement
+  UNVERIFIED; NOT_FOR_DRIVING
+note: yaw = body heading (gripper side), not the movement direction
+path_B_basis: 'CONDITIONAL: from the robot start (no grasp-pose candidate); not a
+  task sequence'
+path_A: null
+path_B:
+- kind: start
+  index: 0
+  x_m: 2.95
+  y_m: 0.55
+  yaw_deg: -178.2
+  seq: 0
+  yaw_rad: -3.110177
+- kind: turn
+  index: 56
+  x_m: 1.83
+  y_m: 0.55
+  yaw_deg: -178.2
+  seq: 1
+  yaw_rad: -3.110177
+- kind: rotation_point
+  index: 57
+  x_m: 1.83
+  y_m: 0.57
+  yaw_deg: -178.2
+  seq: 2
+  yaw_rad: -3.110177
+- kind: rotate_in_place
+  index: 57
+  x_m: 1.83
+  y_m: 0.57
+  yaw_deg: 90.0
+  direction: cw
+  seq: 3
+  yaw_rad: 1.570796
+- kind: turn
+  index: 90
+  x_m: 1.83
+  y_m: 1.23
+  yaw_deg: 90.0
+  seq: 4
+  yaw_rad: 1.570796
+- kind: goal
+  index: 96
+  x_m: 1.95
+  y_m: 1.23
+  yaw_deg: 90.0
+  seq: 5
+  yaw_rad: 1.570796
+grasp_stop_pose: null
+place_stop_pose:
+  x_m: 1.95
+  y_m: 1.23
+  yaw_deg: 90.0
+  status: UNVERIFIED

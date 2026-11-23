@@ -1,0 +1,115 @@
+# Navigation hand-off (PGM / YAML / path data for the ROS2 Nav2 team member).
+# Declared BEFORE the run it governs. Nothing here changes v0.2 (config/, src/), earlier experiments, the photos or the calibration.
+# Paths that are not absolute resolve against experiments/navigation_handoff/.
+experiment_id: navigation_handoff
+results_dir: results
+
+# ---- Photos. The files were renamed from undistorted_*.png to <n>calibration.png: identity is the sha256, never the file name.
+# earlier_id = id used by every earlier experiment; mapping taken from qwen_semantic_map_diagnostic/image_selection.json (sha256 match, 8/8).
+photo_dir: /home/binci/Pictures/Calibration          # read only
+photos:
+  - {name: photo_1, current_file: 1calibration.png, sha256: 6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13, earlier_id: U23678143, earlier_file: undistorted_23678143507600.png, earlier_role: null}
+  - {name: photo_2, current_file: 2calibration.png, sha256: dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a, earlier_id: U24768580, earlier_file: undistorted_24768580481401.png, earlier_role: null}
+  - {name: photo_3, current_file: 3calibration.png, sha256: 9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba, earlier_id: U24837448, earlier_file: undistorted_24837448431552.png, earlier_role: E2}
+  - {name: photo_4, current_file: 4calibration.png, sha256: cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788, earlier_id: U24898553, earlier_file: undistorted_24898553897872.png, earlier_role: P4}
+  - {name: photo_5, current_file: 5calibration.png, sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605, earlier_id: U25070552, earlier_file: undistorted_25070552942982.png, earlier_role: E1}
+  - {name: photo_6, current_file: 6calibration.png, sha256: afe33110258fc087e258729c61d0f5b5d5f18375746ba410e06bdd3c8a74c2d2, earlier_id: U25137685, earlier_file: undistorted_25137685449593.png, earlier_role: null}
+  - {name: photo_7, current_file: 7calibration.png, sha256: 25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052, earlier_id: U25967031, earlier_file: undistorted_25967031098947.png, earlier_role: null}
+  - {name: photo_8, current_file: 8calibration.png, sha256: 7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d, earlier_id: U26007129, earlier_file: undistorted_26007129092710.png, earlier_role: D1}
+reference_photo: photo_5                             # E1: the floor transform and the transferred DRAFT map belong to this frame
+
+# The photos are ALREADY undistorted (cv2.initUndistortRectifyMap with newCameraMatrix = K, read-only calibration). Never undistort again.
+image_frame: undistorted_px
+
+# ---- Reused (read only, imported or loaded unchanged)
+reuse:
+  floor_transform_config: ../task_plan_prototype/config.yaml          # `floor` section -> floor_transform.fit_floor_transform (E1 mat seams)
+  stored_floor_transform: ../task_route_integration/results/20261119_082047_route/task_plan.json   # H must be reproduced exactly
+  draft_map_E1: ../first_vlm_navigation_path/results/20261119_001504_first_path/map_E1_transferred.json   # DRAFT zones in the E1 frame
+alignment_check: {max_shift_px: 3.0, min_response: 0.3}                # v0.2 check_alignment thresholds, unchanged
+
+# ---- Frames
+workspace_cm: [315, 210]          # 3 x 2 floor mats of 105 cm (user-stated; gaps ignored). floor_cm is defined on this grid.
+map_frame:
+  # ROS2 `map` (REP-103, right-handed, z up). Origin = mat-grid node (0,2) = floor_cm (0, 210): the mat corner nearest the camera on the left.
+  # +x_map = +x_floor (image right), +y_map = away from the camera (floor -y).  yaw_map = -yaw_floor.
+  origin_floor_cm: [0, 210]
+
+# ---- Static Nav2 map (map.pgm + map.yaml). Only the DRAFT zone layers; robot, cubes and pallets are NEVER written into it.
+map_export:
+  map_id: navigation_handoff_static_DRAFT
+  resolution_m: 0.02              # 2 cm cells: same as the earlier occupancy_map.npy and the planning cell of task_plan_prototype
+  pad_cm: 10                      # margin around the workspace, written as unknown
+  raster_px_per_cm: 4             # sub-pixel raster used to classify every cell (same as the earlier independent check)
+  cell_rule: "FREE only if every sub-pixel is free; UNKNOWN only if every sub-pixel is outside the workspace; otherwise OCCUPIED (conservative)"
+  values: {free: 254, occupied: 0, unknown: 205}   # map_saver convention
+  mode: trinary
+  negate: 0
+  occupied_thresh: 0.65
+  free_thresh: 0.196
+
+# ---- Robot and gripper (used from STEP 3; recorded here so the run folder carries the decisions)
+robot:
+  length_cm: 35                   # user decision 2026-11-19 (Nav2 footprint of the team is 29.0 x 24.6 cm; not used)
+  width_cm: 24
+  footprint_margin: from_floor_transform     # 3.5 cm/side in the earlier runs (independent seam deviation)
+gripper:
+  offset_x_m: null                # base_link -> gripper centre: NOT measured (the user does no physical tests). null = unmeasured
+  offset_y_m: null
+  pickup_height_m: null
+  placement_height_m: null
+  may_cross_drivable_boundary: true   # user decision 2026-11-19: only the gripper may reach over the boundary; the body stays in free space
+nav2_map_server_load_test: on_user_request   # user decision 2026-11-19: format validation only; install nothing unless asked
+
+# ================================================================================ STEP 3 (declared before the first STEP 3 run)
+# Object positions: candidates are SHOWN to the user; only a file with status USER_CONFIRMED (config/object_positions/<photo>.yaml)
+# is accepted as planning input. Image points are projected to the floor at z = 0: height parallax is NOT corrected (UNVERIFIED).
+candidates:
+  photo_5:
+    robot:
+      stored_detection: ../first_vlm_navigation_path/results/20261119_001504_first_path/result.json   # stages.3_robot_start (DINO + Qwen yes)
+      ai_visual_estimates:   # read off a 3x zoom by the AI on 2026-11-20 (not a detector output); the user confirms or replaces it
+        - {id: R_WHEELS, image_px: [1709, 697],
+           method: "mean of the 4 mecanum-wheel image centres (1647,637) (1665,760) (1755,632) (1768,757); URDF base_link = centre of the wheels at floor level; wheel centres are ~4 cm above the floor"}
+      heading_options:
+        - {id: H180, yaw_map_deg: 180, basis: "AI visual: white claw-like parts protrude beyond the left wheels (image left = -x_map)"}
+        - {id: H0, yaw_map_deg: 0, basis: "the opposite direction"}
+    cube:
+      stored_candidates: ../candidate_retention_policy/results/20261119_073841_retention/result.json   # photo U25070552, retention states kept
+      show_states: [PROBABLE]
+    placement:
+      ai_drawn_supports: ../task_conditioned_target_grounding/evaluation_reference.yaml   # AI_DRAWN boxes (P_DST etc.), user to confirm
+      show_ids: [P_DST]
+      loading_bay: ../semantic_evidence_verification/results/20261118_231429_bay_localization/stability_8_photos.json   # Python floor marking
+object_positions_dir: config/object_positions          # STEP 3 first run (chat-confirmed candidates); kept as a record, no longer planning input
+
+# ---- 2026-11-20 user instruction: A (red cube) and B (pallet placement target) are CLICKED by the user in position_picker.py.
+# The robot position is the stored automatic estimate where one exists (corrected only if wrong); no automatic HEADING estimate exists.
+# Path planning reads ONLY data/approved_positions/<photo>.yaml with status USER_APPROVED (re-used on every later run of that photo).
+approved_positions_dir: data/approved_positions
+robot_auto_estimates:
+  file: ../task_context_2d_navigation/results/20261119_174000/context_search_results.json   # references.<earlier_id>.robot
+  rule: "stored automatic detection (Grounding DINO 'mobile robot.' + Qwen crop check yes); point = box centre (rule of the earlier experiments)"
+  heading: "no automatic heading estimate exists in the project: the user sets it"
+
+planning:
+  map_run: results/20261120_000114_step2_map            # STEP 2 map.pgm / map.yaml / coordinate_frames.json (read only)
+  footprint_margin_source: STEP 2 coordinate_frames.json floor_transform_record.footprint_margin_cm   # 3.5 cm/side (transform error)
+  raster_px_per_cm: 4                                   # PGM cells upsampled (nearest) for the whole-body checks: same occupancy, finer body edges
+  planner: SAFETY_COST_ASTAR                            # v0.2 edge cost (reused)
+  safety_margin_cm: 10
+  safety_weight: 1.0
+  # v0.2 A* with 4 neighbours (unchanged core) gives 1-cell staircases (15-16 turns on E1). The hand-off path therefore uses the same v0.2
+  # edge cost on 4 neighbours plus a cost per direction change; the unchanged v0.2 4-neighbour result is kept as a baseline record.
+  turn_penalty_cm: 20
+  approach_yaws_map_deg: [0, 90, 180, 270]
+  approach_search_cm: 150                               # how far behind the target the body centre is searched on the target's axis line
+  gripper_dy_assumption_m: 0.0                          # TEMPORARY: gripper on the body centre line. Not a measurement.
+  start_escape_max_cm: 10                               # robot physically at the start: if only the NOMINAL body fits there, one straight
+                                                        # axis move (nominal body swept) to the nearest cell where the margin body fits
+  rotation_step_deg: 1                                  # rotating-rectangle check (static, margin body), both directions
+  rotation_cell_candidates: 300                         # heading change on the way: cheapest common cells (v0.2 cost_field sums) tried in order
+  sweep_step_cm: 0.25
+  selection: "per target: among approach candidates whose pose, rotation and path all pass, the smallest front-to-target gap first, then the shortest path"
+  sensitivity_margins_cm: [0]                           # diagnostic only (not a hand-off result): same plan with the nominal 35 x 24 cm body
+  coordinate_uncertainty_cm: {independent_seam_max: 3.5, node_residual_max: 5.22, note: "bottom mat row 4-5 cm; height parallax not corrected"}

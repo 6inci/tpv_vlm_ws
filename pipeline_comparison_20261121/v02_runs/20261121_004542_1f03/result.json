@@ -1,0 +1,282 @@
+{
+  "schema_version": "stnav-result-0.1",
+  "run_id": "20261121_004542_1f03",
+  "analysis_mode": "LOCAL_ONLY",
+  "map_mode": "IMAGE_SPACE_DEMO",
+  "metric_output_enabled": false,
+  "command": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+  "frame": {
+    "frame_id": 1,
+    "timestamp": 1795189540.4492152,
+    "timestamp_iso": "2026-11-21T00:45:40.449",
+    "source": {
+      "kind": "image",
+      "path": "/home/binci/Pictures/Calibration/3calibration.png",
+      "camera_model": null,
+      "camera_model_from": "EXIF Model tag",
+      "width": 1920,
+      "height": 1080
+    },
+    "width": 1920,
+    "height": 1080,
+    "coordinate_frame": "raw_image_px",
+    "raw_frame_png": "input/raw_frame.png",
+    "decoded_pixels_sha256": "3038761c32741e7512227e2b97e806f06627a982254cbe05b60f0add63facb99",
+    "source_sha256": "9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba"
+  },
+  "calibration": {
+    "map_mode": "IMAGE_SPACE_DEMO",
+    "metric_output_enabled": false,
+    "undistort_view_available": false,
+    "undistort_view_note": "intrinsics validity for the current install is UNVERIFIED; view only",
+    "camera_model": null,
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "checks": [
+      {
+        "check": "resolution",
+        "expected": [
+          1920,
+          1080
+        ],
+        "actual": [
+          1920,
+          1080
+        ],
+        "ok": true
+      },
+      {
+        "check": "camera_model",
+        "expected": "HD Web Camera",
+        "actual": null,
+        "ok": false
+      }
+    ],
+    "reasons": [
+      "camera model unknown or different from the calibrated camera",
+      "intrinsics not validated for the current camera installation",
+      "homography status: not_available (no validated floor-plane transform)"
+    ],
+    "intrinsics": {
+      "file": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+      "sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+      "width": 1920,
+      "height": 1080,
+      "camera_matrix": [
+        [
+          1193.9285743624512,
+          0.0,
+          905.4672749500978
+        ],
+        [
+          0.0,
+          1191.56191006301,
+          513.000222084921
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dist_coeffs": [
+        -0.20298479067273242,
+        0.13060299315148366,
+        0.027118263577020307,
+        0.003928149452520465,
+        -0.06119022290385212
+      ],
+      "rms_px": 0.20571622922708746,
+      "calibrated_on": "2026-08-14"
+    },
+    "homography_file": null,
+    "homography_status": "not_available"
+  },
+  "steps": [
+    {
+      "name": "parse_task",
+      "label": "명령 해석",
+      "status": "FAILED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": 8.675,
+      "error": "UNSUPPORTED_DESTINATION: destination 'palette' is not supported (supported: loading_area anchored on a truck)",
+      "next": "save_results",
+      "started_at": "2026-11-21T00:45:42"
+    },
+    {
+      "name": "save_results",
+      "label": "결과 저장",
+      "status": "OK",
+      "model": "artifacts",
+      "input_summary": "run 20261121_004542_1f03",
+      "output_summary": "/home/binci/vlm_ws/pipeline_comparison_20261121/v02_runs/20261121_004542_1f03 (result.json, manifest.json, figures)",
+      "duration_s": null,
+      "error": null,
+      "next": null,
+      "started_at": "2026-11-21T00:45:50"
+    }
+  ],
+  "overall_status": "TASK_REJECTED",
+  "status_reasons": [
+    "parse_task: UNSUPPORTED_DESTINATION: destination 'palette' is not supported (supported: loading_area anchored on a truck)"
+  ],
+  "status_note": "PLAN_COMPLETE = both approach poses and paths exist and passed validation in image space; it does not mean the robot moved or grasped anything.",
+  "task": null,
+  "task_parse": {
+    "command": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+    "mode": "LOCAL_ONLY",
+    "status": "FAILED",
+    "error_code": "UNSUPPORTED_DESTINATION",
+    "error": "destination 'palette' is not supported (supported: loading_area anchored on a truck)",
+    "raw_response": "{\n  \"status\": \"ok\",\n  \"task_type\": \"transport_and_place\",\n  \"target\": {\n    \"class\": \"cube\",\n    \"color\": \"red\",\n    \"count\": 1,\n    \"source_reference\": null,\n    \"source_relation\": null\n  },\n  \"destination\": {\n    \"region_type\": \"palette\",\n    \"reference_object\": \"empty_palette\"\n  },\n  \"reason\": \"Move the red cube to an empty palette.\"\n}",
+    "parsed_output": {
+      "status": "ok",
+      "task_type": "transport_and_place",
+      "target": {
+        "class": "cube",
+        "color": "red",
+        "count": 1,
+        "source_reference": null,
+        "source_relation": null
+      },
+      "destination": {
+        "region_type": "palette",
+        "reference_object": "empty_palette"
+      },
+      "reason": "Move the red cube to an empty palette."
+    },
+    "call": {
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+      "latency_s": 3.833,
+      "n_output_tokens": 100,
+      "hit_max_new_tokens": false
+    }
+  },
+  "scene_analysis": null,
+  "detections": null,
+  "target_inspection": null,
+  "start": null,
+  "start_error": null,
+  "scene_graph": null,
+  "region_grounding": null,
+  "map": null,
+  "goals": {},
+  "paths": {},
+  "validation": {},
+  "handoff": null,
+  "destination": {
+    "semantic_loading_region": null,
+    "semantic_regions_plausible": [],
+    "object_placement_region": "NOT_APPLICABLE (navigation)",
+    "robot_approach_region": null,
+    "selected_robot_goal": null,
+    "goal_reach_check": null,
+    "choice": null,
+    "chain": [],
+    "failed_stage": "semantic_region",
+    "final_stage_status": "NOT_RUN",
+    "claims": {
+      "semantic_loading_region": "NONE",
+      "object_placement_region": "NOT_APPLICABLE",
+      "robot_approach_region": "NOT_RUN reach: None",
+      "robot_task_success": "NOT_CLAIMABLE (image-space plan only; reach/placement unmeasured; no execution)"
+    }
+  },
+  "evaluation_record": {
+    "note": "automatic statuses only; accuracy needs ground truth (scripts/evaluate_run.py). Planning success is not robot execution success.",
+    "task_parsing": {
+      "backend": "LOCAL_ONLY",
+      "status": "UNSUPPORTED_DESTINATION",
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "object_grounding": {
+      "accepted": [],
+      "target_status": null,
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "semantic_grounding": {
+      "status": null,
+      "selected": null,
+      "prior_zone_consistency": null,
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "destination_chain": {
+      "final_stage_status": "NOT_RUN",
+      "failed_stage": "semantic_region",
+      "ground_truth": null
+    },
+    "goal_selection": {
+      "pickup": null,
+      "dropoff": null
+    },
+    "path_planning": {},
+    "end_to_end_planning": {
+      "status": "TASK_REJECTED",
+      "uses_manual_inputs": [
+        "navigation map",
+        "robot footprint, reach distances"
+      ],
+      "automatic_perception": true,
+      "counts_as_automatic_e2e": false
+    }
+  },
+  "provenance": {
+    "manual_inputs": [
+      {
+        "item": "navigation map",
+        "source": "config/maps/reference_scene_map.json",
+        "review_status": "DRAFT_UNCONFIRMED",
+        "knowledge": "manual_prior"
+      },
+      {
+        "item": "robot footprint, reach distances",
+        "source": "config/planning.yaml (image-space assumptions)",
+        "knowledge": "manual_prior"
+      }
+    ],
+    "auto_inferred": [
+      "task parse (LLM)",
+      "scene description (VLM)",
+      "object candidates (detector) + verification (VLM)",
+      "target selection",
+      "loading-area choice (VLM)"
+    ],
+    "deterministic": [
+      "coordinate transforms",
+      "relations",
+      "map",
+      "goal selection",
+      "A* + simplification",
+      "validation"
+    ]
+  },
+  "timing": {
+    "total_s": 8.765,
+    "per_step_s": {
+      "parse_task": 8.675,
+      "save_results": null
+    }
+  },
+  "internal_error": null,
+  "figures": {
+    "01_raw": "figures/01_raw.png",
+    "02_detections": "figures/02_detections.png",
+    "03_red_cube_roi": "figures/03_red_cube_roi.png",
+    "04_semantic_regions": "figures/04_semantic_regions.png",
+    "05_occupancy_map": "figures/05_occupancy_map.png",
+    "06_pickup_path": "figures/06_pickup_path.png",
+    "07_delivery_path": "figures/07_delivery_path.png",
+    "08_final_overview": "figures/08_final_overview.png",
+    "09_object_relationship": "figures/09_object_relationship.png",
+    "10_traversable_map": "figures/10_traversable_map.png",
+    "11_destination_chain": "figures/11_destination_chain.png"
+  }
+}

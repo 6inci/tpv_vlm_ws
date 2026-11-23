@@ -1,0 +1,81 @@
+# Semantic-to-navigation integration prototype -- configuration (2026-11-18).
+# Connects (A) the VLM's free proposal of a semantic destination (experiments/natural_language_abstraction,
+# frozen prompt n0) with (B) the v0.2 placement / approach / A* chain (src/semantic_task_nav, unchanged).
+# Nothing in src/, config/ (v0.2) or any earlier experiment is modified; v0.2 is subclassed, not edited.
+
+experiment_id: S2N_INTEGRATION_2026-11-18
+status: TESTING                       # AGENTS.md state vocabulary
+
+# First integration condition = the natural_language_abstraction L2 sentence, verbatim (checked at start-up
+# against that experiment's frozen config). It names a PURPOSE (shipping), not a place and not a truck.
+instruction: "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+instruction_level: L2
+
+vlm:
+  experiment_dir: ../natural_language_abstraction      # imported read-only (prompts.yaml, prompts_frozen.json, nla_probe.py)
+  require_frozen_prompt: true                          # refuse to run if the rendered prompt differs from the frozen one
+
+results_dir: results                                   # every run gets a NEW timestamp folder (v0.2 RunWriter)
+
+# ------------------------------------------------------------------ verification of the VLM proposal
+# Thresholds that already exist in v0.2 (config/planning.yaml destination.* and region_grounding.*) are READ from
+# there, not copied: structure_min_truck_containment, structure_max_area_ratio, structure_max_truck_iou,
+# region_grounding.band_ratio / min_band_px / min_candidate_area_px.
+# The values below are NEW assumptions of this prototype (image-space, not measured) and are logged per run.
+verification:
+  max_area_frac: 0.25                   # proposal box / image; same limit as grounding_dino.max_area_frac (scene-sized boxes)
+  min_box_side_px: 20
+  # A proposal that is not tightened by evidence grounding must be at most this many times the truck box area
+  # (v0.2 accepted a 1.49x structure box; its hard limit was 6x). Wider boxes are withheld, not shrunk blindly.
+  max_unrefined_area_ratio: 2.5
+  max_other_object_containment: 0.3     # a verified non-anchor object this much inside the region -> region swallows it
+  max_drive_zone_overlap_frac: 0.05     # region pixels inside the map's robot-drivable zone (needs an ALIGNED map)
+  max_no_go_overlap_frac: 0.05
+  conflicting_area_overlap: 0.5         # overlap with another VLM-proposed area of a conflicting function
+  conflicting_function_terms: [storage, charging, conveyor, production, workstation, work station, path, lane,
+                               corridor, walkway, staging, sorting]
+  scene_sized_other_area_frac: 0.5      # other proposed areas larger than this are degenerate and ignored for overlap
+  refine:
+    enabled: true                       # ground the VLM's OWN cited evidence (no human-written query) to tighten the box
+    max_queries: 3
+    min_inside_vlm_box: 0.8             # refined box must lie inside the VLM box (fraction of the refined box)
+    max_query_chars: 120
+  judge:
+    enabled: true                       # v0.2 region_judge on the adopted region; same-model judgement = ESTIMATED, not independent
+    controls: true                      # also judge the 4 v0.2 geometric bands as negative controls (recorded, not gating)
+  # What a cited piece of evidence can be checked with. `v02_detection`: accepted detections of the v0.2 object
+  # classes (Grounding DINO + Qwen crop verification, already run by v0.2's detect_objects). `dino_verify`: ad-hoc
+  # Grounding DINO prompts + the same Qwen crop verification (existing functions, no new model). Anything not
+  # listed (floor lines, "marked parking space", ...) is reported UNVERIFIABLE and never counts as verified.
+  evidence_vocabulary:
+    truck:        {terms: [truck, lorry], source: v02_detection, class: truck, anchor: true}
+    conveyor:     {terms: [conveyor], source: v02_detection, class: conveyor}
+    mobile_robot: {terms: ["robotic vehicle", "mobile robot", "wheeled robot", "black robot", "black vehicle"],
+                   source: v02_detection, class: mobile_robot}
+    traffic_cone: {terms: [cone], source: dino_verify, dino_prompts: ["traffic cone", "orange cone"],
+                   description: "an orange traffic cone (a small cone-shaped road marker)", top_k: 14,
+                   placement_obstacle: true}
+  # Detected in every run when a proposal exists (they decide what the placement step must keep out of):
+  always_detect: [traffic_cone]
+  detect_region_margin_frac: 0.15       # only verify DINO candidates whose centre is within this margin around the proposal
+
+# ------------------------------------------------------------------ images
+# role dev_aligned: the v0.2 development image. Its map alignment is confirmed by v0.2's own check, so the FULL chain
+#   is tried on it first. It is DEVELOPMENT data (v0.2 parameters were tuned on it): a plumbing test, not an evaluation.
+# role new_photo: photos from the later capture session. v0.2's check_alignment decides at run time whether planning
+#   may run; if MISALIGNED, planning stops and only the semantic result is kept. The map is never "corrected".
+images:
+  - id: DEV_REF
+    role: dev_aligned
+    file: assets/reference/warehouse_scene_reference_01.jpg        # project-relative
+    sha256: d1984a19d56443e5
+  - id: E1
+    role: new_photo
+    file: experiments/natural_language_abstraction/data/images/undistorted_25070552942982.png
+    sha256: 6535b84a74007508
+  # Declared before it was run: the only other image in the project that is aligned with the map BY CONSTRUCTION (the draft
+  # polygons were drawn on it). Same fixed-camera session as DEV_REF. Development data, like DEV_REF.
+  - id: REF_P01
+    role: dev_aligned
+    file: config/maps/reference_scene_map.reference_P01.jpg
+    sha256: 448b5258edc058ce

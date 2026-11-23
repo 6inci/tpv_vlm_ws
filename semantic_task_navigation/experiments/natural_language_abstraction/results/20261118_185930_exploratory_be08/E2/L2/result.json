@@ -1,0 +1,236 @@
+{
+  "image_id": "E2",
+  "image_role": "exploratory",
+  "condition": "L2",
+  "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "prior_condition": "A",
+  "classification": "EXPLORATORY_DIAGNOSTIC",
+  "prompt_version": "n0",
+  "prompt_sha256": "3ab876f263fefd093619942b393d5bdc220f155454324a5d9c847a1083d88e97",
+  "image_sha256": "9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba",
+  "image_file": "data/images/undistorted_24837448431552.png",
+  "model_input_audit": {
+    "worker_call_keys": [
+      "image_path",
+      "max_new_tokens",
+      "prompt"
+    ],
+    "n_images": 1,
+    "prompt_sha256": "3ab876f263fefd093619942b393d5bdc220f155454324a5d9c847a1083d88e97"
+  },
+  "call": {
+    "latency_s": 45.378,
+    "n_input_tokens": 2909,
+    "n_output_tokens": 1516,
+    "hit_max_new_tokens": false,
+    "peak_allocated_gib": 9.023,
+    "image_size": [
+      1920,
+      1080
+    ],
+    "max_new_tokens": 2800,
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  },
+  "status": "OK",
+  "error": null,
+  "consistency_issues": [],
+  "structured": {
+    "observed_objects": [
+      {
+        "label": "robotic arm",
+        "count": 4,
+        "location_in_image": "top-left and bottom-left corners",
+        "visible_evidence": "four white robotic arms mounted on bases, positioned near conveyor belts or workstations"
+      },
+      {
+        "label": "truck",
+        "count": 1,
+        "location_in_image": "top-right",
+        "visible_evidence": "white model truck with a cargo bed, parked near a marked area"
+      },
+      {
+        "label": "stack of boxes",
+        "count": 1,
+        "location_in_image": "center",
+        "visible_evidence": "three cardboard boxes stacked on a pallet, surrounded by a yellow square"
+      },
+      {
+        "label": "cones",
+        "count": 12,
+        "location_in_image": "distributed across the floor",
+        "visible_evidence": "orange traffic cones placed along pathways and around objects"
+      },
+      {
+        "label": "barriers",
+        "count": 2,
+        "location_in_image": "top-center and bottom-left",
+        "visible_evidence": "green and gray modular barriers, possibly for safety or zoning"
+      },
+      {
+        "label": "battery charging station",
+        "count": 1,
+        "location_in_image": "bottom-right",
+        "visible_evidence": "a marked area with a lightning bolt symbol and two green charging units"
+      },
+      {
+        "label": "whiteboard",
+        "count": 1,
+        "location_in_image": "bottom-center",
+        "visible_evidence": "a whiteboard with Korean text, partially legible"
+      },
+      {
+        "label": "barrels",
+        "count": 4,
+        "location_in_image": "bottom-right and center-right",
+        "visible_evidence": "black, gray, and blue barrels on pallets"
+      },
+      {
+        "label": "robotic vehicle",
+        "count": 1,
+        "location_in_image": "bottom-right",
+        "visible_evidence": "a black, wheeled robotic vehicle with visible mechanical components"
+      },
+      {
+        "label": "grate",
+        "count": 2,
+        "location_in_image": "bottom-center and top-center",
+        "visible_evidence": "gray metal grates, possibly for drainage or access"
+      }
+    ],
+    "functional_areas": [
+      {
+        "id": "area_1",
+        "function_name": "loading/unloading zone",
+        "bbox_2d": [
+          628,
+          0,
+          978,
+          280
+        ],
+        "observed_evidence": [
+          "white truck parked",
+          "cones marking boundaries",
+          "marked parking space"
+        ],
+        "inference": "This area is designated for vehicle arrival and unloading, indicated by the truck and traffic cones.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_2",
+        "function_name": "robotic workstations",
+        "bbox_2d": [
+          75,
+          260,
+          270,
+          730
+        ],
+        "observed_evidence": [
+          "four robotic arms",
+          "conveyor-like structures",
+          "white and purple equipment"
+        ],
+        "inference": "Robotic arms are positioned here for processing or assembly tasks, indicated by their setup and proximity to conveyor systems.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_3",
+        "function_name": "storage zone",
+        "bbox_2d": [
+          340,
+          390,
+          510,
+          580
+        ],
+        "observed_evidence": [
+          "stack of boxes",
+          "yellow square boundary",
+          "cone nearby"
+        ],
+        "inference": "This is a designated storage or staging area for goods, marked by the stack and boundary.",
+        "confidence": "medium"
+      },
+      {
+        "id": "area_4",
+        "function_name": "material handling zone",
+        "bbox_2d": [
+          615,
+          430,
+          960,
+          730
+        ],
+        "observed_evidence": [
+          "barrels on pallets",
+          "robotic vehicle",
+          "cones marking boundaries"
+        ],
+        "inference": "This area contains materials and a robotic vehicle, suggesting it is used for moving or processing goods.",
+        "confidence": "medium"
+      },
+      {
+        "id": "area_5",
+        "function_name": "charging station",
+        "bbox_2d": [
+          660,
+          760,
+          978,
+          950
+        ],
+        "observed_evidence": [
+          "lightning bolt symbol",
+          "green charging units",
+          "marked boundary"
+        ],
+        "inference": "The symbol and charging units indicate this is a designated area for recharging robotic equipment.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_6",
+        "function_name": "safety/traffic control zone",
+        "bbox_2d": [
+          290,
+          50,
+          580,
+          280
+        ],
+        "observed_evidence": [
+          "green pathway with white symbols",
+          "cones",
+          "barriers"
+        ],
+        "inference": "This area is marked for pedestrian or vehicle traffic control, with safety symbols and cones.",
+        "confidence": "medium"
+      }
+    ],
+    "task_analysis": {
+      "inferred_task_purpose": "The instruction asks to move a red cube to an appropriate location for shipment, implying a designated area for outbound goods.",
+      "info_given_by_instruction": [
+        "The destination must be a place where the red cube can be shipped out."
+      ],
+      "info_added_by_you": [
+        {
+          "statement": "The truck in area_1 is the most logical destination for shipment, as it is the only vehicle marked for outbound transport.",
+          "basis": "general_knowledge"
+        },
+        {
+          "statement": "The area_1 is the only area with a vehicle that can carry goods out of the facility.",
+          "basis": "general_knowledge"
+        }
+      ],
+      "place_needed_for_task": "A designated area for outbound shipment, typically near a vehicle or loading dock.",
+      "decision": "proposed",
+      "destination_area_id": "area_1",
+      "reason": "The instruction requires shipping, and the only vehicle present is the truck in area_1, which is the standard location for outbound goods in such models."
+    },
+    "unknown_from_image": [
+      "The location of the red cube is not visible in the image.",
+      "The exact function of the whiteboard is unclear.",
+      "The size or type of the red cube is not visible."
+    ],
+    "physical_conditions_to_verify": [
+      "Whether the red cube is present and accessible in the scene.",
+      "Whether the truck in area_1 is available for loading and whether it can carry the red cube."
+    ]
+  },
+  "decision": "proposed"
+}

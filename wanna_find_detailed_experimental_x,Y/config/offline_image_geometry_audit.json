@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "reference_image": "/home/binci/qwen_vision_test/photo_04.png",
+  "candidate_directory": "/home/binci/qwen_vision_test",
+  "allowed_categories": ["RAW_LIKE_SOURCE"],
+  "registration_method": "ORB_KNN_RATIO_RANSAC_IMAGE_TO_IMAGE_DIAGNOSTIC",
+  "opencv_rng_seed": 2104,
+  "orb": {
+    "nfeatures": 3000,
+    "scaleFactor": 1.2,
+    "nlevels": 8,
+    "edgeThreshold": 31,
+    "firstLevel": 0,
+    "WTA_K": 2,
+    "scoreType": "HARRIS",
+    "patchSize": 31,
+    "fastThreshold": 20
+  },
+  "ratio_test": 0.75,
+  "ransac_reprojection_threshold_px": 3.0,
+  "minimum_accepted_matches": 100,
+  "minimum_inliers": 80,
+  "minimum_inlier_ratio": 0.8,
+  "maximum_reprojection_error_px": 2.0,
+  "maximum_corner_displacement_px": 10.0,
+  "calibration_path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+  "legacy_geometry_path": "/home/binci/qwen_vision_test/homography_12pt_undistorted.json",
+  "legacy_undistorted_reference": "/home/binci/qwen_vision_test/photo_04_undistorted.png",
+  "parameter_status": "DEVELOPMENT_PARAMETER"
+}

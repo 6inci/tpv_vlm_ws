@@ -1,0 +1,42 @@
+{
+ "path_A": null,
+ "path_B": null,
+ "path_A_status": "NOT_FOUND",
+ "path_B_status": "NOT_FOUND",
+ "grasp_candidates": [
+  [
+   0,
+   "NO_COLLISION_FREE_POSE_ON_AXIS"
+  ],
+  [
+   90,
+   "NO_COLLISION_FREE_POSE_ON_AXIS"
+  ],
+  [
+   180,
+   "NO_COLLISION_FREE_POSE_ON_AXIS"
+  ],
+  [
+   270,
+   "NO_COLLISION_FREE_POSE_ON_AXIS"
+  ]
+ ],
+ "place_candidates": [],
+ "grasp_alignment": "UNVERIFIED",
+ "placement_alignment": "UNVERIFIED",
+ "map_copies_identical_to_step2": true,
+ "environment_unchanged_after_run": true,
+ "unverified": [
+  "gripper offset (dx, dy) not measured: grasp and placement alignment UNVERIFIED (dy = 0 is a temporary assumption)",
+  "a stop pose closest to the target on the map is NOT evidence that the gripper can reach / grasp / place",
+  "no validated homography (config/camera.yaml homography_status: not_available): PROVISIONAL E1 mat-seam transform, independent seam error up to 3.5 cm, mat-node residual up to 5.2 cm (bottom row 4-5 cm)",
+  "A / B are user clicks projected at z = 0; height parallax of the cube and the pallet not corrected",
+  "work targets: A SAME_AS_OBJECT_CLICK, B SAME_AS_OBJECT_CLICK (TEMPORARY when equal to the click)",
+  "robot base_link: AI_READING_CONFIRMED_BY_USER; heading: COMPUTED_FROM_WHEEL_AXIS_CONFIRMED_BY_USER (no automatic heading estimate exists)",
+  "rotation check is static (rasterised rectangle); mecanum dynamics, slip and controller tracking not modelled",
+  "gripper / payload geometry unknown: interference above obstacles and payload overhang during Path B UNVERIFIED",
+  "DRAFT zone polygons not human-confirmed; per-photo movable obstacles: none entered",
+  "Nav2 map_server load test not run (format validation only, user decision)",
+  "whether the ROS2 controller executes the lateral (mecanum) moves and the heading commands is not verified"
+ ]
+}

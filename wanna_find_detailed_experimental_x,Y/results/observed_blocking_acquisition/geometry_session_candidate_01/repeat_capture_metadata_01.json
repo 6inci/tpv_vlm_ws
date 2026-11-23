@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "status": "ACQUIRED",
+  "session_candidate": "geometry_session_candidate_01",
+  "repeat_index": 1,
+  "same_physical_session_claim": "USER_REPORTED_SETUP_UNCHANGED",
+  "camera": {
+    "identity": "Ucamera001",
+    "serial": "Ucamera001",
+    "previous_device_path": "/dev/video6",
+    "current_device_path": "/dev/video7",
+    "by_id_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "capture_capability_confirmed": true
+  },
+  "native_capture": {
+    "width": 1920,
+    "height": 1080,
+    "pixel_format": "MJPG",
+    "requested_fps": 30.0,
+    "mode_support_confirmed": true,
+    "saved_frame_count": 1,
+    "warmup_frames_skipped": 20,
+    "v4l2_sequence": 20,
+    "v4l2_buffer_timestamp_monotonic_s": 28177.246859,
+    "native_bytes": 456156,
+    "filesystem_write_time": "2026-09-21T05:44:58.294105+09:00",
+    "filesystem_time_is_camera_exposure_time": false,
+    "capture_command": "v4l2-ctl --device=/dev/video7 --set-fmt-video=width=1920,height=1080,pixelformat=MJPG --set-parm=30 --stream-mmap=4 --stream-skip=20 --stream-count=1 --stream-to=reference_native_repeat_01.mjpg --verbose"
+  },
+  "native_frame": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_native_repeat_01.mjpg",
+    "sha256": "38181500334aa9b11cff65d9b7fa7302b2da2dece7fe271697657babb3cc8a91"
+  },
+  "decoded_lossless_frame": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/reference_raw_repeat_01.png",
+    "sha256": "9dce0a2c360c9c21840345222a69931d33441e1556ea18027a5fd58550766476",
+    "width": 1920,
+    "height": 1080,
+    "channels": 3,
+    "meaning": "Lossless PNG representation of the single decoded native MJPG frame."
+  },
+  "transformations": {
+    "resize": false,
+    "crop": false,
+    "rotation": false,
+    "undistortion": false,
+    "software_warp": false
+  },
+  "camera_pose_policy": "PHYSICAL_POSE_WAS_NOT_INTENTIONALLY_CHANGED; IMAGE_STABILITY_MUST_BE_ESTABLISHED_FROM_EVIDENCE"
+}

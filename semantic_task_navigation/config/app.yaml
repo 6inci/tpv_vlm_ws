@@ -1,0 +1,26 @@
+# Application settings. Project-relative paths resolve against the project root.
+default_analysis_mode: LOCAL_ONLY        # LOCAL_ONLY | LOCAL_VLM_WITH_API_AGENT | IMAGE_DEMO
+default_command: "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘."
+default_image: assets/reference/warehouse_scene_reference_01.jpg
+runs_dir: runs
+worker_log_dir: runs/_worker_logs
+map_file: config/maps/reference_scene_map.json
+# IMAGE_DEMO only: manually supplied objects/regions (never used in LOCAL_* modes).
+demo_inputs_file: config/demo/reference_scene_manual_inputs.json
+
+handoff:
+  mode: simulation          # simulation only; no hardware protocol is implemented
+  hardware_enabled: false   # real robot commands are disabled by design
+
+api_agent:                  # LOCAL_VLM_WITH_API_AGENT: task parsing only (text, never images)
+  provider: openai_compatible
+  base_url: https://api.openai.com/v1
+  model: gpt-4o-mini
+  api_key_env: OPENAI_API_KEY
+  timeout_s: 60
+
+gui:
+  preview_max_fps: 30
+  scene_change_shift_px: 3.0      # analysis frame vs live frame: warn above this shift
+  scene_change_diff_ratio: 0.15   # or above this mean-abs-diff ratio
+  gpu_poll_interval_s: 2.0

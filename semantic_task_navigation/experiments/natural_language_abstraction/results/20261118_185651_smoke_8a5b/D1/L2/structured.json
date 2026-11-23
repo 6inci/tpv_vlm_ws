@@ -1,0 +1,134 @@
+{
+  "observed_objects": [
+    {
+      "label": "robotic arm",
+      "count": 4,
+      "location_in_image": "top-left, left side, and bottom-left",
+      "visible_evidence": "four white robotic arms mounted on bases, some with purple or yellow components"
+    },
+    {
+      "label": "truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "white and black model truck with a cargo bed"
+    },
+    {
+      "label": "stack of boxes",
+      "count": 1,
+      "location_in_image": "center",
+      "visible_evidence": "three brown cardboard boxes stacked on a pallet"
+    },
+    {
+      "label": "cones",
+      "count": 12,
+      "location_in_image": "distributed across the floor",
+      "visible_evidence": "orange traffic cones placed on the black floor"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "whiteboard with Korean writing"
+    },
+    {
+      "label": "robotic vehicle",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "black wheeled robot with visible electronics and wheels"
+    },
+    {
+      "label": "barriers",
+      "count": 2,
+      "location_in_image": "top-center and bottom-left",
+      "visible_evidence": "green and gray modular barriers"
+    },
+    {
+      "label": "pallets with containers",
+      "count": 1,
+      "location_in_image": "right side",
+      "visible_evidence": "pallets holding black, gray, and blue cylindrical containers"
+    },
+    {
+      "label": "charging station",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "white square with lightning bolt symbol"
+    },
+    {
+      "label": "grate",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "gray metal grate"
+    },
+    {
+      "label": "green pathway",
+      "count": 1,
+      "location_in_image": "top-center",
+      "visible_evidence": "green strip with white hand symbols"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "loading/unloading zone",
+      "bbox_2d": [
+        0,
+        0,
+        1000,
+        1000
+      ],
+      "observed_evidence": [
+        "robotic arms",
+        "truck",
+        "pallets with containers",
+        "charging station",
+        "green pathway",
+        "cones",
+        "barriers",
+        "stack of boxes",
+        "whiteboard",
+        "grate"
+      ],
+      "inference": "This is a simulated logistics floor with zones for robotic operations, vehicle loading, and material handling.",
+      "confidence": "high"
+    }
+  ],
+  "task_analysis": {
+    "inferred_task_purpose": "Move a red cube to an appropriate location for shipment.",
+    "info_given_by_instruction": [
+      "The destination must be a place where the red cube can be shipped."
+    ],
+    "info_added_by_you": [
+      {
+        "statement": "The red cube is not visible in the image, so its location is unknown.",
+        "basis": "image"
+      },
+      {
+        "statement": "The truck is a likely destination for shipment.",
+        "basis": "general_knowledge"
+      },
+      {
+        "statement": "The green pathway may be a designated route for moving goods.",
+        "basis": "image"
+      },
+      {
+        "statement": "The area near the truck is a logical place for outgoing goods.",
+        "basis": "general_knowledge"
+      }
+    ],
+    "place_needed_for_task": "A designated shipping zone or vehicle loading area.",
+    "decision": "withheld",
+    "destination_area_id": null,
+    "reason": "The red cube is not visible in the image, and no specific area is marked as a shipping zone. The truck is a likely candidate, but no explicit instruction or visual cue confirms it as the designated destination."
+  },
+  "unknown_from_image": [
+    "The location of the red cube",
+    "The exact function of the whiteboard",
+    "The current status of the robotic vehicle"
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is present and its current location",
+    "Whether the truck is accessible for loading",
+    "Whether the green pathway is clear for movement"
+  ]
+}

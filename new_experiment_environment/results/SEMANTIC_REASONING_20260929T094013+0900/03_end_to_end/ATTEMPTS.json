@@ -1,0 +1,24 @@
+{
+  "status": "BLOCKED",
+  "attempts": [
+    {
+      "attempt": 1,
+      "scope": "15 tasks / 5000 tokens",
+      "result": "INTERRUPTED_AFTER_STRUCTURED_PASS",
+      "reason": "source-specific generation did not return a complete response in the retained execution window"
+    },
+    {
+      "attempt": 2,
+      "scope": "8 core tasks / 3200 tokens",
+      "result": "INTERRUPTED",
+      "reason": "first source-specific response did not return after 12 minutes"
+    },
+    {
+      "attempt": 3,
+      "scope": "4 detector-impact tasks / 1600 tokens",
+      "result": "INTERRUPTED",
+      "reason": "first source-specific response did not return after 8 minutes"
+    }
+  ],
+  "partial_model_text_available": false
+}

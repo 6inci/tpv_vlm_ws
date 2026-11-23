@@ -1,0 +1,117 @@
+{
+ "calls": [
+  {
+   "stage": "exp1_A_full_image",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "placement_open_v1",
+   "prompt_sha256": "973d999b14f9fe10c0523bbf949e7aafd85b3a7b055eff3cb0e299f641dd0cca",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/placement_target_grounding/results/20261119_143950_ptg/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "image_size": [
+    1920,
+    1080
+   ],
+   "n_input_tokens": 2329,
+   "n_output_tokens": 75,
+   "hit_max_new_tokens": false,
+   "latency_s": 4.348,
+   "wall_s": 4.53,
+   "peak_vram_gib": 8.9,
+   "raw_response": "{\n  \"candidates\": [],\n  \"selected\": null,\n  \"decision\": \"cannot_determine\",\n  \"uncertain\": [\n    \"The image does not show any red cube produced on a conveyor belt.\",\n    \"There is no clear indication of where the red cube should be moved to, as the target location is not specified in the image.\"\n  ]\n}"
+  },
+  {
+   "stage": "exp1_B_zone_crop",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+   "prompt_id": "placement_open_v1",
+   "prompt_sha256": "973d999b14f9fe10c0523bbf949e7aafd85b3a7b055eff3cb0e299f641dd0cca",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/placement_target_grounding/results/20261119_143950_ptg/inputs/zone_crop_x2.png",
+   "image_sha256": "b33212452463882b6daf547516398309a516eca1ab8ba5d5d65be016347caf9b",
+   "image_size": [
+    1632,
+    850
+   ],
+   "n_input_tokens": 1666,
+   "n_output_tokens": 69,
+   "hit_max_new_tokens": false,
+   "latency_s": 2.471,
+   "wall_s": 2.58,
+   "peak_vram_gib": 8.724,
+   "raw_response": "{\n  \"candidates\": [],\n  \"selected\": null,\n  \"decision\": \"cannot_determine\",\n  \"uncertain\": [\n    \"The image does not contain any red cubes or conveyer belt.\",\n    \"There is no clear indication of where the red cube should be placed or what surface is designated for shipment.\"\n  ]\n}"
+  },
+  {
+   "stage": "diag_VOCABULARY_FULL",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/placement_target_grounding/results/20261119_143950_ptg/inputs/full_E1.png",
+   "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 290,
+   "wall_s": 2.53,
+   "peak_vram_gib": 1.967
+  },
+  {
+   "stage": "diag_VOCABULARY_ROI_X2",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/placement_target_grounding/results/20261119_143950_ptg/inputs/zone_crop_x2.png",
+   "image_sha256": "b33212452463882b6daf547516398309a516eca1ab8ba5d5d65be016347caf9b",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 108,
+   "wall_s": 2.16,
+   "peak_vram_gib": 1.874
+  }
+ ],
+ "worker_env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "pid": 12331,
+  "torch": "2.13.0+cu130",
+  "torch_cuda": "13.0",
+  "transformers": "5.16.1",
+  "cuda_available": true,
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "loaded": {}
+ },
+ "swaps": [
+  {
+   "unloaded": [
+    "qwen"
+   ],
+   "for": "dino",
+   "t": 1795066808.8039417
+  }
+ ],
+ "total_wall_s": 25.4,
+ "n_calls": {
+  "qwen": 2,
+  "dino": 2
+ }
+}

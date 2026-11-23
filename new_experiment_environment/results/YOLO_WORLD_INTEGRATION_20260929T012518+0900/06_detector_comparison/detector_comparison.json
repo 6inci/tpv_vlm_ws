@@ -1,0 +1,439 @@
+{
+  "status": "PARTIAL",
+  "ground_truth_available": false,
+  "accuracy_claim": false,
+  "matching_rule": "same canonical label, greedy one-to-one bbox IoU >= 0.10",
+  "qwen": {
+    "count": 31,
+    "detected_classes": {
+      "box": 16,
+      "cart": 1,
+      "drum": 4,
+      "manipulator": 2,
+      "mobile_robot": 1,
+      "pallet": 3,
+      "rack": 2,
+      "truck": 1,
+      "workbench": 1
+    },
+    "canonical_counts": {
+      "box": 16,
+      "cart": 1,
+      "drum": 4,
+      "manipulator": 2,
+      "other": 1,
+      "pallet": 3,
+      "rack": 2,
+      "truck": 1,
+      "workbench": 1
+    },
+    "duplicate_pairs_iou_ge_0_50": [
+      {
+        "first_id": "q_008",
+        "second_id": "q_011",
+        "label": "box",
+        "iou": 0.5511811023622047
+      }
+    ]
+  },
+  "grounding_dino": {
+    "count": 58,
+    "detected_classes": {
+      "barrel": 4,
+      "box storage": 3,
+      "cardboard box storage": 23,
+      "cart trolley": 1,
+      "desk": 1,
+      "mobile robot": 1,
+      "mobile robot robot arm": 1,
+      "mobile robot robot arm mani": 1,
+      "pallet box storage rack": 1,
+      "pallet cardboard box storage": 1,
+      "pallet rack": 1,
+      "robot arm": 2,
+      "safety fence": 1,
+      "shelf": 1,
+      "shelf safety": 1,
+      "storage": 9,
+      "traffic cone": 3,
+      "truck": 1,
+      "workbench cart trolley": 1,
+      "workbench desk": 1
+    },
+    "canonical_counts": {
+      "box": 27,
+      "cart": 1,
+      "drum": 4,
+      "fence": 1,
+      "manipulator": 4,
+      "mobile_robot": 1,
+      "other": 9,
+      "rack": 4,
+      "traffic_cone": 3,
+      "truck": 1,
+      "workbench": 3
+    },
+    "duplicate_pairs_iou_ge_0_50": [
+      {
+        "first_id": "gd_025",
+        "second_id": "gd_029",
+        "label": "workbench",
+        "iou": 0.6808559427651001
+      },
+      {
+        "first_id": "gd_028",
+        "second_id": "gd_049",
+        "label": "box",
+        "iou": 0.6677789056296292
+      },
+      {
+        "first_id": "gd_034",
+        "second_id": "gd_057",
+        "label": "box",
+        "iou": 0.7463297486723162
+      },
+      {
+        "first_id": "gd_036",
+        "second_id": "gd_046",
+        "label": "box",
+        "iou": 0.6962470554067569
+      },
+      {
+        "first_id": "gd_038",
+        "second_id": "gd_054",
+        "label": "manipulator",
+        "iou": 0.6262112227113483
+      },
+      {
+        "first_id": "gd_039",
+        "second_id": "gd_041",
+        "label": "box",
+        "iou": 0.6661874348192237
+      }
+    ]
+  },
+  "yolo_world": {
+    "count": 39,
+    "detected_classes": {
+      "cardboard box": 25,
+      "cart": 2,
+      "storage rack": 5,
+      "traffic cone": 3,
+      "truck": 3,
+      "workbench": 1
+    },
+    "canonical_counts": {
+      "box": 25,
+      "cart": 2,
+      "rack": 5,
+      "traffic_cone": 3,
+      "truck": 3,
+      "workbench": 1
+    },
+    "duplicate_pairs_iou_ge_0_50": []
+  },
+  "qwen_vs_yolo_world": {
+    "matches": [
+      {
+        "qwen_id": "q_001",
+        "yolo_world_id": "yolo_005",
+        "canonical_label": "truck",
+        "bbox_iou": 0.9807666959755693
+      },
+      {
+        "qwen_id": "q_024",
+        "yolo_world_id": "yolo_007",
+        "canonical_label": "cart",
+        "bbox_iou": 0.9561643985455486
+      },
+      {
+        "qwen_id": "q_021",
+        "yolo_world_id": "yolo_006",
+        "canonical_label": "rack",
+        "bbox_iou": 0.9439469935522568
+      },
+      {
+        "qwen_id": "q_022",
+        "yolo_world_id": "yolo_004",
+        "canonical_label": "rack",
+        "bbox_iou": 0.9364560714285713
+      },
+      {
+        "qwen_id": "q_011",
+        "yolo_world_id": "yolo_019",
+        "canonical_label": "box",
+        "bbox_iou": 0.9208013377772625
+      },
+      {
+        "qwen_id": "q_012",
+        "yolo_world_id": "yolo_035",
+        "canonical_label": "box",
+        "bbox_iou": 0.9127308454769938
+      },
+      {
+        "qwen_id": "q_005",
+        "yolo_world_id": "yolo_011",
+        "canonical_label": "box",
+        "bbox_iou": 0.874927696811749
+      },
+      {
+        "qwen_id": "q_015",
+        "yolo_world_id": "yolo_033",
+        "canonical_label": "box",
+        "bbox_iou": 0.8734632803379734
+      },
+      {
+        "qwen_id": "q_010",
+        "yolo_world_id": "yolo_013",
+        "canonical_label": "box",
+        "bbox_iou": 0.8637204703411743
+      },
+      {
+        "qwen_id": "q_016",
+        "yolo_world_id": "yolo_016",
+        "canonical_label": "box",
+        "bbox_iou": 0.8234742363477549
+      },
+      {
+        "qwen_id": "q_017",
+        "yolo_world_id": "yolo_025",
+        "canonical_label": "box",
+        "bbox_iou": 0.7477943465599595
+      },
+      {
+        "qwen_id": "q_013",
+        "yolo_world_id": "yolo_020",
+        "canonical_label": "box",
+        "bbox_iou": 0.74401894058032
+      },
+      {
+        "qwen_id": "q_020",
+        "yolo_world_id": "yolo_009",
+        "canonical_label": "box",
+        "bbox_iou": 0.7316774376403946
+      },
+      {
+        "qwen_id": "q_007",
+        "yolo_world_id": "yolo_008",
+        "canonical_label": "box",
+        "bbox_iou": 0.7224473890459462
+      },
+      {
+        "qwen_id": "q_009",
+        "yolo_world_id": "yolo_021",
+        "canonical_label": "box",
+        "bbox_iou": 0.6976734836456009
+      },
+      {
+        "qwen_id": "q_014",
+        "yolo_world_id": "yolo_017",
+        "canonical_label": "box",
+        "bbox_iou": 0.6478157473518666
+      },
+      {
+        "qwen_id": "q_018",
+        "yolo_world_id": "yolo_028",
+        "canonical_label": "box",
+        "bbox_iou": 0.5507257789779806
+      },
+      {
+        "qwen_id": "q_019",
+        "yolo_world_id": "yolo_014",
+        "canonical_label": "box",
+        "bbox_iou": 0.45408433057440306
+      },
+      {
+        "qwen_id": "q_008",
+        "yolo_world_id": "yolo_024",
+        "canonical_label": "box",
+        "bbox_iou": 0.34294458431293723
+      }
+    ],
+    "match_count": 19
+  },
+  "grounding_dino_vs_yolo_world": {
+    "matches": [
+      {
+        "grounding_dino_id": "gd_042",
+        "yolo_world_id": "yolo_008",
+        "canonical_label": "box",
+        "bbox_iou": 0.9695210001363039
+      },
+      {
+        "grounding_dino_id": "gd_004",
+        "yolo_world_id": "yolo_005",
+        "canonical_label": "truck",
+        "bbox_iou": 0.9679262428107285
+      },
+      {
+        "grounding_dino_id": "gd_019",
+        "yolo_world_id": "yolo_015",
+        "canonical_label": "box",
+        "bbox_iou": 0.96236915031767
+      },
+      {
+        "grounding_dino_id": "gd_006",
+        "yolo_world_id": "yolo_004",
+        "canonical_label": "rack",
+        "bbox_iou": 0.957957122118419
+      },
+      {
+        "grounding_dino_id": "gd_034",
+        "yolo_world_id": "yolo_019",
+        "canonical_label": "box",
+        "bbox_iou": 0.9566089104836037
+      },
+      {
+        "grounding_dino_id": "gd_016",
+        "yolo_world_id": "yolo_006",
+        "canonical_label": "rack",
+        "bbox_iou": 0.9530249784348078
+      },
+      {
+        "grounding_dino_id": "gd_046",
+        "yolo_world_id": "yolo_033",
+        "canonical_label": "box",
+        "bbox_iou": 0.9510648530620666
+      },
+      {
+        "grounding_dino_id": "gd_037",
+        "yolo_world_id": "yolo_038",
+        "canonical_label": "rack",
+        "bbox_iou": 0.9481197689366072
+      },
+      {
+        "grounding_dino_id": "gd_027",
+        "yolo_world_id": "yolo_029",
+        "canonical_label": "box",
+        "bbox_iou": 0.9457755804743265
+      },
+      {
+        "grounding_dino_id": "gd_039",
+        "yolo_world_id": "yolo_035",
+        "canonical_label": "box",
+        "bbox_iou": 0.9422908123016113
+      },
+      {
+        "grounding_dino_id": "gd_024",
+        "yolo_world_id": "yolo_007",
+        "canonical_label": "cart",
+        "bbox_iou": 0.9406869796453293
+      },
+      {
+        "grounding_dino_id": "gd_009",
+        "yolo_world_id": "yolo_020",
+        "canonical_label": "box",
+        "bbox_iou": 0.9337813186782684
+      },
+      {
+        "grounding_dino_id": "gd_020",
+        "yolo_world_id": "yolo_031",
+        "canonical_label": "box",
+        "bbox_iou": 0.9223759407489316
+      },
+      {
+        "grounding_dino_id": "gd_015",
+        "yolo_world_id": "yolo_009",
+        "canonical_label": "box",
+        "bbox_iou": 0.921118742982317
+      },
+      {
+        "grounding_dino_id": "gd_002",
+        "yolo_world_id": "yolo_003",
+        "canonical_label": "traffic_cone",
+        "bbox_iou": 0.9194590036904886
+      },
+      {
+        "grounding_dino_id": "gd_001",
+        "yolo_world_id": "yolo_002",
+        "canonical_label": "traffic_cone",
+        "bbox_iou": 0.9172971976124882
+      },
+      {
+        "grounding_dino_id": "gd_049",
+        "yolo_world_id": "yolo_024",
+        "canonical_label": "box",
+        "bbox_iou": 0.9142833620293844
+      },
+      {
+        "grounding_dino_id": "gd_014",
+        "yolo_world_id": "yolo_017",
+        "canonical_label": "box",
+        "bbox_iou": 0.9094821143687027
+      },
+      {
+        "grounding_dino_id": "gd_010",
+        "yolo_world_id": "yolo_012",
+        "canonical_label": "box",
+        "bbox_iou": 0.8829186217117658
+      },
+      {
+        "grounding_dino_id": "gd_012",
+        "yolo_world_id": "yolo_021",
+        "canonical_label": "box",
+        "bbox_iou": 0.8777804020263286
+      },
+      {
+        "grounding_dino_id": "gd_003",
+        "yolo_world_id": "yolo_001",
+        "canonical_label": "traffic_cone",
+        "bbox_iou": 0.8727453164705831
+      },
+      {
+        "grounding_dino_id": "gd_013",
+        "yolo_world_id": "yolo_016",
+        "canonical_label": "box",
+        "bbox_iou": 0.8706918065887019
+      },
+      {
+        "grounding_dino_id": "gd_018",
+        "yolo_world_id": "yolo_013",
+        "canonical_label": "box",
+        "bbox_iou": 0.8606106452462627
+      },
+      {
+        "grounding_dino_id": "gd_008",
+        "yolo_world_id": "yolo_025",
+        "canonical_label": "box",
+        "bbox_iou": 0.8550797002667564
+      },
+      {
+        "grounding_dino_id": "gd_017",
+        "yolo_world_id": "yolo_011",
+        "canonical_label": "box",
+        "bbox_iou": 0.8077776804475988
+      },
+      {
+        "grounding_dino_id": "gd_035",
+        "yolo_world_id": "yolo_018",
+        "canonical_label": "box",
+        "bbox_iou": 0.7959657973319605
+      },
+      {
+        "grounding_dino_id": "gd_023",
+        "yolo_world_id": "yolo_014",
+        "canonical_label": "box",
+        "bbox_iou": 0.5635361727096813
+      }
+    ],
+    "match_count": 27
+  },
+  "required_checks": {
+    "conveyor_detected": false,
+    "manipulator_detected": false,
+    "left_manipulator_count_x_center_lt_650": 0,
+    "central_manipulator_count_650_le_x_center_lt_1000": 0,
+    "missing_canonical_classes": [
+      "conveyor",
+      "drum",
+      "fence",
+      "manipulator",
+      "mobile_robot",
+      "pallet"
+    ]
+  },
+  "qwen_known_omissions": {
+    "conveyor_detected": false,
+    "left_manipulator_count_x_center_lt_650": 0
+  }
+}

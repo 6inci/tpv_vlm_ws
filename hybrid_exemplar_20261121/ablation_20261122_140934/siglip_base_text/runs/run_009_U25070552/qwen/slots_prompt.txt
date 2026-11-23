@@ -1,0 +1,23 @@
+너는 작업지시를 정해진 항목으로 바꾸는 파서다. 이미지는 주어지지 않는다. 위치, 좌표, 박스를 만들지 마라.
+작업지시: "빨간 큐브를 비어 있는 팔레트로 옮겨줘."
+
+object (옮길 물체) 중 하나:
+- "red cube": 빨간 큐브
+- "any object": 종류를 말하지 않은 물체 (예: 물체, 물건, 짐)
+- "other": 위 목록에 없는 물체
+landmark (기준 시설) 중 하나:
+- "truck_loading_bay": 트럭, 트럭 하역장, 하역장
+- "conveyor": 컨베이어, 컨베이어 벨트, 생산 라인
+- "mobile_robot": 이동 로봇
+- "none": 기준 시설을 말하지 않음
+- "other": 위 목록에 없는 기준
+destination_kind (놓을 곳의 종류) 중 하나:
+- "empty_pallet": 비어 있는 팔레트 위
+- "near_landmark": 기준 시설 옆이나 근처의 바닥
+- "other": 위 목록에 없음
+relation (기준 시설과의 관계) 중 하나: "near" (옆, 근처, 주변), "on" (위), "none" (말하지 않음)
+
+object_words와 destination_words에는 작업지시에 나온 말을 그대로 적는다.
+Return JSON only, no prose:
+{"object": "...", "object_words": "...", "source_landmark": "...", "source_relation": "...",
+ "destination_kind": "...", "destination_landmark": "...", "destination_relation": "...", "destination_words": "..."}

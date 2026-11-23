@@ -1,0 +1,77 @@
+{
+  "purpose": "Move a red cube from near the truck to the conveyor belt area",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [750, 0, 878, 142]
+  },
+  "source_relation": "near",
+  "destination_meaning": "Conveyor belt area for object transfer",
+  "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [117, 260, 220, 720],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Green pedestrian walkway with footprints",
+      "visual_evidence": [
+        "green floor with white footprints",
+        "no robot body allowed"
+      ],
+      "bbox_2d": [305, 58, 557, 280],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Main robot travel zone (yellow border, black floor)",
+      "visual_evidence": [
+        "yellow border",
+        "black floor"
+      ],
+      "bbox_2d": [250, 270, 970, 770],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Conveyor belt and robot arm work cell (white border)",
+      "visual_evidence": [
+        "white border",
+        "robot arms and conveyor"
+      ],
+      "bbox_2d": [117, 260, 220, 720],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Cargo storage area (yellow border)",
+      "visual_evidence": [
+        "yellow border",
+        "stacks of barrels and pallets"
+      ],
+      "bbox_2d": [618, 430, 960, 550],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Truck unloading zone (white dashed lines)",
+      "visual_evidence": [
+        "white dashed lines",
+        "truck parked"
+      ],
+      "bbox_2d": [625, 0, 890, 270],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+        "orange cones",
+        "white and yellow boundary lines"
+      ],
+      "bbox_2d": [250, 0, 970, 950],
+      "robot_body_access": "unknown"
+    }
+  ],
+  "uncertainty": [
+    "The reach of the gripper is not confirmed, so whether the robot can physically pick up the red cube is uncertain."
+  ]
+}

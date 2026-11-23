@@ -1,0 +1,1469 @@
+{
+  "experiment_id": "SEV2_VERIFICATION_2026-11-18",
+  "created": "2026-11-18T21:42:04+09:00",
+  "note": "No ground truth exists for these proposals; 'false accept/reject' are candidates to be judged with the stated reason.",
+  "stored": [
+    {
+      "case_id": "DEV_REF",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "image": "/home/binci/vlm_ws/semantic_task_navigation/assets/reference/warehouse_scene_reference_01.jpg",
+      "vlm_raw_response": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_202916_fbe7/vlm_proposal/raw_response.txt",
+      "runs_used": [
+        "20261118_202916_fbe7"
+      ],
+      "v1": [
+        {
+          "run_id": "20261118_202916_fbe7",
+          "label": "V1 primary",
+          "decision": "SEMANTIC_NOT_VERIFIED",
+          "integration_status": "SEMANTIC_NOT_VERIFIED",
+          "checks": {
+            "V1": "VERIFIED",
+            "V2": "VERIFIED",
+            "V3": "FAILED",
+            "V4": "NOT_RUN"
+          },
+          "failed": [
+            "V3"
+          ],
+          "not_run": [
+            "V4"
+          ],
+          "reasons": [
+            "V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules)",
+            "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+          ],
+          "replay_reproduces_stored": {
+            "checks_equal": true,
+            "decision_equal": true,
+            "stored": {
+              "V1": "VERIFIED",
+              "V2": "VERIFIED",
+              "V3": "FAILED",
+              "V4": "NOT_RUN"
+            },
+            "replayed": {
+              "V1": "VERIFIED",
+              "V2": "VERIFIED",
+              "V3": "FAILED",
+              "V4": "NOT_RUN"
+            },
+            "stored_decision": "SEMANTIC_NOT_VERIFIED",
+            "replayed_decision": "WITHHELD"
+          },
+          "agreement": {
+            "semantic_level": "AGREE_BLOCK",
+            "hand_over_level": "AGREE_BLOCK",
+            "v1_semantic_accept": false,
+            "v2_semantic_accept": false,
+            "v1_hand_over": false,
+            "v2_hand_over_if_preconditions_met": false,
+            "v2_hand_over": false
+          },
+          "v3b_area_ratio_to_truck": null
+        }
+      ],
+      "v2": {
+        "case_id": "DEV_REF",
+        "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+        "candidates": [
+          {
+            "candidate_id": "area_3",
+            "vlm_function_claim": "loading/unloading zone",
+            "vlm_function_claim_note": "the VLM's own wording: recorded, never used as evidence or to decide",
+            "purpose": {
+              "purposes": [
+                "outbound_shipping"
+              ],
+              "matched_terms": {
+                "outbound_shipping": [
+                  "출하"
+                ]
+              },
+              "requires_any_of": [
+                "carrier_vehicle"
+              ],
+              "known": true,
+              "source": "instruction text (keyword table in config.yaml; knowledge: manual_prior)"
+            },
+            "claims": [
+              {
+                "text": "pallets with containers",
+                "classes": [
+                  "pallet",
+                  "container"
+                ],
+                "kind": "registry",
+                "hedged": false,
+                "status": "NOT_RUN",
+                "relation": null
+              },
+              {
+                "text": "dump truck",
+                "classes": [
+                  "truck"
+                ],
+                "kind": "registry",
+                "hedged": false,
+                "status": "VERIFIED_PRESENT",
+                "relation": "RELATION_FAILS"
+              },
+              {
+                "text": "orange cones",
+                "classes": [
+                  "traffic_cone"
+                ],
+                "kind": "registry",
+                "hedged": false,
+                "status": "NOT_RUN",
+                "relation": null
+              }
+            ],
+            "reasoning_only_mentions": [],
+            "class_evidence": [
+              {
+                "class": "container",
+                "backend": "dino_verify",
+                "role": "equipment",
+                "capabilities": [
+                  "goods_staging"
+                ],
+                "obstacle": true,
+                "instances": [],
+                "n_related": 0,
+                "status": "NOT_RUN",
+                "note": "a detector exists for this class but no observation of it is available for this case"
+              },
+              {
+                "class": "pallet",
+                "backend": "dino_verify",
+                "role": "equipment",
+                "capabilities": [
+                  "goods_staging"
+                ],
+                "obstacle": true,
+                "instances": [],
+                "n_related": 0,
+                "status": "NOT_RUN",
+                "note": "a detector exists for this class but no observation of it is available for this case"
+              },
+              {
+                "class": "traffic_cone",
+                "backend": "dino_verify",
+                "role": "marker",
+                "capabilities": [
+                  "zone_marker"
+                ],
+                "obstacle": true,
+                "instances": [],
+                "n_related": 0,
+                "status": "NOT_RUN",
+                "note": "a detector exists for this class but no observation of it is available for this case"
+              },
+              {
+                "class": "truck",
+                "backend": "v02_detection",
+                "role": "equipment",
+                "capabilities": [
+                  "carrier_vehicle"
+                ],
+                "obstacle": true,
+                "instances": [
+                  {
+                    "object_id": "truck_1",
+                    "bbox_xyxy": [
+                      1424.3,
+                      72.5,
+                      1623.4,
+                      204.3
+                    ],
+                    "basis": "v0.2 grounding_dino (score 0.5502) + Qwen crop verification 'yes' [run 20261118_202916_fbe7]",
+                    "fraction_of_object_inside_region": 0.0,
+                    "gap_px": 227.7,
+                    "adjacency_distance_px": 119.5,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_FAILS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  }
+                ],
+                "n_related": 0,
+                "status": "VERIFIED_PRESENT",
+                "search_scope": "full_image (v0.2 detect_objects)"
+              }
+            ],
+            "purpose_fit": {
+              "purpose_known": true,
+              "requires_any_of": [
+                "carrier_vehicle"
+              ],
+              "established_capabilities": [],
+              "fit": "PURPOSE_FIT_UNDETERMINED",
+              "reasons": [
+                "verified 'truck' exists but none of its 1 instance(s) is inside or adjacent to the proposed region"
+              ]
+            },
+            "semantic_verdict": "EVIDENCE_RELATION_INCONSISTENT",
+            "semantic_verdict_ko": "근거와 공간 관계가 불일치하는 후보",
+            "semantic_reasons": [
+              "verified 'truck' exists but none of its 1 instance(s) is inside or adjacent to the proposed region"
+            ],
+            "placement": {
+              "readiness": "NOT_ESTABLISHED",
+              "reasons": [
+                "no verified localization of a placeable spot inside the semantic region (evidence-grounded refinement or a human-confirmed region)",
+                "the region conflicts with other equipment or with the robot's travel/no-go zones"
+              ],
+              "verified_localizations": [],
+              "conflicts": {
+                "problems": [
+                  {
+                    "map_layer": "traversable",
+                    "fraction_of_region": 0.9978,
+                    "limit": 0.05,
+                    "basis": "map prior (DRAFT_UNCONFIRMED), independent of the VLM"
+                  }
+                ],
+                "notes": [
+                  {
+                    "map_layer": "no_go",
+                    "fraction_of_region": 0.0,
+                    "limit": 0.05,
+                    "basis": "map prior (DRAFT_UNCONFIRMED), independent of the VLM"
+                  }
+                ]
+              },
+              "region_size_info": {
+                "area_px": 186624,
+                "area_frac_of_image": 0.09,
+                "role": "reported only: NOT used for the semantic verdict or for readiness"
+              },
+              "legacy_v1_size_gate": {
+                "limit": 2.5,
+                "ratio_to_truck": 7.112,
+                "would_block_in_v1": true,
+                "role": "comparison only (V1 lets a refined box bypass it); V2 does not use region size"
+              }
+            },
+            "planner_support": {
+              "interface": "v0.2 placement_region / select_goal / A* take any region polygon (adapter route); the destination is NOT converted into a truck-anchored loading_area",
+              "native_v02_destination_stage": "truck-anchored loading_area only (agent/task_parser + semantics/region_grounding)",
+              "native_type_supported": false,
+              "obstacle_model": "placement keeps out detected truck/conveyor/mobile_robot, verified objects the adapter passes in, and map obstacles; an object it does not know is placeable floor to it",
+              "obstacle_coverage": "INCOMPLETE",
+              "unmodeled_physical_claims": [],
+              "classes_cited_but_not_observed": [
+                "container",
+                "pallet",
+                "traffic_cone"
+              ],
+              "status": "UNSUPPORTED_OBSTACLE_COVERAGE_INCOMPLETE"
+            },
+            "all_blockers_after_semantics": [],
+            "final_disposition": "EVIDENCE_RELATION_INCONSISTENT",
+            "final_disposition_ko": "근거와 공간 관계가 불일치하는 후보",
+            "planning_preconditions": {
+              "blocked_by": [],
+              "start_pose": "manual_prior",
+              "note": "separate from the semantic verdict"
+            },
+            "hand_over_to_planner": false
+          }
+        ],
+        "chosen_by_vlm": "area_3",
+        "semantically_supported_candidates": [],
+        "ready_candidates": [],
+        "selection": "single candidate"
+      },
+      "other_areas_proposed_by_vlm_not_verified": [
+        {
+          "id": "area_1",
+          "function_name": "robotic workstations"
+        },
+        {
+          "id": "area_2",
+          "function_name": "central staging area"
+        },
+        {
+          "id": "area_4",
+          "function_name": "exit/transportation zone"
+        },
+        {
+          "id": "area_5",
+          "function_name": "green pathway"
+        },
+        {
+          "id": "area_6",
+          "function_name": "instruction area"
+        }
+      ],
+      "overlay": "DEV_REF_v1_vs_v2.png"
+    },
+    {
+      "case_id": "E1",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "image": "/home/binci/vlm_ws/semantic_task_navigation/experiments/natural_language_abstraction/data/images/undistorted_25070552942982.png",
+      "vlm_raw_response": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_203058_46d8/vlm_proposal/raw_response.txt",
+      "runs_used": [
+        "20261118_203058_46d8",
+        "20261118_203426_260d"
+      ],
+      "v1": [
+        {
+          "run_id": "20261118_203058_46d8",
+          "label": "V1 primary",
+          "decision": "SEMANTIC_NOT_VERIFIED",
+          "integration_status": "SEMANTIC_NOT_VERIFIED",
+          "checks": {
+            "V1": "VERIFIED",
+            "V2": "VERIFIED",
+            "V3": "VERIFIED",
+            "V3b": "FAILED",
+            "V4": "NOT_RUN"
+          },
+          "failed": [
+            "V3b"
+          ],
+          "not_run": [
+            "V4"
+          ],
+          "reasons": [
+            "V3b FAILED: spatial precision of the adopted region",
+            "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+          ],
+          "replay_reproduces_stored": {
+            "checks_equal": true,
+            "decision_equal": true,
+            "stored": {
+              "V1": "VERIFIED",
+              "V2": "VERIFIED",
+              "V3": "VERIFIED",
+              "V3b": "FAILED",
+              "V4": "NOT_RUN"
+            },
+            "replayed": {
+              "V1": "VERIFIED",
+              "V2": "VERIFIED",
+              "V3": "VERIFIED",
+              "V3b": "FAILED",
+              "V4": "NOT_RUN"
+            },
+            "stored_decision": "SEMANTIC_NOT_VERIFIED",
+            "replayed_decision": "WITHHELD"
+          },
+          "agreement": {
+            "semantic_level": "V1_BLOCKS__V2_ACCEPTS (V1 false-reject / conflation candidate)",
+            "hand_over_level": "AGREE_BLOCK",
+            "v1_semantic_accept": false,
+            "v2_semantic_accept": true,
+            "v1_hand_over": false,
+            "v2_hand_over_if_preconditions_met": false,
+            "v2_hand_over": false
+          },
+          "v3b_area_ratio_to_truck": 4.077
+        },
+        {
+          "run_id": "20261118_203426_260d",
+          "label": "V1 variant verification.max_unrefined_area_ratio=6.0",
+          "decision": "ADOPTED_SEMANTIC_ONLY_MAP_NOT_ALIGNED",
+          "integration_status": "MAP_NOT_ALIGNED",
+          "checks": {
+            "V1": "VERIFIED",
+            "V2": "VERIFIED",
+            "V3": "VERIFIED",
+            "V3b": "ESTIMATED",
+            "V4": "ESTIMATED",
+            "V5": "ESTIMATED"
+          },
+          "failed": [],
+          "not_run": [],
+          "reasons": [
+            "spatial precision: coarse_clipped_to_association_zone"
+          ],
+          "replay_reproduces_stored": {
+            "checks_equal": true,
+            "decision_equal": true,
+            "stored": {
+              "V1": "VERIFIED",
+              "V2": "VERIFIED",
+              "V3": "VERIFIED",
+              "V3b": "ESTIMATED",
+              "V4": "ESTIMATED",
+              "V5": "ESTIMATED"
+            },
+            "replayed": {
+              "V1": "VERIFIED",
+              "V2": "VERIFIED",
+              "V3": "VERIFIED",
+              "V3b": "ESTIMATED",
+              "V4": "ESTIMATED",
+              "V5": "ESTIMATED"
+            },
+            "stored_decision": "ADOPTED_SEMANTIC_ONLY_MAP_NOT_ALIGNED",
+            "replayed_decision": "ADOPTED_SEMANTIC_ONLY_MAP_NOT_ALIGNED"
+          },
+          "agreement": {
+            "semantic_level": "AGREE_ACCEPT",
+            "hand_over_level": "AGREE_BLOCK",
+            "v1_semantic_accept": true,
+            "v2_semantic_accept": true,
+            "v1_hand_over": false,
+            "v2_hand_over_if_preconditions_met": false,
+            "v2_hand_over": false
+          },
+          "v3b_area_ratio_to_truck": 4.077
+        }
+      ],
+      "v2": {
+        "case_id": "E1",
+        "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+        "candidates": [
+          {
+            "candidate_id": "area_5",
+            "vlm_function_claim": "loading dock",
+            "vlm_function_claim_note": "the VLM's own wording: recorded, never used as evidence or to decide",
+            "purpose": {
+              "purposes": [
+                "outbound_shipping"
+              ],
+              "matched_terms": {
+                "outbound_shipping": [
+                  "출하"
+                ]
+              },
+              "requires_any_of": [
+                "carrier_vehicle"
+              ],
+              "known": true,
+              "source": "instruction text (keyword table in config.yaml; knowledge: manual_prior)"
+            },
+            "claims": [
+              {
+                "text": "truck",
+                "classes": [
+                  "truck"
+                ],
+                "kind": "registry",
+                "hedged": false,
+                "status": "VERIFIED_PRESENT",
+                "relation": "RELATION_HOLDS"
+              },
+              {
+                "text": "cones",
+                "classes": [
+                  "traffic_cone"
+                ],
+                "kind": "registry",
+                "hedged": false,
+                "status": "VERIFIED_PRESENT",
+                "relation": "RELATION_HOLDS"
+              },
+              {
+                "text": "barriers",
+                "classes": [],
+                "kind": "unmatched_object",
+                "hedged": false,
+                "status": "UNVERIFIABLE",
+                "relation": null
+              }
+            ],
+            "reasoning_only_mentions": [],
+            "class_evidence": [
+              {
+                "class": "traffic_cone",
+                "backend": "dino_verify",
+                "role": "marker",
+                "capabilities": [
+                  "zone_marker"
+                ],
+                "obstacle": true,
+                "instances": [
+                  {
+                    "object_id": "traffic_cone_1",
+                    "bbox_xyxy": [
+                      1284.1,
+                      155.3,
+                      1316.4,
+                      200.1
+                    ],
+                    "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]",
+                    "fraction_of_object_inside_region": 1.0,
+                    "gap_px": 0.0,
+                    "adjacency_distance_px": 60,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_HOLDS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  },
+                  {
+                    "object_id": "traffic_cone_2",
+                    "bbox_xyxy": [
+                      1309.3,
+                      250.9,
+                      1341.6,
+                      294.0
+                    ],
+                    "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]",
+                    "fraction_of_object_inside_region": 0.694,
+                    "gap_px": 0.0,
+                    "adjacency_distance_px": 60,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_HOLDS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  },
+                  {
+                    "object_id": "traffic_cone_3",
+                    "bbox_xyxy": [
+                      1280.8,
+                      68.6,
+                      1312.5,
+                      114.1
+                    ],
+                    "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]",
+                    "fraction_of_object_inside_region": 1.0,
+                    "gap_px": 0.0,
+                    "adjacency_distance_px": 60,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_HOLDS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  },
+                  {
+                    "object_id": "traffic_cone_4",
+                    "bbox_xyxy": [
+                      1416.0,
+                      249.4,
+                      1450.0,
+                      292.7
+                    ],
+                    "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]",
+                    "fraction_of_object_inside_region": 0.725,
+                    "gap_px": 0.0,
+                    "adjacency_distance_px": 60,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_HOLDS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  },
+                  {
+                    "object_id": "traffic_cone_5",
+                    "bbox_xyxy": [
+                      1676.6,
+                      240.6,
+                      1712.5,
+                      284.6
+                    ],
+                    "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]",
+                    "fraction_of_object_inside_region": 0.914,
+                    "gap_px": 0.0,
+                    "adjacency_distance_px": 60,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_HOLDS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  },
+                  {
+                    "object_id": "traffic_cone_6",
+                    "bbox_xyxy": [
+                      1524.7,
+                      243.8,
+                      1560.5,
+                      288.8
+                    ],
+                    "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]",
+                    "fraction_of_object_inside_region": 0.822,
+                    "gap_px": 0.0,
+                    "adjacency_distance_px": 60,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_HOLDS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  }
+                ],
+                "n_related": 6,
+                "status": "VERIFIED_PRESENT",
+                "search_scope": "near the VLM proposal only (DINO candidates within a 15% margin)"
+              },
+              {
+                "class": "truck",
+                "backend": "v02_detection",
+                "role": "equipment",
+                "capabilities": [
+                  "carrier_vehicle"
+                ],
+                "obstacle": true,
+                "instances": [
+                  {
+                    "object_id": "truck_1",
+                    "bbox_xyxy": [
+                      1447.3,
+                      0.2,
+                      1687.4,
+                      149.6
+                    ],
+                    "basis": "v0.2 grounding_dino (score 0.56) + Qwen crop verification 'yes' [run 20261118_203058_46d8]",
+                    "fraction_of_object_inside_region": 1.0,
+                    "gap_px": 0.0,
+                    "adjacency_distance_px": 144.1,
+                    "min_inside_fraction": 0.5,
+                    "relation": "RELATION_HOLDS",
+                    "rule": "inside >= v0.2 structure_min_truck_containment OR gap <= band_depth(object) (both from config/planning.yaml)"
+                  }
+                ],
+                "n_related": 1,
+                "status": "VERIFIED_PRESENT",
+                "search_scope": "full_image (v0.2 detect_objects)"
+              }
+            ],
+            "purpose_fit": {
+              "purpose_known": true,
+              "requires_any_of": [
+                "carrier_vehicle"
+              ],
+              "established_capabilities": [
+                "carrier_vehicle",
+                "zone_marker"
+              ],
+              "fit": "SUPPORTED",
+              "reasons": [
+                "verified 'truck' stands in a relation to the region and carries ['carrier_vehicle']"
+              ]
+            },
+            "semantic_verdict": "SEMANTICALLY_SUPPORTED",
+            "semantic_verdict_ko": "의미적으로 타당한 후보",
+            "semantic_reasons": [
+              "verified 'truck' stands in a relation to the region and carries ['carrier_vehicle']"
+            ],
+            "placement": {
+              "readiness": "NOT_ESTABLISHED",
+              "reasons": [
+                "no verified localization of a placeable spot inside the semantic region (evidence-grounded refinement or a human-confirmed region)"
+              ],
+              "verified_localizations": [],
+              "conflicts": {
+                "problems": [],
+                "notes": [
+                  {
+                    "map_check": "UNVERIFIABLE",
+                    "reason": "map alignment is MISALIGNED"
+                  }
+                ]
+              },
+              "region_size_info": {
+                "area_px": 161741,
+                "area_frac_of_image": 0.078,
+                "role": "reported only: NOT used for the semantic verdict or for readiness"
+              },
+              "legacy_v1_size_gate": {
+                "limit": 2.5,
+                "ratio_to_truck": 4.509,
+                "would_block_in_v1": true,
+                "role": "comparison only (V1 lets a refined box bypass it); V2 does not use region size"
+              }
+            },
+            "planner_support": {
+              "interface": "v0.2 placement_region / select_goal / A* take any region polygon (adapter route); the destination is NOT converted into a truck-anchored loading_area",
+              "native_v02_destination_stage": "truck-anchored loading_area only (agent/task_parser + semantics/region_grounding)",
+              "native_type_supported": true,
+              "obstacle_model": "placement keeps out detected truck/conveyor/mobile_robot, verified objects the adapter passes in, and map obstacles; an object it does not know is placeable floor to it",
+              "obstacle_coverage": "INCOMPLETE",
+              "unmodeled_physical_claims": [
+                "barriers"
+              ],
+              "classes_cited_but_not_observed": [],
+              "status": "UNSUPPORTED_OBSTACLE_COVERAGE_INCOMPLETE"
+            },
+            "all_blockers_after_semantics": [
+              "SEMANTICALLY_SUPPORTED_PLACEMENT_UNVERIFIED",
+              "SEMANTICALLY_SUPPORTED_PLANNER_UNSUPPORTED"
+            ],
+            "final_disposition": "SEMANTICALLY_SUPPORTED_PLACEMENT_UNVERIFIED",
+            "final_disposition_ko": "의미적으로는 타당하지만 배치 가능성이 검증되지 않은 후보",
+            "planning_preconditions": {
+              "blocked_by": [
+                "map alignment: MISALIGNED",
+                "red cube: TARGET_NOT_FOUND"
+              ],
+              "start_pose": "manual_prior",
+              "note": "separate from the semantic verdict"
+            },
+            "hand_over_to_planner": false
+          }
+        ],
+        "chosen_by_vlm": "area_5",
+        "semantically_supported_candidates": [
+          "area_5"
+        ],
+        "ready_candidates": [],
+        "selection": "single candidate"
+      },
+      "other_areas_proposed_by_vlm_not_verified": [
+        {
+          "id": "area_1",
+          "function_name": "loading/unloading zone"
+        },
+        {
+          "id": "area_2",
+          "function_name": "conveyor belt processing area"
+        },
+        {
+          "id": "area_3",
+          "function_name": "storage zone"
+        },
+        {
+          "id": "area_4",
+          "function_name": "charging station"
+        },
+        {
+          "id": "area_6",
+          "function_name": "material staging area"
+        }
+      ],
+      "overlay": "E1_v1_vs_v2.png"
+    },
+    {
+      "case_id": "REF_P01",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "image": "/home/binci/vlm_ws/semantic_task_navigation/config/maps/reference_scene_map.reference_P01.jpg",
+      "vlm_raw_response": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_203247_fd48/vlm_proposal/raw_response.txt",
+      "runs_used": [
+        "20261118_203247_fd48"
+      ],
+      "v1": [
+        {
+          "run_id": "20261118_203247_fd48",
+          "label": "V1 primary",
+          "decision": "SEMANTIC_NOT_VERIFIED",
+          "integration_status": "SEMANTIC_EVIDENCE_INSUFFICIENT",
+          "checks": {
+            "V1": "VERIFIED",
+            "V2": "FAILED",
+            "V3": "FAILED",
+            "V4": "NOT_RUN"
+          },
+          "failed": [
+            "V2",
+            "V3"
+          ],
+          "not_run": [
+            "V4"
+          ],
+          "reasons": [
+            "V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules)",
+            "V2 FAILED: the objects cited as evidence exist in the image (anchor object required)",
+            "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+          ],
+          "replay_reproduces_stored": {
+            "checks_equal": true,
+            "decision_equal": true,
+            "stored": {
+              "V1": "VERIFIED",
+              "V2": "FAILED",
+              "V3": "FAILED",
+              "V4": "NOT_RUN"
+            },
+            "replayed": {
+              "V1": "VERIFIED",
+              "V2": "FAILED",
+              "V3": "FAILED",
+              "V4": "NOT_RUN"
+            },
+            "stored_decision": "SEMANTIC_NOT_VERIFIED",
+            "replayed_decision": "WITHHELD"
+          },
+          "agreement": {
+            "semantic_level": "AGREE_BLOCK",
+            "hand_over_level": "AGREE_BLOCK",
+            "v1_semantic_accept": false,
+            "v2_semantic_accept": false,
+            "v1_hand_over": false,
+            "v2_hand_over_if_preconditions_met": false,
+            "v2_hand_over": false
+          },
+          "v3b_area_ratio_to_truck": null
+        }
+      ],
+      "v2": {
+        "case_id": "REF_P01",
+        "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+        "candidates": [
+          {
+            "candidate_id": "area_4",
+            "vlm_function_claim": "exit/destination zone",
+            "vlm_function_claim_note": "the VLM's own wording: recorded, never used as evidence or to decide",
+            "purpose": {
+              "purposes": [
+                "outbound_shipping"
+              ],
+              "matched_terms": {
+                "outbound_shipping": [
+                  "출하"
+                ]
+              },
+              "requires_any_of": [
+                "carrier_vehicle"
+              ],
+              "known": true,
+              "source": "instruction text (keyword table in config.yaml; knowledge: manual_prior)"
+            },
+            "claims": [
+              {
+                "text": "lightning bolt symbol",
+                "classes": [],
+                "kind": "marking",
+                "hedged": false,
+                "status": "UNVERIFIABLE",
+                "relation": null
+              },
+              {
+                "text": "red cube marker (assumed)",
+                "classes": [
+                  "red_cube"
+                ],
+                "kind": "registry",
+                "hedged": true,
+                "status": "NOT_EVIDENCE",
+                "relation": null
+              },
+              {
+                "text": "whiteboard nearby",
+                "classes": [],
+                "kind": "unmatched_object",
+                "hedged": false,
+                "status": "UNVERIFIABLE",
+                "relation": null
+              }
+            ],
+            "reasoning_only_mentions": [],
+            "class_evidence": [
+              {
+                "class": "red_cube",
+                "backend": "v02_target",
+                "role": "task_object",
+                "capabilities": [],
+                "obstacle": false,
+                "instances": [],
+                "n_related": 0,
+                "status": "NOT_EVIDENCE",
+                "note": "the object to be carried says nothing about where it should go"
+              }
+            ],
+            "purpose_fit": {
+              "purpose_known": true,
+              "requires_any_of": [
+                "carrier_vehicle"
+              ],
+              "established_capabilities": [],
+              "fit": "PURPOSE_FIT_UNDETERMINED",
+              "reasons": [
+                "no cited object could be verified: 0 not found, 0 not run, 2 claim(s) UNVERIFIABLE (no detector)"
+              ]
+            },
+            "semantic_verdict": "EVIDENCE_NOT_ESTABLISHED",
+            "semantic_verdict_ko": "시각적 근거가 확인되지 않은 후보",
+            "semantic_reasons": [
+              "no cited object could be verified: 0 not found, 0 not run, 2 claim(s) UNVERIFIABLE (no detector)"
+            ],
+            "placement": {
+              "readiness": "NOT_ESTABLISHED",
+              "reasons": [
+                "no verified localization of a placeable spot inside the semantic region (evidence-grounded refinement or a human-confirmed region)",
+                "the region conflicts with other equipment or with the robot's travel/no-go zones"
+              ],
+              "verified_localizations": [],
+              "conflicts": {
+                "problems": [
+                  {
+                    "map_layer": "traversable",
+                    "fraction_of_region": 0.0714,
+                    "limit": 0.05,
+                    "basis": "map prior (DRAFT_UNCONFIRMED), independent of the VLM"
+                  }
+                ],
+                "notes": [
+                  {
+                    "map_layer": "no_go",
+                    "fraction_of_region": 0.0,
+                    "limit": 0.05,
+                    "basis": "map prior (DRAFT_UNCONFIRMED), independent of the VLM"
+                  }
+                ]
+              },
+              "region_size_info": {
+                "area_px": 124416,
+                "area_frac_of_image": 0.06,
+                "role": "reported only: NOT used for the semantic verdict or for readiness"
+              },
+              "legacy_v1_size_gate": {
+                "limit": 2.5,
+                "ratio_to_truck": 4.739,
+                "would_block_in_v1": true,
+                "role": "comparison only (V1 lets a refined box bypass it); V2 does not use region size"
+              }
+            },
+            "planner_support": {
+              "interface": "v0.2 placement_region / select_goal / A* take any region polygon (adapter route); the destination is NOT converted into a truck-anchored loading_area",
+              "native_v02_destination_stage": "truck-anchored loading_area only (agent/task_parser + semantics/region_grounding)",
+              "native_type_supported": false,
+              "obstacle_model": "placement keeps out detected truck/conveyor/mobile_robot, verified objects the adapter passes in, and map obstacles; an object it does not know is placeable floor to it",
+              "obstacle_coverage": "INCOMPLETE",
+              "unmodeled_physical_claims": [
+                "whiteboard nearby"
+              ],
+              "classes_cited_but_not_observed": [],
+              "status": "UNSUPPORTED_OBSTACLE_COVERAGE_INCOMPLETE"
+            },
+            "all_blockers_after_semantics": [],
+            "final_disposition": "EVIDENCE_NOT_ESTABLISHED",
+            "final_disposition_ko": "시각적 근거가 확인되지 않은 후보",
+            "planning_preconditions": {
+              "blocked_by": [],
+              "start_pose": "manual_prior",
+              "note": "separate from the semantic verdict"
+            },
+            "hand_over_to_planner": false
+          }
+        ],
+        "chosen_by_vlm": "area_4",
+        "semantically_supported_candidates": [],
+        "ready_candidates": [],
+        "selection": "single candidate"
+      },
+      "other_areas_proposed_by_vlm_not_verified": [
+        {
+          "id": "area_1",
+          "function_name": "robot workstations"
+        },
+        {
+          "id": "area_2",
+          "function_name": "central staging area"
+        },
+        {
+          "id": "area_3",
+          "function_name": "loading/unloading zone"
+        },
+        {
+          "id": "area_5",
+          "function_name": "storage or buffer zone"
+        },
+        {
+          "id": "area_6",
+          "function_name": "conveyor or transport path"
+        }
+      ],
+      "overlay": "REF_P01_v1_vs_v2.png"
+    }
+  ],
+  "v1_replay_reproduces_all_stored_runs": true,
+  "synthetic": [
+    {
+      "scenario": "S1_consistent_and_localized",
+      "description": "evidence exists, stands in the right relation, spot localized",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "ADOPTED",
+      "v1_failed": [],
+      "v1_not_run": [],
+      "v1_reasons": [
+        "spatial precision: refined_by_evidence_grounding"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "SEMANTICALLY_SUPPORTED",
+          "final_disposition": "SEMANTICALLY_SUPPORTED_READY_FOR_PLANNING",
+          "hand_over": true,
+          "reasons": [
+            "verified 'truck' stands in a relation to the region and carries ['carrier_vehicle']"
+          ],
+          "blockers": [],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "AGREE_ACCEPT",
+        "hand_over_level": "AGREE_PASS",
+        "v1_semantic_accept": true,
+        "v2_semantic_accept": true,
+        "v1_hand_over": true,
+        "v2_hand_over_if_preconditions_met": true,
+        "v2_hand_over": true
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "SEMANTICALLY_SUPPORTED_READY_FOR_PLANNING",
+        "hand_over": true,
+        "v1": "ADOPTED"
+      }
+    },
+    {
+      "scenario": "S2_evidence_object_absent",
+      "description": "the VLM cites a truck; the detector searched and found none",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "SEMANTIC_NOT_VERIFIED",
+      "v1_failed": [
+        "V2",
+        "V3"
+      ],
+      "v1_not_run": [
+        "V4"
+      ],
+      "v1_reasons": [
+        "V3 FAILED: region is geometrically associated with the verified anchor",
+        "V2 FAILED: the objects cited as evidence exist in the image (anchor object required)",
+        "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "EVIDENCE_NOT_ESTABLISHED",
+          "final_disposition": "EVIDENCE_NOT_ESTABLISHED",
+          "hand_over": false,
+          "reasons": [
+            "cited 'truck' (needed for the purpose) was searched for and not found"
+          ],
+          "blockers": [],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "AGREE_BLOCK",
+        "hand_over_level": "AGREE_BLOCK",
+        "v1_semantic_accept": false,
+        "v2_semantic_accept": false,
+        "v1_hand_over": false,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "EVIDENCE_NOT_ESTABLISHED",
+        "hand_over": false,
+        "v1": "WITHHELD"
+      }
+    },
+    {
+      "scenario": "S3_evidence_elsewhere",
+      "description": "the cited truck exists but stands far from the proposed region",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "SEMANTIC_NOT_VERIFIED",
+      "v1_failed": [
+        "V3"
+      ],
+      "v1_not_run": [
+        "V4"
+      ],
+      "v1_reasons": [
+        "V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules)",
+        "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "EVIDENCE_RELATION_INCONSISTENT",
+          "final_disposition": "EVIDENCE_RELATION_INCONSISTENT",
+          "hand_over": false,
+          "reasons": [
+            "verified 'truck' exists but none of its 1 instance(s) is inside or adjacent to the proposed region"
+          ],
+          "blockers": [],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "AGREE_BLOCK",
+        "hand_over_level": "AGREE_BLOCK",
+        "v1_semantic_accept": false,
+        "v2_semantic_accept": false,
+        "v1_hand_over": false,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "EVIDENCE_RELATION_INCONSISTENT",
+        "hand_over": false,
+        "v1": "WITHHELD"
+      }
+    },
+    {
+      "scenario": "S4_multiple_candidates",
+      "description": "two destination candidates; the VLM chose the weaker one; the verifier does not swap",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_2",
+      "v1_decision": "SEMANTIC_NOT_VERIFIED",
+      "v1_failed": [
+        "V2",
+        "V3"
+      ],
+      "v1_not_run": [
+        "V4"
+      ],
+      "v1_reasons": [
+        "V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules)",
+        "V2 FAILED: the objects cited as evidence exist in the image (anchor object required)",
+        "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "SEMANTICALLY_SUPPORTED",
+          "final_disposition": "SEMANTICALLY_SUPPORTED_READY_FOR_PLANNING",
+          "hand_over": true,
+          "reasons": [
+            "verified 'truck' stands in a relation to the region and carries ['carrier_vehicle']"
+          ],
+          "blockers": [],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        },
+        "area_2": {
+          "semantic_verdict": "EVIDENCE_NOT_ESTABLISHED",
+          "final_disposition": "EVIDENCE_NOT_ESTABLISHED",
+          "hand_over": false,
+          "reasons": [
+            "no cited object could be verified: 0 not found, 0 not run, 1 claim(s) UNVERIFIABLE (no detector)"
+          ],
+          "blockers": [],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "NOT_MADE_BY_THE_VERIFIER: it never replaces the VLM's choice; a planner-side choice rule (v0.2: lowest goal score) is geometric, not a semantic criterion",
+      "agreement": {
+        "semantic_level": "AGREE_BLOCK",
+        "hand_over_level": "AGREE_BLOCK",
+        "v1_semantic_accept": false,
+        "v2_semantic_accept": false,
+        "v1_hand_over": false,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "EVIDENCE_NOT_ESTABLISHED",
+        "hand_over": false,
+        "v1": "WITHHELD",
+        "v2_other": {
+          "area_1": "SEMANTICALLY_SUPPORTED_READY_FOR_PLANNING"
+        }
+      }
+    },
+    {
+      "scenario": "S5_semantic_ok_placement_unverified",
+      "description": "truck inside a wide region, no localization of a spot",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "SEMANTIC_NOT_VERIFIED",
+      "v1_failed": [
+        "V3"
+      ],
+      "v1_not_run": [
+        "V4"
+      ],
+      "v1_reasons": [
+        "V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules)",
+        "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "SEMANTICALLY_SUPPORTED",
+          "final_disposition": "SEMANTICALLY_SUPPORTED_PLACEMENT_UNVERIFIED",
+          "hand_over": false,
+          "reasons": [
+            "verified 'truck' stands in a relation to the region and carries ['carrier_vehicle']"
+          ],
+          "blockers": [
+            "SEMANTICALLY_SUPPORTED_PLACEMENT_UNVERIFIED"
+          ],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "V1_BLOCKS__V2_ACCEPTS (V1 false-reject / conflation candidate)",
+        "hand_over_level": "AGREE_BLOCK",
+        "v1_semantic_accept": false,
+        "v2_semantic_accept": true,
+        "v1_hand_over": false,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "SEMANTICALLY_SUPPORTED_PLACEMENT_UNVERIFIED",
+        "hand_over": false,
+        "v1": "WITHHELD"
+      }
+    },
+    {
+      "scenario": "S6_non_truck_carrier",
+      "description": "a delivery van (registered as a carrier by CONFIG only) in a tight, localized region",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "SEMANTIC_NOT_VERIFIED",
+      "v1_failed": [
+        "V2",
+        "V3"
+      ],
+      "v1_not_run": [
+        "V4"
+      ],
+      "v1_reasons": [
+        "V3 FAILED: region is geometrically associated with the verified anchor",
+        "V2 FAILED: the objects cited as evidence exist in the image (anchor object required)",
+        "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "SEMANTICALLY_SUPPORTED",
+          "final_disposition": "SEMANTICALLY_SUPPORTED_READY_FOR_PLANNING",
+          "hand_over": true,
+          "reasons": [
+            "verified 'delivery_van' stands in a relation to the region and carries ['carrier_vehicle']"
+          ],
+          "blockers": [],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "V1_BLOCKS__V2_ACCEPTS (V1 false-reject / conflation candidate)",
+        "hand_over_level": "V1_BLOCKS__V2_PASSES",
+        "v1_semantic_accept": false,
+        "v2_semantic_accept": true,
+        "v1_hand_over": false,
+        "v2_hand_over_if_preconditions_met": true,
+        "v2_hand_over": true
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "SEMANTICALLY_SUPPORTED_READY_FOR_PLANNING",
+        "hand_over": true,
+        "v1": "WITHHELD"
+      }
+    },
+    {
+      "scenario": "S7_purpose_mismatch",
+      "description": "the instruction asks for a CHARGING place; the VLM proposes the truck bay",
+      "instruction": "빨간 큐브를 충전할 수 있는 곳으로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "ADOPTED",
+      "v1_failed": [],
+      "v1_not_run": [],
+      "v1_reasons": [
+        "spatial precision: refined_by_evidence_grounding"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "PURPOSE_FIT_UNDETERMINED",
+          "final_disposition": "PURPOSE_FIT_UNDETERMINED",
+          "hand_over": false,
+          "reasons": [
+            "the purpose needs ['charging_equipment'], which no registered detector class can verify"
+          ],
+          "blockers": [],
+          "purpose": [
+            "charging"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "V1_ACCEPTS__V2_BLOCKS (V1 false-accept candidate)",
+        "hand_over_level": "V1_PASSES__V2_BLOCKS",
+        "v1_semantic_accept": true,
+        "v2_semantic_accept": false,
+        "v1_hand_over": true,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "PURPOSE_FIT_UNDETERMINED",
+        "hand_over": false,
+        "v1": "ADOPTED"
+      }
+    },
+    {
+      "scenario": "S8_unmodeled_obstacle_claim",
+      "description": "the VLM also cites crates by the bay: a physical object no detector or obstacle model knows",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "ADOPTED",
+      "v1_failed": [],
+      "v1_not_run": [],
+      "v1_reasons": [
+        "spatial precision: refined_by_evidence_grounding"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "SEMANTICALLY_SUPPORTED",
+          "final_disposition": "SEMANTICALLY_SUPPORTED_PLANNER_UNSUPPORTED",
+          "hand_over": false,
+          "reasons": [
+            "verified 'truck' stands in a relation to the region and carries ['carrier_vehicle']"
+          ],
+          "blockers": [
+            "SEMANTICALLY_SUPPORTED_PLANNER_UNSUPPORTED"
+          ],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "AGREE_ACCEPT",
+        "hand_over_level": "V1_PASSES__V2_BLOCKS",
+        "v1_semantic_accept": true,
+        "v2_semantic_accept": true,
+        "v1_hand_over": true,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "SEMANTICALLY_SUPPORTED_PLANNER_UNSUPPORTED",
+        "hand_over": false,
+        "v1": "ADOPTED"
+      }
+    },
+    {
+      "scenario": "S9_purpose_unknown",
+      "description": "the instruction names no purpose the table knows",
+      "instruction": "빨간 큐브를 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "ADOPTED",
+      "v1_failed": [],
+      "v1_not_run": [],
+      "v1_reasons": [
+        "spatial precision: refined_by_evidence_grounding"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "PURPOSE_FIT_UNDETERMINED",
+          "final_disposition": "PURPOSE_FIT_UNDETERMINED",
+          "hand_over": false,
+          "reasons": [
+            "the instruction names no purpose the table knows, so no capability can be required"
+          ],
+          "blockers": [],
+          "purpose": []
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "V1_ACCEPTS__V2_BLOCKS (V1 false-accept candidate)",
+        "hand_over_level": "V1_PASSES__V2_BLOCKS",
+        "v1_semantic_accept": true,
+        "v2_semantic_accept": false,
+        "v1_hand_over": true,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "PURPOSE_FIT_UNDETERMINED",
+        "hand_over": false,
+        "v1": "ADOPTED"
+      }
+    },
+    {
+      "scenario": "S10_other_function_verified",
+      "description": "pallets are verified inside the region, but they show storage, not shipping",
+      "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "chosen_by_vlm": "area_1",
+      "v1_decision": "SEMANTIC_NOT_VERIFIED",
+      "v1_failed": [
+        "V2",
+        "V3"
+      ],
+      "v1_not_run": [
+        "V4"
+      ],
+      "v1_reasons": [
+        "V3 FAILED: region is geometrically associated with the verified anchor",
+        "V2 FAILED: the objects cited as evidence exist in the image (anchor object required)",
+        "V4 NOT_RUN: v0.2 region_judge accepts the adopted region"
+      ],
+      "v2": {
+        "area_1": {
+          "semantic_verdict": "PURPOSE_FIT_UNDETERMINED",
+          "final_disposition": "PURPOSE_FIT_UNDETERMINED",
+          "hand_over": false,
+          "reasons": [
+            "verified, related evidence supports ['goods_staging'], not the capability the purpose needs (['carrier_vehicle'])"
+          ],
+          "blockers": [],
+          "purpose": [
+            "outbound_shipping"
+          ]
+        }
+      },
+      "selection": "single candidate",
+      "agreement": {
+        "semantic_level": "AGREE_BLOCK",
+        "hand_over_level": "AGREE_BLOCK",
+        "v1_semantic_accept": false,
+        "v2_semantic_accept": false,
+        "v1_hand_over": false,
+        "v2_hand_over_if_preconditions_met": false,
+        "v2_hand_over": false
+      },
+      "matches_expectation": {
+        "v2": true,
+        "v1": true,
+        "other": true
+      },
+      "expect": {
+        "v2": "PURPOSE_FIT_UNDETERMINED",
+        "hand_over": false,
+        "v1": "WITHHELD"
+      }
+    }
+  ]
+}

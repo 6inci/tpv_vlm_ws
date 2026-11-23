@@ -1,0 +1,27 @@
+# Interactive viewer: one photo, many natural-language instructions -> source A / destination B drawn on the photo.
+# The prompts, the workplace rules R1, the relation rules, the detection settings and the selection policy are NOT copied here:
+# they are read from the task_context_2d_navigation config (reused verbatim). This file holds only what the viewer adds.
+# No object id, coordinate or answer of any photo is written here.
+photo_dir: /home/binci/Pictures/Calibration        # read only
+results_dir: results                               # one new session folder per program start; never overwritten
+reuse:
+  task_context_config: ../task_context_2d_navigation/config.yaml
+
+# Search without a reference. task_context records NO_REFERENCE when the instruction names no reference at all.
+# The viewer then searches the whole image (labelled WHOLE_IMAGE). A reference that is named but cannot be grounded is still NO_REFERENCE.
+# Whole-image source search keeps only detector candidates whose phrase contains the head noun of the object (the red-cube pool is used as it is).
+whole_image_when_no_reference: true
+
+# More candidates than the task_context limit (max_numbered = 20) are split into several numbered images, one Qwen call each (no truncation).
+# Above this many calls per side the stage fails with TOO_MANY_CANDIDATES instead of guessing.
+max_role_calls_per_side: 3
+
+# Display labels of the chosen destination (deterministic, not validated)
+goal_region:
+  # GOAL_REGION if every detector phrase of the candidate, or Qwen's first appearance text, contains an area word, or the box is large.
+  region_words: [floor, area, zone, marking, road, ground, lane, region, space, surface, mat, dock, bay, path, walkway, aisle]
+  min_image_frac: 0.03            # box area / image area
+# PLACEMENT: VLM_SUITABLE_EMPTY only for an OBJECT that Qwen rated 'suitable' with load_state 'empty'; otherwise PLACEMENT_UNVERIFIED.
+# Neither label means that a physical placement (surface size, gripper reach) was checked.
+
+default_rules: R1                 # R0 = no workplace rules in the prompts, R1 = task_context rules_R1

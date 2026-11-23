@@ -1,0 +1,52 @@
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 2/750 [00:00<02:35,  4.81it/s]Loading weights:   1%|          | 4/750 [00:00<01:34,  7.86it/s]Loading weights:   2%|▏         | 12/750 [00:00<00:33, 22.11it/s]Loading weights:   4%|▎         | 27/750 [00:00<00:14, 49.20it/s]Loading weights:   5%|▍         | 36/750 [00:01<00:19, 37.37it/s]Loading weights:   7%|▋         | 50/750 [00:01<00:15, 44.81it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.33it/s]Loading weights:  11%|█         | 82/750 [00:01<00:09, 69.79it/s]Loading weights:  12%|█▏        | 91/750 [00:02<00:20, 31.79it/s]Loading weights:  20%|█▉        | 148/750 [00:02<00:07, 84.02it/s]Loading weights:  22%|██▏       | 164/750 [00:02<00:07, 77.54it/s]Loading weights:  31%|███       | 232/750 [00:03<00:03, 155.58it/s]Loading weights:  56%|█████▌    | 419/750 [00:03<00:00, 421.84it/s]Loading weights:  66%|██████▌   | 495/750 [00:03<00:00, 451.43it/s]Loading weights:  75%|███████▌  | 565/750 [00:03<00:00, 497.04it/s]Loading weights:  85%|████████▍ | 635/750 [00:03<00:00, 540.71it/s]Loading weights:  95%|█████████▌| 713/750 [00:03<00:00, 575.68it/s]Loading weights: 100%|██████████| 750/750 [00:03<00:00, 201.37it/s]
+Some parameters are on the meta device because they were offloaded to the cpu.
+M2 q043 truck | C1 True 46.6s | C6 True 8.0s
+[W1115 13:00:00.435727292 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 1245708288 bytes (free: 616562688, total: 12344164352).
+[W1115 13:00:00.435817067 CUDACachingAllocator.cpp:3933] memory allocation failed with OOM on device 0 while trying to allocate 1245708288 bytes (free: 616562688, total: 12344164352).
+Traceback (most recent call last):
+  File "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP110_word_grounding/explore/X6_model_size/x6_smoke.py", line 118, in <module>
+    sys.exit(main())
+  File "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP110_word_grounding/explore/X6_model_size/x6_smoke.py", line 84, in main
+    raw1, n1, dt1 = ask(proc, model, img, R.CFG['qwen']['c1_prompt'].format(q=q['text']), R.CFG['qwen']['c1_max_new_tokens'])
+  File "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP110_word_grounding/explore/X6_model_size/x6_smoke.py", line 50, in ask
+    out = model.generate(**inp, max_new_tokens=max_new_tokens, do_sample=False)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/transformers/generation/utils.py", line 2668, in generate
+    result = decoding_method(
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/transformers/generation/utils.py", line 2882, in _sample
+    outputs = model_forward(**model_inputs, return_dict=True)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/accelerate/hooks.py", line 192, in new_forward
+    output = module._old_forward(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/transformers/utils/generic.py", line 939, in wrapper
+    output = func(self, *args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/transformers/models/qwen3_vl/modeling_qwen3_vl.py", line 1372, in forward
+    logits = self.lm_head(hidden_states[:, slice_indices, :])
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/accelerate/hooks.py", line 187, in new_forward
+    args, kwargs = module._hf_hook.pre_forward(module, *args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/accelerate/hooks.py", line 50, in wrapper
+    return wrapper._compiled_fn(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 1446, in _fn
+    return fn(*args, **kwargs)
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/accelerate/hooks.py", line 388, in pre_forward
+    set_module_tensor_to_device(
+  File "/home/binci/miniconda3/envs/qwen_vl/lib/python3.10/site-packages/accelerate/utils/modeling.py", line 353, in set_module_tensor_to_device
+    new_value = value.to(device, non_blocking=non_blocking)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.16 GiB. GPU 0 has a total capacity of 11.50 GiB of which 588.00 MiB is free. Process 2488 has 156.88 MiB memory in use. Including non-PyTorch memory, this process has 9.43 GiB memory in use. Of the allocated memory 8.05 GiB is allocated by PyTorch, and 1.19 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+M2 exit 1
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<02:34,  4.86it/s]Loading weights:   0%|          | 2/750 [00:00<04:21,  2.86it/s]Loading weights:   1%|          | 5/750 [00:00<01:36,  7.71it/s]Loading weights:   2%|▏         | 15/750 [00:00<00:28, 25.51it/s]Loading weights:   3%|▎         | 21/750 [00:01<00:22, 32.40it/s]Loading weights:   4%|▎         | 27/750 [00:01<00:19, 37.23it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:14, 49.78it/s]Loading weights:   6%|▌         | 43/750 [00:01<00:14, 49.88it/s]Loading weights:   7%|▋         | 49/750 [00:01<00:14, 49.94it/s]Loading weights:   8%|▊         | 59/750 [00:01<00:11, 58.78it/s]Loading weights:   9%|▉         | 66/750 [00:01<00:11, 61.25it/s]Loading weights:  10%|▉         | 73/750 [00:01<00:12, 55.85it/s]Loading weights:  11%|█         | 82/750 [00:02<00:11, 59.46it/s]Loading weights:  12%|█▏        | 92/750 [00:02<00:10, 63.32it/s]Loading weights:  13%|█▎        | 99/750 [00:02<00:10, 61.35it/s]Loading weights:  14%|█▍        | 106/750 [00:02<00:11, 57.77it/s]Loading weights:  15%|█▌        | 115/750 [00:02<00:10, 60.35it/s]Loading weights:  17%|█▋        | 125/750 [00:02<00:09, 65.76it/s]Loading weights:  18%|█▊        | 132/750 [00:02<00:09, 66.07it/s]Loading weights:  19%|█▊        | 139/750 [00:02<00:10, 59.51it/s]Loading weights:  20%|█▉        | 148/750 [00:03<00:09, 62.75it/s]Loading weights:  21%|██        | 158/750 [00:03<00:08, 66.91it/s]Loading weights:  22%|██▏       | 165/750 [00:03<00:08, 65.71it/s]Loading weights:  23%|██▎       | 172/750 [00:03<00:09, 58.54it/s]Loading weights:  24%|██▍       | 181/750 [00:03<00:09, 61.06it/s]Loading weights:  25%|██▌       | 191/750 [00:03<00:08, 65.09it/s]Loading weights:  26%|██▋       | 198/750 [00:03<00:08, 65.70it/s]Loading weights:  27%|██▋       | 205/750 [00:03<00:09, 58.89it/s]Loading weights:  29%|██▊       | 214/750 [00:04<00:08, 62.48it/s]Loading weights:  30%|██▉       | 224/750 [00:04<00:07, 66.52it/s]Loading weights:  31%|███       | 232/750 [00:04<00:07, 65.92it/s]Loading weights:  32%|███▏      | 239/750 [00:04<00:08, 59.01it/s]Loading weights:  33%|███▎      | 247/750 [00:04<00:08, 60.55it/s]Loading weights:  34%|███▍      | 257/750 [00:04<00:07, 65.49it/s]Loading weights:  35%|███▌      | 264/750 [00:04<00:07, 65.13it/s]Loading weights:  36%|███▌      | 271/750 [00:05<00:07, 60.13it/s]Loading weights:  37%|███▋      | 280/750 [00:05<00:07, 62.78it/s]Loading weights:  39%|███▊      | 290/750 [00:05<00:06, 67.90it/s]Loading weights:  40%|███▉      | 297/750 [00:05<00:06, 66.65it/s]Loading weights:  41%|████      | 304/750 [00:05<00:07, 58.57it/s]Loading weights:  42%|████▏     | 313/750 [00:05<00:07, 62.33it/s]Loading weights:  43%|████▎     | 323/750 [00:05<00:06, 66.68it/s]Loading weights:  44%|████▍     | 330/750 [00:05<00:06, 64.41it/s]Loading weights:  45%|████▌     | 340/750 [00:06<00:05, 73.12it/s]Loading weights:  46%|████▋     | 348/750 [00:06<00:05, 71.03it/s]Loading weights:  48%|████▊     | 357/750 [00:06<00:05, 72.11it/s]Loading weights:  49%|████▉     | 367/750 [00:06<00:04, 77.87it/s]Loading weights:  50%|█████     | 375/750 [00:06<00:05, 74.89it/s]Loading weights:  51%|█████     | 383/750 [00:06<00:05, 68.07it/s]Loading weights:  52%|█████▏    | 390/750 [00:06<00:05, 65.09it/s]Loading weights:  57%|█████▋    | 425/750 [00:06<00:02, 138.06it/s]Loading weights:  69%|██████▊   | 515/750 [00:06<00:00, 340.38it/s]Loading weights:  83%|████████▎ | 619/750 [00:07<00:00, 526.99it/s]Loading weights:  94%|█████████▍| 705/750 [00:07<00:00, 616.25it/s]Loading weights: 100%|██████████| 750/750 [00:07<00:00, 101.96it/s]
+M3 q043 truck | C1 True 3.7s | C6 True 1.9s
+M3 q085 traffic cone | C1 False 12.9s | C6 False 2.9s
+M3 q053 cart | C1 False 2.0s | C6 False 2.0s
+M3 q037 storage rack | C1 False 4.5s | C6 True 2.2s
+M3 q025 small pallet | C1 False 2.0s | C6 False 2.3s
+load 11.2 s | peak VRAM 7.013 GiB | RSS 1.74 GiB | written explore/X6_model_size/run_20261115T125305_M3
+M3 exit 0

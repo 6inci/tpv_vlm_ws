@@ -1,0 +1,66 @@
+{
+  "command": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "mode": "LOCAL_ONLY",
+  "status": "OK",
+  "backend": "integration_adapter",
+  "v02_rule_based_parse": {
+    "status": "missing_information",
+    "task_type": "transport_and_place",
+    "target": {
+      "class": "cube",
+      "color": "red",
+      "count": 1,
+      "source_reference": null,
+      "source_relation": null
+    },
+    "destination": null,
+    "reason": "no destination keyword"
+  },
+  "task": {
+    "task_type": "transport_and_place",
+    "target": {
+      "class": "cube",
+      "color": "red",
+      "source_reference": null,
+      "source_relation": null
+    },
+    "destination": {
+      "region_type": "UNSPECIFIED (inferred by the VLM from image + instruction)",
+      "reference_object": null
+    },
+    "actions": [
+      "detect_target",
+      "locate_pickup_region",
+      "navigate_to_pickup",
+      "handoff_to_local_grasping",
+      "confirm_pickup",
+      "navigate_to_loading_area",
+      "handoff_to_placement",
+      "verify_completion"
+    ],
+    "actions_source": "fixed_template (not model output)",
+    "parser": {
+      "backend": "integration_adapter(v0.2 rule_based_parse for the target only)",
+      "model": null,
+      "prompt_id": null,
+      "raw_response": "{\"status\": \"missing_information\", \"task_type\": \"transport_and_place\", \"target\": {\"class\": \"cube\", \"color\": \"red\", \"count\": 1, \"source_reference\": null, \"source_relation\": null}, \"destination\": null, \"reason\": \"no destination keyword\"}",
+      "parsed_output": {
+        "status": "missing_information",
+        "task_type": "transport_and_place",
+        "target": {
+          "class": "cube",
+          "color": "red",
+          "count": 1,
+          "source_reference": null,
+          "source_relation": null
+        },
+        "destination": null,
+        "reason": "no destination keyword"
+      },
+      "normalization_notes": [
+        "destination deliberately not parsed: the instruction text goes to the VLM"
+      ]
+    }
+  },
+  "call": null
+}

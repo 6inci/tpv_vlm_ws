@@ -1,0 +1,87 @@
+# Task-conditioned placement target discovery and grounding on E1. Declared BEFORE any model call of this experiment.
+# GPU: existing Qwen3-VL-4B and Grounding DINO weights only, sequential, exclusive residency (v0.2 ModelWorkerClient). No install, no download.
+# Nothing outside this folder is modified. The evaluation reference lives in evaluation_reference.yaml and is read ONLY by the evaluate stage.
+experiment_id: placement_target_grounding
+results_dir: results
+command: "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+route_config: ../task_route_integration/config.yaml          # image + sha256, provisional floor transform, DRAFT map, stored Qwen L2 (area_5)
+semnav_run: ../semantic_navigation_integration/results/20261119_111050_semnav   # pick-up approach of cand_r1 and the earlier path B (comparison)
+
+# ---------------------------------------------------------------- Experiment 1: open-ended placement reasoning (Qwen)
+exp1:
+  prompt_id: placement_open_v1
+  # The question is the user's wording. The JSON block only fixes the output format; it names no object, place or class of the scene.
+  prompt: |
+    이동로봇에게 '컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘'라는 명령이 주어졌다. 이미지에서 이 작업의 최종 배치 대상으로 적절한 물체나 표면이 무엇인지 판단하라. 관찰되는 시각적 근거를 설명하고, 여러 후보가 있다면 구분하라. 정보가 부족하면 판단할 수 없다고 답하라.
+
+    Return JSON only, no prose:
+    {"candidates": [{"name_en": <short English noun phrase naming the object or surface>, "name_ko": <Korean name>,
+                     "bbox_2d": [x1, y1, x2, y2] or null (integers normalized to 0-1000 relative to this image's width and height),
+                     "location_in_image": <short text>, "visual_evidence": [<what is visible>],
+                     "suitability": "suitable" | "possible" | "unsuitable", "reason": <one short sentence>}],
+     "selected": <name_en of the most appropriate candidate, or null>,
+     "decision": "selected" | "cannot_determine",
+     "uncertain": [<what cannot be determined from this image>]}
+  max_new_tokens: 1536
+  conditions:
+    A_full_image: {image: full}
+    B_zone_crop: {image: zone_crop}
+  # Zone crop: stored Qwen L2 destination box (area_5, the area Qwen chose earlier) expanded on every side by
+  # max(ratio * longer side, min_px), clipped to the image, then upscaled. Nothing else (no object position) sets the crop.
+  zone_crop: {source_area_id: area_5, margin_ratio: 0.25, margin_min_px: 120, upscale: 2.0, interpolation: cubic, annotations: none}
+
+# ---------------------------------------------------------------- Experiment 2: placement target candidate detection (Grounding DINO)
+exp2:
+  # Phrase rule (fixed before Exp 1 is seen): every candidate name_en of BOTH Exp-1 responses (any suitability) + their 'selected' names,
+  # lower-cased, trailing '.' removed, de-duplicated; phrases longer than 10 words are cut to the first 10 words. No phrase is added by hand.
+  phrase_max_words: 10
+  thresholds: {box: 0.10, text: 0.10}          # v0.2 config/models.yaml values (MAIN result)
+  max_area_frac: 0.25                          # v0.2 value: boxes covering > 25 % of the searched image are recorded as FILTERED_OVERSIZE (kept)
+  conditions:
+    FULL: {image: full}
+    ROI: {image: zone_crop_x1}                 # same crop rectangle as Exp 1 B, native resolution
+    ROI_X2: {image: zone_crop}                 # same crop, x2 upscaled (small objects)
+  # Nothing is cut by rank: every box above threshold is stored with its rank. Same-condition duplicates (IoU >= nms_iou) are SUPPRESSED (kept, linked).
+  nms_iou: 0.5
+  cross_condition_merge_iou: 0.5               # merge FULL / ROI / ROI_X2 boxes by IoU only (no containment merge: a large area box must not swallow a small object)
+  diagnostics:                                 # NEVER used by the selection; reported separately
+    THRESHOLD_LOW: {thresholds: {box: 0.05, text: 0.05}, conditions: [FULL, ROI_X2], phrases: from_exp1}
+    VOCABULARY: {thresholds: {box: 0.10, text: 0.10}, conditions: [FULL, ROI_X2],
+                 phrases: [pallet, truck bed, cardboard box, shelf, table, cart, container, floor marking],
+                 note: "generic logistics placement types; contains the reference TYPE ('pallet') -> any hit here is NOT an open-ended discovery"}
+
+# ---------------------------------------------------------------- Experiment 3: semantic target selection
+exp3:
+  context_roi: zone_crop                        # a candidate is in the shipment context when its box centre lies inside the zone-crop rectangle
+  relevant_suitability: [suitable, possible]
+  qwen_bbox_link_iou: 0.3                       # Qwen bbox of the selected name vs a DINO box: enough to link the name to that box
+  # Decision rule:
+  #  S = merged candidates that are DETECTED from a phrase of a Qwen candidate rated suitable/possible AND lie in the context ROI (SEMANTICALLY_RELEVANT).
+  #  1. Qwen selected names in A/B. If both conditions selected and the names differ (different phrases) -> comparison call.
+  #  2. One selected name N: S_N = members of S from phrase N. SELECTED without a further call iff |S_N| == 1 AND a Qwen bbox for N links to it.
+  #  3. Otherwise, if S is not empty -> ONE comparison call (numbered boxes of S on the zone crop, at most max_shown, ordered by DINO score).
+  #     best = k with suitable 'yes' -> SELECTED (k); best null / not 'yes' -> AMBIGUOUS.
+  #  4. S empty: Qwen named a selection but DINO found no box for it -> NOT_FOUND; Qwen could not determine -> AMBIGUOUS.
+  #  Every SELECTED target is VERIFY_REQUIRED. Choosing area_5 (a zone) is recorded separately from choosing an object inside it.
+  comparison:
+    prompt_id: placement_compare_v1
+    max_shown: 12
+    max_new_tokens: 1024
+    prompt: |
+      이동로봇에게 '컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘'라는 명령이 주어졌다. 이 이미지에는 자동 탐지기가 찾은 후보 물체들이 번호가 붙은 초록색 상자로 표시되어 있다. 각 번호의 물체가 이 작업의 최종 배치 대상(빨간 큐브를 내려놓을 물체나 표면)으로 적절한지 판단하라. 적절한 후보가 없거나 판단할 수 없으면 best를 null로 하라.
+
+      Return JSON only, no prose:
+      {"candidates": [{"id": <number>, "observed_object": <English>, "suitable": "yes" | "no" | "uncertain", "reason": <one short sentence>}],
+       "best": <number or null>, "reason": <one short sentence>}
+
+# ---------------------------------------------------------------- Experiment 4: grounding + route B
+exp4:
+  robot_cm: [35, 24]                            # + measured floor-transform margin per side (from the run), as before
+  start: pickup_approach_of_semnav_plan         # path B starts at the pick-up approach of the integrated plan (83, 113) cm, heading 0
+  floor_contact: "bottom-centre of the box (image) -> floor cm; the box polygon projection is kept as the approach target"
+  never: [relax no-go zones, change the robot size, enter undrawn areas]
+
+claims:
+  placement_success: NOT_CLAIMABLE
+  generalisation: NONE (one photo)
+  detection_or_selection_accuracy: "single-case outcome against an AI-drawn reference box from the user's description (to be confirmed); no rate"

@@ -1,0 +1,22 @@
+# EVALUATION ONLY. Read exclusively by evaluate() in run_experiment.py, after every model output and decision has been written to disk.
+# Never used in a prompt, an ROI, a phrase rule, a budget or a decision.
+# Boxes drawn by the AI from 3-5x zooms of E1 BEFORE any model call of this experiment. Status: AI_DRAWN - user to confirm.
+objects:
+  P_SRC: {bbox_xyxy_px: [422, 410, 468, 449], type: small grey slatted pallet, state: occupied (red object on top), side: source (next to the conveyor, under the robot-arm end),
+          basis: "user: '블록이 올라간 팔레트'; located by the AI; the stored v0.2 DINO box [420.7, 407.1, 468.4, 449.4] ('small red block') covers it"}
+  P_DST: {bbox_xyxy_px: [1593, 252, 1640, 287], type: small grey slatted pallet, state: empty, side: destination (between cones in front of the truck),
+          basis: "user: intended placement target of T1 (placement_target_grounding reference)"}
+  P_BOTTOM_EMPTY: {bbox_xyxy_px: [992, 883, 1107, 997], type: large light-grey pallet, state: empty, side: neither (bottom centre, outside the drivable zone)}
+  P_BOTTOM_DRUMS: {bbox_xyxy_px: [1127, 872, 1247, 987], type: dark pallet, state: occupied (4 drums), side: neither (bottom centre)}
+match_iou: 0.5
+# Stage 1 (task interpretation, A1): PASS when the source description names the conveyor AND the destination description names the truck /
+# loading / shipping area (keywords) or its bbox overlaps the stored area_5 box (IoU >= 0.1 or >= 50 % of the Qwen box inside it).
+interpretation_keywords:
+  source: [conveyor, 컨베이어]
+  destination: [truck, loading, dock, shipping, shipment, ship, 트럭, 하역, 출하, 적재]
+# Expected behaviour per instruction (judgement rules, not inputs)
+expected:
+  T1: {destination: P_DST, source_support: P_SRC}
+  T2: {destination_not: P_DST, acceptable: "a support outside the shipment area (storage / staging: central cargo stack, material staging, bottom pallets) or no unique choice (AMBIGUOUS)"}
+  T3: {destination_not: P_DST, source: "the truck / the box on its bed", acceptable_destination: "anything on the conveyor side (centre inside the SRC region) or AMBIGUOUS"}
+  T4: {expected: "no selection (AMBIGUOUS / NOT_FOUND / UNVERIFIED); any SELECTED destination is a false selection"}

@@ -1,0 +1,2238 @@
+{
+ "photo_id": "U25967031",
+ "path": "/home/binci/Pictures/Calibration/7calibration.png",
+ "sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+ "size": [
+  1920,
+  1080
+ ],
+ "calls": [
+  {
+   "stage": "dino_refs_U25967031",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/Pictures/Calibration/7calibration.png",
+   "image_sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+   "prompts": [
+    "conveyor belt",
+    "conveyor",
+    "roller conveyor",
+    "truck",
+    "mobile robot",
+    "wheeled robot"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 154,
+   "wall_s": 1.75,
+   "peak_vram_gib": 1.969
+  },
+  {
+   "stage": "dino_full_U25967031",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/Pictures/Calibration/7calibration.png",
+   "image_sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 280,
+   "wall_s": 2.31,
+   "peak_vram_gib": 1.967
+  },
+  {
+   "stage": "verify_U25967031_conveyor_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo containers and barrels, not a conveyor or production line.\"}",
+   "latency_s": 2.262,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U25967031_inputs/verify_conveyor_0.png"
+  },
+  {
+   "stage": "verify_U25967031_conveyor_1",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo containers and barrels, not a conveyor or production line.\"}",
+   "latency_s": 2.231,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U25967031_inputs/verify_conveyor_1.png"
+  },
+  {
+   "stage": "verify_U25967031_conveyor_2",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains cargo containers and barrels, not a conveyor or production line.\"}",
+   "latency_s": 2.235,
+   "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+   "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U25967031_inputs/verify_conveyor_2.png"
+  },
+  {
+   "stage": "verify_U25967031_truck_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"white and black\", \"observed_object\": \"truck\", \"reason\": \"The green box encloses a toy truck with a cab and cargo bed.\"}",
+   "latency_s": 1.41,
+   "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+   "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U25967031_inputs/verify_truck_0.png"
+  },
+  {
+   "stage": "verify_U25967031_robot_0",
+   "model": "Qwen/Qwen3-VL-4B-Instruct",
+   "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"black\", \"observed_object\": \"wheeled mobile robot\", \"reason\": \"The object is a small, black, wheeled robot with visible wheels and a chassis designed for movement on the floor.\"}",
+   "latency_s": 1.79,
+   "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+   "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U25967031_inputs/verify_robot_0.png"
+  },
+  {
+   "stage": "dino_roi_U25967031_truck_v",
+   "model": "IDEA-Research/grounding-dino-tiny",
+   "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U25967031_inputs/roi_truck.png",
+   "image_sha256": "80d95585c1b76d8cb71b33221052984f6bf132a96e31b464519dcde04c2ed26c",
+   "prompts": [
+    "pallet",
+    "truck bed",
+    "cardboard box",
+    "shelf",
+    "table",
+    "cart",
+    "container",
+    "floor marking"
+   ],
+   "thresholds": {
+    "box": 0.1,
+    "text": 0.1
+   },
+   "n_boxes": 112,
+   "wall_s": 2.28,
+   "peak_vram_gib": 1.957
+  }
+ ],
+ "alignment": {
+  "status": "ALIGNED",
+  "shift_px": [
+   0.124,
+   0.588
+  ],
+  "response": 0.8502,
+  "thresholds": {
+   "max_shift_px": 3.0,
+   "min_response": 0.3
+  },
+  "reference_image": "/home/binci/Pictures/Calibration/5calibration.png"
+ },
+ "refs": {
+  "conveyor": {
+   "box": null,
+   "how": "NOT VERIFIED",
+   "checked": [
+    {
+     "bbox_xyxy": [
+      1192.18,
+      466.23,
+      1807.65,
+      612.94
+     ],
+     "score": 0.3277,
+     "status": "no"
+    },
+    {
+     "bbox_xyxy": [
+      1192.01,
+      466.2,
+      1808.94,
+      613.29
+     ],
+     "score": 0.3119,
+     "status": "no"
+    },
+    {
+     "bbox_xyxy": [
+      1191.82,
+      466.02,
+      1809.53,
+      613.4
+     ],
+     "score": 0.3021,
+     "status": "no"
+    }
+   ]
+  },
+  "truck": {
+   "box": [
+    1447.14,
+    0.11,
+    1686.74,
+    149.43
+   ],
+   "how": "fresh DINO + Qwen crop yes",
+   "checked": [
+    {
+     "bbox_xyxy": [
+      1447.14,
+      0.11,
+      1686.74,
+      149.43
+     ],
+     "score": 0.5506,
+     "status": "yes"
+    }
+   ]
+  },
+  "robot": {
+   "box": [
+    1583.68,
+    619.29,
+    1811.31,
+    784.36
+   ],
+   "how": "fresh DINO + Qwen crop yes",
+   "checked": [
+    {
+     "bbox_xyxy": [
+      1583.68,
+      619.29,
+      1811.31,
+      784.36
+     ],
+     "score": 0.3252,
+     "status": "yes"
+    }
+   ],
+   "start_img": [
+    1697.495,
+    701.825
+   ]
+  }
+ },
+ "dino": [
+  {
+   "id": "m1",
+   "bbox_xyxy": [
+    1448.02,
+    0.0,
+    1686.93,
+    147.71
+   ],
+   "score": 0.6945,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031",
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m2",
+   "bbox_xyxy": [
+    809.45,
+    426.43,
+    925.93,
+    591.05
+   ],
+   "score": 0.506,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m3",
+   "bbox_xyxy": [
+    1582.76,
+    13.83,
+    1677.35,
+    59.85
+   ],
+   "score": 0.422,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m4",
+   "bbox_xyxy": [
+    1065.33,
+    36.91,
+    1155.14,
+    179.07
+   ],
+   "score": 0.3932,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m5",
+   "bbox_xyxy": [
+    863.26,
+    42.96,
+    952.07,
+    182.75
+   ],
+   "score": 0.3682,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m6",
+   "bbox_xyxy": [
+    227.59,
+    281.99,
+    429.98,
+    764.26
+   ],
+   "score": 0.3231,
+   "phrases": [
+    "cart",
+    "container",
+    "empty pallet",
+    "floor marking",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m7",
+   "bbox_xyxy": [
+    1591.23,
+    250.27,
+    1640.53,
+    288.3
+   ],
+   "score": 0.3119,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031",
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m8",
+   "bbox_xyxy": [
+    1218.69,
+    497.79,
+    1300.71,
+    590.09
+   ],
+   "score": 0.3019,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m9",
+   "bbox_xyxy": [
+    1299.12,
+    492.92,
+    1382.94,
+    584.06
+   ],
+   "score": 0.298,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m10",
+   "bbox_xyxy": [
+    1381.52,
+    474.13,
+    1472.08,
+    573.2
+   ],
+   "score": 0.2959,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m11",
+   "bbox_xyxy": [
+    340.97,
+    44.85,
+    447.54,
+    143.17
+   ],
+   "score": 0.2738,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m12",
+   "bbox_xyxy": [
+    268.62,
+    282.25,
+    429.75,
+    475.2
+   ],
+   "score": 0.268,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m13",
+   "bbox_xyxy": [
+    772.68,
+    427.38,
+    969.32,
+    620.83
+   ],
+   "score": 0.2675,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m14",
+   "bbox_xyxy": [
+    667.8,
+    853.65,
+    865.76,
+    996.1
+   ],
+   "score": 0.2656,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m15",
+   "bbox_xyxy": [
+    433.56,
+    17.3,
+    821.77,
+    186.36
+   ],
+   "score": 0.2655,
+   "phrases": [
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m16",
+   "bbox_xyxy": [
+    1414.96,
+    247.61,
+    1450.23,
+    291.73
+   ],
+   "score": 0.2588,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031",
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m17",
+   "bbox_xyxy": [
+    1303.01,
+    68.54,
+    1311.96,
+    112.41
+   ],
+   "score": 0.2578,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m18",
+   "bbox_xyxy": [
+    226.83,
+    91.86,
+    333.18,
+    292.44
+   ],
+   "score": 0.257,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m19",
+   "bbox_xyxy": [
+    1523.64,
+    242.5,
+    1560.61,
+    287.96
+   ],
+   "score": 0.2542,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031",
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m20",
+   "bbox_xyxy": [
+    1309.62,
+    251.14,
+    1341.79,
+    293.87
+   ],
+   "score": 0.2525,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031",
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m21",
+   "bbox_xyxy": [
+    1192.4,
+    466.0,
+    1807.74,
+    613.78
+   ],
+   "score": 0.2508,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m22",
+   "bbox_xyxy": [
+    989.32,
+    882.14,
+    1109.25,
+    999.73
+   ],
+   "score": 0.2476,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m23",
+   "bbox_xyxy": [
+    110.23,
+    776.51,
+    509.79,
+    987.62
+   ],
+   "score": 0.2404,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m24",
+   "bbox_xyxy": [
+    1448.53,
+    2.26,
+    1565.9,
+    144.68
+   ],
+   "score": 0.2389,
+   "phrases": [
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m25",
+   "bbox_xyxy": [
+    1589.55,
+    625.2,
+    1692.61,
+    782.58
+   ],
+   "score": 0.2342,
+   "phrases": [
+    "cart",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m26",
+   "bbox_xyxy": [
+    586.2,
+    62.8,
+    1070.37,
+    304.85
+   ],
+   "score": 0.227,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m27",
+   "bbox_xyxy": [
+    623.27,
+    833.51,
+    1275.15,
+    1036.31
+   ],
+   "score": 0.2264,
+   "phrases": [
+    "cardboard box",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m28",
+   "bbox_xyxy": [
+    293.37,
+    800.13,
+    508.38,
+    985.76
+   ],
+   "score": 0.2229,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m29",
+   "bbox_xyxy": [
+    1680.55,
+    622.54,
+    1806.43,
+    778.02
+   ],
+   "score": 0.2213,
+   "phrases": [
+    "cart",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m30",
+   "bbox_xyxy": [
+    1676.63,
+    238.75,
+    1712.24,
+    283.38
+   ],
+   "score": 0.2204,
+   "phrases": [
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031",
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m31",
+   "bbox_xyxy": [
+    1125.56,
+    870.93,
+    1250.26,
+    988.26
+   ],
+   "score": 0.2185,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "empty pallet",
+    "pallet"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m32",
+   "bbox_xyxy": [
+    229.35,
+    536.72,
+    394.99,
+    763.96
+   ],
+   "score": 0.2117,
+   "phrases": [
+    "cart",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m33",
+   "bbox_xyxy": [
+    1303.02,
+    155.07,
+    1316.19,
+    200.74
+   ],
+   "score": 0.2097,
+   "phrases": [
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube",
+    "truck bed"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m34",
+   "bbox_xyxy": [
+    667.05,
+    17.63,
+    807.44,
+    166.4
+   ],
+   "score": 0.208,
+   "phrases": [
+    "cart",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m35",
+   "bbox_xyxy": [
+    1280.51,
+    839.87,
+    1530.43,
+    1025.24
+   ],
+   "score": 0.205,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m36",
+   "bbox_xyxy": [
+    725.75,
+    86.23,
+    807.69,
+    166.63
+   ],
+   "score": 0.2017,
+   "phrases": [
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m37",
+   "bbox_xyxy": [
+    1549.44,
+    0.0,
+    1686.73,
+    114.02
+   ],
+   "score": 0.2012,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m38",
+   "bbox_xyxy": [
+    1470.9,
+    466.69,
+    1573.81,
+    576.55
+   ],
+   "score": 0.196,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m39",
+   "bbox_xyxy": [
+    1272.12,
+    806.21,
+    1879.68,
+    1030.17
+   ],
+   "score": 0.1889,
+   "phrases": [
+    "cardboard box",
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m40",
+   "bbox_xyxy": [
+    1303.58,
+    284.92,
+    1732.2,
+    294.03
+   ],
+   "score": 0.1879,
+   "phrases": [
+    "cardboard box",
+    "empty pallet",
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m41",
+   "bbox_xyxy": [
+    1193.26,
+    466.84,
+    1858.29,
+    836.79
+   ],
+   "score": 0.1852,
+   "phrases": [
+    "cardboard box",
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "table",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m42",
+   "bbox_xyxy": [
+    447.25,
+    61.49,
+    538.77,
+    168.39
+   ],
+   "score": 0.1809,
+   "phrases": [
+    "cart",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m43",
+   "bbox_xyxy": [
+    928.65,
+    508.84,
+    963.46,
+    556.03
+   ],
+   "score": 0.1756,
+   "phrases": [
+    "container",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m44",
+   "bbox_xyxy": [
+    1568.99,
+    470.51,
+    1683.12,
+    585.76
+   ],
+   "score": 0.1686,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "empty pallet",
+    "pallet",
+    "shelf",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m45",
+   "bbox_xyxy": [
+    1687.74,
+    240.08,
+    1711.71,
+    271.77
+   ],
+   "score": 0.1682,
+   "phrases": [
+    "container",
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m46",
+   "bbox_xyxy": [
+    638.93,
+    465.94,
+    1264.46,
+    837.3
+   ],
+   "score": 0.1658,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m47",
+   "bbox_xyxy": [
+    1681.96,
+    481.17,
+    1792.2,
+    583.1
+   ],
+   "score": 0.1623,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "empty pallet",
+    "pallet",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m48",
+   "bbox_xyxy": [
+    274.34,
+    661.79,
+    394.69,
+    764.01
+   ],
+   "score": 0.1604,
+   "phrases": [
+    "cart",
+    "container",
+    "empty pallet",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m49",
+   "bbox_xyxy": [
+    1303.0,
+    0.22,
+    1312.29,
+    114.41
+   ],
+   "score": 0.1546,
+   "phrases": [
+    "cart"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m50",
+   "bbox_xyxy": [
+    0.38,
+    0.08,
+    88.73,
+    174.18
+   ],
+   "score": 0.1535,
+   "phrases": [
+    "cart"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m51",
+   "bbox_xyxy": [
+    1199.48,
+    55.76,
+    1732.72,
+    300.23
+   ],
+   "score": 0.1523,
+   "phrases": [
+    "shelf",
+    "table"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m52",
+   "bbox_xyxy": [
+    417.41,
+    474.65,
+    681.68,
+    827.3
+   ],
+   "score": 0.152,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m53",
+   "bbox_xyxy": [
+    432.35,
+    26.89,
+    572.11,
+    113.74
+   ],
+   "score": 0.1418,
+   "phrases": [
+    "cart",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m54",
+   "bbox_xyxy": [
+    1307.49,
+    237.68,
+    1720.46,
+    293.72
+   ],
+   "score": 0.1404,
+   "phrases": [
+    "pallet",
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m55",
+   "bbox_xyxy": [
+    269.29,
+    90.79,
+    332.8,
+    184.75
+   ],
+   "score": 0.1403,
+   "phrases": [
+    "cart",
+    "empty pallet",
+    "pallet",
+    "truck bed"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m56",
+   "bbox_xyxy": [
+    549.94,
+    205.87,
+    581.97,
+    242.66
+   ],
+   "score": 0.1375,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m57",
+   "bbox_xyxy": [
+    1787.55,
+    0.0,
+    1831.0,
+    115.1
+   ],
+   "score": 0.1374,
+   "phrases": [
+    "pallet",
+    "shelf"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m58",
+   "bbox_xyxy": [
+    1280.84,
+    69.39,
+    1312.16,
+    114.32
+   ],
+   "score": 0.1332,
+   "phrases": [
+    "cart",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m59",
+   "bbox_xyxy": [
+    111.02,
+    776.17,
+    322.85,
+    972.49
+   ],
+   "score": 0.1231,
+   "phrases": [
+    "cardboard box",
+    "empty pallet",
+    "pallet"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m60",
+   "bbox_xyxy": [
+    940.82,
+    177.27,
+    967.15,
+    216.84
+   ],
+   "score": 0.1222,
+   "phrases": [
+    "container",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m61",
+   "bbox_xyxy": [
+    1559.25,
+    52.66,
+    1683.04,
+    103.31
+   ],
+   "score": 0.1221,
+   "phrases": [
+    "cardboard box",
+    "container",
+    "empty pallet",
+    "pallet"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031",
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m62",
+   "bbox_xyxy": [
+    76.91,
+    789.4,
+    1878.03,
+    1035.19
+   ],
+   "score": 0.1189,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m63",
+   "bbox_xyxy": [
+    1070.23,
+    249.2,
+    1100.4,
+    286.33
+   ],
+   "score": 0.1177,
+   "phrases": [
+    "cart",
+    "container",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m64",
+   "bbox_xyxy": [
+    1223.38,
+    295.68,
+    1771.51,
+    476.33
+   ],
+   "score": 0.1145,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m65",
+   "bbox_xyxy": [
+    1696.93,
+    624.26,
+    1762.91,
+    724.48
+   ],
+   "score": 0.1144,
+   "phrases": [
+    "container"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m66",
+   "bbox_xyxy": [
+    1064.86,
+    172.72,
+    1095.27,
+    210.43
+   ],
+   "score": 0.1141,
+   "phrases": [
+    "container",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m67",
+   "bbox_xyxy": [
+    1284.98,
+    156.1,
+    1316.22,
+    200.8
+   ],
+   "score": 0.1134,
+   "phrases": [
+    "cart",
+    "red cube"
+   ],
+   "conditions": [
+    "FULL",
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m68",
+   "bbox_xyxy": [
+    681.09,
+    304.44,
+    1237.02,
+    475.96
+   ],
+   "score": 0.1028,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m69",
+   "bbox_xyxy": [
+    489.42,
+    314.92,
+    700.99,
+    479.91
+   ],
+   "score": 0.102,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m70",
+   "bbox_xyxy": [
+    1665.57,
+    0.0,
+    1831.0,
+    232.37
+   ],
+   "score": 0.1006,
+   "phrases": [
+    "table"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m71",
+   "bbox_xyxy": [
+    1785.11,
+    0.0,
+    1831.0,
+    293.6
+   ],
+   "score": 0.1004,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "ROI_truck_v"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m72",
+   "bbox_xyxy": [
+    1063.92,
+    63.78,
+    1221.76,
+    300.23
+   ],
+   "score": 0.1002,
+   "phrases": [
+    "shelf"
+   ],
+   "conditions": [
+    "FULL"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m73",
+   "bbox_xyxy": [
+    1643.24,
+    884.7,
+    1709.89,
+    933.61
+   ],
+   "score": 0.3835,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m74",
+   "bbox_xyxy": [
+    1793.97,
+    831.29,
+    1833.62,
+    867.88
+   ],
+   "score": 0.3638,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m75",
+   "bbox_xyxy": [
+    946.67,
+    849.82,
+    983.03,
+    885.89
+   ],
+   "score": 0.3562,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m76",
+   "bbox_xyxy": [
+    568.75,
+    856.93,
+    591.14,
+    879.14
+   ],
+   "score": 0.2391,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m77",
+   "bbox_xyxy": [
+    554.96,
+    845.28,
+    609.62,
+    898.09
+   ],
+   "score": 0.1904,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m78",
+   "bbox_xyxy": [
+    328.56,
+    381.91,
+    365.23,
+    445.38
+   ],
+   "score": 0.169,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m79",
+   "bbox_xyxy": [
+    1426.08,
+    248.71,
+    1448.06,
+    279.71
+   ],
+   "score": 0.1039,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "ROI_truck_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m80",
+   "bbox_xyxy": [
+    551.31,
+    204.94,
+    569.7,
+    227.14
+   ],
+   "score": 0.1015,
+   "phrases": [
+    "red cube"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  },
+  {
+   "id": "m81",
+   "bbox_xyxy": [
+    587.51,
+    217.45,
+    710.14,
+    304.2
+   ],
+   "score": 0.1004,
+   "phrases": [
+    "empty pallet"
+   ],
+   "conditions": [
+    "FULL_run_013_U25967031"
+   ],
+   "source": "fresh DINO (this session)"
+  }
+ ],
+ "phrases_done": [
+  "cardboard box",
+  "cart",
+  "container",
+  "empty pallet",
+  "floor marking",
+  "pallet",
+  "red cube",
+  "shelf",
+  "table",
+  "truck bed"
+ ],
+ "detection_how": "fresh DINO this session (vocabulary; full image + verified conveyor / truck ROIs), IoU merge 0.5",
+ "cube": [
+  {
+   "id": "cand_r1",
+   "bbox_xyxy": [
+    553.0,
+    210.0,
+    567.0,
+    220.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r2",
+   "bbox_xyxy": [
+    571.0,
+    860.0,
+    590.0,
+    878.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r3",
+   "bbox_xyxy": [
+    256.0,
+    175.0,
+    281.0,
+    216.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r4",
+   "bbox_xyxy": [
+    285.0,
+    210.0,
+    296.0,
+    217.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r5",
+   "bbox_xyxy": [
+    570.0,
+    223.0,
+    580.0,
+    235.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r6",
+   "bbox_xyxy": [
+    1332.0,
+    277.0,
+    1342.0,
+    287.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r7",
+   "bbox_xyxy": [
+    1698.0,
+    250.0,
+    1709.0,
+    257.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r8",
+   "bbox_xyxy": [
+    1324.0,
+    258.0,
+    1340.0,
+    267.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r9",
+   "bbox_xyxy": [
+    1078.0,
+    249.0,
+    1096.0,
+    264.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r10",
+   "bbox_xyxy": [
+    1644.0,
+    887.0,
+    1705.0,
+    931.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r11",
+   "bbox_xyxy": [
+    1074.0,
+    178.0,
+    1083.0,
+    189.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r12",
+   "bbox_xyxy": [
+    1677.0,
+    259.0,
+    1689.0,
+    276.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r13",
+   "bbox_xyxy": [
+    1285.0,
+    181.0,
+    1297.0,
+    197.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r14",
+   "bbox_xyxy": [
+    1293.0,
+    72.0,
+    1308.0,
+    85.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r15",
+   "bbox_xyxy": [
+    1280.0,
+    93.0,
+    1293.0,
+    111.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r16",
+   "bbox_xyxy": [
+    1415.0,
+    265.0,
+    1428.0,
+    288.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r17",
+   "bbox_xyxy": [
+    1070.0,
+    266.0,
+    1078.0,
+    279.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r18",
+   "bbox_xyxy": [
+    1524.0,
+    261.0,
+    1536.0,
+    271.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r19",
+   "bbox_xyxy": [
+    1815.0,
+    833.0,
+    1833.0,
+    853.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r20",
+   "bbox_xyxy": [
+    947.0,
+    851.0,
+    984.0,
+    887.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  },
+  {
+   "id": "cand_r21",
+   "bbox_xyxy": [
+    1310.0,
+    274.0,
+    1322.0,
+    292.0
+   ],
+   "state": "PENDING_VERIFICATION",
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "score": null
+  }
+ ],
+ "cube_how": "stored red-cube candidates (candidate_retention_policy, HSV + DINO)"
+}

@@ -1,0 +1,41 @@
+{
+  "case_id": "valid_ko_trophy_zone_f",
+  "category": "valid",
+  "core_metric": true,
+  "run": 2,
+  "instruction": "금색 트로피를 F구역으로 가져다 놔",
+  "raw_model_output": "{\"action_phrase\":\"가져다 놓아\",\"target_phrase\":\"금색 트로피\",\"destination_phrase\":\"F구역\"}",
+  "parsed": {
+    "action_phrase": "가져다 놓아",
+    "target_phrase": "금색 트로피",
+    "destination_phrase": "F구역"
+  },
+  "validated": {
+    "status": "UNSUPPORTED_ACTION",
+    "raw_instruction": "금색 트로피를 F구역으로 가져다 놔",
+    "error_code": "ACTION_NOT_RESOLVED",
+    "reason": "action is not supported: 가져다 놓아",
+    "parsed_fields": {
+      "action_phrase": "가져다 놓아",
+      "target_phrase": "금색 트로피",
+      "destination_phrase": "F구역"
+    },
+    "action": {
+      "surface_phrase": "가져다 놓아",
+      "canonical": null,
+      "resolution_status": "ACTION_NOT_RESOLVED"
+    },
+    "target_grounding_status": "NOT_RUN",
+    "zone_resolution_status": "NOT_RUN",
+    "path_status": "NOT_RUN"
+  },
+  "integrated": null,
+  "inference_sec": 7.663545639999938,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "gold trophy-like object",
+    "zone_id": "zone_F"
+  },
+  "matches_expected": false
+}

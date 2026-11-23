@@ -1,0 +1,31 @@
+# Candidate retention policy, stage 1 (OFFLINE: no GPU, no Qwen, no new DINO call). Declared BEFORE the run. v0.2 is not modified.
+# Question: with the conveyor ROI used as PRIORITY instead of an exclusion, and nothing deleted by a Top-K, does the cube candidate
+# reach the verification stage on the same 8 photos? Labels are the AI preliminary labels of cube_candidate_funnel: NO accuracy is claimed.
+experiment_id: candidate_retention_policy
+funnel_config: ../cube_candidate_funnel/config.yaml      # images (sha256 checked), AI labels, match rule, stored E1 run: reused, not copied
+funnel_run: ../cube_candidate_funnel/results/20261119_051618_funnel   # v0.2 baseline per photo (first dropped stage)
+results_dir: results
+
+policy:
+  search_area: whole_image                 # v0.2: conveyor ROI only
+  sources:
+    hsv_color_shape: recomputed on every photo with the unchanged v0.2 parameters
+    grounding_dino: "STORED records only (E1: whole-image and ROI boxes of the v0.2 run). Other photos: NOT_AVAILABLE (no DINO run exists)"
+  dedup: "v0.2 merge_candidates (config/models.yaml merge_iou), unchanged"
+  # Found on the first run (kept in superseded_runs): a large whole-image DINO box fused distinct small candidates through the v0.2 containment rule.
+  oversize_detector_boxes: "area > v0.2 candidate_max_area_raw_px: never merged with other candidates; kept as their own records, ordered last"
+  # ROI = priority, not a filter. Order: more source TYPES first, then inside the conveyor ROI, then detector score, then solidity.
+  order: [cube_sized_before_oversize, n_source_types_desc, inside_roi_first, score_desc, solidity_desc]
+  verify_budget: 24                        # candidates sent to verification; the rest are RECORDED as BEYOND_BUDGET, never deleted
+  v02_verify_limit_for_comparison: 8
+
+# Verification states (stage 2 will fill them with new Qwen calls; here they are applied only to the STORED E1 Qwen answers).
+# VLM_ACCEPTED is not CONFIRMED. Agreement of DINO and HSV is recorded as CORRELATED evidence (same colour cue), not as two independent proofs.
+states:
+  target_color: red
+  VLM_ACCEPTED: "stored/new Qwen crop answer is yes"
+  PROBABLE: "Qwen says no, but >= 2 source types point at the box AND Qwen itself reports the target colour (disagreement is recorded)"
+  REJECTED: "Qwen says no and the PROBABLE condition does not hold"
+  PENDING_VERIFICATION: "no Qwen answer exists for this candidate"
+  AMBIGUOUS: "photo-level decision when more than one candidate is VLM_ACCEPTED or PROBABLE; none is chosen automatically"
+  use_of_PROBABLE: "virtual task planning only; never counted as a pick-up or detection success"

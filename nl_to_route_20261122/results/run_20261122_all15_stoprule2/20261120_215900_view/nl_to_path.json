@@ -1,0 +1,444 @@
+{
+ "created": "2026-11-22T15:57:04",
+ "photo": "/home/binci/vlm_ws/env2_photos_20261120/photos/20261120_215900_view.png",
+ "photo_sha256": "77ce7cc442fd31a4efd47654d17e6e438ba021aa8142f13ef8b66db20da54bef",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "config": "/home/binci/vlm_ws/nl_to_route_20261122/config/nl_to_path.yaml",
+ "config_snapshot": {
+  "perception": {
+   "pipeline": "/home/binci/vlm_ws/hybrid_exemplar_20261121",
+   "skip_old_camera_checks": true
+  },
+  "photo_set": {
+   "dir": "/home/binci/vlm_ws/env2_photos_20261120/photos",
+   "pose": "/home/binci/vlm_ws/env2_photos_20261120/camera_pose/photoset_20261120_pose.json"
+  },
+  "teammate_bundle": "/home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120",
+  "default_instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+  "objects": {
+   "cube": {
+    "z_top_m": 0.035,
+    "half_depth_m": 0.0125
+   },
+   "empty_pallet": {
+    "z_top_m": 0.01,
+    "half_depth_m": 0.0
+   },
+   "floor_point": {
+    "z_top_m": 0.0,
+    "half_depth_m": 0.0
+   }
+  },
+  "start": {
+   "pixel": [
+    1514.6,
+    730.4
+   ],
+   "z_m": 0.06,
+   "yaw_deg": 180,
+   "marker": {
+    "dictionary": "DICT_4X4_50",
+    "id": 0,
+    "corners_px": [
+     [
+      1509,
+      729
+     ],
+     [
+      1504,
+      678
+     ],
+     [
+      1553,
+      680
+     ],
+     [
+      1559,
+      730
+     ]
+    ],
+    "max_shift_px": 3.0
+   }
+  },
+  "stop_pose": {
+   "yaws_deg": [
+    0,
+    90,
+    180,
+    270
+   ],
+   "min_body_clearance_m": 0.03,
+   "max_lateral_offset_m": 0.02,
+   "min_reach_gap_m": 0.0,
+   "select": "그리퍼 끝 가운데 -> 물체 앞면 점 거리 최소"
+  },
+  "planner": {
+   "min_body_clearance_m": 0.03,
+   "start_relax_radius_m": 0.05,
+   "rotate_body_margin_m": 0.03,
+   "rotate_gripper_inside_m": 0.0,
+   "allow_rotate_at_start": false,
+   "strafe_cost_factor": 2.0,
+   "turn_cost_m": 0.05,
+   "rotate_cost_m": 0.1
+  },
+  "draw": {
+   "font": "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+   "font_bold": "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc"
+  }
+ },
+ "pose_file": "/home/binci/vlm_ws/env2_photos_20261120/camera_pose/photoset_20261120_pose.json",
+ "frames": {
+  "pixel": "편 사진 픽셀 (K_photo, 왜곡 없음)",
+  "map": "env2_20261119 m, 바닥 z = 0",
+  "yaw": "+x에서 반시계, 차체 앞 = 그리퍼"
+ },
+ "perception": {
+  "slots": {
+   "object": "red cube",
+   "object_words": "red cube",
+   "source_landmark": "none",
+   "source_relation": "none",
+   "destination_kind": "empty_pallet",
+   "destination_landmark": "none",
+   "destination_relation": "none",
+   "destination_words": "empty_pallet"
+  },
+  "slots_raw_file": "/home/binci/vlm_ws/nl_to_route_20261122/results/run_20261122_all15/perception_session/runs/run_006_20261120_215900_view/qwen/slots.txt",
+  "A": {
+   "status": "SELECTED",
+   "why": "top-1 0.927, margin 0.039 >= 0.02",
+   "box_px": [
+    607.97,
+    310.24,
+    623.72,
+    328.13
+   ],
+   "id": "m15",
+   "class": "cube",
+   "exemplar": {
+    "s1": 0.9274,
+    "s2": 0.8886,
+    "top_id": "m15",
+    "top_box": [
+     607.97,
+     310.24,
+     623.72,
+     328.13
+    ]
+   }
+  },
+  "B": {
+   "status": "SELECTED",
+   "why": "top-1 0.902, margin 0.085 >= 0.02; accessibility 옛 카메라 기준 검사는 이 사진 묶음에 맞지 않음 -> env2 정차 자세 단계에서 검사",
+   "box_px": [
+    579.92,
+    850.51,
+    629.99,
+    900.75
+   ],
+   "id": "m72",
+   "exemplar": {
+    "s1": 0.9022,
+    "s2": 0.8169,
+    "top_id": "m72",
+    "top_box": [
+     579.92,
+     850.51,
+     629.99,
+     900.75
+    ]
+   },
+   "class": "empty_pallet"
+  },
+  "stages": [
+   {
+    "name": "exemplar_scores",
+    "status": "OK",
+    "summary": "36 of 82 DINO candidates in the size gate; exemplars cube 8, empty_pallet 8 (dropped same place: 0)",
+    "model": "google/siglip2-so400m-patch14-384"
+   },
+   {
+    "name": "slots",
+    "status": "OK",
+    "summary": "object 'red cube' (red cube) | from: none none | to: empty_pallet (none none)",
+    "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+   },
+   {
+    "name": "source_reference",
+    "status": "OK",
+    "summary": "none [near] -> WHOLE_IMAGE (-)",
+    "model": "Python"
+   },
+   {
+    "name": "destination_reference",
+    "status": "OK",
+    "summary": "none [near] -> WHOLE_IMAGE (-)",
+    "model": "Python"
+   },
+   {
+    "name": "source_decision",
+    "status": "OK",
+    "summary": "SELECTED ['m15']: top-1 0.927, margin 0.039 >= 0.02",
+    "model": "google/siglip2-so400m-patch14-384 + Python"
+   },
+   {
+    "name": "destination_decision",
+    "status": "OK",
+    "summary": "SELECTED m72: top-1 0.902, margin 0.085 >= 0.02; accessibility 옛 카메라 기준 검사는 이 사진 묶음에 맞지 않음 -> env2 정차 자세 단계에서 검사 (3 candidates with a cube-like box inside excluded)",
+    "model": "google/siglip2-so400m-patch14-384 + Python"
+   },
+   {
+    "name": "selection_check",
+    "status": "OK",
+    "summary": "2 chosen id(s) exist among the DINO candidates",
+    "model": "Python"
+   }
+  ],
+  "first_failure": null,
+  "timing_s": {
+   "photo_stage_this_run": 19.7,
+   "exemplar": 5.28,
+   "slots": 4.36,
+   "source": 0.0,
+   "destination": 0.0
+  },
+  "wall_s": 29.4,
+  "run_json": "/home/binci/vlm_ws/nl_to_route_20261122/results/run_20261122_all15/perception_session/runs/run_006_20261120_215900_view/run.json",
+  "reused_from": "results/run_20261122_all15/20261120_215900_view/nl_to_path.json"
+ },
+ "start": {
+  "status": "OK",
+  "xy_m": [
+   2.685,
+   0.495
+  ],
+  "yaw_deg": 180,
+  "marker_shift_px": 1.0,
+  "pixel": [
+   1514.6,
+   730.4
+  ],
+  "z_m": 0.06,
+  "body_clearance_cm": 7.2,
+  "how": "설정의 바퀴 중심 픽셀을 z_m 높이로 투영 (추정). 사진의 ArUco 마커가 설정 꼭짓점에서 max_shift_px 안일 때만 씀"
+ },
+ "objects": {
+  "A": {
+   "class": "cube",
+   "centre_px": [
+    615.8,
+    319.2
+   ],
+   "z_top_m": 0.035,
+   "map_xy_m": [
+    0.7512,
+    1.4194
+   ],
+   "inside_drive_area_cm": -6.5,
+   "projection": "박스 중심을 물체 윗면 높이 평면으로 투영"
+  },
+  "B": {
+   "class": "empty_pallet",
+   "centre_px": [
+    605.0,
+    875.6
+   ],
+   "z_top_m": 0.01,
+   "map_xy_m": [
+    0.8828,
+    0.2035
+   ],
+   "inside_drive_area_cm": -7.5,
+   "projection": "박스 중심을 물체 윗면 높이 평면으로 투영"
+  }
+ },
+ "stop_A": {
+  "xy_m": [
+   0.825,
+   1.165
+  ],
+  "yaw_deg": 90,
+  "cell_rc": [
+   93,
+   82
+  ],
+  "body_clearance_cm": 3.2,
+  "center_cost": 225,
+  "reach_gap_cm": 4.7,
+  "lateral_offset_cm": 7.4,
+  "tip_to_object_cm": 8.7,
+  "lateral_within_limit": false,
+  "gripper_tip": {
+   "tip_xy_m": [
+    0.825,
+    1.36
+   ],
+   "tip_inside_cm": -1.5
+  },
+  "grasp_possible": "UNKNOWN (그리퍼 도달 거리·폭 실측 없음)",
+  "rule": "몸체 여유 >= 3 cm 인 칸 중 그리퍼 끝 -> 물체 앞면 거리 최소. 옆 어긋남 2 cm 초과는 표시만"
+ },
+ "stop_B": {
+  "xy_m": [
+   0.885,
+   0.455
+  ],
+  "yaw_deg": 270,
+  "cell_rc": [
+   164,
+   88
+  ],
+  "body_clearance_cm": 3.0,
+  "center_cost": 218,
+  "reach_gap_cm": 5.7,
+  "lateral_offset_cm": -0.2,
+  "tip_to_object_cm": 5.7,
+  "lateral_within_limit": true,
+  "gripper_tip": {
+   "tip_xy_m": [
+    0.885,
+    0.26
+   ],
+   "tip_inside_cm": -1.5
+  },
+  "grasp_possible": "UNKNOWN (그리퍼 도달 거리·폭 실측 없음)",
+  "rule": "몸체 여유 >= 3 cm 인 칸 중 그리퍼 끝 -> 물체 앞면 거리 최소. 옆 어긋남 2 cm 초과는 표시만"
+ },
+ "route_1": {
+  "status": "OK",
+  "route": {
+   "start_xy_m": [
+    2.685,
+    0.495
+   ],
+   "waypoints_xy_m": [
+    [
+     0.865,
+     0.495
+    ],
+    [
+     0.865,
+     0.515
+    ],
+    [
+     0.865,
+     1.165
+    ]
+   ],
+   "goal_xy_m": [
+    0.825,
+    1.165
+   ],
+   "start_yaw_deg": 180.0,
+   "goal_yaw_deg": 90.0,
+   "rotate_at": "W2"
+  },
+  "check_teammate": {
+   "length_m": 2.5300000000000002,
+   "n_points": 255,
+   "min_body_clearance_cm": 3.2,
+   "min_at_xy_m": [
+    0.825,
+    1.165
+   ],
+   "rotate_xy_m": [
+    0.865,
+    0.515
+   ],
+   "rotate_min_clearance_cm": 4.49,
+   "max_center_cost": 225,
+   "bad_cm": 0,
+   "tight_cm": 0
+  },
+  "gripper_line": {
+   "path_min_inside_cm": -1.5,
+   "path_min_at_xy_m": [
+    0.865,
+    1.165
+   ],
+   "crosses_line_from_start_cm": 248.0,
+   "rotation_min_inside_cm": 0.5
+  },
+  "strafe_total_cm": 6.0,
+  "strafe_longest_cm": 4.0,
+  "n_expanded": 15424,
+  "why": "팀원 판정 통과 (불가 0)"
+ },
+ "route_2": {
+  "status": "OK",
+  "route": {
+   "start_xy_m": [
+    0.825,
+    1.165
+   ],
+   "waypoints_xy_m": [
+    [
+     0.825,
+     1.015
+    ],
+    [
+     0.885,
+     1.015
+    ]
+   ],
+   "goal_xy_m": [
+    0.885,
+    0.455
+   ],
+   "start_yaw_deg": 90.0,
+   "goal_yaw_deg": 270.0,
+   "rotate_at": "W2"
+  },
+  "check_teammate": {
+   "length_m": 0.7699999999999999,
+   "n_points": 79,
+   "min_body_clearance_cm": 3.0,
+   "min_at_xy_m": [
+    0.885,
+    0.455
+   ],
+   "rotate_xy_m": [
+    0.885,
+    1.015
+   ],
+   "rotate_min_clearance_cm": 4.28,
+   "max_center_cost": 225,
+   "bad_cm": 0,
+   "tight_cm": 0
+  },
+  "gripper_line": {
+   "path_min_inside_cm": -1.5,
+   "path_min_at_xy_m": [
+    0.825,
+    1.165
+   ],
+   "crosses_line_from_start_cm": 0.0,
+   "rotation_min_inside_cm": 10.3
+  },
+  "strafe_total_cm": 6.0,
+  "strafe_longest_cm": 6.0,
+  "n_expanded": 1421,
+  "why": "팀원 판정 통과 (불가 0)"
+ },
+ "result": {
+  "status": "PATH_OK",
+  "stopped_at": null
+ },
+ "wall_s": 0.2,
+ "summary_lines": [
+  "지시: 빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+  "해석(Qwen, 글자만): 옮길 것 'red cube', 놓을 곳 empty_pallet",
+  "A 옮길 것: 확정 예시 점수 0.927, 2위와 차이 0.039 → 지도 (0.751, 1.419) m, 높이 3.5 cm",
+  "B 놓을 곳: 확정 예시 점수 0.902, 2위와 차이 0.085 → 지도 (0.883, 0.203) m, 높이 1 cm",
+  "파지 정차: (0.825, 1.165) m, 90°, 몸체 여유 3.2 cm, 그리퍼 끝 → 큐브 앞면 앞 4.7 cm 모자람, 옆 +7.4 cm (옆 어긋남 큼)",
+  "배치 정차: (0.885, 0.455) m, 270°, 몸체 여유 3.0 cm, 그리퍼 끝 → 놓는 점 앞 5.7 cm 모자람, 옆 -0.2 cm",
+  "경로 ① 출발→파지: 253 cm, 경유점 3개, 회전 W2, 몸체 여유 최소 3.2 cm, 옆걸음 최장 4 cm, 팀원 판정 불가 0 cm",
+  "경로 ② 파지→배치: 77 cm, 경유점 2개, 회전 W2, 몸체 여유 최소 3.0 cm, 옆걸음 최장 6 cm, 팀원 판정 불가 0 cm",
+  "결과: 경로 그림까지 완료"
+ ],
+ "files": {
+  "overlay": "/home/binci/vlm_ws/nl_to_route_20261122/results/run_20261122_all15_stoprule2/20261120_215900_view/path_overlay.jpg",
+  "record": "/home/binci/vlm_ws/nl_to_route_20261122/results/run_20261122_all15_stoprule2/20261120_215900_view/nl_to_path.json"
+ }
+}

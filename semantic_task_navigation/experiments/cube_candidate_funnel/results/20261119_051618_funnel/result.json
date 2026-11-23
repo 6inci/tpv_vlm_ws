@@ -1,0 +1,859 @@
+{
+  "experiment_id": "cube_candidate_funnel",
+  "created": "2026-11-19T05:16:20",
+  "scope": "Diagnostic record of v0.2 target_inspection on 8 photos of one fixed layout (only the red cube position differs). It reports, per photo, the first stage at which the cube candidate is lost. It computes NO accuracy, recall or success rate: there is no human-confirmed ground truth (deferred by the user), and the labels below are an AI visual review.\n",
+  "claims": {
+    "accuracy_or_recall": "NOT_COMPUTED (no human ground truth)",
+    "labels": "AI_PRELIMINARY_REVIEW",
+    "model_calls_in_this_run": 0,
+    "stored_model_records_used": "E1 (DINO + Qwen gate), DEV_REF, REF_P01 (Qwen gate)"
+  },
+  "v02_target_inspection_params": {
+    "roi_margin_ratio": 0.6,
+    "roi_min_margin_px": 120,
+    "roi_zoom_long_side_px": 1600,
+    "roi_max_zoom": 4.0,
+    "hsv_red_ranges": [
+      [
+        0,
+        10
+      ],
+      [
+        170,
+        180
+      ]
+    ],
+    "hsv_min_saturation": 120,
+    "hsv_min_value": 70,
+    "candidate_min_area_raw_px": 40,
+    "candidate_max_area_raw_px": 4000,
+    "candidate_max_aspect": 2.5,
+    "candidate_min_solidity": 0.6,
+    "merge_iou": 0.3,
+    "max_candidates_to_verify": 8,
+    "verify_crop_pad_ratio": 1.5,
+    "verify_crop_min_px": 64,
+    "verify_crop_upscale_px": 448,
+    "robot_max_candidates_to_verify": 3
+  },
+  "match_rule": {
+    "centre_tolerance_px": 2.0,
+    "iou_min": 0.3
+  },
+  "reproduction_E1": {
+    "roi_transform_equal": true,
+    "n_hsv_recomputed": 5,
+    "n_hsv_stored": 5,
+    "max_box_deviation_px": 0.0,
+    "hsv_equal": true,
+    "stored_repeat_run_identical": true
+  },
+  "photos": [
+    {
+      "photo_id": "U23678143",
+      "label_box": [
+        1552,
+        865,
+        1573,
+        883
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "DROPPED",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            1562.5,
+            874.0
+          ],
+          "distance_outside_roi_px": 804.5,
+          "margin_inside_roi_px": null
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 5,
+          "label_in_hsv_candidates": false,
+          "sources_available": [
+            "hsv_color_shape"
+          ],
+          "status": "NOT_REACHED"
+        },
+        "rank_within_verify_limit": {
+          "status": "NOT_REACHED"
+        },
+        "qwen_gate": {
+          "status": "NOT_REACHED",
+          "reason": null
+        },
+        "v02_decision": {
+          "status": "NOT_REACHED"
+        }
+      },
+      "first_dropped_stage": "roi_search_area",
+      "file": "undistorted_23678143507600.png",
+      "sha256": "6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi (PROXY: no stored conveyor box for this photo)",
+      "camera_alignment_vs_E1": {
+        "status": "ALIGNED",
+        "shift_px": [
+          0.548,
+          1.405
+        ],
+        "response": 0.7802,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 21,
+        "n_inside_v02_roi": 5,
+        "n_outside_v02_roi": 16,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 2,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    },
+    {
+      "photo_id": "U24768580",
+      "label_box": [
+        1263,
+        259,
+        1279,
+        277
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "DROPPED",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            1271.0,
+            268.0
+          ],
+          "distance_outside_roi_px": 513.0,
+          "margin_inside_roi_px": null
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 4,
+          "label_in_hsv_candidates": false,
+          "sources_available": [
+            "hsv_color_shape"
+          ],
+          "status": "NOT_REACHED"
+        },
+        "rank_within_verify_limit": {
+          "status": "NOT_REACHED"
+        },
+        "qwen_gate": {
+          "status": "NOT_REACHED",
+          "reason": null
+        },
+        "v02_decision": {
+          "status": "NOT_REACHED"
+        }
+      },
+      "first_dropped_stage": "roi_search_area",
+      "file": "undistorted_24768580481401.png",
+      "sha256": "dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi (PROXY: no stored conveyor box for this photo)",
+      "camera_alignment_vs_E1": {
+        "status": "ALIGNED",
+        "shift_px": [
+          0.009,
+          0.174
+        ],
+        "response": 0.7702,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 17,
+        "n_inside_v02_roi": 3,
+        "n_outside_v02_roi": 14,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 2,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    },
+    {
+      "photo_id": "U24837448",
+      "label_box": [
+        530,
+        855,
+        549,
+        872
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "KEPT",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            539.5,
+            863.5
+          ],
+          "distance_outside_roi_px": 0.0,
+          "margin_inside_roi_px": 199.5
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 3,
+          "label_in_hsv_candidates": true,
+          "sources_available": [
+            "hsv_color_shape"
+          ],
+          "status": "KEPT"
+        },
+        "rank_within_verify_limit": {
+          "rank": 1,
+          "n_candidates": 3,
+          "limit": 8,
+          "basis": "HSV_ONLY (no stored detector run for this photo)",
+          "status": "KEPT"
+        },
+        "qwen_gate": {
+          "status": "NOT_AVAILABLE",
+          "reason": "no stored Qwen gate run for this photo; it is not re-run here (offline step)"
+        },
+        "v02_decision": {
+          "status": "NOT_AVAILABLE"
+        }
+      },
+      "first_dropped_stage": "NONE (stages after the last available one were not run for this photo)",
+      "file": "undistorted_24837448431552.png",
+      "sha256": "9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi (PROXY: no stored conveyor box for this photo)",
+      "camera_alignment_vs_E1": {
+        "status": "ALIGNED",
+        "shift_px": [
+          -0.036,
+          0.046
+        ],
+        "response": 0.8025,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 22,
+        "n_inside_v02_roi": 4,
+        "n_outside_v02_roi": 18,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 3,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    },
+    {
+      "photo_id": "U24898553",
+      "label_box": [
+        1607,
+        253,
+        1623,
+        271
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "DROPPED",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            1615.0,
+            262.0
+          ],
+          "distance_outside_roi_px": 857.0,
+          "margin_inside_roi_px": null
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 5,
+          "label_in_hsv_candidates": false,
+          "sources_available": [
+            "hsv_color_shape"
+          ],
+          "status": "NOT_REACHED"
+        },
+        "rank_within_verify_limit": {
+          "status": "NOT_REACHED"
+        },
+        "qwen_gate": {
+          "status": "NOT_REACHED",
+          "reason": null
+        },
+        "v02_decision": {
+          "status": "NOT_REACHED"
+        }
+      },
+      "first_dropped_stage": "roi_search_area",
+      "file": "undistorted_24898553897872.png",
+      "sha256": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi (PROXY: no stored conveyor box for this photo)",
+      "camera_alignment_vs_E1": {
+        "status": "ALIGNED",
+        "shift_px": [
+          -0.046,
+          -0.145
+        ],
+        "response": 0.8779,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 20,
+        "n_inside_v02_roi": 4,
+        "n_outside_v02_roi": 16,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 2,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    },
+    {
+      "photo_id": "U25070552",
+      "label_box": [
+        434,
+        417,
+        451,
+        432
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "KEPT",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            442.5,
+            424.5
+          ],
+          "distance_outside_roi_px": 0.0,
+          "margin_inside_roi_px": 315.5
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 5,
+          "label_in_hsv_candidates": true,
+          "sources_available": [
+            "hsv_color_shape",
+            "grounding_dino_roi",
+            "grounding_dino_full_image (stored)"
+          ],
+          "stored_candidate": {
+            "candidate_id": "target_cand1",
+            "bbox_xyxy": [
+              433.84,
+              416.56,
+              451.11,
+              431.84
+            ],
+            "rank": 1,
+            "sources": {
+              "hsv_color_shape": 1,
+              "grounding_dino_roi": 2,
+              "grounding_dino_full_image": 2
+            },
+            "detector_score": 0.438,
+            "gate": {
+              "status": "no",
+              "answer": "no",
+              "observed_color": "red",
+              "observed_object": "round object",
+              "reason": "The object is round, not cube-shaped.",
+              "crop": {
+                "path": "analysis/roi/verify_target_1.png",
+                "crop_xyxy_raw": [
+                  401,
+                  384,
+                  483,
+                  463
+                ],
+                "scale": 5.4634,
+                "marker": "green rectangle = candidate box"
+              },
+              "prompt_id": "verify_object_v1",
+              "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+              "model": "Qwen/Qwen3-VL-4B-Instruct",
+              "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"round object\", \"reason\": \"The object is round, not cube-shaped.\"}"
+            }
+          },
+          "status": "KEPT"
+        },
+        "rank_within_verify_limit": {
+          "rank": 1,
+          "n_candidates": 11,
+          "limit": 8,
+          "basis": "STORED_MERGE (v0.2 run: HSV + DINO)",
+          "status": "KEPT"
+        },
+        "qwen_gate": {
+          "status": "DROPPED",
+          "stored": {
+            "status": "no",
+            "answer": "no",
+            "observed_color": "red",
+            "observed_object": "round object",
+            "reason": "The object is round, not cube-shaped.",
+            "crop": {
+              "path": "analysis/roi/verify_target_1.png",
+              "crop_xyxy_raw": [
+                401,
+                384,
+                483,
+                463
+              ],
+              "scale": 5.4634,
+              "marker": "green rectangle = candidate box"
+            },
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"round object\", \"reason\": \"The object is round, not cube-shaped.\"}"
+          }
+        },
+        "v02_decision": {
+          "status": "DROPPED",
+          "stored_status": "TARGET_NOT_FOUND"
+        }
+      },
+      "first_dropped_stage": "qwen_gate",
+      "file": "undistorted_25070552942982.png",
+      "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi",
+      "camera_alignment_vs_E1": {
+        "status": "REFERENCE"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 22,
+        "n_inside_v02_roi": 5,
+        "n_outside_v02_roi": 17,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 2,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    },
+    {
+      "photo_id": "U25137685",
+      "label_box": [
+        1612,
+        259,
+        1629,
+        276
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "DROPPED",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            1620.5,
+            267.5
+          ],
+          "distance_outside_roi_px": 862.5,
+          "margin_inside_roi_px": null
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 4,
+          "label_in_hsv_candidates": false,
+          "sources_available": [
+            "hsv_color_shape"
+          ],
+          "status": "NOT_REACHED"
+        },
+        "rank_within_verify_limit": {
+          "status": "NOT_REACHED"
+        },
+        "qwen_gate": {
+          "status": "NOT_REACHED",
+          "reason": null
+        },
+        "v02_decision": {
+          "status": "NOT_REACHED"
+        }
+      },
+      "first_dropped_stage": "roi_search_area",
+      "file": "undistorted_25137685449593.png",
+      "sha256": "afe33110258fc087e258729c61d0f5b5d5f18375746ba410e06bdd3c8a74c2d2",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi (PROXY: no stored conveyor box for this photo)",
+      "camera_alignment_vs_E1": {
+        "status": "ALIGNED",
+        "shift_px": [
+          0.015,
+          0.008
+        ],
+        "response": 0.881,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 20,
+        "n_inside_v02_roi": 4,
+        "n_outside_v02_roi": 16,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 1,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    },
+    {
+      "photo_id": "U25967031",
+      "label_box": [
+        571,
+        860,
+        590,
+        878
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "KEPT",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            580.5,
+            869.0
+          ],
+          "distance_outside_roi_px": 0.0,
+          "margin_inside_roi_px": 177.5
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 5,
+          "label_in_hsv_candidates": true,
+          "sources_available": [
+            "hsv_color_shape"
+          ],
+          "status": "KEPT"
+        },
+        "rank_within_verify_limit": {
+          "rank": 1,
+          "n_candidates": 5,
+          "limit": 8,
+          "basis": "HSV_ONLY (no stored detector run for this photo)",
+          "status": "KEPT"
+        },
+        "qwen_gate": {
+          "status": "NOT_AVAILABLE",
+          "reason": "no stored Qwen gate run for this photo; it is not re-run here (offline step)"
+        },
+        "v02_decision": {
+          "status": "NOT_AVAILABLE"
+        }
+      },
+      "first_dropped_stage": "NONE (stages after the last available one were not run for this photo)",
+      "file": "undistorted_25967031098947.png",
+      "sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi (PROXY: no stored conveyor box for this photo)",
+      "camera_alignment_vs_E1": {
+        "status": "ALIGNED",
+        "shift_px": [
+          0.124,
+          0.588
+        ],
+        "response": 0.8502,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 21,
+        "n_inside_v02_roi": 5,
+        "n_outside_v02_roi": 16,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 2,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    },
+    {
+      "photo_id": "U26007129",
+      "label_box": [
+        534,
+        279,
+        550,
+        294
+      ],
+      "stages": {
+        "roi_search_area": {
+          "status": "KEPT",
+          "roi_crop_xyxy_raw": [
+            0,
+            0,
+            758,
+            1063
+          ],
+          "roi_scale": 1.5052,
+          "label_centre": [
+            542.0,
+            286.5
+          ],
+          "distance_outside_roi_px": 0.0,
+          "margin_inside_roi_px": 216.0
+        },
+        "candidate_generation": {
+          "n_hsv_candidates_in_roi": 5,
+          "label_in_hsv_candidates": true,
+          "sources_available": [
+            "hsv_color_shape"
+          ],
+          "status": "KEPT"
+        },
+        "rank_within_verify_limit": {
+          "rank": 2,
+          "n_candidates": 5,
+          "limit": 8,
+          "basis": "HSV_ONLY (no stored detector run for this photo)",
+          "status": "KEPT"
+        },
+        "qwen_gate": {
+          "status": "NOT_AVAILABLE",
+          "reason": "no stored Qwen gate run for this photo; it is not re-run here (offline step)"
+        },
+        "v02_decision": {
+          "status": "NOT_AVAILABLE"
+        }
+      },
+      "first_dropped_stage": "NONE (stages after the last available one were not run for this photo)",
+      "file": "undistorted_26007129092710.png",
+      "sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+      "roi_source": "stored v0.2 conveyor_1 box of the E1 run -> v0.2 make_roi (PROXY: no stored conveyor box for this photo)",
+      "camera_alignment_vs_E1": {
+        "status": "ALIGNED",
+        "shift_px": [
+          0.114,
+          0.047
+        ],
+        "response": 0.845,
+        "thresholds": {
+          "max_shift_px": 3.0,
+          "min_response": 0.3
+        },
+        "reference_image": "/home/binci/Pictures/Calibration/undistorted_25070552942982.png"
+      },
+      "whole_image_hsv": {
+        "n_candidates": 15,
+        "n_inside_v02_roi": 5,
+        "n_outside_v02_roi": 10,
+        "label_in_candidates": true,
+        "label_rank_hsv_only": 2,
+        "label_within_verify_limit": true,
+        "ordering_note": "HSV-only ordering (solidity); the stored v0.2 ordering uses detector agreement and score, which exist for E1 only"
+      }
+    }
+  ],
+  "stored_other_runs": [
+    {
+      "id": "DEV_REF",
+      "run": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_202916_fbe7",
+      "status": "TARGET_SELECTED",
+      "n_candidates": 10,
+      "n_verified": 8,
+      "roi_crop_xyxy_raw": [
+        0,
+        0,
+        801,
+        1020
+      ],
+      "label": "none (not one of the 8 photos; no AI label made)",
+      "accepted": [
+        {
+          "candidate_id": "target_cand2",
+          "rank": 2,
+          "bbox_xyxy": [
+            581.4,
+            296.44,
+            596.7,
+            307.91
+          ],
+          "sources": 6,
+          "gate": {
+            "status": "yes",
+            "answer": "yes",
+            "observed_color": "red",
+            "observed_object": "cube",
+            "reason": "The green box encloses a red, cube-shaped object.",
+            "crop": {
+              "path": "analysis/roi/verify_target_2.png",
+              "crop_xyxy_raw": [
+                549,
+                264,
+                628,
+                339
+              ],
+              "scale": 5.6709,
+              "marker": "green rectangle = candidate box"
+            },
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"red\", \"observed_object\": \"cube\", \"reason\": \"The green box encloses a red, cube-shaped object.\"}"
+          }
+        }
+      ]
+    },
+    {
+      "id": "REF_P01",
+      "run": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_203247_fd48",
+      "status": "TARGET_SELECTED",
+      "n_candidates": 14,
+      "n_verified": 8,
+      "roi_crop_xyxy_raw": [
+        0,
+        0,
+        798,
+        1017
+      ],
+      "label": "none (not one of the 8 photos; no AI label made)",
+      "accepted": [
+        {
+          "candidate_id": "target_cand1",
+          "rank": 1,
+          "bbox_xyxy": [
+            599.39,
+            288.57,
+            614.65,
+            300.65
+          ],
+          "sources": 5,
+          "gate": {
+            "status": "yes",
+            "answer": "yes",
+            "observed_color": "red",
+            "observed_object": "cube",
+            "reason": "The green box encloses a red, cube-shaped object.",
+            "crop": {
+              "path": "analysis/roi/verify_target_1.png",
+              "crop_xyxy_raw": [
+                567,
+                256,
+                646,
+                332
+              ],
+              "scale": 5.6709,
+              "marker": "green rectangle = candidate box"
+            },
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"red\", \"observed_object\": \"cube\", \"reason\": \"The green box encloses a red, cube-shaped object.\"}"
+          }
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "n_photos": 8,
+    "first_dropped_stage_counts": {
+      "roi_search_area": 4,
+      "NONE (stages after the last available one were not run for this photo)": 3,
+      "qwen_gate": 1
+    },
+    "whole_image_hsv_label_in_candidates": 8,
+    "whole_image_hsv_candidate_counts": [
+      21,
+      17,
+      22,
+      20,
+      22,
+      20,
+      21,
+      15
+    ],
+    "whole_image_hsv_label_ranks_hsv_only": [
+      2,
+      2,
+      3,
+      2,
+      2,
+      1,
+      2,
+      2
+    ],
+    "label_distance_outside_roi_px": {
+      "U23678143": 804.5,
+      "U24768580": 513.0,
+      "U24837448": 0.0,
+      "U24898553": 857.0,
+      "U25070552": 0.0,
+      "U25137685": 862.5,
+      "U25967031": 0.0,
+      "U26007129": 0.0
+    },
+    "stored_roi_right_edges_px": {
+      "E1": 758,
+      "DEV_REF": 801,
+      "REF_P01": 798
+    },
+    "note": "counts of where an AI-labelled candidate is lost; NOT accuracy or recall (no human ground truth)"
+  },
+  "provenance": {
+    "v02_code_before": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "v02_code_after": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "v02_code_unchanged": true,
+    "image_sha256": {
+      "U23678143": "6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13",
+      "U24768580": "dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a",
+      "U24837448": "9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba",
+      "U24898553": "cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788",
+      "U25070552": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+      "U25137685": "afe33110258fc087e258729c61d0f5b5d5f18375746ba410e06bdd3c8a74c2d2",
+      "U25967031": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+      "U26007129": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d"
+    },
+    "config_sha256": "f34c8544ca2be7de3b4eda386d0c5f146ec4bab8950c20020f3bf7b9f59ce5e4",
+    "stored_e1_run": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_203058_46d8",
+    "stored_conveyor_box_xyxy": [
+      225.57,
+      272.97,
+      461.76,
+      766.68
+    ],
+    "cv2": "5.0.0",
+    "numpy": "2.2.6"
+  }
+}

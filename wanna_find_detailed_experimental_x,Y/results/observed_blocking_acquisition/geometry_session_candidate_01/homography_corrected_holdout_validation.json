@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "analysis_time": "2026-09-21T03:03:42+09:00",
+  "status": "FAILED",
+  "geometry_session_outcome": "GRID_LAYOUT_CONFLICT",
+  "mapping_was_selected_before_holdout_evaluation": true,
+  "holdout_used_for_marker_homography_fit": false,
+  "holdout_used_for_hypothesis_selection": false,
+  "split": {
+    "holdout_rule": "grid column i == 1",
+    "point_count": 3,
+    "independence_limitation": "Same stored image and line-extraction pipeline; independent vertical line family but not a new capture."
+  },
+  "points": [
+    {
+      "grid_ij": [
+        1,
+        1
+      ],
+      "raw_image_px": [
+        1001.12646484375,
+        914.1728515625
+      ],
+      "expected_world_xy_m": [
+        0.6000000238418579,
+        0.6000000238418579
+      ],
+      "predicted_world_xy_m": [
+        0.625831255815766,
+        0.5070256598753474
+      ],
+      "error_m": 0.0964960356712493,
+      "role": "POST_SELECTION_HOLDOUT_VALIDATION_ONLY",
+      "used_for_marker_homography_fit": false,
+      "used_for_hypothesis_selection": false
+    },
+    {
+      "grid_ij": [
+        1,
+        2
+      ],
+      "raw_image_px": [
+        1009.6152954101562,
+        774.3894653320312
+      ],
+      "expected_world_xy_m": [
+        0.6000000238418579,
+        1.2000000476837158
+      ],
+      "predicted_world_xy_m": [
+        0.6259347321709131,
+        1.109335362676761
+      ],
+      "error_m": 0.09430108272720679,
+      "role": "POST_SELECTION_HOLDOUT_VALIDATION_ONLY",
+      "used_for_marker_homography_fit": false,
+      "used_for_hypothesis_selection": false
+    },
+    {
+      "grid_ij": [
+        1,
+        3
+      ],
+      "raw_image_px": [
+        1016.0286254882812,
+        664.70166015625
+      ],
+      "expected_world_xy_m": [
+        0.6000000238418579,
+        1.7999999523162842
+      ],
+      "predicted_world_xy_m": [
+        0.6252176048369803,
+        1.7152679631587189
+      ],
+      "error_m": 0.0884049567492871,
+      "role": "POST_SELECTION_HOLDOUT_VALIDATION_ONLY",
+      "used_for_marker_homography_fit": false,
+      "used_for_hypothesis_selection": false
+    }
+  ],
+  "mean_error_m": 0.09306735838258107,
+  "rmse_m": 0.09313004434952565,
+  "maximum_error_m": 0.0964960356712493,
+  "error_pattern": "SYSTEMATIC_Y_UNDERESTIMATION_APPROXIMATELY_0.085_TO_0.093_M_WITH_SMALL_POSITIVE_X_BIAS",
+  "comparison_with_previous_conflict": {
+    "previous_all_nine_point_rmse_m": 0.19372477129529064,
+    "corrected_all_nine_point_diagnostic_rmse_m": 0.0911953347770751,
+    "corrected_holdout_only_rmse_m": 0.09313004434952565,
+    "comparison_note": "The all-nine diagnostic is the like-for-like comparison. The three-point holdout remains the post-selection validation result."
+  },
+  "interpretation": "Changing the two near anchors from corner1 to corner2 removes roughly half of the prior systematic offset, but the reserved center-column points still miss the exact 0.600 m lattice by about 0.09 m. Exact anchor contact plus the 2x4 lattice therefore remains unreconciled.",
+  "candidate_use_allowed": false
+}

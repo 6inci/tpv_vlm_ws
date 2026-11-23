@@ -1,0 +1,65 @@
+{
+  "source_of_truth": {
+    "config": "/home/binci/vlm_ws/config/dynamic_obstacle_policy.json",
+    "config_sha256": "33deabc0041fe74d421984d51999f876545632778bc475c37dd97a3057256f4b",
+    "implementation": "/home/binci/vlm_ws/src/vlm_reposition/planning/obstacle_policy.py",
+    "implementation_sha256": "d5d0f9b86081c6ba6176e22c13a9609ad931f99d10095d3238d553834b982700"
+  },
+  "input_schema": [
+    "observation_index",
+    "logical_time_s",
+    "robot_waypoint_index",
+    "detected_obstacle_ids"
+  ],
+  "identity_key": "obstacle_id",
+  "parameters": {
+    "observation_interval_s": 0.2,
+    "presence_confirmation_count": 2,
+    "absence_confirmation_count": 2,
+    "persistence_threshold_s": 1.0,
+    "comparison_tolerance_s": 1e-09,
+    "parameter_status": "DEVELOPMENT_PARAMETER"
+  },
+  "logical_time_convention": "observation_index * observation_interval_s",
+  "navigation_states": [
+    "MOVING",
+    "MOVING_REPLANNED_PATH",
+    "STOPPED_FOR_OBSTACLE",
+    "STOP_REQUIRED",
+    "WAITING_FOR_CLEARANCE"
+  ],
+  "actions": [
+    "CONTINUE_CURRENT_PATH",
+    "RESUME_CURRENT_PATH",
+    "STOP",
+    "STOP_AND_WAIT",
+    "SWITCH_TO_REPLANNED_PATH"
+  ],
+  "presence_confirmation_fixture": {
+    "scenario_id": "P1",
+    "confirmation_count": 2,
+    "confirmation_time_s": 0.2
+  },
+  "absence_resume_fixture": {
+    "scenario_id": "P1",
+    "confirmation_count": 2,
+    "final_action": "RESUME_CURRENT_PATH",
+    "confirmation_time_s": 0.8
+  },
+  "persistence_fixture": {
+    "scenario_id": "P2",
+    "logical_times_s": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0,
+      1.2
+    ],
+    "classification": "PERSISTENT_BLOCKING",
+    "threshold_reached_at_s": 1.2
+  },
+  "step18_handoff": "evaluate_event_and_replan after REPLAN_REQUIRED",
+  "step28n_handoff_mode": "DECISION_ONLY_EXECUTE_REPLANNING_FALSE"
+}

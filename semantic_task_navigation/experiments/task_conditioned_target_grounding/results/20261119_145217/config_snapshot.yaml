@@ -1,0 +1,128 @@
+# Task-conditioned source-destination grounding on E1. Declared BEFORE any model call of this experiment.
+# Existing Qwen3-VL-4B + Grounding DINO weights only (v0.2 ModelWorkerClient, sequential, exclusive GPU residency). Nothing outside this folder is modified.
+# The evaluation reference (evaluation_reference.yaml) is read only by evaluate(), after every model output and decision is on disk.
+experiment_id: task_conditioned_target_grounding
+results_dir: results
+route_config: ../task_route_integration/config.yaml                                  # image, provisional floor transform, DRAFT map, stored Qwen L2 areas
+semnav_run: ../semantic_navigation_integration/results/20261119_111050_semnav        # pick-up approach (83, 113) cm and the earlier path B
+placement_config: ../placement_target_grounding/config.yaml                           # zone-crop rule and the existing logistics vocabulary (reused as is)
+existing_records:                                                                      # Exp B1: read and preserved, never treated as truth
+  exp111_summary: /home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP111_small_objects/analysis/failure_dev_20261115T123250/SUMMARY.md
+  exp111_design: /home/binci/vlm_ws/new_experiment_environment/my_own_ws/EXP111_small_objects/DESIGN.md
+  placement_run: ../placement_target_grounding/results/20261119_143950_ptg
+  e1_v02_run: ../semantic_to_navigation_integration/results/20261118_203058_46d8
+
+# ---------------------------------------------------------------- instructions (Exp A / D). Built only from facilities visible in E1.
+instructions:
+  T1: {text: "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.", type: base}
+  T2: {text: "컨베이어에서 생산된 빨간 큐브를 바로 출하하지 말고, 작업장 안에서 잠시 보관할 수 있는 적절한 장소로 옮겨줘.", type: "same source, different destination purpose (temporary storage)"}
+  T3: {text: "트럭 짐칸에 실린 상자를 내려서 컨베이어 쪽 작업 구역으로 옮겨줘.", type: "different object and direction (unloading the truck towards the conveyor)"}
+  T4: {text: "컨베이어에서 생산된 빨간 큐브를 냉동 보관 창고에 넣어줘.", type: "abstention control (no such facility is visible in E1)"}
+
+# ---------------------------------------------------------------- regions (fixed by EXISTING inference, never by the answer)
+regions:
+  SRC: {rule: "v0.2 make_roi around the stored, Qwen-verified conveyor_1 box (target_inspection roi_margin_ratio 0.6, min 120 px; zoom to 1600 px long side, max 4x)"}
+  DST: {rule: "placement_target_grounding zone crop: stored Qwen L2 area_5 box + max(0.25 x long side, 120 px), x2"}
+
+# ---------------------------------------------------------------- Exp A: task interpretation (Qwen)
+interpretation:
+  prompt_id: task_interpretation_v1
+  template: |
+    작업지시: "{instruction}"
+    주어진 작업지시를 수행하려면 어떤 물체를 어디에서 가져와 어디에 놓아야 하는가? 이미지에서 관찰되는 객체, 주변 설비, 작업 구역의 관계를 근거로 설명하라. 최종 배치에 사용할 물체나 표면이 무엇인지 구분하고, 확신할 수 없다면 가능한 후보와 불확실성을 제시하라.
+
+    Return JSON only, no prose:
+    {"source_region": {"description": <short text>, "bbox_2d": [x1, y1, x2, y2] or null},
+     "source_object": {"name_en": <short English noun phrase>, "bbox_2d": [x1, y1, x2, y2] or null, "visible": "yes" | "no" | "uncertain"},
+     "destination_region": {"description": <short text>, "bbox_2d": [x1, y1, x2, y2] or null},
+     "destination_target_candidates": [{"name_en": <short English noun phrase naming the object or surface>, "name_ko": <Korean name>,
+                                        "bbox_2d": [x1, y1, x2, y2] or null, "state": "empty" | "occupied" | "unknown", "role": <short text>,
+                                        "suitability": "suitable" | "possible" | "unsuitable", "reason": <one short sentence>}],
+     "selected_destination": <name_en of the chosen candidate, or null>,
+     "spatial_context": [<observed relations between objects, equipment and areas>],
+     "task_reasoning": <short text>,
+     "uncertainty": [<what cannot be determined>]}
+    bbox_2d: integers normalized to 0-1000 relative to this image's width and height.
+  neutral_prompt_id: neutral_inventory_v1
+  neutral: |
+    이 이미지에서 관찰되는 물체와, 물건을 올려놓는 데 쓰일 수 있는 물체나 표면의 후보를 나열하라. 각 후보의 위치, 위에 무엇이 올려져 있는지(상태)와 시각적 근거를 설명하라.
+
+    Return JSON only, no prose:
+    {"objects": [{"name_en": <short English noun phrase>, "bbox_2d": [x1, y1, x2, y2] or null, "location_in_image": <short text>}],
+     "support_candidates": [{"name_en": <short English noun phrase>, "name_ko": <Korean name>, "bbox_2d": [x1, y1, x2, y2] or null,
+                             "state": "empty" | "occupied" | "unknown", "objects_on_top": [<English>], "reason": <one short sentence>}],
+     "uncertainty": [<what cannot be determined>]}
+    bbox_2d: integers normalized to 0-1000 relative to this image's width and height.
+  max_new_tokens: 1536
+  calls:                                    # 6 calls
+    A1: {instruction: T1, image: full}
+    A2: {instruction: T1, image: DST}
+    A3: {instruction: null, image: full}    # neutral inventory (diagnostic)
+    T2: {instruction: T2, image: full}
+    T3: {instruction: T3, image: full}
+    T4: {instruction: T4, image: full}
+
+# ---------------------------------------------------------------- Exp B: detection (Grounding DINO)
+detection:
+  # Qwen phrases: every name_en of every interpretation call (source objects, destination candidates, A3 objects and supports), lower-cased,
+  # trailing '.' removed, de-duplicated, cut to 10 words. VOCAB: the existing placement_target_grounding vocabulary, unchanged (class-conditional).
+  phrase_max_words: 10
+  phrase_sources: {Q: qwen_generated, V: existing_vocabulary}
+  thresholds: {box: 0.10, text: 0.10}       # v0.2
+  max_area_frac: 0.25                       # v0.2 (oversize boxes kept as FILTERED_OVERSIZE)
+  images: {D1: full, D2: SRC, D3: DST}
+  merge_iou: 0.5                            # IoU-only merge over every source and image (no containment merge)
+  rank_limit: none
+
+# ---------------------------------------------------------------- Exp C: object roles (task-independent) and task-conditioned selection
+roles:
+  prompt_id: object_role_v1
+  prompt: |
+    초록색 상자로 표시된 물체를 보라. 물체의 종류, 그 물체가 다른 물건을 올려놓는 받침이나 작업면으로 쓰일 수 있는지, 현재 그 위에 다른 물체가 올려져 있는지 판단하라.
+
+    Return JSON only, no prose:
+    {"object_type": <short English noun phrase>, "is_support_surface": "yes" | "no" | "uncertain",
+     "load_state": "empty" | "occupied" | "not_applicable" | "uncertain", "objects_on_top": [<English>], "reason": <one short sentence>}
+  crop: v0.2 make_verify_crop (pad 1.5 x long side, min 64 px, upscale to 448 px, green rectangle)
+  max_new_tokens: 256
+  # Verification budget (no candidate is deleted: the rest is recorded as BEYOND_BUDGET). Buckets by box centre, each ordered by max detector score.
+  budget: {DST: 15, SRC: 15, OTHER: 10}
+selection:
+  prompt_id: task_selection_v1
+  template: |
+    작업지시: "{instruction}"
+    이미지의 번호가 붙은 초록색 상자는 자동 탐지된 후보 물체이다. 이 작업지시를 수행하려면 (1) 옮길 물체 자체이거나 옮길 물체가 놓여 있는 후보의 번호와 (2) 물체를 최종적으로 내려놓을 물체나 표면 후보의 번호를 고르라. 각 후보가 이 작업에서 어떤 역할을 하는지 판단하라. 적절한 후보가 없거나 판단할 수 없으면 null로 하라.
+
+    Return JSON only, no prose:
+    {"source_id": <number or null>, "destination_id": <number or null>,
+     "candidates": [{"id": <number>, "role": "source" | "destination" | "not_relevant" | "uncertain", "reason": <one short sentence>}],
+     "reason": <one short sentence>}
+  max_new_tokens: 1536
+  # Numbered set (identical for T1-T4): role-analysed candidates with is_support_surface yes/uncertain OR load_state occupied, at most max_numbered,
+  # in role-analysis order. Drawn on the full image (green boxes + numbers), nothing else.
+  max_numbered: 24
+  # Python decision per instruction:
+  #  destination SELECTED  = valid numbered destination_id AND its role analysis is not (is_support_surface 'no') AND not (load_state 'occupied')
+  #              UNVERIFIED = valid id but the role analysis contradicts (not a support, or occupied)
+  #              AMBIGUOUS  = destination_id null while the numbered set is not empty; NOT_FOUND = numbered set empty
+  #  source      SELECTED  = valid numbered source_id; AMBIGUOUS = null; NOT_FOUND = numbered set empty
+  #  Every SELECTED target stays VERIFY_REQUIRED.
+
+# ---------------------------------------------------------------- Exp F: ablation on the SAME numbered set, per instruction (destination)
+ablation:
+  A_detection_only: "highest detector score in the numbered set (task-independent)"
+  B_detection_proximity: "smallest floor distance from the pick-up approach (83, 113) cm to the candidate's floor contact (task-independent)"
+  C_semantic: "Qwen task selection + role-analysis consistency (rule above)"
+  D_semantic_navigation: "C, then route B from the pick-up approach must be generated (else DEFERRED_NAVIGATION); not evaluated for T3 (other source)"
+
+# ---------------------------------------------------------------- Exp E: route B
+route:
+  robot_cm: [35, 24]
+  for_instructions: [T1, T2]                # same source (conveyor) and pick-up approach as the integrated plan; T3 has another source
+  floor_contact: "bottom-centre of the box -> floor cm (support top surface != floor contact; height unknown)"
+  never: [relax no-go zones, change the robot size]
+
+claims:
+  generalisation: NONE (one photo; several instructions on the same photo are not independent scenes)
+  accuracy: "no rate; single-case outcomes against AI-drawn references (user to confirm)"
+  placement_success: NOT_CLAIMABLE

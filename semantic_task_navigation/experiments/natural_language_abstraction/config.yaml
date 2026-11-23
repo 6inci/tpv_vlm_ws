@@ -1,0 +1,59 @@
+# Natural Language Abstraction probe -- run configuration (2026-11-18).
+# Question: when the instruction gives less and less of the destination, how much of the destination meaning
+# does Qwen3-VL infer from the image (and general knowledge) by itself, and when does it withhold?
+# Independent of v0.2 and of experiments/autonomous_semantic_reasoning (which is imported read-only).
+
+experiment_id: NLA_PROBE_2026-11-18
+status: TESTING                      # AGENTS.md state vocabulary
+classification: EXPLORATORY_DIAGNOSTIC
+classification_note: >-
+  E1 and E2 were already used in experiments/autonomous_semantic_reasoning (prompt v3 eval run), so this is
+  an exploratory diagnostic, NOT an independent performance evaluation. No accuracy / IoU-vs-truth / success
+  rate is computed: there is no human-confirmed answer polygon.
+
+# Prior-knowledge condition: the parent experiment's condition A only (image + instruction, empty prior block).
+# The 5S (B) and site-rule (C1) conditions are excluded here.
+condition: A
+
+# Only the instruction differs between runs. The Korean text is inserted verbatim.
+instruction_levels:
+  L1: "빨간 큐브를 트럭이 있는 하역장으로 옮겨줘."          # names the object (truck) and the place type (하역장)
+  L2: "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."      # names the purpose (출하), not the place or the truck
+  L3: "생산된 빨간 큐브를 다음 물류 단계로 전달해 줘."        # names neither a place nor a purpose of the place
+
+generation:
+  # Same for L1-L3. Larger than the parent's 2400 because task_analysis gained three fields
+  # (inferred_task_purpose, info_given_by_instruction, info_added_by_you). Truncation is reported, never repaired.
+  max_new_tokens: 2800
+  do_sample: false                   # greedy, fixed inside perception/model_worker.py
+
+results_dir: results                 # every run gets a NEW folder; nothing is overwritten
+
+# Photos (copies of the parent experiment's files; hash-checked at run time).
+#   role smoke       : D1, used only to check that the output format is valid (it is the parent's dev image).
+#                      Only FORMAT problems (invalid JSON, loops) may lead to a prompt change; what the model
+#                      answers about the destination must not be tuned.
+#   role exploratory : E1, E2. Prompts are frozen (prompts_frozen.json) BEFORE the first run on them.
+# cube_xy_px / cube_note are a reviewer's visual note (never given to the model, not an answer key).
+images:
+  - id: D1
+    role: smoke
+    file: data/images/undistorted_26007129092710.png
+    sha256: 7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d
+    cube_xy_px: [541, 287]
+    cube_note: "upper-left, outside the long yellow floor line"
+  - id: E1
+    role: exploratory
+    file: data/images/undistorted_25070552942982.png
+    sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605
+    cube_xy_px: [442, 424]
+    cube_note: "at the end of the left production line, next to its robot arm"
+  - id: E2
+    role: exploratory
+    file: data/images/undistorted_24837448431552.png
+    sha256: 9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba
+    cube_xy_px: [539, 862]
+    cube_note: "lower-left, beside the green cage containers"
+
+# The v0.2 development image (assets/reference/warehouse_scene_reference_01.jpg == EXP110 P06) is refused.
+excluded_image_sha256_prefix: d1984a19d56443e5

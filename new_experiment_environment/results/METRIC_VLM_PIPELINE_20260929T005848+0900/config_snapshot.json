@@ -1,0 +1,33 @@
+{
+  "input_image": "/home/binci/vlm_ws/new_experiment_environment/warehouse_robotics_1920x1080.png",
+  "workspace_m": [3.15, 2.1],
+  "tile_size_m": 1.05,
+  "tile_layout": [3, 2],
+  "world_frame": "synthetic_workspace_bottom_left_xy_m",
+  "map_resolution_m_per_px": 0.01,
+  "safety_margin_m": 0.05,
+  "validation_rmse_gate_m": 0.12,
+  "validation_max_error_gate_m": 0.2,
+  "qwen_model": "Qwen/Qwen3-VL-4B-Instruct",
+  "grounding_dino_model": "IDEA-Research/grounding-dino-tiny",
+  "grounding_dino_box_threshold": 0.25,
+  "grounding_dino_text_threshold": 0.2,
+  "sam2_model": "facebook/sam2.1-hiera-tiny",
+  "sam2_detection_score_min": 0.35,
+  "sam2_nms_iou": 0.65,
+  "control_points": [
+    {"id": "g_0_0", "pixel": [74, 935], "world_m": [0.0, 0.0], "role": "calibration"},
+    {"id": "g_1_0", "pixel": [692, 1034], "world_m": [1.05, 0.0], "role": "calibration"},
+    {"id": "g_2_0", "pixel": [1233, 1076], "world_m": [2.1, 0.0], "role": "calibration"},
+    {"id": "g_3_0", "pixel": [1908, 1075], "world_m": [3.15, 0.0], "role": "calibration"},
+    {"id": "g_0_1", "pixel": [282, 566], "world_m": [0.0, 1.05], "role": "validation"},
+    {"id": "g_1_1", "pixel": [807, 569], "world_m": [1.05, 1.05], "role": "validation"},
+    {"id": "g_2_1", "pixel": [1223, 584], "world_m": [2.1, 1.05], "role": "validation"},
+    {"id": "g_3_1", "pixel": [1795, 588], "world_m": [3.15, 1.05], "role": "validation"},
+    {"id": "g_0_2", "pixel": [489, 250], "world_m": [0.0, 2.1], "role": "calibration"},
+    {"id": "g_1_2", "pixel": [859, 251], "world_m": [1.05, 2.1], "role": "calibration"},
+    {"id": "g_2_2", "pixel": [1218, 251], "world_m": [2.1, 2.1], "role": "calibration"},
+    {"id": "g_3_2", "pixel": [1714, 251], "world_m": [3.15, 2.1], "role": "calibration"}
+  ],
+  "control_point_provenance": "MANUAL_IMAGE_AUDIT of visible synthetic mat corners/intersections; not real-camera calibration"
+}

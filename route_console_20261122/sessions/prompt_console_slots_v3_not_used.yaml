@@ -1,0 +1,84 @@
+# 2026-11-22 저녁에 만든 프롬프트 v3. 쓰지 않음 (보관용).
+# CPU 확인: '하역장에서 충전소 옆으로 이동시켜줘' -> v3로도 object_near=truck_loading_bay (v2b와 같음). 고친 것은 engine.task_plan의 Python 보정.
+# 나머지 지시는 확인 전에 멈춤 (CPU 160초/건). 결과 로그: sessions/prompt_check_cpu.log
+prompt_id: console_slots_v3
+template: '너는 이동 로봇의 작업지시를 정해진 항목으로 바꾸는 파서다. 이미지는 주어지지 않는다. 위치, 좌표, 박스를 만들지 마라.
+
+  작업지시: "{instruction}"
+
+
+  task (할 일) 중 하나:
+
+  - "transport": 물체를 집어서 다른 곳에 놓는다
+
+  - "go_to": 로봇만 이동한다 (옮길 물체 없음)
+
+  object (옮길 물체) 중 하나:
+
+  - "red cube": 빨간 큐브
+
+  - "any object": 종류를 말하지 않은 물체 (예: 물체, 물건, 짐)
+
+  - "none": 옮길 물체가 없음
+
+  - "other": 위 목록에 없는 종류를 말한 물체 (예: 상자, 드럼, 팔레트 자체)
+
+  장소 이름 (아래 항목에 쓰는 값):
+
+  - "truck_loading_bay": 트럭, 하역장, 트럭 하역장
+
+  - "conveyor": 컨베이어, 컨베이어 벨트, 생산 라인
+
+  - "charging_station": 충전소, 충전 구역
+
+  - "fire_extinguisher": 소화기
+
+  - "walkway": 보행자 통로, 보행로
+
+  - "central_storage": 중앙 적치 구역, 가운데 상자 더미
+
+  - "material_storage": 자재 보관 구역, 적치대
+
+  - "robot_arm_cell": 로봇 팔 작업셀
+
+  - "locker": 사물함, 작업자 준비 구역
+
+  - "shelf": 선반
+
+  - "none": 말하지 않음
+
+  - "other": 위 목록에 없는 장소
+
+  - 비슷한 말도 가장 가까운 장소로 고른다 (예: 상차 구역, 하차 구역 -> "truck_loading_bay")
+
+  object_near: 옮길 물체가 놓여 있는 장소 (장소 이름 하나). 옮길 물체가 없으면 반드시 "none"
+
+  start: 로봇이 출발하는 장소 (장소 이름 하나). 옮길 물체 없이 "X에서 Y로 가/이동해"라고 하면 X가 start다. 말하지 않았으면 "none" = 지금 위치
+
+  destination_kind (도착지 종류) 중 하나:
+
+  - "empty_pallet": 비어 있는 팔레트
+
+  - "place": 위 목록의 장소
+
+  - "other": 위 목록에 없음
+
+  destination_place: destination_kind가 "place"이면 장소 이름, 아니면 "none"
+
+  words: 작업지시에서 물체와 장소를 가리킨 말을 그대로 적는다
+
+
+  예시 (형식만 참고):
+
+  - "충전소에서 컨베이어로 이동해" -> task "go_to", object "none", object_near "none", start "charging_station", destination_kind "place", destination_place "conveyor"
+
+  - "컨베이어 옆 빨간 큐브를 빈 팔레트에 놓아" -> task "transport", object "red cube", object_near "conveyor", start "none", destination_kind "empty_pallet", destination_place "none"
+
+  - "하역장으로 가" -> task "go_to", object "none", object_near "none", start "none", destination_kind "place", destination_place "truck_loading_bay"
+
+
+  Return JSON only, no prose:
+
+  {"task": "...", "object": "...", "object_near": "...", "start": "...", "destination_kind": "...", "destination_place": "...", "words": "..."}
+
+  '

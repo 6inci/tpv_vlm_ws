@@ -1,0 +1,59 @@
+{
+  "command": "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘.",
+  "mode": "LOCAL_ONLY",
+  "status": "OK",
+  "task": {
+    "task_type": "transport_and_place",
+    "target": {
+      "class": "cube",
+      "color": "red",
+      "source_reference": "conveyor",
+      "source_relation": "produced_by"
+    },
+    "destination": {
+      "region_type": "loading_area",
+      "reference_object": "truck"
+    },
+    "actions": [
+      "detect_target",
+      "locate_pickup_region",
+      "navigate_to_pickup",
+      "handoff_to_local_grasping",
+      "confirm_pickup",
+      "navigate_to_loading_area",
+      "handoff_to_placement",
+      "verify_completion"
+    ],
+    "actions_source": "fixed_template (not model output)",
+    "parser": {
+      "backend": "qwen3_vl_local",
+      "model": "Qwen/Qwen3-VL-4B-Instruct",
+      "prompt_id": "task_parse_v1",
+      "raw_response": "{\n  \"status\": \"ok\",\n  \"task_type\": \"transport_and_place\",\n  \"target\": {\n    \"class\": \"cube\",\n    \"color\": \"red\",\n    \"count\": 1,\n    \"source_reference\": \"conveyor_belt\",\n    \"source_relation\": \"produced_by\"\n  },\n  \"destination\": {\n    \"region_type\": \"unloading_area\",\n    \"reference_object\": \"truck\"\n  },\n  \"reason\": \"The robot should pick up a red cube produced by the conveyor belt and place it at the unloading area near the truck.\"\n}",
+      "parsed_output": {
+        "status": "ok",
+        "task_type": "transport_and_place",
+        "target": {
+          "class": "cube",
+          "color": "red",
+          "count": 1,
+          "source_reference": "conveyor_belt",
+          "source_relation": "produced_by"
+        },
+        "destination": {
+          "region_type": "unloading_area",
+          "reference_object": "truck"
+        },
+        "reason": "The robot should pick up a red cube produced by the conveyor belt and place it at the unloading area near the truck."
+      },
+      "normalization_notes": []
+    }
+  },
+  "call": {
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "latency_s": 4.855,
+    "n_output_tokens": 124,
+    "hit_max_new_tokens": false
+  }
+}

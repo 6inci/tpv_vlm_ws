@@ -1,0 +1,43 @@
+{
+ "id": "EXP110-X6",
+ "status": "FROZEN",
+ "plan": "REAL_ENV_EXPERIMENT_PLAN_v3.md §8.4 M1/M2/M3 (user plan 2026-11-15)",
+ "layout": "P01",
+ "candidates_run": "run02",
+ "queries": [
+  "q043",
+  "q085",
+  "q053",
+  "q037",
+  "q025"
+ ],
+ "queries_note": "truck (unique), traffic cone (multi, 12), cart (2), storage rack (4), small pallet (task object). Chosen before any 8B output was seen.",
+ "models": {
+  "M1": {
+   "id": "Qwen/Qwen3-VL-4B-Instruct",
+   "revision": null,
+   "mode": "bf16_gpu",
+   "env": "qwen_vl"
+  },
+  "M2": {
+   "id": "Qwen/Qwen3-VL-8B-Instruct",
+   "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+   "mode": "bf16_offload",
+   "max_memory": {
+    "0": "6GiB",
+    "cpu": "24GiB"
+   },
+   "env": "qwen_vl",
+   "max_memory_note": "attempts 1 and 2 (0=9GiB, cpu=22GiB) failed identically with GPU OOM on query 2 (see the two FAILED.txt); attempt 3 uses 0=6GiB (planned fallback) to leave room for the 1.16 GiB lm_head transfer and activations."
+  },
+  "M3": {
+   "id": "Qwen/Qwen3-VL-8B-Instruct",
+   "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+   "mode": "nf4",
+   "double_quant": false,
+   "env": "qwen_vl_q4"
+  }
+ },
+ "status_note": "2026-11-15 user decision: exploration complete, results preserved, further 8B runs on hold. M1 stays the default; M3 not adopted on current dev evidence; M2 not judged worse; no conclusion that quantization caused the drop. Weights and the qwen_vl_q4 env are kept unchanged. See REPORT_2026-11-15.md §5.",
+ "status_before": "exploratory smoke test (dev only). Loads / answers / speed / memory, not a performance comparison."
+}

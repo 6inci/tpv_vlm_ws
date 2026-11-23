@@ -1,0 +1,46 @@
+{
+  "object_id": "photo08_track039_tennis_racket",
+  "semantic_label": "tennis racket",
+  "status": "WAITING_FOR_USER_MEASUREMENT",
+  "template": "/home/binci/vlm_ws/config/representative_object_measurement_TEMPLATE.json",
+  "missing_fields": [
+    "shape_type",
+    "dimensions_or_polygon",
+    "anchor",
+    "orientation_if_required"
+  ],
+  "required_measurements": [
+    "select one shape: CIRCLE, AXIS_ALIGNED_RECTANGLE, or POLYGON",
+    "provide the selected shape dimensions or local polygon in mm, cm, or m",
+    "measure the relation from the observed bottom-center ground reference to the physical footprint anchor",
+    "provide a reproducible orientation reference and yaw for rectangle or polygon"
+  ],
+  "optional_measurements": [
+    "measurement uncertainty with unit",
+    "measurement notes"
+  ],
+  "instructions": [
+    "Copy the template to config/representative_object_measurement.json and replace nulls only with direct user measurements.",
+    "Do not use internet specifications, image bbox size, semantic assumptions, VLM estimates, or STEP 14 synthetic values.",
+    "Keep raw input units; canonical meter values are generated deterministically after validation."
+  ],
+  "shape_checklist": {
+    "AXIS_ALIGNED_RECTANGLE": [
+      "total length",
+      "maximum width",
+      "anchor relation",
+      "orientation reference and yaw"
+    ],
+    "POLYGON": [
+      "ground-footprint boundary points",
+      "polygon unit",
+      "anchor relation",
+      "local reference axis and yaw"
+    ],
+    "CIRCLE": [
+      "radius",
+      "center-to-observed-anchor relation"
+    ]
+  },
+  "optional_experiment_design_note": "A measured box, rectangular block, or cylinder would simplify future footprint and anchor validation; the current representative object is not changed automatically."
+}

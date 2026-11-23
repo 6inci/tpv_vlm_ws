@@ -1,0 +1,7 @@
+M2 attempt 2 (2026-11-15 13:03) FAILED identically to attempt 1: torch.OutOfMemoryError on query 2 (q085, C1),
+same requested allocation (1245708288 bytes = 1.16 GiB), same process usage 9.43 GiB. Setting identical to attempt 1 (GPU 9GiB / CPU 22GiB).
+GPU before start: 1566 MiB used in total, only gnome-remote-desktop (156 MiB) listed as a compute process -> no external GPU job.
+CONFIRMED: the failure is reproducible and caused by the setting, not by an external factor.
+INFERRED: 1245708288 bytes = 152064 x 4096 x 2 bytes = the bf16 lm_head weight, which accelerate moves from CPU to GPU on each forward;
+with 9 GiB of weights resident plus ~1.2 GiB reserved-unallocated, less than that remained free.
+Log: explore/X6_model_size/log_20261115T130306_M2_attempt2.txt

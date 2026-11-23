@@ -1,0 +1,106 @@
+{
+  "result": "PASS",
+  "audit_type": "PHYSICAL_GEOMETRY_SOURCE_AUDIT",
+  "searched_roots": [
+    "/home/binci/vlm_ws",
+    "/home/binci/qwen_vision_test",
+    "/home/binci/mecanum_ros2"
+  ],
+  "confirmed": [
+    {
+      "item": "robot planning footprint",
+      "value_m": [
+        [
+          0.145,
+          0.123
+        ],
+        [
+          0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          -0.123
+        ],
+        [
+          -0.145,
+          0.123
+        ]
+      ],
+      "extent_m": {
+        "length": 0.29,
+        "width": 0.246
+      },
+      "reference_frame": "base_link",
+      "source": "/home/binci/mecanum_ros2/src/mecanum_bringup/config/nav2_params.yaml",
+      "source_sha256": "60192fdceee6df1e76bd1fff981f526a7090cabc2d74a2ecbb16e198cbbf2708",
+      "evidence_scope": "existing recorded Nav2 planning footprint; not freshly remeasured in STEP 13"
+    },
+    {
+      "item": "mecanum wheel/CAD reference geometry",
+      "wheel_radius_m": 0.04,
+      "wheel_center_front_rear_m": 0.192091,
+      "wheel_center_left_right_m": 0.207001,
+      "source": "/home/binci/mecanum_ros2/src/mecanum_bringup/urdf/mecanum_robot.urdf.xacro",
+      "source_sha256": "06cf2c840a3b6226dc95f514386b7d19d51e33419ba800f2f79268cffa38934a",
+      "planning_use": "NOT_USED_TO_REPLACE_THE_RECORDED_FOOTPRINT"
+    },
+    {
+      "item": "URDF simplified chassis collision box",
+      "value_m": {
+        "length": 0.25,
+        "width": 0.2,
+        "height": 0.08
+      },
+      "source": "/home/binci/mecanum_ros2/src/mecanum_bringup/urdf/mecanum_robot.urdf.xacro",
+      "source_sha256": "06cf2c840a3b6226dc95f514386b7d19d51e33419ba800f2f79268cffa38934a",
+      "planning_use": "NOT_SELECTED_AS_FULL_ROBOT_FOOTPRINT",
+      "reason": "URDF labels it as a retained simplified chassis collision shape; Nav2 provides the larger explicit planning footprint"
+    }
+  ],
+  "inferred": [],
+  "unknown": [
+    "gripper physical footprint, front extension, opening and holding offset",
+    "red cup physical footprint",
+    "white bag physical footprint and loading-state convention",
+    "gold trophy-like object physical footprint",
+    "physical polygons for selected chair/desk static obstacle candidates"
+  ],
+  "excluded_from_physical_geometry": [
+    {
+      "item": "Nav2 footprint_padding 0.01 m",
+      "reason": "planning padding is not a measured physical dimension and inflation is outside STEP 13"
+    },
+    {
+      "item": "Nav2 inflation_radius 0.55 m",
+      "reason": "costmap policy is not physical geometry and inflation is outside STEP 13"
+    },
+    {
+      "item": "Qwen image bboxes",
+      "reason": "perspective image bounds are not physical footprints"
+    }
+  ],
+  "additional_sources": [
+    {
+      "path": "/home/binci/mecanum_ros2/README.md",
+      "sha256": "6aa447273a6efcdb0e2136bb8f90adc888122bb1309811b500ed265ae086b027"
+    },
+    {
+      "path": "/home/binci/vlm_ws/docs/RESEARCH_SCOPE.md"
+    },
+    {
+      "path": "/home/binci/vlm_ws/results/workspace_state/"
+    }
+  ],
+  "planning_consequence": "robot geometry is READY; gripper, target objects and static obstacle footprints are NOT_READY",
+  "needed_measurements": [
+    "gripper front extension from base_link origin",
+    "gripper maximum outer collision width in open and closed states",
+    "gripper grasp/holding reference offset",
+    "red cup ground-plane footprint diameter or width/length",
+    "white bag footprint in the defined experimental loading state",
+    "gold trophy-like object ground-plane footprint width/length",
+    "metric polygons for only the chairs/desks selected as static planning obstacles"
+  ],
+  "reference_repository_modified": false
+}

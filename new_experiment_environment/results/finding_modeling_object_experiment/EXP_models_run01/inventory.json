@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-10-06T23:21:34.797431+09:00",
+  "experiment_id": "EXP_models",
+  "run_id": "run01",
+  "original_sha256": {
+    "IMG_8560.jpeg": "44df1933ecb330b9e0be3aed08e5d9800af5820145d50ffdb0c2d78217b7450b",
+    "IMG_8557.jpeg": "f1640787d925d0b85ed20b70886a38340c1830e6ac540edcd2858bde56ff9fb6",
+    "object_detection_summary.html": "1d8a5627462c606ae73d00a868ea54e7f39da5ba68117cf7c0bc7ef125b59393",
+    "IMG_8561.jpeg": "8b6ee9b2a03cad627e39c4d495b3edafd474fdba284a0b3be3eeb1a9c7fb4648",
+    "IMG_8558.jpeg": "8439c8ac19ca31f4e3fa163c9bb7d57033bcd2a3a4f2867a4ad313125e0cb1ca",
+    "IMG_8559.jpeg": "3e1538d4215f441d44e97ab9a3d9f416f7d43faaf17d4e4e9187afed333f9faa"
+  },
+  "images": [
+    {
+      "name": "IMG_8557.jpeg",
+      "stored_size": [
+        4032,
+        3024
+      ],
+      "exif_orientation": 6,
+      "upright_size": [
+        3024,
+        4032
+      ]
+    },
+    {
+      "name": "IMG_8558.jpeg",
+      "stored_size": [
+        4032,
+        3024
+      ],
+      "exif_orientation": 6,
+      "upright_size": [
+        3024,
+        4032
+      ]
+    },
+    {
+      "name": "IMG_8559.jpeg",
+      "stored_size": [
+        4032,
+        3024
+      ],
+      "exif_orientation": 6,
+      "upright_size": [
+        3024,
+        4032
+      ]
+    },
+    {
+      "name": "IMG_8560.jpeg",
+      "stored_size": [
+        4032,
+        3024
+      ],
+      "exif_orientation": 1,
+      "upright_size": [
+        4032,
+        3024
+      ]
+    },
+    {
+      "name": "IMG_8561.jpeg",
+      "stored_size": [
+        4032,
+        3024
+      ],
+      "exif_orientation": 1,
+      "upright_size": [
+        4032,
+        3024
+      ]
+    }
+  ],
+  "device": "cpu",
+  "torch": "2.13.0+cu130",
+  "cuda_available": false,
+  "coordinate_system": "EXIF-transposed upright image pixels; distorted original imagery; no metric conversion",
+  "ground_truth": "unavailable",
+  "parameters": {
+    "classes": [
+      "pallet",
+      "water bottle",
+      "shelf"
+    ],
+    "yolo_conf": 0.1,
+    "yolo_iou": 0.5,
+    "yolo_imgsz": 1280,
+    "dino_threshold": 0.25,
+    "dino_text_threshold": 0.25,
+    "qwen_max_new_tokens": 900,
+    "qwen_max_pixels": 602112,
+    "sam_prompt_source": "Grounding DINO boxes"
+  },
+  "qwen_prompt": "Find visible miniature or full-size logistics pallets, water bottles, and storage shelves/racks in this image. A pallet is a slatted platform for carrying goods, not a painting palette. White 3D-printed models count. Return JSON only: {\"objects\":[{\"label\":\"pallet|water bottle|shelf\",\"bbox_2d\":[x1,y1,x2,y2]}]}. Coordinates are integers normalized to 0..1000 relative to the entire displayed upright image. Include every distinct visible target; no unrelated objects. If none, return an empty objects list."
+}

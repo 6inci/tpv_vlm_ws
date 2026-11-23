@@ -1,0 +1,907 @@
+{
+ "run_id": "run_015_U26007129",
+ "created": "2026-11-20T23:09:38",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "rules": "R1",
+ "vlm_backend": {
+  "key": "qwen3vl_8b_nf4",
+  "label": "Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "where": "mm_worker",
+  "quantization": "nf4"
+ },
+ "photo": {
+  "photo_id": "U26007129",
+  "path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+  "sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "photo_detection": {
+  "how": "fresh Grounding DINO this session (task_context vocabulary + red cube / traffic cone / mobile robot; full image + verified facility ROIs), IoU merge 0.5",
+  "file": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/photos/U26007129.json",
+  "cube": "stored red-cube candidates of this photo (candidate_retention_policy: HSV colour + DINO)"
+ },
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "config": {
+  "viewer": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml",
+  "task_context": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml"
+ },
+ "model_called": true,
+ "source": {
+  "status": "NOT_FOUND",
+  "ids": [],
+  "why": "TRANSPORT_OBJECT_NOT_FOUND: no candidate inside the search region"
+ },
+ "destination": {
+  "candidates": [
+   {
+    "id": "m63",
+    "bbox_xyxy": [
+     1471.19,
+     466.42,
+     1573.93,
+     576.01
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "empty pallet",
+     "pallet",
+     "stacked cardboard boxes",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a small pallet",
+      0.269
+     ],
+     [
+      "a barrel",
+      0.257
+     ],
+     [
+      "a storage rack",
+      0.219
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a barrel",
+        0.415
+       ],
+       [
+        "a small pallet",
+        0.313
+       ],
+       [
+        "a storage rack",
+        0.075
+       ]
+      ],
+      "sigmoid_top": 0.1962
+     },
+     {
+      "top3": [
+       [
+        "a storage rack",
+        0.363
+       ],
+       [
+        "a small pallet",
+        0.225
+       ],
+       [
+        "a barrel",
+        0.098
+       ]
+      ],
+      "sigmoid_top": 0.128
+     }
+    ]
+   },
+   {
+    "id": "m73",
+    "bbox_xyxy": [
+     1571.21,
+     469.37,
+     1684.09,
+     584.76
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "empty pallet",
+     "pallet",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a barrel",
+      0.58
+     ],
+     [
+      "a small pallet",
+      0.194
+     ],
+     [
+      "a storage rack",
+      0.064
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a barrel",
+        0.823
+       ],
+       [
+        "a small pallet",
+        0.08
+       ],
+       [
+        "a wooden pallet",
+        0.035
+       ]
+      ],
+      "sigmoid_top": 0.3826
+     },
+     {
+      "top3": [
+       [
+        "a barrel",
+        0.336
+       ],
+       [
+        "a small pallet",
+        0.307
+       ],
+       [
+        "a storage rack",
+        0.107
+       ]
+      ],
+      "sigmoid_top": 0.1644
+     }
+    ]
+   },
+   {
+    "id": "m77",
+    "bbox_xyxy": [
+     1681.73,
+     483.79,
+     1791.51,
+     582.95
+    ],
+    "phrases": [
+     "container",
+     "empty pallet",
+     "pallet",
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "a small pallet",
+      0.28
+     ],
+     [
+      "a barrel",
+      0.222
+     ],
+     [
+      "a mobile robot",
+      0.117
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.429
+       ],
+       [
+        "a storage rack",
+        0.187
+       ],
+       [
+        "a barrel",
+        0.109
+       ]
+      ],
+      "sigmoid_top": 0.126
+     },
+     {
+      "top3": [
+       [
+        "a barrel",
+        0.336
+       ],
+       [
+        "a mobile robot",
+        0.234
+       ],
+       [
+        "a small pallet",
+        0.131
+       ]
+      ],
+      "sigmoid_top": 0.1036
+     }
+    ]
+   },
+   {
+    "id": "m34",
+    "bbox_xyxy": [
+     1583.59,
+     619.05,
+     1811.52,
+     783.56
+    ],
+    "phrases": [
+     "cart",
+     "mobile robot",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a mobile robot",
+      0.912
+     ],
+     [
+      "a small pallet",
+      0.022
+     ],
+     [
+      "a truck",
+      0.013
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a mobile robot",
+        0.886
+       ],
+       [
+        "a small pallet",
+        0.039
+       ],
+       [
+        "a truck",
+        0.024
+       ]
+      ],
+      "sigmoid_top": 0.2235
+     },
+     {
+      "top3": [
+       [
+        "a mobile robot",
+        0.938
+       ],
+       [
+        "a floor marking",
+        0.017
+       ],
+       [
+        "a robot arm",
+        0.012
+       ]
+      ],
+      "sigmoid_top": 0.459
+     }
+    ]
+   },
+   {
+    "id": "m36",
+    "bbox_xyxy": [
+     1694.94,
+     620.58,
+     1811.0,
+     775.85
+    ],
+    "phrases": [
+     "cart",
+     "mobile robot"
+    ],
+    "siglip_top3": [
+     [
+      "a mobile robot",
+      0.921
+     ],
+     [
+      "a robot arm",
+      0.026
+     ],
+     [
+      "a cart",
+      0.013
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a mobile robot",
+        0.888
+       ],
+       [
+        "a robot arm",
+        0.037
+       ],
+       [
+        "a cart",
+        0.025
+       ]
+      ],
+      "sigmoid_top": 0.4046
+     },
+     {
+      "top3": [
+       [
+        "a mobile robot",
+        0.955
+       ],
+       [
+        "a robot arm",
+        0.015
+       ],
+       [
+        "a small pallet",
+        0.013
+       ]
+      ],
+      "sigmoid_top": 0.4714
+     }
+    ]
+   },
+   {
+    "id": "m32",
+    "bbox_xyxy": [
+     1585.77,
+     622.3,
+     1693.39,
+     782.02
+    ],
+    "phrases": [
+     "cart",
+     "mobile robot",
+     "pallet",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a mobile robot",
+      0.748
+     ],
+     [
+      "a small pallet",
+      0.065
+     ],
+     [
+      "a robot arm",
+      0.049
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a mobile robot",
+        0.643
+       ],
+       [
+        "a truck",
+        0.083
+       ],
+       [
+        "a robot arm",
+        0.078
+       ]
+      ],
+      "sigmoid_top": 0.0688
+     },
+     {
+      "top3": [
+       [
+        "a mobile robot",
+        0.854
+       ],
+       [
+        "a small pallet",
+        0.081
+       ],
+       [
+        "a robot arm",
+        0.019
+       ]
+      ],
+      "sigmoid_top": 0.4762
+     }
+    ]
+   },
+   {
+    "id": "m87",
+    "bbox_xyxy": [
+     1697.17,
+     624.06,
+     1761.29,
+     722.37
+    ],
+    "phrases": [
+     "container"
+    ],
+    "siglip_top3": [
+     [
+      "a mobile robot",
+      0.514
+     ],
+     [
+      "a robot arm",
+      0.201
+     ],
+     [
+      "a red cube",
+      0.09
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.387
+       ],
+       [
+        "a red cube",
+        0.179
+       ],
+       [
+        "a mobile robot",
+        0.133
+       ]
+      ],
+      "sigmoid_top": 0.0076
+     },
+     {
+      "top3": [
+       [
+        "a mobile robot",
+        0.896
+       ],
+       [
+        "a small pallet",
+        0.058
+       ],
+       [
+        "a robot arm",
+        0.016
+       ]
+      ],
+      "sigmoid_top": 0.5894
+     }
+    ]
+   }
+  ],
+  "numbering": {
+   "1": "m63",
+   "2": "m73",
+   "3": "m77",
+   "4": "m34",
+   "5": "m36",
+   "6": "m32",
+   "7": "m87"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_015_U26007129/inputs/destination_1.png",
+    "view_rect": [
+     1434,
+     349,
+     1920,
+     784
+    ],
+    "numbers": [
+     1,
+     7
+    ],
+    "usable": true,
+    "problems": []
+   }
+  ],
+  "problems": [],
+  "ratings": {
+   "m63": {
+    "id": 1,
+    "appearance": [
+     "a small pallet",
+     "a barrel"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by black barrels, not empty."
+   },
+   "m73": {
+    "id": 2,
+    "appearance": [
+     "a barrel"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by gray barrels, not empty."
+   },
+   "m77": {
+    "id": 3,
+    "appearance": [
+     "a small pallet",
+     "a barrel"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by blue barrels, not empty."
+   },
+   "m34": {
+    "id": 4,
+    "appearance": [
+     "a mobile robot"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by a mobile robot, not a pallet."
+   },
+   "m36": {
+    "id": 5,
+    "appearance": [
+     "a mobile robot",
+     "a robot arm"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by robot equipment, not a pallet."
+   },
+   "m32": {
+    "id": 6,
+    "appearance": [
+     "a mobile robot"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by a mobile robot, not a pallet."
+   },
+   "m87": {
+    "id": 7,
+    "appearance": [
+     "a mobile robot",
+     "a robot arm",
+     "a red cube"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by robot equipment and the red cube itself."
+   }
+  },
+  "reply_reason": "No empty pallet found among candidates; all are occupied or not pallets.",
+  "status": "NOT_FOUND",
+  "number": null,
+  "kind": null,
+  "why": "Qwen best None is null; nothing rated suitable/possible",
+  "id": null,
+  "bbox_xyxy": null,
+  "accessibility": {},
+  "policy_no_placement_frac": {},
+  "policy_excluded": [],
+  "tied_ids": []
+ },
+ "interpretation": {
+  "parsed": {
+   "purpose": "Move a red cube to an empty pallet.",
+   "source_object": {
+    "name_en": "red cube"
+   },
+   "source_reference": {
+    "name_en": "stacked cardboard boxes",
+    "bbox_2d": [
+     417,
+     392,
+     487,
+     542
+    ],
+    "bbox_image_px": [
+     800.6,
+     423.4,
+     935.0,
+     585.4
+    ]
+   },
+   "source_relation": "on",
+   "destination_meaning": "empty pallet",
+   "destination_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [
+     817,
+     447,
+     933,
+     542
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     1568.6,
+     482.8,
+     1791.4,
+     585.4
+    ]
+   },
+   "destination_relation": "next_to",
+   "zones_seen": [
+    {
+     "description": "robot driving area",
+     "visual_evidence": [
+      "yellow outer boundary lines",
+      "black floor"
+     ],
+     "bbox_2d": [
+      250,
+      275,
+      975,
+      700
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "pedestrian walkway",
+     "visual_evidence": [
+      "green floor with footprints"
+     ],
+     "bbox_2d": [
+      305,
+      54,
+      558,
+      275
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "robot arm workcell",
+     "visual_evidence": [
+      "white border around conveyor and robot arms"
+     ],
+     "bbox_2d": [
+      85,
+      265,
+      265,
+      730
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "truck unloading zone",
+     "visual_evidence": [
+      "white truck",
+      "dashed white lines"
+     ],
+     "bbox_2d": [
+      700,
+      0,
+      900,
+      165
+     ],
+     "robot_body_access": "unknown"
+    }
+   ],
+   "uncertainty": [
+    "Exact location of red cube not visible in image",
+    "Robot's gripper reach not confirmed"
+   ]
+  },
+  "error": null
+ },
+ "references": {
+  "source": {
+   "name": "stacked cardboard boxes",
+   "class": null,
+   "box": [
+    800.6,
+    423.4,
+    935.0,
+    585.4
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "on",
+   "region": {
+    "type": "containment",
+    "rect": [
+     800,
+     423,
+     935,
+     585
+    ]
+   }
+  },
+  "destination": {
+   "name": "empty pallet",
+   "class": null,
+   "box": [
+    1568.6,
+    482.8,
+    1791.4,
+    585.4
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "next_to",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     1434,
+     349,
+     1920,
+     720
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  }
+ },
+ "interpretation_check": {
+  "mentioned_but_not_used": []
+ },
+ "siglip_labels": [
+  "a red cube",
+  "an orange object",
+  "an orange traffic cone",
+  "a small pallet",
+  "a wooden pallet",
+  "a metal grate",
+  "a manhole cover",
+  "a mobile robot",
+  "a truck",
+  "a truck cargo bed",
+  "a cardboard box",
+  "a stack of boxes",
+  "a conveyor belt",
+  "a production line with a conveyor and robot arms",
+  "a robot arm",
+  "a storage shelf",
+  "a storage rack",
+  "a barrel",
+  "a table",
+  "a cart",
+  "a whiteboard",
+  "an empty floor area",
+  "a floor marking",
+  "a green pedestrian walkway"
+ ],
+ "stages": [
+  {
+   "name": "interpretation",
+   "status": "OK",
+   "summary": "move 'red cube' | from: on 'stacked cardboard boxes' | to: next_to 'empty pallet' (empty pallet)",
+   "model": "Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)"
+  },
+  {
+   "name": "detection",
+   "status": "OK",
+   "summary": "DINO called for new phrases ['stacked cardboard boxes', 'empty pallet']: 4 new candidates (105 on this photo)",
+   "model": "IDEA-Research/grounding-dino-tiny"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "'stacked cardboard boxes' [on] -> containment (Qwen box (no stored object with enough overlap))",
+   "model": "Python"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "'empty pallet' [next_to] -> vicinity (Qwen box (no stored object with enough overlap))",
+   "model": "Python"
+  },
+  {
+   "name": "interpretation_check",
+   "status": "OK",
+   "summary": "every facility named in the instruction is one of the interpreted references",
+   "model": "Python"
+  },
+  {
+   "name": "source_candidates",
+   "status": "FAILED",
+   "summary": "TRANSPORT_OBJECT_NOT_FOUND: none of 15 stored red-cube candidates inside the region",
+   "model": "stored HSV colour + DINO candidates (candidate_retention_policy)"
+  },
+  {
+   "name": "destination_candidates",
+   "status": "OK",
+   "summary": "7 DINO candidates inside the region (object to move excluded; 3 region-scale boxes not numbered)",
+   "model": "IDEA-Research/grounding-dino-tiny"
+  },
+  {
+   "name": "destination_siglip",
+   "status": "OK",
+   "summary": "7 candidates compared with 24 labels",
+   "model": "google/siglip2-base-patch16-384"
+  },
+  {
+   "name": "destination_vlm_roles",
+   "status": "OK",
+   "summary": "reply usable",
+   "model": "Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)"
+  },
+  {
+   "name": "destination_policy",
+   "status": "OK",
+   "summary": "no-placement zone ['Z01']: none of 0 suitable/possible candidates inside",
+   "model": "Python"
+  },
+  {
+   "name": "destination_access",
+   "status": "OK",
+   "summary": "0 of 0 candidates accessible from the robot start",
+   "model": "Python"
+  },
+  {
+   "name": "destination_decision",
+   "status": "FAILED",
+   "summary": "NOT_FOUND   NO_SUITABLE_DESTINATION: Qwen best None is null; nothing rated suitable/possible",
+   "model": "Python"
+  },
+  {
+   "name": "selection_check",
+   "status": "OK",
+   "summary": "0 chosen id(s) exist among the detected candidates with identical boxes",
+   "model": "Python"
+  }
+ ],
+ "first_failure": "source_candidates",
+ "wall_s": 54.4,
+ "models_used": {
+  "this_run": {
+   "VLM": {
+    "Qwen/Qwen3-VL-8B-Instruct (nf4)": 2
+   },
+   "Grounding DINO": {
+    "IDEA-Research/grounding-dino-tiny": 3
+   }
+  },
+  "photo_preparation": {
+   "Grounding DINO": {
+    "IDEA-Research/grounding-dino-tiny": 4
+   },
+   "SigLIP2": {
+    "google/siglip2-base-patch16-384": 4
+   }
+  }
+ },
+ "handoff": {
+  "photo_id": "U26007129",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": null,
+  "destination": null
+ },
+ "narrative": [
+  "작업지시 해석(Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)): 'red cube'을(를) 'stacked cardboard boxes' 위에서 'empty pallet'(기준: 'empty pallet' 옆)(으)로 옮기는 작업입니다.",
+  "운반 대상 A: 찾지 못함. TRANSPORT_OBJECT_NOT_FOUND: no candidate inside the search region",
+  "목적지 B: 찾지 못함. Qwen best None is null; nothing rated suitable/possible",
+  "계획 미확정: A가 확정되지 않아 작업 계획을 만들지 않았습니다."
+ ],
+ "files": {
+  "overlay": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_015_U26007129/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_015_U26007129/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_015_U26007129/run.json"
+ }
+}

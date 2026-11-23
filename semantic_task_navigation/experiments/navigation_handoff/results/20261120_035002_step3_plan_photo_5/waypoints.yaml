@@ -1,0 +1,46 @@
+frame_id: map
+units:
+  position: m
+  yaw: deg (yaw_rad also given), ROS map frame, counter-clockwise from +x_map
+note: 'Pose lists: start, rotations, direction-change points, goal. yaw = body heading
+  (gripper side), NOT the movement direction. Giving these poses to Nav2 as goals
+  lets Nav2 plan its OWN path between them; it does not make the robot follow path_A.csv
+  / path_B.csv.'
+status: grasp / placement UNVERIFIED (gripper offset unmeasured)
+path_A:
+- kind: start
+  index: 0
+  x_m: 2.95
+  y_m: 0.55
+  yaw_deg: 180.0
+  seq: 0
+  yaw_rad: 3.141593
+- kind: escape_end
+  index: 2
+  x_m: 2.91
+  y_m: 0.55
+  yaw_deg: 180.0
+  seq: 1
+  yaw_rad: 3.141593
+- kind: turn
+  index: 105
+  x_m: 0.85
+  y_m: 0.55
+  yaw_deg: 180.0
+  seq: 2
+  yaw_rad: 3.141593
+- kind: goal
+  index: 136
+  x_m: 0.85
+  y_m: 1.17
+  yaw_deg: 180.0
+  seq: 3
+  yaw_rad: 3.141593
+path_B: null
+grasp_stop_pose:
+  x_m: 0.85
+  y_m: 1.17
+  yaw_deg: 180.0
+  front_to_target_gap_cm: 16.0
+  status: UNVERIFIED
+place_stop_pose: null

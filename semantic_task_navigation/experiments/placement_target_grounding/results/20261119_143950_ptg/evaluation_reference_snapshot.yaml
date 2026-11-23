@@ -1,0 +1,19 @@
+# EVALUATION ONLY. Read exclusively by the 'evaluate' stage of placement_target.py, after every model call and every decision is stored.
+# Never passed to a prompt, a crop rule, a DINO phrase rule or the selection.
+#
+# Source: the user's statement (2026-11-19): the intended placement target is the grey pallet in front of the truck, between the orange cones.
+# Box: drawn by the AI from a 3x zoom of the E1 image BEFORE any model call of this experiment (grey slatted object between the
+# 2nd and 3rd cone from the left in the cone row, just above the yellow floor line). Status: AI_DRAWN_FROM_USER_DESCRIPTION - user to confirm.
+reference_target:
+  description_user: "트럭 앞쪽 콘 사이에 있는 회색 팔레트"
+  bbox_xyxy_px: [1593, 252, 1640, 287]          # undistorted E1 image px
+  status: AI_DRAWN_FROM_USER_DESCRIPTION (to be confirmed by the user)
+  appearance_note: "grey, slatted top; could also be named a grate/grating. A similar grey slatted object lies at the bottom centre of the image (outside the shipment area)."
+match:
+  iou_match: 0.5                                # IoU >= 0.5 -> MATCH
+  iou_partial: 0.1                              # 0.1 <= IoU < 0.5 -> PARTIAL
+  type_keywords: [pallet, skid, 팔레트]          # name mentions the reference TYPE
+  alt_type_keywords: [grate, grating, grid, slatted, mat, 격자, 그레이팅, 철망, 배수]   # possible naming of the same object: reported, needs manual review
+  # a Qwen box LOCATES the reference when IoU >= iou_partial, or when it contains the reference centre and is at most
+  # qwen_box_max_area_ratio times the reference area (so that a box around the whole zone does not count as locating it)
+  qwen_box_max_area_ratio: 10

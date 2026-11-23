@@ -1,0 +1,1061 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T06:18:28.054315+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "source_image": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_raw.png",
+    "sha256": "1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299",
+    "width": 1920,
+    "height": 1080
+  },
+  "correspondence_artifact": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_points.json",
+    "sha256": "24d648feb8de81d5f825dbc09ea03bbcb1be2dc57f067792c3ed9e591fe2fab4"
+  },
+  "fixed_split_artifact": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/tile_grid_fit_holdout_split.json",
+    "sha256": "09a2741d78784e8b924e8728456647d4e43e9eaf683ce1be04898820b7af805f"
+  },
+  "tile_pitch_m": 0.6,
+  "world_frame": {
+    "origin_point_id": "G00",
+    "origin_definition": "lower-left clear tile-grid intersection of the selected visible workspace patch",
+    "x_axis": "rightward along the floor tile grid",
+    "y_axis": "away from the camera along the floor tile grid",
+    "coordinate_rule": "world_xy_m = [grid_i * 0.600, grid_j * 0.600]",
+    "provenance": "USER_DEFINED"
+  },
+  "intrinsic_compatibility": {
+    "status": "SUPPORTED_WITH_LIMITATION",
+    "same_required_camera_name": "hd_web_camera_ucamera001",
+    "current_camera_serial": "Ucamera001",
+    "same_native_resolution": [
+      1920,
+      1080
+    ],
+    "current_optical_controls": "No zoom/focus controls exposed; no UVC control was changed.",
+    "calibration_path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "calibration_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "limitation": "The calibration was reconstructed from screenshots and does not contain an independently recorded hardware serial, so RAW is retained as a comparison branch."
+  },
+  "status": "PASS",
+  "gate_name": "DEVELOPMENT_GEOMETRY_GATE",
+  "gate_definition": {
+    "holdout_rmse_m_lte": 0.03,
+    "holdout_maximum_error_m_lte": 0.05,
+    "not_a_physical_safety_guarantee": true
+  },
+  "fit_point_ids": [
+    "G00",
+    "G02",
+    "G22",
+    "G03",
+    "G23",
+    "G05",
+    "G25",
+    "G16"
+  ],
+  "holdout_point_ids": [
+    "G12",
+    "G13",
+    "G14",
+    "G15",
+    "G06",
+    "G26"
+  ],
+  "branches": [
+    {
+      "branch": "RAW_IMAGE_PX_TO_WORLD_XY",
+      "input_coordinate_domain": "RAW_IMAGE_PX",
+      "fitting_method": "OpenCV cv2.findHomography method=0 least-squares DLT",
+      "fit_point_count": 8,
+      "H_pixel_to_world": [
+        [
+          0.017117627787135412,
+          0.004745285800604552,
+          -18.02737986229399
+        ],
+        [
+          0.0007887769366473908,
+          -0.02292182204330431,
+          22.181660540865654
+        ],
+        [
+          0.00020721776427362056,
+          0.005879132893478777,
+          1.0
+        ]
+      ],
+      "homography_matrix_condition_number": 5275.943437208406,
+      "normalized_dlt_design_matrix_condition_number": 771.0680091854468,
+      "normalized_dlt_singular_values": [
+        8.07976554755321,
+        5.018162436352572,
+        3.807029059597461,
+        3.361446323641634,
+        2.735164137442692,
+        2.315799556293298,
+        1.8868736566930786,
+        1.645176057890779,
+        0.010478667836432018
+      ],
+      "fit_metrics": {
+        "point_count": 8,
+        "mean_error_m": 0.005321541306571572,
+        "rmse_m": 0.005854053037702314,
+        "maximum_error_m": 0.009012758389917132,
+        "x_bias_m": -2.194630484828909e-09,
+        "y_bias_m": 1.3526811680963577e-08,
+        "points": [
+          {
+            "point_id": "G00",
+            "pixel": [
+              776.917994389,
+              992.806972481
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              0.0
+            ],
+            "predicted_world_xy_m": [
+              -0.0024627592857124356,
+              0.005363199922378296
+            ],
+            "residual_xy_m": [
+              -0.0024627592857124356,
+              0.005363199922378296
+            ],
+            "euclidean_error_m": 0.005901618143082573
+          },
+          {
+            "point_id": "G02",
+            "pixel": [
+              853.851651975,
+              716.904377498
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              1.2
+            ],
+            "predicted_world_xy_m": [
+              -0.0017710404669275858,
+              1.1911629626310891
+            ],
+            "residual_xy_m": [
+              -0.0017710404669275858,
+              -0.008837037368910838
+            ],
+            "euclidean_error_m": 0.009012758389917132
+          },
+          {
+            "point_id": "G22",
+            "pixel": [
+              1240.132145214,
+              722.657123186
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              1.2
+            ],
+            "predicted_world_xy_m": [
+              1.204225822748873,
+              1.197918580663054
+            ],
+            "residual_xy_m": [
+              0.004225822748872954,
+              -0.0020814193369460554
+            ],
+            "euclidean_error_m": 0.0047106140110504836
+          },
+          {
+            "point_id": "G03",
+            "pixel": [
+              881.398339879,
+              619.420005365
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              1.8
+            ],
+            "predicted_world_xy_m": [
+              -0.00012565403084671993,
+              1.7989476244441662
+            ],
+            "residual_xy_m": [
+              -0.00012565403084671993,
+              -0.0010523755558338177
+            ],
+            "euclidean_error_m": 0.0010598505771968825
+          },
+          {
+            "point_id": "G23",
+            "pixel": [
+              1225.867717144,
+              623.204315912
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              1.8
+            ],
+            "predicted_world_xy_m": [
+              1.2025097903127258,
+              1.8023094483930753
+            ],
+            "residual_xy_m": [
+              0.0025097903127258014,
+              0.0023094483930752308
+            ],
+            "euclidean_error_m": 0.0034106596567423787
+          },
+          {
+            "point_id": "G05",
+            "pixel": [
+              922.224710117,
+              476.100143436
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              3.0
+            ],
+            "predicted_world_xy_m": [
+              0.004548871204529852,
+              3.006399569826657
+            ],
+            "residual_xy_m": [
+              0.004548871204529852,
+              0.0063995698266570145
+            ],
+            "euclidean_error_m": 0.007851542727493735
+          },
+          {
+            "point_id": "G25",
+            "pixel": [
+              1203.602984717,
+              477.727585611
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              3.0
+            ],
+            "predicted_world_xy_m": [
+              1.1932882990175566,
+              3.001614690807247
+            ],
+            "residual_xy_m": [
+              -0.006711700982443336,
+              0.0016146908072469657
+            ],
+            "euclidean_error_m": 0.006903199003414192
+          },
+          {
+            "point_id": "G16",
+            "pixel": [
+              1065.812462377,
+              422.826922052
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              3.6
+            ],
+            "predicted_world_xy_m": [
+              0.5997866529427576,
+              3.5962840315268267
+            ],
+            "residual_xy_m": [
+              -0.00021334705724240788,
+              -0.0037159684731733478
+            ],
+            "euclidean_error_m": 0.0037220879436751972
+          }
+        ]
+      },
+      "holdout_metrics": {
+        "point_count": 6,
+        "mean_error_m": 0.009836652898071658,
+        "rmse_m": 0.010871408032935806,
+        "maximum_error_m": 0.019315828976136318,
+        "x_bias_m": 0.0014458520980920066,
+        "y_bias_m": -0.0017073558205079609,
+        "points": [
+          {
+            "point_id": "G12",
+            "pixel": [
+              1046.057728113,
+              719.890109692
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              1.2
+            ],
+            "predicted_world_xy_m": [
+              0.6046386571326398,
+              1.1938823057999852
+            ],
+            "residual_xy_m": [
+              0.0046386571326397785,
+              -0.006117694200014734
+            ],
+            "euclidean_error_m": 0.007677455458619334
+          },
+          {
+            "point_id": "G13",
+            "pixel": [
+              1052.954764764,
+              621.036310477
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              1.8
+            ],
+            "predicted_world_xy_m": [
+              0.6045375916545902,
+              1.8024850367700627
+            ],
+            "residual_xy_m": [
+              0.004537591654590223,
+              0.002485036770062621
+            ],
+            "euclidean_error_m": 0.005173504206277414
+          },
+          {
+            "point_id": "G14",
+            "pixel": [
+              1058.252240117,
+              541.877941937
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              2.4
+            ],
+            "predicted_world_xy_m": [
+              0.603567972059199,
+              2.4053141411705594
+            ],
+            "residual_xy_m": [
+              0.0035679720591990094,
+              0.005314141170559505
+            ],
+            "euclidean_error_m": 0.0064008219000266185
+          },
+          {
+            "point_id": "G15",
+            "pixel": [
+              1062.476020419,
+              476.343409231
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              3.0
+            ],
+            "predicted_world_xy_m": [
+              0.6019113170779675,
+              3.009726767685348
+            ],
+            "residual_xy_m": [
+              0.0019113170779675448,
+              0.009726767685347859
+            ],
+            "euclidean_error_m": 0.009912776733955917
+          },
+          {
+            "point_id": "G06",
+            "pixel": [
+              937.444652686,
+              423.02568889
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              3.6
+            ],
+            "predicted_world_xy_m": [
+              0.00728729473953983,
+              3.5923857350722055
+            ],
+            "residual_xy_m": [
+              0.00728729473953983,
+              -0.007614264927794601
+            ],
+            "euclidean_error_m": 0.010539530113414344
+          },
+          {
+            "point_id": "G26",
+            "pixel": [
+              1194.896985441,
+              423.830478103
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              3.6
+            ],
+            "predicted_world_xy_m": [
+              1.1867322799246156,
+              3.5859618785787917
+            ],
+            "residual_xy_m": [
+              -0.013267720075384348,
+              -0.014038121421208416
+            ],
+            "euclidean_error_m": 0.019315828976136318
+          }
+        ]
+      },
+      "development_geometry_gate": {
+        "rmse_threshold_m": 0.03,
+        "maximum_threshold_m": 0.05,
+        "rmse_pass": true,
+        "maximum_pass": true,
+        "result": "PASS"
+      }
+    },
+    {
+      "branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+      "input_coordinate_domain": "UNDISTORTED_IMAGE_PX",
+      "fitting_method": "OpenCV cv2.findHomography method=0 least-squares DLT",
+      "fit_point_count": 8,
+      "H_pixel_to_world": [
+        [
+          0.020800896821360014,
+          0.005878184522286158,
+          -21.968611982334647
+        ],
+        [
+          0.001134256334563113,
+          -0.0277824313148755,
+          26.716724256268026
+        ],
+        [
+          0.00044178334705740935,
+          0.007209919588215674,
+          1.0
+        ]
+      ],
+      "homography_matrix_condition_number": 5241.626253658012,
+      "normalized_dlt_design_matrix_condition_number": 1274.4053959395583,
+      "normalized_dlt_singular_values": [
+        8.082605967560479,
+        5.016082394889466,
+        3.810798482630073,
+        3.3607539009597,
+        2.736285950432629,
+        2.311241250715752,
+        1.8866552551667675,
+        1.6457896343537166,
+        0.006342256548279568
+      ],
+      "fit_metrics": {
+        "point_count": 8,
+        "mean_error_m": 0.003265814419919438,
+        "rmse_m": 0.0035521526153336064,
+        "maximum_error_m": 0.005016090858808085,
+        "x_bias_m": 1.3546211830744483e-09,
+        "y_bias_m": -1.9506197321175322e-08,
+        "points": [
+          {
+            "point_id": "G00",
+            "pixel": [
+              774.703710161,
+              992.319218826
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              0.0
+            ],
+            "predicted_world_xy_m": [
+              -0.002476765875204318,
+              0.00310662005671627
+            ],
+            "residual_xy_m": [
+              -0.002476765875204318,
+              0.00310662005671627
+            ],
+            "euclidean_error_m": 0.003973091664858541
+          },
+          {
+            "point_id": "G02",
+            "pixel": [
+              853.8500378,
+              715.353810612
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              1.2
+            ],
+            "predicted_world_xy_m": [
+              -0.00042598427024789613,
+              1.1952728516035247
+            ],
+            "residual_xy_m": [
+              -0.00042598427024789613,
+              -0.004727148396475256
+            ],
+            "euclidean_error_m": 0.004746303252089695
+          },
+          {
+            "point_id": "G22",
+            "pixel": [
+              1242.713849402,
+              721.005519819
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              1.2
+            ],
+            "predicted_world_xy_m": [
+              1.2033007576895869,
+              1.199720107792546
+            ],
+            "residual_xy_m": [
+              0.0033007576895869306,
+              -0.00027989220745405774
+            ],
+            "euclidean_error_m": 0.0033126033528270114
+          },
+          {
+            "point_id": "G03",
+            "pixel": [
+              881.431174625,
+              618.836119296
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              1.8
+            ],
+            "predicted_world_xy_m": [
+              0.0006118161664579304,
+              1.7985699723082944
+            ],
+            "residual_xy_m": [
+              0.0006118161664579304,
+              -0.0014300276917056376
+            ],
+            "euclidean_error_m": 0.0015554093418082046
+          },
+          {
+            "point_id": "G23",
+            "pixel": [
+              1228.270544077,
+              621.510275945
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              1.8
+            ],
+            "predicted_world_xy_m": [
+              1.2009075294084295,
+              1.8000378333815297
+            ],
+            "residual_xy_m": [
+              0.0009075294084295304,
+              3.783338152962834e-05
+            ],
+            "euclidean_error_m": 0.0009083176712595764
+          },
+          {
+            "point_id": "G05",
+            "pixel": [
+              922.249629815,
+              475.995630779
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              3.0
+            ],
+            "predicted_world_xy_m": [
+              0.0026858210960403655,
+              3.004236452825641
+            ],
+            "residual_xy_m": [
+              0.0026858210960403655,
+              0.004236452825641113
+            ],
+            "euclidean_error_m": 0.005016090858808085
+          },
+          {
+            "point_id": "G25",
+            "pixel": [
+              1207.026355353,
+              475.165953069
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              3.0
+            ],
+            "predicted_world_xy_m": [
+              1.1961180664587738,
+              3.0014274059425916
+            ],
+            "residual_xy_m": [
+              -0.0038819335412261236,
+              0.0014274059425916086
+            ],
+            "euclidean_error_m": 0.004136048324601906
+          },
+          {
+            "point_id": "G16",
+            "pixel": [
+              1066.983122786,
+              421.315237175
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              3.6
+            ],
+            "predicted_world_xy_m": [
+              0.599278770163133,
+              3.597628600039578
+            ],
+            "residual_xy_m": [
+              -0.0007212298368669545,
+              -0.002371399960422238
+            ],
+            "euclidean_error_m": 0.002478650893102481
+          }
+        ]
+      },
+      "holdout_metrics": {
+        "point_count": 6,
+        "mean_error_m": 0.0037210905825788136,
+        "rmse_m": 0.004060211184377776,
+        "maximum_error_m": 0.007035324706266435,
+        "x_bias_m": 0.0005689057837728464,
+        "y_bias_m": -0.0012518869159682626,
+        "points": [
+          {
+            "point_id": "G12",
+            "pixel": [
+              1045.617597167,
+              718.140941861
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              1.2
+            ],
+            "predicted_world_xy_m": [
+              0.6028211936788105,
+              1.1975015922731465
+            ],
+            "residual_xy_m": [
+              0.0028211936788105074,
+              -0.002498407726853502
+            ],
+            "euclidean_error_m": 0.0037684446318025757
+          },
+          {
+            "point_id": "G13",
+            "pixel": [
+              1052.670529179,
+              620.156387117
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              1.8
+            ],
+            "predicted_world_xy_m": [
+              0.6019329724575698,
+              1.7993053376922377
+            ],
+            "residual_xy_m": [
+              0.0019329724575698481,
+              -0.0006946623077623837
+            ],
+            "euclidean_error_m": 0.002054005414683559
+          },
+          {
+            "point_id": "G14",
+            "pixel": [
+              1058.342202217,
+              541.361304967
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              2.4
+            ],
+            "predicted_world_xy_m": [
+              0.6010499410020207,
+              2.397592818918503
+            ],
+            "residual_xy_m": [
+              0.0010499410020207156,
+              -0.0024071810814967343
+            ],
+            "euclidean_error_m": 0.0026261943695850185
+          },
+          {
+            "point_id": "G15",
+            "pixel": [
+              1063.076758667,
+              475.585340473
+            ],
+            "expected_world_xy_m": [
+              0.6,
+              3.0
+            ],
+            "predicted_world_xy_m": [
+              0.6001566520411836,
+              3.0028301529891332
+            ],
+            "residual_xy_m": [
+              0.00015665204118364695,
+              0.00283015298913325
+            ],
+            "euclidean_error_m": 0.0028344851038428257
+          },
+          {
+            "point_id": "G06",
+            "pixel": [
+              937.582122816,
+              422.340959617
+            ],
+            "expected_world_xy_m": [
+              0.0,
+              3.6
+            ],
+            "predicted_world_xy_m": [
+              0.0037080447371753127,
+              3.5984784271894767
+            ],
+            "residual_xy_m": [
+              0.0037080447371753127,
+              -0.0015215728105233417
+            ],
+            "euclidean_error_m": 0.004008089269292469
+          },
+          {
+            "point_id": "G26",
+            "pixel": [
+              1199.05709827,
+              420.268326867
+            ],
+            "expected_world_xy_m": [
+              1.2,
+              3.6
+            ],
+            "predicted_world_xy_m": [
+              1.193744630785877,
+              3.5967803494416932
+            ],
+            "residual_xy_m": [
+              -0.006255369214122952,
+              -0.0032196505583068635
+            ],
+            "euclidean_error_m": 0.007035324706266435
+          }
+        ]
+      },
+      "development_geometry_gate": {
+        "rmse_threshold_m": 0.03,
+        "maximum_threshold_m": 0.05,
+        "rmse_pass": true,
+        "maximum_pass": true,
+        "result": "PASS"
+      }
+    }
+  ],
+  "selected_branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+  "selected_fit_metrics": {
+    "point_count": 8,
+    "mean_error_m": 0.003265814419919438,
+    "rmse_m": 0.0035521526153336064,
+    "maximum_error_m": 0.005016090858808085,
+    "x_bias_m": 1.3546211830744483e-09,
+    "y_bias_m": -1.9506197321175322e-08,
+    "points": [
+      {
+        "point_id": "G00",
+        "pixel": [
+          774.703710161,
+          992.319218826
+        ],
+        "expected_world_xy_m": [
+          0.0,
+          0.0
+        ],
+        "predicted_world_xy_m": [
+          -0.002476765875204318,
+          0.00310662005671627
+        ],
+        "residual_xy_m": [
+          -0.002476765875204318,
+          0.00310662005671627
+        ],
+        "euclidean_error_m": 0.003973091664858541
+      },
+      {
+        "point_id": "G02",
+        "pixel": [
+          853.8500378,
+          715.353810612
+        ],
+        "expected_world_xy_m": [
+          0.0,
+          1.2
+        ],
+        "predicted_world_xy_m": [
+          -0.00042598427024789613,
+          1.1952728516035247
+        ],
+        "residual_xy_m": [
+          -0.00042598427024789613,
+          -0.004727148396475256
+        ],
+        "euclidean_error_m": 0.004746303252089695
+      },
+      {
+        "point_id": "G22",
+        "pixel": [
+          1242.713849402,
+          721.005519819
+        ],
+        "expected_world_xy_m": [
+          1.2,
+          1.2
+        ],
+        "predicted_world_xy_m": [
+          1.2033007576895869,
+          1.199720107792546
+        ],
+        "residual_xy_m": [
+          0.0033007576895869306,
+          -0.00027989220745405774
+        ],
+        "euclidean_error_m": 0.0033126033528270114
+      },
+      {
+        "point_id": "G03",
+        "pixel": [
+          881.431174625,
+          618.836119296
+        ],
+        "expected_world_xy_m": [
+          0.0,
+          1.8
+        ],
+        "predicted_world_xy_m": [
+          0.0006118161664579304,
+          1.7985699723082944
+        ],
+        "residual_xy_m": [
+          0.0006118161664579304,
+          -0.0014300276917056376
+        ],
+        "euclidean_error_m": 0.0015554093418082046
+      },
+      {
+        "point_id": "G23",
+        "pixel": [
+          1228.270544077,
+          621.510275945
+        ],
+        "expected_world_xy_m": [
+          1.2,
+          1.8
+        ],
+        "predicted_world_xy_m": [
+          1.2009075294084295,
+          1.8000378333815297
+        ],
+        "residual_xy_m": [
+          0.0009075294084295304,
+          3.783338152962834e-05
+        ],
+        "euclidean_error_m": 0.0009083176712595764
+      },
+      {
+        "point_id": "G05",
+        "pixel": [
+          922.249629815,
+          475.995630779
+        ],
+        "expected_world_xy_m": [
+          0.0,
+          3.0
+        ],
+        "predicted_world_xy_m": [
+          0.0026858210960403655,
+          3.004236452825641
+        ],
+        "residual_xy_m": [
+          0.0026858210960403655,
+          0.004236452825641113
+        ],
+        "euclidean_error_m": 0.005016090858808085
+      },
+      {
+        "point_id": "G25",
+        "pixel": [
+          1207.026355353,
+          475.165953069
+        ],
+        "expected_world_xy_m": [
+          1.2,
+          3.0
+        ],
+        "predicted_world_xy_m": [
+          1.1961180664587738,
+          3.0014274059425916
+        ],
+        "residual_xy_m": [
+          -0.0038819335412261236,
+          0.0014274059425916086
+        ],
+        "euclidean_error_m": 0.004136048324601906
+      },
+      {
+        "point_id": "G16",
+        "pixel": [
+          1066.983122786,
+          421.315237175
+        ],
+        "expected_world_xy_m": [
+          0.6,
+          3.6
+        ],
+        "predicted_world_xy_m": [
+          0.599278770163133,
+          3.597628600039578
+        ],
+        "residual_xy_m": [
+          -0.0007212298368669545,
+          -0.002371399960422238
+        ],
+        "euclidean_error_m": 0.002478650893102481
+      }
+    ]
+  },
+  "selected_holdout_metrics": {
+    "point_count": 6,
+    "mean_error_m": 0.0037210905825788136,
+    "rmse_m": 0.004060211184377776,
+    "maximum_error_m": 0.007035324706266435,
+    "x_bias_m": 0.0005689057837728464,
+    "y_bias_m": -0.0012518869159682626,
+    "points": [
+      {
+        "point_id": "G12",
+        "pixel": [
+          1045.617597167,
+          718.140941861
+        ],
+        "expected_world_xy_m": [
+          0.6,
+          1.2
+        ],
+        "predicted_world_xy_m": [
+          0.6028211936788105,
+          1.1975015922731465
+        ],
+        "residual_xy_m": [
+          0.0028211936788105074,
+          -0.002498407726853502
+        ],
+        "euclidean_error_m": 0.0037684446318025757
+      },
+      {
+        "point_id": "G13",
+        "pixel": [
+          1052.670529179,
+          620.156387117
+        ],
+        "expected_world_xy_m": [
+          0.6,
+          1.8
+        ],
+        "predicted_world_xy_m": [
+          0.6019329724575698,
+          1.7993053376922377
+        ],
+        "residual_xy_m": [
+          0.0019329724575698481,
+          -0.0006946623077623837
+        ],
+        "euclidean_error_m": 0.002054005414683559
+      },
+      {
+        "point_id": "G14",
+        "pixel": [
+          1058.342202217,
+          541.361304967
+        ],
+        "expected_world_xy_m": [
+          0.6,
+          2.4
+        ],
+        "predicted_world_xy_m": [
+          0.6010499410020207,
+          2.397592818918503
+        ],
+        "residual_xy_m": [
+          0.0010499410020207156,
+          -0.0024071810814967343
+        ],
+        "euclidean_error_m": 0.0026261943695850185
+      },
+      {
+        "point_id": "G15",
+        "pixel": [
+          1063.076758667,
+          475.585340473
+        ],
+        "expected_world_xy_m": [
+          0.6,
+          3.0
+        ],
+        "predicted_world_xy_m": [
+          0.6001566520411836,
+          3.0028301529891332
+        ],
+        "residual_xy_m": [
+          0.00015665204118364695,
+          0.00283015298913325
+        ],
+        "euclidean_error_m": 0.0028344851038428257
+      },
+      {
+        "point_id": "G06",
+        "pixel": [
+          937.582122816,
+          422.340959617
+        ],
+        "expected_world_xy_m": [
+          0.0,
+          3.6
+        ],
+        "predicted_world_xy_m": [
+          0.0037080447371753127,
+          3.5984784271894767
+        ],
+        "residual_xy_m": [
+          0.0037080447371753127,
+          -0.0015215728105233417
+        ],
+        "euclidean_error_m": 0.004008089269292469
+      },
+      {
+        "point_id": "G26",
+        "pixel": [
+          1199.05709827,
+          420.268326867
+        ],
+        "expected_world_xy_m": [
+          1.2,
+          3.6
+        ],
+        "predicted_world_xy_m": [
+          1.193744630785877,
+          3.5967803494416932
+        ],
+        "residual_xy_m": [
+          -0.006255369214122952,
+          -0.0032196505583068635
+        ],
+        "euclidean_error_m": 0.007035324706266435
+      }
+    ]
+  },
+  "geometry_session_status": "NEW_SESSION_GEOMETRY_VALIDATED",
+  "aruco_floor_marker_metric_sanity_check": {
+    "status": "NOT_AVAILABLE",
+    "reason": "DICT_4X4_50 detected no floor marker IDs 1-4 in the current frame. ID0 is elevated and excluded.",
+    "homography_refit_from_aruco": false
+  }
+}

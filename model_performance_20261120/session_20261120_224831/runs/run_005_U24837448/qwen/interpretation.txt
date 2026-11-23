@@ -1,0 +1,49 @@
+{
+  "purpose": "Move a red cube to an empty pallet.",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "stacked cardboard boxes",
+    "bbox_2d": [415, 392, 488, 542]
+  },
+  "source_relation": "on",
+  "destination_meaning": "empty pallet",
+  "destination_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [100, 730, 265, 908],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "robot driving area",
+      "visual_evidence": ["yellow outer boundary line", "black floor"],
+      "bbox_2d": [240, 275, 700, 730],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "conveyor and robot arm workcell",
+      "visual_evidence": ["white inner boundary line", "conveyor belt", "robot arms"],
+      "bbox_2d": [100, 275, 265, 730],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "green pedestrian walkway",
+      "visual_evidence": ["green floor", "footprint symbols"],
+      "bbox_2d": [300, 50, 550, 275],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "truck unloading zone",
+      "visual_evidence": ["truck", "white dashed lines"],
+      "bbox_2d": [620, 0, 880, 275],
+      "robot_body_access": "unknown"
+    }
+  ],
+  "uncertainty": [
+    "The exact location of the red cube is not visible in the image.",
+    "The red cube might be on the stacked boxes or elsewhere in the driving area.",
+    "The destination pallet is inferred from the context of 'empty pallet' and the layout."
+  ]
+}

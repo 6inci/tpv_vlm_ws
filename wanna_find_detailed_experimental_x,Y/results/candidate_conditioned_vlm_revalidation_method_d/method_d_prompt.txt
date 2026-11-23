@@ -1,0 +1,17 @@
+You are given two images in this exact order.
+
+IMAGE 1 is the original full-resolution scene.
+IMAGE 2 is a crop taken directly from IMAGE 1 around candidate track_039. It is provided only to make the candidate easier to visually inspect.
+
+image_id: image_014_photo_08
+track_id: track_039
+candidate_region_in_image_1_normalized_1000: [504,481,682,604]
+
+Candidate bbox format is [x_min,y_min,x_max,y_max]. Coordinates are normalized INTEGER values from 0 to 1000, where IMAGE 1 top-left is [0,0] and bottom-right boundary is [1000,1000].
+
+First determine whether IMAGE 2 contains a currently visible physical object corresponding to track_039. If yes, identify it and locate the SAME object in IMAGE 1. Return the FULL visible-object bounding box in IMAGE 1 coordinates, not IMAGE 2 crop coordinates.
+
+Return JSON only with exactly one result for the supplied track_id:
+{"image_id":"image_014_photo_08","candidate_results":[{"track_id":"track_039","status":"VISIBLE_ENTITY_FOUND|NO_VISIBLE_ENTITY|AMBIGUOUS","visible_label":"specific visible name or null","semantic_type":"movable_object|static_obstacle|person|furniture|workspace_element|unknown","object_bbox_normalized_1000":[x_min,y_min,x_max,y_max] or null,"bbox_reference_image":"IMAGE_1","confidence_note":"short note"}]}
+
+For VISIBLE_ENTITY_FOUND, object_bbox_normalized_1000 must contain exactly four INTEGER coordinates in the normalized 0-1000 IMAGE 1 full-scene domain and bbox_reference_image must be exactly "IMAGE_1". Do NOT return IMAGE 2 crop coordinates. Valid example: [120,250,680,900]. Invalid: [0.12,0.25,0.68,0.90]. For NO_VISIBLE_ENTITY or AMBIGUOUS, use null bbox. If uncertain, return AMBIGUOUS. Do not return metric coordinates, physical size, a navigation role, a path, a robot action, or obstacle geometry.

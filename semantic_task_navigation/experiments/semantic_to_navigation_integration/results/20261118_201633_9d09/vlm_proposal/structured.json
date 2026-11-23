@@ -1,0 +1,206 @@
+{
+  "observed_objects": [
+    {
+      "label": "robot arm",
+      "count": 3,
+      "location_in_image": "top-left, middle-left, and bottom-left",
+      "visible_evidence": "three robotic arms with articulated arms, mounted on bases, positioned near conveyor belts or workstations"
+    },
+    {
+      "label": "dump truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "a white and black model dump truck parked near orange cones"
+    },
+    {
+      "label": "stack of cardboard boxes",
+      "count": 1,
+      "location_in_image": "center of the floor",
+      "visible_evidence": "a stack of brown cardboard boxes on a yellow-bordered platform"
+    },
+    {
+      "label": "cones",
+      "count": 10,
+      "location_in_image": "distributed across the floor, especially near green pathways and around the center and right side",
+      "visible_evidence": "orange traffic cones placed on the black floor surface to mark boundaries or paths"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "a whiteboard with Korean writing, partially legible, placed on the floor"
+    },
+    {
+      "label": "pallets with containers",
+      "count": 4,
+      "location_in_image": "right side of the floor, near the center-right",
+      "visible_evidence": "four pallets, each holding different colored cylindrical containers (black, gray, blue) or stacked boxes"
+    },
+    {
+      "label": "green pathway",
+      "count": 1,
+      "location_in_image": "top-center",
+      "visible_evidence": "a green strip with white bird-like symbols, bordered by orange cones"
+    },
+    {
+      "label": "green temporary structure",
+      "count": 2,
+      "location_in_image": "top-center and bottom-left",
+      "visible_evidence": "two green-framed temporary structures, possibly for storage or workstations"
+    },
+    {
+      "label": "electricity symbol",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "a white lightning bolt symbol on a white-bordered area"
+    },
+    {
+      "label": "gray grated floor panel",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "a gray panel with vertical slats, possibly for drainage or access"
+    },
+    {
+      "label": "black barrels",
+      "count": 4,
+      "location_in_image": "bottom-right and center-right",
+      "visible_evidence": "four black barrels on a pallet, near the electricity symbol and pallets"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "robotic workstations",
+      "bbox_2d": [
+        100,
+        100,
+        300,
+        700
+      ],
+      "observed_evidence": [
+        "three robot arms",
+        "green temporary structures",
+        "conveyor-like setup"
+      ],
+      "inference": "These areas are designated for robotic operations, likely for loading/unloading or assembly tasks.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "central staging area",
+      "bbox_2d": [
+        300,
+        300,
+        600,
+        600
+      ],
+      "observed_evidence": [
+        "stack of cardboard boxes",
+        "orange cone",
+        "yellow-bordered platform"
+      ],
+      "inference": "This is a central holding area for goods, possibly for sorting or temporary storage before dispatch.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_3",
+      "function_name": "loading/unloading zone",
+      "bbox_2d": [
+        600,
+        400,
+        900,
+        700
+      ],
+      "observed_evidence": [
+        "pallets with containers",
+        "dump truck",
+        "orange cones"
+      ],
+      "inference": "This area is designated for receiving or dispatching goods, likely to/from the dump truck or external transport.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_4",
+      "function_name": "exit/transportation zone",
+      "bbox_2d": [
+        600,
+        700,
+        900,
+        1000
+      ],
+      "observed_evidence": [
+        "electricity symbol",
+        "black barrels",
+        "gray grated panel"
+      ],
+      "inference": "This area may be for final dispatch or power-related operations, but lacks clear cargo handling cues.",
+      "confidence": "low"
+    },
+    {
+      "id": "area_5",
+      "function_name": "green pathway",
+      "bbox_2d": [
+        300,
+        100,
+        600,
+        300
+      ],
+      "observed_evidence": [
+        "green pathway",
+        "white bird-like symbols",
+        "orange cones"
+      ],
+      "inference": "This is a designated walkway or flow path for personnel or vehicles, marked with symbols and cones.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_6",
+      "function_name": "instruction area",
+      "bbox_2d": [
+        300,
+        700,
+        600,
+        1000
+      ],
+      "observed_evidence": [
+        "whiteboard with Korean writing",
+        "gray grated panel"
+      ],
+      "inference": "This area contains a whiteboard, likely for task instructions or notes, and may be used for temporary labeling or planning.",
+      "confidence": "medium"
+    }
+  ],
+  "task_analysis": {
+    "inferred_task_purpose": "The instruction asks to move a red cube to an appropriate location for shipment, implying a destination for outbound logistics.",
+    "info_given_by_instruction": [
+      "The destination must be a place where the red cube can be shipped out."
+    ],
+    "info_added_by_you": [
+      {
+        "statement": "The dump truck is the most likely vehicle for shipping out goods, so the loading/unloading zone (area_3) is the most suitable destination.",
+        "basis": "general_knowledge"
+      },
+      {
+        "statement": "The green pathway (area_5) is a flow path, not a storage or dispatch area, so it is not suitable for final shipment.",
+        "basis": "image"
+      },
+      {
+        "statement": "The central staging area (area_2) is for temporary holding, not final dispatch.",
+        "basis": "image"
+      }
+    ],
+    "place_needed_for_task": "A designated loading/unloading zone with access to a transport vehicle for outbound shipment.",
+    "decision": "proposed",
+    "destination_area_id": "area_3",
+    "reason": "The dump truck is present in area_3, which is the only area with clear outbound transport infrastructure, making it the logical destination for shipping goods."
+  },
+  "unknown_from_image": [
+    "The location of the red cube is not visible in the image.",
+    "The exact size or type of the red cube is not visible.",
+    "The current state of the whiteboard text is not fully legible."
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is present and accessible in the current scene.",
+    "Whether the destination area (area_3) is clear and accessible for loading the red cube onto the dump truck."
+  ]
+}

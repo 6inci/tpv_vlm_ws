@@ -1,0 +1,39 @@
+{
+  "case_id": "ambiguous_target",
+  "category": "ambiguous_target",
+  "core_metric": true,
+  "run": 1,
+  "instruction": "저걸 A구역으로 옮겨",
+  "raw_model_output": "{\"action_phrase\":\"옮겨\",\"target_phrase\":\"저걸\",\"destination_phrase\":\"A구역\"}",
+  "parsed": {
+    "action_phrase": "옮겨",
+    "target_phrase": "저걸",
+    "destination_phrase": "A구역"
+  },
+  "validated": {
+    "status": "TARGET_AMBIGUOUS",
+    "raw_instruction": "저걸 A구역으로 옮겨",
+    "error_code": "TARGET_AMBIGUOUS",
+    "reason": "target phrase is referential: 저걸",
+    "parsed_fields": {
+      "action_phrase": "옮겨",
+      "target_phrase": "저걸",
+      "destination_phrase": "A구역"
+    },
+    "action": {
+      "surface_phrase": "옮겨",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target_grounding_status": "NOT_RUN",
+    "zone_resolution_status": "NOT_RUN",
+    "path_status": "NOT_RUN"
+  },
+  "integrated": null,
+  "inference_sec": 5.39087798899709,
+  "expected": {
+    "status": "TARGET_AMBIGUOUS",
+    "error_code": "TARGET_AMBIGUOUS"
+  },
+  "matches_expected": true
+}

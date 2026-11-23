@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "assessment_time": "2026-09-21T01:37:47+09:00",
+  "result": "PARTIAL",
+  "status": "WAITING_FOR_ARUCO_PHYSICAL_MEASUREMENTS",
+  "camera_access": "READY",
+  "reference_frame": "ACQUIRED",
+  "aruco_detections": "AVAILABLE",
+  "dictionary": "DICT_4X4_50",
+  "floor_reference_marker_candidates": [1, 2, 3, 4],
+  "robot_marker_ids": [0],
+  "unknown_marker_ids": [],
+  "image_plane_geometry": {
+    "candidate_floor_marker_count": 4,
+    "available_image_corner_count": 16,
+    "floor_corner_bounds_raw_px": [651.0, 544.0, 1244.0, 1069.0],
+    "floor_center_bounds_raw_px": [693.25, 554.75, 1204.25, 1041.0],
+    "floor_corner_convex_hull_area_px2": 248045.5,
+    "floor_corner_convex_hull_image_ratio": 0.11962070794753087,
+    "floor_center_convex_hull_area_px2": 198969.1875,
+    "floor_center_convex_hull_image_ratio": 0.09595350477430556,
+    "minimum_image_edge_margin_px": 10.0,
+    "non_collinear": true,
+    "distribution": "FOUR_MARKER_TRAPEZOID_ACROSS_VISIBLE_CENTRAL_FLOOR",
+    "coverage_assessment": "IMAGE_PLANE_MATHEMATICALLY_NON_DEGENERATE; central floor coverage is broad, but near markers are close to the lower image boundary and full-workspace robustness is not yet validated."
+  },
+  "physical_information": {
+    "floor_plane_placement": "VISUALLY_SUPPORTED_FOR_IDS_1_2_3_4",
+    "workspace_reference_intent": "PENDING_USER_CONFIRMATION",
+    "marker_side_lengths": "UNKNOWN_CONFLICTING_187_188_MM_VALUES_APPLY_TO_LEGACY_ROBOT_REFERENCE_AND_ARE_NOT_REUSED",
+    "world_origin": "UNKNOWN",
+    "world_axes": "UNKNOWN",
+    "marker_world_centers": "UNKNOWN",
+    "marker_world_yaws": "UNKNOWN"
+  },
+  "required_human_measurements": [
+    "Confirm that marker IDs 1, 2, 3, and 4 are fixed floor workspace-reference markers and will not move during this geometry session.",
+    "Define the world origin physically and define the +X and +Y floor directions.",
+    "Measure the black encoded-square side length for IDs 1, 2, 3, and 4, or confirm they share one measured side length.",
+    "Provide the world-frame center coordinate (X, Y) for each of IDs 1, 2, 3, and 4.",
+    "Provide the in-plane yaw of each marker relative to +X, or confirm a shared alignment and identify which marker edge follows +X."
+  ],
+  "measurements_not_required_if_above_are_provided": [
+    "Pairwise marker distances are not additionally required because they are derivable from the measured world centers.",
+    "Robot marker ID 0 size and pose are not required for the floor Homography bootstrap."
+  ],
+  "potential_correspondence_count_after_measurement": 16,
+  "current_metric_correspondence_count": 0,
+  "two_marker_policy": "NOT_APPLICABLE_FOUR_FLOOR_MARKER_CANDIDATES_DETECTED",
+  "homography_status": "NOT_COMPUTED_PHYSICAL_WORLD_CORRESPONDENCES_MISSING",
+  "legacy_homography_reused": false,
+  "independent_validation_required_after_fit": true,
+  "roi_policy": "GLOBAL_CAMERA_WORLD_GEOMETRY_AND_FUTURE_ACTIVE_ROI_REMAIN_SEPARATE",
+  "qwen_inference_runs": 0,
+  "navigation": "NOT_RUN",
+  "step32": "NOT_STARTED",
+  "existing_step31n_acquisition_target": "DESIGN_EVIDENCE_ONLY_NOT_OBSERVED"
+}

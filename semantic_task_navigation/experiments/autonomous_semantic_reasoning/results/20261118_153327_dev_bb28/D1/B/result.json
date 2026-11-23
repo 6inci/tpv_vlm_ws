@@ -1,0 +1,48 @@
+{
+  "image_id": "D1",
+  "image_role": "dev",
+  "condition": "B",
+  "prompt_version": "v0",
+  "prompt_sha256": "0b1dcf1933e2360307d5247c8c4188c5e3aa6f7a61e23b949303d58f76ff114e",
+  "image_sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+  "image_file": "data/images/undistorted_26007129092710.png",
+  "model_input_audit": {
+    "worker_call_keys": [
+      "image_path",
+      "max_new_tokens",
+      "prompt"
+    ],
+    "n_images": 1,
+    "prompt_sha256": "0b1dcf1933e2360307d5247c8c4188c5e3aa6f7a61e23b949303d58f76ff114e"
+  },
+  "call": {
+    "latency_s": 4.413,
+    "n_input_tokens": 2812,
+    "n_output_tokens": 116,
+    "hit_max_new_tokens": false,
+    "peak_allocated_gib": 9.002,
+    "image_size": [
+      1920,
+      1080
+    ],
+    "max_new_tokens": 2400,
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  },
+  "status": "OK",
+  "error": null,
+  "consistency_issues": [],
+  "structured": {
+    "observed_objects": [],
+    "functional_areas": [],
+    "task_analysis": {
+      "place_needed_for_task": "a designated unloading zone for a truck",
+      "decision": "withheld",
+      "destination_area_id": null,
+      "reason": "The instruction requires placing a red cube at a truck's unloading area, but no red cube is visible in the image, and no such designated area is marked or identifiable by context or labeling."
+    },
+    "unknown_from_image": [],
+    "physical_conditions_to_verify": []
+  },
+  "decision": "withheld"
+}

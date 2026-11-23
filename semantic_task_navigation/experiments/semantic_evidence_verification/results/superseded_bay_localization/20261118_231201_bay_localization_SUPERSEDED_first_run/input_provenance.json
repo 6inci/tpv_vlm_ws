@@ -1,0 +1,120 @@
+{
+  "purpose": "connect Qwen's stored semantic destination to an image-space candidate region; no model was run",
+  "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "image": {
+    "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/natural_language_abstraction/data/images/undistorted_25070552942982.png",
+    "sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+    "size": [
+      1920,
+      1080
+    ]
+  },
+  "qwen_proposal": {
+    "stored_in": [
+      "20261118_203058_46d8",
+      "20261118_203426_260d"
+    ],
+    "raw_response_file": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_203058_46d8/vlm_proposal/raw_response.txt",
+    "raw_response_sha256_16": "d4635d4a54f5806c",
+    "function_name": "loading dock",
+    "box_px": [
+      1248.0,
+      0.0,
+      1824.0,
+      280.8
+    ],
+    "observed_evidence": [
+      "truck",
+      "cones",
+      "barriers"
+    ],
+    "same_reply_in_natural_language_abstraction_exploratory_E1_L2": true
+  },
+  "detections_reused": [
+    {
+      "object_id": "truck_1",
+      "class": "truck",
+      "bbox_xyxy": [
+        1447.3,
+        0.2,
+        1687.4,
+        149.6
+      ],
+      "basis": "v0.2 grounding_dino (score 0.56) + Qwen crop verification 'yes' [run 20261118_203058_46d8]"
+    },
+    {
+      "object_id": "traffic_cone_1",
+      "class": "traffic_cone",
+      "bbox_xyxy": [
+        1284.1,
+        155.3,
+        1316.4,
+        200.1
+      ],
+      "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]"
+    },
+    {
+      "object_id": "traffic_cone_2",
+      "class": "traffic_cone",
+      "bbox_xyxy": [
+        1309.3,
+        250.9,
+        1341.6,
+        294.0
+      ],
+      "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]"
+    },
+    {
+      "object_id": "traffic_cone_3",
+      "class": "traffic_cone",
+      "bbox_xyxy": [
+        1280.8,
+        68.6,
+        1312.5,
+        114.1
+      ],
+      "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]"
+    },
+    {
+      "object_id": "traffic_cone_4",
+      "class": "traffic_cone",
+      "bbox_xyxy": [
+        1416.0,
+        249.4,
+        1450.0,
+        292.7
+      ],
+      "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]"
+    },
+    {
+      "object_id": "traffic_cone_5",
+      "class": "traffic_cone",
+      "bbox_xyxy": [
+        1676.6,
+        240.6,
+        1712.5,
+        284.6
+      ],
+      "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]"
+    },
+    {
+      "object_id": "traffic_cone_6",
+      "class": "traffic_cone",
+      "bbox_xyxy": [
+        1524.7,
+        243.8,
+        1560.5,
+        288.8
+      ],
+      "basis": "Grounding DINO + Qwen crop verification [run 20261118_203426_260d]"
+    }
+  ],
+  "not_used_as_input": [
+    "any human-typed bay or answer coordinates",
+    "the reference zone Z06 / semantic_reference_zones",
+    "the driving map",
+    "a new Qwen or Grounding DINO call",
+    "the reviewer's own estimate of the bay"
+  ],
+  "models_run_in_this_step": []
+}

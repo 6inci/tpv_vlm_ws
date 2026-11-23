@@ -1,0 +1,154 @@
+{
+ "checks": [
+  {
+   "id": "required_files_present",
+   "status": "PASS",
+   "detail": {
+    "maps/map.pgm": true,
+    "maps/map.yaml": true,
+    "paths/path_A.csv": true,
+    "paths/path_B.csv": true,
+    "paths/waypoints.yaml": true,
+    "figures/path_planning_photo.png": true,
+    "figures/path_planning_map.png": true,
+    "validation/validation.json": true
+   }
+  },
+  {
+   "id": "map_yaml_format_and_relative_image",
+   "status": "PASS",
+   "detail": {
+    "image": "map.pgm",
+    "mode": "trinary",
+    "resolution": 0.02,
+    "origin": [
+     -0.1,
+     -0.1,
+     0.0
+    ],
+    "negate": 0,
+    "occupied_thresh": 0.65,
+    "free_thresh": 0.196
+   }
+  },
+  {
+   "id": "map_pgm_format",
+   "status": "PASS",
+   "detail": {
+    "magic": "P5",
+    "width": 168,
+    "height": 115,
+    "maxval": 255,
+    "payload_bytes": 19320
+   }
+  },
+  {
+   "id": "map_identical_to_step2",
+   "status": "PASS",
+   "detail": {
+    "step2_run": "/home/binci/vlm_ws/semantic_task_navigation/experiments/navigation_handoff/results/20261120_000114_step2_map",
+    "map.pgm": "3737df031a7f62b5"
+   }
+  },
+  {
+   "id": "path_A_coordinates_match_map",
+   "status": "PASS",
+   "detail": {
+    "points": 103,
+    "row_col_mismatch": [],
+    "not_on_free_pgm_cell": [],
+    "floor_map_mismatch": [],
+    "image_px_mismatch": [],
+    "non_4_connected_step": [],
+    "rule": "col = floor((x - origin_x) / res), row = H - 1 - floor((y - origin_y) / res); every step is one cell along x or y"
+   }
+  },
+  {
+   "id": "path_B_coordinates_match_map",
+   "status": "PASS",
+   "detail": {
+    "points": 88,
+    "row_col_mismatch": [],
+    "not_on_free_pgm_cell": [],
+    "floor_map_mismatch": [],
+    "image_px_mismatch": [],
+    "non_4_connected_step": [],
+    "rule": "col = floor((x - origin_x) / res), row = H - 1 - floor((y - origin_y) / res); every step is one cell along x or y"
+   }
+  },
+  {
+   "id": "start_end_points",
+   "status": "PASS",
+   "detail": {
+    "path_A": [
+     [
+      2.95,
+      0.53
+     ],
+     [
+      2.65,
+      0.51
+     ]
+    ],
+    "path_B": [
+     [
+      2.65,
+      0.51
+     ],
+     [
+      0.93,
+      0.49
+     ]
+    ],
+    "approved_robot_base_link_map_m": [
+     2.9446,
+     0.539
+    ],
+    "start_cell_snap_cm": 1.05,
+    "grasp_stop": {
+     "x_m": 2.65,
+     "y_m": 0.51,
+     "yaw_deg": 270.0,
+     "status": "UNVERIFIED"
+    },
+    "place_stop": {
+     "x_m": 0.93,
+     "y_m": 0.49,
+     "yaw_deg": 270.0,
+     "status": "UNVERIFIED"
+    }
+   }
+  },
+  {
+   "id": "waypoints_order_and_direction",
+   "status": "PASS",
+   "detail": {
+    "issues": [],
+    "n_poses": {
+     "A": 6,
+     "B": 3
+    }
+   }
+  },
+  {
+   "id": "figures_from_same_run",
+   "status": "PASS",
+   "detail": "both figures were rendered by the planning run from the floor coordinates of path_*.csv; csv image px = inverse floor transform of the same floor points (checked above)"
+  },
+  {
+   "id": "unverified_items_recorded",
+   "status": "PASS",
+   "detail": {
+    "driving_status": "NOT_FOR_DRIVING: margin below the position uncertainty",
+    "grasp_alignment": "UNVERIFIED",
+    "placement_alignment": "UNVERIFIED",
+    "body_overhang_objects": "UNVERIFIED (not mapped beyond the yellow line)"
+   }
+  },
+  {
+   "id": "nav2_map_server_load",
+   "status": "NOT_STARTED",
+   "detail": "not run (nav2 not installed here; user decision: format check only)"
+  }
+ ]
+}

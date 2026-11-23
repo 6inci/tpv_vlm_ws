@@ -1,0 +1,651 @@
+{
+  "status": "PASS",
+  "model": "facebook/sam2.1-hiera-tiny",
+  "prompt_source": "Grounding DINO boxes after score/area/category/NMS filtering",
+  "attempts": [
+    {
+      "attempt": 1,
+      "hypothesis": "local cache",
+      "status": "BLOCKED",
+      "error": "OSError(\"Can't load image processor for 'facebook/sam2.1-hiera-tiny'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'facebook/sam2.1-hiera-tiny' is the correct path to a directory containing a preprocessor_config.json file\")"
+    },
+    {
+      "attempt": 2,
+      "hypothesis": "download through installed Transformers; no package change",
+      "status": "PASS"
+    },
+    {
+      "attempt": 3,
+      "hypothesis": "bbox-prompt inference on cuda",
+      "status": "PASS",
+      "masks": 39
+    }
+  ],
+  "selected_detections": 39,
+  "segments": [
+    {
+      "detection_id": "gd_002",
+      "label": "traffic cone",
+      "canonical_category": "traffic_cone",
+      "bbox_px": [
+        1363.02,
+        340.44,
+        1411.72,
+        416.68
+      ],
+      "detection_score": 0.792195,
+      "mask_path": "08_sam2/masks/gd_002.png",
+      "mask_area_px": 1871,
+      "bbox_area_px": 3712.888000000004,
+      "mask_to_bbox_area_ratio": 0.5039203983529796
+    },
+    {
+      "detection_id": "gd_003",
+      "label": "traffic cone",
+      "canonical_category": "traffic_cone",
+      "bbox_px": [
+        1687.0,
+        486.24,
+        1746.52,
+        570.36
+      ],
+      "detection_score": 0.789968,
+      "mask_path": "08_sam2/masks/gd_003.png",
+      "mask_area_px": 2443,
+      "bbox_area_px": 5006.822399999999,
+      "mask_to_bbox_area_ratio": 0.4879342235107042
+    },
+    {
+      "detection_id": "gd_001",
+      "label": "traffic cone",
+      "canonical_category": "traffic_cone",
+      "bbox_px": [
+        1653.69,
+        360.32,
+        1708.56,
+        437.66
+      ],
+      "detection_score": 0.759459,
+      "mask_path": "08_sam2/masks/gd_001.png",
+      "mask_area_px": 2042,
+      "bbox_area_px": 4243.645799999993,
+      "mask_to_bbox_area_ratio": 0.48119001826212815
+    },
+    {
+      "detection_id": "gd_004",
+      "label": "truck",
+      "canonical_category": "truck",
+      "bbox_px": [
+        1403.31,
+        170.85,
+        1688.08,
+        354.56
+      ],
+      "detection_score": 0.724189,
+      "mask_path": "08_sam2/masks/gd_004.png",
+      "mask_area_px": 38478,
+      "bbox_area_px": 52315.0967,
+      "mask_to_bbox_area_ratio": 0.735504709484748
+    },
+    {
+      "detection_id": "gd_006",
+      "label": "shelf",
+      "canonical_category": "rack",
+      "bbox_px": [
+        878.65,
+        87.97,
+        1110.54,
+        319.31
+      ],
+      "detection_score": 0.61227,
+      "mask_path": "08_sam2/masks/gd_006.png",
+      "mask_area_px": 45905,
+      "bbox_area_px": 53645.4326,
+      "mask_to_bbox_area_ratio": 0.8557112465153277
+    },
+    {
+      "detection_id": "gd_016",
+      "label": "shelf safety",
+      "canonical_category": "rack",
+      "bbox_px": [
+        609.08,
+        71.57,
+        854.07,
+        314.23
+      ],
+      "detection_score": 0.606633,
+      "mask_path": "08_sam2/masks/gd_016.png",
+      "mask_area_px": 42779,
+      "bbox_area_px": 59449.273400000005,
+      "mask_to_bbox_area_ratio": 0.7195882733867021
+    },
+    {
+      "detection_id": "gd_011",
+      "label": "safety fence",
+      "canonical_category": "fence",
+      "bbox_px": [
+        248.02,
+        213.45,
+        470.71,
+        650.14
+      ],
+      "detection_score": 0.583336,
+      "mask_path": "08_sam2/masks/gd_011.png",
+      "mask_area_px": 30882,
+      "bbox_area_px": 97246.49609999999,
+      "mask_to_bbox_area_ratio": 0.31756414100764707
+    },
+    {
+      "detection_id": "gd_014",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        913.19,
+        238.76,
+        963.41,
+        284.6
+      ],
+      "detection_score": 0.549114,
+      "mask_path": "08_sam2/masks/gd_014.png",
+      "mask_area_px": 1938,
+      "bbox_area_px": 2302.084799999998,
+      "mask_to_bbox_area_ratio": 0.8418456175028834
+    },
+    {
+      "detection_id": "gd_007",
+      "label": "barrel",
+      "canonical_category": "drum",
+      "bbox_px": [
+        1556.58,
+        862.06,
+        1645.99,
+        978.94
+      ],
+      "detection_score": 0.547785,
+      "mask_path": "08_sam2/masks/gd_007.png",
+      "mask_area_px": 7821,
+      "bbox_area_px": 10450.24080000002,
+      "mask_to_bbox_area_ratio": 0.7484038071160988
+    },
+    {
+      "detection_id": "gd_020",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        771.5,
+        237.48,
+        824.56,
+        281.39
+      ],
+      "detection_score": 0.538536,
+      "mask_path": "08_sam2/masks/gd_020.png",
+      "mask_area_px": 2052,
+      "bbox_area_px": 2329.8645999999976,
+      "mask_to_bbox_area_ratio": 0.8807378763555626
+    },
+    {
+      "detection_id": "gd_015",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        1031.43,
+        246.37,
+        1077.93,
+        287.82
+      ],
+      "detection_score": 0.538517,
+      "mask_path": "08_sam2/masks/gd_015.png",
+      "mask_area_px": 1790,
+      "bbox_area_px": 1927.4249999999995,
+      "mask_to_bbox_area_ratio": 0.9287002088278405
+    },
+    {
+      "detection_id": "gd_009",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        909.08,
+        179.83,
+        962.18,
+        228.48
+      ],
+      "detection_score": 0.536624,
+      "mask_path": "08_sam2/masks/gd_009.png",
+      "mask_area_px": 2268,
+      "bbox_area_px": 2583.314999999994,
+      "mask_to_bbox_area_ratio": 0.8779417144250721
+    },
+    {
+      "detection_id": "gd_010",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        653.61,
+        174.31,
+        713.89,
+        223.13
+      ],
+      "detection_score": 0.533514,
+      "mask_path": "08_sam2/masks/gd_010.png",
+      "mask_area_px": 2402,
+      "bbox_area_px": 2942.869599999998,
+      "mask_to_bbox_area_ratio": 0.8162101372075751
+    },
+    {
+      "detection_id": "gd_026",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        766.69,
+        175.75,
+        820.04,
+        224.76
+      ],
+      "detection_score": 0.521795,
+      "mask_path": "08_sam2/masks/gd_026.png",
+      "mask_area_px": 2101,
+      "bbox_area_px": 2614.683499999995,
+      "mask_to_bbox_area_ratio": 0.803538936930609
+    },
+    {
+      "detection_id": "gd_018",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        709.33,
+        236.14,
+        764.18,
+        281.42
+      ],
+      "detection_score": 0.521692,
+      "mask_path": "08_sam2/masks/gd_018.png",
+      "mask_area_px": 2160,
+      "bbox_area_px": 2483.6079999999974,
+      "mask_to_bbox_area_ratio": 0.8697024651233215
+    },
+    {
+      "detection_id": "gd_012",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        661.02,
+        234.59,
+        712.2,
+        280.35
+      ],
+      "detection_score": 0.520195,
+      "mask_path": "08_sam2/masks/gd_012.png",
+      "mask_area_px": 1914,
+      "bbox_area_px": 2341.996800000004,
+      "mask_to_bbox_area_ratio": 0.8172513301469911
+    },
+    {
+      "detection_id": "gd_008",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        968.15,
+        238.26,
+        1020.11,
+        285.9
+      ],
+      "detection_score": 0.51759,
+      "mask_path": "08_sam2/masks/gd_008.png",
+      "mask_area_px": 2036,
+      "bbox_area_px": 2475.374400000001,
+      "mask_to_bbox_area_ratio": 0.8225018405296585
+    },
+    {
+      "detection_id": "gd_022",
+      "label": "barrel",
+      "canonical_category": "drum",
+      "bbox_px": [
+        1549.92,
+        802.15,
+        1632.34,
+        903.24
+      ],
+      "detection_score": 0.51194,
+      "mask_path": "08_sam2/masks/gd_022.png",
+      "mask_area_px": 4684,
+      "bbox_area_px": 8331.837799999987,
+      "mask_to_bbox_area_ratio": 0.5621808912314649
+    },
+    {
+      "detection_id": "gd_019",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        713.46,
+        177.17,
+        765.64,
+        222.49
+      ],
+      "detection_score": 0.510931,
+      "mask_path": "08_sam2/masks/gd_019.png",
+      "mask_area_px": 2121,
+      "bbox_area_px": 2364.797599999999,
+      "mask_to_bbox_area_ratio": 0.8969055110678398
+    },
+    {
+      "detection_id": "gd_005",
+      "label": "barrel",
+      "canonical_category": "drum",
+      "bbox_px": [
+        1631.49,
+        870.94,
+        1722.9,
+        983.46
+      ],
+      "detection_score": 0.506358,
+      "mask_path": "08_sam2/masks/gd_005.png",
+      "mask_area_px": 7226,
+      "bbox_area_px": 10285.453200000007,
+      "mask_to_bbox_area_ratio": 0.7025456107271962
+    },
+    {
+      "detection_id": "gd_013",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        967.15,
+        179.5,
+        1020.75,
+        228.39
+      ],
+      "detection_score": 0.501561,
+      "mask_path": "08_sam2/masks/gd_013.png",
+      "mask_area_px": 2205,
+      "bbox_area_px": 2620.5040000000004,
+      "mask_to_bbox_area_ratio": 0.8414411884126106
+    },
+    {
+      "detection_id": "gd_017",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        1516.91,
+        628.19,
+        1609.9,
+        730.31
+      ],
+      "detection_score": 0.500769,
+      "mask_path": "08_sam2/masks/gd_017.png",
+      "mask_area_px": 7506,
+      "bbox_area_px": 9496.138799999992,
+      "mask_to_bbox_area_ratio": 0.7904265257790889
+    },
+    {
+      "detection_id": "gd_023",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        1030.98,
+        182.39,
+        1080.34,
+        230.23
+      ],
+      "detection_score": 0.481499,
+      "mask_path": "08_sam2/masks/gd_023.png",
+      "mask_area_px": 2078,
+      "bbox_area_px": 2361.3823999999954,
+      "mask_to_bbox_area_ratio": 0.8799930074857863
+    },
+    {
+      "detection_id": "gd_032",
+      "label": "mobile robot",
+      "canonical_category": "mobile_robot",
+      "bbox_px": [
+        713.77,
+        721.19,
+        839.75,
+        907.47
+      ],
+      "detection_score": 0.471131,
+      "mask_path": "08_sam2/masks/gd_032.png",
+      "mask_area_px": 12174,
+      "bbox_area_px": 23467.5544,
+      "mask_to_bbox_area_ratio": 0.518758784681884
+    },
+    {
+      "detection_id": "gd_024",
+      "label": "cart trolley",
+      "canonical_category": "cart",
+      "bbox_px": [
+        1433.66,
+        607.64,
+        1680.16,
+        775.49
+      ],
+      "detection_score": 0.465101,
+      "mask_path": "08_sam2/masks/gd_024.png",
+      "mask_area_px": 16972,
+      "bbox_area_px": 41375.02500000001,
+      "mask_to_bbox_area_ratio": 0.4101991479159226
+    },
+    {
+      "detection_id": "gd_027",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        761.73,
+        102.84,
+        821.15,
+        163.28
+      ],
+      "detection_score": 0.462241,
+      "mask_path": "08_sam2/masks/gd_027.png",
+      "mask_area_px": 3054,
+      "bbox_area_px": 3591.3447999999976,
+      "mask_to_bbox_area_ratio": 0.8503778306109739
+    },
+    {
+      "detection_id": "gd_031",
+      "label": "barrel",
+      "canonical_category": "drum",
+      "bbox_px": [
+        1631.29,
+        815.66,
+        1709.35,
+        885.73
+      ],
+      "detection_score": 0.452088,
+      "mask_path": "08_sam2/masks/gd_031.png",
+      "mask_area_px": 3681,
+      "bbox_area_px": 5469.6642,
+      "mask_to_bbox_area_ratio": 0.6729846413606159
+    },
+    {
+      "detection_id": "gd_040",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        1565.12,
+        241.92,
+        1620.96,
+        291.6
+      ],
+      "detection_score": 0.422921,
+      "mask_path": "08_sam2/masks/gd_040.png",
+      "mask_area_px": 1650,
+      "bbox_area_px": 2774.1312000000094,
+      "mask_to_bbox_area_ratio": 0.5947808092133474
+    },
+    {
+      "detection_id": "gd_029",
+      "label": "desk",
+      "canonical_category": "workbench",
+      "bbox_px": [
+        1136.07,
+        187.96,
+        1372.18,
+        322.21
+      ],
+      "detection_score": 0.415944,
+      "mask_path": "08_sam2/masks/gd_029.png",
+      "mask_area_px": 16073,
+      "bbox_area_px": 31697.76750000001,
+      "mask_to_bbox_area_ratio": 0.5070704111890528
+    },
+    {
+      "detection_id": "gd_039",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        907.92,
+        96.97,
+        972.87,
+        166.36
+      ],
+      "detection_score": 0.41566,
+      "mask_path": "08_sam2/masks/gd_039.png",
+      "mask_area_px": 3676,
+      "bbox_area_px": 4506.880500000004,
+      "mask_to_bbox_area_ratio": 0.8156417726185544
+    },
+    {
+      "detection_id": "gd_030",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        1599.52,
+        177.51,
+        1693.55,
+        286.39
+      ],
+      "detection_score": 0.412484,
+      "mask_path": "08_sam2/masks/gd_030.png",
+      "mask_area_px": 7145,
+      "bbox_area_px": 10237.986399999996,
+      "mask_to_bbox_area_ratio": 0.6978911399999518
+    },
+    {
+      "detection_id": "gd_049",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        651.5,
+        94.26,
+        714.84,
+        162.19
+      ],
+      "detection_score": 0.406849,
+      "mask_path": "08_sam2/masks/gd_049.png",
+      "mask_area_px": 3327,
+      "bbox_area_px": 4302.686200000002,
+      "mask_to_bbox_area_ratio": 0.7732378903207021
+    },
+    {
+      "detection_id": "gd_037",
+      "label": "pallet rack",
+      "canonical_category": "rack",
+      "bbox_px": [
+        1398.32,
+        812.21,
+        1560.75,
+        996.54
+      ],
+      "detection_score": 0.398593,
+      "mask_path": "08_sam2/masks/gd_037.png",
+      "mask_area_px": 24968,
+      "bbox_area_px": 29940.7219,
+      "mask_to_bbox_area_ratio": 0.8339144287633224
+    },
+    {
+      "detection_id": "gd_021",
+      "label": "robot arm",
+      "canonical_category": "manipulator",
+      "bbox_px": [
+        459.2,
+        348.17,
+        628.38,
+        474.4
+      ],
+      "detection_score": 0.396482,
+      "mask_path": "08_sam2/masks/gd_021.png",
+      "mask_area_px": 11255,
+      "bbox_area_px": 21355.591399999994,
+      "mask_to_bbox_area_ratio": 0.5270282517205308
+    },
+    {
+      "detection_id": "gd_035",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        1033.61,
+        88.49,
+        1085.32,
+        169.05
+      ],
+      "detection_score": 0.385652,
+      "mask_path": "08_sam2/masks/gd_035.png",
+      "mask_area_px": 3474,
+      "bbox_area_px": 4165.757600000004,
+      "mask_to_bbox_area_ratio": 0.8339419461180355
+    },
+    {
+      "detection_id": "gd_043",
+      "label": "workbench cart trolley",
+      "canonical_category": "workbench",
+      "bbox_px": [
+        1027.13,
+        736.66,
+        1239.61,
+        903.5
+      ],
+      "detection_score": 0.374389,
+      "mask_path": "08_sam2/masks/gd_043.png",
+      "mask_area_px": 25133,
+      "bbox_area_px": 35450.16319999997,
+      "mask_to_bbox_area_ratio": 0.7089671169694367
+    },
+    {
+      "detection_id": "gd_034",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        710.01,
+        67.91,
+        777.03,
+        160.54
+      ],
+      "detection_score": 0.369292,
+      "mask_path": "08_sam2/masks/gd_034.png",
+      "mask_area_px": 4672,
+      "bbox_area_px": 6208.062599999998,
+      "mask_to_bbox_area_ratio": 0.7525697308529075
+    },
+    {
+      "detection_id": "gd_046",
+      "label": "cardboard box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        970.19,
+        73.57,
+        1035.43,
+        168.0
+      ],
+      "detection_score": 0.359901,
+      "mask_path": "08_sam2/masks/gd_046.png",
+      "mask_area_px": 5300,
+      "bbox_area_px": 6160.613200000002,
+      "mask_to_bbox_area_ratio": 0.8603039710397657
+    },
+    {
+      "detection_id": "gd_044",
+      "label": "box storage",
+      "canonical_category": "box",
+      "bbox_px": [
+        661.74,
+        93.56,
+        714.39,
+        120.01
+      ],
+      "detection_score": 0.358501,
+      "mask_path": "08_sam2/masks/gd_044.png",
+      "mask_area_px": 958,
+      "bbox_area_px": 1392.5924999999995,
+      "mask_to_bbox_area_ratio": 0.6879255776546264
+    }
+  ]
+}

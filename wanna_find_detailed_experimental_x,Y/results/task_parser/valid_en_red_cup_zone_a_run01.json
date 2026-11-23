@@ -1,0 +1,82 @@
+{
+  "case_id": "valid_en_red_cup_zone_a",
+  "category": "valid",
+  "run": 1,
+  "instruction": "Move the red cup to Zone A.",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":\"red cup\",\"destination_phrase\":\"Zone A\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": "red cup",
+    "destination_phrase": "Zone A"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "Move the red cup to Zone A.",
+    "action": "reposition",
+    "target": {
+      "phrase": "red cup"
+    },
+    "destination": {
+      "phrase": "Zone A",
+      "zone_id": "zone_A"
+    }
+  },
+  "integrated": {
+    "status": "VALID_TASK",
+    "language_status": "VALID_TASK",
+    "raw_instruction": "Move the red cup to Zone A.",
+    "action": "reposition",
+    "target": {
+      "phrase": "red cup",
+      "grounding": {
+        "status": "TARGET_FOUND",
+        "detected_label": "red cup",
+        "world_coordinate": {
+          "x": 0.26924043893814087,
+          "y": 0.6576284766197205,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "INSIDE",
+        "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/red_cup_run01.json"
+      }
+    },
+    "destination": {
+      "phrase": "Zone A",
+      "zone_id": "zone_A",
+      "center": [
+        0.3,
+        0.3
+      ],
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0
+        ],
+        [
+          0.6,
+          0.6
+        ],
+        [
+          0.0,
+          0.6
+        ]
+      ],
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "unit": "m"
+    },
+    "feasibility_status": "NOT_EVALUATED"
+  },
+  "inference_sec": 9.598836449000373,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "red cup",
+    "zone_id": "zone_A"
+  },
+  "matches_expected": true
+}

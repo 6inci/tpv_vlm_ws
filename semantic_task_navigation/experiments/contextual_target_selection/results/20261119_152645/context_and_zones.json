@@ -1,0 +1,439 @@
+{
+ "context": {
+  "instruction": "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "stored_qwen_A1": {
+   "run": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_conditioned_target_grounding/results/20261119_145217",
+   "raw_sha256": "a224f519facffdd7b50f12b36e7d2f57091505f82ba5062c18e726d7b9d1f231",
+   "source_region": {
+    "description": "컨베이어 벨트 위에 빨간 큐브가 있는 구역",
+    "bbox_2d": null,
+    "bbox_image_px": null
+   },
+   "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": null,
+    "visible": "uncertain",
+    "bbox_image_px": null
+   },
+   "destination_region": {
+    "description": "출하 가능한 장소로, 출하 표시가 있는 구역",
+    "bbox_2d": null,
+    "bbox_image_px": null
+   },
+   "selected_destination": "white truck"
+  },
+  "rule_parse": {
+   "status": "missing_information",
+   "task_type": "transport_and_place",
+   "target": {
+    "class": "cube",
+    "color": "red",
+    "count": 1,
+    "source_reference": "conveyor",
+    "source_relation": "produced_by"
+   },
+   "destination": null,
+   "reason": "no destination keyword"
+  },
+  "destination_anchor": {
+   "box": [
+    1447.27,
+    0.19,
+    1687.36,
+    149.58
+   ],
+   "how": "snapped to stored truck_1 (IoU 0.95)",
+   "facility_from_qwen": "white truck"
+  },
+  "source_anchor": {
+   "box": [
+    225.57,
+    272.97,
+    461.76,
+    766.68
+   ],
+   "how": "rule_parse source_reference 'conveyor' -> 1 stored verified object(s)"
+  }
+ },
+ "zones": {
+  "destination": {
+   "zone_px": [
+    1303,
+    0,
+    1832,
+    294
+   ],
+   "view_px": [
+    1303,
+    0,
+    1832,
+    295
+   ],
+   "scale": 3.0245746691871456,
+   "image_size": [
+    1600,
+    892
+   ],
+   "numbered": [
+    {
+     "number": 1,
+     "id": "m1",
+     "bbox_xyxy": [
+      1447.95,
+      0.87,
+      1686.72,
+      150.28
+     ]
+    },
+    {
+     "number": 2,
+     "id": "m72",
+     "bbox_xyxy": [
+      1550.72,
+      1.16,
+      1686.65,
+      112.58
+     ]
+    },
+    {
+     "number": 3,
+     "id": "m87",
+     "bbox_xyxy": [
+      1488.13,
+      2.56,
+      1513.1,
+      50.98
+     ]
+    },
+    {
+     "number": 4,
+     "id": "m90",
+     "bbox_xyxy": [
+      1448.76,
+      3.81,
+      1565.81,
+      146.43
+     ]
+    },
+    {
+     "number": 5,
+     "id": "m12",
+     "bbox_xyxy": [
+      1583.82,
+      14.71,
+      1677.07,
+      59.81
+     ]
+    },
+    {
+     "number": 6,
+     "id": "m103",
+     "bbox_xyxy": [
+      1505.27,
+      19.0,
+      1536.64,
+      56.18
+     ]
+    },
+    {
+     "number": 7,
+     "id": "m89",
+     "bbox_xyxy": [
+      1557.79,
+      51.78,
+      1685.61,
+      110.21
+     ]
+    },
+    {
+     "number": 8,
+     "id": "m63",
+     "bbox_xyxy": [
+      1394.16,
+      57.3,
+      1688.01,
+      180.03
+     ]
+    },
+    {
+     "number": 9,
+     "id": "m96",
+     "bbox_xyxy": [
+      1418.01,
+      160.82,
+      1685.32,
+      179.91
+     ]
+    },
+    {
+     "number": 10,
+     "id": "m83",
+     "bbox_xyxy": [
+      1307.34,
+      238.5,
+      1715.46,
+      294.31
+     ]
+    },
+    {
+     "number": 11,
+     "id": "m11",
+     "bbox_xyxy": [
+      1675.98,
+      239.52,
+      1712.6,
+      284.02
+     ]
+    },
+    {
+     "number": 12,
+     "id": "m82",
+     "bbox_xyxy": [
+      1687.49,
+      240.33,
+      1711.88,
+      272.84
+     ]
+    },
+    {
+     "number": 13,
+     "id": "m6",
+     "bbox_xyxy": [
+      1523.65,
+      243.12,
+      1560.97,
+      288.6
+     ]
+    },
+    {
+     "number": 14,
+     "id": "m8",
+     "bbox_xyxy": [
+      1415.21,
+      248.13,
+      1450.37,
+      292.45
+     ]
+    },
+    {
+     "number": 15,
+     "id": "m28",
+     "bbox_xyxy": [
+      1590.85,
+      250.44,
+      1640.76,
+      289.23
+     ]
+    },
+    {
+     "number": 16,
+     "id": "m13",
+     "bbox_xyxy": [
+      1310.24,
+      250.97,
+      1342.15,
+      294.0
+     ]
+    },
+    {
+     "number": 17,
+     "id": "m100",
+     "bbox_xyxy": [
+      1525.51,
+      261.79,
+      1557.68,
+      287.33
+     ]
+    }
+   ],
+   "region_scale_not_numbered": [
+    {
+     "id": "m86",
+     "bbox_xyxy": [
+      1200.59,
+      57.6,
+      1730.85,
+      299.92
+     ]
+    }
+   ]
+  },
+  "source": {
+   "zone_px": [
+    0,
+    0,
+    758,
+    1063
+   ],
+   "view_px": [
+    0,
+    0,
+    758,
+    1063
+   ],
+   "scale": 1.5051740357478833,
+   "image_size": [
+    1141,
+    1600
+   ],
+   "numbered": [
+    {
+     "number": 1,
+     "id": "cand_r32",
+     "bbox_xyxy": [
+      340.17,
+      42.5,
+      449.73,
+      142.09
+     ],
+     "state": "PENDING_VERIFICATION",
+     "rank": 32
+    },
+    {
+     "number": 2,
+     "id": "cand_r33",
+     "bbox_xyxy": [
+      228.53,
+      155.34,
+      325.5,
+      290.43
+     ],
+     "state": "PENDING_VERIFICATION",
+     "rank": 33
+    },
+    {
+     "number": 3,
+     "id": "cand_r3",
+     "bbox_xyxy": [
+      257.0,
+      174.0,
+      281.0,
+      212.0
+     ],
+     "state": "PROBABLE",
+     "rank": 3
+    },
+    {
+     "number": 4,
+     "id": "cand_r18",
+     "bbox_xyxy": [
+      554.0,
+      206.0,
+      567.0,
+      219.0
+     ],
+     "state": "PENDING_VERIFICATION",
+     "rank": 18
+    },
+    {
+     "number": 5,
+     "id": "cand_r6",
+     "bbox_xyxy": [
+      285.0,
+      208.0,
+      298.0,
+      216.0
+     ],
+     "state": "PROBABLE",
+     "rank": 6
+    },
+    {
+     "number": 6,
+     "id": "cand_r31",
+     "bbox_xyxy": [
+      588.07,
+      216.59,
+      712.38,
+      302.82
+     ],
+     "state": "PENDING_VERIFICATION",
+     "rank": 31
+    },
+    {
+     "number": 7,
+     "id": "cand_r2",
+     "bbox_xyxy": [
+      550.0,
+      227.0,
+      566.0,
+      234.0
+     ],
+     "state": "REJECTED",
+     "rank": 2
+    },
+    {
+     "number": 8,
+     "id": "cand_r5",
+     "bbox_xyxy": [
+      269.06,
+      376.8,
+      315.14,
+      440.06
+     ],
+     "state": "REJECTED",
+     "rank": 5
+    },
+    {
+     "number": 9,
+     "id": "cand_r34",
+     "bbox_xyxy": [
+      269.1,
+      377.12,
+      365.88,
+      445.36
+     ],
+     "state": "PENDING_VERIFICATION",
+     "rank": 34
+    },
+    {
+     "number": 10,
+     "id": "cand_r4",
+     "bbox_xyxy": [
+      329.52,
+      380.59,
+      365.91,
+      444.04
+     ],
+     "state": "REJECTED",
+     "rank": 4
+    },
+    {
+     "number": 11,
+     "id": "cand_r1",
+     "bbox_xyxy": [
+      434.0,
+      417.0,
+      451.0,
+      432.0
+     ],
+     "state": "PROBABLE",
+     "rank": 1
+    },
+    {
+     "number": 12,
+     "id": "cand_r30",
+     "bbox_xyxy": [
+      317.72,
+      459.72,
+      367.53,
+      592.08
+     ],
+     "state": "REJECTED",
+     "rank": 30
+    },
+    {
+     "number": 13,
+     "id": "cand_r17",
+     "bbox_xyxy": [
+      293.97,
+      578.84,
+      330.99,
+      654.35
+     ],
+     "state": "REJECTED",
+     "rank": 17
+    }
+   ]
+  }
+ }
+}

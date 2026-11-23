@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Human Evaluation</title>
+<style>
+:root { --bg:#f6f7f9; --panel:#ffffff; --ink:#1d2330; --muted:#5b6475; --line:#d9dde5; --accent:#2f5bd3; --ok:#1d8a4a; --bad:#c23b3b; --warn:#b7791f; --chip:#eef1f6; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 -apple-system, "Segoe UI", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+header { position:sticky; top:0; z-index:10; display:flex; gap:16px; align-items:center; flex-wrap:wrap; padding:10px 16px; background:#1d2330; color:#fff; }
+header h1 { font-size:16px; margin:0 12px 0 0; }
+header input { padding:4px 8px; border-radius:4px; border:0; }
+header .status { font-size:12px; opacity:.9; }
+nav.tabs { display:flex; gap:4px; padding:8px 16px 0; background:#1d2330; }
+nav.tabs button { border:0; padding:8px 14px; border-radius:6px 6px 0 0; background:#39425a; color:#dfe4ee; cursor:pointer; font-size:14px; }
+nav.tabs button.on { background:var(--bg); color:var(--ink); font-weight:600; }
+.wrap { display:flex; gap:16px; padding:16px; align-items:flex-start; }
+aside { width:230px; flex:none; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px; position:sticky; top:110px; }
+aside .item { padding:6px 8px; border-radius:6px; cursor:pointer; display:flex; justify-content:space-between; gap:6px; align-items:center; }
+aside .item:hover { background:var(--chip); }
+aside .item.on { background:#dfe7fb; font-weight:600; }
+main { flex:1; min-width:0; }
+.panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:14px 16px; margin-bottom:14px; }
+.panel h2 { font-size:15px; margin:0 0 10px; }
+.panel h3 { font-size:14px; margin:12px 0 6px; }
+.instr { font-size:18px; font-weight:600; padding:10px 12px; background:#fffbe6; border:1px solid #f0e2a8; border-radius:6px; }
+.note { color:var(--muted); font-size:13px; }
+.warnbox { background:#fff4e5; border:1px solid #f3c98b; padding:8px 10px; border-radius:6px; margin:8px 0; }
+.infobox { background:#eef4ff; border:1px solid #c7d6fb; padding:8px 10px; border-radius:6px; margin:8px 0; }
+.lockbox { background:#f3f3f3; border:1px dashed #aaa; padding:24px; text-align:center; border-radius:8px; }
+.badge { font-size:11px; padding:1px 6px; border-radius:10px; background:var(--chip); color:var(--muted); white-space:nowrap; }
+.badge.ok { background:#dcf3e5; color:var(--ok); } .badge.bad { background:#f8dede; color:var(--bad); } .badge.warn { background:#fbefd9; color:var(--warn); }
+.imgbox { position:relative; overflow:auto; max-height:75vh; border:1px solid var(--line); border-radius:6px; background:#222; }
+.imgbox img { display:block; width:100%; user-select:none; -webkit-user-drag:none; }
+.imgbox canvas { position:absolute; left:0; top:0; }
+.toolbar { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:8px 0; }
+.toolbar label { display:inline-flex; gap:4px; align-items:center; }
+button.btn { border:1px solid var(--line); background:#fff; padding:6px 12px; border-radius:6px; cursor:pointer; font-size:13px; }
+button.btn:hover { background:var(--chip); }
+button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+button.primary:hover { background:#244bb3; }
+button.danger { color:var(--bad); }
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th, td { border:1px solid var(--line); padding:4px 6px; text-align:left; vertical-align:top; }
+th { background:#f1f3f7; font-weight:600; }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.thumbs { display:flex; gap:10px; flex-wrap:wrap; }
+.thumbs figure { margin:0; width:calc(50% - 5px); }
+.thumbs img { width:100%; border:1px solid var(--line); border-radius:4px; cursor:zoom-in; }
+.thumbs figcaption { font-size:12px; color:var(--muted); }
+.form-row { margin:8px 0; }
+.form-row > .lab { font-weight:600; display:block; margin-bottom:3px; }
+select, textarea, input[type=text] { font:inherit; padding:4px 6px; border:1px solid var(--line); border-radius:4px; }
+textarea { width:100%; min-height:44px; }
+.rating { display:flex; gap:12px; flex-wrap:wrap; }
+.evalitem { border-top:1px solid var(--line); padding:10px 0; }
+.evalitem:first-child { border-top:0; }
+.legend span { display:inline-flex; align-items:center; gap:4px; margin-right:12px; font-size:12px; }
+.legend i { display:inline-block; width:18px; height:0; border-top:3px solid; }
+.modal { position:fixed; inset:0; background:rgba(0,0,0,.8); display:none; z-index:100; overflow:auto; padding:20px; }
+.modal img { max-width:none; width:auto; display:block; margin:0 auto; }
+.modal .close { position:fixed; top:10px; right:20px; color:#fff; font-size:28px; cursor:pointer; }
+.matrix td.cell { text-align:center; font-size:12px; }
+.r-SUCCESS { background:#dcf3e5; } .r-FAILURE { background:#f8dede; } .r-UNCERTAIN { background:#fbefd9; } .r-NOT_EVALUATED { background:#ececec; }
+.mono { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:12px; }
+@media (max-width: 900px) { .wrap { flex-direction:column; } aside { width:100%; position:static; } .grid2 { grid-template-columns:1fr; } .thumbs figure { width:100%; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>Human Evaluation · 작업 맥락 기반 목표 선택·경로</h1>
+  <label>평가자 <input id="evaluator" type="text" placeholder="이름 또는 ID"></label>
+  <span class="status" id="progress"></span>
+  <span class="status" id="storage"></span>
+</header>
+<nav class="tabs">
+  <button data-tab="A">A · 정답 기준 입력</button>
+  <button data-tab="B">B · AI 결과 평가</button>
+  <button data-tab="C">C · 종합 · 내보내기</button>
+</nav>
+<div class="wrap">
+  <aside id="side"></aside>
+  <main id="main"></main>
+</div>
+<div class="modal" id="modal"><span class="close" id="modalClose">✕</span><img id="modalImg" alt=""></div>
+
+<script src="data.js"></script>
+<script>
+"use strict";
+var D = window.HE_DATA;
+var KEY = "he_task_context_2d_navigation_v1";
+var STATE_SCHEMA = "human_evaluation_state_v1";
+var RELATIONS_SRC = [["from", "출처 (~에서 생산된/온)"], ["on", "위에 (on)"], ["next_to", "옆 (next to)"], ["near", "근처 (near)"], ["inside", "안 (inside)"], ["none", "관계 없음"], ["other", "기타 (메모)"]];
+var RELATIONS_DST = [["on", "위에 놓기 (on)"], ["next_to", "옆 (next to)"], ["near", "근처 (near)"], ["inside", "안 (inside)"], ["purpose_only", "목적만 제시 (예: 출하할 수 있는 곳)"], ["none", "관계 없음"], ["other", "기타 (메모)"]];
+var AMBIGUITY = [["unique", "명확함 (허용 대상이 하나)"], ["multiple_acceptable", "허용 대상이 여러 개"], ["instruction_ambiguous", "명령 자체가 모호함"], ["not_executable", "이 장면에서 수행 불가"], ["undecided", "판단 보류"]];
+var CERT = [["CONFIRMED", "확정"], ["UNCERTAIN", "불확실"]];
+
+// ------------------------------------------------------------------ state (pure)
+function emptyState() {
+  return { schema: STATE_SCHEMA, evaluator: "", ground_truth: {}, evaluations: {}, revealed: {}, log: [] };
+}
+function emptyGT() {
+  return { saved_at: null, first_saved_at: null, revised_after_reveal: false, history: [],
+           source_boxes: [], source_hold: false, destination_boxes: [], destination_hold: false,
+           source_relation: "", destination_relation: "", relation_note: "", ambiguity: "", rules: [], rules_other: "",
+           certainty: { source: "", destination: "", relation: "", rules: "" }, comment: "" };
+}
+function gtValidate(g) {
+  var errs = [];
+  if (!g.source_boxes.length && !g.source_hold) errs.push("출발 물체를 사진에 표시하거나 '판단 보류'를 선택하세요.");
+  if (!g.destination_boxes.length && !g.destination_hold) errs.push("허용 목적지를 표시하거나 '판단 보류'를 선택하세요.");
+  if (!g.source_relation || !g.destination_relation) errs.push("출발·목적지 공간 관계를 선택하세요.");
+  if (!g.ambiguity) errs.push("모호성 여부를 선택하세요.");
+  ["source", "destination", "relation", "rules"].forEach(function (k) { if (!g.certainty[k]) errs.push("확실성(" + k + ")을 선택하세요."); });
+  return errs;
+}
+function gtSaved(S, tid) { return !!(S.ground_truth[tid] && S.ground_truth[tid].saved_at); }
+function evalOf(S, cid) {
+  if (!S.evaluations[cid]) {
+    var items = {}; D.items.forEach(function (it) { items[it.key] = { rating: null, comment: "" }; });
+    S.evaluations[cid] = { items: items, overall_comment: "", updated_at: null };
+  }
+  return S.evaluations[cid];
+}
+function countRated(S, cid) {
+  var e = S.evaluations[cid]; if (!e) return 0;
+  return D.items.filter(function (it) { return e.items[it.key] && e.items[it.key].rating; }).length;
+}
+function overallStatus(S) {
+  var gt = D.tasks.filter(function (t) { return gtSaved(S, t.task_id); }).length;
+  var rated = 0; D.conditions.forEach(function (c) { rated += countRated(S, c.cond_id); });
+  var total = D.conditions.length * D.items.length;
+  return { gt_saved: gt, gt_total: D.tasks.length, items_rated: rated, items_total: total,
+           status: (gt === D.tasks.length && rated === total) ? "COMPLETE" : "INCOMPLETE" };
+}
+function exportGT(S) {
+  var st = overallStatus(S), tasks = {};
+  D.tasks.forEach(function (t) {
+    var g = S.ground_truth[t.task_id] || emptyGT();
+    tasks[t.task_id] = { photo: t.photo, photo_label: D.photos[t.photo].label, instruction: t.instruction, saved_at: g.saved_at,
+      revised_after_ai_reveal: g.revised_after_reveal, source_boxes_px: g.source_boxes, source_hold: g.source_hold,
+      destination_boxes_px: g.destination_boxes, destination_hold: g.destination_hold, source_relation: g.source_relation,
+      destination_relation: g.destination_relation, relation_note: g.relation_note, ambiguity: g.ambiguity, rules: g.rules,
+      rules_other: g.rules_other, certainty: g.certainty, comment: g.comment, previous_versions: g.history };
+  });
+  return { schema: "human_ground_truth_v1", source: "HUMAN (entered in experiments/human_evaluation/index.html)", evaluator: S.evaluator || null,
+           exported_at: new Date().toISOString(), status: st.gt_saved === st.gt_total ? "COMPLETE" : "INCOMPLETE",
+           coordinate_frame: "undistorted image px (1920 x 1080)",
+           note: "AI selections were hidden until each task's reference was saved; AI preliminary labels were not shown or used.", tasks: tasks };
+}
+function exportEval(S) {
+  var st = overallStatus(S), conds = {};
+  D.conditions.forEach(function (c) {
+    var e = evalOf(S, c.cond_id), g = S.ground_truth[c.task_id] || {};
+    conds[c.cond_id] = { task_id: c.task_id, condition: c.R, ratings: e.items, overall_comment: e.overall_comment, updated_at: e.updated_at,
+      ground_truth_saved_before_ai_reveal: !!g.saved_at && !g.revised_after_reveal,
+      ai_reference_not_human: { source_status: c.source.status, destination_status: c.destination.status, destination_kind: c.destination.kind,
+                                route_category_by_code: c.routes.category_by_code, automatic_checks: c.automatic_checks } };
+  });
+  return { schema: "human_evaluation_v1", source: "HUMAN ratings; 'ai_reference_not_human' blocks are the stored AI/code outputs for context only",
+           evaluator: S.evaluator || null, exported_at: new Date().toISOString(), status: st.status, progress: st, ai_run: D.meta.ai_run, conditions: conds };
+}
+function csvCell(v) { var s = v === null || v === undefined ? "" : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+function exportCSV(S) {
+  var rows = [["evaluator", "cond_id", "task_id", "condition", "item", "item_label", "rating", "comment", "updated_at", "gt_revised_after_ai_reveal", "ai_route_category_by_code(reference)"]];
+  D.conditions.forEach(function (c) {
+    var e = evalOf(S, c.cond_id), g = S.ground_truth[c.task_id] || {};
+    D.items.forEach(function (it) {
+      var r = e.items[it.key] || {};
+      rows.push([S.evaluator, c.cond_id, c.task_id, c.R, it.key, it.label, r.rating || "", r.comment || "", e.updated_at || "", !!g.revised_after_reveal, c.routes.category_by_code]);
+    });
+  });
+  return "﻿" + rows.map(function (r) { return r.map(csvCell).join(","); }).join("\n") + "\n";
+}
+
+// ------------------------------------------------------------------ persistence
+var S = emptyState(), storageOK = true;
+function load() {
+  try { var raw = window.localStorage.getItem(KEY); if (raw) { var o = JSON.parse(raw); if (o && o.schema === STATE_SCHEMA) S = o; } }
+  catch (e) { storageOK = false; }
+}
+function persist() {
+  try { window.localStorage.setItem(KEY, JSON.stringify(S)); storageOK = true; } catch (e) { storageOK = false; }
+  headerStatus();
+}
+function logEvent(what) { S.log.push({ t: new Date().toISOString(), what: what }); }
+
+// ------------------------------------------------------------------ helpers
+function el(tag, attrs, children) {
+  var n = document.createElement(tag);
+  if (attrs) Object.keys(attrs).forEach(function (k) {
+    if (k === "text") n.textContent = attrs[k]; else if (k === "html") n.innerHTML = attrs[k];
+    else if (k.slice(0, 2) === "on") n.addEventListener(k.slice(2), attrs[k]); else n.setAttribute(k, attrs[k]);
+  });
+  (children || []).forEach(function (c) { if (c !== null && c !== undefined) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+  return n;
+}
+function txt(v) { return v === null || v === undefined || v === "" ? "—" : (Array.isArray(v) ? v.join(", ") : String(v)); }
+function taskOf(tid) { return D.tasks.filter(function (t) { return t.task_id === tid; })[0]; }
+function condOf(cid) { return D.conditions.filter(function (c) { return c.cond_id === cid; })[0]; }
+function download(name, text, mime) {
+  var blob = new Blob([text], { type: mime }), a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function openModal(src) { document.getElementById("modalImg").src = src; document.getElementById("modal").style.display = "block"; }
+function statusBadge(s) {
+  var cls = s === "SELECTED" ? "ok" : (s === "AMBIGUOUS" || s === "NOT_ACCESSIBLE") ? "warn" : "bad";
+  return el("span", { class: "badge " + cls, text: s || "—" });
+}
+
+// ------------------------------------------------------------------ UI state
+var UI = { tab: "A", task: D.tasks[0].task_id, cond: D.conditions[0].cond_id, mode: "source", zoom: 1 };
+
+function headerStatus() {
+  var st = overallStatus(S);
+  document.getElementById("progress").textContent = "정답 기준 " + st.gt_saved + "/" + st.gt_total + " · 평가 항목 " + st.items_rated + "/" + st.items_total + " · " + st.status;
+  document.getElementById("storage").textContent = storageOK ? "브라우저 자동 저장: 켜짐" : "⚠ 브라우저 저장 불가 - 화면 C에서 자주 내보내세요";
+}
+function render() {
+  Array.prototype.forEach.call(document.querySelectorAll("nav.tabs button"), function (b) { b.classList.toggle("on", b.getAttribute("data-tab") === UI.tab); });
+  renderSide();
+  var main = document.getElementById("main"); main.innerHTML = "";
+  if (UI.tab === "A") renderA(main); else if (UI.tab === "B") renderB(main); else renderC(main);
+  headerStatus();
+}
+function renderSide() {
+  var side = document.getElementById("side"); side.innerHTML = "";
+  if (UI.tab === "A") {
+    side.appendChild(el("div", { class: "note", text: "작업지시 (정답 기준은 R0/R1 공통)" }));
+    D.tasks.forEach(function (t) {
+      var g = S.ground_truth[t.task_id];
+      var b = gtSaved(S, t.task_id) ? el("span", { class: "badge ok", text: g.revised_after_reveal ? "저장·공개 후 수정" : "저장됨" }) : el("span", { class: "badge", text: "미입력" });
+      side.appendChild(el("div", { class: "item" + (UI.task === t.task_id ? " on" : ""), onclick: function () { UI.task = t.task_id; render(); } }, [t.task_id + " · " + D.photos[t.photo].label, b]));
+    });
+  } else if (UI.tab === "B") {
+    side.appendChild(el("div", { class: "note", text: "조건 (작업지시 × R0/R1)" }));
+    D.conditions.forEach(function (c) {
+      var n = countRated(S, c.cond_id);
+      var b = !gtSaved(S, c.task_id) ? el("span", { class: "badge", text: "잠김" }) : el("span", { class: "badge " + (n === D.items.length ? "ok" : n ? "warn" : ""), text: n + "/" + D.items.length });
+      side.appendChild(el("div", { class: "item" + (UI.cond === c.cond_id ? " on" : ""), onclick: function () { UI.cond = c.cond_id; render(); } }, [c.cond_id, b]));
+    });
+  } else {
+    side.appendChild(el("div", { class: "note", text: "종합 화면: 진행 상태와 내보내기" }));
+  }
+}
+
+// ------------------------------------------------------------------ photo canvas
+function photoCanvas(photoId, drawFn, interactive) {
+  var p = D.photos[photoId];
+  var box = el("div", { class: "imgbox" });
+  var img = el("img", { src: p.file, alt: p.label, draggable: "false" });
+  var cv = el("canvas");
+  box.appendChild(img); box.appendChild(cv);
+  img.style.width = (100 * UI.zoom) + "%";
+  function scale() { return img.clientWidth / p.w; }
+  function redraw(temp) {
+    cv.width = img.clientWidth; cv.height = img.clientHeight;
+    var ctx = cv.getContext("2d"), s = scale();
+    ctx.clearRect(0, 0, cv.width, cv.height);
+    drawFn(ctx, s);
+    if (temp) { ctx.setLineDash([4, 3]); ctx.strokeStyle = "#ffeb3b"; ctx.lineWidth = 2; ctx.strokeRect(temp[0] * s, temp[1] * s, (temp[2] - temp[0]) * s, (temp[3] - temp[1]) * s); ctx.setLineDash([]); }
+  }
+  img.addEventListener("load", function () { redraw(); });
+  UI.currentRedraw = redraw;
+  if (interactive) {
+    var start = null;
+    cv.style.cursor = "crosshair";
+    cv.addEventListener("pointerdown", function (e) { var s = scale(); start = [e.offsetX / s, e.offsetY / s]; cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener("pointermove", function (e) { if (!start) return; var s = scale(); redraw([Math.min(start[0], e.offsetX / s), Math.min(start[1], e.offsetY / s), Math.max(start[0], e.offsetX / s), Math.max(start[1], e.offsetY / s)]); });
+    cv.addEventListener("pointerup", function (e) {
+      if (!start) return; var s = scale();
+      var b = [Math.min(start[0], e.offsetX / s), Math.min(start[1], e.offsetY / s), Math.max(start[0], e.offsetX / s), Math.max(start[1], e.offsetY / s)].map(function (v) { return Math.round(v * 10) / 10; });
+      start = null;
+      if (b[2] - b[0] >= 3 && b[3] - b[1] >= 3) interactive(b); else redraw();
+    });
+  }
+  box.redraw = redraw;
+  return box;
+}
+function strokeBox(ctx, s, b, color, label, dashed, width) {
+  if (!b) return;
+  ctx.setLineDash(dashed ? [8, 5] : []); ctx.strokeStyle = color; ctx.lineWidth = width || 2;
+  ctx.strokeRect(b[0] * s, b[1] * s, (b[2] - b[0]) * s, (b[3] - b[1]) * s);
+  ctx.setLineDash([]);
+  if (label) { ctx.font = "12px sans-serif"; var w = ctx.measureText(label).width + 6; ctx.fillStyle = "rgba(0,0,0,.7)"; ctx.fillRect(b[0] * s, b[1] * s - 15, w, 15); ctx.fillStyle = color; ctx.fillText(label, b[0] * s + 3, b[1] * s - 3); }
+}
+function zoomBar(onChange) {
+  var bar = el("span", {}, ["확대: "]);
+  [[1, "맞춤"], [1.5, "150%"], [2, "200%"], [3, "300%"]].forEach(function (z) {
+    bar.appendChild(el("button", { class: "btn" + (UI.zoom === z[0] ? " primary" : ""), text: z[1], onclick: function () { UI.zoom = z[0]; onChange(); } }));
+  });
+  return bar;
+}
+
+// ------------------------------------------------------------------ screen A
+function renderA(main) {
+  var t = taskOf(UI.task), p = D.photos[t.photo];
+  if (!S.ground_truth[t.task_id]) S.ground_truth[t.task_id] = emptyGT();
+  var g = S.ground_truth[t.task_id];
+  var revealed = !!S.revealed[t.task_id];
+  var head = el("div", { class: "panel" }, [
+    el("h2", { text: "화면 A · 정답 기준 입력 — " + t.task_id + " (" + p.label + ")" }),
+    el("div", { class: "instr", text: t.instruction }),
+    el("p", { class: "note", text: "이 화면에는 원본 사진과 작업지시만 표시됩니다. AI의 선택은 이 작업의 기준을 저장한 뒤 화면 B에서 공개됩니다. AI 예비 라벨은 표시하지 않습니다." }),
+    t.reference_note ? el("div", { class: "infobox", text: t.reference_note }) : null,
+    revealed ? el("div", { class: "warnbox", text: "이 작업의 AI 결과를 이미 열람했습니다. 지금 기준을 수정해 저장하면 'AI 공개 후 수정'으로 기록되며 이전 값도 보존됩니다." }) : null
+  ]);
+  main.appendChild(head);
+  // drawing
+  var drawPanel = el("div", { class: "panel" });
+  drawPanel.appendChild(el("h2", { text: "1·2. 출발 물체와 허용 목적지 표시 (사진에서 드래그)" }));
+  var canvasBox;
+  function drawGT(ctx, s) {
+    g.source_boxes.forEach(function (b, i) { strokeBox(ctx, s, [b.x0, b.y0, b.x1, b.y1], "#ff4d4d", "출발 " + (i + 1), false, 3); });
+    g.destination_boxes.forEach(function (b, i) { strokeBox(ctx, s, [b.x0, b.y0, b.x1, b.y1], "#33d17a", "목적지 " + (i + 1), false, 3); });
+  }
+  function addBox(b) {
+    var rec = { x0: b[0], y0: b[1], x1: b[2], y1: b[3], label: "", certainty: "CONFIRMED" };
+    (UI.mode === "source" ? g.source_boxes : g.destination_boxes).push(rec);
+    persist(); render();
+  }
+  var tb = el("div", { class: "toolbar" }, [
+    el("label", {}, [el("input", { type: "radio", name: "mode", value: "source" }), " 출발 물체 그리기"]),
+    el("label", {}, [el("input", { type: "radio", name: "mode", value: "destination" }), " 허용 목적지/배치 대상 그리기"]),
+    zoomBar(render)
+  ]);
+  Array.prototype.forEach.call(tb.querySelectorAll("input[name=mode]"), function (r) { r.checked = r.value === UI.mode; r.addEventListener("change", function () { UI.mode = r.value; }); });
+  drawPanel.appendChild(tb);
+  drawPanel.appendChild(el("p", { class: "note", text: "작은 물체는 확대 후 드래그하세요. 여러 개를 표시할 수 있습니다(복수 허용). 좌표는 원본 사진 픽셀(1920×1080)로 저장됩니다." }));
+  canvasBox = photoCanvas(t.photo, drawGT, addBox);
+  drawPanel.appendChild(canvasBox);
+  function boxTable(list, kind) {
+    var tbl = el("table", {}, [el("tr", {}, [el("th", { text: "#" }), el("th", { text: "좌표 [x0, y0, x1, y1] px" }), el("th", { text: "설명 (예: 회색 팔레트)" }), el("th", { text: "확실성" }), el("th", { text: "" })])]);
+    list.forEach(function (b, i) {
+      var lab = el("input", { type: "text", value: b.label, placeholder: "선택", onchange: function (e) { b.label = e.target.value; persist(); } });
+      var cs = el("select", { onchange: function (e) { b.certainty = e.target.value; persist(); } }, CERT.map(function (c) { var o = el("option", { value: c[0], text: c[1] }); if (b.certainty === c[0]) o.selected = true; return o; }));
+      tbl.appendChild(el("tr", {}, [el("td", { text: kind + " " + (i + 1) }), el("td", { class: "mono", text: "[" + [b.x0, b.y0, b.x1, b.y1].join(", ") + "]" }), el("td", {}, [lab]), el("td", {}, [cs]),
+        el("td", {}, [el("button", { class: "btn danger", text: "삭제", onclick: function () { list.splice(i, 1); persist(); render(); } })])]));
+    });
+    return tbl;
+  }
+  drawPanel.appendChild(el("h3", { text: "출발 물체" }));
+  drawPanel.appendChild(boxTable(g.source_boxes, "출발"));
+  drawPanel.appendChild(el("label", {}, [el("input", { type: "checkbox", onchange: function (e) { g.source_hold = e.target.checked; persist(); } }), " 출발 물체 판단 보류 (사진만으로 정할 수 없음)"]));
+  drawPanel.appendChild(el("h3", { text: "허용 가능한 목적지 또는 배치 대상" }));
+  drawPanel.appendChild(boxTable(g.destination_boxes, "목적지"));
+  drawPanel.appendChild(el("label", {}, [el("input", { type: "checkbox", onchange: function (e) { g.destination_hold = e.target.checked; persist(); } }), " 목적지 판단 보류 (유일하지 않거나 정보 부족)"]));
+  main.appendChild(drawPanel);
+  var holds = drawPanel.querySelectorAll("input[type=checkbox]"); holds[0].checked = g.source_hold; holds[1].checked = g.destination_hold;
+  // form
+  var form = el("div", { class: "panel" }, [el("h2", { text: "3·4·5. 공간 관계, 모호성, 운영 규칙" })]);
+  function sel(options, value, on) { return el("select", { onchange: function (e) { on(e.target.value); persist(); } }, [el("option", { value: "", text: "선택" })].concat(options.map(function (o) { var op = el("option", { value: o[0], text: o[1] }); if (value === o[0]) op.selected = true; return op; }))); }
+  form.appendChild(el("div", { class: "form-row" }, [el("span", { class: "lab", text: "출발지 공간 관계" }), sel(RELATIONS_SRC, g.source_relation, function (v) { g.source_relation = v; })]));
+  form.appendChild(el("div", { class: "form-row" }, [el("span", { class: "lab", text: "목적지 공간 관계" }), sel(RELATIONS_DST, g.destination_relation, function (v) { g.destination_relation = v; })]));
+  var rn = el("textarea", { placeholder: "관계 메모 (예: '생산된'은 출처이며 현재 위치가 아님)", onchange: function (e) { g.relation_note = e.target.value; persist(); } }); rn.value = g.relation_note;
+  form.appendChild(el("div", { class: "form-row" }, [el("span", { class: "lab", text: "관계 메모" }), rn]));
+  var amb = el("div", { class: "rating" });
+  AMBIGUITY.forEach(function (a) { var r = el("input", { type: "radio", name: "amb", value: a[0], onchange: function () { g.ambiguity = a[0]; persist(); } }); r.checked = g.ambiguity === a[0]; amb.appendChild(el("label", {}, [r, " " + a[1]])); });
+  form.appendChild(el("div", { class: "form-row" }, [el("span", { class: "lab", text: "작업지시의 모호성" }), amb]));
+  var rules = el("div");
+  D.rules.forEach(function (r) {
+    var c = el("input", { type: "checkbox", onchange: function (e) { var i = g.rules.indexOf(r.key); if (e.target.checked && i < 0) g.rules.push(r.key); if (!e.target.checked && i >= 0) g.rules.splice(i, 1); persist(); } });
+    c.checked = g.rules.indexOf(r.key) >= 0;
+    rules.appendChild(el("div", {}, [el("label", {}, [c, " " + r.label])]));
+  });
+  var ro = el("input", { type: "text", placeholder: "기타 규칙", style: "width:100%", onchange: function (e) { g.rules_other = e.target.value; persist(); } }); ro.value = g.rules_other;
+  form.appendChild(el("div", { class: "form-row" }, [el("span", { class: "lab", text: "이 작업에 적용해야 할 작업장 운영 규칙 (DRAFT 구역 정의 기반, 확인 전)" }), rules, ro]));
+  var certRow = el("div", { class: "rating" });
+  [["source", "출발 물체"], ["destination", "목적지"], ["relation", "공간 관계"], ["rules", "운영 규칙"]].forEach(function (k) {
+    certRow.appendChild(el("label", {}, [k[1] + ": ", sel(CERT, g.certainty[k[0]], function (v) { g.certainty[k[0]] = v; })]));
+  });
+  form.appendChild(el("div", { class: "form-row" }, [el("span", { class: "lab", text: "항목별 확실성 (확정 / 불확실)" }), certRow]));
+  var cm = el("textarea", { placeholder: "의견", onchange: function (e) { g.comment = e.target.value; persist(); } }); cm.value = g.comment;
+  form.appendChild(el("div", { class: "form-row" }, [el("span", { class: "lab", text: "의견" }), cm]));
+  var msg = el("div");
+  form.appendChild(el("div", { class: "toolbar" }, [el("button", { class: "btn primary", text: "기준 저장 (이후 AI 결과 공개)", onclick: function () {
+    var errs = gtValidate(g);
+    msg.innerHTML = "";
+    if (errs.length) { msg.appendChild(el("div", { class: "warnbox" }, errs.map(function (x) { return el("div", { text: x }); }))); return; }
+    var now = new Date().toISOString();
+    if (g.saved_at) g.history.push({ saved_at: g.saved_at, snapshot: JSON.parse(JSON.stringify({ source_boxes: g.source_boxes, destination_boxes: g.destination_boxes, source_relation: g.source_relation, destination_relation: g.destination_relation, ambiguity: g.ambiguity, rules: g.rules, certainty: g.certainty })) });
+    if (S.revealed[t.task_id]) g.revised_after_reveal = true;
+    g.saved_at = now; if (!g.first_saved_at) g.first_saved_at = now;
+    logEvent("gt_saved " + t.task_id + (g.revised_after_reveal ? " (after reveal)" : "")); persist(); render();
+  } }), msg]));
+  if (g.saved_at) form.appendChild(el("div", { class: "infobox", text: "저장됨: " + g.saved_at + (g.revised_after_reveal ? " · AI 공개 후 수정 기록 있음" : "") + " · 화면 B에서 " + t.task_id + "_R0 / _R1을 평가할 수 있습니다." }));
+  main.appendChild(form);
+}
+
+// ------------------------------------------------------------------ screen B
+function renderB(main) {
+  var c = condOf(UI.cond), t = taskOf(c.task_id), p = D.photos[c.photo];
+  if (!gtSaved(S, c.task_id)) {
+    main.appendChild(el("div", { class: "panel" }, [el("div", { class: "lockbox" }, [
+      el("p", { text: c.task_id + "의 정답 기준이 아직 저장되지 않았습니다. AI 결과는 기준을 저장한 뒤에만 공개됩니다." }),
+      el("button", { class: "btn primary", text: "화면 A에서 " + c.task_id + " 기준 입력", onclick: function () { UI.tab = "A"; UI.task = c.task_id; render(); } })])]));
+    return;
+  }
+  if (!S.revealed[c.task_id]) { S.revealed[c.task_id] = new Date().toISOString(); logEvent("ai_revealed " + c.task_id); persist(); }
+  var g = S.ground_truth[c.task_id];
+  main.appendChild(el("div", { class: "panel" }, [
+    el("h2", { text: "화면 B · AI 결과 평가 — " + c.cond_id + " (" + p.label + ")" }),
+    el("div", { class: "instr", text: t.instruction }),
+    el("p", { class: "note", text: c.condition_text + ". 아래는 저장된 AI 실행 결과이며 사람의 판단이 아닙니다." })
+  ]));
+  // overlay
+  var show = UI.show || (UI.show = { roi: true, ref: true, src: true, dst: true, gt: true });
+  var ov = el("div", { class: "panel" }, [el("h2", { text: "원본 사진 위 비교 (AI 탐색 영역 · 기준 물체 · 선택 결과 · 내 정답 기준)" })]);
+  var tb = el("div", { class: "toolbar" });
+  [["roi", "AI 탐색 영역"], ["ref", "AI 기준 물체"], ["src", "AI 출발 대상"], ["dst", "AI 목적 대상"], ["gt", "내 정답 기준"]].forEach(function (k) {
+    var cb = el("input", { type: "checkbox", onchange: function (e) { show[k[0]] = e.target.checked; cbox.redraw(); } }); cb.checked = show[k[0]];
+    tb.appendChild(el("label", {}, [cb, " " + k[1]]));
+  });
+  tb.appendChild(zoomBar(render));
+  ov.appendChild(tb);
+  ov.appendChild(el("div", { class: "legend", html: '<span><i style="border-color:#ffb020;border-top-style:dashed"></i>출발 탐색 영역</span><span><i style="border-color:#4dd0e1;border-top-style:dashed"></i>목적지 탐색 영역</span><span><i style="border-color:#ffb020"></i>출발 기준 물체</span><span><i style="border-color:#4dd0e1"></i>목적지 기준 물체</span><span><i style="border-color:#ff4d4d"></i>AI 출발 대상(동률이면 여러 개)</span><span><i style="border-color:#33d17a"></i>AI 목적 대상</span><span><i style="border-color:#7aa2ff;border-top-style:dashed"></i>내 기준(빨강=출발, 초록=목적지 라벨)</span>' }));
+  var cbox = photoCanvas(c.photo, function (ctx, s) {
+    var rs = c.references.source, rd = c.references.destination;
+    if (show.roi) { strokeBox(ctx, s, rs.region, "#ffb020", "출발 탐색: " + rs.region_type, true, 2); strokeBox(ctx, s, rd.region, "#4dd0e1", "목적지 탐색: " + rd.region_type, true, 2); }
+    if (show.ref) { strokeBox(ctx, s, rs.box, "#ffb020", "출발 기준: " + txt(rs.name), false, 2); strokeBox(ctx, s, rd.box, "#4dd0e1", "목적지 기준: " + txt(rd.name), false, 2); }
+    if (show.src) c.source.selected.forEach(function (x) { strokeBox(ctx, s, x.box && [x.box[0] - 3, x.box[1] - 3, x.box[2] + 3, x.box[3] + 3], "#ff4d4d", "AI 출발 " + x.id, false, 3); });
+    if (show.dst && c.destination.box) strokeBox(ctx, s, c.destination.box, "#33d17a", "AI 목적 " + c.destination.id, false, 3);
+    if (show.gt) {
+      g.source_boxes.forEach(function (b, i) { strokeBox(ctx, s, [b.x0 - 6, b.y0 - 6, b.x1 + 6, b.y1 + 6], "#7aa2ff", "내 출발 " + (i + 1), true, 2); });
+      g.destination_boxes.forEach(function (b, i) { strokeBox(ctx, s, [b.x0 - 6, b.y0 - 6, b.x1 + 6, b.y1 + 6], "#7aa2ff", "내 목적지 " + (i + 1), true, 2); });
+    }
+  }, null);
+  ov.appendChild(cbox);
+  main.appendChild(ov);
+  // AI interpretation + references
+  var I = c.interpretation;
+  var interp = el("div", { class: "panel" }, [el("h2", { text: "AI 작업지시 해석과 기준 물체" }),
+    el("table", {}, [
+      el("tr", {}, [el("th", { text: "작업 목적" }), el("td", { text: txt(I.purpose) })]),
+      el("tr", {}, [el("th", { text: "옮길 물체" }), el("td", { text: txt(I.source_object) })]),
+      el("tr", {}, [el("th", { text: "출발 기준 · 관계" }), el("td", { text: txt(I.source_reference) + " · " + txt(I.source_relation) + "  →  탐색 영역: " + c.references.source.region_type + " " + txt(c.references.source.region) })]),
+      el("tr", {}, [el("th", { text: "출발 기준 물체 출처" }), el("td", { text: txt(c.references.source.how) })]),
+      el("tr", {}, [el("th", { text: "목적지 의미" }), el("td", { text: txt(I.destination_meaning) })]),
+      el("tr", {}, [el("th", { text: "목적지 기준 · 관계" }), el("td", { text: txt(I.destination_reference) + " · " + txt(I.destination_relation) + "  →  탐색 영역: " + c.references.destination.region_type + " " + txt(c.references.destination.region) })]),
+      el("tr", {}, [el("th", { text: "목적지 기준 물체 출처" }), el("td", { text: txt(c.references.destination.how) })])
+    ]),
+    el("h3", { text: "AI가 말한 구역과 로봇 본체 접근 판단" }),
+    el("table", {}, [el("tr", {}, [el("th", { text: "구역" }), el("th", { text: "접근" }), el("th", { text: "시각 근거" })])].concat(I.zones_seen.map(function (z) {
+      return el("tr", {}, [el("td", { text: txt(z.description) }), el("td", { text: txt(z.access) }), el("td", { text: txt(z.evidence) })]);
+    }))),
+    el("p", { class: "note", html: '원문: <a href="' + I.raw_file + '" target="_blank">' + I.raw_file.split("/").pop() + "</a>" })]);
+  main.appendChild(interp);
+  // source / destination
+  var src = el("div", { class: "panel" }, [el("h2", {}, ["AI 출발 대상 ", statusBadge(c.source.status)]),
+    el("p", { text: txt(c.source.why) + " · 선택/동률: " + txt(c.source.selected.map(function (x) { return x.id; })) + " · 탐색 영역 안 후보 " + c.source.n_inside + ", 밖 " + c.source.n_outside }),
+    el("table", {}, [el("tr", {}, [el("th", { text: "번호" }), el("th", { text: "후보" }), el("th", { text: "AI 역할" }), el("th", { text: "외형" }), el("th", { text: "이유" })])].concat(c.source.ratings.map(function (r) {
+      return el("tr", { class: r.role === "object_to_move" ? "r-UNCERTAIN" : "" }, [el("td", { text: txt(r.number) }), el("td", { text: txt(r.id) }), el("td", { text: txt(r.role) }), el("td", { text: txt(r.appearance) }), el("td", { text: txt(r.reason) })]);
+    })))]);
+  var dst = el("div", { class: "panel" }, [el("h2", {}, ["AI 목적 대상 ", statusBadge(c.destination.status)]),
+    el("p", { text: txt(c.destination.why) + " · 종류: " + txt(c.destination.kind) + " · 선택: " + txt(c.destination.id) + " · Qwen 최선 번호: " + txt(c.destination.best_number) }),
+    el("table", {}, [el("tr", {}, [el("th", { text: "번호" }), el("th", { text: "후보" }), el("th", { text: "AI 적합성" }), el("th", { text: "외형" }), el("th", { text: "적재" }), el("th", { text: "주행구역 인접 (cm)" }), el("th", { text: "접근점 도달" }), el("th", { text: "이유" })])].concat(c.destination.ratings.map(function (r) {
+      var a = c.destination.accessibility[String(r.number)] || {};
+      return el("tr", { class: r.role === "suitable" ? "r-SUCCESS" : r.role === "possible" ? "r-UNCERTAIN" : "" }, [el("td", { text: txt(r.number) }), el("td", { text: txt(r.id) }), el("td", { text: txt(r.role) }), el("td", { text: txt(r.appearance) }), el("td", { text: txt(r.load) }),
+        el("td", { text: a.adjacent === undefined ? "—" : (a.adjacent ? "예 " : "아니오 ") + txt(a.gap_to_drivable_cm) }), el("td", { text: a.approach_reachable_from_start === undefined ? "—" : String(a.approach_reachable_from_start) }), el("td", { text: txt(r.reason) })]);
+    }))),
+    el("p", { class: "note", text: "인접·도달은 코드가 계산한 값입니다(잠정 바닥 좌표, DRAFT 지도). 그리퍼 도달 거리는 검증되지 않았습니다." })]);
+  main.appendChild(el("div", { class: "grid2" }, [src, dst]));
+  // model inputs
+  var mi = el("div", { class: "panel" }, [el("h2", { text: "AI에 실제로 입력된 번호 이미지 (클릭하면 확대)" }), el("div", { class: "thumbs" }, [
+    c.source.model_input ? el("figure", {}, [el("img", { src: c.source.model_input, onclick: function () { openModal(c.source.model_input); } }), el("figcaption", { text: "출발 후보 번호 이미지" })]) : null,
+    c.destination.model_input ? el("figure", {}, [el("img", { src: c.destination.model_input, onclick: function () { openModal(c.destination.model_input); } }), el("figcaption", { text: "목적지 후보 번호 이미지" })]) : null])]);
+  main.appendChild(mi);
+  // R0 vs R1
+  var pair = D.conditions.filter(function (x) { return x.task_id === c.task_id; });
+  var rows = [["출발 관계", function (x) { return txt(x.interpretation.source_relation); }], ["출발 결정", function (x) { return x.source.status + " " + txt(x.source.selected.map(function (y) { return y.id; })); }],
+              ["목적지 결정", function (x) { return x.destination.status + " " + txt(x.destination.id) + " " + txt(x.destination.kind); }],
+              ["AI가 '금지'로 본 구역 수", function (x) { return String(x.interpretation.zones_seen.filter(function (z) { return z.access === "forbidden"; }).length); }],
+              ["코드의 경로 분류", function (x) { return x.routes.category_by_code; }]];
+  main.appendChild(el("div", { class: "panel" }, [el("h2", { text: "R0 (규칙 없음) vs R1 (운영 규칙 제공)" }),
+    el("table", {}, [el("tr", {}, [el("th", { text: "" })].concat(pair.map(function (x) { return el("th", { text: x.cond_id + (x.cond_id === c.cond_id ? " (현재)" : "") }); })))].concat(rows.map(function (r) {
+      return el("tr", {}, [el("th", { text: r[0] })].concat(pair.map(function (x) { return el("td", { text: r[1](x) }); })));
+    })))]));
+  // maps and paths
+  var rt = el("table", {}, [el("tr", {}, [el("th", { text: "구분" }), el("th", { text: "출발 후보" }), el("th", { text: "경로 A (cm)" }), el("th", { text: "A 간격" }), el("th", { text: "경로 B (cm)" }), el("th", { text: "B 간격" }), el("th", { text: "비고" })])].concat(c.routes.plans.map(function (q) {
+    return el("tr", {}, [el("td", { text: q.label }), el("td", { text: q.source_id }), el("td", { text: txt(q.path_A_cm) }), el("td", { text: txt(q.path_A_gap_cm) }), el("td", { text: txt(q.path_B_cm) }), el("td", { text: txt(q.path_B_gap_cm) }), el("td", { text: txt(q.path_B_why) })]);
+  })));
+  var ac = c.automatic_checks;
+  main.appendChild(el("div", { class: "panel" }, [el("h2", { text: "2D 지도와 경로 A·B" }), rt,
+    el("div", { class: "infobox" }, [el("b", { text: "자동 검사 결과 (코드 계산 · 사용자 평가 아님): " }), "차체 충돌 없음 = " + txt(ac.collision_free) + " · 금지 구역 침범 없음 = " + txt(ac.forbidden_zone_clear) + " · 코드 분류 = " + txt(ac.category) + " · 최초 실패 단계(코드) = " + txt(ac.first_failure)]),
+    el("div", { class: "thumbs" }, [
+      el("figure", {}, [el("img", { src: c.figures.F5_overlay, onclick: function () { openModal(c.figures.F5_overlay); } }), el("figcaption", { text: "F5 원본 사진 위 경로" })]),
+      el("figure", {}, [el("img", { src: c.figures.F4_paths_2d, onclick: function () { openModal(c.figures.F4_paths_2d); } }), el("figcaption", { text: "F4 점유 지도 위 경로·차체" })]),
+      el("figure", {}, [el("img", { src: c.figures.F3_semantic_navigation, onclick: function () { openModal(c.figures.F3_semantic_navigation); } }), el("figcaption", { text: "F3 의미·주행 제약 지도" })]),
+      el("figure", {}, [el("img", { src: c.figures.F1_context, onclick: function () { openModal(c.figures.F1_context); } }), el("figcaption", { text: "F1 맥락 탐색 (AI 그림)" })]),
+      el("figure", {}, [el("img", { src: D.meta.occupancy_figure, onclick: function () { openModal(D.meta.occupancy_figure); } }), el("figcaption", { text: "F2 점유 지도 (공통)" })])
+    ]),
+    el("p", { class: "note", text: "기준선 C1(관계·역할 판단 없음, 참고): 출발 " + txt(c.baseline_C1.source.status) + " " + txt(c.baseline_C1.source.id || c.baseline_C1.source.tied) + " · 목적지 " + txt(c.baseline_C1.destination.id) })]));
+  // evaluation form
+  var e = evalOf(S, c.cond_id);
+  var form = el("div", { class: "panel" }, [el("h2", { text: "평가 (" + c.cond_id + ")" }),
+    el("p", { class: "note", text: "그리퍼 도달 가능성과 물리적 충돌 안전성은 사진만으로 확정하지 않습니다. 자동 검사 결과를 그대로 옮기지 말고 직접 판단하세요. 기본값은 '미평가'입니다." })]);
+  D.items.forEach(function (it) {
+    var cur = e.items[it.key];
+    var rr = el("div", { class: "rating" });
+    D.ratings.forEach(function (r) {
+      var inp = el("input", { type: "radio", name: "r_" + it.key, value: r, onchange: function () { cur.rating = r; e.updated_at = new Date().toISOString(); persist(); renderSide(); } });
+      inp.checked = cur.rating === r;
+      rr.appendChild(el("label", {}, [inp, " " + r]));
+    });
+    var ct = el("textarea", { placeholder: "의견", onchange: function (ev) { cur.comment = ev.target.value; e.updated_at = new Date().toISOString(); persist(); } }); ct.value = cur.comment;
+    form.appendChild(el("div", { class: "evalitem" }, [el("b", { text: it.label }), rr, ct]));
+  });
+  var oc = el("textarea", { placeholder: "종합 의견", onchange: function (ev) { e.overall_comment = ev.target.value; e.updated_at = new Date().toISOString(); persist(); } }); oc.value = e.overall_comment;
+  form.appendChild(el("div", { class: "evalitem" }, [el("b", { text: "종합 의견" }), oc]));
+  var idx = D.conditions.indexOf(c);
+  form.appendChild(el("div", { class: "toolbar" }, [
+    el("span", { class: "note", text: "입력은 자동 저장됩니다." }),
+    idx > 0 ? el("button", { class: "btn", text: "← 이전 조건", onclick: function () { UI.cond = D.conditions[idx - 1].cond_id; render(); window.scrollTo(0, 0); } }) : null,
+    idx < D.conditions.length - 1 ? el("button", { class: "btn", text: "다음 조건 →", onclick: function () { UI.cond = D.conditions[idx + 1].cond_id; render(); window.scrollTo(0, 0); } }) : null]));
+  main.appendChild(form);
+}
+
+// ------------------------------------------------------------------ screen C
+function renderC(main) {
+  var st = overallStatus(S);
+  main.appendChild(el("div", { class: "panel" }, [el("h2", { text: "화면 C · 종합" }),
+    el("p", {}, ["상태: ", el("span", { class: "badge " + (st.status === "COMPLETE" ? "ok" : "warn"), text: st.status }), "  · 정답 기준 " + st.gt_saved + "/" + st.gt_total + " · 평가 항목 " + st.items_rated + "/" + st.items_total]),
+    el("p", { class: "note", text: "모든 작업의 기준이 저장되고 60개 평가 항목이 모두 선택될 때까지 결과는 INCOMPLETE로 내보내집니다. 사람이 입력하지 않은 항목은 비어 있습니다(자동 성공 처리 없음)." })]));
+  var gtt = el("table", {}, [el("tr", {}, [el("th", { text: "작업" }), el("th", { text: "사진" }), el("th", { text: "기준 저장" }), el("th", { text: "출발 표시 / 보류" }), el("th", { text: "목적지 표시 / 보류" }), el("th", { text: "모호성" }), el("th", { text: "AI 공개 후 수정" })])].concat(D.tasks.map(function (t) {
+    var g = S.ground_truth[t.task_id] || emptyGT();
+    return el("tr", {}, [el("td", { text: t.task_id }), el("td", { text: D.photos[t.photo].label }), el("td", { text: g.saved_at ? g.saved_at.replace("T", " ").slice(0, 19) : "미저장" }),
+      el("td", { text: g.source_boxes.length + (g.source_hold ? " / 보류" : "") }), el("td", { text: g.destination_boxes.length + (g.destination_hold ? " / 보류" : "") }), el("td", { text: txt(g.ambiguity) }), el("td", { text: g.revised_after_reveal ? "예" : "아니오" })]);
+  })));
+  main.appendChild(el("div", { class: "panel" }, [el("h2", { text: "정답 기준 (화면 A)" }), gtt]));
+  var mt = el("table", { class: "matrix" }, [el("tr", {}, [el("th", { text: "조건" })].concat(D.items.map(function (it) { return el("th", { text: it.label }); })).concat([el("th", { text: "AI 코드 분류 (참고)" })]))].concat(D.conditions.map(function (c) {
+    var e = S.evaluations[c.cond_id];
+    return el("tr", {}, [el("td", {}, [el("a", { href: "#", text: c.cond_id, onclick: function (ev) { ev.preventDefault(); UI.tab = "B"; UI.cond = c.cond_id; render(); } })])].concat(D.items.map(function (it) {
+      var r = e && e.items[it.key] && e.items[it.key].rating;
+      return el("td", { class: "cell" + (r ? " r-" + r : ""), text: r || "—" });
+    })).concat([el("td", { class: "note", text: c.routes.category_by_code })]));
+  })));
+  main.appendChild(el("div", { class: "panel" }, [el("h2", { text: "평가 현황 (화면 B)" }), mt]));
+  var fileIn = el("input", { type: "file", accept: ".json", style: "display:none", onchange: function (ev) {
+    var f = ev.target.files[0]; if (!f) return;
+    var rd = new FileReader();
+    rd.onload = function () {
+      try { var o = JSON.parse(rd.result); if (o.schema !== STATE_SCHEMA) throw new Error("작업 상태 백업 파일(" + STATE_SCHEMA + ")이 아닙니다."); if (confirm("현재 브라우저의 평가 상태를 이 파일로 바꿉니다. 계속할까요?")) { S = o; persist(); render(); } }
+      catch (err) { alert("불러오기 실패: " + err.message); }
+    };
+    rd.readAsText(f);
+  } });
+  main.appendChild(el("div", { class: "panel" }, [el("h2", { text: "내보내기" }),
+    el("p", { class: "note", text: "브라우저는 파일을 '다운로드' 폴더에 저장합니다. 연구 기록으로 남기려면 experiments/human_evaluation/results/ 아래로 옮기세요 (README 참고)." }),
+    el("div", { class: "toolbar" }, [
+      el("button", { class: "btn primary", text: "human_ground_truth.json", onclick: function () { download("human_ground_truth.json", JSON.stringify(exportGT(S), null, 1), "application/json"); logEvent("export gt"); persist(); } }),
+      el("button", { class: "btn primary", text: "human_evaluation.json", onclick: function () { download("human_evaluation.json", JSON.stringify(exportEval(S), null, 1), "application/json"); logEvent("export eval json"); persist(); } }),
+      el("button", { class: "btn primary", text: "human_evaluation.csv", onclick: function () { download("human_evaluation.csv", exportCSV(S), "text/csv"); logEvent("export eval csv"); persist(); } })]),
+    el("h3", { text: "작업 상태 백업 / 복원" }),
+    el("div", { class: "toolbar" }, [
+      el("button", { class: "btn", text: "작업 상태 백업 (human_evaluation_state.json)", onclick: function () { download("human_evaluation_state.json", JSON.stringify(S, null, 1), "application/json"); } }),
+      el("button", { class: "btn", text: "백업 불러오기", onclick: function () { fileIn.click(); } }), fileIn,
+      el("button", { class: "btn danger", text: "모든 입력 초기화", onclick: function () { if (confirm("이 브라우저에 저장된 정답 기준과 평가를 모두 지웁니다. 먼저 백업했나요?") && confirm("정말 초기화할까요?")) { S = emptyState(); persist(); render(); } } })])]));
+}
+
+// ------------------------------------------------------------------ init
+function init() {
+  if (!D) { document.getElementById("main").textContent = "data.js를 찾을 수 없습니다. build_data.py를 먼저 실행하세요."; return; }
+  load();
+  var ev = document.getElementById("evaluator"); ev.value = S.evaluator || "";
+  ev.addEventListener("change", function () { S.evaluator = ev.value.trim(); persist(); });
+  Array.prototype.forEach.call(document.querySelectorAll("nav.tabs button"), function (b) { b.addEventListener("click", function () { UI.tab = b.getAttribute("data-tab"); render(); window.scrollTo(0, 0); }); });
+  document.getElementById("modal").addEventListener("click", function () { document.getElementById("modal").style.display = "none"; });
+  window.addEventListener("resize", function () { if (UI.currentRedraw) UI.currentRedraw(); });
+  render();
+}
+if (typeof module !== "undefined") { module.exports = { emptyState: emptyState, emptyGT: emptyGT, gtValidate: gtValidate, overallStatus: overallStatus, exportGT: exportGT, exportEval: exportEval, exportCSV: exportCSV, evalOf: evalOf, setState: function (o) { S = o; } }; }
+else { window.addEventListener("DOMContentLoaded", init); }
+</script>
+</body>
+</html>

@@ -1,0 +1,897 @@
+{
+ "run_id": "run_001_U26007129",
+ "created": "2026-11-19T21:39:05",
+ "instruction": "컨베이어 벨트 주변에 있는 빨간 큐브를 하역장으로 옮겨줘.",
+ "rules": "R1",
+ "photo": {
+  "photo_id": "U26007129",
+  "path": "/home/binci/Pictures/Calibration/undistorted_26007129092710.png",
+  "sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "detection_reused": "fresh DINO this session (vocabulary; full image + verified conveyor / truck ROIs), IoU merge 0.5",
+ "cube_candidates": "stored red-cube candidates (candidate_retention_policy, HSV + DINO)",
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "policy": {
+  "config": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml",
+  "prompt_ids": [
+   "task_context_v1",
+   "source_roles_v2",
+   "destination_roles_v2"
+  ],
+  "rules_text": "이 작업장의 운영 규칙(사용자 초안, 확인 전):\n- 초록색 바닥에 발자국 표시가 있는 통로는 보행자 통로이며 로봇 본체가 들어갈 수 없다.\n- 노란 외곽선 안의 넓은 검은 바닥은 로봇 주행 구역이다. 로봇 본체는 이 구역 안에서만 움직인다.\n- 흰 테두리 안의 컨베이어·로봇 팔 작업셀에는 로봇 본체가 들어갈 수 없다.\n- 노란 테두리 안의 화물 적치 구역과 자재 보관 구역에는 로봇 본체가 들어가지 않고 접근만 한다.\n- 트럭과 흰색 점선 구획은 트럭 하역장이다.\n- 안전 콘과 바닥 경계선은 작업공간을 나누는 표시일 수 있다.\n- 로봇은 주행 구역에 정차한 채 인접한 구역의 물체를 집거나 놓을 수 있다(그리퍼 도달 거리는 확인되지 않았다).\n",
+  "viewer_config": {
+   "photo_dir": "/home/binci/Pictures/Calibration",
+   "results_dir": "results",
+   "reuse": {
+    "task_context_config": "../task_context_2d_navigation/config.yaml"
+   },
+   "whole_image_when_no_reference": true,
+   "max_role_calls_per_side": 3,
+   "goal_region": {
+    "region_words": [
+     "floor",
+     "area",
+     "zone",
+     "marking",
+     "road",
+     "ground",
+     "lane",
+     "region",
+     "space",
+     "surface",
+     "mat",
+     "dock",
+     "bay",
+     "path",
+     "walkway",
+     "aisle"
+    ],
+    "min_image_frac": 0.03
+   },
+   "default_rules": "R1"
+  }
+ },
+ "model_called": true,
+ "source": {
+  "status": "NOT_FOUND",
+  "ids": [],
+  "why": "no candidate inside the search region"
+ },
+ "destination": {
+  "status": "NOT_ACCESSIBLE",
+  "number": null,
+  "kind": null,
+  "why": "Qwen best 9 not accessible; suitable/possible [9] none accessible",
+  "id": null,
+  "bbox_xyxy": null,
+  "ratings": {
+   "m15": {
+    "id": 2,
+    "appearance": [
+     "truck"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Truck is occupied and not a designated unloading zone."
+   },
+   "m77": {
+    "id": 5,
+    "appearance": [
+     "truck cab"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Truck cab is part of occupied truck and not a designated unloading zone."
+   },
+   "m41": {
+    "id": 6,
+    "appearance": [
+     "truck cab"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Truck cab is part of occupied truck and not a designated unloading zone."
+   },
+   "m4": {
+    "id": 7,
+    "appearance": [
+     "cargo"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Cargo is loaded on truck and not a designated unloading zone."
+   },
+   "m68": {
+    "id": 9,
+    "appearance": [
+     "unloading zone"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "Truck unloading zone is designated for unloading cargo."
+   },
+   "m80": {
+    "id": 12,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m39": {
+    "id": 13,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m86": {
+    "id": 14,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m69": {
+    "id": 15,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m84": {
+    "id": 16,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m33": {
+    "id": 17,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m75": {
+    "id": 18,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m43": {
+    "id": 19,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m28": {
+    "id": 20,
+    "appearance": [
+     "cone"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Safety cone is not a designated unloading zone."
+   },
+   "m20": {
+    "id": 21,
+    "appearance": [
+     "traffic cone"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Traffic cone is not a valid destination for placing a red cube."
+   },
+   "m54": {
+    "id": 22,
+    "appearance": [
+     "traffic cone"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Traffic cone is not a valid destination for placing a red cube."
+   },
+   "m51": {
+    "id": 23,
+    "appearance": [
+     "traffic cone"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Traffic cone is not a valid destination for placing a red cube."
+   }
+  },
+  "numbering": {
+   "1": "m1",
+   "2": "m15",
+   "3": "m57",
+   "4": "m78",
+   "5": "m77",
+   "6": "m41",
+   "7": "m4",
+   "8": "m63",
+   "9": "m68",
+   "10": "m85",
+   "11": "m30",
+   "12": "m80",
+   "13": "m39",
+   "14": "m86",
+   "15": "m69",
+   "16": "m84",
+   "17": "m33",
+   "18": "m75",
+   "19": "m43",
+   "20": "m28",
+   "21": "m20",
+   "22": "m54",
+   "23": "m51"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_001_U26007129/inputs/destination_1.png",
+    "view_rect": [
+     1302,
+     0,
+     1832,
+     295
+    ],
+    "numbers": [
+     1,
+     20
+    ],
+    "error": null
+   },
+   {
+    "path": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_001_U26007129/inputs/destination_2.png",
+    "view_rect": [
+     1302,
+     0,
+     1832,
+     295
+    ],
+    "numbers": [
+     21,
+     23
+    ],
+    "error": null
+   }
+  ],
+  "reply_reason": "Truck unloading zone is explicitly designated for unloading cargo. | None of the marked traffic cones are designated as valid unloading zones for the red cube.",
+  "candidates": [
+   {
+    "id": "m1",
+    "bbox_xyxy": [
+     1448.22,
+     0.0,
+     1687.92,
+     148.06
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "conveyor belt",
+     "pallet",
+     "red cube",
+     "shelf",
+     "table",
+     "truck bed",
+     "truck unloading zone"
+    ]
+   },
+   {
+    "id": "m15",
+    "bbox_xyxy": [
+     1549.24,
+     0.0,
+     1687.5,
+     112.07
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "pallet",
+     "shelf"
+    ]
+   },
+   {
+    "id": "m57",
+    "bbox_xyxy": [
+     1789.82,
+     0.0,
+     1832.0,
+     117.39
+    ],
+    "phrases": [
+     "conveyor belt",
+     "shelf"
+    ]
+   },
+   {
+    "id": "m78",
+    "bbox_xyxy": [
+     1790.36,
+     0.0,
+     1832.0,
+     293.86
+    ],
+    "phrases": [
+     "conveyor belt"
+    ]
+   },
+   {
+    "id": "m77",
+    "bbox_xyxy": [
+     1487.63,
+     0.91,
+     1513.02,
+     50.95
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m41",
+    "bbox_xyxy": [
+     1448.69,
+     0.92,
+     1566.21,
+     143.77
+    ],
+    "phrases": [
+     "container",
+     "pallet"
+    ]
+   },
+   {
+    "id": "m4",
+    "bbox_xyxy": [
+     1583.68,
+     12.89,
+     1677.06,
+     59.03
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "pallet",
+     "red cube",
+     "shelf",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m63",
+    "bbox_xyxy": [
+     1302.02,
+     15.43,
+     1313.1,
+     114.06
+    ],
+    "phrases": [
+     "cart"
+    ]
+   },
+   {
+    "id": "m68",
+    "bbox_xyxy": [
+     1392.2,
+     55.47,
+     1687.37,
+     181.81
+    ],
+    "phrases": [
+     "conveyor belt",
+     "floor marking"
+    ]
+   },
+   {
+    "id": "m85",
+    "bbox_xyxy": [
+     1302.04,
+     65.57,
+     1317.37,
+     201.62
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m30",
+    "bbox_xyxy": [
+     1302.02,
+     67.18,
+     1312.57,
+     112.46
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube",
+     "shelf",
+     "truck bed"
+    ]
+   },
+   {
+    "id": "m80",
+    "bbox_xyxy": [
+     1302.0,
+     67.96,
+     1307.72,
+     99.72
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m39",
+    "bbox_xyxy": [
+     1302.01,
+     153.63,
+     1316.43,
+     200.32
+    ],
+    "phrases": [
+     "container",
+     "pallet",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m86",
+    "bbox_xyxy": [
+     1302.0,
+     176.75,
+     1315.93,
+     200.1
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m69",
+    "bbox_xyxy": [
+     1711.72,
+     228.76,
+     1831.98,
+     294.1
+    ],
+    "phrases": [
+     "cardboard box"
+    ]
+   },
+   {
+    "id": "m84",
+    "bbox_xyxy": [
+     1308.15,
+     237.81,
+     1717.73,
+     292.99
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m33",
+    "bbox_xyxy": [
+     1676.45,
+     239.29,
+     1713.23,
+     283.5
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m75",
+    "bbox_xyxy": [
+     1687.71,
+     240.21,
+     1712.14,
+     271.4
+    ],
+    "phrases": [
+     "red cube"
+    ]
+   },
+   {
+    "id": "m43",
+    "bbox_xyxy": [
+     1523.85,
+     242.15,
+     1561.04,
+     287.91
+    ],
+    "phrases": [
+     "pallet",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m28",
+    "bbox_xyxy": [
+     1414.63,
+     246.75,
+     1450.41,
+     291.44
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "pallet",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m20",
+    "bbox_xyxy": [
+     1309.9,
+     249.9,
+     1343.05,
+     293.53
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m54",
+    "bbox_xyxy": [
+     1525.16,
+     261.67,
+     1558.16,
+     287.29
+    ],
+    "phrases": [
+     "pallet",
+     "red cube"
+    ]
+   },
+   {
+    "id": "m51",
+    "bbox_xyxy": [
+     1302.0,
+     284.15,
+     1732.97,
+     294.1
+    ],
+    "phrases": [
+     "conveyor belt",
+     "floor marking",
+     "pallet"
+    ]
+   }
+  ],
+  "accessibility": {
+   "m68": {
+    "gap_to_drivable_cm": 28.2,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     229.0,
+     83.0
+    ],
+    "approach_goal_image_px": [
+     1312.1,
+     368.1
+    ],
+    "body_gap_cm": 35.0,
+    "floor_polygon_cm": [
+     [
+      252.8,
+      0.5
+     ],
+     [
+      316.9,
+      3.1
+     ],
+     [
+      310.9,
+      38.1
+     ],
+     [
+      249.4,
+      36.1
+     ]
+    ],
+    "accessible": false,
+    "why": "28.2 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   }
+  },
+  "tied_ids": []
+ },
+ "interpretation": {
+  "parsed": {
+   "purpose": "Move a red cube from the conveyor belt area to the unloading area",
+   "source_object": {
+    "name_en": "red cube"
+   },
+   "source_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [
+     110,
+     350,
+     207,
+     620
+    ],
+    "bbox_image_px": [
+     211.2,
+     378.0,
+     397.4,
+     669.6
+    ]
+   },
+   "source_relation": "on",
+   "destination_meaning": "unloading area for trucks",
+   "destination_reference": {
+    "name_en": "truck unloading zone",
+    "bbox_2d": [
+     745,
+     0,
+     880,
+     150
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     1430.4,
+     0.0,
+     1689.6,
+     162.0
+    ]
+   },
+   "destination_relation": "next_to",
+   "zones_seen": [
+    {
+     "description": "Pedestrian walkway",
+     "visual_evidence": [
+      "green floor with footprints",
+      "no robot body allowed"
+     ],
+     "bbox_2d": [
+      305,
+      50,
+      560,
+      280
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Robot travel zone",
+     "visual_evidence": [
+      "yellow border",
+      "black floor"
+     ],
+     "bbox_2d": [
+      100,
+      270,
+      970,
+      750
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "Conveyor belt work cell",
+     "visual_evidence": [
+      "white border",
+      "robot arms"
+     ],
+     "bbox_2d": [
+      100,
+      270,
+      260,
+      720
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Cargo storage area",
+     "visual_evidence": [
+      "yellow border",
+      "stacked boxes and barrels"
+     ],
+     "bbox_2d": [
+      610,
+      430,
+      960,
+      550
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "Truck unloading zone",
+     "visual_evidence": [
+      "white truck",
+      "white dashed lines"
+     ],
+     "bbox_2d": [
+      745,
+      0,
+      880,
+      150
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "Safety cones and boundary lines",
+     "visual_evidence": [
+      "orange cones",
+      "white lines"
+     ],
+     "bbox_2d": [
+      280,
+      180,
+      900,
+      280
+     ],
+     "robot_body_access": "forbidden"
+    }
+   ],
+   "uncertainty": [
+    "The reach of the gripper is not confirmed, so whether the robot can pick up the red cube is uncertain."
+   ]
+  },
+  "error": null,
+  "raw_file": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_001_U26007129/qwen/interpretation.txt"
+ },
+ "references": {
+  "source": {
+   "name": "conveyor belt",
+   "class": "conveyor",
+   "box": [
+    211.2,
+    378.0,
+    397.4,
+    669.6
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "on",
+   "region": {
+    "type": "containment",
+    "rect": [
+     211,
+     378,
+     397,
+     669
+    ]
+   }
+  },
+  "destination": {
+   "name": "truck unloading zone",
+   "class": "truck",
+   "box": [
+    1447.05,
+    0.21,
+    1687.37,
+    149.31
+   ],
+   "how": "class 'truck' -> fresh DINO + Qwen crop yes",
+   "relation": "next_to",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     1302,
+     0,
+     1832,
+     294
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  }
+ },
+ "stages": [
+  {
+   "name": "interpretation",
+   "status": "OK",
+   "summary": "move 'red cube' | source: on 'conveyor belt' | destination: next_to 'truck unloading zone' | purpose: Move a red cube from the conveyor belt area to the unloading area"
+  },
+  {
+   "name": "detection",
+   "status": "OK",
+   "summary": "new phrases ['red cube', 'conveyor belt', 'truck unloading zone']: 16 new candidates; 86 detector candidates on this photo"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "'conveyor belt' [on] -> containment [211, 378, 397, 669] (Qwen box (no stored object with enough overlap))"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "'truck unloading zone' [next_to] -> vicinity [1302, 0, 1832, 294] (class 'truck' -> fresh DINO + Qwen crop yes)"
+  },
+  {
+   "name": "source_candidates",
+   "status": "FAILED",
+   "summary": "0 of 15 red-cube candidates (stored red-cube candidates (candidate_retention_policy, HSV + DINO)) inside the region"
+  },
+  {
+   "name": "destination_candidates",
+   "status": "OK",
+   "summary": "23 detector candidates inside the region (1 region-scale boxes not numbered; the object to move excluded)"
+  },
+  {
+   "name": "destination_roles",
+   "status": "OK",
+   "summary": "Qwen reply valid"
+  },
+  {
+   "name": "accessibility",
+   "status": "OK",
+   "summary": "0 of 1 suitable/possible candidates accessible"
+  },
+  {
+   "name": "destination_decision",
+   "status": "FAILED",
+   "summary": "NOT_ACCESSIBLE  : Qwen best 9 not accessible; suitable/possible [9] none accessible"
+  }
+ ],
+ "first_failure": "source_candidates",
+ "wall_s": 84.1,
+ "model_calls": {
+  "n_qwen": 3,
+  "n_dino": 2,
+  "models": [
+   "IDEA-Research/grounding-dino-tiny @ a2bb814dd30d776dcf7e30523b00659f4f141c71",
+   "Qwen/Qwen3-VL-4B-Instruct @ ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  ],
+  "file": "model_calls.json"
+ },
+ "handoff": {
+  "photo_id": "U26007129",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": null,
+  "destination": null
+ },
+ "files": {
+  "overlay": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_001_U26007129/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_001_U26007129/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/semantic_task_navigation/experiments/instruction_target_viewer/results/20261119_213838_session/runs/run_001_U26007129/run.json"
+ }
+}

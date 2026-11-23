@@ -1,0 +1,21 @@
+{
+ "photo": "photo_6",
+ "path_A_status": "NOT_FOUND",
+ "path_B_status": "REVIEW_REQUIRED",
+ "path_B_basis": "no empty pallet in this photo: placement target must be given by the user (none invented)",
+ "status_meaning": {
+  "VALID": "path found and every collision / boundary check passed in the current map model",
+  "INVALID_PATH": "a path exists but a collision / boundary check failed",
+  "NOT_FOUND": "no valid path or stop pose under the current conditions",
+  "CONDITIONAL": "computed from an assumed start (grasp-pose candidate or robot start) because Path A is not valid",
+  "REVIEW_REQUIRED": "positions are provisional or a target is missing: user confirmation needed",
+  "UNVERIFIED": "physical conditions (gripper offset / reach, dynamics) not verified"
+ },
+ "path_A_checks": null,
+ "path_B_checks": null,
+ "cause_A": "A: the only collision-free stops on the target axis need the gripper to reach across {90: ['STATIC_OBSTACLE']} -> rejected",
+ "cause_B": null,
+ "positions": "REVIEW_REQUIRED",
+ "grasp_placement": "UNVERIFIED",
+ "driving": "NOT_FOR_DRIVING (2.0 cm margin < position uncertainty)"
+}

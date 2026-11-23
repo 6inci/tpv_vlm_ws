@@ -1,0 +1,111 @@
+{
+  "result": "PASS",
+  "verification_type": "Semantic-to-Pixel-to-Metric Grounding Software Integration",
+  "not_final_paper_accuracy": true,
+  "created_at": "2026-09-17T16:53:17.462306+09:00",
+  "source_image": "/home/binci/qwen_vision_test/photo_04.png",
+  "target_query": "red cup",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "model_cache": "/home/binci/.cache/huggingface/hub/models--Qwen--Qwen3-VL-4B-Instruct",
+  "local_files_only": true,
+  "model_load_sec": 3.513879387999623,
+  "environment": {
+    "python": "3.10.20",
+    "torch": "2.13.0+cu130",
+    "transformers": "5.16.1",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU"
+  },
+  "stored_bbox_integration": {
+    "result": "PASS",
+    "interpretation": "BBox parsing and verified raw-to-undistorted-to-world integration succeeded. The stored world value used a different legacy distorted-image Homography and was rounded.",
+    "source": "/home/binci/qwen_vision_test/photo_04_objects_world.json",
+    "legacy_bbox_normalized_0_1000": [
+      447,
+      527,
+      483,
+      595
+    ],
+    "new_parsed_bbox_normalized_0_1000": [
+      447.0,
+      527.0,
+      483.0,
+      595.0
+    ],
+    "legacy_bottom_center_pixel_rounded": [
+      937.4,
+      674.1
+    ],
+    "new_bottom_center_pixel": [
+      937.44,
+      674.135
+    ],
+    "legacy_world_xy_m_rounded": [
+      0.265,
+      0.662
+    ],
+    "new_verified_geometry_world_xy_m": [
+      0.26729291677474976,
+      0.6573204398155212
+    ],
+    "new_minus_legacy_world_xy_m": [
+      0.0022929167747497425,
+      -0.004679560184478793
+    ],
+    "difference_norm_m": 0.005211118004429372,
+    "grounding": {
+      "target_query": "red cup",
+      "label": "빨간 컵",
+      "bbox_model_normalized_0_1000": [
+        447.0,
+        527.0,
+        483.0,
+        595.0
+      ],
+      "bbox_pixel_raw": [
+        901.152,
+        597.091,
+        973.728,
+        674.135
+      ],
+      "reference_point_type": "bbox_bottom_center",
+      "raw_reference_pixel": {
+        "u": 937.44,
+        "v": 674.135
+      },
+      "undistorted_reference_pixel": {
+        "u": 902.7538452148438,
+        "v": 744.5928344726562
+      },
+      "world_coordinate": {
+        "x": 0.26729291677474976,
+        "y": 0.6573204398155212,
+        "unit": "m",
+        "frame": "LEGACY_WORKSPACE_COORDINATE"
+      }
+    }
+  },
+  "fresh_inference": {
+    "runs": 3,
+    "bbox_coordinate_peak_to_peak_normalized_0_1000": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "raw_reference_pixel_peak_to_peak_px": [
+      0.0,
+      0.0
+    ],
+    "world_xy_peak_to_peak_m": [
+      0.0,
+      0.0
+    ],
+    "inference_sec": [
+      2.717471721000038,
+      2.050666889999775,
+      2.054141497999808
+    ]
+  }
+}

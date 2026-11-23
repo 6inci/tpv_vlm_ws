@@ -1,0 +1,48 @@
+{
+  "purpose": "물체를 컨베이어 벨트 옆으로 이동",
+  "source_object": {
+    "name_en": "stacked boxes"
+  },
+  "source_reference": {
+    "name_en": "yellow boundary",
+    "bbox_2d": [390, 380, 510, 560]
+  },
+  "source_relation": "on",
+  "destination_meaning": "컨베이어 벨트 옆",
+  "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [620, 430, 750, 550],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "robot driving area",
+      "visual_evidence": ["yellow outer boundary", "robot body on black surface"],
+      "bbox_2d": [250, 270, 700, 700],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "pedestrian walkway",
+      "visual_evidence": ["green floor with footprints"],
+      "bbox_2d": [300, 50, 560, 270],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "robot arm workcell",
+      "visual_evidence": ["white boundary around robot arms"],
+      "bbox_2d": [100, 250, 260, 700],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "truck unloading zone",
+      "visual_evidence": ["truck", "dashed white lines"],
+      "bbox_2d": [620, 0, 880, 160],
+      "robot_body_access": "unknown"
+    }
+  ],
+  "uncertainty": [
+    "그리퍼 도달 거리 확인 불가",
+    "목적지 '컨베이어 벨트' 정확한 위치 추론"
+  ]
+}

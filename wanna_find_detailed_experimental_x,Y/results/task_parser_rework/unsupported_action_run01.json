@@ -1,0 +1,39 @@
+{
+  "case_id": "unsupported_action",
+  "category": "unsupported_action",
+  "core_metric": true,
+  "run": 1,
+  "instruction": "빨간 컵을 회전시켜",
+  "raw_model_output": "{\"action_phrase\":\"회전시켜\",\"target_phrase\":\"빨간 컵\",\"destination_phrase\":null}",
+  "parsed": {
+    "action_phrase": "회전시켜",
+    "target_phrase": "빨간 컵",
+    "destination_phrase": null
+  },
+  "validated": {
+    "status": "UNSUPPORTED_ACTION",
+    "raw_instruction": "빨간 컵을 회전시켜",
+    "error_code": "UNSUPPORTED_ACTION",
+    "reason": "raw instruction contains unsupported action phrase: 회전시켜",
+    "parsed_fields": {
+      "action_phrase": "회전시켜",
+      "target_phrase": "빨간 컵",
+      "destination_phrase": null
+    },
+    "action": {
+      "surface_phrase": "회전시켜",
+      "canonical": null,
+      "resolution_status": "UNSUPPORTED_ACTION_RAW_GUARD"
+    },
+    "target_grounding_status": "NOT_RUN",
+    "zone_resolution_status": "NOT_RUN",
+    "path_status": "NOT_RUN"
+  },
+  "integrated": null,
+  "inference_sec": 8.274616411999887,
+  "expected": {
+    "status": "UNSUPPORTED_ACTION",
+    "error_code": "UNSUPPORTED_ACTION"
+  },
+  "matches_expected": true
+}

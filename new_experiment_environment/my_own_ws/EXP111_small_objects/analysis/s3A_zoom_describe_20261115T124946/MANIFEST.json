@@ -1,0 +1,51 @@
+{
+ "id": "EXP111-s3-pilot",
+ "describe": true,
+ "description": "Definition: in this miniature warehouse, a \"small pallet\" is a flat gray square platform with a grid-like slatted surface, lying on the floor. It may look like a ventilation grille or a drain cover. Small colored cubes may sit on top of it.\n",
+ "started": "2026-11-15T12:50:45.124055+09:00",
+ "env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "transformers": "5.16.1",
+  "nvidia_driver": "580.178.04"
+ },
+ "config": {
+  "s2": {
+   "queries": [
+    "q025",
+    "q027",
+    "q024",
+    "q026"
+   ],
+   "size_gate_px": {
+    "min_side": 35,
+    "max_side": 75
+   },
+   "size_gate_note": "PROVISIONAL, set from dev answer sizes (small pallet 38-57 px) with margin. Replace with an expected-size model from physical size + homography when available.",
+   "nms_iou": 0.7,
+   "top_k": 15,
+   "source_run": "run02"
+  },
+  "s3": {
+   "candidates_from": "s2 gate on the English query q025 'small pallet' (dev coverage 16/16 in the s2 pilot)",
+   "query_for_dino": "q025",
+   "crop": {
+    "context_scale": 3.0,
+    "min_side_px": 160,
+    "enlarged_long_side_px": 768,
+    "note": "identical to EXP110 X4 oracle crop"
+   },
+   "prompt": "Is the object at the center of this image a small pallet? Return JSON only: {\"small_pallet\": true} or {\"small_pallet\": false}.",
+   "max_new_tokens": 32,
+   "prompt_note": "Fixed before running. One question per candidate; the object name is the user query string."
+  }
+ },
+ "sha256": {
+  "tools/s3_zoom_verify_pilot.py": "822ba127b0ddcddda8da49c42810f3538563401c60a5ccc7aacc624ef1a0925a",
+  "tools/s2_gated_pilot.py": "9996c7558cacfead2a0612dc9d8508644a446859350b1b845417f80e0df8abe3",
+  "config.json": "31cd395ec23b44bdd45469e9b421cca6f1f5f13bc8e817ca3fe26dc850128285"
+ }
+}

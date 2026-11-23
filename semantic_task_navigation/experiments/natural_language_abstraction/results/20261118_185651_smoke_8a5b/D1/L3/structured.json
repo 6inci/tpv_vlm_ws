@@ -1,0 +1,206 @@
+{
+  "observed_objects": [
+    {
+      "label": "robotic arm",
+      "count": 4,
+      "location_in_image": "top-left, left side, and bottom-left",
+      "visible_evidence": "four white robotic arms mounted on bases, some with purple or yellow components"
+    },
+    {
+      "label": "truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "white and black model truck with a cargo bed"
+    },
+    {
+      "label": "stack of boxes",
+      "count": 1,
+      "location_in_image": "center",
+      "visible_evidence": "three brown cardboard boxes stacked on a pallet"
+    },
+    {
+      "label": "cones",
+      "count": 12,
+      "location_in_image": "distributed around the floor",
+      "visible_evidence": "orange traffic cones placed on the black floor"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "whiteboard with Korean text written on it"
+    },
+    {
+      "label": "robotic vehicle",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "black wheeled robot with visible electronics and wheels"
+    },
+    {
+      "label": "green pathway",
+      "count": 1,
+      "location_in_image": "top-center",
+      "visible_evidence": "green strip with white hand symbols, bordered by orange cones"
+    },
+    {
+      "label": "storage racks",
+      "count": 2,
+      "location_in_image": "top-center and bottom-left",
+      "visible_evidence": "gray metal racks with green frames"
+    },
+    {
+      "label": "barrels",
+      "count": 5,
+      "location_in_image": "bottom-right and center-right",
+      "visible_evidence": "black, gray, and blue barrels on pallets"
+    },
+    {
+      "label": "charging station",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "white square with lightning bolt symbol"
+    },
+    {
+      "label": "grate",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "gray metal grate"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "production zone",
+      "bbox_2d": [
+        75,
+        260,
+        265,
+        730
+      ],
+      "observed_evidence": [
+        "robotic arms",
+        "cones",
+        "storage racks"
+      ],
+      "inference": "Robotic arms and storage racks suggest material handling and production activities",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "central staging area",
+      "bbox_2d": [
+        265,
+        260,
+        660,
+        730
+      ],
+      "observed_evidence": [
+        "stack of boxes",
+        "cones",
+        "grate"
+      ],
+      "inference": "Central location with boxes and cones suggests a holding or sorting zone",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_3",
+      "function_name": "loading/unloading zone",
+      "bbox_2d": [
+        660,
+        260,
+        960,
+        730
+      ],
+      "observed_evidence": [
+        "barrels",
+        "robotic vehicle",
+        "charging station"
+      ],
+      "inference": "Barrels, robotic vehicle, and charging station suggest material transfer or storage",
+      "confidence": "high"
+    },
+    {
+      "id": "area_4",
+      "function_name": "transportation corridor",
+      "bbox_2d": [
+        265,
+        60,
+        660,
+        260
+      ],
+      "observed_evidence": [
+        "green pathway",
+        "cones",
+        "storage racks"
+      ],
+      "inference": "Green pathway and cones indicate a designated route for movement",
+      "confidence": "high"
+    },
+    {
+      "id": "area_5",
+      "function_name": "truck loading zone",
+      "bbox_2d": [
+        660,
+        60,
+        960,
+        260
+      ],
+      "observed_evidence": [
+        "truck",
+        "cones"
+      ],
+      "inference": "Truck and cones suggest a designated area for loading or unloading",
+      "confidence": "high"
+    },
+    {
+      "id": "area_6",
+      "function_name": "work instruction zone",
+      "bbox_2d": [
+        330,
+        730,
+        660,
+        960
+      ],
+      "observed_evidence": [
+        "whiteboard",
+        "grate"
+      ],
+      "inference": "Whiteboard with text suggests a place for instructions or task notes",
+      "confidence": "medium"
+    }
+  ],
+  "task_analysis": {
+    "inferred_task_purpose": "To move a red cube from the production area to the next logistics stage.",
+    "info_given_by_instruction": [
+      "생산된 빨간 큐브를 다음 물류 단계로 전달해 줘."
+    ],
+    "info_added_by_you": [
+      {
+        "statement": "The red cube is not visible in the image, so its location is unknown.",
+        "basis": "image"
+      },
+      {
+        "statement": "The next logistics stage is likely the area where materials are loaded onto the truck or stored for transport.",
+        "basis": "general_knowledge"
+      },
+      {
+        "statement": "The truck loading zone (area_5) is a logical destination for outgoing logistics.",
+        "basis": "general_knowledge"
+      }
+    ],
+    "place_needed_for_task": "A designated area for outgoing material transfer, such as the truck loading zone.",
+    "decision": "proposed",
+    "destination_area_id": "area_5",
+    "reason": "The instruction requests delivery to the next logistics stage, and the truck loading zone is the most logical destination for outgoing materials in this model."
+  },
+  "unknown_from_image": [
+    "The location of the red cube is not visible in the image.",
+    "The exact function of the whiteboard is not clear from the image alone.",
+    "The current state of the robotic vehicle is unknown."
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is present and located in the production zone.",
+    "Whether the robotic vehicle is operational and can carry the cube.",
+    "Whether the truck is ready to receive the cube."
+  ]
+}

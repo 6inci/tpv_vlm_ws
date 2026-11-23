@@ -1,0 +1,51 @@
+{
+  "input_image": "/home/binci/vlm_ws/new_experiment_environment/warehouse_robotics_1920x1080.png",
+  "qwen_model": "Qwen/Qwen3-VL-4B-Instruct",
+  "dino_model": "IDEA-Research/grounding-dino-tiny",
+  "yolo_model": "/home/binci/vlm_ws/new_experiment_environment/results/YOLO_WORLD_INTEGRATION_20260929T012518+0900/07_yolo_world/yolov8s-world.pt",
+  "vocabulary_trials": [
+    {
+      "trial_id": "canonical",
+      "labels": [
+        "manipulator",
+        "conveyor",
+        "mobile robot",
+        "pallet"
+      ]
+    },
+    {
+      "trial_id": "common_synonyms",
+      "labels": [
+        "robot arm",
+        "robotic arm",
+        "conveyor belt",
+        "industrial conveyor",
+        "AGV",
+        "robot vehicle",
+        "wooden pallet",
+        "industrial pallet"
+      ]
+    },
+    {
+      "trial_id": "extended_synonyms",
+      "labels": [
+        "industrial robot",
+        "industrial robot arm",
+        "robotic manipulator",
+        "belt conveyor",
+        "AMR",
+        "mobile robot platform",
+        "cargo pallet"
+      ]
+    }
+  ],
+  "diagnostic_thresholds": {
+    "yolo_confidence": 0.02,
+    "yolo_iou": 0.5,
+    "dino_box": 0.15,
+    "dino_text": 0.15,
+    "reference_iou": 0.3,
+    "wrong_label_iou": 0.5
+  },
+  "synthetic_geometry": "/home/binci/vlm_ws/new_experiment_environment/results/METRIC_VLM_PIPELINE_20260929T005848+0900/geometry/homography.json"
+}

@@ -1,0 +1,30 @@
+{
+  "case_id": "missing_target",
+  "category": "missing_target",
+  "run": 1,
+  "instruction": "A구역으로 옮겨",
+  "raw_model_output": "{\"action\":\"reposition\",\"target_phrase\":null,\"destination_phrase\":\"A구역\"}",
+  "parsed": {
+    "action": "reposition",
+    "target_phrase": null,
+    "destination_phrase": "A구역"
+  },
+  "validated": {
+    "status": "TASK_INCOMPLETE",
+    "raw_instruction": "A구역으로 옮겨",
+    "error_code": "MISSING_TARGET",
+    "reason": "target is missing",
+    "parsed_fields": {
+      "action": "reposition",
+      "target_phrase": null,
+      "destination_phrase": "A구역"
+    }
+  },
+  "integrated": null,
+  "inference_sec": 5.722114258998772,
+  "expected": {
+    "status": "TASK_INCOMPLETE",
+    "error_code": "MISSING_TARGET"
+  },
+  "matches_expected": true
+}

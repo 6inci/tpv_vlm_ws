@@ -1,0 +1,81 @@
+# Contextual source / destination target selection on E1 (fix of the failures found in task_conditioned_target_grounding).
+# Declared BEFORE the model calls of this folder. Existing Qwen3-VL-4B only (no new DINO call: stored candidates are reused).
+# Nothing outside this folder is modified. Reference boxes are read only by evaluate() from the earlier evaluation file.
+experiment_id: contextual_target_selection
+results_dir: results
+instruction: "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+
+reuse:
+  interpretation_run: ../task_conditioned_target_grounding/results/20261119_145217     # stored Qwen A1 reply for THIS instruction (full image), DINO candidates
+  retention_run: ../candidate_retention_policy/results/20261119_073841_retention         # stored red-cube candidates (38) with states
+  semnav_run: ../semantic_navigation_integration/results/20261119_111050_semnav          # earlier path B (bay free floor) for comparison
+  evaluation_reference: ../task_conditioned_target_grounding/evaluation_reference.yaml   # EVALUATION ONLY
+  funnel_config: ../cube_candidate_funnel/config.yaml                                    # EVALUATION ONLY (AI-preliminary cube label)
+
+# Failures fixed (found in the code / inputs of task_conditioned_target_grounding):
+#  F1 role prompt had no task and a tight crop -> 'grate, not a support' -> hard filter removed the candidate  => no name/label filter; roles are judged
+#     WITH the instruction on the zone image (surroundings visible); a contradiction is recorded, never used to delete a candidate.
+#  F2 source and destination were asked in ONE reply on the full image; 'cube not visible' nulled both            => separate calls, separate states.
+#  F3 budget by detector score dropped candidates                                                                  => every candidate of a zone is shown.
+
+anchors:
+  # Destination anchor: the facility Qwen selected in the stored A1 reply (bbox), snapped to the stored verified object with IoU >= snap_iou;
+  # fallback: the Qwen bbox itself; then the stored area_5 box. Source anchor: v0.2 rule_based_parse source_reference (from the instruction text),
+  # grounded to the single stored verified object of that class.
+  snap_iou: 0.3
+  zone_rule: "v0.2 make_roi around the anchor box (target_inspection roi_margin_ratio 0.6, min 120 px; zoom to 1600 px long side, max 4x) - same rule for both anchors"
+
+candidates:
+  destination: "stored DINO merged candidates (task_conditioned run, Qwen + vocabulary phrases, all images) whose centre is inside the zone or >= 50 % of whose box is inside"
+  destination_region_scale_frac: 0.5    # a box larger than 50 % of the zone is a region, not an object: recorded, not numbered
+  source: "stored red-cube candidates of the retention run (any state) whose centre is inside the source zone"
+  max_numbered_per_image: 20            # more would be split into several images (no candidate is dropped)
+  zone_image_margin: "the drawn image is the zone extended to contain every numbered box completely (nothing is cut at the border)"
+
+qwen:
+  max_new_tokens: 2048
+  destination_zone:
+    prompt_id: destination_zone_roles_v1
+    template: |
+      작업지시: "{instruction}"
+      이 이미지는 앞 단계에서 해석한 목적지 기준 구역(해석: "{destination_description}", 기준 설비: "{facility}") 주변을 확대한 것이다. 번호가 붙은 초록색 상자는 자동 탐지된 후보이다.
+      각 후보에 대해 (1) 무엇으로 보이는지(확실하지 않으면 가능한 해석을 모두), (2) 위에 다른 물체가 놓여 있는지, (3) 이 작업지시에서 옮긴 물체를 최종적으로 내려놓을 대상으로 쓸 수 있는지를 주변 설비와 구역의 관계를 근거로 판단하라.
+      그 다음 가장 적절한 배치 대상의 번호를 고르라. 적절한 후보가 없거나 판단할 수 없으면 null로 하라.
+
+      Return JSON only, no prose:
+      {"candidates": [{"id": <number>, "appearance": [<English>], "load_state": "empty" | "occupied" | "uncertain",
+                       "placement_role": "suitable" | "possible" | "unsuitable", "reason": <one short sentence>}],
+       "best_destination_id": <number or null>, "reason": <one short sentence>}
+  source_zone:
+    prompt_id: source_zone_roles_v1
+    template: |
+      작업지시: "{instruction}"
+      이 이미지는 앞 단계에서 해석한 출발 기준 구역(해석: "{source_description}", 기준 설비: "{facility}") 주변을 확대한 것이다. 번호가 붙은 초록색 상자는 자동 탐지된 후보이다.
+      각 후보가 무엇으로 보이는지와, 이 작업지시에서 옮겨야 할 물체("{source_object}")에 해당하는지 판단하라. 목적지는 판단하지 않아도 된다.
+      해당하는 후보가 없거나 판단할 수 없으면 null로 하라.
+
+      Return JSON only, no prose:
+      {"candidates": [{"id": <number>, "appearance": [<English>], "role": "object_to_move" | "other" | "uncertain", "reason": <one short sentence>}],
+       "object_to_move_id": <number or null>, "reason": <one short sentence>}
+  destination_verify:                   # one limited call on the destination chosen in the zone call (candidate + surroundings)
+    prompt_id: destination_context_verify_v1
+    context_pad: {ratio: 3.0, min_px: 150}   # crop = box expanded by max(ratio * long side, min_px); upscaled so the long side is 1024 px
+    template: |
+      작업지시: "{instruction}"
+      초록색 상자로 표시된 물체를, 이 작업지시에서 옮긴 물체를 최종적으로 내려놓을 대상으로 쓰는 것이 적절한지 판단하라. 물체의 형태(확실하지 않으면 가능한 해석을 모두), 위에 놓인 물체, 주변 설비·구역과의 관계를 근거로 하라.
+
+      Return JSON only, no prose:
+      {"appearance": [<English>], "load_state": "empty" | "occupied" | "uncertain",
+       "placement_role": "suitable" | "possible" | "unsuitable", "reason": <one short sentence>}
+
+decision:
+  # destination: SELECTED   = valid best_destination_id, rated 'suitable' in the zone call, and the context verification is not 'unsuitable'
+  #              UNVERIFIED = a best id exists but its zone rating is not 'suitable' or the verification says 'unsuitable'
+  #              AMBIGUOUS  = best null while at least one candidate is rated suitable/possible; NOT_FOUND = nothing rated suitable/possible
+  # source:      SELECTED = valid object_to_move_id; AMBIGUOUS = null / invalid. Independent of the destination.
+  # task plan:   PLAN_GENERATED_CONDITIONAL only if source and destination are SELECTED and paths A and B are generated; otherwise NOT_CONFIRMED.
+  # Nothing is CONFIRMED; every selected target is VERIFY_REQUIRED.
+route:
+  robot_cm: [35, 24]
+  never: [relax no-go zones, change the robot size]
+claims: {generalisation: "NONE (E1 only)", placement_success: NOT_CLAIMABLE}

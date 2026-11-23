@@ -1,0 +1,81 @@
+{
+  "purpose": "Move the red cube from the conveyor to an appropriate shipping location",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "conveyor",
+    "bbox_2d": [116, 255, 238, 725]
+  },
+  "source_relation": "on",
+  "destination_meaning": "Shipping location for outgoing goods",
+  "destination_reference": {
+    "name_en": "white truck",
+    "bbox_2d": [752, 0, 879, 143],
+    "inferred": false
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Loading area with robotic arms",
+      "visual_evidence": [
+        "robotic arms",
+        "conveyor",
+        "orange cones"
+      ],
+      "bbox_2d": [116, 255, 238, 725],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Shipping area with white truck",
+      "visual_evidence": [
+        "white truck",
+        "orange cones",
+        "white lines"
+      ],
+      "bbox_2d": [630, 0, 910, 280],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Central storage area",
+      "visual_evidence": [
+        "stacked boxes",
+        "orange cone"
+      ],
+      "bbox_2d": [398, 394, 505, 575],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Material storage area",
+      "visual_evidence": [
+        "barrels",
+        "pallets",
+        "orange cones"
+      ],
+      "bbox_2d": [620, 430, 956, 730],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Power station area",
+      "visual_evidence": [
+        "lightning bolt symbol",
+        "green panels"
+      ],
+      "bbox_2d": [665, 775, 800, 945],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Loading dock area",
+      "visual_evidence": [
+        "green loading zone",
+        "white arrows",
+        "orange cones"
+      ],
+      "bbox_2d": [305, 55, 560, 280],
+      "robot_body_access": "allowed"
+    }
+  ],
+  "uncertainty": [
+    "The exact location of the red cube is not visible in the image."
+  ]
+}

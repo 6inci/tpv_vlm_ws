@@ -1,0 +1,116 @@
+{
+ "earlier": {
+  "pickup_approach_cm": [
+   83.0,
+   113.0
+  ],
+  "path_A_cm": 236.3,
+  "path_B_free_floor": {
+   "goal_cm": [
+    233.0,
+    83.0
+   ],
+   "length_cm": 162.1,
+   "gap_cm": 38.0
+  }
+ },
+ "path_A": {
+  "goal_cm": [
+   83.0,
+   91.0
+  ],
+  "length_cm": 257.0,
+  "waypoints_cm": [
+   [
+    293.0,
+    157.0
+   ],
+   [
+    105.0,
+    155.0
+   ],
+   [
+    101.0,
+    153.0
+   ],
+   [
+    83.0,
+    91.0
+   ]
+  ],
+  "heading_deg": 0,
+  "footprint_extent_xy_cm": [
+   42.0,
+   31.0
+  ],
+  "gap_cm": 72.9,
+  "checks": {
+   "whole_body_sweep": {
+    "ok": true,
+    "n_samples": 1033,
+    "step_cm": 0.25,
+    "first_violation": null,
+    "check": "body rectangle on free pixels at every sample; free space re-rasterised from the cm polygons at 4 px/cm"
+   },
+   "v02_validator_inscribed_disc": {
+    "valid": true,
+    "min_clearance_px": 71.25,
+    "required_px": 60.0,
+    "note": "v0.2 validator on the INSCRIBED disc of the footprint: a necessary check only"
+   },
+   "swept_layer_overlap": {
+    "px_per_cm": 4,
+    "body_px": 170360,
+    "on_static_obstacle_px": 0,
+    "on_no_go_px": 0,
+    "outside_drivable_px": 0,
+    "outside_workspace_px": 0,
+    "samples_off_canvas": 0,
+    "clear": true
+   }
+  }
+ },
+ "path_A_status": "GENERATED",
+ "path_B": {
+  "path_B_feasible": true,
+  "goal_cm": [
+   265.0,
+   83.0
+  ],
+  "length_cm": 182.3,
+  "gap_cm": 68.6,
+  "heading_deg": 0,
+  "waypoints_cm": [
+   [
+    83.0,
+    91.0
+   ],
+   [
+    137.0,
+    85.0
+   ],
+   [
+    265.0,
+    83.0
+   ]
+  ],
+  "footprint_extent_xy_cm": [
+   42.0,
+   31.0
+  ],
+  "whole_body_sweep_ok": true,
+  "v02_valid": true,
+  "layers_clear": true,
+  "target_floor_contact_cm": [
+   304.4,
+   3.8
+  ],
+  "target_contact_zone": [
+   "NONE (outside every DRAFT zone: not drivable)"
+  ],
+  "note": "floor contact = bottom-centre of the box; the top surface is higher (unknown)"
+ },
+ "path_B_status": "GENERATED",
+ "task_plan": "NOT_CONFIRMED",
+ "A_B_connected": false
+}

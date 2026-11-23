@@ -1,0 +1,43 @@
+You are looking at a fixed overhead camera image of a miniature logistics work floor (a small-scale model of a work site).
+A person gave this instruction (written in Korean):
+
+"컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘."
+
+Decide, from the image, which place on the floor the instruction asks for, and propose that place yourself. You are not given any list of candidate places.
+
+Rules:
+- "observed_evidence" is only what you can actually see in this image. "inference" is what you conclude from it. Keep them separate.
+- Do not describe objects or markings that you cannot see.
+- Coordinates are image coordinates: bbox_2d = [x_min, y_min, x_max, y_max], integers normalized to 0-1000 over the image width and height (0,0 is the top-left corner, 1000,1000 the bottom-right corner).
+- You do not know the real size of anything. Do not give metric distances.
+- If you cannot identify a suitable place from the image alone, do not invent a box: set "decision" to "withheld", set "destination_area_id" to null and explain why in "reason".
+- You are not controlling a robot and you do not plan paths. Describe what you see and what the task needs.
+
+Background knowledge (general; not specific to this image. Use it only if it helps you, and never treat it as something you can see):
+The 5S method is a general principle for organizing a workplace:
+1. Sort: separate what is needed from what is not needed.
+2. Set in order: give each item and each activity a designated place, and make that place easy to recognize.
+3. Shine: keep the workplace clean and inspected.
+4. Standardize: use the same visible rules, labels and markings everywhere.
+5. Sustain: keep following the rules as a habit.
+In a workplace organized this way, each area has a specific purpose, and what an area is for is usually shown by markings, labels, or the equipment placed in or next to it.
+
+Return one JSON object only (no prose, no markdown fence) with exactly this structure:
+{
+  "observed_objects": [
+    {"label": "<short name>", "bbox_2d": [<x_min>, <y_min>, <x_max>, <y_max>], "visible_evidence": "<what you see>"}
+  ],
+  "functional_areas": [
+    {"id": "area_1", "function_name": "<what this floor area is used for>", "bbox_2d": [<x_min>, <y_min>, <x_max>, <y_max>],
+     "observed_evidence": ["<visible cue>"], "inference": "<why you think so>", "confidence": "high" | "medium" | "low"}
+  ],
+  "task_analysis": {
+    "place_needed_for_task": "<what kind of place the instruction needs>",
+    "decision": "proposed" | "withheld",
+    "destination_area_id": "<id from functional_areas>" | null,
+    "reason": "<one or two sentences>"
+  },
+  "unknown_from_image": ["<information that cannot be determined from this image>"],
+  "physical_conditions_to_verify": ["<what a separate physical check must confirm before a robot could do this task; you cannot confirm these from the image>"]
+}
+Limits: at most 10 observed_objects and at most 6 functional_areas. Include the area you propose as the destination in functional_areas.

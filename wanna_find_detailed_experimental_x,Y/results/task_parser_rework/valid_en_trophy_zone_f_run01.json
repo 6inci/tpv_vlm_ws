@@ -1,0 +1,96 @@
+{
+  "case_id": "valid_en_trophy_zone_f",
+  "category": "valid",
+  "core_metric": true,
+  "run": 1,
+  "instruction": "Place the gold trophy in Zone F.",
+  "raw_model_output": "{\"action_phrase\":\"Place\",\"target_phrase\":\"the gold trophy\",\"destination_phrase\":\"Zone F\"}",
+  "parsed": {
+    "action_phrase": "Place",
+    "target_phrase": "the gold trophy",
+    "destination_phrase": "Zone F"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "Place the gold trophy in Zone F.",
+    "action": {
+      "surface_phrase": "Place",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target": {
+      "surface_phrase": "the gold trophy",
+      "grounding_phrase": "gold trophy-like object",
+      "canonicalization_status": "KNOWN_ALIAS"
+    },
+    "destination": {
+      "surface_phrase": "Zone F",
+      "zone_id": "zone_F"
+    }
+  },
+  "integrated": {
+    "status": "VALID_TASK",
+    "language_status": "VALID_TASK",
+    "raw_instruction": "Place the gold trophy in Zone F.",
+    "action": {
+      "surface_phrase": "Place",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target": {
+      "surface_phrase": "the gold trophy",
+      "grounding_phrase": "gold trophy-like object",
+      "canonicalization_status": "KNOWN_ALIAS",
+      "grounding": {
+        "status": "TARGET_FOUND",
+        "detected_label": "gold trophy-like object",
+        "world_coordinate": {
+          "x": 0.6996735334396362,
+          "y": 1.46703040599823,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "INSIDE",
+        "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/gold_trophy_like_object_run01.json"
+      }
+    },
+    "destination": {
+      "surface_phrase": "Zone F",
+      "zone_id": "zone_F",
+      "center": [
+        0.9,
+        1.5
+      ],
+      "polygon": [
+        [
+          0.6,
+          1.2
+        ],
+        [
+          1.2,
+          1.2
+        ],
+        [
+          1.2,
+          1.8
+        ],
+        [
+          0.6,
+          1.8
+        ]
+      ],
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "unit": "m"
+    },
+    "feasibility_status": "NOT_EVALUATED",
+    "path_status": "NOT_RUN"
+  },
+  "inference_sec": 5.499988471001416,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "gold trophy-like object",
+    "zone_id": "zone_F"
+  },
+  "matches_expected": true
+}

@@ -1,0 +1,284 @@
+{
+ "numbered_set": [
+  {
+   "number": 1,
+   "id": "m1",
+   "bucket": "DST",
+   "object_type": "truck",
+   "support": "no",
+   "load": "occupied"
+  },
+  {
+   "number": 2,
+   "id": "m9",
+   "bucket": "DST",
+   "object_type": "metallic shelf",
+   "support": "yes",
+   "load": "occupied"
+  },
+  {
+   "number": 3,
+   "id": "m12",
+   "bucket": "DST",
+   "object_type": "rectangular box",
+   "support": "yes",
+   "load": "occupied"
+  },
+  {
+   "number": 4,
+   "id": "m40",
+   "bucket": "DST",
+   "object_type": "metallic structure with green frame",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 5,
+   "id": "m58",
+   "bucket": "DST",
+   "object_type": "green scaffold",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 6,
+   "id": "m63",
+   "bucket": "DST",
+   "object_type": "truck",
+   "support": "no",
+   "load": "occupied"
+  },
+  {
+   "number": 7,
+   "id": "m2",
+   "bucket": "SRC",
+   "object_type": "workbench",
+   "support": "yes",
+   "load": "occupied"
+  },
+  {
+   "number": 8,
+   "id": "m4",
+   "bucket": "SRC",
+   "object_type": "metallic shelving unit",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 9,
+   "id": "m7",
+   "bucket": "SRC",
+   "object_type": "green mat with white symbol",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 10,
+   "id": "m14",
+   "bucket": "SRC",
+   "object_type": "red object",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 11,
+   "id": "m16",
+   "bucket": "SRC",
+   "object_type": "white tray",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 12,
+   "id": "m25",
+   "bucket": "SRC",
+   "object_type": "green metal scaffold",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 13,
+   "id": "m27",
+   "bucket": "SRC",
+   "object_type": "workbench",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 14,
+   "id": "m29",
+   "bucket": "SRC",
+   "object_type": "green scaffold",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 15,
+   "id": "m30",
+   "bucket": "SRC",
+   "object_type": "workbench",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 16,
+   "id": "m31",
+   "bucket": "SRC",
+   "object_type": "green metal frame",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 17,
+   "id": "m32",
+   "bucket": "SRC",
+   "object_type": "green mat",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 18,
+   "id": "m39",
+   "bucket": "SRC",
+   "object_type": "robot arm",
+   "support": "no",
+   "load": "occupied"
+  },
+  {
+   "number": 19,
+   "id": "m3",
+   "bucket": "OTHER",
+   "object_type": "green mat with white hand symbols",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 20,
+   "id": "m5",
+   "bucket": "OTHER",
+   "object_type": "stack of boxes",
+   "support": "yes",
+   "load": "occupied"
+  },
+  {
+   "number": 21,
+   "id": "m21",
+   "bucket": "OTHER",
+   "object_type": "stack of boxes",
+   "support": "yes",
+   "load": "occupied"
+  },
+  {
+   "number": 22,
+   "id": "m23",
+   "bucket": "OTHER",
+   "object_type": "metallic platform",
+   "support": "yes",
+   "load": "empty"
+  },
+  {
+   "number": 23,
+   "id": "m24",
+   "bucket": "OTHER",
+   "object_type": "pallet",
+   "support": "yes",
+   "load": "occupied"
+  }
+ ],
+ "by_instruction": {
+  "T1": {
+   "instruction": "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+   "parsed": {
+    "source_id": null,
+    "destination_id": null,
+    "candidates": [],
+    "reason": "빨간 큐브가 이미지에 나타나지 않아 출발점과 목적지가 확인 불가능"
+   },
+   "error": null,
+   "decision": {
+    "source_status": "AMBIGUOUS",
+    "source": null,
+    "destination_status": "AMBIGUOUS",
+    "destination": null,
+    "notes": []
+   }
+  },
+  "T2": {
+   "instruction": "컨베이어에서 생산된 빨간 큐브를 바로 출하하지 말고, 작업장 안에서 잠시 보관할 수 있는 적절한 장소로 옮겨줘.",
+   "parsed": {
+    "source_id": 10,
+    "destination_id": 21,
+    "candidates": [
+     {
+      "id": 10,
+      "role": "source",
+      "reason": "빨간 큐브가 위치한 위치"
+     },
+     {
+      "id": 21,
+      "role": "destination",
+      "reason": "박스가 쌓인 장소는 보관용으로 적절한 장소"
+     }
+    ],
+    "reason": "빨간 큐브는 컨베이어에서 생산된 물체로 출하 전 보관이 필요하며, 박스가 쌓인 장소는 보관용으로 적절한 장소"
+   },
+   "error": null,
+   "decision": {
+    "source_status": "SELECTED",
+    "source": "m14",
+    "destination_status": "UNVERIFIED",
+    "destination": "m21",
+    "notes": [
+     "role analysis contradicts a destination: support yes, load occupied"
+    ]
+   }
+  },
+  "T3": {
+   "instruction": "트럭 짐칸에 실린 상자를 내려서 컨베이어 쪽 작업 구역으로 옮겨줘.",
+   "parsed": {
+    "source_id": 3,
+    "destination_id": 15,
+    "candidates": [
+     {
+      "id": 3,
+      "role": "source",
+      "reason": "트럭 짐칸에 실린 상자"
+     },
+     {
+      "id": 15,
+      "role": "destination",
+      "reason": "컨베이어 쪽 작업 구역"
+     }
+    ],
+    "reason": "트럭 짐칸에 실린 상자를 컨베이어 쪽 작업 구역으로 옮기는 작업 지시에 따라 출발점과 목적지가 명확히 정의됨"
+   },
+   "error": null,
+   "decision": {
+    "source_status": "SELECTED",
+    "source": "m12",
+    "destination_status": "SELECTED",
+    "destination": "m30",
+    "notes": []
+   }
+  },
+  "T4": {
+   "instruction": "컨베이어에서 생산된 빨간 큐브를 냉동 보관 창고에 넣어줘.",
+   "parsed": {
+    "source_id": null,
+    "destination_id": null,
+    "candidates": [],
+    "reason": "빨간 큐브가 이미지에 나타나지 않아 출발점과 목적지가 확인 불가능"
+   },
+   "error": null,
+   "decision": {
+    "source_status": "AMBIGUOUS",
+    "source": null,
+    "destination_status": "AMBIGUOUS",
+    "destination": null,
+    "notes": []
+   }
+  }
+ },
+ "rules": "config.yaml selection",
+ "never": "CONFIRMED (every SELECTED stays VERIFY_REQUIRED)"
+}

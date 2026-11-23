@@ -1,0 +1,45 @@
+# Follow-up of siglip_small_object_test (2026-11-20). Declared BEFORE any model call of the follow-up.
+# Inputs are the crops of the first run: the same DINO candidates and the same images SigLIP2 saw (tight + context crop per box).
+# No new DINO pass. No change to existing files. New results in results/<time>_<models>/.
+base_run: results/20261120_133027_run        # raw/<id>.json lists every candidate box and its crop files (session/photos/<id>_siglip/)
+
+models:
+  siglip_base: {model_id: google/siglip2-base-patch16-384, dtype: float16}             # same model as the first run
+  siglip_so400m: {model_id: google/siglip2-so400m-patch14-384, dtype: float16}         # downloaded 2026-11-20 with the user's approval
+  qwen: {model: Qwen/Qwen3-VL-4B-Instruct (bf16), where: v0.2 model worker (qwen_vl env), decoding: greedy (v0.2 qwen_generate)}
+
+# ------------------------------------------------------------------ 1. reference-image (exemplar) search, no text
+exemplar:
+  views: [tight, context]          # similarity = mean over the two views of cosine(candidate view, exemplar view)
+  # exemplar = the reference-box crops of ONE photo: its empty pad (pallet exemplar) and its red cube (cube exemplar).
+  # Every photo with an empty pad is the exemplar photo once (7 folds; photo_6 has none). Tested on the other 7 photos.
+  same_place_iou: 0.3              # leakage guard: a test object at the same place as the exemplar (IoU >= 0.3) is the same pad seen again
+                                   # -> that object and its candidates are left out of that fold
+  nms_iou: 0.5                     # candidates ranked by similarity; a lower-ranked box with IoU >= 0.5 to a higher one is dropped
+  match_iou: 0.5                   # a candidate finds a reference object when IoU >= 0.5
+  distractor_max_iou: 0.1          # distractor = candidate with IoU < 0.1 to every reference object of the photo
+  metrics:
+    pallet: "recall@n: n = number of reference pads (empty + with cube) left in the photo; distinct pads found in the top n"
+    cube: "top-1 is the reference cube (IoU >= 0.5); lenient: the top-1 box contains the cube centre"
+    margin: "best similarity of the target minus best similarity of any distractor (> 0: the target ranks above every distractor)"
+
+# ------------------------------------------------------------------ 2. label wording (DIAGNOSTIC: chosen after seeing the first run on the same 8 photos)
+label_variants:                    # only these labels change; the other 22 labels and the template stay as in multimodel_target_viewer
+  V0_original: {}
+  V1_gray_plastic_pallet: {"a small pallet": "a small gray plastic pallet"}
+  V2_slatted_pad: {"a small pallet": "a small square gray slatted pad"}
+  V3_red_block: {"a red cube": "a small red block"}
+  V4_V1_and_V3: {"a small pallet": "a small gray plastic pallet", "a red cube": "a small red block"}
+# a replaced label belongs to the group of the label it replaces (pallet / cube); scoring as in config.yaml (top-1 in group)
+
+# ------------------------------------------------------------------ 3. Qwen3-VL-4B on the same crops, same closed label list
+qwen:
+  image: "tight crop | context crop, each resized to 384 x 384 (SigLIP2 input size, bicubic), side by side, no box drawn (as SigLIP2)"
+  candidates: every DINO candidate of the 8 photos + the 23 reference boxes
+  max_new_tokens: 40
+  prompt: |
+    The image has two panels that show the same object. Left: the object cropped tightly. Right: the same object at the centre, with its surroundings.
+    Which ONE label from this list best describes the object at the centre?
+    {labels}
+    Return JSON only, no prose: {{"label": "<one label copied exactly from the list>"}}
+  invalid: "no JSON or a label not in the list -> INVALID (counted as wrong); the raw reply is kept"

@@ -1,0 +1,118 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "1cad753189ffc9b513901b1a4ec6f3b8bbfd9f46842309bbe166fb691345e3a5",
+  "image_path": "/home/binci/Pictures/Calibration/3calibration.png",
+  "image_sha256": "9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2720,
+  "n_output_tokens": 580,
+  "hit_max_new_tokens": false,
+  "latency_s": 18.216,
+  "wall_s": 18.34,
+  "peak_vram_gib": 8.983,
+  "raw_response": "{\n  \"purpose\": \"Move an object from the loading area to the conveyor belt area\",\n  \"source_object\": {\n    \"name_en\": \"stack of boxes\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"stack of boxes\",\n    \"bbox_2d\": [418, 394, 483, 544]\n  },\n  \"source_relation\": \"none\",\n  \"destination_meaning\": \"Place the object on the conveyor belt area\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt area\",\n    \"bbox_2d\": [107, 262, 225, 728],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Pedestrian walkway with green floor and footprints\",\n      \"visual_evidence\": [\n        \"green floor\",\n        \"footprint symbols\"\n      ],\n      \"bbox_2d\": [305, 58, 557, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Main robot travel area with yellow border\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"black floor\"\n      ],\n      \"bbox_2d\": [107, 262, 975, 950],\n      \"robot_body_access\": \"allowed\"\n    },\n    {\n      \"description\": \"Conveyor belt area with white border\",\n      \"visual_evidence\": [\n        \"white border\",\n        \"conveyor belt\"\n      ],\n      \"bbox_2d\": [107, 262, 225, 728],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Loading area with white dotted lines\",\n      \"visual_evidence\": [\n        \"white dotted lines\",\n        \"truck\"\n      ],\n      \"bbox_2d\": [630, 0, 890, 280],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Material storage area with yellow border\",\n      \"visual_evidence\": [\n        \"yellow border\",\n        \"barrels and crates\"\n      ],\n      \"bbox_2d\": [620, 430, 950, 728],\n      \"robot_body_access\": \"forbidden\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The reach of the gripper is not confirmed, so whether the robot can physically pick up and place the object is uncertain.\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_006_U24837448",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/3calibration.png",
+  "image_sha256": "9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba",
+  "prompts": [
+   "stack of boxes",
+   "conveyor belt area"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 42,
+  "wall_s": 0.61,
+  "peak_vram_gib": 1.97
+ },
+ {
+  "stage": "dino_roi_U24837448_truck_run_006_U24837448",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/photos/U24837448_inputs/roi_truck.png",
+  "image_sha256": "c51eec9e79177d54643f19999cb1275c2d6ecd84839f6a7ea3318882426b5c2f",
+  "prompts": [
+   "stack of boxes",
+   "conveyor belt area"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 40,
+  "wall_s": 0.6,
+  "peak_vram_gib": 1.96
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "source_roles_v2",
+  "prompt_sha256": "b0a6aaa6c52ba4973672531e418f29ced8e54dba755d3e15b706b3974492fd95",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_006_U24837448/inputs/source_1.png",
+  "image_sha256": "618034d7ee5f0d77558c3d4cd6416c74fd84b4d59a7943edd9e13fd91e82bf68",
+  "image_size": [
+   1453,
+   1600
+  ],
+  "n_input_tokens": 2731,
+  "n_output_tokens": 100,
+  "hit_max_new_tokens": false,
+  "latency_s": 4.117,
+  "wall_s": 4.23,
+  "peak_vram_gib": 8.997,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"orange traffic cone\"\n      ],\n      \"role\": \"other\",\n      \"reason\": \"The object is a traffic cone, not the stack of boxes to be moved.\"\n    }\n  ],\n  \"object_to_move_id\": null,\n  \"reason\": \"The stack of boxes is not marked as a candidate in the provided list, and the only candidate is a traffic cone.\"\n}"
+ },
+ {
+  "stage": "destination_1",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "destination_roles_v2",
+  "prompt_sha256": "3351afbb56ddd2e4482cad566396e2d38d14b5c07d1eb73ccf4cf7a4a9c3784f",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_006_U24837448/inputs/destination_1.png",
+  "image_sha256": "7b59f11300457dcf1160752bfb213c9089bd57c7b31f5a22b383d72f53dad253",
+  "image_size": [
+   1213,
+   1600
+  ],
+  "n_input_tokens": 2499,
+  "n_output_tokens": 1110,
+  "hit_max_new_tokens": false,
+  "latency_s": 33.773,
+  "wall_s": 33.88,
+  "peak_vram_gib": 8.929,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\n        \"a black object on a gray floor\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is on a gray floor outside the designated robot travel area.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\n        \"a robotic arm\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is inside a white-bordered work cell where the robot body cannot enter.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\n        \"a robotic arm\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is inside a white-bordered work cell where the robot body cannot enter.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\n        \"a white keyboard-like object\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is inside a white-bordered work cell where the robot body cannot enter.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\n        \"a green-bordered area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is a yellow-bordered robot travel area, suitable for robot movement.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\n        \"a green-bordered area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is a yellow-bordered robot travel area, suitable for robot movement.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\n        \"a white object with a black base\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is inside a white-bordered work cell where the robot body cannot enter.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\n        \"a stack of boxes\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is inside a white-bordered work cell where the robot body cannot enter.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\n        \"a small box\"\n      ],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is inside a white-bordered work cell where the robot body cannot enter.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\n        \"a safety cone\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is on a safety boundary line, not a designated robot travel area.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\n        \"a green sign with a white symbol\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"It is on a safety boundary line, not a designated robot travel area.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\n        \"a white object with a logo\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is on a yellow-bordered robot travel area, suitable for robot movement.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\n        \"a white object with a logo\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is on a yellow-bordered robot travel area, suitable for robot movement.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\n        \"a yellow-bordered area\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is a yellow-bordered robot travel area, suitable for robot movement.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\n        \"a white object with a logo\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is on a yellow-bordered robot travel area, suitable for robot movement.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\n        \"a white object with a logo\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is on a yellow-bordered robot travel area, suitable for robot movement.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\n        \"a white object with a logo\"\n      ],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"It is on a yellow-bordered robot travel area, suitable for robot movement.\"\n    }\n  ],\n  \"best_destination_id\": 17,\n  \"reason\": \"It is a yellow-bordered robot travel area, suitable for robot movement and placement of the object.\"\n}"
+ },
+ {
+  "stage": "destination_2",
+  "model": "Qwen/Qwen3-VL-4B-Instruct",
+  "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+  "prompt_id": "destination_roles_v2",
+  "prompt_sha256": "3351afbb56ddd2e4482cad566396e2d38d14b5c07d1eb73ccf4cf7a4a9c3784f",
+  "image_path": "/home/binci/vlm_ws/pipeline_comparison_20261121/itv_session_20261121_004809/runs/run_006_U24837448/inputs/destination_2.png",
+  "image_sha256": "b1441c627bcd52b0c3144bee5fd5ddacaf2508d4a8675c6fc8d673535bf2be57",
+  "image_size": [
+   1087,
+   1600
+  ],
+  "n_input_tokens": 2299,
+  "n_output_tokens": 517,
+  "hit_max_new_tokens": false,
+  "latency_s": 15.957,
+  "wall_s": 16.06,
+  "peak_vram_gib": 8.876,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by a robot arm and other objects\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"wide black area with yellow border\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"robot travel zone, allows robot to stop and place object\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"white-bordered area with robot arm\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"robot arm area, robot cannot enter\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"orange box\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by an object, not a conveyor belt area\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\"robot arm\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"robot arm is in the way\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\"gray area with green racks\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"trucking area, robot can stop and place object\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\"green racks\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"trucking area, robot can stop and place object\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\"small red object\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by an object, not a conveyor belt area\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\"red object on gray surface\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"occupied by an object, not a conveyor belt area\"\n    }\n  ],\n  \"best_destination_id\": 2,\n  \"reason\": \"It is the robot travel zone with yellow border, allowing robot to stop and place object\"\n}"
+ }
+]

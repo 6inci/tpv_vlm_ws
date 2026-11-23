@@ -1,0 +1,37 @@
+{
+  "command": "트럭이 있는 하역장으로 이동해.",
+  "mode": "IMAGE_DEMO",
+  "status": "OK",
+  "task": {
+    "task_type": "navigate_to_region",
+    "target": null,
+    "destination": {
+      "region_type": "loading_area",
+      "reference_object": "truck"
+    },
+    "actions": [
+      "locate_destination_region",
+      "navigate_to_destination",
+      "verify_arrival"
+    ],
+    "actions_source": "fixed_template (not model output)",
+    "parser": {
+      "backend": "rule_based_demo",
+      "model": null,
+      "prompt_id": null,
+      "raw_response": "{\"status\": \"ok\", \"task_type\": \"navigate_to_region\", \"target\": null, \"destination\": {\"region_type\": \"loading_area\", \"reference_object\": \"truck\"}, \"reason\": \"rule_based_demo keyword rules (not an LLM)\"}",
+      "parsed_output": {
+        "status": "ok",
+        "task_type": "navigate_to_region",
+        "target": null,
+        "destination": {
+          "region_type": "loading_area",
+          "reference_object": "truck"
+        },
+        "reason": "rule_based_demo keyword rules (not an LLM)"
+      },
+      "normalization_notes": []
+    }
+  },
+  "call": null
+}

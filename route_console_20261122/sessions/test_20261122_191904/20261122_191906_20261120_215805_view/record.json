@@ -1,0 +1,1230 @@
+{
+ "created": "2026-11-22T19:19:06",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "photo": "/home/binci/Pictures/Calibration/map_images/20261120_215805_view.png",
+ "photo_sha256": "6888dc1d28e43e47359ea00fb647897f9aafe64044c92e4c54d4fb18c26bbec9",
+ "mode": "사진",
+ "config": "/home/binci/vlm_ws/route_console_20261122/config/console.yaml",
+ "frames": {
+  "pixel": "편 사진 픽셀 (K_photo, 왜곡 없음)",
+  "map": "env2_20261119 m, 바닥 z = 0",
+  "yaw": "+x에서 반시계, 차체 앞 = 그리퍼"
+ },
+ "stages": {
+  "interpret": {
+   "prompt_id": "fake",
+   "prompt": "",
+   "raw": "{\"task\": \"transport\", \"object\": \"red cube\", \"object_near\": \"none\", \"start\": \"none\", \"destination_kind\": \"empty_pallet\", \"destination_place\": \"none\", \"words\": \"\"}",
+   "slots": {
+    "task": "transport",
+    "object": "red cube",
+    "object_near": "none",
+    "start": "none",
+    "destination_kind": "empty_pallet",
+    "destination_place": "none",
+    "words": ""
+   },
+   "error": null,
+   "seconds": 0
+  },
+  "perceive": {
+   "photo_id": "20261120_215805_view",
+   "source": "저장된 인식 자료 (context_policy data/test, 같은 사진·같은 모델로 미리 계산)",
+   "n_dino": 244,
+   "n_gated": 115,
+   "bank": {
+    "bank_used": {
+     "cube": 8,
+     "empty_pallet": 8,
+     "loaded_pallet": 8
+    },
+    "bank_dropped_same_place": 0
+   }
+  },
+  "decide": {
+   "A": {
+    "status": "SELECTED",
+    "why": "top-1 0.888, no other object",
+    "id": "m57",
+    "box": [
+     1085.47,
+     293.33,
+     1105.94,
+     316.35
+    ],
+    "s1": 0.8881,
+    "s2": null,
+    "n_survivors": 3,
+    "top_before_policy": [
+     {
+      "id": "m66",
+      "score": 0.8926,
+      "failed_at": "작업 공간"
+     },
+     {
+      "id": "m57",
+      "score": 0.8881,
+      "failed_at": null
+     },
+     {
+      "id": "m95",
+      "score": 0.8859,
+      "failed_at": null
+     },
+     {
+      "id": "m124",
+      "score": 0.8817,
+      "failed_at": null
+     },
+     {
+      "id": "m223",
+      "score": 0.8768,
+      "failed_at": "큐브 예시"
+     }
+    ],
+    "survivors_ranked": [
+     {
+      "id": "m57",
+      "score": 0.8881
+     },
+     {
+      "id": "m95",
+      "score": 0.8859
+     },
+     {
+      "id": "m124",
+      "score": 0.8817
+     }
+    ]
+   },
+   "B": {
+    "status": "SELECTED",
+    "why": "top-1 0.901, no other object",
+    "id": "m43",
+    "box": [
+     596.95,
+     306.07,
+     639.03,
+     341.73
+    ],
+    "s1": 0.9006,
+    "s2": null,
+    "n_survivors": 1,
+    "top_before_policy": [
+     {
+      "id": "m43",
+      "score": 0.9006,
+      "failed_at": null
+     },
+     {
+      "id": "m48",
+      "score": 0.8607,
+      "failed_at": "점유 아님"
+     },
+     {
+      "id": "m93",
+      "score": 0.8569,
+      "failed_at": "점유 아님"
+     },
+     {
+      "id": "m182",
+      "score": 0.8502,
+      "failed_at": "빈 팔레트 예시"
+     },
+     {
+      "id": "m223",
+      "score": 0.8392,
+      "failed_at": "빈 팔레트 예시"
+     }
+    ],
+    "survivors_ranked": [
+     {
+      "id": "m43",
+      "score": 0.9006
+     }
+    ]
+   }
+  }
+ },
+ "result": {
+  "status": "PATH_OK"
+ },
+ "plan": {
+  "task": "transport",
+  "object": "red cube",
+  "near_zone": null,
+  "near_place": null,
+  "start_place": null,
+  "dest_kind": "empty_pallet",
+  "dest_place": null
+ },
+ "geometry": {
+  "start": {
+   "status": "OK",
+   "xy_m": [
+    2.685,
+    0.495
+   ],
+   "yaw_deg": 180,
+   "marker_shift_px": 1.0,
+   "pixel": [
+    1514.6,
+    730.4
+   ],
+   "z_m": 0.06,
+   "body_clearance_cm": 7.2,
+   "how": "설정의 바퀴 중심 픽셀을 z_m 높이로 투영 (추정). 사진의 ArUco 마커가 설정 꼭짓점에서 max_shift_px 안일 때만 씀"
+  },
+  "objects": {
+   "A": {
+    "class": "cube",
+    "centre_px": [
+     1095.7,
+     304.8
+    ],
+    "z_top_m": 0.035,
+    "map_xy_m": [
+     1.9115,
+     1.4411
+    ],
+    "beyond_line_cm": 8.5
+   },
+   "B": {
+    "class": "empty_pallet",
+    "centre_px": [
+     618.0,
+     323.9
+    ],
+    "z_top_m": 0.01,
+    "map_xy_m": [
+     0.7481,
+     1.4228
+    ],
+    "beyond_line_cm": 7.5
+   }
+  },
+  "stops": {
+   "A": {
+    "xy_m": [
+     1.915,
+     1.185
+    ],
+    "yaw_deg": 90,
+    "cell_rc": [
+     91,
+     191
+    ],
+    "body_clearance_cm": 3.0,
+    "center_cost": 218,
+    "reach_gap_cm": 4.9,
+    "lateral_offset_cm": 0.4,
+    "tip_to_object_cm": 4.9,
+    "lateral_within_limit": true,
+    "within_reach": true,
+    "gripper_tip": {
+     "tip_xy_m": [
+      1.915,
+      1.38
+     ],
+     "tip_inside_cm": -2.5
+    },
+    "grasp_possible": "UNKNOWN (그리퍼 도달 거리·폭 실측 없음)",
+    "rule": "몸체 여유 >= 3 cm 인 칸 중 그리퍼 끝 -> 물체 앞면 거리 최소. 옆 어긋남 2 cm 초과는 표시만"
+   },
+   "A_rejected": null,
+   "B": {
+    "xy_m": [
+     0.825,
+     1.165
+    ],
+    "yaw_deg": 90,
+    "cell_rc": [
+     93,
+     82
+    ],
+    "body_clearance_cm": 3.2,
+    "center_cost": 225,
+    "reach_gap_cm": 6.3,
+    "lateral_offset_cm": 7.7,
+    "tip_to_object_cm": 9.9,
+    "lateral_within_limit": false,
+    "within_reach": true,
+    "gripper_tip": {
+     "tip_xy_m": [
+      0.825,
+      1.36
+     ],
+     "tip_inside_cm": -1.5
+    },
+    "grasp_possible": "UNKNOWN (그리퍼 도달 거리·폭 실측 없음)",
+    "rule": "몸체 여유 >= 3 cm 인 칸 중 그리퍼 끝 -> 물체 앞면 거리 최소. 옆 어긋남 2 cm 초과는 표시만"
+   },
+   "B_rejected": null
+  },
+  "legs": [
+   {
+    "from": "현재위치",
+    "to": "큐브파지",
+    "status": "OK",
+    "route": {
+     "start_xy_m": [
+      2.685,
+      0.495
+     ],
+     "waypoints_xy_m": [
+      [
+       1.915,
+       0.495
+      ],
+      [
+       1.915,
+       0.515
+      ]
+     ],
+     "goal_xy_m": [
+      1.915,
+      1.185
+     ],
+     "start_yaw_deg": 180.0,
+     "goal_yaw_deg": 90.0,
+     "rotate_at": "W2"
+    },
+    "check_teammate": {
+     "length_m": 1.46,
+     "n_points": 148,
+     "min_body_clearance_cm": 3.0,
+     "min_at_xy_m": [
+      1.915,
+      1.185
+     ],
+     "rotate_xy_m": [
+      1.915,
+      0.515
+     ],
+     "rotate_min_clearance_cm": 4.49,
+     "max_center_cost": 218,
+     "bad_cm": 0,
+     "tight_cm": 0
+    },
+    "gripper_line": {
+     "path_min_inside_cm": -2.5,
+     "path_min_at_xy_m": [
+      1.915,
+      1.185
+     ],
+     "crosses_line_from_start_cm": 144.0,
+     "rotation_min_inside_cm": 5.5
+    },
+    "strafe_total_cm": 2.0,
+    "strafe_longest_cm": 2.0,
+    "n_expanded": 682,
+    "why": "팀원 판정 통과 (불가 0)"
+   },
+   {
+    "from": "큐브파지",
+    "to": "팔레트배치",
+    "status": "OK",
+    "route": {
+     "start_xy_m": [
+      1.915,
+      1.185
+     ],
+     "waypoints_xy_m": [
+      [
+       1.915,
+       1.165
+      ]
+     ],
+     "goal_xy_m": [
+      0.825,
+      1.165
+     ],
+     "start_yaw_deg": 90.0,
+     "goal_yaw_deg": 90.0,
+     "rotate_at": null
+    },
+    "check_teammate": {
+     "length_m": 1.1099999999999999,
+     "n_points": 113,
+     "min_body_clearance_cm": 3.0,
+     "min_at_xy_m": [
+      1.915,
+      1.185
+     ],
+     "rotate_xy_m": null,
+     "rotate_min_clearance_cm": null,
+     "max_center_cost": 225,
+     "bad_cm": 0,
+     "tight_cm": 0
+    },
+    "gripper_line": {
+     "path_min_inside_cm": -2.5,
+     "path_min_at_xy_m": [
+      1.915,
+      1.185
+     ],
+     "crosses_line_from_start_cm": 0.0,
+     "rotation_min_inside_cm": null
+    },
+    "strafe_total_cm": 109.0,
+    "strafe_longest_cm": 109.0,
+    "n_expanded": 4755,
+    "why": "팀원 판정 통과 (불가 0)"
+   }
+  ],
+  "names": {
+   "start": "현재위치",
+   "A": "큐브파지",
+   "B": "팔레트배치"
+  }
+ },
+ "overlay": {
+  "zones": [
+   {
+    "id": "Z01",
+    "name": "보행 통로",
+    "polygon_px": [
+     [
+      987.4,
+      114.3
+     ],
+     [
+      1066.5,
+      112.6
+     ],
+     [
+      1077.8,
+      332.4
+     ],
+     [
+      648.8,
+      333.4
+     ],
+     [
+      657.8,
+      258.1
+     ],
+     [
+      981.4,
+      254.8
+     ]
+    ],
+    "polygon_m": [
+     [
+      1.6555,
+      2.0156
+     ],
+     [
+      1.8612,
+      2.0144
+     ],
+     [
+      1.8709,
+      1.3925
+     ],
+     [
+      0.8251,
+      1.4027
+     ],
+     [
+      0.8232,
+      1.6098
+     ],
+     [
+      1.6408,
+      1.6039
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z03",
+    "name": "중앙 화물 적치 구역",
+    "polygon_px": [
+     [
+      817.4,
+      498.6
+     ],
+     [
+      980.9,
+      500.7
+     ],
+     [
+      983.3,
+      640.9
+     ],
+     [
+      807.2,
+      639.0
+     ]
+    ],
+    "polygon_m": [
+     [
+      1.2683,
+      0.9878
+     ],
+     [
+      1.6411,
+      0.9829
+     ],
+     [
+      1.6469,
+      0.6754
+     ],
+     [
+      1.2647,
+      0.6759
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z04",
+    "name": "자재 보관·적치 구역",
+    "polygon_px": [
+     [
+      1184.6,
+      514.1
+     ],
+     [
+      1724.2,
+      503.4
+     ],
+     [
+      1733.0,
+      635.5
+     ],
+     [
+      1187.9,
+      640.1
+     ]
+    ],
+    "polygon_m": [
+     [
+      2.0917,
+      0.9526
+     ],
+     [
+      3.2353,
+      0.9767
+     ],
+     [
+      3.1846,
+      0.7
+     ],
+     [
+      2.0803,
+      0.681
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z05",
+    "name": "충전 구역",
+    "polygon_px": [
+     [
+      1255.5,
+      860.6
+     ],
+     [
+      1465.0,
+      860.8
+     ],
+     [
+      1477.0,
+      1027.6
+     ],
+     [
+      1272.2,
+      1029.7
+     ]
+    ],
+    "polygon_m": [
+     [
+      2.182,
+      0.2602
+     ],
+     [
+      2.5821,
+      0.2684
+     ],
+     [
+      2.5582,
+      -0.0107
+     ],
+     [
+      2.1864,
+      -0.0253
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z06",
+    "name": "트럭 하역장",
+    "polygon_px": [
+     [
+      1376.1,
+      91.4
+     ],
+     [
+      1618.0,
+      66.5
+     ],
+     [
+      1632.6,
+      221.1
+     ],
+     [
+      1393.2,
+      231.0
+     ]
+    ],
+    "polygon_m": [
+     [
+      2.6507,
+      2.0546
+     ],
+     [
+      3.2571,
+      2.1107
+     ],
+     [
+      3.1961,
+      1.6655
+     ],
+     [
+      2.6375,
+      1.6503
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z07",
+    "name": "왼쪽 컨베이어 작업셀",
+    "polygon_px": [
+     [
+      355.6,
+      324.8
+     ],
+     [
+      572.4,
+      334.6
+     ],
+     [
+      482.2,
+      798.5
+     ],
+     [
+      212.6,
+      778.1
+     ]
+    ],
+    "polygon_m": [
+     [
+      0.0668,
+      1.4355
+     ],
+     [
+      0.6324,
+      1.4019
+     ],
+     [
+      0.5959,
+      0.3439
+     ],
+     [
+      -0.0087,
+      0.3734
+     ]
+    ],
+    "excluded": false
+   },
+   {
+    "id": "Z08",
+    "name": "상단 로봇 팔 작업셀",
+    "polygon_px": [
+     [
+      507.1,
+      107.3
+     ],
+     [
+      855.1,
+      120.8
+     ],
+     [
+      864.5,
+      225.6
+     ],
+     [
+      501.3,
+      224.2
+     ]
+    ],
+    "polygon_m": [
+     [
+      0.3486,
+      2.0779
+     ],
+     [
+      1.3074,
+      2.0058
+     ],
+     [
+      1.3459,
+      1.6921
+     ],
+     [
+      0.3959,
+      1.7158
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z09",
+    "name": "작업자 준비·사물함 구역",
+    "polygon_px": [
+     [
+      320.7,
+      53.0
+     ],
+     [
+      503.8,
+      73.9
+     ],
+     [
+      511.3,
+      189.0
+     ],
+     [
+      412.8,
+      181.5
+     ],
+     [
+      416.0,
+      327.5
+     ],
+     [
+      306.5,
+      320.3
+     ],
+     [
+      341.6,
+      161.7
+     ]
+    ],
+    "polygon_m": [
+     [
+      -0.2313,
+      2.279
+     ],
+     [
+      0.3199,
+      2.1889
+     ],
+     [
+      0.4046,
+      1.8207
+     ],
+     [
+      0.1294,
+      1.8502
+     ],
+     [
+      0.2265,
+      1.426
+     ],
+     [
+      -0.0661,
+      1.4496
+     ],
+     [
+      -0.084,
+      1.9171
+     ]
+    ],
+    "excluded": true
+   },
+   {
+    "id": "Z10",
+    "name": "왼쪽 아래 선반 보관 구역",
+    "polygon_px": [
+     [
+      209.3,
+      781.2
+     ],
+     [
+      568.6,
+      821.1
+     ],
+     [
+      554.9,
+      1019.3
+     ],
+     [
+      168.5,
+      973.4
+     ]
+    ],
+    "polygon_m": [
+     [
+      -0.0143,
+      0.3672
+     ],
+     [
+      0.7884,
+      0.3042
+     ],
+     [
+      0.8142,
+      -0.0492
+     ],
+     [
+      0.0023,
+      0.0068
+     ]
+    ],
+    "excluded": true
+   }
+  ],
+  "drive_px": [
+   [
+    483.9,
+    833.4
+   ],
+   [
+    1773.3,
+    862.8
+   ],
+   [
+    1666.4,
+    335.7
+   ],
+   [
+    584.6,
+    352.9
+   ]
+  ],
+  "drive_m": [
+   [
+    0.6119,
+    0.2773
+   ],
+   [
+    3.1527,
+    0.2773
+   ],
+   [
+    3.2057,
+    1.3681
+   ],
+   [
+    0.6705,
+    1.3528
+   ]
+  ],
+  "candidates": {
+   "A": [
+    {
+     "id": "m66",
+     "box": [
+      384.15,
+      222.29,
+      400.14,
+      232.59
+     ],
+     "score": 0.893,
+     "failed_at": "작업 공간"
+    },
+    {
+     "id": "m57",
+     "box": [
+      1085.47,
+      293.33,
+      1105.94,
+      316.35
+     ],
+     "score": 0.888,
+     "failed_at": null
+    },
+    {
+     "id": "m95",
+     "box": [
+      1088.46,
+      296.58,
+      1099.99,
+      315.47
+     ],
+     "score": 0.886,
+     "failed_at": null
+    }
+   ],
+   "B": [
+    {
+     "id": "m43",
+     "box": [
+      596.95,
+      306.07,
+      639.03,
+      341.73
+     ],
+     "score": 0.901,
+     "failed_at": null
+    },
+    {
+     "id": "m48",
+     "box": [
+      1074.01,
+      290.01,
+      1115.42,
+      328.67
+     ],
+     "score": 0.861,
+     "failed_at": "점유 아님"
+    },
+    {
+     "id": "m93",
+     "box": [
+      1100.0,
+      290.17,
+      1115.67,
+      328.44
+     ],
+     "score": 0.857,
+     "failed_at": "점유 아님"
+    }
+   ]
+  },
+  "targets": {
+   "A": {
+    "box": [
+     1085.47,
+     293.33,
+     1105.94,
+     316.35
+    ],
+    "map_xy_m": [
+     1.9115,
+     1.4411
+    ]
+   },
+   "B": {
+    "box": [
+     596.95,
+     306.07,
+     639.03,
+     341.73
+    ],
+    "map_xy_m": [
+     0.7481,
+     1.4228
+    ]
+   }
+  },
+  "poses": {
+   "start": {
+    "xy_m": [
+     2.685,
+     0.495
+    ],
+    "yaw_deg": 180,
+    "body_px": [
+     [
+      1434.3,
+      802.5
+     ],
+     [
+      1415.7,
+      673.4
+     ],
+     [
+      1561.5,
+      675.0
+     ],
+     [
+      1586.7,
+      805.4
+     ]
+    ],
+    "tip_px": [
+     [
+      1390.8,
+      673.2
+     ],
+     [
+      1408.4,
+      802.0
+     ]
+    ],
+    "body_m": [
+     [
+      2.54,
+      0.372
+     ],
+     [
+      2.54,
+      0.618
+     ],
+     [
+      2.83,
+      0.618
+     ],
+     [
+      2.83,
+      0.372
+     ]
+    ],
+    "tip_m": [
+     [
+      2.49,
+      0.618
+     ],
+     [
+      2.49,
+      0.372
+     ]
+    ]
+   },
+   "A": {
+    "xy_m": [
+     1.915,
+     1.185
+    ],
+    "yaw_deg": 90,
+    "body_px": [
+     [
+      1045.1,
+      357.1
+     ],
+     [
+      1150.3,
+      356.1
+     ],
+     [
+      1157.7,
+      475.8
+     ],
+     [
+      1047.7,
+      476.0
+     ]
+    ],
+    "tip_px": [
+     [
+      1149.1,
+      336.5
+     ],
+     [
+      1044.7,
+      337.6
+     ]
+    ],
+    "body_m": [
+     [
+      1.792,
+      1.33
+     ],
+     [
+      2.038,
+      1.33
+     ],
+     [
+      2.038,
+      1.04
+     ],
+     [
+      1.792,
+      1.04
+     ]
+    ],
+    "tip_m": [
+     [
+      2.038,
+      1.38
+     ],
+     [
+      1.792,
+      1.38
+     ]
+    ]
+   },
+   "B": {
+    "xy_m": [
+     0.825,
+     1.165
+    ],
+    "yaw_deg": 90,
+    "body_px": [
+     [
+      594.8,
+      369.1
+     ],
+     [
+      694.1,
+      368.2
+     ],
+     [
+      681.2,
+      485.0
+     ],
+     [
+      577.6,
+      485.1
+     ]
+    ],
+    "tip_px": [
+     [
+      696.2,
+      349.0
+     ],
+     [
+      597.6,
+      350.0
+     ]
+    ],
+    "body_m": [
+     [
+      0.702,
+      1.31
+     ],
+     [
+      0.948,
+      1.31
+     ],
+     [
+      0.948,
+      1.02
+     ],
+     [
+      0.702,
+      1.02
+     ]
+    ],
+    "tip_m": [
+     [
+      0.948,
+      1.36
+     ],
+     [
+      0.702,
+      1.36
+     ]
+    ]
+   }
+  },
+  "legs": [
+   {
+    "index": 1,
+    "from": "현재위치",
+    "to": "큐브파지",
+    "points_m": [
+     [
+      2.685,
+      0.495
+     ],
+     [
+      1.915,
+      0.495
+     ],
+     [
+      1.915,
+      0.515
+     ],
+     [
+      1.915,
+      1.185
+     ]
+    ],
+    "points_px": [
+     [
+      1499.0,
+      737.7
+     ],
+     [
+      1113.1,
+      731.9
+     ],
+     [
+      1112.7,
+      721.6
+     ],
+     [
+      1099.9,
+      414.9
+     ]
+    ],
+    "rotate_at": "W2",
+    "status": "OK"
+   },
+   {
+    "index": 2,
+    "from": "큐브파지",
+    "to": "팔레트배치",
+    "points_m": [
+     [
+      1.915,
+      1.185
+     ],
+     [
+      1.915,
+      1.165
+     ],
+     [
+      0.825,
+      1.165
+     ]
+    ],
+    "points_px": [
+     [
+      1099.9,
+      414.9
+     ],
+     [
+      1100.3,
+      423.2
+     ],
+     [
+      636.9,
+      425.6
+     ]
+    ],
+    "rotate_at": null,
+    "status": "OK"
+   }
+  ]
+ },
+ "model_calls": [],
+ "wall_s": 0.2,
+ "summary": [
+  "지시: 빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+  "경로 현재위치 → 큐브파지: 146 cm, 경유점 2개, 회전 W2, 몸체 여유 최소 3.0 cm",
+  "경로 큐브파지 → 팔레트배치: 111 cm, 경유점 1개, 회전 없음, 몸체 여유 최소 3.0 cm",
+  "결과: 경로 완료 (모델 내부 검사 통과, 그리퍼 도달은 실측 전)"
+ ],
+ "export": {
+  "dir": "/home/binci/vlm_ws/route_console_20261122/sessions/test_20261122_191904/20261122_191906_20261120_215805_view",
+  "files": [
+   "1_현재위치_큐브파지.json",
+   "2_큐브파지_팔레트배치.json",
+   "waypoints.csv",
+   "overlay.jpg"
+  ],
+  "teammate_check": [
+   {
+    "file": "1_현재위치_큐브파지.json",
+    "bad_cm": 0,
+    "tight_cm": 0,
+    "min_body_clearance_cm": 3.0
+   },
+   {
+    "file": "2_큐브파지_팔레트배치.json",
+    "bad_cm": 0,
+    "tight_cm": 0,
+    "min_body_clearance_cm": 3.0
+   }
+  ]
+ }
+}

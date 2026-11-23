@@ -1,0 +1,35 @@
+{
+  "source_region": {
+    "description": "컨베이어 벨트 주변의 작업 구역",
+    "bbox_2d": [75, 266, 265, 730]
+  },
+  "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": [222, 380, 238, 404],
+    "visible": "yes"
+  },
+  "destination_region": {
+    "description": "냉동 보관 창고",
+    "bbox_2d": [54, 718, 270, 920]
+  },
+  "destination_target_candidates": [
+    {
+      "name_en": "green metal shelving unit",
+      "name_ko": "녹색 금속 선반",
+      "bbox_2d": [54, 718, 270, 920],
+      "state": "empty",
+      "role": "storage",
+      "suitability": "suitable",
+      "reason": "green shelving unit is designated for storage and is empty"
+    }
+  ],
+  "selected_destination": "green metal shelving unit",
+  "spatial_context": [
+    "Red cube is located on the conveyor belt near the robotic arm.",
+    "Green shelving unit is positioned at the bottom left of the map, near the entrance to the refrigerated storage area."
+  ],
+  "task_reasoning": "The red cube is on the conveyor belt and needs to be moved to the refrigerated storage area, which is indicated by the green shelving unit.",
+  "uncertainty": [
+    "The exact location of the refrigerated storage area is not explicitly labeled, but the green shelving unit is the most likely candidate."
+  ]
+}

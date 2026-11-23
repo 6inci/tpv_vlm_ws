@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.1",
+  "obstacle_structure": "STATE_ROLE_PLUS_AXIS_ALIGNED_RECTANGLE",
+  "required_fields": [
+    "id",
+    "state_role",
+    "geometry_status",
+    "shape",
+    "bounds",
+    "coordinate_frame",
+    "unit",
+    "source_type",
+    "source_detail"
+  ],
+  "obstacle_id_policy": "NON_EMPTY_UNIQUE_WITHIN_STATE",
+  "rectangle_convention": "CLOSED_CONTACT_COLLISION_WITH_ORDERED_METRIC_AABB",
+  "operations": [
+    "ADD",
+    "REMOVE",
+    "MOVE"
+  ],
+  "normal_update_api": "apply_obstacle_event",
+  "collision_world_api": "build_dynamic_collision_world",
+  "grid_rebuild_api": "build_grid_map",
+  "existing_development_synthetic_behavior_preserved": true,
+  "navigation_extension": "NAVIGATION_APPROXIMATION_WITH_NAVIGATION_DISCRETIZATION_CELL",
+  "step18_dependency": "STEP17_STATE_COLLISION_WORLD_AND_GRID",
+  "step19_dependency": "OBSTACLE_ID_OBSERVATION_INDEX_LOGICAL_TIME"
+}

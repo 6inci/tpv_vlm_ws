@@ -1,0 +1,53 @@
+{
+  "command": "컨베이어 벨트에서 생산된 빨간색 큐브를 트럭이 위치한 하역장에 놓아줘.",
+  "mode": "IMAGE_DEMO",
+  "status": "OK",
+  "task": {
+    "task_type": "transport_and_place",
+    "target": {
+      "class": "cube",
+      "color": "red",
+      "source_reference": "conveyor",
+      "source_relation": "produced_by"
+    },
+    "destination": {
+      "region_type": "loading_area",
+      "reference_object": "truck"
+    },
+    "actions": [
+      "detect_target",
+      "locate_pickup_region",
+      "navigate_to_pickup",
+      "handoff_to_local_grasping",
+      "confirm_pickup",
+      "navigate_to_loading_area",
+      "handoff_to_placement",
+      "verify_completion"
+    ],
+    "actions_source": "fixed_template (not model output)",
+    "parser": {
+      "backend": "rule_based_demo",
+      "model": null,
+      "prompt_id": null,
+      "raw_response": "{\"status\": \"ok\", \"task_type\": \"transport_and_place\", \"target\": {\"class\": \"cube\", \"color\": \"red\", \"count\": 1, \"source_reference\": \"conveyor\", \"source_relation\": \"produced_by\"}, \"destination\": {\"region_type\": \"loading_area\", \"reference_object\": \"truck\"}, \"reason\": \"rule_based_demo keyword rules (not an LLM)\"}",
+      "parsed_output": {
+        "status": "ok",
+        "task_type": "transport_and_place",
+        "target": {
+          "class": "cube",
+          "color": "red",
+          "count": 1,
+          "source_reference": "conveyor",
+          "source_relation": "produced_by"
+        },
+        "destination": {
+          "region_type": "loading_area",
+          "reference_object": "truck"
+        },
+        "reason": "rule_based_demo keyword rules (not an LLM)"
+      },
+      "normalization_notes": []
+    }
+  },
+  "call": null
+}

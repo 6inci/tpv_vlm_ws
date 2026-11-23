@@ -1,0 +1,116 @@
+{
+  "schema_version": "0.1",
+  "completed_at": "2026-09-21T06:23:12+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "result": "PASS — STATIC_VLM_METRIC_GROUNDING_ESTABLISHED",
+  "camera": {
+    "identity": "Ucamera001",
+    "serial": "Ucamera001",
+    "current_node": "/dev/video7",
+    "by_id_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "native_mode": "1920x1080 MJPG 30 fps",
+    "new_frames_captured": 1,
+    "uvc_controls_modified": false
+  },
+  "aruco_observation": {
+    "dictionary": "DICT_4X4_50",
+    "detected_ids": [0],
+    "floor_ids_1_to_4_detected": false,
+    "used_for_homography": false,
+    "metric_side_sanity_check": "NOT_AVAILABLE_NO_FLOOR_MARKER_DETECTION"
+  },
+  "tile_geometry": {
+    "tile_pitch_m": 0.6,
+    "world_origin_point_id": "G00",
+    "world_origin_raw_image_px": [776.917994389, 992.806972481],
+    "world_axes": "+X rightward along grid; +Y away from camera",
+    "accepted_intersections": 14,
+    "rejected_occluded_or_ambiguous_intersections": 7,
+    "fit_points": 8,
+    "holdout_points": 6,
+    "fit_holdout_overlap": 0,
+    "branches": {
+      "RAW_IMAGE_PX_TO_WORLD_XY": {
+        "fit_rmse_m": 0.005854053037702314,
+        "holdout_rmse_m": 0.010871408032935806,
+        "holdout_maximum_error_m": 0.019315828976136318,
+        "holdout_x_bias_m": 0.0014458520980920066,
+        "holdout_y_bias_m": -0.0017073558205079609,
+        "gate": "PASS"
+      },
+      "UNDISTORTED_IMAGE_PX_TO_WORLD_XY": {
+        "fit_rmse_m": 0.0035521526153336064,
+        "holdout_rmse_m": 0.004060211184377776,
+        "holdout_maximum_error_m": 0.007035324706266435,
+        "holdout_x_bias_m": 0.0005689057837728464,
+        "holdout_y_bias_m": -0.0012518869159682626,
+        "gate": "PASS"
+      }
+    },
+    "selected_branch": "UNDISTORTED_IMAGE_PX_TO_WORLD_XY",
+    "selected_H_pixel_to_world": [
+      [0.020800896821360014, 0.005878184522286158, -21.968611982334647],
+      [0.001134256334563113, -0.0277824313148755, 26.716724256268026],
+      [0.00044178334705740935, 0.007209919588215674, 1.0]
+    ],
+    "development_gate": {
+      "holdout_rmse_threshold_m": 0.03,
+      "holdout_maximum_threshold_m": 0.05,
+      "result": "PASS",
+      "physical_safety_guarantee": false
+    },
+    "status": "NEW_SESSION_GEOMETRY_VALIDATED"
+  },
+  "static_vlm_grounding": {
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "qwen_inference_runs": 1,
+    "retry_runs": 0,
+    "target": "small brown cardboard box on the floor near the center-left of the visible floor workspace",
+    "raw_output": "{\"label\":\"small brown cardboard box on the floor\",\"bbox_2d\":[465, 575, 492, 605]}",
+    "semantic_label": "small brown cardboard box on the floor",
+    "bbox_normalized_0_1000": [465, 575, 492, 605],
+    "bbox_raw_image_px": [892.8, 621.0, 944.64, 653.4],
+    "bottom_center_raw_image_px": [918.72, 653.4],
+    "bottom_center_undistorted_image_px": [918.6071917443494, 652.4440499640152],
+    "world_xy_m": [0.1594835965362156, 1.5764884784994297],
+    "workspace_status": "INSIDE_VALIDATED_TILE_GRID_BOUNDS"
+  },
+  "provenance_boundaries": {
+    "physical_measurement": ["tile pitch 0.600 m", "ArUco encoded-square side 0.175 m"],
+    "image_derived": ["tile-line/intersection pixels", "ID0 image corners", "VLM bbox"],
+    "user_defined": ["world origin G00", "+X and +Y axis directions"],
+    "model_derived": ["small brown cardboard box semantic label", "normalized bbox"],
+    "geometry_derived": ["bbox bottom-center undistorted pixel", "object world XY"],
+    "bbox_physical_size_inferred": false
+  },
+  "protection": {
+    "previous_geometry_session_files_checked": 32,
+    "previous_geometry_session_files_unchanged": true,
+    "legacy_homography_used": false,
+    "previous_session_pixels_or_correspondences_used": false,
+    "source_code_modified": false,
+    "full_regression": "NOT_RUN_BY_POLICY_NO_IMPLEMENTATION_CHANGE",
+    "focused_artifact_checks": "PASS",
+    "navigation_or_robot_execution": "NOT_RUN"
+  },
+  "files_created": [
+    "aruco_detection.json",
+    "aruco_detection_overlay.png",
+    "camera_session_metadata.json",
+    "geometry_session_summary.json",
+    "homography_current_session.json",
+    "homography_current_session_validation.json",
+    "qwen_raw_output.txt",
+    "reference_native.mjpg",
+    "reference_raw.png",
+    "tile_grid_detection_overlay.png",
+    "tile_grid_fit_holdout_split.json",
+    "tile_grid_points.json",
+    "vlm_inference_runtime.json",
+    "vlm_metric_grounding.json",
+    "vlm_static_grounding.json",
+    "vlm_static_grounding_overlay.png",
+    "vlm_static_grounding_request.json"
+  ],
+  "files_modified": []
+}

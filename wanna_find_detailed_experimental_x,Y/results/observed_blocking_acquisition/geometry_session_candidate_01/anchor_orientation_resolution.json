@@ -1,0 +1,325 @@
+{
+  "schema_version": "0.1",
+  "analysis_time": "2026-09-21T03:03:42+09:00",
+  "result": "GRID_LAYOUT_CONFLICT",
+  "previous_conflict": {
+    "status": "PHYSICAL_MAPPING_CONFLICT",
+    "fit_rmse_m": 0.006975516273174433,
+    "fit_max_residual_m": 0.011194503523675636,
+    "independent_validation_rmse_m": 0.19372477129529064,
+    "independent_validation_max_error_m": 0.23965641179094768
+  },
+  "newly_confirmed_physical_facts": {
+    "side_length_refers_to_detected_black_square": true,
+    "marker_side_m": 0.175,
+    "one_black_square_corner_at_tile_intersection": true,
+    "white_border_offset_forbidden": true,
+    "paper_border_correction_forbidden": true
+  },
+  "previous_assumptions_rejected": [
+    "ID4 corner1 and ID2 corner1 were not physically confirmed anchor indices.",
+    "The prior corner-index assignment was image-derived and is not retained by inertia."
+  ],
+  "selected_mapping": {
+    "grid_layout": {
+      "1": [
+        2,
+        4
+      ],
+      "2": [
+        2,
+        0
+      ],
+      "3": [
+        0,
+        4
+      ],
+      "4": [
+        0,
+        0
+      ]
+    },
+    "anchor_corner_index_by_marker": {
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 2
+    },
+    "orientation_index_by_marker": {
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0
+    },
+    "orientation": {
+      "corner_0_to_1": "+X",
+      "corner_0_to_3": "-Y",
+      "mirrored": false
+    },
+    "selection_scope": "UNIQUE_BEST_AMONG_17_LOW_MARKER_FIT_CANDIDATES_FOR_THE_2X4_LAYOUT"
+  },
+  "selection_evidence": {
+    "selected_direct_fit_marker_rmse_m": 0.007794112084551601,
+    "selected_direct_fit_marker_max_residual_m": 0.012744835196662972,
+    "selected_disambiguation_rmse_m": 0.09064065656280879,
+    "second_candidate_disambiguation_rmse_m": 0.13589835763866254,
+    "all_low_fit_candidates_orientation_index": 0,
+    "visible_workspace_consistency": "corner2 is the image-space lower-right detected black-square corner for all four markers, so the selected square geometry extends toward visible workspace +Y rather than below the near anchor row.",
+    "previous_id4_inconsistency": "The old corner1 anchor made ID4 extend toward negative X and negative Y, outside the visible workspace-side direction."
+  },
+  "disambiguation_tile_points": [
+    {
+      "grid_ij": [
+        0,
+        1
+      ],
+      "raw_image_px": [
+        770.6299438476562,
+        909.7860717773438
+      ],
+      "expected_world_xy_m": [
+        0.0,
+        0.6000000238418579
+      ],
+      "predicted_world_xy_m": [
+        0.02046746332346131,
+        0.5119901118694635
+      ],
+      "error_m": 0.09035851736436273,
+      "role": "HYPOTHESIS_DISAMBIGUATION_ONLY",
+      "used_for_marker_homography_fit": false
+    },
+    {
+      "grid_ij": [
+        2,
+        1
+      ],
+      "raw_image_px": [
+        1235.76171875,
+        915.951171875
+      ],
+      "expected_world_xy_m": [
+        1.2000000476837158,
+        0.6000000238418579
+      ],
+      "predicted_world_xy_m": [
+        1.2249385578858416,
+        0.512125553698653
+      ],
+      "error_m": 0.09134468673136137,
+      "role": "HYPOTHESIS_DISAMBIGUATION_ONLY",
+      "used_for_marker_homography_fit": false
+    },
+    {
+      "grid_ij": [
+        0,
+        2
+      ],
+      "raw_image_px": [
+        805.9354248046875,
+        773.68115234375
+      ],
+      "expected_world_xy_m": [
+        0.0,
+        1.2000000476837158
+      ],
+      "predicted_world_xy_m": [
+        0.01826585498706387,
+        1.1076567953209353
+      ],
+      "error_m": 0.09413244772842473,
+      "role": "HYPOTHESIS_DISAMBIGUATION_ONLY",
+      "used_for_marker_homography_fit": false
+    },
+    {
+      "grid_ij": [
+        2,
+        2
+      ],
+      "raw_image_px": [
+        1215.737548828125,
+        774.217041015625
+      ],
+      "expected_world_xy_m": [
+        1.2000000476837158,
+        1.2000000476837158
+      ],
+      "predicted_world_xy_m": [
+        1.2269513953362159,
+        1.115317594739135
+      ],
+      "error_m": 0.0888678399478522,
+      "role": "HYPOTHESIS_DISAMBIGUATION_ONLY",
+      "used_for_marker_homography_fit": false
+    },
+    {
+      "grid_ij": [
+        0,
+        3
+      ],
+      "raw_image_px": [
+        834.6320190429688,
+        664.4931640625
+      ],
+      "expected_world_xy_m": [
+        0.0,
+        1.7999999523162842
+      ],
+      "predicted_world_xy_m": [
+        0.017274648322671296,
+        1.718117925295855
+      ],
+      "error_m": 0.08368440609603604,
+      "role": "HYPOTHESIS_DISAMBIGUATION_ONLY",
+      "used_for_marker_homography_fit": false
+    },
+    {
+      "grid_ij": [
+        2,
+        3
+      ],
+      "raw_image_px": [
+        1199.5322265625,
+        665.0960693359375
+      ],
+      "expected_world_xy_m": [
+        1.2000000476837158,
+        1.7999999523162842
+      ],
+      "predicted_world_xy_m": [
+        1.2263851923283222,
+        1.711323537999679
+      ],
+      "error_m": 0.09251855118821863,
+      "role": "HYPOTHESIS_DISAMBIGUATION_ONLY",
+      "used_for_marker_homography_fit": false
+    }
+  ],
+  "disambiguation_metrics_for_final_ransac_candidate": {
+    "mean_error_m": 0.09015107484270929,
+    "rmse_m": 0.09021242180199962,
+    "maximum_error_m": 0.09413244772842473
+  },
+  "grid_layout_assessment": {
+    "status": "2X4_REMAINS_STRONGEST_BUT_CONFLICTS_WITH_EXACT_METRIC_TILE_EVIDENCE",
+    "nearby_rectangular_span_audit": [
+      {
+        "anchor_span_tiles_xy": [
+          1,
+          3
+        ],
+        "marker_fit_rmse_m": 0.051454585154543694,
+        "marker_fit_max_residual_m": 0.06079707689998237,
+        "disambiguation_rmse_m": 0.5725206967646747
+      },
+      {
+        "anchor_span_tiles_xy": [
+          1,
+          4
+        ],
+        "marker_fit_rmse_m": 0.04525683156351732,
+        "marker_fit_max_residual_m": 0.053286133577763156,
+        "disambiguation_rmse_m": 0.44970174434222004
+      },
+      {
+        "anchor_span_tiles_xy": [
+          1,
+          5
+        ],
+        "marker_fit_rmse_m": 0.04808282352551294,
+        "marker_fit_max_residual_m": 0.05719136705287382,
+        "disambiguation_rmse_m": 0.48963137260114853
+      },
+      {
+        "anchor_span_tiles_xy": [
+          2,
+          3
+        ],
+        "marker_fit_rmse_m": 0.02568915993329885,
+        "marker_fit_max_residual_m": 0.032280943062865906,
+        "disambiguation_rmse_m": 0.3655509619869606
+      },
+      {
+        "anchor_span_tiles_xy": [
+          2,
+          4
+        ],
+        "marker_fit_rmse_m": 0.007794112084551601,
+        "marker_fit_max_residual_m": 0.012744835196662972,
+        "disambiguation_rmse_m": 0.09064065656280879
+      },
+      {
+        "anchor_span_tiles_xy": [
+          2,
+          5
+        ],
+        "marker_fit_rmse_m": 0.018030924152949733,
+        "marker_fit_max_residual_m": 0.025260529120299767,
+        "disambiguation_rmse_m": 0.21148354352276985
+      },
+      {
+        "anchor_span_tiles_xy": [
+          3,
+          3
+        ],
+        "marker_fit_rmse_m": 0.046728353890355935,
+        "marker_fit_max_residual_m": 0.05740135148801773,
+        "disambiguation_rmse_m": 0.6046380559726963
+      },
+      {
+        "anchor_span_tiles_xy": [
+          3,
+          4
+        ],
+        "marker_fit_rmse_m": 0.039805383162982995,
+        "marker_fit_max_residual_m": 0.05229899185542162,
+        "disambiguation_rmse_m": 0.49010026673903156
+      },
+      {
+        "anchor_span_tiles_xy": [
+          3,
+          5
+        ],
+        "marker_fit_rmse_m": 0.043000215534938685,
+        "marker_fit_max_residual_m": 0.05379884924357771,
+        "disambiguation_rmse_m": 0.5258066617164809
+      }
+    ],
+    "assessment": "The 2x4 span is clearly better than tested 1..3 by 3..5 alternatives, so broadening the rectangular span does not resolve the remaining offset."
+  },
+  "holdout_validation": {
+    "status": "FAILED",
+    "point_count": 3,
+    "mean_error_m": 0.09306735838258107,
+    "rmse_m": 0.09313004434952565,
+    "maximum_error_m": 0.0964960356712493,
+    "artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_candidate_01/homography_corrected_holdout_validation.json"
+  },
+  "geometry_session_status": "GRID_LAYOUT_CONFLICT",
+  "confirmed_facts": [
+    "The image remained native 1920x1080 RAW_IMAGE_PX without resize, crop, or rotation.",
+    "IDs 1,2,3,4 are floor markers and ID0 is excluded.",
+    "Marker black-square side is 0.175 m.",
+    "Tile pitch is 0.600 m.",
+    "No white/paper border offset was introduced.",
+    "No mirrored or non-square marker hypothesis was used."
+  ],
+  "remaining_unknowns": [
+    "Which exact OpenCV corner index is physically touching the tile intersection has not been directly human-labeled per marker.",
+    "The stored image alone cannot explain the remaining approximately 0.09 m systematic tile-lattice offset under the exact-contact and 2x4 assumptions."
+  ],
+  "minimal_human_action": "Without making a new distance measurement, identify the touching OpenCV corner index on at least ID4 and one far marker (ID3) using the existing numbered-corner overlay or a close-up that keeps the camera/markers fixed.",
+  "recommended_continuation": "Preserve both rejected candidates. Resolve the exact per-marker touching corner against physical placement or acquire an unobscured fixed-camera reference before promoting any homography.",
+  "prohibited_operations_status": {
+    "qwen_inference_runs": 0,
+    "step24n": "NOT_RUN",
+    "step25n": "NOT_RUN",
+    "path_validation": "NOT_RUN",
+    "step19": "NOT_RUN",
+    "step18": "NOT_RUN",
+    "a_star": "NOT_RUN",
+    "ros_nav2": "NOT_RUN",
+    "robot_motion": "NOT_RUN",
+    "step32": "NOT_STARTED"
+  }
+}

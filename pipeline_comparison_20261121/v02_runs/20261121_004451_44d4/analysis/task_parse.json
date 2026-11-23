@@ -1,0 +1,31 @@
+{
+  "command": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+  "mode": "LOCAL_ONLY",
+  "status": "FAILED",
+  "error_code": "UNSUPPORTED_DESTINATION",
+  "error": "destination 'palette' is not supported (supported: loading_area anchored on a truck)",
+  "raw_response": "{\n  \"status\": \"ok\",\n  \"task_type\": \"transport_and_place\",\n  \"target\": {\n    \"class\": \"cube\",\n    \"color\": \"red\",\n    \"count\": 1,\n    \"source_reference\": null,\n    \"source_relation\": null\n  },\n  \"destination\": {\n    \"region_type\": \"palette\",\n    \"reference_object\": \"empty_palette\"\n  },\n  \"reason\": \"Move the red cube to an empty palette.\"\n}",
+  "parsed_output": {
+    "status": "ok",
+    "task_type": "transport_and_place",
+    "target": {
+      "class": "cube",
+      "color": "red",
+      "count": 1,
+      "source_reference": null,
+      "source_relation": null
+    },
+    "destination": {
+      "region_type": "palette",
+      "reference_object": "empty_palette"
+    },
+    "reason": "Move the red cube to an empty palette."
+  },
+  "call": {
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "latency_s": 3.741,
+    "n_output_tokens": 100,
+    "hit_max_new_tokens": false
+  }
+}

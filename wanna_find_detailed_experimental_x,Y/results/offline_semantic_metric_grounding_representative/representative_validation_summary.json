@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1",
+  "step_result": "PARTIAL",
+  "software_integration": "PASS",
+  "actual_qwen_inference": "PASS",
+  "strict_safety_gates": "PASS",
+  "semantic_to_metric_representative_integration": "PARTIAL",
+  "valid_metric_points": 0,
+  "policy": {
+    "inference_mode": "ONE_REPRESENTATIVE_CANDIDATE_PER_QWEN_RUN",
+    "maximum_attempts": 3,
+    "attempts_used": 3,
+    "additional_qwen_inference": "STOPPED",
+    "bbox_domain": "INTEGER_NORMALIZED_0_1000",
+    "ground_reference": "BOTTOM_CENTER",
+    "metric_gate": "VISIBLE_ENTITY_FOUND_AND_VALID_BBOX_AND_ASSOCIATED_ONLY"
+  },
+  "preserved_exhaustive_evidence": {
+    "path": "/home/binci/vlm_ws/results/offline_semantic_metric_grounding",
+    "file_count": 73,
+    "content_digest_sha256": "1de4c7cb70351bfd51b4ab52e69e32548e6aecc9da3e109b324179e0498a32d9",
+    "modified": false
+  },
+  "attempts": [
+    {
+      "attempt": 1,
+      "image_id": "image_012_photo_06",
+      "source_image": "/home/binci/qwen_vision_test/photo_06.png",
+      "track_id": "track_011",
+      "candidate_bbox_px": [1430, 222, 2016, 1092],
+      "selection_reason": "Large confirmed change region overlapping the clearly visible seated person identified by the earlier exhaustive run.",
+      "semantic_status": "NO_VISIBLE_ENTITY",
+      "association_status": "NOT_EVALUATED",
+      "metric_grounding_status": "NOT_RUN",
+      "world_xy": null,
+      "inference_sec": 97.41041185699578,
+      "result_directory": "photo06_track011_v3"
+    },
+    {
+      "attempt": 2,
+      "image_id": "image_014_photo_08",
+      "source_image": "/home/binci/qwen_vision_test/photo_08.png",
+      "track_id": "track_039",
+      "candidate_bbox_px": [1017, 545, 1375, 684],
+      "selection_reason": "Confirmed component strongly overlapping one clearly visible tennis racket on the floor.",
+      "semantic_status": "NO_VISIBLE_ENTITY",
+      "association_status": "NOT_EVALUATED",
+      "metric_grounding_status": "NOT_RUN",
+      "world_xy": null,
+      "inference_sec": 74.08896816900233,
+      "result_directory": "photo08_track039_v3"
+    },
+    {
+      "attempt": 3,
+      "image_id": "image_013_photo_07",
+      "source_image": "/home/binci/qwen_vision_test/photo_07.png",
+      "track_id": "track_036",
+      "candidate_bbox_px": [699, 451, 745, 518],
+      "selection_reason": "Compact confirmed component directly overlapping one clearly visible paper cup on the floor.",
+      "semantic_status": "NO_VISIBLE_ENTITY",
+      "association_status": "NOT_EVALUATED",
+      "metric_grounding_status": "NOT_RUN",
+      "world_xy": null,
+      "inference_sec": 118.9366236240021,
+      "result_directory": "photo07_track036_v3"
+    }
+  ],
+  "geometry": {
+    "input_category": "RAW_LIKE_SOURCE",
+    "input_resolution": [2016, 1133],
+    "compatibility_status": "DEVELOPMENT_COMPATIBLE_CANDIDATE",
+    "metric_transform_policy": "DEVELOPMENT_INFERRED_ALLOWED",
+    "pipeline": "RAW_BOTTOM_CENTER_PX_TO_STORED_UNDISTORTION_TO_LEGACY_HOMOGRAPHY",
+    "executed": false,
+    "reason": "No representative attempt returned VISIBLE_ENTITY_FOUND."
+  },
+  "physical_geometry": "NOT_AVAILABLE",
+  "planning_role": "NOT_ASSIGNED",
+  "obstacle_injection": "NOT_RUN",
+  "a_star": "NOT_RUN",
+  "replanning": "NOT_RUN"
+}

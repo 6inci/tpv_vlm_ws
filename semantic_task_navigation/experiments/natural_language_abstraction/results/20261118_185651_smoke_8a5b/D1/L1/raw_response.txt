@@ -1,0 +1,174 @@
+{
+  "observed_objects": [
+    {
+      "label": "robotic arm",
+      "count": 4,
+      "location_in_image": "top-left, left side, and bottom-left",
+      "visible_evidence": "four white robotic arms mounted on bases, some with purple or yellow components"
+    },
+    {
+      "label": "truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "white and black model truck with a cargo bed"
+    },
+    {
+      "label": "cones",
+      "count": 12,
+      "location_in_image": "distributed around the floor, especially near the green path and truck area",
+      "visible_evidence": "orange traffic cones placed on the black floor"
+    },
+    {
+      "label": "stacked boxes",
+      "count": 1,
+      "location_in_image": "center of the floor",
+      "visible_evidence": "a stack of brown cardboard boxes on a yellow-bordered square"
+    },
+    {
+      "label": "barrel-like containers",
+      "count": 3,
+      "location_in_image": "bottom-right, near the black vehicle",
+      "visible_evidence": "black, gray, and blue cylindrical containers on wooden pallets"
+    },
+    {
+      "label": "black vehicle",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "a black, wheeled vehicle with visible electronics and wheels"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "a whiteboard with Korean text written on it"
+    },
+    {
+      "label": "green path",
+      "count": 1,
+      "location_in_image": "top-center",
+      "visible_evidence": "a green rectangular path with white hand symbols"
+    },
+    {
+      "label": "green scaffolding",
+      "count": 2,
+      "location_in_image": "top-center and bottom-left",
+      "visible_evidence": "green metal-like scaffolding structures"
+    },
+    {
+      "label": "gray metal grates",
+      "count": 2,
+      "location_in_image": "bottom-center and bottom-right",
+      "visible_evidence": "gray metal grates on the floor"
+    },
+    {
+      "label": "red cube",
+      "count": 0,
+      "location_in_image": "not visible",
+      "visible_evidence": "none"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "loading/unloading zone",
+      "bbox_2d": [625, 0, 920, 280],
+      "observed_evidence": [
+        "white truck",
+        "orange cones",
+        "white dashed lines"
+      ],
+      "inference": "The truck is parked here, and cones suggest a designated area for loading/unloading, consistent with the instruction's reference to '하역장' (unloading area)",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "central storage area",
+      "bbox_2d": [250, 280, 625, 750],
+      "observed_evidence": [
+        "stacked boxes",
+        "yellow-bordered square",
+        "no direct traffic or equipment nearby"
+      ],
+      "inference": "The central location with a stack of boxes suggests a storage or staging area, possibly for goods to be moved",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_3",
+      "function_name": "robotic work station",
+      "bbox_2d": [75, 260, 270, 730],
+      "observed_evidence": [
+        "robotic arms",
+        "long conveyor-like structure",
+        "purple and yellow components"
+      ],
+      "inference": "The presence of multiple robotic arms and a conveyor suggests this is a primary work or processing area",
+      "confidence": "high"
+    },
+    {
+      "id": "area_4",
+      "function_name": "material storage zone",
+      "bbox_2d": [625, 430, 960, 750],
+      "observed_evidence": [
+        "barrel-like containers",
+        "black vehicle",
+        "pallets"
+      ],
+      "inference": "This area contains various containers and a vehicle, suggesting storage or staging for materials",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_5",
+      "function_name": "charging or power station",
+      "bbox_2d": [660, 750, 960, 950],
+      "observed_evidence": [
+        "white lightning bolt symbol",
+        "green panels",
+        "red cone"
+      ],
+      "inference": "The lightning bolt symbol and green panels suggest a power or charging station for equipment",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_6",
+      "function_name": "safety or traffic control zone",
+      "bbox_2d": [300, 50, 580, 280],
+      "observed_evidence": [
+        "green path",
+        "white hand symbols",
+        "cones"
+      ],
+      "inference": "The green path with hand symbols and cones suggests a designated safe walking or traffic path",
+      "confidence": "high"
+    }
+  ],
+  "task_analysis": {
+    "inferred_task_purpose": "The instruction asks to move a red cube to the unloading area where the truck is parked.",
+    "info_given_by_instruction": [
+      "the destination is the unloading area where the truck is located"
+    ],
+    "info_added_by_you": [
+      {
+        "statement": "The unloading area is identified as area_1, which contains the truck and is marked with cones and dashed lines.",
+        "basis": "image"
+      },
+      {
+        "statement": "The red cube is not visible in the image, so its location is unknown.",
+        "basis": "image"
+      }
+    ],
+    "place_needed_for_task": "The unloading area where the truck is parked, which is area_1.",
+    "decision": "proposed",
+    "destination_area_id": "area_1",
+    "reason": "The instruction explicitly refers to the truck's location as the destination, and the image shows the truck parked in area_1, which is clearly marked as an unloading zone."
+  },
+  "unknown_from_image": [
+    "The location of the red cube is not visible in the image.",
+    "The exact size or shape of the red cube is not visible.",
+    "The current state of the red cube (if it is present or not) is not visible."
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is present and located somewhere in the model.",
+    "Whether the red cube is accessible for movement by the robot or human operator.",
+    "Whether the path from the red cube's current location to area_1 is clear and unobstructed."
+  ]
+}

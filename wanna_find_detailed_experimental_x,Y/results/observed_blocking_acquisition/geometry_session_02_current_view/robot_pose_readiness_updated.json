@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T08:08:32+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "REWORK",
+  "readiness_result": "ROBOT_POSE_WAITING_FOR_MINIMAL_PHYSICAL_INPUT",
+  "id0_detection": {
+    "preserved_from": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/aruco_recheck_01.json",
+    "raw_corners_px": [[984,867],[1060,867],[1058,919],[978,920]],
+    "raw_center_px": [1020.0,893.25],
+    "elevated": true,
+    "floor_homography_applied": false
+  },
+  "correct_pose_chain": [
+    "ID0 solvePnP with current camera intrinsics and confirmed ID0 black-square side",
+    "marker pose in calibrated camera frame",
+    "validated current camera/world pose relation",
+    "measured marker-frame to base_link rigid transform",
+    "robot base pose (x,y,yaw) in GEOMETRY_SESSION_02_TILE_GRID_WORLD"
+  ],
+  "human_measurements_still_missing": [
+    "ID0 black-square side length; do not assume the 0.175 m floor-marker side applies to ID0",
+    "marker-center to base_link X offset",
+    "marker-center to base_link Y offset",
+    "marker-center height above the floor/base reference plane",
+    "marker orientation relative to robot forward"
+  ],
+  "non_human_validation_gap": "A current camera-to-world 6DoF relation, or a validated derivation from the existing calibrated planar geometry, must be documented before composing the elevated marker pose into world coordinates.",
+  "robot_pose_computed": false,
+  "goal": {
+    "status": "NOT_STARTED",
+    "result": "WAITING_FOR_CURRENT_WORLD_GOAL",
+    "required_input": "One current-session goal specified by Gxx or by world [X,Y] in GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+    "legacy_d1_reused": false
+  },
+  "path_readiness": {
+    "validated_current_geometry": true,
+    "manual_object_reference_points": true,
+    "robot_base_pose": false,
+    "current_world_goal": false,
+    "ready": false,
+    "planner_runs": 0
+  },
+  "measurement_guide": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/robot_id0_measurement_guide.png"
+}

@@ -1,0 +1,145 @@
+{
+ "inputs": {
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "candidates_equal_retention_record": true,
+  "n_candidates": 38,
+  "crop_views_matched": 4,
+  "model_calls": 0
+ },
+ "experiment_1": {
+  "instruction_and_vlm_relations_never_SUPPORTED": true,
+  "every_relation_has_evidence": true,
+  "relations_reference_existing_nodes": true,
+  "candidates_without_source_relation": 24
+ },
+ "experiment_2": {
+  "astar_consistency": {
+   "0": {
+    "n_reachable_tested": 40,
+    "max_abs_diff_px": 0.0,
+    "all_equal": true,
+    "n_unreachable_tested": 0,
+    "unreachable_all_no_path": true,
+    "skipped": null
+   },
+   "90": {
+    "n_reachable_tested": null,
+    "max_abs_diff_px": null,
+    "all_equal": null,
+    "n_unreachable_tested": null,
+    "unreachable_all_no_path": null,
+    "skipped": "start cell invalid for this heading (body does not fit at the start): the whole map is unreachable"
+   }
+  },
+  "multi_source_with_start_seed_equals_v02_cost_field": true,
+  "reachable_cells_collision_free": {
+   "0": {
+    "n_cells": 1353,
+    "violations": 0
+   },
+   "90": {
+    "n_cells": 0,
+    "violations": 0
+   },
+   "90_via_rotation": {
+    "n_cells": 785,
+    "violations": 0
+   }
+  },
+  "plans_vs_costmap": {
+   "cand_r1": {
+    "costmap_approach_equals_approach_goal": true,
+    "costmap_cost_at_goal_vs_astar_cost": {
+     "costmap_px": 1367.877,
+     "astar_cost_px": 1367.877
+    },
+    "path_A": {
+     "sweep_ok": true,
+     "v02_valid": true,
+     "layers_clear": true
+    },
+    "path_B_place": {
+     "sweep_ok": true,
+     "v02_valid": true,
+     "layers_clear": true
+    }
+   },
+   "cand_r3": {
+    "costmap_approach_equals_approach_goal": true,
+    "costmap_cost_at_goal_vs_astar_cost": {
+     "costmap_px": 1456.443,
+     "astar_cost_px": 1456.443
+    },
+    "path_A": {
+     "sweep_ok": true,
+     "v02_valid": true,
+     "layers_clear": true
+    },
+    "path_B_place": {
+     "sweep_ok": true,
+     "v02_valid": true,
+     "layers_clear": true
+    }
+   },
+   "cand_r6": {
+    "costmap_approach_equals_approach_goal": true,
+    "costmap_cost_at_goal_vs_astar_cost": {
+     "costmap_px": 1456.443,
+     "astar_cost_px": 1456.443
+    },
+    "path_A": {
+     "sweep_ok": true,
+     "v02_valid": true,
+     "layers_clear": true
+    },
+    "path_B_place": {
+     "sweep_ok": true,
+     "v02_valid": true,
+     "layers_clear": true
+    }
+   },
+   "cand_r9": {
+    "costmap_approach_equals_approach_goal": true,
+    "costmap_cost_at_goal_vs_astar_cost": {
+     "costmap_px": 0.0,
+     "astar_cost_px": 0.0
+    },
+    "path_A": null,
+    "path_B_place": null
+   }
+  },
+  "reproduces_stored_route_path_A_cand_r1": {
+   "stored_goal_cm": [
+    83.0,
+    113.0
+   ],
+   "new_goal_cm": [
+    83.0,
+    113.0
+   ],
+   "stored_length_cm": 236.3,
+   "new_length_cm": 236.3,
+   "equal": true,
+   "stored_target_box": [
+    434.0,
+    417.0,
+    451.0,
+    432.0
+   ]
+  },
+  "diagonal_corner_cutting": "v0.2 _neighbors forbids it; tested on a synthetic map in test_semnav_offline.py"
+ },
+ "experiment_3": {
+  "no_CONFIRMED_state": true,
+  "A_to_C_never_select_below_plannable": true,
+  "C_selected_or_tied_have_top_semantic_level": true,
+  "decision_inputs_contain_no_label": true,
+  "A_B_connected": {
+   "cand_r1": true
+  }
+ },
+ "geometry_status": "inside the PROVISIONAL floor transform + DRAFT map only; real-size safety NOT claimed",
+ "v02_code_before": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+ "v02_code_after": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+ "v02_code_unchanged": true
+}

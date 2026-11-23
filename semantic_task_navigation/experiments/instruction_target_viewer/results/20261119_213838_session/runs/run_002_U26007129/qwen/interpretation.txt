@@ -1,0 +1,77 @@
+{
+  "purpose": "Move objects from truck area to conveyor belt area",
+  "source_object": {
+    "name_en": "objects"
+  },
+  "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [752, 0, 880, 142]
+  },
+  "source_relation": "from",
+  "destination_meaning": "Conveyor belt area for object transfer",
+  "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [110, 260, 230, 720],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Pedestrian walkway",
+      "visual_evidence": [
+        "green floor with footprints",
+        "no robot body allowed"
+      ],
+      "bbox_2d": [305, 58, 560, 280],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Robot travel zone",
+      "visual_evidence": [
+        "yellow border",
+        "black floor"
+      ],
+      "bbox_2d": [100, 260, 970, 750],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Conveyor belt and robot arm workstation",
+      "visual_evidence": [
+        "white border",
+        "robot arms"
+      ],
+      "bbox_2d": [110, 260, 230, 720],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Cargo storage area",
+      "visual_evidence": [
+        "yellow border",
+        "stacked objects"
+      ],
+      "bbox_2d": [620, 430, 960, 550],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Truck unloading zone",
+      "visual_evidence": [
+        "white dashed lines",
+        "truck"
+      ],
+      "bbox_2d": [620, 0, 960, 280],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+        "orange cones",
+        "yellow lines"
+      ],
+      "bbox_2d": [280, 180, 960, 280],
+      "robot_body_access": "forbidden"
+    }
+  ],
+  "uncertainty": [
+    "Grasp range of gripper not confirmed"
+  ]
+}

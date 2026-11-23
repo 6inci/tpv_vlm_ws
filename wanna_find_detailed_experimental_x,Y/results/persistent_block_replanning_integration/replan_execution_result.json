@@ -1,0 +1,148 @@
+{
+  "status": "REPLAN_SUCCESS",
+  "step18_result": {
+    "event_id": "D2_persistence_episode_001",
+    "trigger_event_id": "D2_persistence_episode_001",
+    "event_index": 6,
+    "operation": "PERSISTENCE_TRIGGER",
+    "world_revision_before": 1,
+    "world_revision_after": 1,
+    "trigger_world_revision": 1,
+    "current_robot_pose": {
+      "path_id": "D2_preserved_current_path",
+      "path_revision": 0,
+      "waypoint_index": 20,
+      "grid": [
+        16,
+        30
+      ],
+      "x": 0.61,
+      "y": 0.33
+    },
+    "goal_pose": {
+      "x": 0.95,
+      "y": 1.5,
+      "status": "DEVELOPMENT_DEFINED"
+    },
+    "current_robot_index_on_old_path": 20,
+    "executed_prefix_length_m": 0.4082842712474619,
+    "old_remaining_length_m": 1.4379898987322335,
+    "old_path_revision": 0,
+    "collision_world_rebuild_ms": 0.5491760002769297,
+    "grid_rebuild_ms": 16.018858999814256,
+    "costmap_world_revision": 1,
+    "additional_inflation_m": 0.0,
+    "performance_metric_status": "VOLATILE_OBSERVATION_NOT_BENCHMARK",
+    "old_path_state": "BLOCKED",
+    "current_path_validation": {
+      "path_state": "BLOCKED",
+      "replan_required": true,
+      "world_revision": 1,
+      "first_blocked_waypoint_index": 30,
+      "first_blocked_edge_index": 29,
+      "reason": "WAYPOINT_COLLISION",
+      "blocking_obstacle_ids": [
+        "dynamic_box_02"
+      ]
+    },
+    "current_path_validation_ms": 0.25336199996672804,
+    "old_path_minimum_clearance_m": 0.0,
+    "old_path_accumulated_safety_risk": null,
+    "blocking_reason": "WAYPOINT_COLLISION",
+    "blocking_obstacle_ids": [
+      "dynamic_box_02"
+    ],
+    "first_blocked_waypoint": 50,
+    "first_blocked_edge": 49,
+    "state_trace": [
+      "REPLAN_REQUIRED",
+      "REPLANNING",
+      "REPLAN_SUCCESS"
+    ],
+    "replanning": {
+      "required": true,
+      "status": "REPLAN_SUCCESS",
+      "planner": "SAFETY_COST_ASTAR",
+      "planner_result": "PATH_FOUND",
+      "replan_planning_time_ms": 10.55517199984024,
+      "nodes_expanded": 1682,
+      "new_path_length_m": 2.092548339959391,
+      "minimum_clearance_m": 0.07500000000000004,
+      "accumulated_safety_risk": 0.7076928534584058,
+      "waypoint_count": 99
+    },
+    "old_active_path": {
+      "path_id": "D2_preserved_current_path",
+      "path_revision": 0,
+      "status": "SUPERSEDED"
+    },
+    "new_active_path": {
+      "path_id": "D2_path_r1",
+      "path_revision": 1,
+      "status": "ACTIVE"
+    },
+    "active_path_after_event": {
+      "path_id": "D2_path_r1",
+      "path_revision": 1,
+      "status": "ACTIVE"
+    },
+    "path_retention_reason": null,
+    "new_path_length_m": 2.092548339959391,
+    "new_path_minimum_clearance_m": 0.07500000000000004,
+    "replanned_path_validation": {
+      "status": "VALID",
+      "checks": {
+        "path_state_valid": true,
+        "start_cell_matches_current_pose": true,
+        "first_waypoint_matches_current_pose_mapping": true,
+        "goal_cell_matches_original_goal": true,
+        "final_waypoint_matches_original_goal_mapping": true
+      },
+      "path_validation": {
+        "path_state": "VALID",
+        "replan_required": false,
+        "world_revision": 1,
+        "first_blocked_waypoint_index": null,
+        "first_blocked_edge_index": null,
+        "reason": null,
+        "blocking_obstacle_ids": []
+      }
+    },
+    "replanned_path_validation_ms": 0.5156079996595508,
+    "planner_runs_after_event": 1,
+    "stop_required": false,
+    "system_action": "SWITCH_TO_REPLANNED_PATH",
+    "lineage": {
+      "previous_path_revision": 0,
+      "new_path_revision": 1,
+      "replan_trigger_world_revision": 1,
+      "trigger_event_id": "D2_persistence_episode_001",
+      "trigger_reason": "WAYPOINT_COLLISION",
+      "blocking_obstacle_ids": [
+        "dynamic_box_02"
+      ],
+      "replan_start_pose": {
+        "path_id": "D2_preserved_current_path",
+        "path_revision": 0,
+        "waypoint_index": 20,
+        "grid": [
+          16,
+          30
+        ],
+        "x": 0.61,
+        "y": 0.33
+      },
+      "goal_pose": {
+        "x": 0.95,
+        "y": 1.5,
+        "status": "DEVELOPMENT_DEFINED"
+      },
+      "planner": "SAFETY_COST_ASTAR"
+    },
+    "total_replanning_pipeline_ms": 29.066862000036053
+  },
+  "world_revision": 1,
+  "planner_runs": 1,
+  "system_action": "SWITCH_TO_REPLANNED_PATH",
+  "stop_required": false
+}

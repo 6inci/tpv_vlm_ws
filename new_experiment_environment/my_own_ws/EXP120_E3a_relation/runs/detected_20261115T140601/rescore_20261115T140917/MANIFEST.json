@@ -1,0 +1,101 @@
+{
+ "id": "EXP120-feasibility",
+ "source": "detected",
+ "label": "dev exploration under the limited AGENTS exception (user, 2026-11-15); not E3a PASS, not system validation",
+ "started": "2026-11-15T14:06:48.377895+09:00",
+ "env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "transformers": "5.16.1",
+  "nvidia_driver": "580.178.04"
+ },
+ "config": {
+  "experiment_id": "EXP120 (= plan v3 E3a)",
+  "phase": "feasibility, dev only (EXP110 P01-P04). Not the registered E3a experiment.",
+  "image_space": "raw distorted pixels 1920x1080. Relation distances here are PIXEL gaps (provisional, not metres).",
+  "queries": [
+   {
+    "qid": "e01",
+    "en": "the small pallet closest to the truck",
+    "group": "spatial"
+   },
+   {
+    "qid": "e02",
+    "en": "the small pallet next to the charging station",
+    "group": "spatial"
+   },
+   {
+    "qid": "e03",
+    "en": "the empty small pallet",
+    "group": "state"
+   },
+   {
+    "qid": "e04",
+    "en": "the small pallet with blocks on it",
+    "group": "state"
+   },
+   {
+    "qid": "e05",
+    "en": "the small pallet with the blue block on it",
+    "group": "state"
+   },
+   {
+    "qid": "e06",
+    "en": "the small pallet next to the forklift",
+    "group": "spatial"
+   }
+  ],
+  "site_vocabulary": {
+   "truck": "truck",
+   "charging station": "charger",
+   "conveyor belt": "conveyor",
+   "cart": "cart",
+   "IBC tote": "ibc_tank",
+   "storage rack": "storage_rack",
+   "small pallet": "small_pallet",
+   "block": "block",
+   "traffic cone": "traffic_cone"
+  },
+  "parser_prompt": "You convert a robot command about one object into JSON. Known object classes in this site: {vocab}. Return JSON only: {{\"target\": \"<class>\", \"relation\": \"closest_to\" | \"next_to\" | \"empty\" | \"loaded\" | \"has_color\" | \"none\", \"reference\": \"<class or null>\", \"color\": \"red\" | \"blue\" | null}}. Command: \"{q}\"",
+  "jvlm_prompt": "Numbered boxes mark the small pallets in this image. Which numbered box is \"{q}\"? Judge it from the image. Return JSON only: {{\"id\": <number>}} if exactly one box matches, {{\"id\": null, \"reason\": \"none\"}} if no box matches, or {{\"id\": null, \"reason\": \"ambiguous\"}} if more than one box matches equally.",
+  "relation_rule_px": {
+   "gap": "shortest pixel distance between the two boxes (0 if they overlap); several reference instances -> the minimum",
+   "next_to_max_gap_factor": 1.0,
+   "next_to_note": "next_to accepted if gap <= factor x max side of the reference box (pixel-relative, provisional)",
+   "ambiguity_margin_factor": 0.2,
+   "ambiguity_note": "if the 2nd smallest gap - smallest gap < margin x max side of the reference box -> ambiguous",
+   "fixed": "2026-11-15 before any E3a run"
+  },
+  "max_new_tokens": 64,
+  "groups_note": "spatial = 순수 공간 관계(기준 물체와의 위치), state = 시각적 상태(적재 여부, 블록 색). 두 묶음을 따로 보고한다 (사용자 지시 2026-11-15).",
+  "detected_source": "../EXP111_small_objects/analysis/pipeline_eval_20261115T130407/structured_output.json",
+  "map_note": "J-geo의 기준 물체(트럭, 충전기 등)는 두 출처 모두 고정물 정답 박스를 쓴다 = M-map 사전 지도 대용 (고정물은 움직이지 않음, 계획서 v3 §8.3). 소형 팔레트와 블록은 지도에 넣지 않는다.",
+  "result_categories": {
+   "correct_target": "정답이 있고 맞는 대상을 고름",
+   "wrong_target": "정답이 있는데 다른 대상을 고름",
+   "missed": "정답이 있는데 고르지 않음(보류)",
+   "correct_abstain": "정답이 없고(없음/확인 불가) 올바르게 보류",
+   "false_select": "정답이 없는데 어떤 대상을 고름(잘못된 대상 선택의 한 종류)",
+   "invalid": "출력 형식 오류 (JSON 아님, 스키마 위반, 후보에 없는 번호)"
+  },
+  "schema_rules": {
+   "parser": "object; relation in the 6 values; has_color needs color red|blue; closest_to/next_to need a string reference. reference may be a site name or its class (both accepted, case-insensitive).",
+   "jvlm": "object with key id; id is an int that is one of the candidate ids, or null; reason (if present) is none|ambiguous.",
+   "fixed": "2026-11-15 before any E3a run"
+  }
+ },
+ "referents": "referents_draft.json",
+ "referents_status": "DRAFT by Claude 2026-11-15 from the answer-key positions and human-style judgement, NOT from the Python relation rule. Needs user review (referents_check_P0*.jpg). Boxes = EXP110 answer-key small_pallet boxes, raw distorted px.",
+ "sha256": {
+  "tools/e3a_poc.py": "3ebb53f622b3bfc1531ec4bfb126269af1ecdc37c5a1878df405571c6811e05d",
+  "config.json": "cf3256c2fe0c7a8e6f6333b3f705c3e9094e7593d0a049d4b19f0ddef49661d0",
+  "referents_draft.json": "6b8a81035702807dbea14a93e372a57a27a4ef92365256167e991aa3a2b46fac",
+  "../EXP111_small_objects/analysis/pipeline_eval_20261115T130407/structured_output.json": "209f83a7b0b540fe80ecf0a3c385c62a48c25ad103e5b9ee49813ad767b9f601"
+ },
+ "finished": "2026-11-15T14:07:29.199149+09:00",
+ "rescored_from": "runs/detected_20261115T140601",
+ "rescored_at": "2026-11-15T14:09:17.579214+09:00"
+}

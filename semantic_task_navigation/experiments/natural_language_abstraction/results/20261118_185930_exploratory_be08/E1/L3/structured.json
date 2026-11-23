@@ -1,0 +1,199 @@
+{
+  "observed_objects": [
+    {
+      "label": "robotic arm",
+      "count": 3,
+      "location_in_image": "top-left and bottom-left corners",
+      "visible_evidence": "three white robotic arms mounted on bases, positioned near conveyor belts and storage units"
+    },
+    {
+      "label": "truck",
+      "count": 1,
+      "location_in_image": "top-right",
+      "visible_evidence": "white model truck with a cargo bed, parked near orange cones"
+    },
+    {
+      "label": "stack of boxes",
+      "count": 1,
+      "location_in_image": "center of the floor",
+      "visible_evidence": "three cardboard boxes stacked on a pallet, surrounded by a yellow square"
+    },
+    {
+      "label": "cones",
+      "count": 12,
+      "location_in_image": "distributed across the floor",
+      "visible_evidence": "orange traffic cones placed along pathways and around objects"
+    },
+    {
+      "label": "pallet with barrels",
+      "count": 2,
+      "location_in_image": "right side, near the bottom",
+      "visible_evidence": "two sets of barrels on pallets: one with black barrels, one with blue barrels"
+    },
+    {
+      "label": "whiteboard",
+      "count": 1,
+      "location_in_image": "bottom-center",
+      "visible_evidence": "a whiteboard with Korean text, placed on the floor"
+    },
+    {
+      "label": "green pathway",
+      "count": 1,
+      "location_in_image": "top-center",
+      "visible_evidence": "a green strip with white hand symbols, flanked by orange cones"
+    },
+    {
+      "label": "charging station",
+      "count": 1,
+      "location_in_image": "bottom-right",
+      "visible_evidence": "a square area with a lightning bolt symbol and two green panels"
+    },
+    {
+      "label": "conveyor belt",
+      "count": 1,
+      "location_in_image": "left side, near the robotic arms",
+      "visible_evidence": "a long white conveyor belt with purple and orange components"
+    },
+    {
+      "label": "storage unit",
+      "count": 2,
+      "location_in_image": "top-center and bottom-left",
+      "visible_evidence": "two gray metal-framed storage units with green supports"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "robotic processing zone",
+      "bbox_2d": [
+        75,
+        265,
+        265,
+        730
+      ],
+      "observed_evidence": [
+        "three robotic arms",
+        "conveyor belt",
+        "storage units"
+      ],
+      "inference": "Robotic arms and conveyor belt suggest automated material handling and processing.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "central staging area",
+      "bbox_2d": [
+        265,
+        265,
+        650,
+        730
+      ],
+      "observed_evidence": [
+        "stack of boxes",
+        "yellow square",
+        "cones"
+      ],
+      "inference": "Central location with a stack of goods and safety markers suggests a holding or sorting zone.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_3",
+      "function_name": "loading/unloading zone",
+      "bbox_2d": [
+        650,
+        420,
+        960,
+        730
+      ],
+      "observed_evidence": [
+        "pallet with barrels",
+        "truck",
+        "charging station"
+      ],
+      "inference": "Presence of truck, barrels, and charging station indicates a zone for vehicle loading, unloading, and power supply.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_4",
+      "function_name": "green pathway",
+      "bbox_2d": [
+        300,
+        50,
+        560,
+        280
+      ],
+      "observed_evidence": [
+        "green strip",
+        "white hand symbols",
+        "cones"
+      ],
+      "inference": "Green pathway with hand symbols suggests a designated route for pedestrian or vehicle movement, possibly for safety or flow control.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_5",
+      "function_name": "charging station",
+      "bbox_2d": [
+        650,
+        730,
+        960,
+        950
+      ],
+      "observed_evidence": [
+        "lightning bolt symbol",
+        "green panels"
+      ],
+      "inference": "The symbol and panels indicate a designated area for charging robotic or automated equipment.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_6",
+      "function_name": "information display area",
+      "bbox_2d": [
+        340,
+        730,
+        460,
+        950
+      ],
+      "observed_evidence": [
+        "whiteboard with Korean text"
+      ],
+      "inference": "Whiteboard suggests a place for instructions, status updates, or task assignments.",
+      "confidence": "medium"
+    }
+  ],
+  "task_analysis": {
+    "inferred_task_purpose": "The instruction asks to transfer a red cube from the current location to the next logistics stage, implying a material handling task in a workflow.",
+    "info_given_by_instruction": [
+      "생산된 빨간 큐브를 다음 물류 단계로 전달해 줘."
+    ],
+    "info_added_by_you": [
+      {
+        "statement": "The red cube is not visible in the image, so its location is unknown.",
+        "basis": "image"
+      },
+      {
+        "statement": "The next logistics stage is likely a zone where goods are loaded, sorted, or transferred to another vehicle or system.",
+        "basis": "general_knowledge"
+      },
+      {
+        "statement": "The truck in area_3 is a likely candidate for receiving goods, as it is the only vehicle present and positioned near a loading zone.",
+        "basis": "general_knowledge"
+      }
+    ],
+    "place_needed_for_task": "A designated area for receiving or transferring goods to the next stage, such as a loading zone or a vehicle.",
+    "decision": "proposed",
+    "destination_area_id": "area_3",
+    "reason": "The truck in area_3 is the only vehicle present and positioned near a loading zone, making it the most logical destination for a logistics transfer task."
+  },
+  "unknown_from_image": [
+    "The location of the red cube is not visible in the image.",
+    "The current state of the robotic arms or conveyor belt is unknown.",
+    "The exact workflow or sequence of operations is not visible."
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is present and located in the current area.",
+    "Whether the robotic arms or conveyor belt are operational.",
+    "Whether the truck is ready to receive the red cube."
+  ]
+}

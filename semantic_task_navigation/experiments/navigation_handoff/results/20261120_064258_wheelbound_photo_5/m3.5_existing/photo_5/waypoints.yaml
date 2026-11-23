@@ -1,0 +1,50 @@
+frame_id: map
+condition: m3.5_existing
+driving_status: 'PROVISIONAL: margin = independent transform error only (node residual
+  up to 5.2 cm, DRAFT map, unmapped objects beyond the yellow line)'
+note: yaw = body heading (gripper side), not the movement direction; Nav2 goals make
+  Nav2 plan its own path, not follow path_*.csv
+path_A:
+- kind: start
+  index: 0
+  x_m: 2.95
+  y_m: 0.55
+  yaw_deg: -178.2
+  seq: 0
+  yaw_rad: -3.110177
+- kind: escape_end
+  index: 1
+  x_m: 2.93
+  y_m: 0.55
+  yaw_deg: -178.2
+  seq: 1
+  yaw_rad: -3.110177
+- kind: rotate_in_place
+  index: 1
+  x_m: 2.93
+  y_m: 0.55
+  yaw_deg: 180.0
+  direction: cw
+  seq: 2
+  yaw_rad: 3.141593
+- kind: turn
+  index: 105
+  x_m: 0.85
+  y_m: 0.55
+  yaw_deg: 180.0
+  seq: 3
+  yaw_rad: 3.141593
+- kind: goal
+  index: 136
+  x_m: 0.85
+  y_m: 1.17
+  yaw_deg: 180.0
+  seq: 4
+  yaw_rad: 3.141593
+path_B: null
+grasp_stop_pose:
+  x_m: 0.85
+  y_m: 1.17
+  yaw_deg: 180.0
+  status: UNVERIFIED
+place_stop_pose: null

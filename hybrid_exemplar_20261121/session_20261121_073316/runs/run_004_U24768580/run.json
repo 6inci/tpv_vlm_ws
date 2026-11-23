@@ -1,0 +1,2915 @@
+{
+ "run_id": "run_004_U24768580",
+ "created": "2026-11-21T07:36:22",
+ "instruction": "하역장 옆에 있는 물체를 컨베이어 벨트 옆에 놓아줘.",
+ "rules": "R1",
+ "pipeline": "hybrid_exemplar_20261121",
+ "vlm_backend": {
+  "key": "qwen3vl_4b_bf16",
+  "label": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "where": "v02_worker"
+ },
+ "exemplar_model": {
+  "model_id": "google/siglip2-so400m-patch14-384",
+  "dtype": "float16",
+  "batch": 16
+ },
+ "photo": {
+  "photo_id": "U24768580",
+  "path": "/home/binci/Pictures/Calibration/2calibration.png",
+  "sha256": "dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "photo_detection": {
+  "how": "fresh Grounding DINO this session (task_context vocabulary + red cube / traffic cone / mobile robot; full image + verified facility ROIs), IoU merge 0.5",
+  "file": "/home/binci/vlm_ws/hybrid_exemplar_20261121/session_20261121_073316/photos/U24768580.json"
+ },
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "config": {
+  "hybrid": "/home/binci/vlm_ws/hybrid_exemplar_20261121/config.yaml",
+  "viewer": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml"
+ },
+ "model_called": true,
+ "source": {
+  "status": "NOT_FOUND",
+  "ids": [],
+  "boxes": [],
+  "why": "NOT_AT_REFERENCE: the cube (top-1 0.927, margin 0.092 >= 0.02) is not near 'truck_loading_bay'",
+  "class": "cube",
+  "exemplar": {
+   "s1": 0.9272,
+   "s2": 0.8353,
+   "top_id": "m52",
+   "top_box": [
+    1260.03,
+    255.92,
+    1279.96,
+    278.03
+   ]
+  },
+  "candidates": [
+   {
+    "id": "m52",
+    "bbox_xyxy": [
+     1260.03,
+     255.92,
+     1279.96,
+     278.03
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.927
+     ]
+    ]
+   },
+   {
+    "id": "m22",
+    "bbox_xyxy": [
+     946.27,
+     849.21,
+     982.48,
+     885.73
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.835
+     ]
+    ]
+   },
+   {
+    "id": "m64",
+    "bbox_xyxy": [
+     552.88,
+     204.71,
+     572.39,
+     230.17
+    ],
+    "phrases": [
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.833
+     ]
+    ]
+   },
+   {
+    "id": "m79",
+    "bbox_xyxy": [
+     1687.56,
+     240.73,
+     1712.58,
+     272.23
+    ],
+    "phrases": [
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.829
+     ]
+    ]
+   },
+   {
+    "id": "m12",
+    "bbox_xyxy": [
+     1064.95,
+     173.98,
+     1096.07,
+     210.55
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.821
+     ]
+    ]
+   }
+  ]
+ },
+ "destination": {
+  "candidates": [
+   {
+    "id": "m47",
+    "bbox_xyxy": [
+     665.51,
+     16.63,
+     817.15,
+     165.43
+    ],
+    "phrases": [
+     "cart",
+     "mobile robot",
+     "pallet",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.521
+     ],
+     [
+      "a production line with a conveyor and robot arms",
+      0.206
+     ],
+     [
+      "a floor marking",
+      0.168
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.925
+       ],
+       [
+        "a mobile robot",
+        0.064
+       ],
+       [
+        "a floor marking",
+        0.007
+       ]
+      ],
+      "sigmoid_top": 0.8852
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.41
+       ],
+       [
+        "a floor marking",
+        0.33
+       ],
+       [
+        "a robot arm",
+        0.117
+       ]
+      ],
+      "sigmoid_top": 0.3763
+     }
+    ]
+   },
+   {
+    "id": "m2",
+    "bbox_xyxy": [
+     430.3,
+     17.07,
+     830.33,
+     175.2
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "floor marking",
+     "mobile robot",
+     "pallet",
+     "red cube",
+     "shelf",
+     "table",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a production line with a conveyor and robot arms",
+      0.545
+     ],
+     [
+      "a robot arm",
+      0.225
+     ],
+     [
+      "a floor marking",
+      0.152
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.429
+       ],
+       [
+        "a floor marking",
+        0.289
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.206
+       ]
+      ],
+      "sigmoid_top": 0.3141
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.883
+       ],
+       [
+        "a mobile robot",
+        0.031
+       ],
+       [
+        "an empty floor area",
+        0.024
+       ]
+      ],
+      "sigmoid_top": 0.4911
+     }
+    ]
+   },
+   {
+    "id": "m56",
+    "bbox_xyxy": [
+     433.61,
+     24.71,
+     571.01,
+     167.27
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "mobile robot",
+     "pallet"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.664
+     ],
+     [
+      "a production line with a conveyor and robot arms",
+      0.158
+     ],
+     [
+      "a mobile robot",
+      0.085
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.915
+       ],
+       [
+        "a mobile robot",
+        0.081
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.002
+       ]
+      ],
+      "sigmoid_top": 0.9624
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.413
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.315
+       ],
+       [
+        "a floor marking",
+        0.138
+       ]
+      ],
+      "sigmoid_top": 0.4036
+     }
+    ]
+   },
+   {
+    "id": "m17",
+    "bbox_xyxy": [
+     863.98,
+     41.94,
+     952.61,
+     180.72
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "mobile robot",
+     "pallet",
+     "red cube",
+     "shelf",
+     "table",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a production line with a conveyor and robot arms",
+      0.233
+     ],
+     [
+      "a conveyor belt",
+      0.138
+     ],
+     [
+      "a green pedestrian walkway",
+      0.124
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a storage rack",
+        0.201
+       ],
+       [
+        "a metal grate",
+        0.191
+       ],
+       [
+        "a green pedestrian walkway",
+        0.17
+       ]
+      ],
+      "sigmoid_top": 0.0074
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.465
+       ],
+       [
+        "a conveyor belt",
+        0.234
+       ],
+       [
+        "a robot arm",
+        0.1
+       ]
+      ],
+      "sigmoid_top": 0.2024
+     }
+    ]
+   },
+   {
+    "id": "m18",
+    "bbox_xyxy": [
+     340.71,
+     43.39,
+     449.09,
+     141.74
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube",
+     "shelf",
+     "table",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.293
+     ],
+     [
+      "a production line with a conveyor and robot arms",
+      0.187
+     ],
+     [
+      "a small pallet",
+      0.091
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a metal grate",
+        0.181
+       ],
+       [
+        "a small pallet",
+        0.179
+       ],
+       [
+        "a storage rack",
+        0.162
+       ]
+      ],
+      "sigmoid_top": 0.0451
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.582
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.373
+       ],
+       [
+        "a mobile robot",
+        0.021
+       ]
+      ],
+      "sigmoid_top": 0.5099
+     }
+    ]
+   },
+   {
+    "id": "m83",
+    "bbox_xyxy": [
+     705.09,
+     65.11,
+     1068.92,
+     299.66
+    ],
+    "phrases": [
+     "shelf"
+    ],
+    "siglip_top3": [
+     [
+      "a production line with a conveyor and robot arms",
+      0.437
+     ],
+     [
+      "a floor marking",
+      0.2
+     ],
+     [
+      "a robot arm",
+      0.128
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.288
+       ],
+       [
+        "a robot arm",
+        0.25
+       ],
+       [
+        "a floor marking",
+        0.182
+       ]
+      ],
+      "sigmoid_top": 0.1423
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.586
+       ],
+       [
+        "a floor marking",
+        0.218
+       ],
+       [
+        "a conveyor belt",
+        0.075
+       ]
+      ],
+      "sigmoid_top": 0.1961
+     }
+    ]
+   },
+   {
+    "id": "m35",
+    "bbox_xyxy": [
+     450.47,
+     78.71,
+     539.72,
+     166.88
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.615
+     ],
+     [
+      "a floor marking",
+      0.1
+     ],
+     [
+      "a conveyor belt",
+      0.058
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.314
+       ],
+       [
+        "a floor marking",
+        0.188
+       ],
+       [
+        "a conveyor belt",
+        0.116
+       ]
+      ],
+      "sigmoid_top": 0.0344
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.915
+       ],
+       [
+        "a mobile robot",
+        0.049
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.018
+       ]
+      ],
+      "sigmoid_top": 0.8473
+     }
+    ]
+   },
+   {
+    "id": "m38",
+    "bbox_xyxy": [
+     279.96,
+     85.53,
+     333.68,
+     165.64
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube",
+     "shelf",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a stack of boxes",
+      0.251
+     ],
+     [
+      "an orange object",
+      0.187
+     ],
+     [
+      "a robot arm",
+      0.141
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a stack of boxes",
+        0.488
+       ],
+       [
+        "a metal grate",
+        0.162
+       ],
+       [
+        "a small pallet",
+        0.061
+       ]
+      ],
+      "sigmoid_top": 0.0336
+     },
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.361
+       ],
+       [
+        "a robot arm",
+        0.271
+       ],
+       [
+        "a red cube",
+        0.078
+       ]
+      ],
+      "sigmoid_top": 0.0876
+     }
+    ]
+   },
+   {
+    "id": "m46",
+    "bbox_xyxy": [
+     726.47,
+     85.82,
+     808.96,
+     166.77
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.461
+     ],
+     [
+      "a mobile robot",
+      0.13
+     ],
+     [
+      "a truck cargo bed",
+      0.116
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a truck cargo bed",
+        0.231
+       ],
+       [
+        "a mobile robot",
+        0.163
+       ],
+       [
+        "a cardboard box",
+        0.118
+       ]
+      ],
+      "sigmoid_top": 0.0093
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.874
+       ],
+       [
+        "a mobile robot",
+        0.096
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.023
+       ]
+      ],
+      "sigmoid_top": 0.7362
+     }
+    ]
+   },
+   {
+    "id": "m92",
+    "bbox_xyxy": [
+     744.8,
+     93.98,
+     800.52,
+     140.62
+    ],
+    "phrases": [
+     "container"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.277
+     ],
+     [
+      "a floor marking",
+      0.19
+     ],
+     [
+      "a mobile robot",
+      0.108
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a cart",
+        0.184
+       ],
+       [
+        "a truck cargo bed",
+        0.115
+       ],
+       [
+        "a mobile robot",
+        0.087
+       ]
+      ],
+      "sigmoid_top": 0.0139
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.488
+       ],
+       [
+        "a floor marking",
+        0.376
+       ],
+       [
+        "a mobile robot",
+        0.129
+       ]
+      ],
+      "sigmoid_top": 0.6256
+     }
+    ]
+   },
+   {
+    "id": "m57",
+    "bbox_xyxy": [
+     266.64,
+     125.72,
+     317.76,
+     194.25
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a stack of boxes",
+      0.217
+     ],
+     [
+      "an orange object",
+      0.113
+     ],
+     [
+      "a truck",
+      0.105
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a stack of boxes",
+        0.409
+       ],
+       [
+        "a red cube",
+        0.172
+       ],
+       [
+        "a metal grate",
+        0.121
+       ]
+      ],
+      "sigmoid_top": 0.0419
+     },
+     {
+      "top3": [
+       [
+        "a truck",
+        0.197
+       ],
+       [
+        "a robot arm",
+        0.155
+       ],
+       [
+        "an orange object",
+        0.132
+       ]
+      ],
+      "sigmoid_top": 0.0277
+     }
+    ]
+   },
+   {
+    "id": "m29",
+    "bbox_xyxy": [
+     228.4,
+     155.26,
+     326.77,
+     289.15
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube",
+     "shelf",
+     "table",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "an orange object",
+      0.218
+     ],
+     [
+      "a robot arm",
+      0.138
+     ],
+     [
+      "an empty floor area",
+      0.122
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.383
+       ],
+       [
+        "a cart",
+        0.116
+       ],
+       [
+        "a robot arm",
+        0.104
+       ]
+      ],
+      "sigmoid_top": 0.1015
+     },
+     {
+      "top3": [
+       [
+        "an empty floor area",
+        0.234
+       ],
+       [
+        "a robot arm",
+        0.172
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.156
+       ]
+      ],
+      "sigmoid_top": 0.0238
+     }
+    ]
+   },
+   {
+    "id": "m37",
+    "bbox_xyxy": [
+     245.12,
+     158.7,
+     282.58,
+     218.81
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "an orange object",
+      0.429
+     ],
+     [
+      "a robot arm",
+      0.091
+     ],
+     [
+      "a truck",
+      0.074
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.597
+       ],
+       [
+        "a truck",
+        0.067
+       ],
+       [
+        "an orange traffic cone",
+        0.045
+       ]
+      ],
+      "sigmoid_top": 0.051
+     },
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.262
+       ],
+       [
+        "a robot arm",
+        0.169
+       ],
+       [
+        "a mobile robot",
+        0.1
+       ]
+      ],
+      "sigmoid_top": 0.0416
+     }
+    ]
+   },
+   {
+    "id": "m10",
+    "bbox_xyxy": [
+     941.44,
+     176.36,
+     966.28,
+     215.47
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "an orange object",
+      0.613
+     ],
+     [
+      "an orange traffic cone",
+      0.249
+     ],
+     [
+      "a small pallet",
+      0.021
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.748
+       ],
+       [
+        "an orange traffic cone",
+        0.095
+       ],
+       [
+        "a small pallet",
+        0.037
+       ]
+      ],
+      "sigmoid_top": 0.1343
+     },
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.477
+       ],
+       [
+        "an orange traffic cone",
+        0.403
+       ],
+       [
+        "a mobile robot",
+        0.024
+       ]
+      ],
+      "sigmoid_top": 0.0521
+     }
+    ]
+   },
+   {
+    "id": "m64",
+    "bbox_xyxy": [
+     552.88,
+     204.71,
+     572.39,
+     230.17
+    ],
+    "phrases": [
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "an orange traffic cone",
+      0.552
+     ],
+     [
+      "an orange object",
+      0.277
+     ],
+     [
+      "a robot arm",
+      0.04
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.543
+       ],
+       [
+        "an orange traffic cone",
+        0.115
+       ],
+       [
+        "a robot arm",
+        0.079
+       ]
+      ],
+      "sigmoid_top": 0.0168
+     },
+     {
+      "top3": [
+       [
+        "an orange traffic cone",
+        0.989
+       ],
+       [
+        "an orange object",
+        0.011
+       ],
+       [
+        "a floor marking",
+        0.0
+       ]
+      ],
+      "sigmoid_top": 0.9865
+     }
+    ]
+   },
+   {
+    "id": "m16",
+    "bbox_xyxy": [
+     549.54,
+     204.84,
+     583.28,
+     241.59
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "pallet",
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "an orange traffic cone",
+      0.545
+     ],
+     [
+      "an orange object",
+      0.193
+     ],
+     [
+      "a small pallet",
+      0.104
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "an orange object",
+        0.367
+       ],
+       [
+        "a small pallet",
+        0.208
+       ],
+       [
+        "a barrel",
+        0.146
+       ]
+      ],
+      "sigmoid_top": 0.0147
+     },
+     {
+      "top3": [
+       [
+        "an orange traffic cone",
+        0.98
+       ],
+       [
+        "an orange object",
+        0.019
+       ],
+       [
+        "a floor marking",
+        0.0
+       ]
+      ],
+      "sigmoid_top": 0.9867
+     }
+    ]
+   },
+   {
+    "id": "m61",
+    "bbox_xyxy": [
+     588.75,
+     217.6,
+     712.23,
+     303.03
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "pallet",
+     "red cube",
+     "shelf"
+    ],
+    "siglip_top3": [
+     [
+      "a floor marking",
+      0.632
+     ],
+     [
+      "an orange object",
+      0.112
+     ],
+     [
+      "a green pedestrian walkway",
+      0.104
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.328
+       ],
+       [
+        "an orange object",
+        0.222
+       ],
+       [
+        "a green pedestrian walkway",
+        0.198
+       ]
+      ],
+      "sigmoid_top": 0.0157
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.935
+       ],
+       [
+        "a conveyor belt",
+        0.021
+       ],
+       [
+        "a green pedestrian walkway",
+        0.01
+       ]
+      ],
+      "sigmoid_top": 0.3562
+     }
+    ]
+   },
+   {
+    "id": "m43",
+    "bbox_xyxy": [
+     532.37,
+     270.01,
+     578.88,
+     307.51
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "a metal grate",
+      0.388
+     ],
+     [
+      "a floor marking",
+      0.304
+     ],
+     [
+      "a manhole cover",
+      0.105
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a metal grate",
+        0.763
+       ],
+       [
+        "a small pallet",
+        0.06
+       ],
+       [
+        "a cardboard box",
+        0.034
+       ]
+      ],
+      "sigmoid_top": 0.1859
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.601
+       ],
+       [
+        "a manhole cover",
+        0.193
+       ],
+       [
+        "an orange object",
+        0.041
+       ]
+      ],
+      "sigmoid_top": 0.2413
+     }
+    ]
+   },
+   {
+    "id": "m30",
+    "bbox_xyxy": [
+     246.94,
+     283.01,
+     357.71,
+     380.57
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "mobile robot",
+     "pallet",
+     "shelf",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.434
+     ],
+     [
+      "a mobile robot",
+      0.122
+     ],
+     [
+      "a cart",
+      0.071
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.576
+       ],
+       [
+        "a mobile robot",
+        0.058
+       ],
+       [
+        "a small pallet",
+        0.053
+       ]
+      ],
+      "sigmoid_top": 0.0454
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.293
+       ],
+       [
+        "a mobile robot",
+        0.186
+       ],
+       [
+        "a cart",
+        0.096
+       ]
+      ],
+      "sigmoid_top": 0.044
+     }
+    ]
+   },
+   {
+    "id": "m27",
+    "bbox_xyxy": [
+     237.57,
+     283.15,
+     423.36,
+     423.24
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "mobile robot",
+     "pallet",
+     "shelf",
+     "table",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.203
+     ],
+     [
+      "a floor marking",
+      0.198
+     ],
+     [
+      "a production line with a conveyor and robot arms",
+      0.196
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.268
+       ],
+       [
+        "a robot arm",
+        0.258
+       ],
+       [
+        "a mobile robot",
+        0.144
+       ]
+      ],
+      "sigmoid_top": 0.0604
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.391
+       ],
+       [
+        "a robot arm",
+        0.149
+       ],
+       [
+        "a conveyor belt",
+        0.144
+       ]
+      ],
+      "sigmoid_top": 0.1637
+     }
+    ]
+   },
+   {
+    "id": "m44",
+    "bbox_xyxy": [
+     264.84,
+     284.32,
+     328.48,
+     361.43
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.52
+     ],
+     [
+      "a small pallet",
+      0.078
+     ],
+     [
+      "a mobile robot",
+      0.065
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.833
+       ],
+       [
+        "a mobile robot",
+        0.058
+       ],
+       [
+        "a barrel",
+        0.02
+       ]
+      ],
+      "sigmoid_top": 0.0958
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.207
+       ],
+       [
+        "a small pallet",
+        0.148
+       ],
+       [
+        "an empty floor area",
+        0.092
+       ]
+      ],
+      "sigmoid_top": 0.0312
+     }
+    ]
+   },
+   {
+    "id": "m71",
+    "bbox_xyxy": [
+     337.98,
+     289.35,
+     517.02,
+     422.78
+    ],
+    "phrases": [
+     "pallet",
+     "shelf"
+    ],
+    "siglip_top3": [
+     [
+      "a floor marking",
+      0.278
+     ],
+     [
+      "a whiteboard",
+      0.267
+     ],
+     [
+      "an empty floor area",
+      0.085
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a whiteboard",
+        0.527
+       ],
+       [
+        "a floor marking",
+        0.155
+       ],
+       [
+        "a conveyor belt",
+        0.059
+       ]
+      ],
+      "sigmoid_top": 0.069
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.401
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.168
+       ],
+       [
+        "a mobile robot",
+        0.111
+       ]
+      ],
+      "sigmoid_top": 0.0645
+     }
+    ]
+   },
+   {
+    "id": "m81",
+    "bbox_xyxy": [
+     682.05,
+     304.17,
+     1237.2,
+     475.67
+    ],
+    "phrases": [
+     "shelf"
+    ],
+    "siglip_top3": [
+     [
+      "a floor marking",
+      0.37
+     ],
+     [
+      "a production line with a conveyor and robot arms",
+      0.222
+     ],
+     [
+      "a conveyor belt",
+      0.097
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.416
+       ],
+       [
+        "a conveyor belt",
+        0.136
+       ],
+       [
+        "a truck cargo bed",
+        0.076
+       ]
+      ],
+      "sigmoid_top": 0.0447
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.414
+       ],
+       [
+        "a floor marking",
+        0.324
+       ],
+       [
+        "an empty floor area",
+        0.124
+       ]
+      ],
+      "sigmoid_top": 0.118
+     }
+    ]
+   },
+   {
+    "id": "m63",
+    "bbox_xyxy": [
+     689.43,
+     309.58,
+     1067.36,
+     423.44
+    ],
+    "phrases": [
+     "cardboard box",
+     "pallet",
+     "shelf"
+    ],
+    "siglip_top3": [
+     [
+      "a production line with a conveyor and robot arms",
+      0.286
+     ],
+     [
+      "a stack of boxes",
+      0.264
+     ],
+     [
+      "a floor marking",
+      0.127
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a stack of boxes",
+        0.527
+       ],
+       [
+        "an orange traffic cone",
+        0.216
+       ],
+       [
+        "a cardboard box",
+        0.081
+       ]
+      ],
+      "sigmoid_top": 0.175
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.571
+       ],
+       [
+        "a floor marking",
+        0.188
+       ],
+       [
+        "an empty floor area",
+        0.081
+       ]
+      ],
+      "sigmoid_top": 0.209
+     }
+    ]
+   },
+   {
+    "id": "m68",
+    "bbox_xyxy": [
+     494.86,
+     310.34,
+     701.49,
+     422.9
+    ],
+    "phrases": [
+     "cardboard box",
+     "pallet",
+     "shelf"
+    ],
+    "siglip_top3": [
+     [
+      "a floor marking",
+      0.451
+     ],
+     [
+      "an empty floor area",
+      0.175
+     ],
+     [
+      "a green pedestrian walkway",
+      0.108
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.306
+       ],
+       [
+        "an empty floor area",
+        0.266
+       ],
+       [
+        "a green pedestrian walkway",
+        0.216
+       ]
+      ],
+      "sigmoid_top": 0.0555
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.596
+       ],
+       [
+        "a production line with a conveyor and robot arms",
+        0.193
+       ],
+       [
+        "an empty floor area",
+        0.085
+       ]
+      ],
+      "sigmoid_top": 0.3459
+     }
+    ]
+   },
+   {
+    "id": "m69",
+    "bbox_xyxy": [
+     340.39,
+     340.14,
+     423.75,
+     473.82
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a whiteboard",
+      0.33
+     ],
+     [
+      "a floor marking",
+      0.167
+     ],
+     [
+      "a robot arm",
+      0.116
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a whiteboard",
+        0.647
+       ],
+       [
+        "a robot arm",
+        0.14
+       ],
+       [
+        "a cardboard box",
+        0.036
+       ]
+      ],
+      "sigmoid_top": 0.0702
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.316
+       ],
+       [
+        "a conveyor belt",
+        0.193
+       ],
+       [
+        "a mobile robot",
+        0.11
+       ]
+      ],
+      "sigmoid_top": 0.049
+     }
+    ]
+   },
+   {
+    "id": "m89",
+    "bbox_xyxy": [
+     271.75,
+     341.38,
+     423.15,
+     422.96
+    ],
+    "phrases": [
+     "container",
+     "pallet"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.286
+     ],
+     [
+      "a mobile robot",
+      0.139
+     ],
+     [
+      "a production line with a conveyor and robot arms",
+      0.127
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.444
+       ],
+       [
+        "a whiteboard",
+        0.16
+       ],
+       [
+        "a mobile robot",
+        0.103
+       ]
+      ],
+      "sigmoid_top": 0.1016
+     },
+     {
+      "top3": [
+       [
+        "a production line with a conveyor and robot arms",
+        0.252
+       ],
+       [
+        "a mobile robot",
+        0.176
+       ],
+       [
+        "a conveyor belt",
+        0.17
+       ]
+      ],
+      "sigmoid_top": 0.0418
+     }
+    ]
+   },
+   {
+    "id": "m33",
+    "bbox_xyxy": [
+     294.56,
+     378.01,
+     365.52,
+     422.87
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "a floor marking",
+      0.196
+     ],
+     [
+      "a robot arm",
+      0.154
+     ],
+     [
+      "a conveyor belt",
+      0.126
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.162
+       ],
+       [
+        "a whiteboard",
+        0.129
+       ],
+       [
+        "a stack of boxes",
+        0.094
+       ]
+      ],
+      "sigmoid_top": 0.0053
+     },
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.328
+       ],
+       [
+        "a conveyor belt",
+        0.227
+       ],
+       [
+        "a robot arm",
+        0.146
+       ]
+      ],
+      "sigmoid_top": 0.0617
+     }
+    ]
+   },
+   {
+    "id": "m72",
+    "bbox_xyxy": [
+     268.77,
+     378.43,
+     311.42,
+     445.18
+    ],
+    "phrases": [
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "a floor marking",
+      0.291
+     ],
+     [
+      "a robot arm",
+      0.222
+     ],
+     [
+      "a conveyor belt",
+      0.086
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a floor marking",
+        0.309
+       ],
+       [
+        "a whiteboard",
+        0.109
+       ],
+       [
+        "a cart",
+        0.098
+       ]
+      ],
+      "sigmoid_top": 0.0053
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.396
+       ],
+       [
+        "a floor marking",
+        0.273
+       ],
+       [
+        "a conveyor belt",
+        0.134
+       ]
+      ],
+      "sigmoid_top": 0.1515
+     }
+    ]
+   },
+   {
+    "id": "m87",
+    "bbox_xyxy": [
+     327.88,
+     379.71,
+     365.3,
+     443.74
+    ],
+    "phrases": [
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "a robot arm",
+      0.421
+     ],
+     [
+      "a whiteboard",
+      0.128
+     ],
+     [
+      "a cart",
+      0.061
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.371
+       ],
+       [
+        "a cart",
+        0.1
+       ],
+       [
+        "a whiteboard",
+        0.072
+       ]
+      ],
+      "sigmoid_top": 0.006
+     },
+     {
+      "top3": [
+       [
+        "a robot arm",
+        0.472
+       ],
+       [
+        "a whiteboard",
+        0.184
+       ],
+       [
+        "a small pallet",
+        0.066
+       ]
+      ],
+      "sigmoid_top": 0.0778
+     }
+    ]
+   }
+  ],
+  "numbering": {
+   "1": "m47",
+   "2": "m2",
+   "3": "m56",
+   "4": "m17",
+   "5": "m18",
+   "6": "m83",
+   "7": "m35",
+   "8": "m38",
+   "9": "m46",
+   "10": "m92",
+   "11": "m57",
+   "12": "m29",
+   "13": "m37",
+   "14": "m10",
+   "15": "m64",
+   "16": "m16",
+   "17": "m61",
+   "18": "m43",
+   "19": "m30",
+   "20": "m27",
+   "21": "m44",
+   "22": "m71",
+   "23": "m81",
+   "24": "m63",
+   "25": "m68",
+   "26": "m69",
+   "27": "m89",
+   "28": "m33",
+   "29": "m72",
+   "30": "m87"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/hybrid_exemplar_20261121/session_20261121_073316/runs/run_004_U24768580/inputs/destination_1.png",
+    "view_rect": [
+     196,
+     0,
+     1069,
+     424
+    ],
+    "numbers": [
+     1,
+     20
+    ],
+    "usable": true,
+    "problems": []
+   },
+   {
+    "path": "/home/binci/vlm_ws/hybrid_exemplar_20261121/session_20261121_073316/runs/run_004_U24768580/inputs/destination_2.png",
+    "view_rect": [
+     196,
+     0,
+     1238,
+     476
+    ],
+    "numbers": [
+     21,
+     30
+    ],
+    "usable": true,
+    "problems": []
+   }
+  ],
+  "problems": [],
+  "ratings": {
+   "m47": {
+    "id": 1,
+    "appearance": [
+     "a robot arm",
+     "a production line with a conveyor and robot arms",
+     "a floor marking"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and is part of the production line, not a suitable destination for placing an object."
+   },
+   "m2": {
+    "id": 2,
+    "appearance": [
+     "a production line with a conveyor and robot arms",
+     "a robot arm",
+     "a floor marking"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and is part of the production line, not a suitable destination for placing an object."
+   },
+   "m56": {
+    "id": 3,
+    "appearance": [
+     "a robot arm",
+     "a production line with a conveyor and robot arms",
+     "a mobile robot"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and a mobile robot, not a suitable destination for placing an object."
+   },
+   "m17": {
+    "id": 4,
+    "appearance": [
+     "a production line with a conveyor and robot arms",
+     "a conveyor belt",
+     "a green pedestrian walkway"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "Contains a conveyor belt, which is the target location for placing the object."
+   },
+   "m18": {
+    "id": 5,
+    "appearance": [
+     "a robot arm",
+     "a production line with a conveyor and robot arms",
+     "a small pallet"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and is part of the production line, not a suitable destination for placing an object."
+   },
+   "m83": {
+    "id": 6,
+    "appearance": [
+     "a production line with a conveyor and robot arms",
+     "a floor marking",
+     "a robot arm"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and is part of the production line, not a suitable destination for placing an object."
+   },
+   "m35": {
+    "id": 7,
+    "appearance": [
+     "a robot arm",
+     "a floor marking",
+     "a conveyor belt"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and is part of the production line, not a suitable destination for placing an object."
+   },
+   "m38": {
+    "id": 8,
+    "appearance": [
+     "a stack of boxes",
+     "an orange object",
+     "a robot arm"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a stack of boxes and a robot arm, not a suitable destination for placing an object."
+   },
+   "m46": {
+    "id": 9,
+    "appearance": [
+     "a robot arm",
+     "a mobile robot",
+     "a truck cargo bed"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and a mobile robot, not a suitable destination for placing an object."
+   },
+   "m92": {
+    "id": 10,
+    "appearance": [
+     "a robot arm",
+     "a floor marking",
+     "a mobile robot"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and a mobile robot, not a suitable destination for placing an object."
+   },
+   "m57": {
+    "id": 11,
+    "appearance": [
+     "a stack of boxes",
+     "an orange object",
+     "a truck"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a stack of boxes and a truck, not a suitable destination for placing an object."
+   },
+   "m29": {
+    "id": 12,
+    "appearance": [
+     "an orange object",
+     "a robot arm",
+     "an empty floor area"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains an orange object and a robot arm, not a suitable destination for placing an object."
+   },
+   "m37": {
+    "id": 13,
+    "appearance": [
+     "an orange object",
+     "a robot arm",
+     "a truck"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains an orange object and a robot arm, not a suitable destination for placing an object."
+   },
+   "m10": {
+    "id": 14,
+    "appearance": [
+     "an orange object",
+     "an orange traffic cone",
+     "a small pallet"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains an orange object and an orange traffic cone, not a suitable destination for placing an object."
+   },
+   "m64": {
+    "id": 15,
+    "appearance": [
+     "an orange traffic cone",
+     "an orange object",
+     "a robot arm"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains an orange traffic cone and an orange object, not a suitable destination for placing an object."
+   },
+   "m16": {
+    "id": 16,
+    "appearance": [
+     "an orange traffic cone",
+     "an orange object",
+     "a small pallet"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains an orange traffic cone and an orange object, not a suitable destination for placing an object."
+   },
+   "m61": {
+    "id": 17,
+    "appearance": [
+     "a floor marking",
+     "an orange object",
+     "a green pedestrian walkway"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains an orange object and a floor marking, not a suitable destination for placing an object."
+   },
+   "m43": {
+    "id": 18,
+    "appearance": [
+     "a metal grate",
+     "a floor marking",
+     "a manhole cover"
+    ],
+    "load_state": "empty",
+    "placement_role": "unsuitable",
+    "reason": "Contains a metal grate and a floor marking, not a suitable destination for placing an object."
+   },
+   "m30": {
+    "id": 19,
+    "appearance": [
+     "a robot arm",
+     "a mobile robot",
+     "a cart"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and a mobile robot, not a suitable destination for placing an object."
+   },
+   "m27": {
+    "id": 20,
+    "appearance": [
+     "a robot arm",
+     "a floor marking",
+     "a production line with a conveyor and robot arms"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "Contains a robot arm and is part of the production line, not a suitable destination for placing an object."
+   },
+   "m44": {
+    "id": 21,
+    "appearance": [
+     "a robot arm"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a robot arm and not a destination for placing the object."
+   },
+   "m71": {
+    "id": 22,
+    "appearance": [
+     "a floor marking",
+     "a whiteboard",
+     "an empty floor area"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is an empty floor area, suitable for placing the object."
+   },
+   "m81": {
+    "id": 23,
+    "appearance": [
+     "a floor marking",
+     "a production line with a conveyor and robot arms",
+     "a conveyor belt"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a conveyor belt and production line, not a free space for placing the object."
+   },
+   "m63": {
+    "id": 24,
+    "appearance": [
+     "a production line with a conveyor and robot arms",
+     "a stack of boxes",
+     "a floor marking"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a stack of boxes and production line, not a free space for placing the object."
+   },
+   "m68": {
+    "id": 25,
+    "appearance": [
+     "a floor marking",
+     "an empty floor area",
+     "a green pedestrian walkway"
+    ],
+    "load_state": "empty",
+    "placement_role": "possible",
+    "reason": "It is an empty floor area, suitable for placing the object."
+   },
+   "m69": {
+    "id": 26,
+    "appearance": [
+     "a whiteboard",
+     "a floor marking",
+     "a robot arm"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a robot arm and not a destination for placing the object."
+   },
+   "m89": {
+    "id": 27,
+    "appearance": [
+     "a robot arm",
+     "a mobile robot",
+     "a production line with a conveyor and robot arms"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a robot arm and not a destination for placing the object."
+   },
+   "m33": {
+    "id": 28,
+    "appearance": [
+     "a floor marking",
+     "a robot arm",
+     "a conveyor belt"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a conveyor belt and robot arm, not a free space for placing the object."
+   },
+   "m72": {
+    "id": 29,
+    "appearance": [
+     "a floor marking",
+     "a robot arm",
+     "a conveyor belt"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a conveyor belt and robot arm, not a free space for placing the object."
+   },
+   "m87": {
+    "id": 30,
+    "appearance": [
+     "a robot arm",
+     "a whiteboard",
+     "a cart"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "It is occupied by a robot arm and not a destination for placing the object."
+   }
+  },
+  "reply_reason": "The conveyor belt is the target location for placing the object, and it is empty and within the designated robot travel area. | It is an empty floor area, suitable for placing the object.",
+  "status": "AMBIGUOUS",
+  "number": null,
+  "kind": null,
+  "why": "Qwen best None is null; 2 accessible 'possible' candidates [22, 25]",
+  "id": null,
+  "bbox_xyxy": null,
+  "accessibility": {
+   "m17": {
+    "gap_to_drivable_cm": 32.0,
+    "adjacent": false,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     113.0,
+     81.0
+    ],
+    "approach_goal_image_px": [
+     743.9,
+     371.1
+    ],
+    "body_gap_cm": 37.3,
+    "floor_polygon_cm": [
+     [
+      134.0,
+      -8.2
+     ],
+     [
+      154.3,
+      -7.4
+     ],
+     [
+      155.2,
+      32.7
+     ],
+     [
+      135.7,
+      32.1
+     ]
+    ],
+    "accessible": false,
+    "why": "32.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m71": {
+    "gap_to_drivable_cm": 0.0,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     83.0,
+     107.0
+    ],
+    "approach_goal_image_px": [
+     585.8,
+     483.2
+    ],
+    "body_gap_cm": 2.5,
+    "floor_polygon_cm": [
+     [
+      23.1,
+      58.0
+     ],
+     [
+      62.4,
+      59.0
+     ],
+     [
+      67.0,
+      92.5
+     ],
+     [
+      29.4,
+      91.7
+     ]
+    ],
+    "accessible": true,
+    "why": "0.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   },
+   "m68": {
+    "gap_to_drivable_cm": 0.0,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     97.0,
+     93.0
+    ],
+    "approach_goal_image_px": [
+     661.6,
+     422.2
+    ],
+    "body_gap_cm": 0.0,
+    "floor_polygon_cm": [
+     [
+      58.3,
+      64.4
+     ],
+     [
+      102.8,
+      65.5
+     ],
+     [
+      105.2,
+      93.3
+     ],
+     [
+      62.4,
+      92.4
+     ]
+    ],
+    "accessible": true,
+    "why": "0.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   }
+  },
+  "policy_no_placement_frac": {
+   "m17": 0.0,
+   "m71": 0.0,
+   "m68": 0.0
+  },
+  "policy_excluded": [],
+  "tied_ids": [
+   "m71",
+   "m68"
+  ]
+ },
+ "timing_s": {
+  "photo_stage_this_run": 0.0,
+  "exemplar": 0.0,
+  "slots": 1.99,
+  "source": 0.0,
+  "destination": 71.46
+ },
+ "exemplar": {
+  "bank_used": {
+   "cube": [
+    "U23678143:refobj_cube",
+    "U24837448:refobj_cube",
+    "U24898553:refobj_cube",
+    "U25070552:refobj_cube",
+    "U25137685:refobj_cube",
+    "U25967031:refobj_cube"
+   ],
+   "empty_pallet": [
+    "U23678143:refobj_empty_pad_0",
+    "U24837448:refobj_empty_pad_0",
+    "U24898553:refobj_empty_pad_0",
+    "U25070552:refobj_empty_pad_0",
+    "U25137685:refobj_added_0",
+    "U25967031:refobj_empty_pad_0",
+    "U26007129:refobj_empty_pad_0"
+   ]
+  },
+  "bank_dropped_same_place": [
+   "U26007129:refobj_cube"
+  ],
+  "n_dino": 95,
+  "n_gated": 38,
+  "scores": {
+   "cube": {
+    "m3": 0.77,
+    "m4": 0.7616,
+    "m5": 0.7802,
+    "m6": 0.7794,
+    "m7": 0.8022,
+    "m9": 0.8167,
+    "m10": 0.816,
+    "m11": 0.7774,
+    "m12": 0.8212,
+    "m14": 0.7797,
+    "m15": 0.8008,
+    "m16": 0.7972,
+    "m19": 0.7372,
+    "m21": 0.7921,
+    "m22": 0.8353,
+    "m24": 0.8181,
+    "m31": 0.652,
+    "m33": 0.739,
+    "m35": 0.6868,
+    "m37": 0.7958,
+    "m38": 0.7689,
+    "m43": 0.7997,
+    "m44": 0.7215,
+    "m45": 0.803,
+    "m46": 0.7123,
+    "m52": 0.9272,
+    "m57": 0.7825,
+    "m64": 0.833,
+    "m72": 0.7254,
+    "m76": 0.8003,
+    "m79": 0.8286,
+    "m82": 0.8122,
+    "m86": 0.7186,
+    "m87": 0.7404,
+    "m90": 0.7094,
+    "m91": 0.748,
+    "m92": 0.7474,
+    "m93": 0.7883
+   },
+   "empty_pallet": {
+    "m3": 0.7877,
+    "m4": 0.7866,
+    "m5": 0.7948,
+    "m6": 0.8,
+    "m7": 0.8061,
+    "m9": 0.809,
+    "m10": 0.7963,
+    "m11": 0.8044,
+    "m12": 0.8038,
+    "m14": 0.798,
+    "m15": 0.8024,
+    "m16": 0.8067,
+    "m19": 0.7738,
+    "m21": 0.7942,
+    "m22": 0.8104,
+    "m24": 0.8142,
+    "m31": 0.7372,
+    "m33": 0.7464,
+    "m35": 0.7176,
+    "m37": 0.8012,
+    "m38": 0.7915,
+    "m43": 0.9094,
+    "m44": 0.7334,
+    "m45": 0.8805,
+    "m46": 0.7383,
+    "m52": 0.7971,
+    "m57": 0.7911,
+    "m64": 0.798,
+    "m72": 0.7283,
+    "m76": 0.7733,
+    "m79": 0.7895,
+    "m82": 0.7857,
+    "m86": 0.7646,
+    "m87": 0.7328,
+    "m90": 0.7813,
+    "m91": 0.767,
+    "m92": 0.7552,
+    "m93": 0.7761
+   }
+  }
+ },
+ "slots": {
+  "parsed": {
+   "object": "any object",
+   "object_words": "물체",
+   "source_landmark": "truck_loading_bay",
+   "source_relation": "near",
+   "destination_kind": "near_landmark",
+   "destination_landmark": "conveyor",
+   "destination_relation": "near",
+   "destination_words": "컨베이어 벨트"
+  },
+  "error": null
+ },
+ "references": {
+  "source": {
+   "name": "truck_loading_bay",
+   "class": "truck",
+   "box": [
+    1447.18,
+    0.11,
+    1687.29,
+    150.83
+   ],
+   "how": "DINO + SigLIP2 ('a truck' in top 1)",
+   "relation": "near",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     1303,
+     0,
+     1832,
+     295
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  },
+  "destination": {
+   "name": "conveyor",
+   "class": "conveyor",
+   "box": [
+    434.26,
+    76.5,
+    830.12,
+    186.33
+   ],
+   "how": "DINO + SigLIP2 ('a production line with a conveyor and robot arms' in top 1)",
+   "relation": "near",
+   "region": {
+    "type": "vicinity",
+    "rect": [
+     196,
+     0,
+     1068,
+     424
+    ],
+    "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+   }
+  }
+ },
+ "stages": [
+  {
+   "name": "exemplar_scores",
+   "status": "OK",
+   "summary": "38 of 95 DINO candidates in the size gate; exemplars cube 6, empty_pallet 7 (dropped same place: 1)",
+   "model": "google/siglip2-so400m-patch14-384"
+  },
+  {
+   "name": "slots",
+   "status": "OK",
+   "summary": "object 'any object' (물체) | from: near truck_loading_bay | to: near_landmark (near conveyor)",
+   "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "truck_loading_bay [near] -> vicinity (DINO + SigLIP2 ('a truck' in top 1))",
+   "model": "Python"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "conveyor [near] -> vicinity (DINO + SigLIP2 ('a production line with a conveyor and robot arms' in top 1))",
+   "model": "Python"
+  },
+  {
+   "name": "source_decision",
+   "status": "FAILED",
+   "summary": "NOT_FOUND []: NOT_AT_REFERENCE: the cube (top-1 0.927, margin 0.092 >= 0.02) is not near 'truck_loading_bay'",
+   "model": "google/siglip2-so400m-patch14-384 + Python"
+  },
+  {
+   "name": "destination_vlm_roles",
+   "status": "OK",
+   "summary": "reply usable",
+   "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+  },
+  {
+   "name": "destination_policy",
+   "status": "OK",
+   "summary": "no-placement zone ['Z01']: none of 3 suitable/possible candidates inside",
+   "model": "Python"
+  },
+  {
+   "name": "destination_access",
+   "status": "OK",
+   "summary": "2 of 3 candidates accessible from the robot start",
+   "model": "Python"
+  },
+  {
+   "name": "destination_decision",
+   "status": "UNCERTAIN",
+   "summary": "AMBIGUOUS   MULTIPLE_DESTINATION_CANDIDATES: Qwen best None is null; 2 accessible 'possible' candidates [22, 25]",
+   "model": "Python"
+  },
+  {
+   "name": "selection_check",
+   "status": "OK",
+   "summary": "0 chosen id(s) exist among the DINO candidates",
+   "model": "Python"
+  }
+ ],
+ "first_failure": "source_decision",
+ "wall_s": 73.5,
+ "models_used": {
+  "this_run": {
+   "VLM": {
+    "Qwen/Qwen3-VL-4B-Instruct": 3
+   }
+  },
+  "photo_preparation": {
+   "Grounding DINO": {
+    "IDEA-Research/grounding-dino-tiny": 4
+   },
+   "SigLIP2": {
+    "google/siglip2-base-patch16-384": 4
+   }
+  }
+ },
+ "handoff": {
+  "photo_id": "U24768580",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": null,
+  "destination": null
+ },
+ "narrative": [
+  "해석(Qwen 4B, 글자만): 옮길 것 'any object', 출발 기준 truck_loading_bay(near), 놓을 곳 near_landmark(near conveyor).",
+  "A: 찾지 못함/보류  - NOT_AT_REFERENCE: the cube (top-1 0.927, margin 0.092 >= 0.02) is not near 'truck_loading_bay'",
+  "B: 보류(후보 여럿)  - Qwen best None is null; 2 accessible 'possible' candidates [22, 25]"
+ ],
+ "files": {
+  "overlay": "/home/binci/vlm_ws/hybrid_exemplar_20261121/session_20261121_073316/runs/run_004_U24768580/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/hybrid_exemplar_20261121/session_20261121_073316/runs/run_004_U24768580/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/hybrid_exemplar_20261121/session_20261121_073316/runs/run_004_U24768580/run.json"
+ }
+}

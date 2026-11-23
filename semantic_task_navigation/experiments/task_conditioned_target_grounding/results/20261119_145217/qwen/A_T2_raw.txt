@@ -1,0 +1,54 @@
+{
+  "source_region": {
+    "description": "컨베이어 벨트 주변의 작업장",
+    "bbox_2d": [75, 266, 265, 730]
+  },
+  "source_object": {
+    "name_en": "red cube",
+    "bbox_2d": [222, 380, 238, 405],
+    "visible": "yes"
+  },
+  "destination_region": {
+    "description": "작업장 내 보관용 장소",
+    "bbox_2d": [395, 400, 505, 575]
+  },
+  "destination_target_candidates": [
+    {
+      "name_en": "stack of cardboard boxes",
+      "name_ko": "장방형 상자 스택",
+      "bbox_2d": [418, 395, 482, 545],
+      "state": "occupied",
+      "role": "보관용 표면",
+      "suitability": "suitable",
+      "reason": "상자 스택은 빨간 큐브를 보관하기 적합한 표면이다."
+    },
+    {
+      "name_en": "green safety zone",
+      "name_ko": "녹색 안전 영역",
+      "bbox_2d": [305, 200, 550, 280],
+      "state": "occupied",
+      "role": "안전 영역",
+      "suitability": "unsuitable",
+      "reason": "안전 영역은 작업용이 아니라 보관용이 아님."
+    },
+    {
+      "name_en": "yellow marked area",
+      "name_ko": "노란 표시 영역",
+      "bbox_2d": [395, 400, 505, 575],
+      "state": "occupied",
+      "role": "보관용 표면",
+      "suitability": "suitable",
+      "reason": "노란 표시 영역은 보관용으로 사용될 수 있음."
+    }
+  ],
+  "selected_destination": "stack of cardboard boxes",
+  "spatial_context": [
+    "컨베이어 벨트 주변에는 작업용 장비가 배치되어 있고, 빨간 큐브는 그 주변에 위치",
+    "보관용 장소는 중앙에 위치한 상자 스택과 노란 표시 영역이 있음",
+    "안전 영역은 작업용으로 사용되며 보관용이 아님"
+  ],
+  "task_reasoning": "빨간 큐브는 컨베이어 벨트에서 생산된 후 보관이 필요하며, 상자 스택은 보관용으로 적합한 표면이다.",
+  "uncertainty": [
+    "빨간 큐브의 정확한 위치가 이미지에서 명확하지 않음"
+  ]
+}

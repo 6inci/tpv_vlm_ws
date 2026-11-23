@@ -1,0 +1,3080 @@
+{
+ "references": {
+  "U25070552": {
+   "conveyor": {
+    "box": [
+     225.57,
+     272.97,
+     461.76,
+     766.68
+    ],
+    "how": "stored E1 (DINO + Qwen yes)"
+   },
+   "truck": {
+    "box": [
+     1447.27,
+     0.19,
+     1687.36,
+     149.58
+    ],
+    "how": "stored E1 (DINO + Qwen yes)"
+   },
+   "robot": {
+    "box": [
+     1585.03,
+     619.74,
+     1814.01,
+     784.4
+    ],
+    "start_img": [
+     1699.5,
+     702.1
+    ],
+    "how": "stored E1 (first_vlm_navigation_path)"
+   }
+  },
+  "U26007129": {
+   "conveyor": {
+    "box": null,
+    "how": "NOT VERIFIED",
+    "checked": [
+     {
+      "bbox_xyxy": [
+       1191.67,
+       465.54,
+       1808.05,
+       612.75
+      ],
+      "score": 0.3226,
+      "status": "no"
+     },
+     {
+      "bbox_xyxy": [
+       1191.52,
+       465.51,
+       1810.49,
+       613.25
+      ],
+      "score": 0.2992,
+      "status": "no"
+     },
+     {
+      "bbox_xyxy": [
+       1191.47,
+       465.37,
+       1810.74,
+       612.68
+      ],
+      "score": 0.2868,
+      "status": "no"
+     }
+    ]
+   },
+   "truck": {
+    "box": [
+     1447.05,
+     0.21,
+     1687.37,
+     149.31
+    ],
+    "how": "fresh DINO + Qwen crop yes",
+    "checked": [
+     {
+      "bbox_xyxy": [
+       1447.05,
+       0.21,
+       1687.37,
+       149.31
+      ],
+      "score": 0.5515,
+      "status": "yes"
+     }
+    ]
+   },
+   "robot": {
+    "box": [
+     1585.77,
+     622.3,
+     1693.39,
+     782.02
+    ],
+    "how": "fresh DINO + Qwen crop yes",
+    "checked": [
+     {
+      "bbox_xyxy": [
+       1585.77,
+       622.3,
+       1693.39,
+       782.02
+      ],
+      "score": 0.2919,
+      "status": "yes"
+     }
+    ],
+    "start_img": [
+     1639.58,
+     702.16
+    ]
+   }
+  },
+  "U24898553": {
+   "conveyor": {
+    "box": null,
+    "how": "NOT VERIFIED",
+    "checked": [
+     {
+      "bbox_xyxy": [
+       1191.85,
+       466.52,
+       1807.03,
+       613.03
+      ],
+      "score": 0.3608,
+      "status": "no"
+     },
+     {
+      "bbox_xyxy": [
+       1191.43,
+       466.75,
+       1808.77,
+       613.08
+      ],
+      "score": 0.3371,
+      "status": "no"
+     },
+     {
+      "bbox_xyxy": [
+       1191.18,
+       466.36,
+       1809.13,
+       612.86
+      ],
+      "score": 0.3284,
+      "status": "no"
+     }
+    ]
+   },
+   "truck": {
+    "box": [
+     1447.07,
+     0.19,
+     1687.53,
+     150.43
+    ],
+    "how": "fresh DINO + Qwen crop yes",
+    "checked": [
+     {
+      "bbox_xyxy": [
+       1447.07,
+       0.19,
+       1687.53,
+       150.43
+      ],
+      "score": 0.5694,
+      "status": "yes"
+     }
+    ]
+   },
+   "robot": {
+    "box": [
+     1582.27,
+     619.38,
+     1814.03,
+     784.51
+    ],
+    "how": "fresh DINO + Qwen crop yes",
+    "checked": [
+     {
+      "bbox_xyxy": [
+       1582.27,
+       619.38,
+       1814.03,
+       784.51
+      ],
+      "score": 0.3518,
+      "status": "yes"
+     }
+    ],
+    "start_img": [
+     1698.15,
+     701.9449999999999
+    ]
+   }
+  }
+ },
+ "interpretations": {
+  "E1_T1_R0": {
+   "parsed": {
+    "purpose": "Move the red cube from the conveyor to an appropriate shipping location",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "conveyor",
+     "bbox_2d": [
+      116,
+      255,
+      238,
+      725
+     ],
+     "bbox_image_px": [
+      222.7,
+      275.4,
+      457.0,
+      783.0
+     ]
+    },
+    "source_relation": "on",
+    "destination_meaning": "Shipping location for outgoing goods",
+    "destination_reference": {
+     "name_en": "white truck",
+     "bbox_2d": [
+      752,
+      0,
+      879,
+      143
+     ],
+     "inferred": false,
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1687.7,
+      154.4
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Loading area with robotic arms",
+      "visual_evidence": [
+       "robotic arms",
+       "conveyor",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       116,
+       255,
+       238,
+       725
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       222.7,
+       275.4,
+       457.0,
+       783.0
+      ]
+     },
+     {
+      "description": "Shipping area with white truck",
+      "visual_evidence": [
+       "white truck",
+       "orange cones",
+       "white lines"
+      ],
+      "bbox_2d": [
+       630,
+       0,
+       910,
+       280
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1209.6,
+       0.0,
+       1747.2,
+       302.4
+      ]
+     },
+     {
+      "description": "Central storage area",
+      "visual_evidence": [
+       "stacked boxes",
+       "orange cone"
+      ],
+      "bbox_2d": [
+       398,
+       394,
+       505,
+       575
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       764.2,
+       425.5,
+       969.6,
+       621.0
+      ]
+     },
+     {
+      "description": "Material storage area",
+      "visual_evidence": [
+       "barrels",
+       "pallets",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       620,
+       430,
+       956,
+       730
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1190.4,
+       464.4,
+       1835.5,
+       788.4
+      ]
+     },
+     {
+      "description": "Power station area",
+      "visual_evidence": [
+       "lightning bolt symbol",
+       "green panels"
+      ],
+      "bbox_2d": [
+       665,
+       775,
+       800,
+       945
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1276.8,
+       837.0,
+       1536.0,
+       1020.6
+      ]
+     },
+     {
+      "description": "Loading dock area",
+      "visual_evidence": [
+       "green loading zone",
+       "white arrows",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       305,
+       55,
+       560,
+       280
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       585.6,
+       59.4,
+       1075.2,
+       302.4
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The exact location of the red cube is not visible in the image."
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "0045569102f67b3468ad42cdaa813661ae1efed1f37a415b08d4e48660b935d4"
+  },
+  "E1_T1_R1": {
+   "parsed": {
+    "purpose": "Move the red cube from the conveyor to an appropriate shipping location",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "conveyor",
+     "bbox_2d": [
+      116,
+      330,
+      220,
+      620
+     ],
+     "bbox_image_px": [
+      222.7,
+      356.4,
+      422.4,
+      669.6
+     ]
+    },
+    "source_relation": "on",
+    "destination_meaning": "Shipping area for outgoing goods",
+    "destination_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      752,
+      0,
+      878,
+      142
+     ],
+     "inferred": false,
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1685.8,
+      153.4
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Pedestrian walkway",
+      "visual_evidence": [
+       "green floor with footprints",
+       "no robot body allowed"
+      ],
+      "bbox_2d": [
+       305,
+       58,
+       557,
+       280
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       585.6,
+       62.6,
+       1069.4,
+       302.4
+      ]
+     },
+     {
+      "description": "Robot navigation area",
+      "visual_evidence": [
+       "yellow border",
+       "black floor"
+      ],
+      "bbox_2d": [
+       100,
+       280,
+       650,
+       750
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       192.0,
+       302.4,
+       1248.0,
+       810.0
+      ]
+     },
+     {
+      "description": "Conveyor and robot arm workstation",
+      "visual_evidence": [
+       "white border",
+       "robot arms"
+      ],
+      "bbox_2d": [
+       78,
+       265,
+       268,
+       720
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       149.8,
+       286.2,
+       514.6,
+       777.6
+      ]
+     },
+     {
+      "description": "Goods storage area",
+      "visual_evidence": [
+       "yellow border",
+       "stacked boxes and barrels"
+      ],
+      "bbox_2d": [
+       618,
+       430,
+       960,
+       720
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       1186.6,
+       464.4,
+       1843.2,
+       777.6
+      ]
+     },
+     {
+      "description": "Truck unloading zone",
+      "visual_evidence": [
+       "white truck",
+       "white dashed lines"
+      ],
+      "bbox_2d": [
+       690,
+       0,
+       890,
+       270
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       1324.8,
+       0.0,
+       1708.8,
+       291.6
+      ]
+     },
+     {
+      "description": "Power station",
+      "visual_evidence": [
+       "lightning bolt symbol",
+       "green panels"
+      ],
+      "bbox_2d": [
+       660,
+       770,
+       800,
+       940
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       1267.2,
+       831.6,
+       1536.0,
+       1015.2
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The reach of the gripper is not confirmed"
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "90123df7876ec5b593997ae40e782256f24af03c75d5c29422c327dd543371e7"
+  },
+  "E1_T2_R0": {
+   "parsed": {
+    "purpose": "Move a red cube from near the conveyor belt to an appropriate storage location near the truck.",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "conveyor belt",
+     "bbox_2d": [
+      106,
+      255,
+      238,
+      725
+     ],
+     "bbox_image_px": [
+      203.5,
+      275.4,
+      457.0,
+      783.0
+     ]
+    },
+    "source_relation": "next_to",
+    "destination_meaning": "Appropriate storage location near the truck",
+    "destination_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      752,
+      0,
+      880,
+      145
+     ],
+     "inferred": false,
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1689.6,
+      156.6
+     ]
+    },
+    "destination_relation": "near",
+    "zones_seen": [
+     {
+      "description": "Main operational area with conveyor belt and robotic arms",
+      "visual_evidence": [
+       "conveyor belt",
+       "robotic arms",
+       "orange cones",
+       "green path"
+      ],
+      "bbox_2d": [
+       0,
+       0,
+       500,
+       750
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       0.0,
+       0.0,
+       960.0,
+       810.0
+      ]
+     },
+     {
+      "description": "Storage and loading zone with truck and various containers",
+      "visual_evidence": [
+       "truck",
+       "barrels",
+       "stacked boxes",
+       "orange cones",
+       "yellow lines"
+      ],
+      "bbox_2d": [
+       500,
+       0,
+       1000,
+       750
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       960.0,
+       0.0,
+       1920.0,
+       810.0
+      ]
+     },
+     {
+      "description": "Control or instruction zone with whiteboard",
+      "visual_evidence": [
+       "whiteboard",
+       "orange cone",
+       "gray grate"
+      ],
+      "bbox_2d": [
+       0,
+       750,
+       500,
+       999
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       0.0,
+       810.0,
+       960.0,
+       1078.9
+      ]
+     }
+    ],
+    "uncertainty": []
+   },
+   "error": null,
+   "prompt_sha256": "d4f4d6cfc836e4286815edddb8317c5197e54c957cc7c03e564375ceba4a1936"
+  },
+  "E1_T2_R1": {
+   "parsed": {
+    "purpose": "Move a red cube from near the conveyor to an appropriate storage location near the truck",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "conveyor",
+     "bbox_2d": [
+      107,
+      256,
+      232,
+      725
+     ],
+     "bbox_image_px": [
+      205.4,
+      276.5,
+      445.4,
+      783.0
+     ]
+    },
+    "source_relation": "next_to",
+    "destination_meaning": "appropriate storage location near the truck",
+    "destination_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      752,
+      0,
+      880,
+      145
+     ],
+     "inferred": true,
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1689.6,
+      156.6
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Pedestrian walkway with green floor and footprints",
+      "visual_evidence": [
+       "green floor",
+       "footprint symbols"
+      ],
+      "bbox_2d": [
+       305,
+       58,
+       557,
+       280
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       585.6,
+       62.6,
+       1069.4,
+       302.4
+      ]
+     },
+     {
+      "description": "Main robot travel zone (yellow border, black floor)",
+      "visual_evidence": [
+       "yellow border",
+       "black floor"
+      ],
+      "bbox_2d": [
+       107,
+       256,
+       975,
+       950
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       205.4,
+       276.5,
+       1872.0,
+       1026.0
+      ]
+     },
+     {
+      "description": "Conveyor and robot arm workstation (white border)",
+      "visual_evidence": [
+       "white border"
+      ],
+      "bbox_2d": [
+       107,
+       256,
+       232,
+       725
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       205.4,
+       276.5,
+       445.4,
+       783.0
+      ]
+     },
+     {
+      "description": "Cargo storage zone (yellow border)",
+      "visual_evidence": [
+       "yellow border"
+      ],
+      "bbox_2d": [
+       618,
+       430,
+       975,
+       730
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       1186.6,
+       464.4,
+       1872.0,
+       788.4
+      ]
+     },
+     {
+      "description": "Truck unloading zone (white dashed lines)",
+      "visual_evidence": [
+       "white dashed lines"
+      ],
+      "bbox_2d": [
+       680,
+       0,
+       880,
+       270
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1305.6,
+       0.0,
+       1689.6,
+       291.6
+      ]
+     },
+     {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+       "orange cones",
+       "white boundary lines"
+      ],
+      "bbox_2d": [
+       107,
+       0,
+       975,
+       950
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       205.4,
+       0.0,
+       1872.0,
+       1026.0
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The reach of the gripper is not confirmed, so whether the robot can physically pick up and place the red cube is uncertain."
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "ac9490b49cc1b8370f8cca6f634171da2941cb596bd7c19b5f9e99f0cbbad4a3"
+  },
+  "E1_T3_R0": {
+   "parsed": {
+    "purpose": "Move the box from the truck to the conveyor belt area",
+    "source_object": {
+     "name_en": "box"
+    },
+    "source_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      752,
+      0,
+      879,
+      142
+     ],
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1687.7,
+      153.4
+     ]
+    },
+    "source_relation": "on",
+    "destination_meaning": "conveyor belt area",
+    "destination_reference": {
+     "name_en": "conveyor belt",
+     "bbox_2d": [
+      117,
+      258,
+      250,
+      728
+     ],
+     "inferred": true,
+     "bbox_image_px": [
+      224.6,
+      278.6,
+      480.0,
+      786.2
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Loading area with robotic arms",
+      "visual_evidence": [
+       "robotic arms",
+       "orange cones",
+       "green path"
+      ],
+      "bbox_2d": [
+       117,
+       258,
+       250,
+       728
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       224.6,
+       278.6,
+       480.0,
+       786.2
+      ]
+     },
+     {
+      "description": "Central storage zone with stacked boxes",
+      "visual_evidence": [
+       "stacked boxes",
+       "orange cone"
+      ],
+      "bbox_2d": [
+       398,
+       394,
+       505,
+       572
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       764.2,
+       425.5,
+       969.6,
+       617.8
+      ]
+     },
+     {
+      "description": "Right-side storage zone with barrels and pallets",
+      "visual_evidence": [
+       "barrels",
+       "pallets",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       618,
+       430,
+       955,
+       728
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1186.6,
+       464.4,
+       1833.6,
+       786.2
+      ]
+     },
+     {
+      "description": "Bottom zone with whiteboard and charging station",
+      "visual_evidence": [
+       "whiteboard",
+       "charging station",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       330,
+       778,
+       657,
+       958
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       633.6,
+       840.2,
+       1261.4,
+       1034.6
+      ]
+     }
+    ],
+    "uncertainty": []
+   },
+   "error": null,
+   "prompt_sha256": "719d38f5bae576ac99f9b85e552a45145cd15acf8d71c863b1d853aa151bc6e9"
+  },
+  "E1_T3_R1": {
+   "parsed": {
+    "purpose": "Move a box from the truck to the conveyor belt area",
+    "source_object": {
+     "name_en": "box"
+    },
+    "source_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      753,
+      0,
+      879,
+      143
+     ],
+     "bbox_image_px": [
+      1445.8,
+      0.0,
+      1687.7,
+      154.4
+     ]
+    },
+    "source_relation": "on",
+    "destination_meaning": "Conveyor belt area for loading",
+    "destination_reference": {
+     "name_en": "conveyor belt",
+     "bbox_2d": [
+      107,
+      258,
+      250,
+      728
+     ],
+     "inferred": true,
+     "bbox_image_px": [
+      205.4,
+      278.6,
+      480.0,
+      786.2
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Pedestrian walkway",
+      "visual_evidence": [
+       "green floor with footprints",
+       "no robot body allowed"
+      ],
+      "bbox_2d": [
+       305,
+       58,
+       557,
+       280
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       585.6,
+       62.6,
+       1069.4,
+       302.4
+      ]
+     },
+     {
+      "description": "Robot travel zone",
+      "visual_evidence": [
+       "yellow border",
+       "black floor"
+      ],
+      "bbox_2d": [
+       107,
+       258,
+       657,
+       728
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       205.4,
+       278.6,
+       1261.4,
+       786.2
+      ]
+     },
+     {
+      "description": "Conveyor belt and robot arm workstation",
+      "visual_evidence": [
+       "white border",
+       "robot arms"
+      ],
+      "bbox_2d": [
+       107,
+       258,
+       250,
+       728
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       205.4,
+       278.6,
+       480.0,
+       786.2
+      ]
+     },
+     {
+      "description": "Cargo storage area",
+      "visual_evidence": [
+       "yellow border",
+       "stacked boxes and barrels"
+      ],
+      "bbox_2d": [
+       620,
+       430,
+       957,
+       550
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       1190.4,
+       464.4,
+       1837.4,
+       594.0
+      ]
+     },
+     {
+      "description": "Truck unloading zone",
+      "visual_evidence": [
+       "white dashed lines",
+       "truck"
+      ],
+      "bbox_2d": [
+       620,
+       0,
+       879,
+       280
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1190.4,
+       0.0,
+       1687.7,
+       302.4
+      ]
+     },
+     {
+      "description": "Robot charging station",
+      "visual_evidence": [
+       "white border",
+       "lightning bolt symbol"
+      ],
+      "bbox_2d": [
+       660,
+       770,
+       800,
+       940
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1267.2,
+       831.6,
+       1536.0,
+       1015.2
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The reach of the gripper is not confirmed"
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "49ce4da444726bf44e8bd7b6928086c5eeaaa27a80fd0e8cc9861f08ff6013c5"
+  },
+  "D1_T2_R0": {
+   "parsed": {
+    "purpose": "Move a red cube from near the conveyor belt to an appropriate storage location near the truck.",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "conveyor belt",
+     "bbox_2d": [
+      110,
+      260,
+      225,
+      720
+     ],
+     "bbox_image_px": [
+      211.2,
+      280.8,
+      432.0,
+      777.6
+     ]
+    },
+    "source_relation": "next_to",
+    "destination_meaning": "Appropriate storage location near the truck",
+    "destination_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      752,
+      0,
+      880,
+      145
+     ],
+     "inferred": false,
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1689.6,
+      156.6
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Main operational area with conveyor belt, robotic arms, and storage zones",
+      "visual_evidence": [
+       "white lines",
+       "yellow boundary lines",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       37,
+       0,
+       980,
+       960
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       71.0,
+       0.0,
+       1881.6,
+       1036.8
+      ]
+     },
+     {
+      "description": "Storage zone with various containers and pallets",
+      "visual_evidence": [
+       "yellow boundary lines",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       615,
+       420,
+       960,
+       720
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1180.8,
+       453.6,
+       1843.2,
+       777.6
+      ]
+     },
+     {
+      "description": "Truck parking zone",
+      "visual_evidence": [
+       "white dashed lines",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       615,
+       0,
+       960,
+       280
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1180.8,
+       0.0,
+       1843.2,
+       302.4
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The exact location of the red cube is not visible in the image."
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "d4f4d6cfc836e4286815edddb8317c5197e54c957cc7c03e564375ceba4a1936"
+  },
+  "D1_T2_R1": {
+   "parsed": {
+    "purpose": "Move a red cube from near the conveyor to an appropriate storage location near the truck",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "conveyor",
+     "bbox_2d": [
+      107,
+      260,
+      227,
+      725
+     ],
+     "bbox_image_px": [
+      205.4,
+      280.8,
+      435.8,
+      783.0
+     ]
+    },
+    "source_relation": "next_to",
+    "destination_meaning": "appropriate storage location near the truck",
+    "destination_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      752,
+      0,
+      880,
+      145
+     ],
+     "inferred": true,
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1689.6,
+      156.6
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Pedestrian walkway with green floor and footprints",
+      "visual_evidence": [
+       "green floor",
+       "footprints"
+      ],
+      "bbox_2d": [
+       305,
+       58,
+       560,
+       280
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       585.6,
+       62.6,
+       1075.2,
+       302.4
+      ]
+     },
+     {
+      "description": "Main robot travel area with yellow border",
+      "visual_evidence": [
+       "yellow border",
+       "black floor"
+      ],
+      "bbox_2d": [
+       107,
+       260,
+       975,
+       950
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       205.4,
+       280.8,
+       1872.0,
+       1026.0
+      ]
+     },
+     {
+      "description": "Conveyor and robot arm workstation with white border",
+      "visual_evidence": [
+       "white border"
+      ],
+      "bbox_2d": [
+       107,
+       260,
+       227,
+       725
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       205.4,
+       280.8,
+       435.8,
+       783.0
+      ]
+     },
+     {
+      "description": "Cargo storage area with yellow border",
+      "visual_evidence": [
+       "yellow border"
+      ],
+      "bbox_2d": [
+       618,
+       430,
+       975,
+       725
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       1186.6,
+       464.4,
+       1872.0,
+       783.0
+      ]
+     },
+     {
+      "description": "Truck unloading zone with white dashed lines",
+      "visual_evidence": [
+       "white dashed lines"
+      ],
+      "bbox_2d": [
+       618,
+       0,
+       975,
+       280
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1186.6,
+       0.0,
+       1872.0,
+       302.4
+      ]
+     },
+     {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+       "safety cones",
+       "boundary lines"
+      ],
+      "bbox_2d": [
+       280,
+       185,
+       975,
+       280
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       537.6,
+       199.8,
+       1872.0,
+       302.4
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The reach of the gripper is not confirmed, so whether the robot can physically pick up the red cube is uncertain."
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "ac9490b49cc1b8370f8cca6f634171da2941cb596bd7c19b5f9e99f0cbbad4a3"
+  },
+  "P4_R_R0": {
+   "parsed": {
+    "purpose": "Move the red cube from near the truck to the conveyor belt area",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      752,
+      0,
+      879,
+      142
+     ],
+     "bbox_image_px": [
+      1443.8,
+      0.0,
+      1687.7,
+      153.4
+     ]
+    },
+    "source_relation": "near",
+    "destination_meaning": "Conveyor belt area for processing",
+    "destination_reference": {
+     "name_en": "conveyor belt",
+     "bbox_2d": [
+      118,
+      268,
+      223,
+      720
+     ],
+     "inferred": true,
+     "bbox_image_px": [
+      226.6,
+      289.4,
+      428.2,
+      777.6
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Left-side conveyor belt area with robotic arms",
+      "visual_evidence": [
+       "white boundary lines",
+       "robotic arms",
+       "yellow safety lines"
+      ],
+      "bbox_2d": [
+       118,
+       268,
+       223,
+       720
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       226.6,
+       289.4,
+       428.2,
+       777.6
+      ]
+     },
+     {
+      "description": "Right-side truck parking zone",
+      "visual_evidence": [
+       "white dashed lines",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       628,
+       0,
+       917,
+       280
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1205.8,
+       0.0,
+       1760.6,
+       302.4
+      ]
+     },
+     {
+      "description": "Central storage zone with cardboard boxes",
+      "visual_evidence": [
+       "yellow boundary lines",
+       "orange cones"
+      ],
+      "bbox_2d": [
+       388,
+       394,
+       505,
+       570
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       745.0,
+       425.5,
+       969.6,
+       615.6
+      ]
+     },
+     {
+      "description": "Bottom-right charging station zone",
+      "visual_evidence": [
+       "white boundary lines",
+       "lightning bolt symbol",
+       "green safety markers"
+      ],
+      "bbox_2d": [
+       668,
+       770,
+       800,
+       940
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1282.6,
+       831.6,
+       1536.0,
+       1015.2
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The exact position of the red cube relative to the truck is not clearly visible"
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "9e1dcadc9607eb33665c4415269c17d47cbbd4b4fed398860e4c839b5401c280"
+  },
+  "P4_R_R1": {
+   "parsed": {
+    "purpose": "Move a red cube from near the truck to the conveyor belt area",
+    "source_object": {
+     "name_en": "red cube"
+    },
+    "source_reference": {
+     "name_en": "truck",
+     "bbox_2d": [
+      750,
+      0,
+      878,
+      142
+     ],
+     "bbox_image_px": [
+      1440.0,
+      0.0,
+      1685.8,
+      153.4
+     ]
+    },
+    "source_relation": "near",
+    "destination_meaning": "Conveyor belt area for object transfer",
+    "destination_reference": {
+     "name_en": "conveyor belt",
+     "bbox_2d": [
+      117,
+      260,
+      220,
+      720
+     ],
+     "inferred": true,
+     "bbox_image_px": [
+      224.6,
+      280.8,
+      422.4,
+      777.6
+     ]
+    },
+    "destination_relation": "next_to",
+    "zones_seen": [
+     {
+      "description": "Green pedestrian walkway with footprints",
+      "visual_evidence": [
+       "green floor with white footprints",
+       "no robot body allowed"
+      ],
+      "bbox_2d": [
+       305,
+       58,
+       557,
+       280
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       585.6,
+       62.6,
+       1069.4,
+       302.4
+      ]
+     },
+     {
+      "description": "Main robot travel zone (yellow border, black floor)",
+      "visual_evidence": [
+       "yellow border",
+       "black floor"
+      ],
+      "bbox_2d": [
+       250,
+       270,
+       970,
+       770
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       480.0,
+       291.6,
+       1862.4,
+       831.6
+      ]
+     },
+     {
+      "description": "Conveyor belt and robot arm work cell (white border)",
+      "visual_evidence": [
+       "white border",
+       "robot arms and conveyor"
+      ],
+      "bbox_2d": [
+       117,
+       260,
+       220,
+       720
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       224.6,
+       280.8,
+       422.4,
+       777.6
+      ]
+     },
+     {
+      "description": "Cargo storage area (yellow border)",
+      "visual_evidence": [
+       "yellow border",
+       "stacks of barrels and pallets"
+      ],
+      "bbox_2d": [
+       618,
+       430,
+       960,
+       550
+      ],
+      "robot_body_access": "forbidden",
+      "bbox_image_px": [
+       1186.6,
+       464.4,
+       1843.2,
+       594.0
+      ]
+     },
+     {
+      "description": "Truck unloading zone (white dashed lines)",
+      "visual_evidence": [
+       "white dashed lines",
+       "truck parked"
+      ],
+      "bbox_2d": [
+       625,
+       0,
+       890,
+       270
+      ],
+      "robot_body_access": "allowed",
+      "bbox_image_px": [
+       1200.0,
+       0.0,
+       1708.8,
+       291.6
+      ]
+     },
+     {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+       "orange cones",
+       "white and yellow boundary lines"
+      ],
+      "bbox_2d": [
+       250,
+       0,
+       970,
+       950
+      ],
+      "robot_body_access": "unknown",
+      "bbox_image_px": [
+       480.0,
+       0.0,
+       1862.4,
+       1026.0
+      ]
+     }
+    ],
+    "uncertainty": [
+     "The reach of the gripper is not confirmed, so whether the robot can physically pick up the red cube is uncertain."
+    ]
+   },
+   "error": null,
+   "prompt_sha256": "0ec127afb2b84847969e465945c45dad6600204c226a2bebdc6631bc958a46b8"
+  }
+ },
+ "search": {
+  "E1_T1_R0": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "conveyor",
+    "class": "conveyor",
+    "box": [
+     225.57,
+     272.97,
+     461.76,
+     766.68
+    ],
+    "how": "class 'conveyor' -> stored E1 (DINO + Qwen yes)",
+    "relation": "on",
+    "region": {
+     "type": "containment",
+     "rect": [
+      225,
+      272,
+      461,
+      766
+     ]
+    }
+   },
+   "destination_reference": {
+    "name": "white truck",
+    "class": "truck",
+    "box": [
+     1447.27,
+     0.19,
+     1687.36,
+     149.58
+    ],
+    "how": "class 'truck' -> stored E1 (DINO + Qwen yes)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1303,
+      0,
+      1832,
+      294
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 38,
+    "inside": [
+     "cand_r5",
+     "cand_r34",
+     "cand_r4",
+     "cand_r1",
+     "cand_r30",
+     "cand_r17"
+    ],
+    "outside": [
+     "cand_r2",
+     "cand_r3",
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15",
+     "cand_r16",
+     "cand_r18",
+     "cand_r19",
+     "cand_r20",
+     "cand_r21",
+     "cand_r22",
+     "cand_r23",
+     "cand_r24",
+     "cand_r25",
+     "cand_r26",
+     "cand_r27",
+     "cand_r28",
+     "cand_r29",
+     "cand_r31",
+     "cand_r32",
+     "cand_r33",
+     "cand_r35",
+     "cand_r36",
+     "cand_r37",
+     "cand_r38"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r3"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m1",
+     "m72",
+     "m87",
+     "m90",
+     "m12",
+     "m103",
+     "m89",
+     "m63",
+     "m96",
+     "m83",
+     "m11",
+     "m82",
+     "m6",
+     "m8",
+     "m28",
+     "m13",
+     "m100"
+    ],
+    "region_scale_not_numbered": [
+     "m86"
+    ],
+    "outside_count": 97
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "E1_T1_R1": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "conveyor",
+    "class": "conveyor",
+    "box": [
+     225.57,
+     272.97,
+     461.76,
+     766.68
+    ],
+    "how": "class 'conveyor' -> stored E1 (DINO + Qwen yes)",
+    "relation": "on",
+    "region": {
+     "type": "containment",
+     "rect": [
+      225,
+      272,
+      461,
+      766
+     ]
+    }
+   },
+   "destination_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.27,
+     0.19,
+     1687.36,
+     149.58
+    ],
+    "how": "class 'truck' -> stored E1 (DINO + Qwen yes)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1303,
+      0,
+      1832,
+      294
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 38,
+    "inside": [
+     "cand_r5",
+     "cand_r34",
+     "cand_r4",
+     "cand_r1",
+     "cand_r30",
+     "cand_r17"
+    ],
+    "outside": [
+     "cand_r2",
+     "cand_r3",
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15",
+     "cand_r16",
+     "cand_r18",
+     "cand_r19",
+     "cand_r20",
+     "cand_r21",
+     "cand_r22",
+     "cand_r23",
+     "cand_r24",
+     "cand_r25",
+     "cand_r26",
+     "cand_r27",
+     "cand_r28",
+     "cand_r29",
+     "cand_r31",
+     "cand_r32",
+     "cand_r33",
+     "cand_r35",
+     "cand_r36",
+     "cand_r37",
+     "cand_r38"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r3"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m1",
+     "m72",
+     "m87",
+     "m90",
+     "m12",
+     "m103",
+     "m89",
+     "m63",
+     "m96",
+     "m83",
+     "m11",
+     "m82",
+     "m6",
+     "m8",
+     "m28",
+     "m13",
+     "m100"
+    ],
+    "region_scale_not_numbered": [
+     "m86"
+    ],
+    "outside_count": 97
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "E1_T2_R0": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "conveyor belt",
+    "class": "conveyor",
+    "box": [
+     225.57,
+     272.97,
+     461.76,
+     766.68
+    ],
+    "how": "class 'conveyor' -> stored E1 (DINO + Qwen yes)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      758,
+      1063
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "destination_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.27,
+     0.19,
+     1687.36,
+     149.58
+    ],
+    "how": "class 'truck' -> stored E1 (DINO + Qwen yes)",
+    "relation": "near",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1303,
+      0,
+      1832,
+      294
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 38,
+    "inside": [
+     "cand_r32",
+     "cand_r33",
+     "cand_r3",
+     "cand_r18",
+     "cand_r6",
+     "cand_r31",
+     "cand_r2",
+     "cand_r5",
+     "cand_r34",
+     "cand_r4",
+     "cand_r1",
+     "cand_r30",
+     "cand_r17"
+    ],
+    "outside": [
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15",
+     "cand_r16",
+     "cand_r19",
+     "cand_r20",
+     "cand_r21",
+     "cand_r22",
+     "cand_r23",
+     "cand_r24",
+     "cand_r25",
+     "cand_r26",
+     "cand_r27",
+     "cand_r28",
+     "cand_r29",
+     "cand_r35",
+     "cand_r36",
+     "cand_r37",
+     "cand_r38"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r3"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m1",
+     "m72",
+     "m87",
+     "m90",
+     "m12",
+     "m103",
+     "m89",
+     "m63",
+     "m96",
+     "m83",
+     "m11",
+     "m82",
+     "m6",
+     "m8",
+     "m28",
+     "m13",
+     "m100"
+    ],
+    "region_scale_not_numbered": [
+     "m86"
+    ],
+    "outside_count": 97
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "E1_T2_R1": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "conveyor",
+    "class": "conveyor",
+    "box": [
+     225.57,
+     272.97,
+     461.76,
+     766.68
+    ],
+    "how": "class 'conveyor' -> stored E1 (DINO + Qwen yes)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      758,
+      1063
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "destination_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.27,
+     0.19,
+     1687.36,
+     149.58
+    ],
+    "how": "class 'truck' -> stored E1 (DINO + Qwen yes)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1303,
+      0,
+      1832,
+      294
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 38,
+    "inside": [
+     "cand_r32",
+     "cand_r33",
+     "cand_r3",
+     "cand_r18",
+     "cand_r6",
+     "cand_r31",
+     "cand_r2",
+     "cand_r5",
+     "cand_r34",
+     "cand_r4",
+     "cand_r1",
+     "cand_r30",
+     "cand_r17"
+    ],
+    "outside": [
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15",
+     "cand_r16",
+     "cand_r19",
+     "cand_r20",
+     "cand_r21",
+     "cand_r22",
+     "cand_r23",
+     "cand_r24",
+     "cand_r25",
+     "cand_r26",
+     "cand_r27",
+     "cand_r28",
+     "cand_r29",
+     "cand_r35",
+     "cand_r36",
+     "cand_r37",
+     "cand_r38"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r3"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m1",
+     "m72",
+     "m87",
+     "m90",
+     "m12",
+     "m103",
+     "m89",
+     "m63",
+     "m96",
+     "m83",
+     "m11",
+     "m82",
+     "m6",
+     "m8",
+     "m28",
+     "m13",
+     "m100"
+    ],
+    "region_scale_not_numbered": [
+     "m86"
+    ],
+    "outside_count": 97
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "E1_T3_R0": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.27,
+     0.19,
+     1687.36,
+     149.58
+    ],
+    "how": "class 'truck' -> stored E1 (DINO + Qwen yes)",
+    "relation": "on",
+    "region": {
+     "type": "containment",
+     "rect": [
+      1447,
+      0,
+      1687,
+      149
+     ]
+    }
+   },
+   "destination_reference": {
+    "name": "conveyor belt",
+    "class": "conveyor",
+    "box": [
+     225.57,
+     272.97,
+     461.76,
+     766.68
+    ],
+    "how": "class 'conveyor' -> stored E1 (DINO + Qwen yes)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      758,
+      1063
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "DINO candidates (phrase 'box')",
+    "n_pool": 76,
+    "inside": [
+     "m72",
+     "m87",
+     "m90",
+     "m12",
+     "m103",
+     "m89"
+    ],
+    "outside": [
+     "m6",
+     "m7",
+     "m8",
+     "m9",
+     "m11",
+     "m13",
+     "m14",
+     "m15",
+     "m16",
+     "m17",
+     "m18",
+     "m19",
+     "m20",
+     "m22",
+     "m23",
+     "m26",
+     "m28",
+     "m29",
+     "m32",
+     "m33",
+     "m34",
+     "m35",
+     "m36",
+     "m37",
+     "m40",
+     "m41",
+     "m43",
+     "m45",
+     "m46",
+     "m47",
+     "m48",
+     "m49",
+     "m50",
+     "m51",
+     "m52",
+     "m53",
+     "m54",
+     "m56",
+     "m57",
+     "m58",
+     "m61",
+     "m62",
+     "m64",
+     "m65",
+     "m66",
+     "m68",
+     "m69",
+     "m70",
+     "m74",
+     "m75",
+     "m77",
+     "m78",
+     "m80",
+     "m81",
+     "m82",
+     "m84",
+     "m92",
+     "m94",
+     "m96",
+     "m99",
+     "m100",
+     "m104",
+     "m106",
+     "m108",
+     "m109",
+     "m110",
+     "m111",
+     "m113",
+     "m114",
+     "m115"
+    ]
+   },
+   "source_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "tied": [
+     "m1"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m43",
+     "m115",
+     "m38",
+     "m52",
+     "m104",
+     "m95",
+     "m16",
+     "m110",
+     "m81",
+     "m48",
+     "m69",
+     "m75",
+     "m108",
+     "m41",
+     "m94",
+     "m22",
+     "m47",
+     "m7",
+     "m32",
+     "m17"
+    ],
+    "region_scale_not_numbered": [],
+    "outside_count": 95
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "E1_T3_R1": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.27,
+     0.19,
+     1687.36,
+     149.58
+    ],
+    "how": "class 'truck' -> stored E1 (DINO + Qwen yes)",
+    "relation": "on",
+    "region": {
+     "type": "containment",
+     "rect": [
+      1447,
+      0,
+      1687,
+      149
+     ]
+    }
+   },
+   "destination_reference": {
+    "name": "conveyor belt",
+    "class": "conveyor",
+    "box": [
+     225.57,
+     272.97,
+     461.76,
+     766.68
+    ],
+    "how": "class 'conveyor' -> stored E1 (DINO + Qwen yes)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      758,
+      1063
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "DINO candidates (phrase 'box')",
+    "n_pool": 76,
+    "inside": [
+     "m72",
+     "m87",
+     "m90",
+     "m12",
+     "m103",
+     "m89"
+    ],
+    "outside": [
+     "m6",
+     "m7",
+     "m8",
+     "m9",
+     "m11",
+     "m13",
+     "m14",
+     "m15",
+     "m16",
+     "m17",
+     "m18",
+     "m19",
+     "m20",
+     "m22",
+     "m23",
+     "m26",
+     "m28",
+     "m29",
+     "m32",
+     "m33",
+     "m34",
+     "m35",
+     "m36",
+     "m37",
+     "m40",
+     "m41",
+     "m43",
+     "m45",
+     "m46",
+     "m47",
+     "m48",
+     "m49",
+     "m50",
+     "m51",
+     "m52",
+     "m53",
+     "m54",
+     "m56",
+     "m57",
+     "m58",
+     "m61",
+     "m62",
+     "m64",
+     "m65",
+     "m66",
+     "m68",
+     "m69",
+     "m70",
+     "m74",
+     "m75",
+     "m77",
+     "m78",
+     "m80",
+     "m81",
+     "m82",
+     "m84",
+     "m92",
+     "m94",
+     "m96",
+     "m99",
+     "m100",
+     "m104",
+     "m106",
+     "m108",
+     "m109",
+     "m110",
+     "m111",
+     "m113",
+     "m114",
+     "m115"
+    ]
+   },
+   "source_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "tied": [
+     "m1"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m43",
+     "m115",
+     "m38",
+     "m52",
+     "m104",
+     "m95",
+     "m16",
+     "m110",
+     "m81",
+     "m48",
+     "m69",
+     "m75",
+     "m108",
+     "m41",
+     "m94",
+     "m22",
+     "m47",
+     "m7",
+     "m32",
+     "m17"
+    ],
+    "region_scale_not_numbered": [],
+    "outside_count": 95
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "D1_T2_R0": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "conveyor belt",
+    "class": "conveyor",
+    "box": [
+     211.2,
+     280.8,
+     432.0,
+     777.6
+    ],
+    "how": "Qwen box (no stored object with enough overlap)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      731,
+      1076
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "destination_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.05,
+     0.21,
+     1687.37,
+     149.31
+    ],
+    "how": "class 'truck' -> fresh DINO + Qwen crop yes",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1302,
+      0,
+      1832,
+      294
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 15,
+    "inside": [
+     "cand_r4",
+     "cand_r2",
+     "cand_r3",
+     "cand_r5",
+     "cand_r1"
+    ],
+    "outside": [
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r2",
+     "cand_r3",
+     "cand_r4",
+     "cand_r5",
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m1",
+     "m27",
+     "m63",
+     "m66",
+     "m54",
+     "m58",
+     "m7",
+     "m78",
+     "m50",
+     "m84",
+     "m11",
+     "m70",
+     "m12",
+     "m85",
+     "m83",
+     "m82",
+     "m9",
+     "m45",
+     "m15",
+     "m5"
+    ],
+    "region_scale_not_numbered": [
+     "m67"
+    ],
+    "outside_count": 64
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "D1_T2_R1": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "conveyor",
+    "class": "conveyor",
+    "box": [
+     205.4,
+     280.8,
+     435.8,
+     783.0
+    ],
+    "how": "Qwen box (no stored object with enough overlap)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      738,
+      1080
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "destination_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.05,
+     0.21,
+     1687.37,
+     149.31
+    ],
+    "how": "class 'truck' -> fresh DINO + Qwen crop yes",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1302,
+      0,
+      1832,
+      294
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 15,
+    "inside": [
+     "cand_r4",
+     "cand_r2",
+     "cand_r3",
+     "cand_r5",
+     "cand_r1"
+    ],
+    "outside": [
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r2",
+     "cand_r3",
+     "cand_r4",
+     "cand_r5",
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m1",
+     "m27",
+     "m63",
+     "m66",
+     "m54",
+     "m58",
+     "m7",
+     "m78",
+     "m50",
+     "m84",
+     "m11",
+     "m70",
+     "m12",
+     "m85",
+     "m83",
+     "m82",
+     "m9",
+     "m45",
+     "m15",
+     "m5"
+    ],
+    "region_scale_not_numbered": [
+     "m67"
+    ],
+    "outside_count": 64
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "P4_R_R0": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.07,
+     0.19,
+     1687.53,
+     150.43
+    ],
+    "how": "class 'truck' -> fresh DINO + Qwen crop yes",
+    "relation": "near",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1302,
+      0,
+      1832,
+      295
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "destination_reference": {
+    "name": "conveyor belt",
+    "class": "conveyor",
+    "box": [
+     226.6,
+     289.4,
+     428.2,
+     777.6
+    ],
+    "how": "Qwen box (no stored object with enough overlap)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      722,
+      1071
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 20,
+    "inside": [
+     "cand_r14",
+     "cand_r20",
+     "cand_r7",
+     "cand_r12",
+     "cand_r18",
+     "cand_r6",
+     "cand_r8",
+     "cand_r19",
+     "cand_r13"
+    ],
+    "outside": [
+     "cand_r1",
+     "cand_r2",
+     "cand_r3",
+     "cand_r4",
+     "cand_r5",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r15",
+     "cand_r16",
+     "cand_r17"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r2",
+     "cand_r3",
+     "cand_r4",
+     "cand_r5",
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15",
+     "cand_r16",
+     "cand_r17",
+     "cand_r18",
+     "cand_r19",
+     "cand_r20"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m65",
+     "m16",
+     "m71",
+     "m15",
+     "m48",
+     "m49",
+     "m30",
+     "m85",
+     "m69",
+     "m28",
+     "m80",
+     "m78",
+     "m46",
+     "m19",
+     "m83",
+     "m64",
+     "m89",
+     "m77",
+     "m84",
+     "m33"
+    ],
+    "region_scale_not_numbered": [],
+    "outside_count": 69
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  },
+  "P4_R_R1": {
+   "interpretation_ok": true,
+   "source_reference": {
+    "name": "truck",
+    "class": "truck",
+    "box": [
+     1447.07,
+     0.19,
+     1687.53,
+     150.43
+    ],
+    "how": "class 'truck' -> fresh DINO + Qwen crop yes",
+    "relation": "near",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      1302,
+      0,
+      1832,
+      295
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "destination_reference": {
+    "name": "conveyor belt",
+    "class": "conveyor",
+    "box": [
+     224.6,
+     280.8,
+     422.4,
+     777.6
+    ],
+    "how": "Qwen box (no stored object with enough overlap)",
+    "relation": "next_to",
+    "region": {
+     "type": "vicinity",
+     "rect": [
+      0,
+      0,
+      721,
+      1076
+     ],
+     "rule": "v0.2 make_roi (ratio 0.6, min 120 px)"
+    }
+   },
+   "source_candidates": {
+    "pool": "red-cube candidates (retention)",
+    "n_pool": 20,
+    "inside": [
+     "cand_r14",
+     "cand_r20",
+     "cand_r7",
+     "cand_r12",
+     "cand_r18",
+     "cand_r6",
+     "cand_r8",
+     "cand_r19",
+     "cand_r13"
+    ],
+    "outside": [
+     "cand_r1",
+     "cand_r2",
+     "cand_r3",
+     "cand_r4",
+     "cand_r5",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r15",
+     "cand_r16",
+     "cand_r17"
+    ]
+   },
+   "source_C1": {
+    "status": "AMBIGUOUS",
+    "id": null,
+    "tied": [
+     "cand_r1",
+     "cand_r2",
+     "cand_r3",
+     "cand_r4",
+     "cand_r5",
+     "cand_r6",
+     "cand_r7",
+     "cand_r8",
+     "cand_r9",
+     "cand_r10",
+     "cand_r11",
+     "cand_r12",
+     "cand_r13",
+     "cand_r14",
+     "cand_r15",
+     "cand_r16",
+     "cand_r17",
+     "cand_r18",
+     "cand_r19",
+     "cand_r20"
+    ]
+   },
+   "destination_candidates": {
+    "inside": [
+     "m65",
+     "m16",
+     "m71",
+     "m15",
+     "m48",
+     "m49",
+     "m30",
+     "m85",
+     "m69",
+     "m28",
+     "m80",
+     "m78",
+     "m46",
+     "m19",
+     "m83",
+     "m64",
+     "m89",
+     "m77",
+     "m84",
+     "m33"
+    ],
+    "region_scale_not_numbered": [],
+    "outside_count": 69
+   },
+   "destination_C1": {
+    "status": "SELECTED",
+    "id": "m1",
+    "why": "highest detector score in the whole image (naive)"
+   }
+  }
+ },
+ "candidates_source": {
+  "U25070552": "stored E1 merged DINO candidates (Qwen + vocabulary phrases, full / conveyor ROI / area_5 ROI)",
+  "U26007129": "fresh DINO (vocabulary + interpretation nouns; full + reference ROIs), IoU merge",
+  "U24898553": "fresh DINO (vocabulary + interpretation nouns; full + reference ROIs), IoU merge"
+ }
+}

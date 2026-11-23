@@ -1,0 +1,219 @@
+{
+  "observed_objects": [
+    {
+      "label": "robot arm",
+      "bbox_2d": [
+        117,
+        260,
+        225,
+        430
+      ],
+      "visible_evidence": "white and purple robotic arm with a conveyor belt attached"
+    },
+    {
+      "label": "robot arm",
+      "bbox_2d": [
+        117,
+        520,
+        205,
+        700
+      ],
+      "visible_evidence": "white and purple robotic arm with a conveyor belt attached"
+    },
+    {
+      "label": "truck",
+      "bbox_2d": [
+        752,
+        0,
+        878,
+        140
+      ],
+      "visible_evidence": "white and black truck with a cargo bed"
+    },
+    {
+      "label": "conveyor belt",
+      "bbox_2d": [
+        117,
+        370,
+        205,
+        620
+      ],
+      "visible_evidence": "long white conveyor belt with purple and yellow components"
+    },
+    {
+      "label": "stack of boxes",
+      "bbox_2d": [
+        418,
+        394,
+        483,
+        540
+      ],
+      "visible_evidence": "stack of brown cardboard boxes on a yellow-bordered square"
+    },
+    {
+      "label": "orange cone",
+      "bbox_2d": [
+        483,
+        470,
+        502,
+        515
+      ],
+      "visible_evidence": "single orange traffic cone"
+    },
+    {
+      "label": "green lane",
+      "bbox_2d": [
+        305,
+        55,
+        555,
+        280
+      ],
+      "visible_evidence": "green path with white hand symbols and orange cones on either side"
+    },
+    {
+      "label": "loading zone",
+      "bbox_2d": [
+        615,
+        430,
+        960,
+        560
+      ],
+      "visible_evidence": "area with various containers and pallets, marked by yellow lines"
+    },
+    {
+      "label": "charging station",
+      "bbox_2d": [
+        665,
+        770,
+        800,
+        940
+      ],
+      "visible_evidence": "white square with lightning bolt symbol and green panels"
+    },
+    {
+      "label": "whiteboard",
+      "bbox_2d": [
+        345,
+        790,
+        455,
+        920
+      ],
+      "visible_evidence": "whiteboard with Korean text"
+    }
+  ],
+  "functional_areas": [
+    {
+      "id": "area_1",
+      "function_name": "production cell",
+      "bbox_2d": [
+        75,
+        260,
+        270,
+        730
+      ],
+      "observed_evidence": [
+        "robot arms",
+        "conveyor belt"
+      ],
+      "inference": "This area contains equipment for manufacturing or assembling goods, as indicated by the robotic arms and conveyor belt.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_2",
+      "function_name": "loading/unloading zone",
+      "bbox_2d": [
+        615,
+        430,
+        960,
+        560
+      ],
+      "observed_evidence": [
+        "containers on pallets",
+        "yellow boundary lines"
+      ],
+      "inference": "This area is designated for vehicle loading/unloading, as it contains goods and is marked with boundaries.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_3",
+      "function_name": "travel lane",
+      "bbox_2d": [
+        270,
+        260,
+        615,
+        730
+      ],
+      "observed_evidence": [
+        "black floor with yellow lines",
+        "no equipment or goods"
+      ],
+      "inference": "This is a clear path for movement, as it is empty and marked with travel lines.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_4",
+      "function_name": "truck parking area",
+      "bbox_2d": [
+        615,
+        0,
+        960,
+        280
+      ],
+      "observed_evidence": [
+        "truck",
+        "orange cones",
+        "white dashed lines"
+      ],
+      "inference": "This area is where the truck is parked, indicated by the vehicle and surrounding cones and markings.",
+      "confidence": "high"
+    },
+    {
+      "id": "area_5",
+      "function_name": "storage area",
+      "bbox_2d": [
+        418,
+        394,
+        483,
+        540
+      ],
+      "observed_evidence": [
+        "stack of boxes",
+        "yellow-bordered square"
+      ],
+      "inference": "This area contains stored goods, marked by the box stack and boundary, suggesting storage function.",
+      "confidence": "medium"
+    },
+    {
+      "id": "area_6",
+      "function_name": "charging station",
+      "bbox_2d": [
+        665,
+        770,
+        800,
+        940
+      ],
+      "observed_evidence": [
+        "lightning bolt symbol",
+        "green panels"
+      ],
+      "inference": "This area is designated for charging equipment, as indicated by the symbol and panels.",
+      "confidence": "high"
+    }
+  ],
+  "task_analysis": {
+    "place_needed_for_task": "loading/unloading zone for the truck",
+    "decision": "proposed",
+    "destination_area_id": "area_2",
+    "reason": "The instruction requires placing a red cube from the conveyor belt to the truck's unloading area, which is best identified as the zone with containers and pallets adjacent to the truck's parking area."
+  },
+  "unknown_from_image": [
+    "The location of the red cube",
+    "The exact position of the conveyor belt's output point",
+    "Whether the truck is currently in the loading/unloading zone"
+  ],
+  "physical_conditions_to_verify": [
+    "Whether the red cube is present and on the conveyor belt",
+    "Whether the truck is parked in the designated loading/unloading zone",
+    "Whether the area is clear for unloading"
+  ]
+}

@@ -1,0 +1,89 @@
+frame_id: map
+condition: m2.0_reduced
+driving_status: 'NOT_FOR_DRIVING: margin below the position uncertainty'
+note: yaw = body heading (gripper side), not the movement direction; Nav2 goals make
+  Nav2 plan its own path, not follow path_*.csv
+path_A:
+- kind: start
+  index: 0
+  x_m: 2.95
+  y_m: 0.55
+  yaw_deg: -178.2
+  seq: 0
+  yaw_rad: -3.110177
+- kind: rotate_in_place
+  index: 0
+  x_m: 2.95
+  y_m: 0.55
+  yaw_deg: 180.0
+  direction: cw
+  seq: 1
+  yaw_rad: 3.141593
+- kind: turn
+  index: 106
+  x_m: 0.83
+  y_m: 0.55
+  yaw_deg: 180.0
+  seq: 2
+  yaw_rad: 3.141593
+- kind: goal
+  index: 137
+  x_m: 0.83
+  y_m: 1.17
+  yaw_deg: 180.0
+  seq: 3
+  yaw_rad: 3.141593
+path_B:
+- kind: start
+  index: 0
+  x_m: 0.83
+  y_m: 1.17
+  yaw_deg: 180.0
+  seq: 0
+  yaw_rad: 3.141593
+- kind: turn
+  index: 2
+  x_m: 0.83
+  y_m: 1.21
+  yaw_deg: 180.0
+  seq: 1
+  yaw_rad: 3.141593
+- kind: rotation_point
+  index: 50
+  x_m: 1.79
+  y_m: 1.21
+  yaw_deg: 180.0
+  seq: 2
+  yaw_rad: 3.141593
+- kind: rotate_in_place
+  index: 50
+  x_m: 1.79
+  y_m: 1.21
+  yaw_deg: 90.0
+  direction: cw
+  seq: 3
+  yaw_rad: 1.570796
+- kind: turn
+  index: 52
+  x_m: 1.79
+  y_m: 1.25
+  yaw_deg: 90.0
+  seq: 4
+  yaw_rad: 1.570796
+- kind: goal
+  index: 109
+  x_m: 2.93
+  y_m: 1.25
+  yaw_deg: 90.0
+  seq: 5
+  yaw_rad: 1.570796
+grasp_stop_pose:
+  x_m: 0.83
+  y_m: 1.17
+  yaw_deg: 180.0
+  status: UNVERIFIED
+place_stop_pose:
+  x_m: 2.93
+  y_m: 1.25
+  yaw_deg: 90.0
+  status: UNVERIFIED

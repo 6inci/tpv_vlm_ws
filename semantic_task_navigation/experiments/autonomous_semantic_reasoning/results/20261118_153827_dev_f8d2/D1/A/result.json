@@ -1,0 +1,255 @@
+{
+  "image_id": "D1",
+  "image_role": "dev",
+  "condition": "A",
+  "prompt_version": "v2",
+  "prompt_sha256": "dfdb7a7dc7d983d78b4c6cd36c1f7625a8b42a72b90b4440c82f543b3f731a3b",
+  "image_sha256": "7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d",
+  "image_file": "data/images/undistorted_26007129092710.png",
+  "model_input_audit": {
+    "worker_call_keys": [
+      "image_path",
+      "max_new_tokens",
+      "prompt"
+    ],
+    "n_images": 1,
+    "prompt_sha256": "dfdb7a7dc7d983d78b4c6cd36c1f7625a8b42a72b90b4440c82f543b3f731a3b"
+  },
+  "call": {
+    "latency_s": 41.157,
+    "n_input_tokens": 2716,
+    "n_output_tokens": 1363,
+    "hit_max_new_tokens": false,
+    "peak_allocated_gib": 8.982,
+    "image_size": [
+      1920,
+      1080
+    ],
+    "max_new_tokens": 2400,
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17"
+  },
+  "status": "OK",
+  "error": null,
+  "consistency_issues": [],
+  "structured": {
+    "observed_objects": [
+      {
+        "label": "robot arm",
+        "bbox_2d": [
+          117,
+          260,
+          225,
+          430
+        ],
+        "visible_evidence": "white and purple robotic arm with a conveyor belt attachment"
+      },
+      {
+        "label": "robot arm",
+        "bbox_2d": [
+          117,
+          520,
+          205,
+          700
+        ],
+        "visible_evidence": "white and purple robotic arm with a conveyor belt attachment"
+      },
+      {
+        "label": "robot arm",
+        "bbox_2d": [
+          218,
+          20,
+          300,
+          160
+        ],
+        "visible_evidence": "white robotic arm with a gripper"
+      },
+      {
+        "label": "robot arm",
+        "bbox_2d": [
+          337,
+          15,
+          425,
+          150
+        ],
+        "visible_evidence": "white robotic arm with a gripper"
+      },
+      {
+        "label": "truck",
+        "bbox_2d": [
+          752,
+          0,
+          878,
+          140
+        ],
+        "visible_evidence": "white and black truck with a cargo bed"
+      },
+      {
+        "label": "conveyor belt",
+        "bbox_2d": [
+          117,
+          350,
+          205,
+          600
+        ],
+        "visible_evidence": "long white conveyor belt with purple and yellow components"
+      },
+      {
+        "label": "stack of boxes",
+        "bbox_2d": [
+          418,
+          390,
+          483,
+          540
+        ],
+        "visible_evidence": "stack of brown cardboard boxes on a yellow-bordered platform"
+      },
+      {
+        "label": "cones",
+        "bbox_2d": [
+          665,
+          60,
+          895,
+          270
+        ],
+        "visible_evidence": "orange traffic cones placed along a road"
+      },
+      {
+        "label": "loading dock",
+        "bbox_2d": [
+          445,
+          30,
+          605,
+          160
+        ],
+        "visible_evidence": "two green-framed loading docks with gray roofs"
+      },
+      {
+        "label": "battery charging station",
+        "bbox_2d": [
+          665,
+          770,
+          800,
+          940
+        ],
+        "visible_evidence": "white square area with a lightning bolt symbol"
+      }
+    ],
+    "functional_areas": [
+      {
+        "id": "area_1",
+        "function_name": "production zone",
+        "bbox_2d": [
+          75,
+          260,
+          265,
+          730
+        ],
+        "observed_evidence": [
+          "conveyor belt",
+          "robot arms",
+          "stack of boxes"
+        ],
+        "inference": "This area contains machinery for producing and moving items, likely where the red cubes are generated.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_2",
+        "function_name": "unloading zone",
+        "bbox_2d": [
+          752,
+          0,
+          878,
+          140
+        ],
+        "observed_evidence": [
+          "truck"
+        ],
+        "inference": "The truck is parked here, indicating this is the designated location for unloading goods.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_3",
+        "function_name": "storage area",
+        "bbox_2d": [
+          615,
+          430,
+          960,
+          730
+        ],
+        "observed_evidence": [
+          "stacks of barrels",
+          "palettes with containers",
+          "robotic vehicle"
+        ],
+        "inference": "This area contains various storage units and a robotic vehicle, suggesting it is used for holding and moving goods.",
+        "confidence": "medium"
+      },
+      {
+        "id": "area_4",
+        "function_name": "loading dock area",
+        "bbox_2d": [
+          445,
+          30,
+          605,
+          160
+        ],
+        "observed_evidence": [
+          "loading docks",
+          "green pathway with white symbols"
+        ],
+        "inference": "This area is designated for loading/unloading goods with the presence of loading docks and a marked pathway.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_5",
+        "function_name": "charging station",
+        "bbox_2d": [
+          665,
+          770,
+          800,
+          940
+        ],
+        "observed_evidence": [
+          "lightning bolt symbol"
+        ],
+        "inference": "The symbol indicates this is a designated area for charging robotic equipment.",
+        "confidence": "high"
+      },
+      {
+        "id": "area_6",
+        "function_name": "central work area",
+        "bbox_2d": [
+          265,
+          260,
+          615,
+          730
+        ],
+        "observed_evidence": [
+          "stack of boxes",
+          "cones",
+          "yellow-bordered zones"
+        ],
+        "inference": "This is a large open area with central goods and safety markers, possibly for movement or staging.",
+        "confidence": "medium"
+      }
+    ],
+    "task_analysis": {
+      "place_needed_for_task": "unloading location for the truck",
+      "decision": "proposed",
+      "destination_area_id": "area_2",
+      "reason": "The instruction specifies placing the red cubes at the truck's unloading zone, which is clearly marked by the truck's position and surrounding cones."
+    },
+    "unknown_from_image": [
+      "The location of the red cubes on the conveyor belt",
+      "Whether the red cubes are currently being produced or transported",
+      "The exact size or shape of the red cubes"
+    ],
+    "physical_conditions_to_verify": [
+      "Whether the red cubes are physically present and accessible on the conveyor belt",
+      "Whether the truck is currently stationary and ready to receive the cubes",
+      "Whether the conveyor belt is actively moving or paused"
+    ]
+  },
+  "decision": "proposed"
+}

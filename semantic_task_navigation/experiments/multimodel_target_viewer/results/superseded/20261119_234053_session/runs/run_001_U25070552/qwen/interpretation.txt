@@ -1,0 +1,48 @@
+{
+  "purpose": "Move a red cube from conveyor area to truck loading zone",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [120, 300, 230, 500]
+  },
+  "source_relation": "on",
+  "destination_meaning": "Truck loading zone",
+  "destination_reference": {
+    "name_en": "truck",
+    "bbox_2d": [740, 0, 880, 150],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Robot driving area",
+      "visual_evidence": ["yellow outer boundary line", "black floor"],
+      "bbox_2d": [240, 270, 700, 700],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Conveyor and robot arm workcell",
+      "visual_evidence": ["white inner boundary", "conveyor belt", "robot arm"],
+      "bbox_2d": [100, 260, 270, 700],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Truck loading zone",
+      "visual_evidence": ["white dotted line", "truck", "orange cones"],
+      "bbox_2d": [620, 0, 880, 270],
+      "robot_body_access": "unknown"
+    },
+    {
+      "description": "Pedestrian walkway",
+      "visual_evidence": ["green floor", "footprint symbols"],
+      "bbox_2d": [300, 50, 560, 270],
+      "robot_body_access": "forbidden"
+    }
+  ],
+  "uncertainty": [
+    "Exact location of red cube not visible",
+    "Robot's reach capability not confirmed"
+  ]
+}

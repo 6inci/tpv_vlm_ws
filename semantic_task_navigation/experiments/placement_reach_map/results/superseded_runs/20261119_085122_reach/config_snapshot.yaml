@@ -1,0 +1,19 @@
+# Placement reach map on E1 (offline; no model, no GPU, no hardware). Declared BEFORE the run. Nothing existing is modified.
+# Provisional definition of placement (user, 2026-11-19): empty FLOOR inside the dashed loading bay (a virtual staging scenario, not loading the truck bed).
+# No placement success or physical feasibility is claimed.
+experiment_id: placement_reach_map
+results_dir: results
+route_run: ../task_route_integration/results/20261119_082047_route     # pick-up approach point (start of path B) and the earlier path B
+placement_candidate:
+  source: "stored bay localization: bay polygon minus the detected truck/cone boxes (free_floor margin_0px)"
+  status: "GEOMETRY_ONLY (not visually confirmed as empty; boxes of tall objects are not floor footprints)"
+robot:
+  collision_body: "35 x 24 cm + floor-transform margin per side (from the run), fixed heading"
+  gap_body: "nominal 35 x 24 cm (the gap is measured from the nominal body edge, rounded so the body is never larger)"
+  headings:
+    primary: [0]            # heading of the selected route plan; no rotation needed
+    with_rotation: [0, 90]  # only if a heading change were possible: in-place rotation is NOT verified (information)
+# R = hypothetical distance a manipulator would have to bridge from the BODY EDGE to the placement point.
+# It is NOT the gripper reach: mount position, direction and height of the gripper are unknown.
+R_cm: [0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 70, 80]
+states: [PLACEMENT_CANDIDATE_GEOMETRIC, PLACEMENT_UNVERIFIED, NO_VALID_PLACEMENT]

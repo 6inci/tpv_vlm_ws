@@ -1,0 +1,149 @@
+[
+ {
+  "stage": "interpretation",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "task_context_v1",
+  "prompt_sha256": "1cad753189ffc9b513901b1a4ec6f3b8bbfd9f46842309bbe166fb691345e3a5",
+  "image_path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "image_size": [
+   1920,
+   1080
+  ],
+  "n_input_tokens": 2720,
+  "n_output_tokens": 491,
+  "hit_max_new_tokens": false,
+  "latency_s": 19.424,
+  "wall_s": 19.55,
+  "peak_vram_gib": 7.116,
+  "raw_response": "{\n  \"purpose\": \"Move an object from the truck unloading area to the conveyor belt area.\",\n  \"source_object\": {\n    \"name_en\": \"stacked cardboard boxes\"\n  },\n  \"source_reference\": {\n    \"name_en\": \"truck\",\n    \"bbox_2d\": [748, 0, 880, 148]\n  },\n  \"source_relation\": \"on\",\n  \"destination_meaning\": \"Conveyor belt area\",\n  \"destination_reference\": {\n    \"name_en\": \"conveyor belt\",\n    \"bbox_2d\": [115, 298, 248, 448],\n    \"inferred\": true\n  },\n  \"destination_relation\": \"next_to\",\n  \"zones_seen\": [\n    {\n      \"description\": \"Truck unloading zone\",\n      \"visual_evidence\": [\"truck\", \"dashed white line\", \"orange cones\"],\n      \"bbox_2d\": [620, 0, 880, 200],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Conveyor belt area\",\n      \"visual_evidence\": [\"conveyor belt\", \"white boundary\", \"robot arm\"],\n      \"bbox_2d\": [115, 298, 248, 448],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Robot arm workcell\",\n      \"visual_evidence\": [\"robot arm\", \"white boundary\", \"conveyor belt\"],\n      \"bbox_2d\": [115, 298, 248, 448],\n      \"robot_body_access\": \"forbidden\"\n    },\n    {\n      \"description\": \"Main robot driving area\",\n      \"visual_evidence\": [\"yellow boundary\", \"black floor\"],\n      \"bbox_2d\": [0, 0, 1000, 1000],\n      \"robot_body_access\": \"allowed\"\n    }\n  ],\n  \"uncertainty\": [\n    \"The exact location of the conveyor belt is inferred from context, not explicitly marked.\",\n    \"The gripper reach is unknown, so the robot's ability to move the object directly is uncertain.\"\n  ]\n}"
+ },
+ {
+  "stage": "dino_full_run_010_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/Pictures/Calibration/5calibration.png",
+  "image_sha256": "6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605",
+  "prompts": [
+   "truck",
+   "conveyor belt"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 55,
+  "wall_s": 0.6,
+  "peak_vram_gib": 1.969
+ },
+ {
+  "stage": "dino_roi_U25070552_conveyor_run_010_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/photos/U25070552_inputs/roi_conveyor.png",
+  "image_sha256": "defc2ab0a73f92ac722b99b7bd51592e44eb644a1a4c0045b066417b65423ce8",
+  "prompts": [
+   "truck",
+   "conveyor belt"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 50,
+  "wall_s": 0.57,
+  "peak_vram_gib": 1.838
+ },
+ {
+  "stage": "dino_roi_U25070552_truck_run_010_U25070552",
+  "model": "IDEA-Research/grounding-dino-tiny",
+  "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/photos/U25070552_inputs/roi_truck.png",
+  "image_sha256": "11df1597a6db75dbdc72ea76e6c09cdbb35b5e345e9c171813bba834852b6864",
+  "prompts": [
+   "truck",
+   "conveyor belt"
+  ],
+  "thresholds": {
+   "box": 0.1,
+   "text": 0.1
+  },
+  "n_boxes": 19,
+  "wall_s": 0.57,
+  "peak_vram_gib": 1.958
+ },
+ {
+  "stage": "source_1",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_source_roles_v1",
+  "prompt_sha256": "deba37df43e7651e3d391d4e39466ad50b948d52e66a67e049a4151c0f000d3c",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_010_U25070552/inputs/source_1.png",
+  "image_sha256": "b504a5ca5ba8318477f2f36171363c0d92dd7511d0cd4cdb6457058f60bb08e4",
+  "image_size": [
+   964,
+   596
+  ],
+  "n_input_tokens": 1324,
+  "n_output_tokens": 294,
+  "hit_max_new_tokens": false,
+  "latency_s": 11.086,
+  "wall_s": 11.15,
+  "peak_vram_gib": 6.715,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"a truck cargo bed\"],\n      \"role\": \"other\",\n      \"reason\": \"This is part of the truck, not a stack of boxes to move.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"a truck\"],\n      \"role\": \"other\",\n      \"reason\": \"This is the truck cab, not the stack of boxes.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"a truck\", \"a truck cargo bed\"],\n      \"role\": \"other\",\n      \"reason\": \"This is the truck's rearview mirror and cab area, not the boxes.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"a truck cargo bed\", \"a small pallet\"],\n      \"role\": \"object_to_move\",\n      \"reason\": \"The stacked cardboard boxes are located on the pallet in this region.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\"a truck cargo bed\"],\n      \"role\": \"other\",\n      \"reason\": \"This is the truck bed, not the stack of boxes.\"\n    }\n  ],\n  \"object_to_move_id\": 4,\n  \"reason\": \"Only region 4 contains the stacked cardboard boxes as identified by the model's top score for 'a small pallet' and visual context.\"\n}"
+ },
+ {
+  "stage": "siglip_images_destination",
+  "model": "google/siglip2-base-patch16-384",
+  "commit_hash": "f775b65a79762255128c981547af89addcfe0f88",
+  "n_images": 2,
+  "seconds": 0.07,
+  "device": "cuda:0",
+  "peak_vram_gib": 7.022
+ },
+ {
+  "stage": "destination_1",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_destination_roles_v1",
+  "prompt_sha256": "210ffbf611047a78bfc6f8717968be540f0b9eeb2ec0a539a4640c157b460fd7",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_010_U25070552/inputs/destination_1.png",
+  "image_sha256": "2318decc3616dae037d5650acfa1c4b8a7db4296456921a0cf549de236f19087",
+  "image_size": [
+   1600,
+   1581
+  ],
+  "n_input_tokens": 3798,
+  "n_output_tokens": 1371,
+  "hit_max_new_tokens": false,
+  "latency_s": 51.166,
+  "wall_s": 51.3,
+  "peak_vram_gib": 7.375,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"a production line with a conveyor and robot arms\", \"a floor marking\", \"a robot arm\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains conveyor and robot arms, not a placement zone.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"a robot arm\", \"a floor marking\", \"a production line with a conveyor and robot arms\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and production line, not a placement zone.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"a robot arm\", \"a production line with a conveyor and robot arms\", \"a floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and production line, not a placement zone.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"a production line with a conveyor and robot arms\", \"a floor marking\", \"a robot arm\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains conveyor and robot arms, not a placement zone.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\"a robot arm\", \"a small pallet\", \"a production line with a conveyor and robot arms\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and production line, not a placement zone.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\"a robot arm\", \"a metal grate\", \"a conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains conveyor belt and robot arm, not a placement zone.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\"a robot arm\", \"a mobile robot\", \"a production line with a conveyor and robot arms\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and production line, not a placement zone.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\"a robot arm\", \"a floor marking\", \"a mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and mobile robot, not a placement zone.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\"an orange object\", \"a robot arm\", \"a cart\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and cart, not a placement zone.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\"a stack of boxes\", \"a robot arm\", \"a conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains conveyor belt and robot arm, not a placement zone.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\"a red cube\", \"an orange object\", \"a robot arm\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm, not a placement zone.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\"a robot arm\", \"a production line with a conveyor and robot arms\", \"a mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and production line, not a placement zone.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\"an orange object\", \"a robot arm\", \"a mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and mobile robot, not a placement zone.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a barrel\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains traffic cone and barrel, not a placement zone.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\"an orange traffic cone\", \"an orange object\", \"a barrel\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains traffic cone and barrel, not a placement zone.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\"a green pedestrian walkway\", \"a floor marking\", \"a conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains pedestrian walkway and conveyor belt, not a placement zone.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\"a floor marking\", \"an orange object\", \"a conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains conveyor belt and floor marking, not a placement zone.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\"a production line with a conveyor and robot arms\", \"a mobile robot\", \"a robot arm\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and production line, not a placement zone.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\"a robot arm\", \"a mobile robot\", \"a floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and mobile robot, not a placement zone.\"\n    },\n    {\n      \"id\": 20,\n      \"appearance\": [\"a robot arm\", \"a floor marking\", \"a production line with a conveyor and robot arms\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Contains robot arm and production line, not a placement zone.\"\n    }\n  ],\n  \"best_destination_id\": null,\n  \"reason\": \"No suitable placement zone found among candidates.\"\n}"
+ },
+ {
+  "stage": "destination_2",
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "commit_hash": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "quantization": "nf4",
+  "prompt_id": "mm_destination_roles_v1",
+  "prompt_sha256": "eda7217513dafc29b0502e6460f9adcef46dffc8969f665da9dc48fe5961e059",
+  "image_path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_010_U25070552/inputs/destination_2.png",
+  "image_sha256": "d603bb5c546b3d46b65b34e4fbada013b863c7f891823fc5fb90d914c3eccbb1",
+  "image_size": [
+   1141,
+   1600
+  ],
+  "n_input_tokens": 3084,
+  "n_output_tokens": 1232,
+  "hit_max_new_tokens": false,
+  "latency_s": 45.555,
+  "wall_s": 45.67,
+  "peak_vram_gib": 7.177,
+  "raw_response": "{\n  \"candidates\": [\n    {\n      \"id\": 1,\n      \"appearance\": [\"empty floor area\", \"floor marking\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"suitable\",\n      \"reason\": \"Empty floor within robot travel zone, adjacent to conveyor belt.\"\n    },\n    {\n      \"id\": 2,\n      \"appearance\": [\"conveyor belt\", \"robot arm\", \"floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by conveyor and robot arm, not a placement zone.\"\n    },\n    {\n      \"id\": 3,\n      \"appearance\": [\"floor marking\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"Empty floor marking zone, but not directly adjacent to conveyor.\"\n    },\n    {\n      \"id\": 4,\n      \"appearance\": [\"robot arm\", \"mobile robot\", \"conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by robot arm and mobile robot, not a placement zone.\"\n    },\n    {\n      \"id\": 5,\n      \"appearance\": [\"robot arm\", \"conveyor belt\", \"floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by robot arm and conveyor, not a placement zone.\"\n    },\n    {\n      \"id\": 6,\n      \"appearance\": [\"conveyor belt\", \"robot arm\", \"mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by conveyor and robot arm, not a placement zone.\"\n    },\n    {\n      \"id\": 7,\n      \"appearance\": [\"robot arm\", \"conveyor belt\", \"floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by robot arm and conveyor, not a placement zone.\"\n    },\n    {\n      \"id\": 8,\n      \"appearance\": [\"metal grate\", \"robot arm\", \"red cube\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by metal grate and red cube, not a placement zone.\"\n    },\n    {\n      \"id\": 9,\n      \"appearance\": [\"orange object\", \"red cube\", \"metal grate\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by orange object and red cube, not a placement zone.\"\n    },\n    {\n      \"id\": 10,\n      \"appearance\": [\"robot arm\", \"truck\", \"mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by robot arm and truck, not a placement zone.\"\n    },\n    {\n      \"id\": 11,\n      \"appearance\": [\"production line\", \"floor marking\", \"empty floor area\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"possible\",\n      \"reason\": \"Empty floor area within robot travel zone, adjacent to conveyor.\"\n    },\n    {\n      \"id\": 12,\n      \"appearance\": [\"robot arm\", \"mobile robot\", \"conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by robot arm and mobile robot, not a placement zone.\"\n    },\n    {\n      \"id\": 13,\n      \"appearance\": [\"robot arm\", \"orange object\", \"conveyor belt\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by robot arm and orange object, not a placement zone.\"\n    },\n    {\n      \"id\": 14,\n      \"appearance\": [\"robot arm\", \"mobile robot\", \"floor marking\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by robot arm and mobile robot, not a placement zone.\"\n    },\n    {\n      \"id\": 15,\n      \"appearance\": [\"mobile robot\", \"conveyor belt\", \"small pallet\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by mobile robot and small pallet, not a placement zone.\"\n    },\n    {\n      \"id\": 16,\n      \"appearance\": [\"production line\", \"conveyor belt\", \"mobile robot\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by production line and mobile robot, not a placement zone.\"\n    },\n    {\n      \"id\": 17,\n      \"appearance\": [\"green pedestrian walkway\", \"metal grate\", \"conveyor belt\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Pedestrian walkway, not for robot placement.\"\n    },\n    {\n      \"id\": 18,\n      \"appearance\": [\"whiteboard\", \"floor marking\", \"manhole cover\"],\n      \"load_state\": \"empty\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Whiteboard and manhole cover area, not for robot placement.\"\n    },\n    {\n      \"id\": 19,\n      \"appearance\": [\"whiteboard\", \"manhole cover\", \"cardboard box\"],\n      \"load_state\": \"occupied\",\n      \"placement_role\": \"unsuitable\",\n      \"reason\": \"Occupied by whiteboard and manhole cover, not a placement zone.\"\n    }\n  ],\n  \"best_destination_id\": 1,\n  \"reason\": \"Empty floor area within robot travel zone, adjacent to conveyor belt.\"\n}"
+ }
+]

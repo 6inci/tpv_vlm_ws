@@ -1,0 +1,96 @@
+{
+  "case_id": "valid_ko_red_cup_zone_a",
+  "category": "valid",
+  "core_metric": true,
+  "run": 3,
+  "instruction": "빨간 컵을 A구역으로 옮겨",
+  "raw_model_output": "{\"action_phrase\":\"옮겨\",\"target_phrase\":\"빨간 컵\",\"destination_phrase\":\"A구역\"}",
+  "parsed": {
+    "action_phrase": "옮겨",
+    "target_phrase": "빨간 컵",
+    "destination_phrase": "A구역"
+  },
+  "validated": {
+    "status": "VALID_TASK",
+    "raw_instruction": "빨간 컵을 A구역으로 옮겨",
+    "action": {
+      "surface_phrase": "옮겨",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target": {
+      "surface_phrase": "빨간 컵",
+      "grounding_phrase": "red cup",
+      "canonicalization_status": "KNOWN_ALIAS"
+    },
+    "destination": {
+      "surface_phrase": "A구역",
+      "zone_id": "zone_A"
+    }
+  },
+  "integrated": {
+    "status": "VALID_TASK",
+    "language_status": "VALID_TASK",
+    "raw_instruction": "빨간 컵을 A구역으로 옮겨",
+    "action": {
+      "surface_phrase": "옮겨",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target": {
+      "surface_phrase": "빨간 컵",
+      "grounding_phrase": "red cup",
+      "canonicalization_status": "KNOWN_ALIAS",
+      "grounding": {
+        "status": "TARGET_FOUND",
+        "detected_label": "red cup",
+        "world_coordinate": {
+          "x": 0.26924043893814087,
+          "y": 0.6576284766197205,
+          "unit": "m",
+          "frame": "LEGACY_WORKSPACE_COORDINATE"
+        },
+        "active_workspace_status": "INSIDE",
+        "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/red_cup_run01.json"
+      }
+    },
+    "destination": {
+      "surface_phrase": "A구역",
+      "zone_id": "zone_A",
+      "center": [
+        0.3,
+        0.3
+      ],
+      "polygon": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.6,
+          0.0
+        ],
+        [
+          0.6,
+          0.6
+        ],
+        [
+          0.0,
+          0.6
+        ]
+      ],
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "unit": "m"
+    },
+    "feasibility_status": "NOT_EVALUATED",
+    "path_status": "NOT_RUN"
+  },
+  "inference_sec": 6.869362690002163,
+  "expected": {
+    "status": "VALID_TASK",
+    "action": "reposition",
+    "target_phrase": "red cup",
+    "zone_id": "zone_A"
+  },
+  "matches_expected": true
+}

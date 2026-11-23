@@ -1,0 +1,160 @@
+{
+  "regions": [
+    {
+      "id": "storage_area_1",
+      "label": "Storage Area",
+      "supporting_object_ids": [
+        "shelf_1",
+        "shelf_2"
+      ],
+      "spatial_reason": "Two red and blue shelving units filled with boxes and containers, positioned in the upper part of the workspace.",
+      "polygon": [
+        [315, 67],
+        [444, 67],
+        [444, 290],
+        [315, 290]
+      ],
+      "certainty": "high"
+    },
+    {
+      "id": "work_station_1",
+      "label": "Work Station",
+      "supporting_object_ids": [
+        "desk_1",
+        "chair_1"
+      ],
+      "spatial_reason": "A desk with a laptop, tools, and a chair, located near the shelving units.",
+      "polygon": [
+        [589, 118],
+        [715, 118],
+        [715, 290],
+        [589, 290]
+      ],
+      "certainty": "high"
+    },
+    {
+      "id": "loading_area_1",
+      "label": "Loading Area",
+      "supporting_object_ids": [
+        "truck_1",
+        "pallet_3"
+      ],
+      "spatial_reason": "A white truck with a cargo bed and a pallet of boxes nearby, indicating a loading/unloading zone.",
+      "polygon": [
+        [728, 158],
+        [882, 158],
+        [882, 320],
+        [728, 320]
+      ],
+      "certainty": "high"
+    },
+    {
+      "id": "material_area_1",
+      "label": "Material Area",
+      "supporting_object_ids": [
+        "pallet_1",
+        "pallet_2",
+        "pallet_3",
+        "pallet_4",
+        "barrel_1",
+        "barrel_2",
+        "barrel_3",
+        "barrel_4"
+      ],
+      "spatial_reason": "Multiple pallets with boxes, barrels, and a cart, indicating areas for material storage or transport.",
+      "polygon": [
+        [255, 690],
+        [895, 690],
+        [895, 920],
+        [255, 920]
+      ],
+      "certainty": "high"
+    },
+    {
+      "id": "drop_zone_1",
+      "label": "Drop Zone",
+      "supporting_object_ids": [
+        "cart_1"
+      ],
+      "spatial_reason": "A blue cart with a box on it, positioned near the material area, suggesting a drop-off point.",
+      "polygon": [
+        [743, 560],
+        [875, 560],
+        [875, 710],
+        [743, 710]
+      ],
+      "certainty": "medium"
+    },
+    {
+      "id": "no_go_zone_1",
+      "label": "No-Go Zone",
+      "supporting_object_ids": [
+        "fence_1"
+      ],
+      "spatial_reason": "A red safety fence enclosing a section of the workspace, indicating restricted access.",
+      "polygon": [
+        [129, 198],
+        [245, 198],
+        [245, 560],
+        [129, 560]
+      ],
+      "certainty": "high"
+    }
+  ],
+  "relations": [
+    {
+      "subject_id": "shelf_1",
+      "predicate": "adjacent_to",
+      "object_id": "shelf_2",
+      "certainty": "high"
+    },
+    {
+      "subject_id": "shelf_1",
+      "predicate": "left_of",
+      "object_id": "shelf_2",
+      "certainty": "high"
+    },
+    {
+      "subject_id": "desk_1",
+      "predicate": "right_of",
+      "object_id": "shelf_2",
+      "certainty": "high"
+    },
+    {
+      "subject_id": "truck_1",
+      "predicate": "right_of",
+      "object_id": "desk_1",
+      "certainty": "high"
+    },
+    {
+      "subject_id": "pallet_1",
+      "predicate": "left_of",
+      "object_id": "pallet_2",
+      "certainty": "high"
+    },
+    {
+      "subject_id": "pallet_2",
+      "predicate": "left_of",
+      "object_id": "pallet_3",
+      "certainty": "high"
+    },
+    {
+      "subject_id": "fence_1",
+      "predicate": "left_of",
+      "object_id": "shelf_1",
+      "certainty": "high"
+    },
+    {
+      "subject_id": "cart_1",
+      "predicate": "right_of",
+      "object_id": "pallet_4",
+      "certainty": "medium"
+    },
+    {
+      "subject_id": "barrel_1",
+      "predicate": "right_of",
+      "object_id": "barrel_2",
+      "certainty": "high"
+    }
+  ]
+}

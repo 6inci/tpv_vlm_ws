@@ -1,0 +1,67 @@
+{
+  "track": "TRACK_B_DEVELOPMENT_POSITIVE",
+  "evidence_class": "DOCUMENTED_DEVELOPMENT_FIXTURE",
+  "camera_vlm_derived": false,
+  "fixture": {
+    "scenario_id": "D2",
+    "event_id": "D2_add_on_path",
+    "obstacle_id": "dynamic_box_02"
+  },
+  "path": {
+    "sha256": "17646cb8b5893a1c099c67ea2700c4fcd0a9367d13b1d83a19e705f2d19dcdc7",
+    "validity": "BLOCKED"
+  },
+  "persistence": {
+    "classification": "PERSISTENT_BLOCKING",
+    "decision": "REPLAN_REQUIRED",
+    "decision_source": "EXISTING_STEP19_POLICY"
+  },
+  "replanning": {
+    "implementation": "EXISTING_STEP18",
+    "invocations": 1,
+    "current_robot_pose": {
+      "path_id": "D2_preserved_current_path",
+      "path_revision": 0,
+      "waypoint_index": 20,
+      "grid": [
+        16,
+        30
+      ],
+      "x": 0.61,
+      "y": 0.33
+    },
+    "goal": {
+      "x": 0.95,
+      "y": 1.5,
+      "status": "DEVELOPMENT_DEFINED"
+    },
+    "world_revision": 1,
+    "result": "REPLAN_SUCCESS"
+  },
+  "old_path": {
+    "waypoint_count": 90,
+    "length_m": 1.8462741699796958,
+    "revision": 0
+  },
+  "replacement_path": {
+    "path_id": "D2_path_r1",
+    "waypoint_count": 99,
+    "length_m": 2.092548339959391,
+    "revision": 1,
+    "validation": "VALID"
+  },
+  "artifact_references": {
+    "step27n": {
+      "path": "/home/binci/vlm_ws/results/controlled_navigation_path_effect/controlled_effect_comparison.json",
+      "sha256": "ac76b4ea5b6e92ae25fc786467fe3cc7c6c594a22ddc23fed93439a991d41e40"
+    },
+    "step28n": {
+      "path": "/home/binci/vlm_ws/results/path_block_persistence_integration/persistence_decision.json",
+      "sha256": "2d8322f641faec66195df9ebe383d9e6b7c8c30e8a30fc1c2af83b15bf5c60dd"
+    },
+    "step29n": {
+      "path": "/home/binci/vlm_ws/results/persistent_block_replanning_integration/step29n_summary.json",
+      "sha256": "5b7117c3429318154212424f18380e658447130782fa92d5f9559a592f371be5"
+    }
+  }
+}

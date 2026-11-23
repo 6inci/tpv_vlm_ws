@@ -1,0 +1,77 @@
+{
+  "purpose": "Move the red cube to an empty pallet",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": null,
+    "bbox_2d": null
+  },
+  "source_relation": "none",
+  "destination_meaning": "Empty pallet for placing the red cube",
+  "destination_reference": {
+    "name_en": "empty pallet",
+    "bbox_2d": [584, 804, 654, 904],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Green pedestrian walkway with footprints",
+      "visual_evidence": [
+        "green floor with footprints",
+        "no robot body allowed"
+      ],
+      "bbox_2d": [305, 58, 560, 280],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Yellow-bordered main robot travel area",
+      "visual_evidence": [
+        "yellow border",
+        "robot body allowed"
+      ],
+      "bbox_2d": [100, 270, 970, 950],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "White-bordered conveyor and robot arm workstation",
+      "visual_evidence": [
+        "white border",
+        "robot body forbidden"
+      ],
+      "bbox_2d": [100, 270, 260, 720],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Yellow-bordered cargo storage area",
+      "visual_evidence": [
+        "yellow border",
+        "robot body not allowed, only access"
+      ],
+      "bbox_2d": [615, 430, 950, 560],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Truck unloading zone",
+      "visual_evidence": [
+        "white truck",
+        "white dashed lines"
+      ],
+      "bbox_2d": [615, 0, 890, 270],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+        "orange cones",
+        "white and yellow lines"
+      ],
+      "bbox_2d": [100, 0, 970, 950],
+      "robot_body_access": "unknown"
+    }
+  ],
+  "uncertainty": [
+    "The red cube is not visible in the image, so its location is unknown."
+  ]
+}

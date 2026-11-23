@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T07:10:53+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "ROBOT_POSE_WAITING_FOR_MINIMAL_PHYSICAL_INPUT",
+  "observed_robot_marker": {
+    "marker_id": 0,
+    "detected": true,
+    "corners_raw_px": [[984, 867], [1060, 867], [1058, 919], [978, 920]],
+    "center_raw_px": [1020.0, 893.25],
+    "role": "ROBOT MARKER ID0",
+    "elevated": true,
+    "ground_plane_homography_projection_allowed": false,
+    "world_pose_computed": false
+  },
+  "available_evidence": {
+    "camera_intrinsics_and_distortion": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "current_ground_plane_homography": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/homography_current_session.json",
+    "camera_relative_pose_code_candidates": [
+      "/home/binci/camera_calibration_1920x1080/aruco_pose.py",
+      "/home/binci/camera_calibration_1920x1080/aruco_pose_id0.py"
+    ],
+    "configured_robot_footprint_m": {"length": 0.29, "width": 0.246},
+    "camera_relative_pose_executed_in_this_task": false
+  },
+  "evidence_conflicts_and_gaps": {
+    "id0_black_square_side_candidates_m": [0.175, 0.187, 0.188],
+    "id0_black_square_side_status": "CONFLICT_UNRESOLVED",
+    "validated_marker_frame_to_base_link_rigid_transform": "MISSING",
+    "validated_current_camera_to_world_6dof_extrinsic_or_equivalent_derivation": "MISSING",
+    "world_yaw_and_robot_forward_axis_convention": "MISSING"
+  },
+  "required_method_after_inputs_exist": [
+    "Estimate ID0 pose in the calibrated camera frame with solvePnP using the confirmed physical marker side.",
+    "Transform the marker pose into GEOMETRY_SESSION_02_TILE_GRID_WORLD using a validated current camera-to-world relation.",
+    "Compose the measured marker-frame-to-base_link rigid transform and apply the explicit yaw convention."
+  ],
+  "minimum_physical_or_frame_definition_input_needed": [
+    "Confirm the ID0 black-square physical side length, resolving 0.175 m versus repository 0.187/0.188 m candidates.",
+    "Measure/define the rigid transform from the ID0 marker frame to base_link, including marker center offset/height and axis alignment.",
+    "Define which ID0 marker axis is robot forward and the positive world-yaw convention."
+  ],
+  "current_world_extrinsic_requirement": "A validated current camera-to-world 6DoF relation (or a documented, validated derivation from existing intrinsics plus plane geometry) is also required before an elevated marker pose can become a world base pose.",
+  "goal_readiness": {
+    "status": "WAITING_FOR_CURRENT_WORLD_GOAL",
+    "current_session_frame": "GEOMETRY_SESSION_02_TILE_GRID_WORLD",
+    "legitimate_goal_found": false,
+    "legacy_goal_policy": "LEGACY_WORKSPACE_COORDINATE goals are not silently converted.",
+    "acquisition_target_policy": "acquisition_target.json is EXPERIMENT_DESIGN_NOT_OBSERVED_EVIDENCE and not a current navigation goal.",
+    "minimum_human_input_needed": "One goal point [X,Y] in GEOMETRY_SESSION_02_TILE_GRID_WORLD, or one unambiguous tile/grid location referenced to G00 and the defined +X/+Y axes."
+  },
+  "current_object_evidence": {
+    "prior_validated_object": "small brown cardboard box on the floor",
+    "prior_reference_world_xy_m": [0.1594835965362156, 1.5764884784994297],
+    "prior_reference_artifact": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/vlm_metric_grounding.json",
+    "fresh_frame_exact_world_xy_claimed": false,
+    "reason": "No new semantic grounding was run and absence of object motion was not independently established.",
+    "physical_obstacle_footprint_ready": false
+  },
+  "path_readiness": {
+    "validated_current_geometry": true,
+    "current_robot_base_pose": false,
+    "current_world_goal": false,
+    "current_obstacle_footprint_world_representation": false,
+    "ready_for_legitimate_path": false,
+    "planner_invoked": false,
+    "path_created": false,
+    "path_figure_created": false
+  },
+  "execution_counts": {
+    "new_qwen_runs": 0,
+    "planner_runs": 0,
+    "navigation_runs": 0,
+    "robot_motion_commands": 0
+  },
+  "out_of_scope_not_run": ["STEP32", "persistence", "replanning", "ROS/Nav2", "robot motion"]
+}

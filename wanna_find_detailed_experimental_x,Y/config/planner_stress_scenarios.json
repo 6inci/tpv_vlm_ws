@@ -1,0 +1,159 @@
+{
+  "schema_version": "0.1",
+  "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+  "unit": "m",
+  "mode": "ROBOT_ONLY_TRANSLATIONAL_BASELINE",
+  "fixed_yaw_rad": 0.0,
+  "geometry_status": "DEVELOPMENT_SYNTHETIC",
+  "source_detail": "Explicit offline development scenarios for static planner robustness and one-factor-at-a-time sensitivity characterization. Not measured or VLM-derived obstacles.",
+  "scenarios": [
+    {
+      "scenario_id": "S1_baseline",
+      "description": "STEP 15 baseline regression reference.",
+      "geometry_status": "DEVELOPMENT_SYNTHETIC",
+      "start": {"x": 0.20, "y": 0.30, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.50, "status": "DEVELOPMENT_DEFINED"},
+      "expected_high_level_result": "PATH_EXISTS",
+      "static_obstacles": [
+        {
+          "id": "dev_obstacle_01",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "Explicit development-only geometry for robot-only static collision-space validation. Not a measured physical obstacle."
+        }
+      ]
+    },
+    {
+      "scenario_id": "S2_shifted_left",
+      "description": "Baseline obstacle shifted toward the left side of the workspace.",
+      "geometry_status": "DEVELOPMENT_SYNTHETIC",
+      "start": {"x": 0.20, "y": 0.30, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.50, "status": "DEVELOPMENT_DEFINED"},
+      "expected_high_level_result": "PATH_EXISTS",
+      "static_obstacles": [
+        {
+          "id": "s2_obstacle_01",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.25, "x_max": 0.45, "y_min": 0.65, "y_max": 1.15},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "Shifted development-only rectangle for position sensitivity."
+        }
+      ]
+    },
+    {
+      "scenario_id": "S3_two_obstacles",
+      "description": "Two overlapping configuration-space rectangles requiring a detour.",
+      "geometry_status": "DEVELOPMENT_SYNTHETIC",
+      "start": {"x": 0.20, "y": 0.30, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.50, "status": "DEVELOPMENT_DEFINED"},
+      "expected_high_level_result": "PATH_EXISTS",
+      "static_obstacles": [
+        {
+          "id": "s3_obstacle_01",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.30, "x_max": 0.45, "y_min": 0.65, "y_max": 1.05},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "First development-only rectangle in the multi-obstacle scenario."
+        },
+        {
+          "id": "s3_obstacle_02",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.65, "x_max": 0.80, "y_min": 0.85, "y_max": 1.25},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "Second development-only rectangle in the multi-obstacle scenario."
+        }
+      ]
+    },
+    {
+      "scenario_id": "S4_narrow_passage",
+      "description": "Two side obstacles leave a 0.030 m robot-center corridor after footprint expansion.",
+      "geometry_status": "DEVELOPMENT_SYNTHETIC",
+      "start": {"x": 0.50, "y": 0.30, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.50, "y": 1.50, "status": "DEVELOPMENT_DEFINED"},
+      "expected_high_level_result": "PATH_EXISTS",
+      "static_obstacles": [
+        {
+          "id": "s4_left_obstacle",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.145, "x_max": 0.34, "y_min": 0.55, "y_max": 1.25},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "Left development-only wall for narrow-passage validation."
+        },
+        {
+          "id": "s4_right_obstacle",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.66, "x_max": 1.055, "y_min": 0.55, "y_max": 1.25},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "Right development-only wall for narrow-passage validation."
+        }
+      ]
+    },
+    {
+      "scenario_id": "S5_completely_blocked",
+      "description": "A horizontal obstacle spans the workspace and separates start from goal.",
+      "geometry_status": "DEVELOPMENT_SYNTHETIC",
+      "start": {"x": 0.20, "y": 0.30, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.95, "y": 1.50, "status": "DEVELOPMENT_DEFINED"},
+      "expected_high_level_result": "NO_PATH_EXPECTED",
+      "static_obstacles": [
+        {
+          "id": "s5_blocking_obstacle",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.145, "x_max": 1.055, "y_min": 0.82, "y_max": 0.98},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "Development-only full-width barrier for explicit NO_PATH validation."
+        }
+      ]
+    },
+    {
+      "scenario_id": "S6_alternate_endpoints",
+      "description": "Baseline obstacle with start and goal exchanged across workspace sides.",
+      "geometry_status": "DEVELOPMENT_SYNTHETIC",
+      "start": {"x": 0.95, "y": 0.30, "status": "DEVELOPMENT_DEFINED"},
+      "goal": {"x": 0.20, "y": 1.50, "status": "DEVELOPMENT_DEFINED"},
+      "expected_high_level_result": "PATH_EXISTS",
+      "static_obstacles": [
+        {
+          "id": "s6_obstacle_01",
+          "geometry_status": "DEVELOPMENT_SYNTHETIC",
+          "planning_role": "STATIC_OBSTACLE",
+          "shape": "axis_aligned_rectangle",
+          "bounds": {"x_min": 0.45, "x_max": 0.65, "y_min": 0.65, "y_max": 1.15},
+          "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+          "unit": "m",
+          "source_type": "EXPLICIT_DEVELOPMENT_CONFIG",
+          "source_detail": "Baseline development-only rectangle with alternate endpoints."
+        }
+      ]
+    }
+  ]
+}

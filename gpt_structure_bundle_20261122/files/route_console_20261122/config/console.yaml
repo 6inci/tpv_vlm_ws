@@ -1,0 +1,96 @@
+# 경로 계획 콘솔 설정 (2026-11-22, 첫 실행 전에 작성). 상태: TESTING.
+# 좌표: 사진 픽셀 = 공유 사진 묶음의 편 사진 픽셀(K_photo = alpha 0 newK, 왜곡 없음). 지도 = env2_20261119 (m), 바닥 z = 0.
+# 기존 폴더는 읽기만 한다. 이 콘솔이 쓰는 파일은 모두 이 폴더의 runs/, sessions/ 아래에 생긴다.
+
+server: {host: 127.0.0.1, port: 8765}
+python: /home/binci/miniconda3/envs/stnav_gui/bin/python
+
+sources:
+  photos_dir: /home/binci/Pictures/Calibration/map_images          # 사진 모드 (사용자 지정, 공유 사진과 sha256 같음)
+  exclude_photos:                    # 목록에서만 뺌 (원본 파일은 그대로). 2026-11-22 사용자 요청
+    - 20261120_215746_view.png       # 큐브가 노란 선 밖 16 cm라 로봇이 접근할 수 없는 배치
+  live:
+    devices: [0, 2]                  # 실시간 모드 카메라 후보 (/dev/videoN). 지금 연결된 것은 노트북 내장 카메라
+    capture_size: [1920, 1080]
+    reference_photo: /home/binci/Pictures/Calibration/map_images/20261120_215805_view.png   # 카메라 자세가 같은지 볼 기준
+    alignment: {max_shift_px: 3.0, min_response: 0.3}                  # v0.2 check_alignment 값 그대로
+
+reuse:                               # 읽기만
+  nl_to_route: /home/binci/vlm_ws/nl_to_route_20261122                # Geo, Planner, start_pose, draw (좌표·정차·경로·그림)
+  context_policy: /home/binci/vlm_ws/context_policy_20261122          # 작업 공간·5S 구역·받침 검사·A/B 결정, 저장된 인식 자료(data/test)
+  cached_features: /home/binci/vlm_ws/context_policy_20261122/data/test
+  thresholds: /home/binci/vlm_ws/context_policy_20261122/data/dev/calibration.json   # 개발 8장에서 정한 받침·빈 팔레트 기준
+  teammate_zones: /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120/2_optional/zones.json      # 장소별 정차 자리 (팀원 계산)
+
+# 지시 해석: Qwen3-VL-4B, 글자만. 이전 hybrid_slots_v1에 '로봇만 이동', 장소 목록, 출발 장소를 더한 새 버전이다 (v1은 그대로 둠).
+interpretation:
+  # v2b: 'other' 예시 추가 ('상자'를 any object로 해석한 사례).
+  # 2026-11-22 저녁: 사용자 실행에서 "하역장에서 충전소 옆으로 이동시켜줘"의 '하역장에서'가 object_near로 들어가 출발이 무시됨.
+  #     v3 프롬프트를 만들어 CPU에서 확인했으나 같은 해석이 나와 쓰지 않음 (sessions/prompt_console_slots_v3_not_used.yaml).
+  #     대신 Python 보정 규칙으로 고침 (engine.task_plan). 프롬프트는 사용자가 확인한 v2b 그대로.
+  prompt_id: console_slots_v2b
+  max_new_tokens: 220
+  template: |
+    너는 이동 로봇의 작업지시를 정해진 항목으로 바꾸는 파서다. 이미지는 주어지지 않는다. 위치, 좌표, 박스를 만들지 마라.
+    작업지시: "{instruction}"
+
+    task (할 일) 중 하나:
+    - "transport": 물체를 집어서 다른 곳에 놓는다
+    - "go_to": 로봇만 이동한다 (옮길 물체 없음)
+    object (옮길 물체) 중 하나:
+    - "red cube": 빨간 큐브
+    - "any object": 종류를 말하지 않은 물체 (예: 물체, 물건, 짐)
+    - "none": 옮길 물체가 없음
+    - "other": 위 목록에 없는 종류를 말한 물체 (예: 상자, 드럼, 팔레트 자체)
+    장소 이름 (아래 항목에 쓰는 값):
+    - "truck_loading_bay": 트럭, 하역장, 트럭 하역장
+    - "conveyor": 컨베이어, 컨베이어 벨트, 생산 라인
+    - "charging_station": 충전소, 충전 구역
+    - "fire_extinguisher": 소화기
+    - "walkway": 보행자 통로, 보행로
+    - "central_storage": 중앙 적치 구역, 가운데 상자 더미
+    - "material_storage": 자재 보관 구역, 적치대
+    - "robot_arm_cell": 로봇 팔 작업셀
+    - "locker": 사물함, 작업자 준비 구역
+    - "shelf": 선반
+    - "none": 말하지 않음
+    - "other": 위 목록에 없는 장소
+    object_near: 옮길 물체가 어느 장소 옆에 있다고 했는지 (장소 이름 하나)
+    start: 로봇이 어느 장소에서 출발한다고 했는지 (장소 이름 하나. 말하지 않았으면 "none" = 지금 위치)
+    destination_kind (도착지 종류) 중 하나:
+    - "empty_pallet": 비어 있는 팔레트
+    - "place": 위 목록의 장소
+    - "other": 위 목록에 없음
+    destination_place: destination_kind가 "place"이면 장소 이름, 아니면 "none"
+    words: 작업지시에서 물체와 장소를 가리킨 말을 그대로 적는다
+
+    Return JSON only, no prose:
+    {"task": "...", "object": "...", "object_near": "...", "start": "...", "destination_kind": "...", "destination_place": "...", "words": "..."}
+  examples:                          # 화면의 예시 버튼 (입력 칸만 채움)
+    - "빨간 큐브를 비어 있는 팔레트로 옮겨줘."
+    - "컨베이어 옆에 있는 물건을 빈 팔레트에 놓아줘."
+    - "빨간 큐브를 하역장으로 가져가."
+    - "충전소로 이동해."
+    - "하역장에서 출발해서 컨베이어로 가."
+
+graspable_objects: ["red cube", "any object"]     # 이 로봇이 집을 수 있는 것 = 빨간 큐브뿐 (그리퍼 실측 전)
+
+# 장소 → 5S 구역(물체 옆 판단) / 팀원 정차 자리(이동 목표). 정차 자리가 없는 장소는 이동 목표로 쓰지 않는다.
+places:
+  truck_loading_bay: {name: 하역장, zone: Z06, stop: 하역장}
+  conveyor:          {name: 컨베이어, zone: Z07, stop: 컨베이어}
+  charging_station:  {name: 충전소, zone: Z05, stop: 충전소}
+  fire_extinguisher: {name: 소화기, zone: null, stop: 소화기}
+  walkway:           {name: 보행자 통로, zone: Z01, stop: 보행자}
+  central_storage:   {name: 중앙 적치 구역, zone: Z03, stop: null}
+  material_storage:  {name: 자재 보관 구역, zone: Z04, stop: null}
+  robot_arm_cell:    {name: 로봇 팔 작업셀, zone: Z08, stop: null}
+  locker:            {name: 사물함, zone: Z09, stop: null}
+  shelf:             {name: 선반, zone: Z10, stop: null}
+
+near_max_cm: 30                      # "X 옆" = 5S 구역 X 다각형까지 30 cm 이내 (context_policy near_max_cm 과 같음)
+start_heading_preference_deg: 180    # 장소에서 출발할 때 여러 방향이 되면 이 방향에 가까운 것 (지금 로봇 방향)
+goal_snap_max_cm: 10                 # 정차 자리 칸이 여유 기준에 조금 못 미치면 이 거리 안에서 가장 가까운 통과 칸으로 옮김 (옮긴 거리 기록)
+place_drop_rule: "장소에 놓기 = 팀원 정차 자리에 서서 그리퍼가 그 구역을 향하는 방향. 놓는 점 = 그 자세의 그리퍼 끝 (규칙, 사용자 확인 필요)"
+
+output_dir: runs

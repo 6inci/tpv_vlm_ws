@@ -1,0 +1,33 @@
+# Written BEFORE the benchmark run (2026-11-20). Not shown to any model, not read by the pipeline; read only by evaluate_tasks.py.
+# Boxes: undistorted_px of the 1920x1080 photos in /home/binci/Pictures/Calibration.
+# Source: STEP 4-A survey (navigation_handoff/results/20261120_062203_step4a_photo_survey/survey.json, copy in
+# task_flow_plan_20261120/inputs/) + photo_6 empty pallet added in siglip_small_object_test/config.yaml.
+# Status: AI_READ_NOT_HUMAN_CONFIRMED (checked by the AI on task_flow_plan_20261120/sim/results/slot_contact_sheet.jpg).
+status: AI_READ_NOT_HUMAN_CONFIRMED
+match_tolerance_px: 8        # a selected box is "on" a reference object when its centre lies inside the reference box +- 8 px
+photos:
+  U23678143: {file: 1calibration.png, cube_pallet: [1534, 852, 1584, 898], empty_pallets: [[566, 852, 616, 898]]}
+  U24768580: {file: 2calibration.png, cube_pallet: [1246, 255, 1289, 292], empty_pallets: [[534, 272, 577, 309]]}
+  U24837448: {file: 3calibration.png, cube_pallet: [519, 842, 573, 890], empty_pallets: [[1117, 257, 1159, 294]]}
+  U24898553: {file: 4calibration.png, cube_pallet: [1588, 249, 1633, 287], empty_pallets: [[1117, 257, 1159, 294]]}
+  U25070552: {file: 5calibration.png, cube_pallet: [422, 410, 468, 449], empty_pallets: [[1594, 253, 1639, 287]]}
+  U25137685: {file: 6calibration.png, cube_pallet: [1594, 253, 1639, 287], empty_pallets: [[420, 408, 468, 450]]}
+  U25967031: {file: 7calibration.png, cube_pallet: [557, 847, 612, 895], empty_pallets: [[1594, 253, 1639, 292]]}
+  U26007129: {file: undistorted_26007129092710.png, cube_pallet: [523, 275, 569, 315], empty_pallets: [[1549, 835, 1600, 891]]}
+
+instructions:
+  I1:
+    text: "빨간 큐브를 비어 있는 팔레트로 옮겨줘."
+    rule: "valid in all 8 photos. A correct = the cube (pallet). B correct = an empty small pallet."
+  I2:
+    text: "하역장 옆에 있는 물체를 컨베이어 벨트 옆에 놓아줘."
+    rule: >
+      The only graspable object is the cube on its small pallet (the box on the truck bed is not graspable for this robot).
+      A valid only where the cube is beside the truck loading bay: U24898553, U25137685 -> A correct = the cube.
+      U24768580 (cube ~150 px left of the truck, next to a cone) is borderline -> the cube OR abstaining are both correct.
+      All other photos -> correct = abstain (no A selected); any selected A is a wrong commit.
+      B correct = centre inside the conveyor work cell expanded by 150 px (cell = white rectangle [160, 293, 507, 787]),
+      i.e. [10, 143, 657, 937], and not a robot arm / conveyor box itself (checked from the VLM appearance text).
+    valid_a: [U24898553, U25137685]
+    borderline_a: [U24768580]
+    conveyor_near_box: [10, 143, 657, 937]

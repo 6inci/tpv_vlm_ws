@@ -1,0 +1,937 @@
+{
+ "run_id": "run_013_U25967031",
+ "created": "2026-11-20T23:06:39",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "rules": "R1",
+ "vlm_backend": {
+  "key": "qwen3vl_8b_nf4",
+  "label": "Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)",
+  "model_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "revision": "0c351dd01ed87e9c1b53cbc748cba10e6187ff3b",
+  "where": "mm_worker",
+  "quantization": "nf4"
+ },
+ "photo": {
+  "photo_id": "U25967031",
+  "path": "/home/binci/Pictures/Calibration/7calibration.png",
+  "sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "photo_detection": {
+  "how": "fresh Grounding DINO this session (task_context vocabulary + red cube / traffic cone / mobile robot; full image + verified facility ROIs), IoU merge 0.5",
+  "file": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/photos/U25967031.json",
+  "cube": "stored red-cube candidates of this photo (candidate_retention_policy: HSV colour + DINO)"
+ },
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "config": {
+  "viewer": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml",
+  "task_context": "/home/binci/vlm_ws/semantic_task_navigation/experiments/task_context_2d_navigation/config.yaml"
+ },
+ "model_called": true,
+ "source": {
+  "status": "NOT_FOUND",
+  "ids": [],
+  "why": "TRANSPORT_OBJECT_NOT_FOUND: no candidate inside the search region"
+ },
+ "destination": {
+  "candidates": [
+   {
+    "id": "m58",
+    "bbox_xyxy": [
+     1470.9,
+     466.69,
+     1573.81,
+     576.55
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "stacked cardboard boxes",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a barrel",
+      0.318
+     ],
+     [
+      "a small pallet",
+      0.239
+     ],
+     [
+      "a storage rack",
+      0.222
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a barrel",
+        0.538
+       ],
+       [
+        "a small pallet",
+        0.263
+       ],
+       [
+        "a storage rack",
+        0.056
+       ]
+      ],
+      "sigmoid_top": 0.3563
+     },
+     {
+      "top3": [
+       [
+        "a storage rack",
+        0.388
+       ],
+       [
+        "a small pallet",
+        0.216
+       ],
+       [
+        "a barrel",
+        0.098
+       ]
+      ],
+      "sigmoid_top": 0.1823
+     }
+    ]
+   },
+   {
+    "id": "m64",
+    "bbox_xyxy": [
+     1568.99,
+     470.51,
+     1683.12,
+     585.76
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "pallet",
+     "shelf",
+     "stacked cardboard boxes",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a small pallet",
+      0.469
+     ],
+     [
+      "a barrel",
+      0.263
+     ],
+     [
+      "a wooden pallet",
+      0.1
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a barrel",
+        0.44
+       ],
+       [
+        "a small pallet",
+        0.289
+       ],
+       [
+        "a wooden pallet",
+        0.161
+       ]
+      ],
+      "sigmoid_top": 0.1893
+     },
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.649
+       ],
+       [
+        "a barrel",
+        0.086
+       ],
+       [
+        "a storage rack",
+        0.065
+       ]
+      ],
+      "sigmoid_top": 0.3644
+     }
+    ]
+   },
+   {
+    "id": "m35",
+    "bbox_xyxy": [
+     1381.52,
+     474.13,
+     1472.08,
+     573.2
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "stacked cardboard boxes",
+     "table",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a small pallet",
+      0.516
+     ],
+     [
+      "a wooden pallet",
+      0.105
+     ],
+     [
+      "a truck cargo bed",
+      0.097
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.787
+       ],
+       [
+        "a wooden pallet",
+        0.179
+       ],
+       [
+        "a stack of boxes",
+        0.019
+       ]
+      ],
+      "sigmoid_top": 0.9448
+     },
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.244
+       ],
+       [
+        "a truck cargo bed",
+        0.193
+       ],
+       [
+        "a conveyor belt",
+        0.183
+       ]
+      ],
+      "sigmoid_top": 0.1516
+     }
+    ]
+   },
+   {
+    "id": "m68",
+    "bbox_xyxy": [
+     1681.96,
+     481.17,
+     1792.2,
+     583.1
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "pallet",
+     "red cube",
+     "stacked cardboard boxes"
+    ],
+    "siglip_top3": [
+     [
+      "a small pallet",
+      0.463
+     ],
+     [
+      "a barrel",
+      0.144
+     ],
+     [
+      "a wooden pallet",
+      0.079
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.677
+       ],
+       [
+        "a wooden pallet",
+        0.146
+       ],
+       [
+        "a barrel",
+        0.107
+       ]
+      ],
+      "sigmoid_top": 0.5151
+     },
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.248
+       ],
+       [
+        "a barrel",
+        0.181
+       ],
+       [
+        "a mobile robot",
+        0.13
+       ]
+      ],
+      "sigmoid_top": 0.0892
+     }
+    ]
+   },
+   {
+    "id": "m34",
+    "bbox_xyxy": [
+     1299.12,
+     492.92,
+     1382.94,
+     584.06
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "stacked cardboard boxes",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a cart",
+      0.285
+     ],
+     [
+      "a small pallet",
+      0.169
+     ],
+     [
+      "a conveyor belt",
+      0.131
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a cart",
+        0.501
+       ],
+       [
+        "a conveyor belt",
+        0.141
+       ],
+       [
+        "a whiteboard",
+        0.058
+       ]
+      ],
+      "sigmoid_top": 0.0096
+     },
+     {
+      "top3": [
+       [
+        "a small pallet",
+        0.322
+       ],
+       [
+        "a stack of boxes",
+        0.131
+       ],
+       [
+        "a conveyor belt",
+        0.12
+       ]
+      ],
+      "sigmoid_top": 0.2365
+     }
+    ]
+   },
+   {
+    "id": "m33",
+    "bbox_xyxy": [
+     1218.69,
+     497.79,
+     1300.71,
+     590.09
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "shelf",
+     "stacked cardboard boxes",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "a cart",
+      0.243
+     ],
+     [
+      "an empty floor area",
+      0.22
+     ],
+     [
+      "a truck cargo bed",
+      0.159
+     ]
+    ],
+    "siglip_views": [
+     {
+      "top3": [
+       [
+        "a cart",
+        0.403
+       ],
+       [
+        "a truck cargo bed",
+        0.276
+       ],
+       [
+        "a conveyor belt",
+        0.054
+       ]
+      ],
+      "sigmoid_top": 0.0878
+     },
+     {
+      "top3": [
+       [
+        "an empty floor area",
+        0.419
+       ],
+       [
+        "a floor marking",
+        0.216
+       ],
+       [
+        "a conveyor belt",
+        0.096
+       ]
+      ],
+      "sigmoid_top": 0.0951
+     }
+    ]
+   }
+  ],
+  "numbering": {
+   "1": "m58",
+   "2": "m64",
+   "3": "m35",
+   "4": "m68",
+   "5": "m34",
+   "6": "m33"
+  },
+  "images": [
+   {
+    "path": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_013_U25967031/inputs/destination_1.png",
+    "view_rect": [
+     1209,
+     464,
+     1795,
+     591
+    ],
+    "numbers": [
+     1,
+     6
+    ],
+    "usable": true,
+    "problems": []
+   }
+  ],
+  "problems": [],
+  "ratings": {
+   "m58": {
+    "id": 1,
+    "appearance": [
+     "a small pallet",
+     "a storage rack"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by barrels, not suitable for placing a red cube."
+   },
+   "m64": {
+    "id": 2,
+    "appearance": [
+     "a small pallet",
+     "a barrel"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by barrels, not suitable for placing a red cube."
+   },
+   "m35": {
+    "id": 3,
+    "appearance": [
+     "a small pallet",
+     "a wooden pallet"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by a storage rack, not suitable for placing a red cube."
+   },
+   "m68": {
+    "id": 4,
+    "appearance": [
+     "a small pallet",
+     "a barrel"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by barrels, not suitable for placing a red cube."
+   },
+   "m34": {
+    "id": 5,
+    "appearance": [
+     "a cart",
+     "a small pallet",
+     "a conveyor belt"
+    ],
+    "load_state": "occupied",
+    "placement_role": "unsuitable",
+    "reason": "occupied by a cart, not suitable for placing a red cube."
+   },
+   "m33": {
+    "id": 6,
+    "appearance": [
+     "a cart",
+     "an empty floor area",
+     "a truck cargo bed"
+    ],
+    "load_state": "empty",
+    "placement_role": "suitable",
+    "reason": "empty floor area with no obstruction, suitable for placing a red cube."
+   }
+  },
+  "reply_reason": "Only candidate 6 has an empty floor area suitable for placing the red cube.",
+  "status": "SELECTED",
+  "number": 6,
+  "kind": "DIRECT",
+  "why": "Qwen best is suitable and accessible",
+  "id": "m33",
+  "bbox_xyxy": [
+   1218.69,
+   497.79,
+   1300.71,
+   590.09
+  ],
+  "accessibility": {
+   "m33": {
+    "gap_to_drivable_cm": 0.0,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     239.0,
+     153.0
+    ],
+    "approach_goal_image_px": [
+     1395.7,
+     688.1
+    ],
+    "body_gap_cm": 8.2,
+    "floor_polygon_cm": [
+     [
+      208.8,
+      112.6
+     ],
+     [
+      224.6,
+      112.9
+     ],
+     [
+      223.2,
+      132.8
+     ],
+     [
+      207.8,
+      132.6
+     ]
+    ],
+    "accessible": true,
+    "why": "0.0 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   }
+  },
+  "policy_no_placement_frac": {
+   "m33": 0.0
+  },
+  "policy_excluded": [],
+  "tied_ids": [],
+  "goal_kind": "OBJECT",
+  "goal_kind_why": "detector phrases ['cardboard box', 'cart', 'container', 'pallet']; box 0.37% of the image",
+  "placement": "VLM_SUITABLE_EMPTY",
+  "load_state": "empty"
+ },
+ "interpretation": {
+  "parsed": {
+   "purpose": "Move a red cube to an empty pallet.",
+   "source_object": {
+    "name_en": "red cube"
+   },
+   "source_reference": {
+    "name_en": "stacked cardboard boxes",
+    "bbox_2d": [
+     415,
+     392,
+     485,
+     542
+    ],
+    "bbox_image_px": [
+     796.8,
+     423.4,
+     931.2,
+     585.4
+    ]
+   },
+   "source_relation": "on",
+   "destination_meaning": "empty pallet",
+   "destination_reference": {
+    "name_en": "pallet",
+    "bbox_2d": [
+     630,
+     430,
+     935,
+     542
+    ],
+    "inferred": true,
+    "bbox_image_px": [
+     1209.6,
+     464.4,
+     1795.2,
+     585.4
+    ]
+   },
+   "destination_relation": "on",
+   "zones_seen": [
+    {
+     "description": "robot driving area",
+     "visual_evidence": [
+      "yellow outer boundary line",
+      "black floor"
+     ],
+     "bbox_2d": [
+      25,
+      27,
+      985,
+      968
+     ],
+     "robot_body_access": "allowed"
+    },
+    {
+     "description": "conveyor and robot arm workcell",
+     "visual_evidence": [
+      "white inner boundary",
+      "conveyor belt",
+      "robot arms"
+     ],
+     "bbox_2d": [
+      100,
+      260,
+      265,
+      730
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "green pedestrian walkway",
+     "visual_evidence": [
+      "green floor",
+      "footprint symbols"
+     ],
+     "bbox_2d": [
+      300,
+      50,
+      550,
+      275
+     ],
+     "robot_body_access": "forbidden"
+    },
+    {
+     "description": "truck unloading zone",
+     "visual_evidence": [
+      "truck",
+      "dashed white lines"
+     ],
+     "bbox_2d": [
+      620,
+      0,
+      880,
+      170
+     ],
+     "robot_body_access": "unknown"
+    }
+   ],
+   "uncertainty": [
+    "The exact location of the red cube is not visible in the image.",
+    "The specific empty pallet destination is not clearly identified, inferred from context."
+   ]
+  },
+  "error": null
+ },
+ "references": {
+  "source": {
+   "name": "stacked cardboard boxes",
+   "class": null,
+   "box": [
+    796.8,
+    423.4,
+    931.2,
+    585.4
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "on",
+   "region": {
+    "type": "containment",
+    "rect": [
+     796,
+     423,
+     931,
+     585
+    ]
+   }
+  },
+  "destination": {
+   "name": "pallet",
+   "class": null,
+   "box": [
+    1209.6,
+    464.4,
+    1795.2,
+    585.4
+   ],
+   "how": "Qwen box (no stored object with enough overlap)",
+   "relation": "on",
+   "region": {
+    "type": "containment",
+    "rect": [
+     1209,
+     464,
+     1795,
+     585
+    ]
+   }
+  }
+ },
+ "interpretation_check": {
+  "mentioned_but_not_used": []
+ },
+ "siglip_labels": [
+  "a red cube",
+  "an orange object",
+  "an orange traffic cone",
+  "a small pallet",
+  "a wooden pallet",
+  "a metal grate",
+  "a manhole cover",
+  "a mobile robot",
+  "a truck",
+  "a truck cargo bed",
+  "a cardboard box",
+  "a stack of boxes",
+  "a conveyor belt",
+  "a production line with a conveyor and robot arms",
+  "a robot arm",
+  "a storage shelf",
+  "a storage rack",
+  "a barrel",
+  "a table",
+  "a cart",
+  "a whiteboard",
+  "an empty floor area",
+  "a floor marking",
+  "a green pedestrian walkway"
+ ],
+ "stages": [
+  {
+   "name": "interpretation",
+   "status": "OK",
+   "summary": "move 'red cube' | from: on 'stacked cardboard boxes' | to: on 'pallet' (empty pallet)",
+   "model": "Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)"
+  },
+  {
+   "name": "detection",
+   "status": "OK",
+   "summary": "DINO called for new phrases ['stacked cardboard boxes']: 1 new candidates (96 on this photo)",
+   "model": "IDEA-Research/grounding-dino-tiny"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "'stacked cardboard boxes' [on] -> containment (Qwen box (no stored object with enough overlap))",
+   "model": "Python"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "'pallet' [on] -> containment (Qwen box (no stored object with enough overlap))",
+   "model": "Python"
+  },
+  {
+   "name": "interpretation_check",
+   "status": "OK",
+   "summary": "every facility named in the instruction is one of the interpreted references",
+   "model": "Python"
+  },
+  {
+   "name": "source_candidates",
+   "status": "FAILED",
+   "summary": "TRANSPORT_OBJECT_NOT_FOUND: none of 21 stored red-cube candidates inside the region",
+   "model": "stored HSV colour + DINO candidates (candidate_retention_policy)"
+  },
+  {
+   "name": "destination_candidates",
+   "status": "OK",
+   "summary": "6 DINO candidates inside the region (object to move excluded; 1 region-scale boxes not numbered)",
+   "model": "IDEA-Research/grounding-dino-tiny"
+  },
+  {
+   "name": "destination_siglip",
+   "status": "OK",
+   "summary": "6 candidates compared with 24 labels",
+   "model": "google/siglip2-base-patch16-384"
+  },
+  {
+   "name": "destination_vlm_roles",
+   "status": "OK",
+   "summary": "reply usable",
+   "model": "Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)"
+  },
+  {
+   "name": "destination_policy",
+   "status": "OK",
+   "summary": "no-placement zone ['Z01']: none of 1 suitable/possible candidates inside",
+   "model": "Python"
+  },
+  {
+   "name": "destination_access",
+   "status": "OK",
+   "summary": "1 of 1 candidates accessible from the robot start",
+   "model": "Python"
+  },
+  {
+   "name": "destination_decision",
+   "status": "OK",
+   "summary": "SELECTED m33 DIRECT : Qwen best is suitable and accessible",
+   "model": "Python"
+  },
+  {
+   "name": "selection_check",
+   "status": "OK",
+   "summary": "1 chosen id(s) exist among the detected candidates with identical boxes",
+   "model": "Python"
+  }
+ ],
+ "first_failure": "source_candidates",
+ "wall_s": 55.9,
+ "models_used": {
+  "this_run": {
+   "VLM": {
+    "Qwen/Qwen3-VL-8B-Instruct (nf4)": 2
+   },
+   "Grounding DINO": {
+    "IDEA-Research/grounding-dino-tiny": 3
+   }
+  },
+  "photo_preparation": {
+   "Grounding DINO": {
+    "IDEA-Research/grounding-dino-tiny": 4
+   },
+   "SigLIP2": {
+    "google/siglip2-base-patch16-384": 4
+   }
+  }
+ },
+ "handoff": {
+  "photo_id": "U25967031",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": null,
+  "destination": {
+   "id": "m33",
+   "bbox_xyxy": [
+    1218.69,
+    497.79,
+    1300.71,
+    590.09
+   ],
+   "goal_kind": "OBJECT",
+   "placement": "VLM_SUITABLE_EMPTY",
+   "floor_polygon_cm": [
+    [
+     208.8,
+     112.6
+    ],
+    [
+     224.6,
+     112.9
+    ],
+    [
+     223.2,
+     132.8
+    ],
+    [
+     207.8,
+     132.6
+    ]
+   ],
+   "approach_goal_cm": [
+    239.0,
+    153.0
+   ],
+   "approach_goal_image_px": [
+    1395.7,
+    688.1
+   ]
+  }
+ },
+ "narrative": [
+  "작업지시 해석(Qwen3-VL-8B-Instruct (4-bit NF4, qwen_vl_q4)): 'red cube'을(를) 'stacked cardboard boxes' 위에서 'empty pallet'(기준: 'pallet' 위)(으)로 옮기는 작업입니다.",
+  "운반 대상 A: 찾지 못함. TRANSPORT_OBJECT_NOT_FOUND: no candidate inside the search region",
+  "목적지 탐색 영역에서 후보 6개를 비교했고, m33(VLM: a cart, 적재 상태: empty, SigLIP2 최상위: a cart 0.24)를 목적지 B로 선정했습니다 (OBJECT, VLM_SUITABLE_EMPTY). 로봇 정차 위치에서 접근 가능으로 계산됐습니다(주행 구역까지 0.0 cm).",
+  "계획 미확정: A가 확정되지 않아 작업 계획을 만들지 않았습니다."
+ ],
+ "files": {
+  "overlay": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_013_U25967031/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_013_U25967031/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/model_performance_20261120/session_20261120_224831/runs/run_013_U25967031/run.json"
+ }
+}

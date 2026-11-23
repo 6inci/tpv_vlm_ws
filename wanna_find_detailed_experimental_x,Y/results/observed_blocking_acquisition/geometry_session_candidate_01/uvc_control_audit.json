@@ -1,0 +1,114 @@
+{
+  "schema_version": "0.1",
+  "audit_time": "2026-09-21T05:58:12+09:00",
+  "status": "READ_ONLY_AUDIT_COMPLETED",
+  "controls_modified": false,
+  "defaults_loaded": false,
+  "device_identity": {
+    "by_id_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "current_video_node": "/dev/video7",
+    "id_serial": "HD_Web_Camera_HD_Web_Camera_Ucamera001",
+    "serial_short": "Ucamera001",
+    "usb_vendor_id": "05a3",
+    "usb_product_id": "9331",
+    "revision": "0105",
+    "driver": "uvcvideo",
+    "driver_version": "6.8.12",
+    "bus_info": "usb-0000:80:14.0-1.4.1",
+    "capture_capable": true
+  },
+  "current_format": {
+    "width": 1920,
+    "height": 1080,
+    "pixel_format": "MJPG",
+    "fps": 30.0,
+    "field": "None",
+    "colorspace": "sRGB"
+  },
+  "current_crop": {
+    "bounds": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "default": [
+      0,
+      0,
+      1920,
+      1080
+    ],
+    "pixel_aspect": [
+      1,
+      1
+    ]
+  },
+  "exposed_controls": [
+    {
+      "name": "brightness",
+      "type": "int",
+      "minimum": 1,
+      "maximum": 255,
+      "step": 1,
+      "default": 128,
+      "value": 105
+    },
+    {
+      "name": "contrast",
+      "type": "int",
+      "minimum": 1,
+      "maximum": 190,
+      "step": 1,
+      "default": 128,
+      "value": 105
+    },
+    {
+      "name": "saturation",
+      "type": "int",
+      "minimum": 1,
+      "maximum": 255,
+      "step": 1,
+      "default": 128,
+      "value": 128
+    },
+    {
+      "name": "hue",
+      "type": "int",
+      "minimum": 0,
+      "maximum": 255,
+      "step": 1,
+      "default": 128,
+      "value": 128
+    },
+    {
+      "name": "white_balance_automatic",
+      "type": "bool",
+      "default": 1,
+      "value": 1
+    }
+  ],
+  "geometry_or_framing_controls": {
+    "zoom_absolute": "NOT_EXPOSED",
+    "pan_absolute": "NOT_EXPOSED",
+    "tilt_absolute": "NOT_EXPOSED",
+    "focus_absolute": "NOT_EXPOSED",
+    "focus_auto": "NOT_EXPOSED",
+    "exposure_auto": "NOT_EXPOSED",
+    "exposure_absolute": "NOT_EXPOSED",
+    "digital_zoom": "NOT_EXPOSED",
+    "roi_or_framing": "NOT_EXPOSED",
+    "horizontal_or_vertical_flip": "NOT_EXPOSED"
+  },
+  "historical_control_availability": {
+    "first_capture_metadata_contains_uvc_values": false,
+    "repeat_capture_metadata_contains_uvc_values": false,
+    "direct_historical_comparison": "UNAVAILABLE",
+    "limitation": "Both capture metadata files record format and transformation policy but no UVC control snapshot."
+  },
+  "interpretation": "The current device exposes no zoom/pan/tilt/focus/exposure/ROI control that can substantiate a UVC framing change. This does not prove firmware-internal state was identical because historical controls were not captured.",
+  "query_commands": [
+    "udevadm info --query=property --name=/dev/video7",
+    "v4l2-ctl --device=/dev/video7 --all",
+    "v4l2-ctl --device=/dev/video7 --list-ctrls-menus"
+  ]
+}

@@ -1,0 +1,113 @@
+{
+  "schema_version": "0.1",
+  "audit_time": "2026-09-21T01:32:12+09:00",
+  "status": "WAITING_FOR_RESEARCH_CAMERA_ACCESS",
+  "selector_policy": "EXACT_EXTERNAL_BY_ID_ONLY",
+  "configured_device_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+  "selected_research_camera": {
+    "identity": "Ucamera001",
+    "card": "HD Web Camera: HD Web Camera",
+    "driver": "uvcvideo",
+    "bus_info": "usb-0000:80:14.0-1.4.1",
+    "device_path": "/dev/video6",
+    "by_id_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "video_index": 0,
+    "identity_confirmed": true,
+    "capture_accessible": false,
+    "capture_error": "Device or resource busy"
+  },
+  "video_devices": [
+    {
+      "device_path": "/dev/video0",
+      "name": "HP True Vision FHD Camera: HP T",
+      "video_index": 0,
+      "role": "FORBIDDEN_FALLBACK"
+    },
+    {
+      "device_path": "/dev/video1",
+      "name": "HP True Vision FHD Camera: HP T",
+      "video_index": 1,
+      "role": "FORBIDDEN_FALLBACK"
+    },
+    {
+      "device_path": "/dev/video2",
+      "name": "HP True Vision FHD Camera: HP I",
+      "video_index": 0,
+      "role": "FORBIDDEN_FALLBACK"
+    },
+    {
+      "device_path": "/dev/video3",
+      "name": "HP True Vision FHD Camera: HP I",
+      "video_index": 1,
+      "role": "FORBIDDEN_FALLBACK"
+    },
+    {
+      "device_path": "/dev/video6",
+      "name": "HD Web Camera: HD Web Camera",
+      "video_index": 0,
+      "serial": "Ucamera001",
+      "role": "SELECTED_RESEARCH_CAMERA"
+    },
+    {
+      "device_path": "/dev/video7",
+      "name": "HD Web Camera: HD Web Camera",
+      "video_index": 1,
+      "serial": "Ucamera001",
+      "role": "RESEARCH_CAMERA_SECONDARY_INDEX_NOT_SELECTED"
+    }
+  ],
+  "native_capture_capabilities": {
+    "MJPG": [
+      {"width": 1920, "height": 1080, "fps": 30.0},
+      {"width": 1280, "height": 960, "fps": 30.0},
+      {"width": 1280, "height": 720, "fps": 30.0},
+      {"width": 800, "height": 600, "fps": 30.0},
+      {"width": 640, "height": 480, "fps": 30.0},
+      {"width": 640, "height": 360, "fps": 30.0}
+    ],
+    "YUYV": [
+      {"width": 1920, "height": 1080, "fps": 5.0},
+      {"width": 1280, "height": 960, "fps": 10.0},
+      {"width": 1280, "height": 720, "fps": 30.0},
+      {"width": 800, "height": 600, "fps": 30.0},
+      {"width": 640, "height": 480, "fps": 30.0},
+      {"width": 640, "height": 360, "fps": 30.0}
+    ],
+    "H264": [
+      {"width": 1920, "height": 1080, "fps": 30.0},
+      {"width": 1280, "height": 960, "fps": 30.0},
+      {"width": 1280, "height": 720, "fps": 30.0},
+      {"width": 800, "height": 600, "fps": 30.0},
+      {"width": 640, "height": 480, "fps": 30.0},
+      {"width": 640, "height": 360, "fps": 30.0}
+    ]
+  },
+  "candidate_native_capture": {
+    "width": 1920,
+    "height": 1080,
+    "pixel_format": "MJPG",
+    "fps": 30.0,
+    "orientation": "UNKNOWN_NO_FRAME",
+    "selection_reason": "Highest native resolution at 30 fps; no resize, crop, rotation, or legacy-Homography reuse requested."
+  },
+  "access_blocker": {
+    "device_path": "/dev/video6",
+    "holding_process": "pipewire",
+    "holding_pid_observed": 2186,
+    "access_mode": "F",
+    "related_camera_service_observed": "/usr/bin/cheese --gapplication-service",
+    "processes_modified_or_terminated": false
+  },
+  "capture_attempt": {
+    "attempted": true,
+    "frame_acquired": false,
+    "requested_format": "MJPG 1920x1080 at 30 fps",
+    "error": "VIDIOC_REQBUFS/VIDIOC_S_FMT/VIDIOC_S_PARM: Device or resource busy",
+    "empty_output_removed": true
+  },
+  "fallback_used": false,
+  "source_config": {
+    "path": "/home/binci/vlm_ws/config/live_scene_monitor.json",
+    "sha256": "fba2c311eed84d5eaf023b72bfa972abafcecfbfe693b2337fa5fdac0e9ab4d7"
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "experiment_id": "QSM_DIAGNOSTIC_2026-11-18",
+  "run_id": "20261118_223555_3476",
+  "status": "DONE",
+  "repeat_of": null,
+  "started": "2026-11-18T22:35:55+09:00",
+  "instruction": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "prompt_version": "sm0",
+  "prompt_sha256": "0e6d89a75dbceac9afd140917fde7a1df730c6ea571fb07a0988d869ac5130fe",
+  "frozen_check": "frozen prompt matches (sm0, frozen_at 2026-11-18T22:35:52+09:00)",
+  "image_file": "data/images/undistorted_25967031098947.png",
+  "image_source_path": "/home/binci/Pictures/Calibration/undistorted_25967031098947.png",
+  "image_sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "image_size": [
+    1920,
+    1080
+  ],
+  "reviewer_inventory_sha256": "ac40eb8a008a99ac8aabf8dc231bcac38865c13f7938ef6ebdcbd10836802cea",
+  "reviewer_inventory_given_to_model": false,
+  "image_selection_sha256": "046ce44ae18a49705635cf761bdd006d94e74762c665e555c40ef188ebd59d42",
+  "models_used": [
+    "qwen"
+  ],
+  "not_used": [
+    "Grounding DINO",
+    "SAM2",
+    "YOLO-World",
+    "V1/V2 verifiers",
+    "A*",
+    "ROS2/Nav2",
+    "hardware"
+  ],
+  "model_input_audit": {
+    "worker_call": "qwen_generate",
+    "keys": [
+      "image_path",
+      "max_new_tokens",
+      "prompt"
+    ],
+    "n_images": 1
+  },
+  "generation": {
+    "max_new_tokens": 9000,
+    "request_timeout_s": 900
+  },
+  "files_sha256": {
+    "config.yaml": "96df762d07b9e57b1bc32f6d23dc2c213f1b935ac990a4f695296e35584a84d9",
+    "prompts.yaml": "aca6d34488292e470f99a3aeb95e7e6d90fccafd0098ea804980653034ee0b34",
+    "semantic_map_probe.py": "dd92ff3790f1161e6f7cff456ac4d30650ca58843dbf915ed020e436b1a624b4",
+    "visualize.py": "ecb960d60b9968f6d4a2d511cabdfaf29164852a0183dc782daf27111de94f64"
+  },
+  "host": {
+    "python": "3.10.20",
+    "platform": "Linux-6.8.0-149-generic-x86_64-with-glibc2.35"
+  },
+  "v02_before": {
+    "src_and_run_py": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "config_files": {
+      "config/app.yaml": "e928dcc9d94fe76a42ce4858adc9a5c5825df40a5cbcbabcb09b091a95594cde",
+      "config/camera.yaml": "01a8aa1cccec3d623dd5e14200711065ba0eb6018ee2e5a8cf3f147c700ad1a7",
+      "config/demo/reference_scene_manual_inputs.json": "e5c0d7379ea2e81197ea5d358d96c6cd93f4a6ecc9143d272a0cde49f1eba9f3",
+      "config/maps/reference_scene_map.json": "46a2f76cd1ed5099d8e2c025f15527b74e9e3d367e7ef857f99644ca50fbbf3c",
+      "config/maps/reference_scene_map.reference_P01.jpg": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+      "config/models.yaml": "b16828d1432bbb6378a6e1c8404328295791ac2fe671a137924e916e45fc4c75",
+      "config/planning.yaml": "e79211269bededa9f61ec21195d2c60131007649e9bcf5e649e54901831b85ad"
+    }
+  },
+  "worker_env": {
+    "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+    "python_version": "3.10.20",
+    "pid": 118737,
+    "torch": "2.13.0+cu130",
+    "torch_cuda": "13.0",
+    "transformers": "5.16.1",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+    "loaded": {}
+  },
+  "qwen_load": {
+    "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+    "requested_revision": null,
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "dtype": "torch.bfloat16",
+    "load_s": 5.5,
+    "allocated_gib": 8.266,
+    "peak_allocated_gib": 8.266
+  },
+  "loaded_models_at_end": [
+    "qwen"
+  ],
+  "gpu_swaps": [],
+  "finished": "2026-11-18T22:41:08+09:00",
+  "parse_status": "SALVAGED_PARTIAL",
+  "v02_after": {
+    "src_and_run_py": "254cfb31da7f417b37558de07bae17ed7bc953bfabba513d16063d2846e8e3cc",
+    "config_files": {
+      "config/app.yaml": "e928dcc9d94fe76a42ce4858adc9a5c5825df40a5cbcbabcb09b091a95594cde",
+      "config/camera.yaml": "01a8aa1cccec3d623dd5e14200711065ba0eb6018ee2e5a8cf3f147c700ad1a7",
+      "config/demo/reference_scene_manual_inputs.json": "e5c0d7379ea2e81197ea5d358d96c6cd93f4a6ecc9143d272a0cde49f1eba9f3",
+      "config/maps/reference_scene_map.json": "46a2f76cd1ed5099d8e2c025f15527b74e9e3d367e7ef857f99644ca50fbbf3c",
+      "config/maps/reference_scene_map.reference_P01.jpg": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+      "config/models.yaml": "b16828d1432bbb6378a6e1c8404328295791ac2fe671a137924e916e45fc4c75",
+      "config/planning.yaml": "e79211269bededa9f61ec21195d2c60131007649e9bcf5e649e54901831b85ad"
+    }
+  },
+  "v02_unchanged": true
+}

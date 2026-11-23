@@ -1,0 +1,628 @@
+{
+ "run_id": "run_013_U25967031",
+ "created": "2026-11-21T07:14:53",
+ "instruction": "빨간 큐브를 비어 있는 팔레트로 옮겨줘.",
+ "rules": "R1",
+ "pipeline": "hybrid_exemplar_20261121",
+ "vlm_backend": {
+  "key": "qwen3vl_4b_bf16",
+  "label": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)",
+  "model_id": "Qwen/Qwen3-VL-4B-Instruct",
+  "where": "v02_worker"
+ },
+ "exemplar_model": {
+  "model_id": "google/siglip2-so400m-patch14-384",
+  "dtype": "float16",
+  "batch": 16
+ },
+ "photo": {
+  "photo_id": "U25967031",
+  "path": "/home/binci/Pictures/Calibration/7calibration.png",
+  "sha256": "25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052",
+  "size": [
+   1920,
+   1080
+  ]
+ },
+ "alignment_with_E1": "ALIGNED",
+ "photo_detection": {
+  "how": "REPLAY: stored DINO candidates and facility boxes of 20261120_133027_run (same MMViewer photo stage)",
+  "file": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/photos/U25967031.json"
+ },
+ "frames": {
+  "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+  "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+  "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+ },
+ "config": {
+  "hybrid": "/home/binci/vlm_ws/hybrid_exemplar_20261121/config.yaml",
+  "viewer": "/home/binci/vlm_ws/semantic_task_navigation/experiments/multimodel_target_viewer/config.yaml"
+ },
+ "model_called": true,
+ "source": {
+  "status": "SELECTED",
+  "ids": [
+   "m11"
+  ],
+  "boxes": [
+   [
+    569.46,
+    858.97,
+    591.03,
+    878.59
+   ]
+  ],
+  "why": "top-1 0.930, margin 0.089 >= 0.02",
+  "class": "cube",
+  "exemplar": {
+   "s1": 0.9298,
+   "s2": 0.8412,
+   "top_id": "m11",
+   "top_box": [
+    569.46,
+    858.97,
+    591.03,
+    878.59
+   ]
+  },
+  "candidates": [
+   {
+    "id": "m11",
+    "bbox_xyxy": [
+     569.46,
+     858.97,
+     591.03,
+     878.59
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.93
+     ]
+    ]
+   },
+   {
+    "id": "m25",
+    "bbox_xyxy": [
+     946.67,
+     849.82,
+     983.03,
+     885.89
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.841
+     ]
+    ]
+   },
+   {
+    "id": "m54",
+    "bbox_xyxy": [
+     1687.85,
+     239.96,
+     1711.78,
+     271.55
+    ],
+    "phrases": [
+     "container",
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.837
+     ]
+    ]
+   },
+   {
+    "id": "m31",
+    "bbox_xyxy": [
+     554.54,
+     844.67,
+     609.24,
+     897.19
+    ],
+    "phrases": [
+     "cardboard box",
+     "container",
+     "pallet",
+     "red cube"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.825
+     ]
+    ]
+   },
+   {
+    "id": "m24",
+    "bbox_xyxy": [
+     1793.97,
+     831.29,
+     1833.62,
+     867.88
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar cube",
+      0.818
+     ]
+    ]
+   }
+  ]
+ },
+ "destination": {
+  "status": "SELECTED",
+  "why": "top-1 0.898, margin 0.090 >= 0.02; 0.8 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start",
+  "id": "m32",
+  "bbox_xyxy": [
+   1591.23,
+   250.27,
+   1640.53,
+   288.3
+  ],
+  "occupied_excluded": 2,
+  "exemplar": {
+   "s1": 0.8985,
+   "s2": 0.8088,
+   "top_id": "m32",
+   "top_box": [
+    1591.23,
+    250.27,
+    1640.53,
+    288.3
+   ]
+  },
+  "candidates": [
+   {
+    "id": "m32",
+    "bbox_xyxy": [
+     1591.23,
+     250.27,
+     1640.53,
+     288.3
+    ],
+    "phrases": [
+     "cardboard box",
+     "cart",
+     "container",
+     "pallet",
+     "red cube",
+     "shelf",
+     "truck bed"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar empty_pallet",
+      0.898
+     ]
+    ]
+   },
+   {
+    "id": "m9",
+    "bbox_xyxy": [
+     1069.75,
+     249.64,
+     1100.94,
+     286.82
+    ],
+    "phrases": [
+     "cart",
+     "container",
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar empty_pallet",
+      0.809
+     ]
+    ]
+   },
+   {
+    "id": "m75",
+    "bbox_xyxy": [
+     243.17,
+     161.05,
+     281.31,
+     221.33
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar empty_pallet",
+      0.803
+     ]
+    ]
+   },
+   {
+    "id": "m24",
+    "bbox_xyxy": [
+     1793.97,
+     831.29,
+     1833.62,
+     867.88
+    ],
+    "phrases": [
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar empty_pallet",
+      0.801
+     ]
+    ]
+   },
+   {
+    "id": "m54",
+    "bbox_xyxy": [
+     1687.85,
+     239.96,
+     1711.78,
+     271.55
+    ],
+    "phrases": [
+     "container",
+     "red cube",
+     "traffic cone"
+    ],
+    "siglip_top3": [
+     [
+      "exemplar empty_pallet",
+      0.8
+     ]
+    ]
+   }
+  ],
+  "policy_no_placement_frac": {
+   "m32": 0.0
+  },
+  "accessibility": {
+   "m32": {
+    "gap_to_drivable_cm": 0.8,
+    "adjacent": true,
+    "approach_reachable_from_start": true,
+    "approach_goal_cm": [
+     273.0,
+     83.0
+    ],
+    "approach_goal_image_px": [
+     1533.4,
+     363.8
+    ],
+    "body_gap_cm": 6.0,
+    "floor_polygon_cm": [
+     [
+      288.4,
+      55.3
+     ],
+     [
+      298.4,
+      55.6
+     ],
+     [
+      296.9,
+      65.2
+     ],
+     [
+      287.0,
+      64.9
+     ]
+    ],
+    "accessible": true,
+    "why": "0.8 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+   }
+  },
+  "goal_kind": "OBJECT",
+  "placement": "EXEMPLAR_EMPTY_PALLET",
+  "load_state": "empty (no cube-like box inside)",
+  "kind": "EXEMPLAR_TOP1"
+ },
+ "timing_s": {
+  "photo_stage_this_run": 0.2,
+  "exemplar": 0.0,
+  "slots": 0.0,
+  "source": 0.0,
+  "destination": 0.1
+ },
+ "exemplar": {
+  "bank_used": {
+   "cube": [
+    "U23678143:refobj_cube",
+    "U24768580:refobj_cube",
+    "U24837448:refobj_cube",
+    "U25070552:refobj_cube",
+    "U26007129:refobj_cube"
+   ],
+   "empty_pallet": [
+    "U24768580:refobj_empty_pad_0",
+    "U24837448:refobj_empty_pad_0",
+    "U24898553:refobj_empty_pad_0",
+    "U26007129:refobj_empty_pad_0"
+   ]
+  },
+  "bank_dropped_same_place": [
+   "U23678143:refobj_empty_pad_0",
+   "U24898553:refobj_cube",
+   "U25070552:refobj_empty_pad_0",
+   "U25137685:refobj_cube"
+  ],
+  "n_dino": 95,
+  "n_gated": 31,
+  "scores": {
+   "cube": {
+    "m3": 0.7695,
+    "m4": 0.77,
+    "m5": 0.7935,
+    "m6": 0.7665,
+    "m7": 0.8099,
+    "m8": 0.7738,
+    "m9": 0.8036,
+    "m10": 0.7788,
+    "m11": 0.9298,
+    "m13": 0.7792,
+    "m14": 0.7975,
+    "m15": 0.781,
+    "m16": 0.7873,
+    "m18": 0.7289,
+    "m21": 0.7864,
+    "m24": 0.8182,
+    "m25": 0.8412,
+    "m30": 0.8144,
+    "m31": 0.8245,
+    "m32": 0.7945,
+    "m41": 0.7011,
+    "m52": 0.7086,
+    "m54": 0.8373,
+    "m55": 0.7172,
+    "m63": 0.7404,
+    "m75": 0.7855,
+    "m76": 0.7634,
+    "m79": 0.7848,
+    "m80": 0.6696,
+    "m83": 0.7485,
+    "m90": 0.784
+   },
+   "empty_pallet": {
+    "m3": 0.7813,
+    "m4": 0.7757,
+    "m5": 0.7987,
+    "m6": 0.7766,
+    "m7": 0.7902,
+    "m8": 0.7846,
+    "m9": 0.8088,
+    "m10": 0.7957,
+    "m11": 0.7901,
+    "m13": 0.798,
+    "m14": 0.7916,
+    "m15": 0.7822,
+    "m16": 0.796,
+    "m18": 0.7697,
+    "m21": 0.7871,
+    "m24": 0.801,
+    "m25": 0.7976,
+    "m30": 0.7906,
+    "m31": 0.8308,
+    "m32": 0.8985,
+    "m41": 0.733,
+    "m52": 0.7375,
+    "m54": 0.8003,
+    "m55": 0.7434,
+    "m63": 0.7328,
+    "m75": 0.8033,
+    "m76": 0.7652,
+    "m79": 0.7825,
+    "m80": 0.7015,
+    "m83": 0.7596,
+    "m90": 0.7719
+   }
+  }
+ },
+ "slots": {
+  "parsed": {
+   "object": "red cube",
+   "object_words": "빨간 큐브",
+   "source_landmark": "none",
+   "source_relation": "none",
+   "destination_kind": "empty_pallet",
+   "destination_landmark": "none",
+   "destination_relation": "none",
+   "destination_words": "비어 있는 팔레트"
+  },
+  "error": null
+ },
+ "references": {
+  "source": {
+   "name": "none",
+   "class": null,
+   "box": null,
+   "how": "-",
+   "relation": "near",
+   "region": {
+    "type": "WHOLE_IMAGE",
+    "rect": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "rule": "no landmark named"
+   }
+  },
+  "destination": {
+   "name": "none",
+   "class": null,
+   "box": null,
+   "how": "-",
+   "relation": "near",
+   "region": {
+    "type": "WHOLE_IMAGE",
+    "rect": [
+     0,
+     0,
+     1920,
+     1080
+    ],
+    "rule": "no landmark named"
+   }
+  }
+ },
+ "stages": [
+  {
+   "name": "exemplar_scores",
+   "status": "OK",
+   "summary": "31 of 95 DINO candidates in the size gate; exemplars cube 5, empty_pallet 4 (dropped same place: 4)",
+   "model": "google/siglip2-so400m-patch14-384"
+  },
+  {
+   "name": "slots",
+   "status": "OK",
+   "summary": "object 'red cube' (빨간 큐브) | from: none none | to: empty_pallet (none none)",
+   "model": "Qwen3-VL-4B-Instruct (bf16, v0.2 worker)"
+  },
+  {
+   "name": "source_reference",
+   "status": "OK",
+   "summary": "none [near] -> WHOLE_IMAGE (-)",
+   "model": "Python"
+  },
+  {
+   "name": "destination_reference",
+   "status": "OK",
+   "summary": "none [near] -> WHOLE_IMAGE (-)",
+   "model": "Python"
+  },
+  {
+   "name": "source_decision",
+   "status": "OK",
+   "summary": "SELECTED ['m11']: top-1 0.930, margin 0.089 >= 0.02",
+   "model": "google/siglip2-so400m-patch14-384 + Python"
+  },
+  {
+   "name": "destination_decision",
+   "status": "OK",
+   "summary": "SELECTED m32: top-1 0.898, margin 0.090 >= 0.02; 0.8 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start (2 candidates with a cube-like box inside excluded)",
+   "model": "google/siglip2-so400m-patch14-384 + Python"
+  },
+  {
+   "name": "selection_check",
+   "status": "OK",
+   "summary": "2 chosen id(s) exist among the DINO candidates",
+   "model": "Python"
+  }
+ ],
+ "first_failure": null,
+ "wall_s": 0.3,
+ "models_used": {
+  "this_run": {},
+  "photo_preparation": {}
+ },
+ "handoff": {
+  "photo_id": "U25967031",
+  "frames": {
+   "bbox_xyxy": "pixels of the photo as stored (undistorted image, 1920x1080)",
+   "floor_cm": "floor cm of the PROVISIONAL_UNVALIDATED E1 mat-seam transform (valid only for photos aligned with E1); box corners projected on the floor plane",
+   "qwen_bbox_2d": "Qwen 0-1000 coordinates of the image Qwen saw (converted to photo px before use)"
+  },
+  "source": {
+   "id": "m11",
+   "bbox_xyxy": [
+    569.46,
+    858.97,
+    591.03,
+    878.59
+   ],
+   "floor_polygon_cm": [
+    [
+     89.3,
+     184.6
+    ],
+    [
+     93.2,
+     184.7
+    ],
+    [
+     93.6,
+     188.3
+    ],
+    [
+     89.7,
+     188.3
+    ]
+   ]
+  },
+  "destination": {
+   "id": "m32",
+   "bbox_xyxy": [
+    1591.23,
+    250.27,
+    1640.53,
+    288.3
+   ],
+   "goal_kind": "OBJECT",
+   "placement": "EXEMPLAR_EMPTY_PALLET",
+   "floor_polygon_cm": [
+    [
+     288.4,
+     55.3
+    ],
+    [
+     298.4,
+     55.6
+    ],
+    [
+     296.9,
+     65.2
+    ],
+    [
+     287.0,
+     64.9
+    ]
+   ],
+   "approach_goal_cm": [
+    273.0,
+    83.0
+   ],
+   "approach_goal_image_px": [
+    1533.4,
+    363.8
+   ]
+  }
+ },
+ "narrative": [
+  "해석(Qwen 4B, 글자만): 옮길 것 'red cube', 출발 기준 none(none), 놓을 곳 empty_pallet(none none).",
+  "A: 확정 m11 - top-1 0.930, margin 0.089 >= 0.02",
+  "B: 확정 m32 - top-1 0.898, margin 0.090 >= 0.02; 0.8 cm from the drivable zone (limit 5 cm); approach pose reachable from the robot start"
+ ],
+ "files": {
+  "overlay": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/runs/run_013_U25967031/overlay.png",
+  "overlay_candidates": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/runs/run_013_U25967031/overlay_candidates.png",
+  "run_json": "/home/binci/vlm_ws/hybrid_exemplar_20261121/replay_20261121_071147/runs/run_013_U25967031/run.json"
+ },
+ "REPLAY": {
+  "slots": "ASSUMED_CORRECT_NOT_MODEL_OUTPUT",
+  "data": [
+   "/home/binci/vlm_ws/semantic_task_navigation/experiments/siglip_small_object_test/results/20261120_133027_run",
+   "/home/binci/vlm_ws/semantic_task_navigation/experiments/siglip_small_object_test/results/20261120_141616_followup_siglip_so400m"
+  ]
+ }
+}

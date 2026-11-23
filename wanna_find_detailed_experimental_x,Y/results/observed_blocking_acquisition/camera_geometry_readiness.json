@@ -1,0 +1,59 @@
+{
+  "schema_version": "0.1",
+  "audit_time": "2026-09-20T13:29:04+09:00",
+  "status": "WAITING_FOR_GEOMETRY_COMPATIBLE_CAPTURE",
+  "camera_device_audit": {
+    "selector_policy": "EXACT_EXTERNAL_BY_ID_ONLY",
+    "configured_device_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "required_identity": "Ucamera001",
+    "configured_device_available": false,
+    "video_devices": [],
+    "v4l2_result": "NO_DEVICE_NODES_AND_DEV_VIDEO0_NOT_OPENABLE",
+    "fallback_allowed": false,
+    "capture_attempted": false,
+    "current_supported_formats": "NOT_QUERYABLE_CAMERA_UNAVAILABLE"
+  },
+  "geometry_contract": {
+    "required_original_image_size_px": [2016, 1133],
+    "required_orientation": "MATCH_LEGACY_REFERENCE_ORIENTATION",
+    "resize_allowed": false,
+    "homography_scaling_allowed": false,
+    "calibration_native_size_px": [1920, 1080],
+    "calibration_application": "STORED_LEGACY_PROPORTIONAL_SCALING_ONLY",
+    "legacy_reference_image": "/home/binci/qwen_vision_test/photo_04.png",
+    "calibration_path": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+    "calibration_sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+    "homography_path": "/home/binci/qwen_vision_test/homography_12pt_undistorted.json",
+    "homography_sha256": "0edc4ebaca03deda0bd6f88bb64b068f98944ce28c67185144c176e560e1f1af",
+    "same_resolution_alone_is_compatibility_evidence": false,
+    "current_camera_pose_matches_geometry_session": "UNPROVEN",
+    "current_image_orientation": "UNAVAILABLE",
+    "homography_applicable_to_current_capture": false
+  },
+  "live_monitor_contract": {
+    "configured_preferred_size_px": [640, 480],
+    "configured_preferred_fps": 30.0,
+    "metric_geometry_compatible_as_configured": false,
+    "reason": "The live-monitor resolution differs from the 2016x1133 legacy metric input contract and must not be resized into compatibility."
+  },
+  "source_evidence": {
+    "live_camera_config": {
+      "path": "/home/binci/vlm_ws/config/live_scene_monitor.json",
+      "sha256": "fba2c311eed84d5eaf023b72bfa972abafcecfbfe693b2337fa5fdac0e9ab4d7"
+    },
+    "stored_geometry_audit_config": {
+      "path": "/home/binci/vlm_ws/config/offline_image_geometry_audit.json",
+      "sha256": "f31539e21de24864f2a35416269fc09660de0b35ef7e3805ed1629262ff48e08"
+    },
+    "prior_camera_audit": {
+      "path": "/home/binci/vlm_ws/results/live_scene_monitor/live_camera_audit.json",
+      "sha256": "df8eebab48de401f52729c9732a9d95994034335e6530ff5bbf0af56d4fcda09"
+    },
+    "prior_live_validation": {
+      "path": "/home/binci/vlm_ws/results/live_scene_monitor/live_validation_summary.json",
+      "sha256": "e2bf69aebf21d18c784d1e3fe140f9dcebea29b2082d6c796f68e9c14711985b"
+    }
+  },
+  "gate_result": "METRIC_PROCESSING_PROHIBITED",
+  "required_next_action": "Reconnect and freeze the exact research camera, acquire an original-resolution baseline, and prove pose/session compatibility before object placement or metric processing."
+}

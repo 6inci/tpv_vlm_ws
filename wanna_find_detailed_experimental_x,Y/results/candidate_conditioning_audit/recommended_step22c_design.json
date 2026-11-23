@@ -1,0 +1,16 @@
+{
+  "step": "STEP_22C_CANDIDATE_CONDITIONED_VLM_GROUNDING_REVALIDATION",
+  "recommended_method": "C_FULL_IMAGE_OVERLAY_PLUS_NORMALIZED_COORDINATES",
+  "semantic_input": "FULL_RESOLUTION_SAME_DOMAIN_IMAGE_WITH_DETERMINISTIC_VISIBLE_RECTANGLE_AND_TRACK_ID",
+  "candidate_metadata": "NORMALIZED_INTEGER_0_1000_HALF_OPEN_DERIVED_FROM_RAW",
+  "metric_coordinate_source": "VALIDATED_FULL_OBJECT_BBOX_IN_ORIGINAL_FULL_IMAGE_DOMAIN_ONLY",
+  "rationale": [
+    "removes raw-versus-normalized prompt ambiguity",
+    "raises region salience without cropping or resizing",
+    "retains full-scene context",
+    "reuses current parser and geometry",
+    "requires no dependency"
+  ],
+  "fallback_to_evaluate_later": "D_FULL_IMAGE_PLUS_SECONDARY_CONTEXT_CROP",
+  "actual_qwen_validation": "NOT_RUN_IN_STEP_22B"
+}

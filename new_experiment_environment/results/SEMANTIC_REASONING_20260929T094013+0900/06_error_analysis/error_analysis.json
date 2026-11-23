@@ -1,0 +1,809 @@
+{
+  "status": "PARTIAL",
+  "ground_truth_available": false,
+  "taxonomy": [
+    "DETECTION_FAILURE",
+    "CLASSIFICATION_FAILURE",
+    "RELATION_FAILURE",
+    "SEMANTIC_INFERENCE_FAILURE",
+    "TARGET_GENERATION_FAILURE",
+    "AMBIGUITY_HANDLING_FAILURE"
+  ],
+  "validated_errors": [
+    {
+      "reference": "q_030",
+      "category": "CLASSIFICATION_FAILURE",
+      "evidence": "Baseline YOLO cart overlaps Qwen manipulator at IoU 0.9311; location was found under the wrong label."
+    },
+    {
+      "reference": "q_029",
+      "category": "CLASSIFICATION_FAILURE",
+      "evidence": "Baseline YOLO truck overlaps Qwen mobile_robot at IoU 0.9231; location was found under the wrong label."
+    }
+  ],
+  "detector_diagnostics": {
+    "manipulator": "VOCABULARY_DEPENDENT",
+    "conveyor": "AMBIGUOUS",
+    "mobile_robot": "VOCABULARY_DEPENDENT",
+    "pallet": "VOCABULARY_DEPENDENT"
+  },
+  "work_area_predictions_by_source": {
+    "structured_context": [
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its left, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      },
+      {
+        "task_id": "D02",
+        "instruction": "컨베이어 옆 매니퓰레이터 앞의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_D",
+        "status": "ANSWERED",
+        "predicted_semantic_region": "Loading Area",
+        "supporting_objects": [
+          "q_001",
+          "q_004"
+        ],
+        "supporting_relations": [
+          {
+            "subject_id": "q_001",
+            "predicate": "left_of",
+            "object_id": "q_004"
+          }
+        ],
+        "region_geometry": {
+          "polygon_px": [
+            [
+              728,
+              158
+            ],
+            [
+              882,
+              158
+            ],
+            [
+              882,
+              320
+            ],
+            [
+              728,
+              320
+            ]
+          ],
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": [
+          780,
+          240
+        ],
+        "target_metric_xy": {
+          "x": 0.8398094697275799,
+          "y": 2.1423230553230996,
+          "unit": "m",
+          "frame": "synthetic_workspace_bottom_left_xy_m",
+          "synthetic_only": true,
+          "outside_workspace": true
+        },
+        "support_level": "HIGH",
+        "evidence_summary": "Truck (q_001) is in the loading area, and the pallet (q_004) is immediately to its left, defining the space between them as the target for movement.",
+        "source_path": "STRUCTURED_CONTEXT",
+        "validation_errors": []
+      }
+    ],
+    "qwen": [
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "QWEN_OBJECT_OUTPUT",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "D02",
+        "instruction": "컨베이어 옆 매니퓰레이터 앞의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_D",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "QWEN_OBJECT_OUTPUT",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      }
+    ],
+    "grounding_dino": [
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "GROUNDING_DINO_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "D02",
+        "instruction": "컨베이어 옆 매니퓰레이터 앞의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_D",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "GROUNDING_DINO_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      }
+    ],
+    "yolo_world": [
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "YOLO_WORLD_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "D02",
+        "instruction": "컨베이어 옆 매니퓰레이터 앞의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_D",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "No complete source-specific Qwen response was returned after three bounded attempts.",
+        "source_path": "YOLO_WORLD_SAM2",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      }
+    ],
+    "diagnostic_augmented": [
+      {
+        "task_id": "C03",
+        "instruction": "로봇 작업 구역 앞으로 이동해.",
+        "task_type": "TYPE_C",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "Not executed after the three-attempt source-specific Qwen limit.",
+        "source_path": "DIAGNOSTIC_AUGMENTED",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      },
+      {
+        "task_id": "D02",
+        "instruction": "컨베이어 옆 매니퓰레이터 앞의 이동 가능한 공간으로 이동해.",
+        "task_type": "TYPE_D",
+        "status": "FAILED",
+        "predicted_semantic_region": null,
+        "supporting_objects": [],
+        "supporting_relations": [],
+        "region_geometry": {
+          "polygon_px": null,
+          "coordinate_system": "original_image_pixels"
+        },
+        "target_pixel": null,
+        "target_metric_xy": null,
+        "support_level": null,
+        "evidence_summary": "Not executed after the three-attempt source-specific Qwen limit.",
+        "source_path": "DIAGNOSTIC_AUGMENTED",
+        "validation_errors": [
+          "BLOCKED_AFTER_THREE_QWEN_GENERATION_ATTEMPTS"
+        ]
+      }
+    ]
+  },
+  "diagnostic_augmentation_changed_work_area_output": null,
+  "diagnostic_augmentation_comparison_status": "BLOCKED_BY_QWEN_SOURCE_SPECIFIC_GENERATION",
+  "semantic_or_relation_error_claims": "BLOCKED_BY_GROUND_TRUTH",
+  "quantitative_without_ground_truth": {
+    "per_source": {
+      "structured_context": {
+        "total": 15,
+        "statuses": {
+          "ANSWERED": 13,
+          "ABSTAIN": 2
+        },
+        "supporting_object_references": 31,
+        "relation_references": 14,
+        "semantic_region_distribution": {
+          "Loading Area": 7,
+          "Material Area": 3,
+          "Storage Area": 2,
+          "Work Station": 1
+        }
+      },
+      "qwen": {
+        "total": 15,
+        "statuses": {
+          "FAILED": 15
+        },
+        "supporting_object_references": 0,
+        "relation_references": 0,
+        "semantic_region_distribution": {}
+      },
+      "grounding_dino": {
+        "total": 15,
+        "statuses": {
+          "FAILED": 15
+        },
+        "supporting_object_references": 0,
+        "relation_references": 0,
+        "semantic_region_distribution": {}
+      },
+      "yolo_world": {
+        "total": 15,
+        "statuses": {
+          "FAILED": 15
+        },
+        "supporting_object_references": 0,
+        "relation_references": 0,
+        "semantic_region_distribution": {}
+      }
+    },
+    "cross_source_agreement": [
+      {
+        "task_id": "A01",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Loading Area",
+            "target_pixel": [
+              780,
+              240
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "A02",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Material Area",
+            "target_pixel": [
+              743,
+              710
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "B01",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Loading Area",
+            "target_pixel": [
+              780,
+              240
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "B02",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Material Area",
+            "target_pixel": [
+              743,
+              710
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "B03",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Storage Area",
+            "target_pixel": [
+              375,
+              180
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "B04",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Loading Area",
+            "target_pixel": [
+              780,
+              240
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "B05",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Work Station",
+            "target_pixel": [
+              650,
+              200
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "C01",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Loading Area",
+            "target_pixel": [
+              780,
+              240
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "C02",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Storage Area",
+            "target_pixel": [
+              375,
+              180
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "C03",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Loading Area",
+            "target_pixel": [
+              780,
+              240
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "C04",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Material Area",
+            "target_pixel": [
+              743,
+              710
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "D01",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Loading Area",
+            "target_pixel": [
+              780,
+              240
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "D02",
+        "all_sources_same_region_label": false,
+        "predictions": {
+          "structured_context": {
+            "status": "ANSWERED",
+            "region": "Loading Area",
+            "target_pixel": [
+              780,
+              240
+            ]
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "E01",
+        "all_sources_same_region_label": true,
+        "predictions": {
+          "structured_context": {
+            "status": "ABSTAIN",
+            "region": null,
+            "target_pixel": null
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      },
+      {
+        "task_id": "E02",
+        "all_sources_same_region_label": true,
+        "predictions": {
+          "structured_context": {
+            "status": "ABSTAIN",
+            "region": null,
+            "target_pixel": null
+          },
+          "qwen": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "grounding_dino": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          },
+          "yolo_world": {
+            "status": "FAILED",
+            "region": null,
+            "target_pixel": null
+          }
+        }
+      }
+    ],
+    "ground_truth_blocked_metrics": [
+      "Spatial Relation Accuracy",
+      "Semantic Region Classification Accuracy",
+      "Semantic Region IoU",
+      "Instruction Grounding Success Rate",
+      "Goal-in-Region Rate",
+      "Abstention Precision",
+      "Abstention Recall"
+    ]
+  }
+}

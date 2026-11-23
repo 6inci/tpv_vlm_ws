@@ -1,0 +1,27 @@
+# Shared photo set (2026-11-20 21:57-22:06) -> camera pose in the teammate's map frame env2_20261119.
+# Written 2026-11-22 before fit_photoset_pose.py was run as a script.
+photos_dir: photos                      # copies of ~/Downloads/맵사진_전달(2차)/전달/*.png (sha256 in SHA256SUMS)
+pose_photo: 20261120_215746_view.png    # all 15 photos agree within 1 px (phase correlation), so one pose covers the set
+teammate_bundle: /home/binci/vlm_ws/nl_to_route_20261122/vendor/teammate_extra_20261120   # unchanged copy of ~/Downloads/teammate_extra_20261120 (CHECKSUMS.sha256 OK)
+register_image: 1_required/camera/register_20261119_194739/undistorted.png                 # newK = K, known reference px
+register_points: 1_required/camera/register_20261119_194739/reference_points_px.json
+image_size: [1920, 1080]
+homography:                             # floor-plane homography register undistorted image -> pose photo
+  seed: 0
+  sift_features: 20000
+  ratio: 0.75
+  ransac_px: 2.0
+  mask_xyxy: [100, 150, 1820, 1040]     # mat area (both images)
+  max_median_residual_px: 1.5
+intrinsics_hypotheses:                  # how the photo may have been undistorted; all are fitted, the rule below picks one
+  - {name: "newK = K", alpha: null, dist: false}
+  - {name: "raw (distortion kept)", alpha: null, dist: true}
+  - {name: "newK alpha 0", alpha: 0.0, dist: false}
+  - {name: "newK alpha 0.5", alpha: 0.5, dist: false}
+  - {name: "newK alpha 1", alpha: 1.0, dist: false}
+select_rule: "smallest max floor error over the fit points (B is skipped by the teammate's fit_pose)"
+gates:
+  fit_point_max_err_cm: 1.1             # teammate's photo5 pose: 1.07 cm, register: 1.004 cm
+  roundtrip_max_cm: 0.01
+  camera_height_m: [1.8, 2.6]           # same range as the teammate's fit_pose
+out_dir: camera_pose

@@ -1,0 +1,113 @@
+{
+  "schema_version": "0.1",
+  "created_at": "2026-09-21T07:10:53+09:00",
+  "session_id": "geometry_session_02_current_view",
+  "status": "CAMERA_SESSION_STABLE",
+  "purpose": "Fresh single-frame camera/framing stability recheck before reusing the already validated current-session geometry.",
+  "camera_identity": {
+    "required_identity": "Ucamera001",
+    "identity_status": "CONFIRMED",
+    "serial_short": "Ucamera001",
+    "usb_vendor_product": "05a3:9331",
+    "by_id_path": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+    "current_video_node": "/dev/video7"
+  },
+  "native_mode": {
+    "width": 1920,
+    "height": 1080,
+    "pixel_format": "MJPG",
+    "fps": 30,
+    "availability_confirmed": true
+  },
+  "capture": {
+    "source_frame_count": 1,
+    "output_path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+    "bytes": 4679836,
+    "decoded_shape_hwc": [1080, 1920, 3],
+    "capture_command": "gst-launch-1.0 -e v4l2src device=/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0 num-buffers=1 ! image/jpeg,width=1920,height=1080,framerate=30/1 ! jpegdec ! videoconvert ! pngenc ! filesink location=reference_aruco_recheck_01.png",
+    "resize": false,
+    "crop": false,
+    "rotation": false,
+    "undistortion": false,
+    "software_warp": false
+  },
+  "uvc_controls_observed_read_only": {
+    "brightness": 105,
+    "contrast": 105,
+    "saturation": 128,
+    "hue": 128,
+    "white_balance_automatic": 1,
+    "controls_modified": false
+  },
+  "reference_frame": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_raw.png",
+    "sha256": "1478f9b358354569c72e24c4d3aecc425bb6dbc7293b42e2c496f86bcc8fc299",
+    "width": 1920,
+    "height": 1080
+  },
+  "diagnostic_registration": {
+    "role": "CAMERA_STABILITY_DIAGNOSTIC_ONLY_NOT_METRIC_GEOMETRY",
+    "method": "OpenCV SIFT static-background features, BFMatcher L2 2NN Lowe ratio 0.70, projective RANSAC threshold 3 px",
+    "sift_nfeatures": 10000,
+    "sift_contrast_threshold": 0.02,
+    "static_mask_policy": "Exclude dynamic right/person area x>=1280,y>=500; exclude y>=780; exclude known object and marker ROIs. Retain wall, desks, cabinets, and broad static floor.",
+    "reference_keypoints": 4824,
+    "fresh_keypoints": 4513,
+    "ratio_test_matches": 1777,
+    "projective_inliers": 1702,
+    "projective_inlier_ratio": 0.9577940348902645,
+    "reference_to_fresh_projective_matrix": [
+      [0.9998682694404134, -0.00019350499748719787, -0.02941397366866577],
+      [-0.00003414381798543494, 0.9998563812032517, 0.1506990834716388],
+      [-5.767303630010333e-8, -1.9307906809636145e-7, 1.0]
+    ],
+    "inlier_reprojection_error_px": {
+      "mean": 0.27486137,
+      "median": 0.20712516,
+      "rmse": 0.36236608,
+      "maximum": 2.3879893
+    },
+    "robust_similarity_matrix": [
+      [1.0000463291209474, 0.000005512909263564262, -0.1490127768855256],
+      [-0.000005512909263564262, 1.0000463291209474, 0.10698575430969626]
+    ],
+    "scale": 1.0000463291361428,
+    "scale_delta_percent": 0.00463291361428,
+    "rotation_deg": -0.0003158518,
+    "representative_displacements_px": {
+      "image_center_xy": [-0.107117, 0.126587],
+      "image_center_magnitude": 0.165826,
+      "lower_center_magnitude": 0.223892,
+      "maximum_of_four_image_corners": 0.324687
+    },
+    "vertical_band_inlier_rmse_px": [
+      {"y_range_px": [0, 270], "inliers": 609, "rmse": 0.335857},
+      {"y_range_px": [270, 540], "inliers": 738, "rmse": 0.374674},
+      {"y_range_px": [540, 780], "inliers": 355, "rmse": 0.379740}
+    ],
+    "post_warp_static_mask_absolute_gray_difference": {
+      "mean": 9.674,
+      "median": 7.0,
+      "p90": 21.0
+    }
+  },
+  "development_stability_gate": {
+    "thresholds": {
+      "minimum_projective_inlier_ratio": 0.8,
+      "maximum_inlier_rmse_px": 1.0,
+      "maximum_representative_displacement_px": 2.0,
+      "maximum_absolute_scale_delta_percent": 0.5,
+      "maximum_absolute_rotation_deg": 0.1
+    },
+    "all_checks_pass": true,
+    "result": "CAMERA_SESSION_STABLE"
+  },
+  "geometry_policy": {
+    "existing_validated_homography_reuse_allowed": true,
+    "homography_recomputed": false,
+    "fit_points_changed": false,
+    "holdout_points_changed": false,
+    "diagnostic_registration_used_as_metric_transform": false
+  }
+}

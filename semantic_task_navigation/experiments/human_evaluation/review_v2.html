@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task Review v2</title>
+<style>
+:root { --bg:#f5f6f8; --card:#fff; --ink:#1f2430; --muted:#5f6878; --line:#dde1e8; --accent:#2f5bd3; --ok:#1d8a4a; --bad:#c23b3b; --warn:#a86b12; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.6 -apple-system, "Segoe UI", "Noto Sans KR", "Malgun Gothic", sans-serif; }
+header { background:#1f2430; color:#fff; padding:10px 20px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+header b { font-size:16px; }
+header .sp { flex:1; }
+header input { padding:3px 8px; border-radius:4px; border:0; width:140px; }
+.page { max-width:1500px; margin:0 auto; padding:18px 20px 60px; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 18px; margin-bottom:16px; }
+h1 { font-size:20px; margin:0 0 8px; } h2 { font-size:17px; margin:0 0 10px; } h3 { font-size:15px; margin:12px 0 6px; }
+.instr { font-size:19px; font-weight:600; background:#fffbe6; border:1px solid #efe0a3; border-radius:8px; padding:10px 14px; margin:6px 0 10px; }
+.muted { color:var(--muted); font-size:13px; }
+.q { border:2px solid #c9d6f7; background:#f5f8ff; border-radius:10px; padding:12px 14px; margin-top:10px; }
+.q .title { font-weight:700; margin-bottom:6px; }
+.opts { display:flex; flex-wrap:wrap; gap:8px; }
+.opts label { border:1px solid var(--line); background:#fff; border-radius:20px; padding:4px 12px; cursor:pointer; user-select:none; }
+.opts input { display:none; }
+.opts label.on { background:var(--accent); border-color:var(--accent); color:#fff; }
+.opts label.skip { color:var(--muted); }
+input.note { width:100%; margin-top:8px; padding:5px 8px; border:1px solid var(--line); border-radius:6px; font:inherit; font-size:14px; }
+.cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.photo { position:relative; border-radius:8px; overflow:hidden; background:#222; cursor:zoom-in; }
+.photo img { display:block; width:100%; }
+.photo canvas { position:absolute; left:0; top:0; }
+.legend { font-size:12px; color:var(--muted); margin:6px 0; display:flex; flex-wrap:wrap; gap:10px; }
+.legend i { display:inline-block; width:16px; border-top:3px solid; vertical-align:middle; margin-right:3px; }
+.concepts { display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; margin:8px 0; }
+.concepts div { background:#f7f8fa; border:1px solid var(--line); border-radius:8px; padding:6px 10px; font-size:13px; }
+.concepts b { display:block; font-size:12px; color:var(--muted); font-weight:600; }
+.ai { font-size:14px; }
+.ai .row { display:flex; gap:8px; padding:6px 0; border-top:1px solid #eef0f4; }
+.ai .row:first-child { border-top:0; }
+.ai .k { width:110px; flex:none; color:var(--muted); font-size:13px; }
+.tag { display:inline-block; font-size:12px; padding:0 8px; border-radius:10px; margin-right:4px; }
+.t-sel { background:#dcf3e5; color:var(--ok); } .t-hold { background:#fbefd9; color:var(--warn); } .t-none { background:#f3dede; color:var(--bad); }
+.flag { background:#fff2e2; border:1px solid #f0c98d; border-radius:6px; padding:4px 8px; font-size:13px; margin-top:4px; }
+.path img { width:100%; border:1px solid var(--line); border-radius:6px; cursor:zoom-in; }
+details { margin-top:8px; font-size:13px; } details summary { cursor:pointer; color:var(--accent); }
+table { border-collapse:collapse; width:100%; font-size:13px; }
+th, td { border:1px solid var(--line); padding:4px 6px; text-align:left; vertical-align:top; }
+th { background:#f2f4f7; }
+.nav { display:flex; gap:10px; justify-content:space-between; align-items:center; }
+button { font:inherit; border:1px solid var(--line); background:#fff; border-radius:8px; padding:7px 16px; cursor:pointer; }
+button.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+button:disabled { opacity:.5; cursor:default; }
+.steps { display:flex; gap:6px; flex-wrap:wrap; }
+.steps span { font-size:12px; padding:2px 10px; border-radius:12px; background:#39425a; color:#dfe4ee; cursor:pointer; }
+.steps span.on { background:#fff; color:#1f2430; font-weight:700; }
+.steps span.done::after { content:" ✓"; }
+.hidden { display:none; }
+.agree { color:var(--ok); } .disagree { color:var(--bad); font-weight:600; } .na { color:var(--muted); }
+.modal { position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:50; overflow:auto; display:none; padding:20px; }
+.modal canvas, .modal img { display:block; margin:0 auto; max-width:none; }
+.modal .x { position:fixed; right:22px; top:10px; color:#fff; font-size:28px; cursor:pointer; }
+.marks { font-size:13px; margin-top:6px; }
+@media (max-width:1000px) { .cols { grid-template-columns:1fr; } .concepts { grid-template-columns:1fr 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <b>작업지시 결과 검토 v2</b>
+  <div class="steps" id="steps"></div>
+  <span class="sp"></span>
+  <label>평가자 <input id="who" type="text" placeholder="이름"></label>
+  <span class="muted" style="color:#c9cfdb" id="saveinfo"></span>
+</header>
+<div class="page" id="page"></div>
+<div class="modal" id="modal"><span class="x">✕</span><div id="modalBody"></div></div>
+
+<script src="data.js"></script>
+<script>
+"use strict";
+var D = window.HE_DATA;
+var KEY = "he_review_v2";                         // v2 storage (separate)
+var V1_KEY = "he_task_context_2d_navigation_v1";   // v1 storage: READ ONLY, never written or removed here
+var SCHEMA = "human_review_v2";
+
+var Q1 = [["valid", "수행 가능"], ["ambiguous", "의미가 모호함"], ["infeasible", "수행 불가능"], ["cannot_judge", "판단 불가"]];
+var Q2 = [["correct", "올바름"], ["wrong", "잘못됨"], ["proper_hold", "적절하게 판단 보류"], ["cannot_judge", "판단 불가"]];
+var Q3 = [["appropriate", "적절함"], ["inappropriate", "부적절함"], ["proper_hold", "적절하게 판단 보류"], ["cannot_judge", "판단 불가"]];
+var Q4 = [["valid", "타당함"], ["invalid", "부적절함"], ["needs_check", "추가 검증 필요"]];
+// v1 'ambiguity' -> Q1 (shown to the user as a pre-filled, editable suggestion with its origin)
+var V1_TO_Q1 = { unique: "valid", multiple_acceptable: "valid", instruction_ambiguous: "ambiguous", not_executable: "infeasible", undecided: "cannot_judge" };
+
+// ------------------------------------------------------------------ pure logic (tested with node)
+function emptyState() { return { schema: SCHEMA, evaluator: "", tasks: {}, conditions: {}, imported_v1: null, marks: {} }; }
+function ans(v, src) { return { value: v, source: src || "user_v2", at: new Date().toISOString() }; }
+function importV1(S, v1) {
+  if (!v1 || v1.schema !== "human_evaluation_state_v1") return 0;
+  S.imported_v1 = { read_at: new Date().toISOString(), evaluator: v1.evaluator || "", ground_truth: JSON.parse(JSON.stringify(v1.ground_truth || {})) };
+  var n = 0;
+  Object.keys(S.imported_v1.ground_truth).forEach(function (tid) {
+    var g = S.imported_v1.ground_truth[tid];
+    if (!g || !g.saved_at) return;
+    n++;
+    var t = S.tasks[tid] || (S.tasks[tid] = {});
+    if (!t.q1 && V1_TO_Q1[g.ambiguity]) t.q1 = ans(V1_TO_Q1[g.ambiguity], "imported_v1 (ambiguity=" + g.ambiguity + ")");
+    if (!t.q1_note && g.comment) t.q1_note = g.comment;
+  });
+  if (!S.evaluator && v1.evaluator) S.evaluator = v1.evaluator;
+  return n;
+}
+function aiSourceClaim(c) { return c.source.status === "SELECTED" ? "chose" : (c.source.status === "AMBIGUOUS" || c.source.status === "NOT_FOUND") ? "held" : "none"; }
+function aiDestClaim(c) { return c.destination.status === "SELECTED" ? "chose" : (c.destination.status === "AMBIGUOUS" || c.destination.status === "NOT_ACCESSIBLE" || c.destination.status === "NOT_FOUND") ? "held" : "none"; }
+function hasPath(c) { return c.routes.plans.some(function (p) { return p.path_A_cm !== null && p.path_A_cm !== undefined; }); }
+function agreement(claim, v, okVals) {
+  // AI chose / held  vs  the human answer -> agree | disagree | n/a
+  if (!v || v === "cannot_judge") return "n/a";
+  if (claim === "chose") return okVals.indexOf(v) >= 0 ? "agree" : (v === "proper_hold" ? "disagree" : "disagree");
+  if (claim === "held") return v === "proper_hold" ? "agree" : "disagree";
+  return "n/a";
+}
+function summaryRows(S) {
+  return D.conditions.map(function (c) {
+    var a = S.conditions[c.cond_id] || {}, t = S.tasks[c.task_id] || {};
+    var q2 = a.q2 && a.q2.value, q3 = a.q3 && a.q3.value, q4 = a.q4 && a.q4.value;
+    return { cond_id: c.cond_id, task_id: c.task_id, R: c.R, q1: t.q1 ? t.q1.value : "", ai_source: c.source.status + (c.source.selected.length ? " " + c.source.selected.map(function (x) { return x.id; }).join("/") : ""),
+             ai_destination: c.destination.status + (c.destination.id ? " " + c.destination.id : ""), ai_route_category_by_code: c.routes.category_by_code,
+             q2: q2 || "", q3: q3 || "", q4: q4 || "", path_exists: hasPath(c),
+             source_agreement: agreement(aiSourceClaim(c), q2, ["correct"]), destination_agreement: agreement(aiDestClaim(c), q3, ["appropriate"]),
+             code_autonomous_but_user_inappropriate: c.routes.category_by_code.indexOf("AUTONOMOUS") === 0 && q3 === "inappropriate" };
+  });
+}
+function progress(S) {
+  var q1 = D.tasks.filter(function (t) { return S.tasks[t.task_id] && S.tasks[t.task_id].q1; }).length, need = 0, got = 0;
+  D.conditions.forEach(function (c) { var a = S.conditions[c.cond_id] || {}; need += 2 + (hasPath(c) ? 1 : 0); got += (a.q2 ? 1 : 0) + (a.q3 ? 1 : 0) + (hasPath(c) && a.q4 ? 1 : 0); });
+  return { q1: q1, q1_total: D.tasks.length, answers: got, answers_total: need, status: (q1 === D.tasks.length && got === need) ? "COMPLETE" : "INCOMPLETE" };
+}
+function exportJSON(S) {
+  return { schema: SCHEMA, source: "HUMAN review (experiments/human_evaluation/review_v2.html)", evaluator: S.evaluator || null, exported_at: new Date().toISOString(),
+           progress: progress(S), questions: { Q1: Q1, Q2: Q2, Q3: Q3, Q4: Q4 }, ai_run: D.meta.ai_run,
+           tasks: D.tasks.map(function (t) { var s = S.tasks[t.task_id] || {}; return { task_id: t.task_id, instruction: t.instruction, q1: s.q1 || null, q1_note: s.q1_note || "", optional_marks_px: S.marks[t.task_id] || [] }; }),
+           conditions: summaryRows(S).map(function (r) { var a = S.conditions[r.cond_id] || {}; return { cond_id: r.cond_id, human: { q2: a.q2 || null, q3: a.q3 || null, q4: a.q4 || null, note: a.note || "" },
+             ai_reference_not_human: { source: r.ai_source, destination: r.ai_destination, route_category_by_code: r.ai_route_category_by_code }, comparison: { source: r.source_agreement, destination: r.destination_agreement, code_autonomous_but_user_inappropriate: r.code_autonomous_but_user_inappropriate } }; }),
+           imported_v1_read_only: S.imported_v1 };
+}
+function csvCell(v) { var s = v === null || v === undefined ? "" : String(v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+function exportCSV(S) {
+  var head = ["evaluator", "cond_id", "task_id", "condition", "q1_instruction_valid", "q2_source", "q3_destination", "q4_path", "path_exists", "note", "ai_source(ref)", "ai_destination(ref)", "ai_route_category(ref)", "source_agreement", "destination_agreement"];
+  var rows = summaryRows(S).map(function (r) { var a = S.conditions[r.cond_id] || {};
+    return [S.evaluator, r.cond_id, r.task_id, r.R, r.q1, r.q2, r.q3, r.q4, r.path_exists, a.note || "", r.ai_source, r.ai_destination, r.ai_route_category_by_code, r.source_agreement, r.destination_agreement]; });
+  return "﻿" + [head].concat(rows).map(function (r) { return r.map(csvCell).join(","); }).join("\n") + "\n";
+}
+
+// ------------------------------------------------------------------ AI explanation in plain Korean (from the stored run)
+var REL_KO = { on: "‘위/안(on)’ → 기준 물체 박스 안에서만 찾음", next_to: "‘옆(next to)’ → 기준 물체 주변 영역에서 찾음", near: "‘근처(near)’ → 기준 물체 주변 영역에서 찾음",
+               from: "‘출처(from)’ → 기준 물체 주변 영역에서 찾음", none: "관계 없음 → 기준 물체 주변 영역에서 찾음" };
+function sourceText(c) {
+  var s = c.source, rated = s.ratings.filter(function (r) { return r.role === "object_to_move"; });
+  if (s.status === "SELECTED") {
+    var r = rated[0] || {};
+    return { tag: "t-sel", head: "선택: " + s.selected.map(function (x) { return x.id; }).join(", "), body: "AI가 본 모습: " + ((r.appearance || []).join(", ") || "—") };
+  }
+  if (s.status === "AMBIGUOUS") return { tag: "t-hold", head: "판단 보류 (후보 " + s.selected.length + "개 동률)", body: "AI가 모두 '옮길 물체'로 본 후보: " + rated.map(function (r) { return r.id + " (" + (r.appearance || []).join(", ") + ")"; }).join(" · ") };
+  return { tag: "t-none", head: s.status, body: s.why || "" };
+}
+function destText(c) {
+  var d = c.destination, acc = d.accessibility || {}, ok = [], far = [];
+  Object.keys(acc).forEach(function (k) {
+    var a = acc[k], lab = a.id + " ‘" + (a.appearance || []).join(", ") + "’ (" + (a.role === "suitable" ? "적합" : "가능") + ")";
+    (a.accessible ? ok : far).push(lab + (a.accessible ? "" : " — 로봇이 다가갈 수 없음: 주행 구역에서 " + a.gap_to_drivable_cm + " cm"));
+  });
+  var lines = [];
+  if (far.length) lines.push("의미상 후보지만 접근 불가: " + far.join(" · "));
+  if (ok.length) lines.push("접근 가능한 후보: " + ok.join(" · "));
+  var p15 = d.ratings.filter(function (r) { return (r.appearance || []).join(" ").toLowerCase().match(/manhole|grate/); });
+  if (p15.length) lines.push("AI가 ‘" + p15.map(function (r) { return (r.appearance || []).join(", "); }).join(" / ") + "’로 보고 부적합 판정한 후보: " + p15.map(function (r) { return r.id; }).join(", "));
+  if (d.status === "SELECTED") return { tag: "t-sel", head: "선택: " + d.id + (d.kind === "DIRECT" ? " (AI 1순위)" : " (대안: 1순위에 접근 불가)"), body: lines };
+  var why = { AMBIGUOUS: "판단 보류 — 접근 가능한 후보가 여러 개로 동률", NOT_ACCESSIBLE: "선택 안 함 — 적합한 후보에 로봇이 접근할 수 없고 대안도 없음", NOT_FOUND: "선택 안 함 — 적합한 후보 없음", NO_REFERENCE: "선택 안 함 — 목적지 기준 시설을 찾지 못함" }[d.status] || d.status;
+  return { tag: d.status === "AMBIGUOUS" || d.status === "NOT_ACCESSIBLE" ? "t-hold" : "t-none", head: why, body: lines };
+}
+function zoneText(c) {
+  var z = c.interpretation.zones_seen, f = z.filter(function (x) { return x.access === "forbidden"; }).map(function (x) { return x.description; });
+  var ped = z.some(function (x) { return /pedestrian|walkway|보행/i.test(x.description || ""); });
+  return (c.R === "R0" ? "규칙 미제공. " : "작업장 규칙 제공. ") + "AI가 진입 금지로 본 구역: " + (f.length ? f.join(", ") : "없음") + (ped ? "" : " · 보행자 통로를 언급하지 않음");
+}
+function routeText(c) {
+  var p = c.routes.plans;
+  if (!hasPath(c)) return "경로 없음 (출발 대상이 정해지지 않음)";
+  var main = p[0], diag = main.label.indexOf("DIAGNOSTIC") === 0;
+  var s = (diag ? "진단용 경로(출발 후보 동률, 자율 선택 결과 아님): " : "") + "경로 A " + main.path_A_cm + " cm (로봇 출발 → 출발 물체 앞 정차)";
+  s += main.path_B_cm ? ", 경로 B " + main.path_B_cm + " cm (→ 배치 장소 앞 정차, 남는 간격 " + main.path_B_gap_cm + " cm)" : ", 경로 B 없음 (" + (main.path_B_why || "") + ")";
+  return s;
+}
+
+// ------------------------------------------------------------------ persistence (v2 key only)
+var S = emptyState(), canStore = true;
+function load() { try { var r = localStorage.getItem(KEY); if (r) { var o = JSON.parse(r); if (o && o.schema === SCHEMA) S = o; } } catch (e) { canStore = false; } }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); canStore = true; } catch (e) { canStore = false; } info(); }
+function readV1() { try { var r = localStorage.getItem(V1_KEY); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
+function info() { var p = progress(S); var el = document.getElementById("saveinfo"); if (el) el.textContent = "답변 " + (p.q1 + p.answers) + "/" + (p.q1_total + p.answers_total) + " · " + (canStore ? "자동 저장됨" : "⚠ 브라우저 저장 불가 — 요약에서 내보내기"); }
+
+// ------------------------------------------------------------------ DOM helpers
+function h(tag, a, kids) {
+  var n = document.createElement(tag);
+  Object.keys(a || {}).forEach(function (k) { if (k === "text") n.textContent = a[k]; else if (k.indexOf("on") === 0) n.addEventListener(k.slice(2), a[k]); else n.setAttribute(k, a[k]); });
+  (kids || []).forEach(function (c) { if (c != null) n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+  return n;
+}
+function optionGroup(name, opts, current, onPick, allowSkip) {
+  var g = h("div", { class: "opts" });
+  opts.forEach(function (o) {
+    var lab = h("label", { class: current === o[0] ? "on" : "", "data-v": o[0] }, [h("input", { type: "radio", name: name }), o[1]]);
+    lab.addEventListener("click", function (e) { e.preventDefault(); mark(o[0]); onPick(o[0]); });
+    g.appendChild(lab);
+  });
+  if (allowSkip) { var sk = h("label", { class: "skip" }, ["건너뛰기"]); sk.addEventListener("click", function (e) { e.preventDefault(); mark(null); onPick(null); }); g.appendChild(sk); }
+  function mark(v) { Array.prototype.forEach.call(g.querySelectorAll("label[data-v]"), function (l) { l.classList.toggle("on", l.getAttribute("data-v") === v); }); }
+  return g;
+}
+function box(ctx, s, b, color, label, dashed, w) {
+  if (!b) return;
+  ctx.setLineDash(dashed ? [8, 5] : []); ctx.strokeStyle = color; ctx.lineWidth = w || 2;
+  ctx.strokeRect(b[0] * s, b[1] * s, (b[2] - b[0]) * s, (b[3] - b[1]) * s); ctx.setLineDash([]);
+  if (label) { ctx.font = Math.max(11, Math.round(13 * Math.min(1.4, s * 1.6))) + "px sans-serif"; var tw = ctx.measureText(label).width + 6; ctx.fillStyle = "rgba(0,0,0,.72)"; ctx.fillRect(b[0] * s, Math.max(0, b[1] * s - 16), tw, 16); ctx.fillStyle = color; ctx.fillText(label, b[0] * s + 3, Math.max(12, b[1] * s - 4)); }
+}
+function drawAI(c) {
+  return function (ctx, s) {
+    var r = c.references;
+    box(ctx, s, r.source.region, "#ffb020", "출발 탐색 영역", true, 2);
+    box(ctx, s, r.destination.region, "#4dd0e1", "목적지 탐색 영역", true, 2);
+    box(ctx, s, r.source.box, "#ffb020", "출발 기준: " + (r.source.name || ""), false, 1);
+    box(ctx, s, r.destination.box, "#4dd0e1", "목적지 기준: " + (r.destination.name || ""), false, 1);
+    c.source.selected.forEach(function (x) { if (x.box) box(ctx, s, [x.box[0] - 4, x.box[1] - 4, x.box[2] + 4, x.box[3] + 4], "#ff4d4d", (c.source.status === "SELECTED" ? "옮길 물체 " : "동률 ") + x.id, false, 3); });
+    if (c.destination.box) box(ctx, s, c.destination.box, "#33d17a", "배치 목표 " + c.destination.id, false, 3);
+  };
+}
+function drawMarks(tid) {
+  return function (ctx, s) {
+    (S.marks[tid] || []).forEach(function (m) { ctx.fillStyle = m.kind === "object" ? "#ff4d4d" : "#33d17a"; ctx.beginPath(); ctx.arc(m.x * s, m.y * s, 7, 0, 7); ctx.fill(); ctx.strokeStyle = "#fff"; ctx.lineWidth = 2; ctx.stroke(); });
+    var v1 = S.imported_v1 && S.imported_v1.ground_truth[tid];
+    if (v1 && UI.showV1) {
+      (v1.source_boxes || []).forEach(function (b) { box(ctx, s, [b.x0, b.y0, b.x1, b.y1], "#ff9e9e", "이전 표시: 출발", true, 2); });
+      (v1.destination_boxes || []).forEach(function (b) { box(ctx, s, [b.x0, b.y0, b.x1, b.y1], "#9ee8b9", "이전 표시: 목적지", true, 2); });
+    }
+  };
+}
+function photo(photoId, draw, onClickPt) {
+  var p = D.photos[photoId], wrap = h("div", { class: "photo" }), img = h("img", { src: p.file, alt: p.label }), cv = h("canvas");
+  wrap.appendChild(img); wrap.appendChild(cv);
+  function redraw() { cv.width = img.clientWidth; cv.height = img.clientHeight; var ctx = cv.getContext("2d"); ctx.clearRect(0, 0, cv.width, cv.height); draw(ctx, img.clientWidth / p.w); }
+  img.addEventListener("load", redraw); UI.redraws.push(redraw);
+  cv.addEventListener("click", function (e) {
+    var s = img.clientWidth / p.w;
+    if (onClickPt && onClickPt(e.offsetX / s, e.offsetY / s)) { redraw(); return; }
+    openCanvas(photoId, draw);
+  });
+  wrap.redraw = redraw;
+  return wrap;
+}
+function openCanvas(photoId, draw) {
+  var p = D.photos[photoId], body = document.getElementById("modalBody"); body.innerHTML = "";
+  var img = new Image(); img.src = p.file;
+  img.onload = function () { var cv = h("canvas"); cv.width = p.w; cv.height = p.h; var ctx = cv.getContext("2d"); ctx.drawImage(img, 0, 0); draw(ctx, 1); body.appendChild(cv); };
+  document.getElementById("modal").style.display = "block";
+}
+function openImg(src) { var body = document.getElementById("modalBody"); body.innerHTML = ""; body.appendChild(h("img", { src: src })); document.getElementById("modal").style.display = "block"; }
+
+// ------------------------------------------------------------------ pages
+var UI = { page: "intro", markMode: null, showV1: true, redraws: [] };
+function steps() {
+  var st = document.getElementById("steps"); st.innerHTML = "";
+  [["intro", "안내"]].concat(D.tasks.map(function (t) { return [t.task_id, t.task_id]; })).concat([["summary", "요약"]]).forEach(function (x) {
+    var done = x[0] !== "intro" && x[0] !== "summary" && S.tasks[x[0]] && S.tasks[x[0]].q1;
+    st.appendChild(h("span", { class: (UI.page === x[0] ? "on " : "") + (done ? "done" : ""), text: x[1], onclick: function () { UI.page = x[0]; render(); } }));
+  });
+}
+function render(keepScroll) { UI.redraws = []; steps(); info(); var y = window.scrollY; var pg = document.getElementById("page"); pg.innerHTML = ""; if (UI.page === "intro") intro(pg); else if (UI.page === "summary") summary(pg); else taskPage(pg, UI.page); window.scrollTo(0, keepScroll ? y : 0); }
+
+function intro(pg) {
+  var v1 = readV1(), v1n = v1 && v1.ground_truth ? Object.keys(v1.ground_truth).filter(function (k) { return v1.ground_truth[k] && v1.ground_truth[k].saved_at; }).length : 0;
+  pg.appendChild(h("div", { class: "card" }, [
+    h("h1", { text: "무엇을 확인하나요" }),
+    h("p", { text: "자연어 작업지시와 고정 카메라 사진만으로 AI(Qwen3-VL + 탐지기 + 경로계획)가 ‘무엇을, 어디로’ 옮길지 정하고 로봇 경로까지 만들 수 있는지 검증합니다. 아래 네 가지만 판단해 주세요." }),
+    h("ol", {}, [h("li", { text: "Q1 이 사진에서 이 작업지시는 성립하는가? (AI 결과를 보기 전에 답합니다)" }), h("li", { text: "Q2 AI가 옮길 물체를 올바르게 골랐는가? (보류가 맞는 경우도 있습니다)" }),
+                 h("li", { text: "Q3 AI가 작업 맥락을 이해해 적절한 배치 장소를 정했는가? 적절한 곳이 없으면 보류가 정답일 수 있습니다." }), h("li", { text: "Q4 경로가 만들어진 경우에만: 실제 이동 경로로 타당한가?" })]),
+    h("p", { class: "muted", text: "작업지시 5개 × 두 조건(R0: 규칙 없이 / R1: 작업장 규칙 제공)을 한 화면에서 비교합니다. 모르겠으면 ‘판단 불가’나 ‘건너뛰기’를 누르세요. 박스를 그릴 필요는 없습니다." }),
+    h("h2", { text: "헷갈리기 쉬운 개념" }),
+    h("div", { class: "concepts" }, [
+      h("div", {}, [h("b", { text: "운반 대상" }), "옮길 물체 (예: 빨간 큐브)"]), h("div", {}, [h("b", { text: "출발 기준 시설" }), "출발 위치를 알려 주는 설비 (예: 컨베이어)"]),
+      h("div", {}, [h("b", { text: "목적지 기준 시설" }), "목적지를 알려 주는 설비 (예: 트럭)"]), h("div", {}, [h("b", { text: "실제 배치 목표" }), "물건을 실제로 내려놓을 곳 (기준 시설 그 자체와 다를 수 있음)"]),
+      h("div", {}, [h("b", { text: "이동로봇" }), "운반하는 주체. 배치 장소가 아님"]), h("div", {}, [h("b", { text: "로봇 정차 위치" }), "작업을 위해 로봇이 서는 곳 (경로의 끝)"])]),
+    h("p", { class: "muted", text: "‘컨베이어에서 생산된’은 출처이고 ‘컨베이어 위에 있는’은 현재 위치입니다. 같은 뜻이 아닙니다." })]));
+  var imp = h("div", { class: "card" }, [h("h2", { text: "이전 화면(v1) 입력" })]);
+  if (S.imported_v1) imp.appendChild(h("p", { text: "가져온 상태입니다 (" + S.imported_v1.read_at.slice(0, 19).replace("T", " ") + "). 이전 표시 박스는 각 작업 사진에 흐린 점선으로 보이고, 이전 ‘모호성’ 선택이 Q1에 미리 채워져 있습니다(바꿀 수 있음)." }));
+  else if (v1n) imp.appendChild(h("div", {}, [h("p", { text: "이전 화면에서 저장한 기준 " + v1n + "개를 이 브라우저에서 찾았습니다. 가져오면 이전 입력을 다시 하지 않아도 됩니다. 이전 데이터는 읽기만 하며 바꾸거나 지우지 않습니다." }),
+    h("button", { class: "primary", text: "이전 입력 가져오기", onclick: function () { var n = importV1(S, readV1()); save(); alert(n + "개 작업의 이전 입력을 가져왔습니다."); render(); } })]));
+  else imp.appendChild(h("p", { class: "muted", text: "이 브라우저에서 이전 입력을 찾지 못했습니다. 이전 화면의 ‘작업 상태 백업’ 파일(human_evaluation_state.json)이 있으면 불러올 수 있습니다." }));
+  var fi = h("input", { type: "file", accept: ".json", class: "hidden", onchange: function (e) { var f = e.target.files[0]; if (!f) return; var rd = new FileReader(); rd.onload = function () { try { var n = importV1(S, JSON.parse(rd.result)); save(); alert(n ? n + "개 작업을 가져왔습니다." : "이전 화면의 백업 파일이 아닙니다."); render(); } catch (err) { alert("읽기 실패: " + err.message); } }; rd.readAsText(f); } });
+  imp.appendChild(h("p", {}, [h("button", { text: "이전 백업 파일에서 가져오기", onclick: function () { fi.click(); } }), fi]));
+  pg.appendChild(imp);
+  pg.appendChild(h("div", { class: "nav" }, [h("span"), h("button", { class: "primary", text: "시작 → " + D.tasks[0].task_id, onclick: function () { UI.page = D.tasks[0].task_id; render(); } })]));
+}
+
+function taskPage(pg, tid) {
+  var t = D.tasks.filter(function (x) { return x.task_id === tid; })[0], st = S.tasks[tid] || (S.tasks[tid] = {});
+  var conds = D.conditions.filter(function (c) { return c.task_id === tid; });
+  var idx = D.tasks.indexOf(t);
+  // STEP 1
+  var s1 = h("div", { class: "card" }, [h("h2", { text: "STEP 1 · 작업지시 확인 (" + (idx + 1) + "/" + D.tasks.length + ", 사진 " + D.photos[t.photo].label + ")" }), h("div", { class: "instr", text: t.instruction })]);
+  if (t.reference_note) s1.appendChild(h("p", { class: "muted", text: "참고: " + t.reference_note }));
+  var ph = photo(t.photo, drawMarks(tid), function (x, y) { if (!UI.markMode) return false; (S.marks[tid] = S.marks[tid] || []).push({ kind: UI.markMode, x: Math.round(x), y: Math.round(y) }); save(); renderMarks(); return true; });
+  s1.appendChild(ph);
+  var mk = h("div", { class: "marks" });
+  function renderMarks() {
+    mk.innerHTML = "";
+    mk.appendChild(h("span", { class: "muted", text: "위치 표시(선택): " }));
+    [["object", "옮길 물체"], ["place", "놓을 곳"]].forEach(function (m) { mk.appendChild(h("button", { class: UI.markMode === m[0] ? "primary" : "", text: m[1] + " 찍기", onclick: function () { UI.markMode = UI.markMode === m[0] ? null : m[0]; renderMarks(); } })); mk.appendChild(document.createTextNode(" ")); });
+    if ((S.marks[tid] || []).length) mk.appendChild(h("button", { text: "표시 지우기", onclick: function () { S.marks[tid] = []; save(); renderMarks(); ph.redraw(); } }));
+    if (S.imported_v1 && S.imported_v1.ground_truth[tid]) { var cb = h("input", { type: "checkbox" }); cb.checked = UI.showV1; cb.addEventListener("change", function () { UI.showV1 = cb.checked; ph.redraw(); }); mk.appendChild(h("label", {}, [" ", cb, " 이전(v1) 표시 보기"])); }
+    mk.appendChild(h("span", { class: "muted", text: UI.markMode ? "  — 사진을 클릭하면 점이 찍힙니다" : "  — 사진을 클릭하면 크게 봅니다" }));
+    ph.redraw();
+  }
+  renderMarks();
+  s1.appendChild(mk);
+  var q1 = h("div", { class: "q" }, [h("div", { class: "title", text: "Q1. 이 사진에서 이 작업지시는 적절한가?" }),
+    h("div", { class: "muted", text: "옮길 물체와 갈 곳이 사진에 실제로 있는지 봅니다. 놓을 곳이 없으면 ‘수행 불가능’, 여러 해석이 가능하면 ‘모호함’." })]);
+  q1.appendChild(optionGroup("q1", Q1, st.q1 && st.q1.value, function (v) { var first = !st.q1; st.q1 = v ? ans(v) : { value: null, source: "skipped", at: new Date().toISOString() }; save(); if (first) render(true); else steps(); }, true));
+  if (st.q1 && st.q1.source.indexOf("imported_v1") === 0) q1.appendChild(h("div", { class: "flag", text: "이전 화면 입력에서 가져온 값입니다 (" + st.q1.source.replace("imported_v1 ", "") + "). 맞으면 그대로 두세요." }));
+  var n1 = h("input", { class: "note", type: "text", placeholder: "한 줄 의견 (선택)", value: st.q1_note || "" }); n1.addEventListener("change", function () { st.q1_note = n1.value; save(); });
+  q1.appendChild(n1);
+  s1.appendChild(q1);
+  pg.appendChild(s1);
+  // STEP 2 (after Q1 answered or skipped)
+  if (!st.q1) { pg.appendChild(h("div", { class: "card muted", text: "Q1에 답하거나 건너뛰면 AI 결과(R0 / R1)가 열립니다." })); return; }
+  var s2 = h("div", { class: "card" }, [h("h2", { text: "STEP 2 · AI 결과 확인 (R0: 규칙 없이 / R1: 작업장 규칙 제공)" }),
+    h("div", { class: "legend" }, [h("span", {}, [h("i", { style: "border-color:#ff4d4d" }), "AI가 고른 옮길 물체"]), h("span", {}, [h("i", { style: "border-color:#33d17a" }), "AI가 고른 배치 목표"]),
+      h("span", {}, [h("i", { style: "border-color:#ffb020;border-top-style:dashed" }), "출발 탐색 영역"]), h("span", {}, [h("i", { style: "border-color:#4dd0e1;border-top-style:dashed" }), "목적지 탐색 영역"]), h("span", { text: "사진·경로 이미지는 클릭하면 크게 보입니다" })])]);
+  var cols = h("div", { class: "cols" });
+  conds.forEach(function (c) { cols.appendChild(condColumn(c)); });
+  s2.appendChild(cols);
+  pg.appendChild(s2);
+  pg.appendChild(h("div", { class: "nav" }, [
+    h("button", { text: "← " + (idx > 0 ? D.tasks[idx - 1].task_id : "안내"), onclick: function () { UI.page = idx > 0 ? D.tasks[idx - 1].task_id : "intro"; render(); } }),
+    h("span", { class: "muted", text: "답은 누르는 즉시 저장됩니다" }),
+    h("button", { class: "primary", text: idx < D.tasks.length - 1 ? "저장하고 다음 → " + D.tasks[idx + 1].task_id : "저장하고 요약 보기 →", onclick: function () { save(); UI.page = idx < D.tasks.length - 1 ? D.tasks[idx + 1].task_id : "summary"; render(); } })]));
+}
+
+function condColumn(c) {
+  var a = S.conditions[c.cond_id] || (S.conditions[c.cond_id] = {});
+  var col = h("div", {}, [h("h3", { text: c.R === "R0" ? "R0 · 규칙 없이" : "R1 · 작업장 규칙 제공" })]);
+  col.appendChild(photo(c.photo, drawAI(c), null));
+  var I = c.interpretation, sx = sourceText(c), dx = destText(c);
+  var ai = h("div", { class: "ai card", style: "margin-top:8px" }, [
+    h("div", { class: "row" }, [h("span", { class: "k", text: "AI의 해석" }), h("span", { text: "‘" + (I.source_object || "?") + "’를 " + (I.source_reference || "?") + "에서 → " + (I.destination_reference || "?") + " 쪽으로. 목적: " + (I.purpose || "") })]),
+    h("div", { class: "row" }, [h("span", { class: "k", text: "출발 탐색" }), h("span", { text: (I.source_reference || "?") + " · " + (REL_KO[I.source_relation] || I.source_relation) })]),
+    h("div", { class: "row" }, [h("span", { class: "k", text: "옮길 물체" }), h("span", {}, [h("span", { class: "tag " + sx.tag, text: sx.head }), " ", sx.body])]),
+    h("div", { class: "row" }, [h("span", { class: "k", text: "목적지 탐색" }), h("span", { text: (I.destination_reference || "?") + " · " + (REL_KO[I.destination_relation] || I.destination_relation) })]),
+    h("div", { class: "row" }, [h("span", { class: "k", text: "배치 목표" }), h("span", {}, [h("span", { class: "tag " + dx.tag, text: dx.head })].concat(dx.body.map(function (l) { return h("div", { class: "muted", text: l }); })))]),
+    h("div", { class: "row" }, [h("span", { class: "k", text: "작업장 규칙" }), h("span", { class: "muted", text: zoneText(c) })]),
+    h("div", { class: "row" }, [h("span", { class: "k", text: "경로" }), h("span", { text: routeText(c) })])]);
+  if (I.source_relation === "on" && c.task_id === "E1_T1") ai.appendChild(h("div", { class: "flag", text: "AI가 ‘컨베이어에서 생산된’(출처)을 ‘컨베이어 위(on)’(현재 위치)로 해석해 컨베이어 박스 안만 탐색했습니다." }));
+  var det = h("details", {}, [h("summary", { text: "자세히: 후보별 AI 판단과 실제 입력 이미지" })]);
+  var tb = h("table", {}, [h("tr", {}, [h("th", { text: "후보" }), h("th", { text: "AI 판단" }), h("th", { text: "AI가 본 모습" }), h("th", { text: "이유" })])]);
+  c.destination.ratings.filter(function (r) { return r.role !== "unsuitable"; }).concat(c.destination.ratings.filter(function (r) { return r.role === "unsuitable"; })).forEach(function (r) {
+    tb.appendChild(h("tr", {}, [h("td", { text: "#" + r.number + " " + (r.id || "") }), h("td", { text: r.role }), h("td", { text: (r.appearance || []).join(", ") }), h("td", { text: r.reason || "" })]));
+  });
+  det.appendChild(h("div", { class: "muted", text: "목적지 후보 (적합 → 부적합 순)" })); det.appendChild(tb);
+  [[c.source.model_input, "출발 후보 번호 이미지(AI 입력)"], [c.destination.model_input, "목적지 후보 번호 이미지(AI 입력)"], [c.figures.F4_paths_2d, "2D 지도 위 경로"]].forEach(function (x) {
+    if (x[0]) det.appendChild(h("div", { class: "path" }, [h("div", { class: "muted", text: x[1] }), h("img", { src: x[0], onclick: function () { openImg(x[0]); } })]));
+  });
+  ai.appendChild(det);
+  col.appendChild(ai);
+  if (hasPath(c)) col.appendChild(h("div", { class: "path" }, [h("div", { class: "muted", text: "원본 사진 위 경로 (파랑 A: 출발 → 물체 앞 / 주황 B: → 배치 장소 앞). 코드 검사: 본체 충돌 " + (c.automatic_checks.collision_free === "True" ? "없음" : c.automatic_checks.collision_free) + ", 금지 구역 침범 " + (c.automatic_checks.forbidden_zone_clear === "True" ? "없음" : c.automatic_checks.forbidden_zone_clear) + " (그리퍼 작업 가능성은 미검증)" }),
+    h("img", { src: c.figures.F5_overlay, onclick: function () { openImg(c.figures.F5_overlay); } })]));
+  // questions
+  function q(key, title, hint, opts) {
+    var box2 = h("div", { class: "q" }, [h("div", { class: "title", text: title }), hint ? h("div", { class: "muted", text: hint }) : null]);
+    box2.appendChild(optionGroup(c.cond_id + key, opts, a[key] && a[key].value, function (v) { if (v) a[key] = ans(v); else delete a[key]; save(); }, true));
+    return box2;
+  }
+  col.appendChild(q("q2", "Q2. AI는 옮길 물체를 올바르게 골랐는가?", c.source.status === "SELECTED" ? "빨간 상자가 옮길 물체가 맞는지 보세요." : "AI가 보류했습니다. 보류가 맞았으면 ‘적절하게 판단 보류’, 하나로 정할 수 있었으면 ‘잘못됨’.", Q2));
+  col.appendChild(q("q3", "Q3. AI는 작업 맥락을 이해해 적절한 배치 장소를 정했는가?", "기준 시설, 주변 탐색, 실제로 놓을 수 있는 곳, 규칙, 보류 여부를 종합해 한 번만 판단합니다. 이동로봇 자체는 배치 장소가 될 수 없습니다.", Q3));
+  if (hasPath(c)) col.appendChild(q("q4", "Q4. 만들어진 경로는 실제 이동 경로로 타당한가?", "로봇 본체가 지나는 길을 봅니다. 그리퍼로 실제 집고 놓을 수 있는지는 사진만으로 확정할 수 없으면 ‘추가 검증 필요’.", Q4));
+  var nt = h("input", { class: "note", type: "text", placeholder: "한 줄 의견 (선택)", value: a.note || "" }); nt.addEventListener("change", function () { a.note = nt.value; save(); });
+  col.appendChild(nt);
+  return col;
+}
+
+function label(opts, v) { var o = opts.filter(function (x) { return x[0] === v; })[0]; return o ? o[1] : (v ? v : "—"); }
+function summary(pg) {
+  var p = progress(S), rows = summaryRows(S);
+  pg.appendChild(h("div", { class: "card" }, [h("h1", { text: "요약" }), h("p", { text: "상태: " + p.status + " · Q1 " + p.q1 + "/" + p.q1_total + " · Q2–Q4 " + p.answers + "/" + p.answers_total + " (경로가 있는 조건만 Q4)" }),
+    h("p", { class: "muted", text: "‘AI 판단’은 저장된 실행 결과(코드 분류 포함)이고, 나머지는 평가자 입력입니다. 일치 여부: AI가 골랐는데 사람이 올바름/적절함 → 일치, AI가 보류했는데 사람이 ‘적절하게 보류’ → 일치." })]));
+  var tbl = h("table", {}, [h("tr", {}, ["작업", "Q1 지시", "조건", "AI 옮길 물체", "Q2", "AI 배치 목표", "Q3", "Q4 경로", "AI 코드 분류", "일치 (물체 / 목적지)"].map(function (x) { return h("th", { text: x }); }))]);
+  rows.forEach(function (r) {
+    var cls = function (v) { return v === "agree" ? "agree" : v === "disagree" ? "disagree" : "na"; };
+    tbl.appendChild(h("tr", {}, [h("td", { text: r.task_id }), h("td", { text: label(Q1, r.q1) }), h("td", { text: r.R }), h("td", { text: r.ai_source }), h("td", { text: label(Q2, r.q2) }), h("td", { text: r.ai_destination }), h("td", { text: label(Q3, r.q3) }),
+      h("td", { text: r.path_exists ? label(Q4, r.q4) : "경로 없음" }), h("td", { text: r.ai_route_category_by_code + (r.code_autonomous_but_user_inappropriate ? " ⚠ 사람은 부적절" : "") }),
+      h("td", {}, [h("span", { class: cls(r.source_agreement), text: r.source_agreement }), " / ", h("span", { class: cls(r.destination_agreement), text: r.destination_agreement })])]));
+  });
+  pg.appendChild(h("div", { class: "card" }, [h("h2", { text: "작업지시별 결과" }), tbl]));
+  var cmp = h("table", {}, [h("tr", {}, ["", "R0 · 규칙 없이", "R1 · 규칙 제공"].map(function (x) { return h("th", { text: x }); }))]);
+  [["Q2 올바름 + 적절 보류", function (r) { return r.q2 === "correct" || r.q2 === "proper_hold"; }], ["Q3 적절함 + 적절 보류", function (r) { return r.q3 === "appropriate" || r.q3 === "proper_hold"; }],
+   ["Q4 타당함", function (r) { return r.q4 === "valid"; }], ["AI–사람 불일치 (물체+목적지)", function (r) { return (r.source_agreement === "disagree") + (r.destination_agreement === "disagree"); }]].forEach(function (m) {
+    cmp.appendChild(h("tr", {}, [h("th", { text: m[0] })].concat(["R0", "R1"].map(function (R) { var n = 0; rows.filter(function (r) { return r.R === R; }).forEach(function (r) { n += Number(m[1](r)); }); return h("td", { text: n + " / " + D.tasks.length }); }))));
+  });
+  pg.appendChild(h("div", { class: "card" }, [h("h2", { text: "R0 vs R1 (평가자 기준)" }), cmp, h("p", { class: "muted", text: "작업지시 5개, 사진 3장의 사례 집계입니다. 성공률로 일반화하지 마세요." })]));
+  pg.appendChild(h("div", { class: "card" }, [h("h2", { text: "저장" }), h("p", { class: "muted", text: "파일은 내려받기 폴더에 저장됩니다. experiments/human_evaluation/results/ 로 옮겨 두세요." }),
+    h("div", { class: "nav" }, [h("span", {}, [
+      h("button", { class: "primary", text: "human_review_v2.json", onclick: function () { dl("human_review_v2.json", JSON.stringify(exportJSON(S), null, 1), "application/json"); } }), " ",
+      h("button", { class: "primary", text: "human_review_v2.csv", onclick: function () { dl("human_review_v2.csv", exportCSV(S), "text/csv"); } }), " ",
+      h("button", { text: "v2 상태 백업", onclick: function () { dl("human_review_v2_state.json", JSON.stringify(S, null, 1), "application/json"); } })])])]));
+}
+function dl(name, text, mime) { var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([text], { type: mime })); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 500); }
+
+function init() {
+  load();
+  var who = document.getElementById("who"); who.value = S.evaluator || ""; who.addEventListener("change", function () { S.evaluator = who.value.trim(); save(); });
+  document.getElementById("modal").addEventListener("click", function () { this.style.display = "none"; });
+  window.addEventListener("resize", function () { UI.redraws.forEach(function (f) { f(); }); });
+  render();
+}
+if (typeof module !== "undefined") module.exports = { emptyState: emptyState, importV1: importV1, summaryRows: summaryRows, progress: progress, exportJSON: exportJSON, exportCSV: exportCSV, agreement: agreement, hasPath: hasPath,
+  sourceText: sourceText, destText: destText, routeText: routeText, setState: function (o) { S = o; } };
+else window.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>

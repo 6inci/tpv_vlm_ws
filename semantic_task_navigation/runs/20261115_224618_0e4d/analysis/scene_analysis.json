@@ -1,0 +1,52 @@
+{
+  "status": "OK",
+  "output": {
+    "scene_type": "industrial simulation setup",
+    "observed_equipment": [
+      "robot arms",
+      "conveyor belt",
+      "loading docks",
+      "traffic cones",
+      "pallets",
+      "power outlets"
+    ],
+    "transport_objects": [
+      "truck",
+      "stacked boxes",
+      "barrels",
+      "containers",
+      "pallets"
+    ],
+    "task_relevant_objects": [
+      "red cube",
+      "loading_area near truck"
+    ],
+    "evidence": [
+      "robot arms are positioned near conveyor belt",
+      "truck is parked at designated loading area",
+      "traffic cones mark boundaries",
+      "pallets hold various items",
+      "whiteboard indicates task or instructions"
+    ],
+    "uncertain": [
+      "location of red cube",
+      "status of conveyor belt",
+      "current state of robot arms",
+      "exact position of loading area relative to truck"
+    ]
+  },
+  "call": {
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+    "prompt_id": "scene_analysis_v1",
+    "prompt_sha256": "a4601f37e1e8d7280f7a3f61fbaf81782c3af4de6c8f9684f66d94e61c77bd74",
+    "image_path": "input/raw_frame.png",
+    "raw_response": "{\n  \"scene_type\": \"industrial simulation setup\",\n  \"observed_equipment\": [\n    \"robot arms\",\n    \"conveyor belt\",\n    \"loading docks\",\n    \"traffic cones\",\n    \"pallets\",\n    \"power outlets\"\n  ],\n  \"transport_objects\": [\n    \"truck\",\n    \"stacked boxes\",\n    \"barrels\",\n    \"containers\",\n    \"pallets\"\n  ],\n  \"task_relevant_objects\": [\n    \"red cube\",\n    \"loading_area near truck\"\n  ],\n  \"evidence\": [\n    \"robot arms are positioned near conveyor belt\",\n    \"truck is parked at designated loading area\",\n    \"traffic cones mark boundaries\",\n    \"pallets hold various items\",\n    \"whiteboard indicates task or instructions\"\n  ],\n  \"uncertain\": [\n    \"location of red cube\",\n    \"status of conveyor belt\",\n    \"current state of robot arms\",\n    \"exact position of loading area relative to truck\"\n  ]\n}",
+    "latency_s": 7.907,
+    "n_output_tokens": 205,
+    "hit_max_new_tokens": false,
+    "peak_vram_gib": 8.87,
+    "error": null
+  },
+  "note": "free-text model description; not ground truth"
+}

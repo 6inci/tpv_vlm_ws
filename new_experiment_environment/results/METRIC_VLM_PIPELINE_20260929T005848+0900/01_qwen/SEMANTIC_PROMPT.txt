@@ -1,0 +1,7 @@
+Analyze functional regions and visible relations in this synthetic industrial workspace. Return JSON only.
+Coordinates are integer normalized 0..1000 over the original full image.
+Do not equate an object bbox with a semantic region. Do not force unsupported regions.
+Target taxonomy: Storage Area, Work Station, Loading Area, Material Area, Drop Zone, No-Go Zone.
+Allowed relations: near, adjacent_to, left_of, right_of, in_front_of, behind, on, inside.
+Schema: {"regions":[{"id":"region_...","label":"taxonomy label","supporting_object_ids":["q_..."],"spatial_reason":"brief","polygon":[[x,y],[x,y],[x,y]],"certainty":"high|medium|low"}],"relations":[{"subject_id":"q_...","predicate":"allowed relation","object_id":"q_...","certainty":"high|medium|low"}]}
+Use only visible evidence and the following detected IDs/labels:

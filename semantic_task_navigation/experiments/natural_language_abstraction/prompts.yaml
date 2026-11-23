@@ -1,0 +1,64 @@
+# Prompt text for the natural-language-abstraction probe. Derived from experiments/autonomous_semantic_reasoning/
+# prompts.yaml (v3, FROZEN there; not touched). Only condition A (empty prior block) is used.
+# The three runs differ ONLY in the instruction inserted at {instruction}.
+#
+# Differences from the parent v3 text (all deliberate, all common to L1-L3):
+#   1. The sentence "Decide ... which place the instruction asks for, and propose that place" presupposed that
+#      an instruction always names a place. It now asks WHETHER the instruction + image point to a place, so L3
+#      can end in "withheld" instead of being pushed toward a destination.
+#   2. The withhold rule says "from the instruction and the image together" (parent: "from the image alone").
+#   3. One new rule asks the model to separate what the instruction states from what it adds itself.
+#   4. task_analysis gained three fields: inferred_task_purpose, info_given_by_instruction, info_added_by_you.
+# Nothing in the head or tail names a truck, a loading/unloading/shipping area or any zone of this site
+# (checked by test_nla_offline.py). The instruction is the only source of such words.
+
+prompt_version: n0
+history:
+  - version: n0
+    date: 2026-11-18
+    note: "initial text, written before any model output of this experiment was seen"
+
+head: |
+  You are looking at a fixed overhead camera image of a miniature logistics work floor (a small-scale model of a work site).
+  A person gave this instruction (written in Korean):
+
+  "{instruction}"
+
+  Decide whether the instruction, together with the image, points to a specific place on the floor where the goods should go. If it does, propose that place yourself. You are not given any list of candidate places.
+
+  Rules:
+  - "observed_evidence" is only what you can actually see in this image. "inference" is what you conclude from it. Keep them separate.
+  - Do not describe objects or markings that you cannot see.
+  - Coordinates are image coordinates: bbox_2d = [x_min, y_min, x_max, y_max], integers normalized to 0-1000 over the image width and height (0,0 is the top-left corner, 1000,1000 the bottom-right corner).
+  - You do not know the real size of anything. Do not give metric distances.
+  - Always list the main objects and floor areas that you can see, even if you end up withholding the decision. List each kind of object only once (use "count" when there are several identical items) and each floor area only once; never repeat an entry.
+  - If you cannot identify a suitable destination place from the instruction and the image together, do not invent a box: set "decision" to "withheld", set "destination_area_id" to null and explain why in "reason". "decision" concerns only the destination place; it does not depend on whether the object to be carried is visible in the image.
+  - In "task_analysis", separate what the instruction itself tells you about the destination ("info_given_by_instruction") from what you add yourself ("info_added_by_you"). List something as given by the instruction only if the instruction actually says it. For everything you add, give its basis: "image" (you can see it), "general_knowledge" (it comes from general knowledge about work sites), or "assumption" (you are guessing).
+  - You are not controlling a robot and you do not plan paths. Describe what you see and what the task needs.
+
+prior:
+  A: ""
+
+tail: |
+  Return one JSON object only (no prose, no markdown fence) with exactly this structure:
+  {
+    "observed_objects": [
+      {"label": "<kind of object or equipment>", "count": <how many of this kind>, "location_in_image": "<where, in words>", "visible_evidence": "<what you see>"}
+    ],
+    "functional_areas": [
+      {"id": "area_1", "function_name": "<what this floor area is used for>", "bbox_2d": [<x_min>, <y_min>, <x_max>, <y_max>],
+       "observed_evidence": ["<visible cue>"], "inference": "<why you think so>", "confidence": "high" | "medium" | "low"}
+    ],
+    "task_analysis": {
+      "inferred_task_purpose": "<what the instruction is trying to achieve, in your words>",
+      "info_given_by_instruction": ["<destination-related fact that the instruction itself states>"],
+      "info_added_by_you": [{"statement": "<what you added>", "basis": "image" | "general_knowledge" | "assumption"}],
+      "place_needed_for_task": "<what kind of place the instruction needs, or what is missing>",
+      "decision": "proposed" | "withheld",
+      "destination_area_id": "<id from functional_areas>" | null,
+      "reason": "<one or two sentences>"
+    },
+    "unknown_from_image": ["<information that cannot be determined from this image>"],
+    "physical_conditions_to_verify": ["<what a separate physical check must confirm before a robot could do this task; you cannot confirm these from the image>"]
+  }
+  Limits: at most 12 kinds in observed_objects and at most 6 functional_areas. If you propose a destination, include that area in functional_areas.

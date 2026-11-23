@@ -1,0 +1,52 @@
+# Cube candidate funnel: where does the real cube candidate drop out of the v0.2 target search?
+# Offline: no model call, no GPU. Everything below is declared BEFORE the run. Nothing here changes v0.2.
+experiment_id: cube_candidate_funnel
+scope: >
+  Diagnostic record of v0.2 target_inspection on 8 photos of one fixed layout (only the red cube position differs).
+  It reports, per photo, the first stage at which the cube candidate is lost. It computes NO accuracy, recall or success rate:
+  there is no human-confirmed ground truth (deferred by the user), and the labels below are an AI visual review.
+
+image_dir: /home/binci/Pictures/Calibration          # read only
+images:
+  - {id: U23678143, file: undistorted_23678143507600.png, sha256: 6dfeb0e6b72d2e02c7ec16559b1b88c529d9da546944448cf6a7fa67062c2f13}
+  - {id: U24768580, file: undistorted_24768580481401.png, sha256: dc23c830cc0a82af06e021b46aba232717b5231d56c75f584486f2d65e67aa4a}
+  - {id: U24837448, file: undistorted_24837448431552.png, sha256: 9317c6a030fdd913bbcf245a03c2aa9af5c775e524d2cd15c580832d0e2a30ba}   # E2 of earlier experiments
+  - {id: U24898553, file: undistorted_24898553897872.png, sha256: cd95a2463d7b39d8648245b5951a1b9ed4b6224eec829752dc7ce9f1047ad788}
+  - {id: U25070552, file: undistorted_25070552942982.png, sha256: 6535b84a74007508b6ffa2720508f120ea4712b7ab2df3fd09fdd05f03b52605}   # E1: the only photo with a stored v0.2 run
+  - {id: U25137685, file: undistorted_25137685449593.png, sha256: afe33110258fc087e258729c61d0f5b5d5f18375746ba410e06bdd3c8a74c2d2}
+  - {id: U25967031, file: undistorted_25967031098947.png, sha256: 25b6832e4caab7ea64a155c179a836f69a733922e3ec44eff82646fdae64e052}
+  - {id: U26007129, file: undistorted_26007129092710.png, sha256: 7d99b875f34b0cd8fcd7210058454c963ccce34eaf1615c24ff432e97c1fae9d}   # D1 of earlier experiments
+reference_photo_id: U25070552                         # E1: camera-pose reference and source of the stored conveyor box
+
+# AI PRELIMINARY REVIEW, NOT human ground truth. Cube = small red block on a gray grid pad, boxes in raw_image_px of the undistorted photo.
+# Method: v0.2 hsv_candidates over the whole frame, then the AI opened each photo and picked the candidate that sits on the pad.
+# Never given to any model; used only to read off where the candidate is lost. Please check them in figures/01_labels_and_roi.png.
+label_status: AI_PRELIMINARY_REVIEW
+labels:
+  U23678143: [1552, 865, 1573, 883]
+  U24768580: [1263, 259, 1279, 277]
+  U24837448: [530, 855, 549, 872]
+  U24898553: [1607, 253, 1623, 271]
+  U25070552: [434, 417, 451, 432]
+  U25137685: [1612, 259, 1629, 276]
+  U25967031: [571, 860, 590, 878]
+  U26007129: [534, 279, 550, 294]
+
+# A candidate box "keeps" the label when the label centre lies inside it (tolerance) or IoU >= iou_min.
+match: {centre_tolerance_px: 2.0, iou_min: 0.3}
+
+stored:                                              # v0.2 runs with real models; read only, never re-run
+  e1_run: ../semantic_to_navigation_integration/results/20261118_203058_46d8
+  e1_repeat_run: ../semantic_to_navigation_integration/results/20261118_203426_260d      # same photo again (determinism check)
+  other_runs:                                        # other photos (raw P01-type photos, not part of the 8); the cube was accepted there
+    - {id: DEV_REF, run: ../semantic_to_navigation_integration/results/20261118_202916_fbe7}
+    - {id: REF_P01, run: ../semantic_to_navigation_integration/results/20261118_203247_fd48}
+roi_anchor_object_id: conveyor_1                     # verified conveyor of the stored E1 run; the ROI of the other 7 photos is this one (proxy)
+
+# Is the camera pose the same in all 8 photos? (supports the ROI proxy). v0.2 check_alignment thresholds, unchanged.
+alignment: {max_shift_px: 3.0, min_response: 0.3}
+
+# E1 reproduction pin: HSV candidates recomputed here must equal the stored ones within this tolerance.
+reproduce: {box_tolerance_px: 0.05}
+
+results_dir: results

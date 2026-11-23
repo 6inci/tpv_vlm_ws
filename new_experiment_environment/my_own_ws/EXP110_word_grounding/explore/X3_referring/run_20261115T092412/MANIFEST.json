@@ -1,0 +1,45 @@
+{
+ "id": "EXP110-X3",
+ "started": "2026-11-15T09:24:12.427708+09:00",
+ "argv": [
+  "explore/X3_referring/x3_referring.py",
+  "--out",
+  "explore/X3_referring/run_20261115T092412"
+ ],
+ "env": {
+  "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+  "python_version": "3.10.20",
+  "torch": "2.13.0+cu130",
+  "cuda": "13.0",
+  "gpu": "NVIDIA GeForce RTX 5070 Ti Laptop GPU",
+  "transformers": "5.16.1",
+  "nvidia_driver": "580.178.04"
+ },
+ "c6_variant": {
+  "dino": {
+   "source": "C2",
+   "min_score": 0.1,
+   "max_area_frac": 0.25,
+   "top_k": 15
+  }
+ },
+ "nms_iou": 0.7,
+ "prompts": {
+  "C1": "Find every instance of \"{q}\" in this image. Return JSON only, no prose: {{\"objects\": [{{\"bbox_2d\": [x1, y1, x2, y2]}}]}} with integer coordinates normalized to 0-1000 relative to image width and height. If there is no such object, return {{\"objects\": []}}.",
+  "C6": "Numbered candidate boxes are drawn on this image. Which numbered boxes contain \"{q}\"? Select every box that contains it and no other box. Return JSON only, no prose: {{\"ids\": [<numbers>]}}. If no box contains it, return {{\"ids\": []}}."
+ },
+ "max_new_tokens": {
+  "C1": 1024,
+  "C6": 256
+ },
+ "sha256": {
+  "explore/X3_referring/x3_referring.py": "aa79682872a7e75ce7cee51a8a0b5aa0440de848f66df3123738752a96c73ead",
+  "explore/X3_referring/x3_queries_draft.json": "608bfd493be1347e5ca60ccbb6c0dda646365e3b3e1f939767038e3cef30b8c6",
+  "explore/X3_referring/registry_id_to_box_dev.json": "e38f8820875bb0ddc71eb93878444e982a4fb43ecb56cd7d72e6e1fe80a338e7",
+  "tools/run_models.py": "a9239538d8f006882bb3c958322635641710ee49f50136ad00de7a0695cb8ea1",
+  "tools/score.py": "9218e5d142881feecef562e2e159be59f904c48ef77056880a4d958278e9c65d",
+  "config.json": "03ee3cd51c9e67dce26c230d1522c7478a2ea04ab8bbd7ec611db3e2827025c2"
+ },
+ "image_space": "raw (distorted) camera pixels, 1920x1080, x right, y down, origin top-left. Undistortion is NOT applied in this experiment; geometry converts selected points later.",
+ "finished": "2026-11-15T09:33:02.807826+09:00"
+}

@@ -1,0 +1,48 @@
+{
+  "purpose": "Move a red cube from near the truck to beside the conveyor belt.",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "truck",
+    "bbox_2d": [747, 0, 880, 144]
+  },
+  "source_relation": "near",
+  "destination_meaning": "Beside the conveyor belt",
+  "destination_reference": {
+    "name_en": "conveyor belt",
+    "bbox_2d": [150, 297, 250, 440],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Truck unloading zone",
+      "visual_evidence": ["truck", "dashed white line", "orange cones"],
+      "bbox_2d": [620, 0, 880, 190],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Robot driving area",
+      "visual_evidence": ["yellow outer boundary", "black floor"],
+      "bbox_2d": [0, 0, 990, 990],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Conveyor belt and robot arm workcell",
+      "visual_evidence": ["white inner boundary", "conveyor belt", "robot arm"],
+      "bbox_2d": [100, 250, 260, 720],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Green pedestrian walkway",
+      "visual_evidence": ["green floor", "footprint symbols"],
+      "bbox_2d": [300, 50, 560, 270],
+      "robot_body_access": "forbidden"
+    }
+  ],
+  "uncertainty": [
+    "Exact location of red cube not visible in image",
+    "Gripper reach capability not confirmed"
+  ]
+}

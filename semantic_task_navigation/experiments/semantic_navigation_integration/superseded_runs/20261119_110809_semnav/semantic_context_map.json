@@ -1,0 +1,3655 @@
+{
+ "frame": {
+  "image": "undistorted E1 px (1920x1080)",
+  "floor": "floor_cm via the PROVISIONAL mat-seam homography (status PROVISIONAL_UNVALIDATED)",
+  "note": "image boxes of tall objects are not floor footprints; only floor-level entities get floor polygons"
+ },
+ "inclusion_rule": [
+  "the instruction's target class (all retained red-cube candidates) and its source class (conveyor)",
+  "the robot",
+  "destination candidates (stored Qwen functional areas) and their grounding (painted bay, its free floor, the truck)",
+  "map layers that bound motion (DRAFT zones present in the E1 map)",
+  "verified obstacles next to the destination (cones, Qwen crop 'yes')"
+ ],
+ "nodes": [
+  {
+   "id": "task",
+   "kind": "task",
+   "command": "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+   "target": {
+    "value": {
+     "class": "cube",
+     "color": "red",
+     "count": 1,
+     "source_reference": "conveyor",
+     "source_relation": "produced_by"
+    },
+    "provenance": "INSTRUCTION_GIVEN",
+    "parser": "v0.2 rule_based_parse (deterministic)"
+   },
+   "destination": {
+    "value": null,
+    "provenance": "INSTRUCTION_GIVEN",
+    "note": "the command names a purpose ('출하할 수 있는 적절한 장소'), no place; the rule parser returns missing_information. The destination comes from the stored Qwen reply (VLM_INFERRED)."
+   }
+  },
+  {
+   "id": "robot",
+   "kind": "robot",
+   "bbox_xyxy": [
+    1585.0,
+    619.7,
+    1814.0,
+    784.4
+   ],
+   "start_cm": [
+    292.9,
+    156.3
+   ],
+   "heading": "UNKNOWN",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "Grounding DINO 'mobile robot.' (stored)"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored Qwen crop check: yes (wheeled mobile robot)"
+    }
+   ],
+   "status": "ESTIMATED floor start (box centre); heading UNKNOWN",
+   "floor_body_fits_at_start": true
+  },
+  {
+   "id": "conveyor_1",
+   "kind": "object",
+   "class_name": "conveyor",
+   "bbox_xyxy": [
+    225.6,
+    273.0,
+    461.8,
+    766.7
+   ],
+   "floor_cm": null,
+   "floor_note": "tall object: the image box is not a floor footprint (no floor position given)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored Qwen crop check: yes"
+    }
+   ],
+   "role": "instruction source object; support-surface candidate of the target"
+  },
+  {
+   "id": "truck_1",
+   "kind": "object",
+   "class_name": "truck",
+   "bbox_xyxy": [
+    1447.3,
+    0.2,
+    1687.4,
+    149.6
+   ],
+   "floor_cm": null,
+   "floor_note": "tall object: the image box is not a floor footprint (no floor position given)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored Qwen crop check: yes"
+    }
+   ],
+   "role": "destination context"
+  },
+  {
+   "id": "traffic_cone_1",
+   "kind": "object",
+   "class_name": "traffic_cone",
+   "bbox_xyxy": [
+    1284.1,
+    155.3,
+    1316.4,
+    200.1
+   ],
+   "floor_cm": [
+    229.7,
+    40.4
+   ],
+   "floor_note": "ESTIMATED floor contact = bottom centre of the box",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "Grounding DINO + Qwen crop check 'yes' [stored run 20261118_203426_260d]"
+    }
+   ],
+   "role": "obstacle next to the destination"
+  },
+  {
+   "id": "traffic_cone_2",
+   "kind": "object",
+   "class_name": "traffic_cone",
+   "bbox_xyxy": [
+    1309.3,
+    250.9,
+    1341.6,
+    294.0
+   ],
+   "floor_cm": [
+    233.1,
+    64.9
+   ],
+   "floor_note": "ESTIMATED floor contact = bottom centre of the box",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "Grounding DINO + Qwen crop check 'yes' [stored run 20261118_203426_260d]"
+    }
+   ],
+   "role": "obstacle next to the destination"
+  },
+  {
+   "id": "traffic_cone_3",
+   "kind": "object",
+   "class_name": "traffic_cone",
+   "bbox_xyxy": [
+    1280.8,
+    68.6,
+    1312.5,
+    114.1
+   ],
+   "floor_cm": [
+    230.5,
+    16.7
+   ],
+   "floor_note": "ESTIMATED floor contact = bottom centre of the box",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "Grounding DINO + Qwen crop check 'yes' [stored run 20261118_203426_260d]"
+    }
+   ],
+   "role": "obstacle next to the destination"
+  },
+  {
+   "id": "traffic_cone_4",
+   "kind": "object",
+   "class_name": "traffic_cone",
+   "bbox_xyxy": [
+    1416.0,
+    249.4,
+    1450.0,
+    292.7
+   ],
+   "floor_cm": [
+    255.0,
+    65.1
+   ],
+   "floor_note": "ESTIMATED floor contact = bottom centre of the box",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "Grounding DINO + Qwen crop check 'yes' [stored run 20261118_203426_260d]"
+    }
+   ],
+   "role": "obstacle next to the destination"
+  },
+  {
+   "id": "traffic_cone_5",
+   "kind": "object",
+   "class_name": "traffic_cone",
+   "bbox_xyxy": [
+    1676.6,
+    240.6,
+    1712.5,
+    284.6
+   ],
+   "floor_cm": [
+    307.8,
+    64.5
+   ],
+   "floor_note": "ESTIMATED floor contact = bottom centre of the box",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "Grounding DINO + Qwen crop check 'yes' [stored run 20261118_203426_260d]"
+    }
+   ],
+   "role": "obstacle next to the destination"
+  },
+  {
+   "id": "traffic_cone_6",
+   "kind": "object",
+   "class_name": "traffic_cone",
+   "bbox_xyxy": [
+    1524.7,
+    243.8,
+    1560.5,
+    288.8
+   ],
+   "floor_cm": [
+    277.3,
+    64.7
+   ],
+   "floor_note": "ESTIMATED floor contact = bottom centre of the box",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "Grounding DINO + Qwen crop check 'yes' [stored run 20261118_203426_260d]"
+    }
+   ],
+   "role": "obstacle next to the destination"
+  },
+  {
+   "id": "loading_bay",
+   "kind": "floor_region",
+   "polygon_xy": [
+    [
+     1426.7,
+     172.5
+    ],
+    [
+     1680.3,
+     168.0
+    ],
+    [
+     1653.4,
+     56.2
+    ],
+    [
+     1399.7,
+     60.7
+    ]
+   ],
+   "polygon_cm": [
+    [
+     256.96,
+     33.79
+    ],
+    [
+     310.07,
+     34.34
+    ],
+    [
+     309.54,
+     2.99
+    ],
+    [
+     254.31,
+     2.14
+    ]
+   ],
+   "status": "FLOOR_MARKING_ESTABLISHED",
+   "evidence": [
+    {
+     "kind": "GEOMETRY_DERIVED",
+     "detail": "stored dashed-line localization (Python, semantic_evidence_verification)"
+    }
+   ],
+   "not_verified": [
+    "the open sides of the bay (top and right) are the extent of the dashed lines, not painted lines: their position is an inference",
+    "the bay polygon is a straight-line parallelogram in image space: perspective of the floor plane is not modelled (no verified homography)",
+    "the truck's bottom edge lies inside the region only marginally (see check): the detector box is not the truck's ground footprint",
+    "free floor = bay minus the detected truck box and cones. The truck box includes the truck's height, so it over-removes floor; the cube target may be the truck bed rather than the floor: not determined",
+    "v0.2 placement_region keeps only the outer contour of the free area: an object standing fully inside the region would leave no hole (hole_check in localization.json; not triggered on E1 because the truck box crosses the bay's top edge)",
+    "placement surface (height, occupancy), gripper reach and approach are unmeasured; this is not a placement or path result",
+    "thresholds were chosen by looking at this photo; see sensitivity.json (the result is not stable under every setting)",
+    "the 8-photo repeat uses the same layout and E1's window: repeatability, not independent generalisation",
+    "no human-confirmed bay exists: nothing here is scored against an answer"
+   ],
+   "floor_gap_to_Z02_cm": 31.8
+  },
+  {
+   "id": "placement_floor",
+   "kind": "floor_region",
+   "polygons_xy": [
+    [
+     [
+      1400,
+      61
+     ],
+     [
+      1427,
+      172
+     ],
+     [
+      1680,
+      168
+     ],
+     [
+      1676,
+      151
+     ],
+     [
+      1447,
+      151
+     ],
+     [
+      1446,
+      60
+     ]
+    ]
+   ],
+   "polygons_cm": [
+    [
+     [
+      254.37,
+      2.23
+     ],
+     [
+      257.04,
+      33.66
+     ],
+     [
+      310.01,
+      34.34
+     ],
+     [
+      309.95,
+      29.72
+     ],
+     [
+      261.87,
+      28.08
+     ],
+     [
+      264.46,
+      2.33
+     ]
+    ]
+   ],
+   "status": "GEOMETRY_ONLY (not confirmed empty)",
+   "evidence": [
+    {
+     "kind": "GEOMETRY_DERIVED",
+     "detail": "geometric: semantic region minus detected object footprints and map obstacles/no-go, eroded by half the target size; placement surface and gripper reach UNMEASURED"
+    }
+   ],
+   "definition": "empty floor inside the dashed bay (user's provisional placement definition)"
+  },
+  {
+   "id": "area_2",
+   "kind": "vlm_functional_area",
+   "function_name": "conveyor belt processing area",
+   "bbox_xyxy": [
+    144.0,
+    280.8,
+    518.4,
+    788.4
+   ],
+   "floor_projection_cm": [
+    [
+     -20.7,
+     54.5
+    ],
+    [
+     62.4,
+     56.8
+    ],
+    [
+     78.1,
+     171.2
+    ],
+    [
+     7.3,
+     170.8
+    ]
+   ],
+   "vlm_confidence": "high",
+   "observed_evidence": [
+    "conveyor belt",
+    "robotic arms"
+   ],
+   "inference": "Robotic arms are positioned to interact with the conveyor belt, suggesting material processing or sorting.",
+   "evidence": [
+    {
+     "kind": "VLM_INFERRED",
+     "detail": "stored Qwen L2 reply (run 20261118_203058_46d8, for the wording '빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.')"
+    }
+   ],
+   "chosen_by_vlm": false
+  },
+  {
+   "id": "area_3",
+   "kind": "vlm_functional_area",
+   "function_name": "storage zone",
+   "bbox_xyxy": [
+    614.4,
+    432.0,
+    1248.0,
+    810.0
+   ],
+   "floor_projection_cm": [
+    [
+     87.5,
+     95.1
+    ],
+    [
+     215.3,
+     97.8
+    ],
+    [
+     210.8,
+     176.2
+    ],
+    [
+     96.4,
+     175.5
+    ]
+   ],
+   "vlm_confidence": "medium",
+   "observed_evidence": [
+    "stack of boxes",
+    "grate",
+    "whiteboard"
+   ],
+   "inference": "The central area with the stack of boxes and grate suggests a designated storage or staging area.",
+   "evidence": [
+    {
+     "kind": "VLM_INFERRED",
+     "detail": "stored Qwen L2 reply (run 20261118_203058_46d8, for the wording '빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.')"
+    }
+   ],
+   "chosen_by_vlm": false
+  },
+  {
+   "id": "area_4",
+   "kind": "vlm_functional_area",
+   "function_name": "charging station",
+   "bbox_xyxy": [
+    1248.0,
+    810.0,
+    1920.0,
+    1026.0
+   ],
+   "floor_projection_cm": [
+    [
+     210.8,
+     176.2
+    ],
+    [
+     326.9,
+     176.9
+    ],
+    [
+     318.4,
+     214.0
+    ],
+    [
+     208.6,
+     214.1
+    ]
+   ],
+   "vlm_confidence": "high",
+   "observed_evidence": [
+    "battery charging station",
+    "robotic vehicle"
+   ],
+   "inference": "The lightning bolt symbol and green panels indicate a designated area for charging robots or equipment.",
+   "evidence": [
+    {
+     "kind": "VLM_INFERRED",
+     "detail": "stored Qwen L2 reply (run 20261118_203058_46d8, for the wording '빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.')"
+    }
+   ],
+   "chosen_by_vlm": false
+  },
+  {
+   "id": "area_5",
+   "kind": "vlm_functional_area",
+   "function_name": "loading dock",
+   "bbox_xyxy": [
+    1248.0,
+    0.0,
+    1824.0,
+    280.8
+   ],
+   "floor_projection_cm": [
+    [
+     221.9,
+     -17.4
+    ],
+    [
+     349.3,
+     -12.0
+    ],
+    [
+     333.7,
+     64.3
+    ],
+    [
+     217.4,
+     61.1
+    ]
+   ],
+   "vlm_confidence": "high",
+   "observed_evidence": [
+    "truck",
+    "cones",
+    "barriers"
+   ],
+   "inference": "The truck is parked near cones and barriers, indicating a designated loading or unloading zone for vehicles.",
+   "evidence": [
+    {
+     "kind": "VLM_INFERRED",
+     "detail": "stored Qwen L2 reply (run 20261118_203058_46d8, for the wording '빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.')"
+    }
+   ],
+   "chosen_by_vlm": true
+  },
+  {
+   "id": "area_6",
+   "kind": "vlm_functional_area",
+   "function_name": "material staging area",
+   "bbox_xyxy": [
+    1248.0,
+    432.0,
+    1824.0,
+    810.0
+   ],
+   "floor_projection_cm": [
+    [
+     215.3,
+     97.8
+    ],
+    [
+     326.4,
+     100.1
+    ],
+    [
+     310.7,
+     176.8
+    ],
+    [
+     210.8,
+     176.2
+    ]
+   ],
+   "vlm_confidence": "medium",
+   "observed_evidence": [
+    "pallets with containers"
+   ],
+   "inference": "Pallets with various containers suggest a staging area for materials before they are moved or processed.",
+   "evidence": [
+    {
+     "kind": "VLM_INFERRED",
+     "detail": "stored Qwen L2 reply (run 20261118_203058_46d8, for the wording '빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.')"
+    }
+   ],
+   "chosen_by_vlm": false
+  },
+  {
+   "id": "Z02",
+   "kind": "map_zone",
+   "layer": "traversable",
+   "name_ko": "로봇 주행 구역",
+   "role": "robot_drivable_outer_area",
+   "access_draft": {
+    "robot": "allowed_in_principle",
+    "human": "unknown"
+   },
+   "polygon_xy": [
+    [
+     508.0,
+     308.5
+    ],
+    [
+     1729.6,
+     291.2
+    ],
+    [
+     1850.4,
+     809.2
+    ],
+    [
+     413.7,
+     826.2
+    ]
+   ],
+   "polygon_cm": [
+    [
+     61.12,
+     63.96
+    ],
+    [
+     314.51,
+     66.36
+    ],
+    [
+     315.17,
+     176.65
+    ],
+    [
+     59.69,
+     178.37
+    ]
+   ],
+   "evidence": [
+    {
+     "kind": "MANUAL_MAP_PRIOR",
+     "detail": "hand-drawn DRAFT zone, transferred to E1 (DRAFT_UNCONFIRMED)"
+    }
+   ]
+  },
+  {
+   "id": "Z03",
+   "kind": "map_zone",
+   "layer": "static_obstacles",
+   "name_ko": "중앙 화물 적치 구역",
+   "role": "cargo_staging",
+   "access_draft": {
+    "robot": "approach_only",
+    "human": "unknown"
+   },
+   "polygon_xy": [
+    [
+     782.2,
+     471.0
+    ],
+    [
+     965.3,
+     470.9
+    ],
+    [
+     969.7,
+     617.1
+    ],
+    [
+     772.6,
+     617.6
+    ]
+   ],
+   "polygon_cm": [
+    [
+     122.54,
+     104.93
+    ],
+    [
+     159.18,
+     105.61
+    ],
+    [
+     160.56,
+     137.62
+    ],
+    [
+     122.82,
+     137.24
+    ]
+   ],
+   "evidence": [
+    {
+     "kind": "MANUAL_MAP_PRIOR",
+     "detail": "hand-drawn DRAFT zone, transferred to E1 (DRAFT_UNCONFIRMED)"
+    }
+   ]
+  },
+  {
+   "id": "Z04",
+   "kind": "map_zone",
+   "layer": "static_obstacles",
+   "name_ko": "자재 보관·적치 구역",
+   "role": "material_staging",
+   "access_draft": {
+    "robot": "approach_only",
+    "human": "unknown"
+   },
+   "polygon_xy": [
+    [
+     1193.5,
+     481.9
+    ],
+    [
+     1797.4,
+     463.2
+    ],
+    [
+     1808.3,
+     600.9
+    ],
+    [
+     1198.6,
+     613.4
+    ]
+   ],
+   "polygon_cm": [
+    [
+     204.05,
+     108.95
+    ],
+    [
+     319.95,
+     106.96
+    ],
+    [
+     316.1,
+     136.35
+    ],
+    [
+     203.78,
+     137.42
+    ]
+   ],
+   "evidence": [
+    {
+     "kind": "MANUAL_MAP_PRIOR",
+     "detail": "hand-drawn DRAFT zone, transferred to E1 (DRAFT_UNCONFIRMED)"
+    }
+   ]
+  },
+  {
+   "id": "Z01",
+   "kind": "map_zone",
+   "layer": "no_go",
+   "name_ko": "보행 통로",
+   "role": "pedestrian_route",
+   "access_draft": {
+    "robot": "unknown",
+    "human": "allowed"
+   },
+   "polygon_xy": [
+    [
+     967.9,
+     66.4
+    ],
+    [
+     1056.7,
+     63.6
+    ],
+    [
+     1071.9,
+     293.6
+    ],
+    [
+     591.2,
+     300.7
+    ],
+    [
+     600.2,
+     221.7
+    ],
+    [
+     962.9,
+     213.8
+    ]
+   ],
+   "polygon_cm": [
+    [
+     157.97,
+     0.08
+    ],
+    [
+     178.04,
+     0.03
+    ],
+    [
+     180.76,
+     63.34
+    ],
+    [
+     78.87,
+     62.42
+    ],
+    [
+     78.39,
+     41.48
+    ],
+    [
+     157.57,
+     41.78
+    ]
+   ],
+   "evidence": [
+    {
+     "kind": "MANUAL_MAP_PRIOR",
+     "detail": "hand-drawn DRAFT zone, transferred to E1 (DRAFT_UNCONFIRMED)"
+    }
+   ]
+  },
+  {
+   "id": "Z07",
+   "kind": "map_zone",
+   "layer": "no_go",
+   "name_ko": "왼쪽 컨베이어 작업셀",
+   "role": "robotic_workcell",
+   "access_draft": {
+    "robot": "restricted",
+    "human": "unknown"
+   },
+   "polygon_xy": [
+    [
+     262.5,
+     295.8
+    ],
+    [
+     505.6,
+     303.0
+    ],
+    [
+     411.4,
+     788.4
+    ],
+    [
+     109.6,
+     771.0
+    ]
+   ],
+   "polygon_cm": [
+    [
+     6.67,
+     59.21
+    ],
+    [
+     60.4,
+     62.52
+    ],
+    [
+     58.05,
+     171.11
+    ],
+    [
+     -0.19,
+     167.3
+    ]
+   ],
+   "evidence": [
+    {
+     "kind": "MANUAL_MAP_PRIOR",
+     "detail": "hand-drawn DRAFT zone, transferred to E1 (DRAFT_UNCONFIRMED)"
+    }
+   ]
+  },
+  {
+   "id": "cand_r1",
+   "kind": "target_candidate",
+   "rank": 1,
+   "bbox_xyxy": [
+    434.0,
+    417.0,
+    451.0,
+    432.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "grounding_dino_roi",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.438,
+   "state": "PROBABLE",
+   "stored_qwen": {
+    "candidate_id": "target_cand1",
+    "status": "no",
+    "observed_color": "red",
+    "observed_object": "round object",
+    "reason": "The object is round, not cube-shaped."
+   },
+   "crop_views": {
+    "A_stored": {
+     "status": "no",
+     "observed_object": "round object",
+     "observed_color": "red"
+    },
+    "B_no_marker": {
+     "status": "yes",
+     "observed_object": "cube",
+     "observed_color": "red"
+    },
+    "C_more_context": {
+     "status": "no",
+     "observed_object": "button",
+     "observed_color": "red"
+    }
+   },
+   "floor_projection_cm": [
+    [
+     49.39,
+     90.73
+    ],
+    [
+     52.97,
+     90.81
+    ],
+    [
+     53.53,
+     94.42
+    ],
+    [
+     49.97,
+     94.34
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,grounding_dino_roi,hsv_color_shape"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r2",
+   "kind": "target_candidate",
+   "rank": 2,
+   "bbox_xyxy": [
+    550.0,
+    227.0,
+    566.0,
+    234.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "grounding_dino_roi",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.3829,
+   "state": "REJECTED",
+   "stored_qwen": {
+    "candidate_id": "target_cand2",
+    "status": "no",
+    "observed_color": "orange",
+    "observed_object": "cone",
+    "reason": "The object is a traffic cone, not a cube."
+   },
+   "crop_views": {
+    "A_stored": {
+     "status": "no",
+     "observed_object": "cone",
+     "observed_color": "orange"
+    },
+    "B_no_marker": {
+     "status": "no",
+     "observed_object": "traffic cone",
+     "observed_color": "orange and white"
+    },
+    "C_more_context": {
+     "status": "no",
+     "observed_object": "cone",
+     "observed_color": "orange"
+    }
+   },
+   "floor_projection_cm": [
+    [
+     67.43,
+     42.59
+    ],
+    [
+     70.98,
+     42.7
+    ],
+    [
+     71.22,
+     44.6
+    ],
+    [
+     67.68,
+     44.49
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,grounding_dino_roi,hsv_color_shape"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r3",
+   "kind": "target_candidate",
+   "rank": 3,
+   "bbox_xyxy": [
+    257.0,
+    174.0,
+    281.0,
+    212.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "grounding_dino_roi",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.1412,
+   "state": "PROBABLE",
+   "stored_qwen": {
+    "candidate_id": "target_cand5",
+    "status": "no",
+    "observed_color": "red",
+    "observed_object": "irregularly shaped object",
+    "reason": "The object is not a cube but has an irregular, possibly organic shape."
+   },
+   "crop_views": {
+    "A_stored": {
+     "status": "no",
+     "observed_object": "irregularly shaped object",
+     "observed_color": "red"
+    },
+    "B_no_marker": {
+     "status": "no",
+     "observed_object": "box",
+     "observed_color": "green"
+    },
+    "C_more_context": {
+     "status": "no",
+     "observed_object": "cuboid",
+     "observed_color": "red"
+    }
+   },
+   "floor_projection_cm": [
+    [
+     -1.57,
+     25.67
+    ],
+    [
+     3.99,
+     25.86
+    ],
+    [
+     6.17,
+     36.59
+    ],
+    [
+     0.68,
+     36.42
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,grounding_dino_roi,hsv_color_shape"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r4",
+   "kind": "target_candidate",
+   "rank": 4,
+   "bbox_xyxy": [
+    329.52,
+    380.59,
+    365.91,
+    444.04
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "grounding_dino_roi"
+   ],
+   "detector_score": 0.2283,
+   "state": "REJECTED",
+   "stored_qwen": {
+    "candidate_id": "target_cand4",
+    "status": "no",
+    "observed_color": "purple",
+    "observed_object": "purple object",
+    "reason": "The object inside the green box is purple, not red."
+   },
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     25.62,
+     81.3
+    ],
+    [
+     33.42,
+     81.48
+    ],
+    [
+     36.19,
+     96.93
+    ],
+    [
+     28.55,
+     96.77
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,grounding_dino_roi"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r5",
+   "kind": "target_candidate",
+   "rank": 5,
+   "bbox_xyxy": [
+    269.06,
+    376.8,
+    315.14,
+    440.06
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "grounding_dino_roi"
+   ],
+   "detector_score": 0.2096,
+   "state": "REJECTED",
+   "stored_qwen": {
+    "candidate_id": "target_cand6",
+    "status": "no",
+    "observed_color": "orange",
+    "observed_object": "object",
+    "reason": "The object inside the green box is orange, not red, and its shape is not a cube."
+   },
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     12.41,
+     80.05
+    ],
+    [
+     22.35,
+     80.28
+    ],
+    [
+     25.34,
+     95.76
+    ],
+    [
+     15.61,
+     95.56
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,grounding_dino_roi"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r6",
+   "kind": "target_candidate",
+   "rank": 6,
+   "bbox_xyxy": [
+    285.0,
+    208.0,
+    298.0,
+    216.0
+   ],
+   "source_types": [
+    "grounding_dino_roi",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.1469,
+   "state": "PROBABLE",
+   "stored_qwen": {
+    "candidate_id": "target_cand3",
+    "status": "no",
+    "observed_color": "red",
+    "observed_object": "rectangle",
+    "reason": "The object is a rectangular shape, not a cube."
+   },
+   "crop_views": {
+    "A_stored": {
+     "status": "no",
+     "observed_object": "rectangle",
+     "observed_color": "red"
+    },
+    "B_no_marker": {
+     "status": "no",
+     "observed_object": "box",
+     "observed_color": "green"
+    },
+    "C_more_context": {
+     "status": "yes",
+     "observed_object": "cube",
+     "observed_color": "red"
+    }
+   },
+   "floor_projection_cm": [
+    [
+     6.86,
+     35.51
+    ],
+    [
+     9.83,
+     35.6
+    ],
+    [
+     10.27,
+     37.83
+    ],
+    [
+     7.31,
+     37.74
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_roi,hsv_color_shape"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r7",
+   "kind": "target_candidate",
+   "rank": 7,
+   "bbox_xyxy": [
+    947.0,
+    850.0,
+    983.0,
+    885.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.448,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     157.24,
+     183.29
+    ],
+    [
+     163.65,
+     183.32
+    ],
+    [
+     163.73,
+     189.69
+    ],
+    [
+     157.38,
+     189.66
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r8",
+   "kind": "target_candidate",
+   "rank": 8,
+   "bbox_xyxy": [
+    1643.0,
+    887.0,
+    1705.0,
+    932.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.4276,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     277.49,
+     190.42
+    ],
+    [
+     287.92,
+     190.45
+    ],
+    [
+     286.56,
+     198.26
+    ],
+    [
+     276.24,
+     198.25
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r9",
+   "kind": "target_candidate",
+   "rank": 9,
+   "bbox_xyxy": [
+    1792.0,
+    834.0,
+    1808.0,
+    856.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.3858,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     304.35,
+     181.09
+    ],
+    [
+     307.06,
+     181.1
+    ],
+    [
+     306.27,
+     185.04
+    ],
+    [
+     303.58,
+     185.03
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r10",
+   "kind": "target_candidate",
+   "rank": 10,
+   "bbox_xyxy": [
+    1070.0,
+    265.0,
+    1080.0,
+    280.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.2999,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     180.44,
+     55.99
+    ],
+    [
+     182.54,
+     56.05
+    ],
+    [
+     182.49,
+     59.91
+    ],
+    [
+     180.4,
+     59.85
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r11",
+   "kind": "target_candidate",
+   "rank": 11,
+   "bbox_xyxy": [
+    1066.0,
+    193.0,
+    1075.0,
+    205.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.2211,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     179.78,
+     36.85
+    ],
+    [
+     181.72,
+     36.91
+    ],
+    [
+     181.68,
+     40.16
+    ],
+    [
+     179.75,
+     40.1
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r12",
+   "kind": "target_candidate",
+   "rank": 12,
+   "bbox_xyxy": [
+    1310.0,
+    270.0,
+    1324.0,
+    290.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.1897,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     230.37,
+     58.69
+    ],
+    [
+     233.25,
+     58.77
+    ],
+    [
+     232.86,
+     63.84
+    ],
+    [
+     229.99,
+     63.76
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r13",
+   "kind": "target_candidate",
+   "rank": 13,
+   "bbox_xyxy": [
+    1677.0,
+    272.0,
+    1689.0,
+    285.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.1814,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     304.87,
+     61.29
+    ],
+    [
+     307.27,
+     61.36
+    ],
+    [
+     306.71,
+     64.6
+    ],
+    [
+     304.32,
+     64.54
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r14",
+   "kind": "target_candidate",
+   "rank": 14,
+   "bbox_xyxy": [
+    1285.0,
+    187.0,
+    1299.0,
+    198.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.1766,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     226.67,
+     36.73
+    ],
+    [
+     229.64,
+     36.83
+    ],
+    [
+     229.43,
+     39.79
+    ],
+    [
+     226.47,
+     39.69
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r15",
+   "kind": "target_candidate",
+   "rank": 15,
+   "bbox_xyxy": [
+    1296.0,
+    75.0,
+    1308.0,
+    85.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.1505,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     231.19,
+     5.43
+    ],
+    [
+     233.83,
+     5.53
+    ],
+    [
+     233.62,
+     8.43
+    ],
+    [
+     230.99,
+     8.33
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r16",
+   "kind": "target_candidate",
+   "rank": 16,
+   "bbox_xyxy": [
+    1416.0,
+    269.0,
+    1427.0,
+    280.0
+   ],
+   "source_types": [
+    "grounding_dino_full_image",
+    "hsv_color_shape"
+   ],
+   "detector_score": 0.1464,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     252.15,
+     59.05
+    ],
+    [
+     254.4,
+     59.11
+    ],
+    [
+     254.11,
+     61.9
+    ],
+    [
+     251.87,
+     61.83
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image,hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r17",
+   "kind": "target_candidate",
+   "rank": 17,
+   "bbox_xyxy": [
+    293.97,
+    578.84,
+    330.99,
+    654.35
+   ],
+   "source_types": [
+    "grounding_dino_roi"
+   ],
+   "detector_score": 0.1751,
+   "state": "REJECTED",
+   "stored_qwen": {
+    "candidate_id": "target_cand8",
+    "status": "no",
+    "observed_color": "orange",
+    "observed_object": "rectangular object",
+    "reason": "The object is orange, not red, and its shape is rectangular, not cubic."
+   },
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     27.23,
+     127.57
+    ],
+    [
+     34.7,
+     127.68
+    ],
+    [
+     37.76,
+     143.91
+    ],
+    [
+     30.46,
+     143.83
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_roi"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r18",
+   "kind": "target_candidate",
+   "rank": 18,
+   "bbox_xyxy": [
+    554.0,
+    206.0,
+    567.0,
+    219.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     67.58,
+     36.85
+    ],
+    [
+     70.49,
+     36.94
+    ],
+    [
+     70.93,
+     40.52
+    ],
+    [
+     68.04,
+     40.43
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r19",
+   "kind": "target_candidate",
+   "rank": 19,
+   "bbox_xyxy": [
+    927.92,
+    507.69,
+    963.9,
+    556.08
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.3033,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     151.96,
+     113.8
+    ],
+    [
+     159.04,
+     113.92
+    ],
+    [
+     159.23,
+     124.59
+    ],
+    [
+     152.25,
+     124.48
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r20",
+   "kind": "target_candidate",
+   "rank": 20,
+   "bbox_xyxy": [
+    940.99,
+    176.54,
+    966.58,
+    215.49
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.2268,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     152.6,
+     31.46
+    ],
+    [
+     158.2,
+     31.64
+    ],
+    [
+     158.37,
+     42.26
+    ],
+    [
+     152.85,
+     42.09
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r21",
+   "kind": "target_candidate",
+   "rank": 21,
+   "bbox_xyxy": [
+    1525.14,
+    243.97,
+    1560.66,
+    289.1
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.1313,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     275.2,
+     53.29
+    ],
+    [
+     282.45,
+     53.5
+    ],
+    [
+     280.87,
+     64.92
+    ],
+    [
+     273.73,
+     64.73
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r22",
+   "kind": "target_candidate",
+   "rank": 22,
+   "bbox_xyxy": [
+    1590.59,
+    247.75,
+    1641.26,
+    290.21
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.1114,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     288.4,
+     54.65
+    ],
+    [
+     298.67,
+     54.95
+    ],
+    [
+     296.98,
+     65.64
+    ],
+    [
+     286.84,
+     65.36
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r23",
+   "kind": "target_candidate",
+   "rank": 23,
+   "bbox_xyxy": [
+    1078.0,
+    249.0,
+    1096.0,
+    264.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     182.18,
+     51.87
+    ],
+    [
+     185.98,
+     51.98
+    ],
+    [
+     185.91,
+     55.88
+    ],
+    [
+     182.13,
+     55.77
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r24",
+   "kind": "target_candidate",
+   "rank": 24,
+   "bbox_xyxy": [
+    1816.0,
+    833.0,
+    1834.0,
+    859.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     308.45,
+     180.93
+    ],
+    [
+     311.49,
+     180.94
+    ],
+    [
+     310.53,
+     185.59
+    ],
+    [
+     307.51,
+     185.58
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r25",
+   "kind": "target_candidate",
+   "rank": 25,
+   "bbox_xyxy": [
+    1698.0,
+    245.0,
+    1711.0,
+    258.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     310.25,
+     54.58
+    ],
+    [
+     312.87,
+     54.66
+    ],
+    [
+     312.29,
+     57.96
+    ],
+    [
+     309.68,
+     57.88
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r26",
+   "kind": "target_candidate",
+   "rank": 26,
+   "bbox_xyxy": [
+    1677.0,
+    259.0,
+    1689.0,
+    270.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     305.41,
+     58.02
+    ],
+    [
+     307.83,
+     58.09
+    ],
+    [
+     307.35,
+     60.86
+    ],
+    [
+     304.95,
+     60.79
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r27",
+   "kind": "target_candidate",
+   "rank": 27,
+   "bbox_xyxy": [
+    1075.0,
+    176.0,
+    1088.0,
+    188.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     181.78,
+     32.27
+    ],
+    [
+     184.59,
+     32.36
+    ],
+    [
+     184.54,
+     35.64
+    ],
+    [
+     181.74,
+     35.55
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r28",
+   "kind": "target_candidate",
+   "rank": 28,
+   "bbox_xyxy": [
+    1433.0,
+    254.0,
+    1448.0,
+    264.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     256.03,
+     55.31
+    ],
+    [
+     259.11,
+     55.4
+    ],
+    [
+     258.83,
+     57.96
+    ],
+    [
+     255.76,
+     57.87
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r29",
+   "kind": "target_candidate",
+   "rank": 29,
+   "bbox_xyxy": [
+    1302.0,
+    183.0,
+    1316.0,
+    196.0
+   ],
+   "source_types": [
+    "hsv_color_shape"
+   ],
+   "detector_score": null,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     230.35,
+     35.77
+    ],
+    [
+     233.32,
+     35.87
+    ],
+    [
+     233.05,
+     39.36
+    ],
+    [
+     230.1,
+     39.27
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "hsv_color_shape"
+    }
+   ]
+  },
+  {
+   "id": "cand_r30",
+   "kind": "target_candidate",
+   "rank": 30,
+   "bbox_xyxy": [
+    317.72,
+    459.72,
+    367.53,
+    592.08
+   ],
+   "source_types": [
+    "grounding_dino_roi"
+   ],
+   "detector_score": 0.187,
+   "state": "REJECTED",
+   "stored_qwen": {
+    "candidate_id": "target_cand7",
+    "status": "no",
+    "observed_color": "gray",
+    "observed_object": "metallic structure",
+    "reason": "The green box contains a gray metallic structure, not a red cube."
+   },
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     26.79,
+     100.46
+    ],
+    [
+     37.2,
+     100.66
+    ],
+    [
+     42.57,
+     130.68
+    ],
+    [
+     32.58,
+     130.54
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_roi"
+    },
+    {
+     "kind": "VLM_CROP_VERIFIED",
+     "detail": "stored view A: no"
+    }
+   ]
+  },
+  {
+   "id": "cand_r31",
+   "kind": "target_candidate",
+   "rank": 31,
+   "bbox_xyxy": [
+    588.07,
+    216.59,
+    712.38,
+    302.82
+   ],
+   "source_types": [
+    "grounding_dino_roi"
+   ],
+   "detector_score": 0.1745,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     75.54,
+     40.0
+    ],
+    [
+     103.03,
+     40.85
+    ],
+    [
+     104.96,
+     63.66
+    ],
+    [
+     78.26,
+     62.95
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_roi"
+    }
+   ]
+  },
+  {
+   "id": "cand_r32",
+   "kind": "target_candidate",
+   "rank": 32,
+   "bbox_xyxy": [
+    340.17,
+    42.5,
+    449.73,
+    142.09
+   ],
+   "source_types": [
+    "grounding_dino_roi"
+   ],
+   "detector_score": 0.1548,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     10.32,
+     -13.01
+    ],
+    [
+     36.65,
+     -11.95
+    ],
+    [
+     41.33,
+     17.98
+    ],
+    [
+     15.93,
+     17.1
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_roi"
+    }
+   ]
+  },
+  {
+   "id": "cand_r33",
+   "kind": "target_candidate",
+   "rank": 33,
+   "bbox_xyxy": [
+    228.53,
+    155.34,
+    325.5,
+    290.43
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.1258,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     -9.35,
+     20.06
+    ],
+    [
+     13.25,
+     20.83
+    ],
+    [
+     20.36,
+     58.17
+    ],
+    [
+     -1.19,
+     57.58
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r34",
+   "kind": "target_candidate",
+   "rank": 34,
+   "bbox_xyxy": [
+    269.1,
+    377.12,
+    365.88,
+    445.36
+   ],
+   "source_types": [
+    "grounding_dino_roi"
+   ],
+   "detector_score": 0.1234,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     12.44,
+     80.13
+    ],
+    [
+     33.26,
+     80.62
+    ],
+    [
+     36.24,
+     97.24
+    ],
+    [
+     15.88,
+     96.83
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_roi"
+    }
+   ]
+  },
+  {
+   "id": "cand_r35",
+   "kind": "target_candidate",
+   "rank": 35,
+   "bbox_xyxy": [
+    809.3,
+    425.77,
+    926.32,
+    591.08
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.1618,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     127.37,
+     94.48
+    ],
+    [
+     151.13,
+     94.98
+    ],
+    [
+     152.15,
+     132.01
+    ],
+    [
+     129.55,
+     131.69
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r36",
+   "kind": "target_candidate",
+   "rank": 36,
+   "bbox_xyxy": [
+    585.63,
+    62.61,
+    1068.98,
+    304.89
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.1323,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     69.7,
+     -4.49
+    ],
+    [
+     180.81,
+     -0.16
+    ],
+    [
+     180.12,
+     66.19
+    ],
+    [
+     77.79,
+     63.47
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r37",
+   "kind": "target_candidate",
+   "rank": 37,
+   "bbox_xyxy": [
+    666.23,
+    854.63,
+    864.99,
+    995.32
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.1222,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     106.79,
+     183.92
+    ],
+    [
+     142.61,
+     184.08
+    ],
+    [
+     143.7,
+     208.98
+    ],
+    [
+     109.23,
+     208.99
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  },
+  {
+   "id": "cand_r38",
+   "kind": "target_candidate",
+   "rank": 38,
+   "bbox_xyxy": [
+    1703.5,
+    469.14,
+    1801.08,
+    571.1
+   ],
+   "source_types": [
+    "grounding_dino_full_image"
+   ],
+   "detector_score": 0.113,
+   "state": "PENDING_VERIFICATION",
+   "stored_qwen": null,
+   "crop_views": null,
+   "floor_projection_cm": [
+    [
+     302.06,
+     107.94
+    ],
+    [
+     320.38,
+     108.29
+    ],
+    [
+     316.02,
+     130.17
+    ],
+    [
+     298.23,
+     129.91
+    ]
+   ],
+   "floor_note": "floor-plane projection of the image box; the cube height above the floor is UNKNOWN (parallax)",
+   "evidence": [
+    {
+     "kind": "DETECTOR_OBSERVED",
+     "detail": "grounding_dino_full_image"
+    }
+   ]
+  }
+ ],
+ "relations": [
+  {
+   "id": "r1",
+   "type": "source_referenced_by_instruction",
+   "subject": "task",
+   "object": "conveyor_1",
+   "provenance": "INSTRUCTION_GIVEN",
+   "status": "UNVERIFIED",
+   "basis": "instruction_text",
+   "evidence": {
+    "clause": "컨베이어에서 생산된",
+    "parsed": {
+     "source_reference": "conveyor",
+     "source_relation": "produced_by"
+    },
+    "grounding": "class match to the only accepted conveyor (conveyor_1: detector + Qwen crop 'yes')",
+    "why_unverified": "a still image cannot show that the object was produced by this conveyor"
+   }
+  },
+  {
+   "id": "r2",
+   "type": "on",
+   "subject": "cand_r1",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 1.0,
+    "gap_px": 0.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r3",
+   "type": "near",
+   "subject": "cand_r2",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.0,
+    "gap_px": 96.5,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r4",
+   "type": "near",
+   "subject": "cand_r3",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.0,
+    "gap_px": 61.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r5",
+   "type": "on",
+   "subject": "cand_r4",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 1.0,
+    "gap_px": 0.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r6",
+   "type": "on",
+   "subject": "cand_r5",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 1.0,
+    "gap_px": 0.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r7",
+   "type": "near",
+   "subject": "cand_r6",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.0,
+    "gap_px": 57.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r8",
+   "type": "on",
+   "subject": "cand_r17",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 1.0,
+    "gap_px": 0.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r9",
+   "type": "near",
+   "subject": "cand_r18",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.0,
+    "gap_px": 106.9,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r10",
+   "type": "on",
+   "subject": "cand_r30",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 1.0,
+    "gap_px": 0.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r11",
+   "type": "near",
+   "subject": "cand_r31",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.0,
+    "gap_px": 126.3,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r12",
+   "type": "near",
+   "subject": "cand_r32",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.0,
+    "gap_px": 130.9,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r13",
+   "type": "near",
+   "subject": "cand_r33",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.129,
+    "gap_px": 0.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r14",
+   "type": "on",
+   "subject": "cand_r34",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 1.0,
+    "gap_px": 0.0,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r15",
+   "type": "near",
+   "subject": "cand_r36",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "containment_in_source_box": 0.0,
+    "gap_px": 123.9,
+    "contain_ratio": 0.8,
+    "near_px": 150,
+    "limit": "2D image boxes; 3D support ('on' the belt surface) is NOT established"
+   }
+  },
+  {
+   "id": "r16",
+   "type": "candidate_destination_for",
+   "subject": "area_5",
+   "object": "task",
+   "provenance": "VLM_INFERRED",
+   "status": "UNVERIFIED",
+   "basis": "stored_vlm_reply",
+   "evidence": {
+    "decision": "proposed",
+    "reason": "The truck is the only vehicle visible that can receive outgoing shipments, and area_5 is the designated loading dock for vehicles.",
+    "place_needed_for_task": "A designated loading/unloading zone for outgoing shipments.",
+    "info_added_by_vlm": [
+     {
+      "statement": "The red cube is not visible in the image, so its location is unknown.",
+      "basis": "image"
+     },
+     {
+      "statement": "The truck in area_5 is a likely candidate for receiving shipped goods.",
+      "basis": "general_knowledge"
+     },
+     {
+      "statement": "The area near the truck (area_5) is the most logical place for outgoing shipments.",
+      "basis": "general_knowledge"
+     }
+    ],
+    "stored_for_wording": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘."
+   }
+  },
+  {
+   "id": "r17",
+   "type": "associated_with",
+   "subject": "area_2",
+   "object": "conveyor_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 0.984,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r18",
+   "type": "associated_with",
+   "subject": "area_5",
+   "object": "truck_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 1.0,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r19",
+   "type": "associated_with",
+   "subject": "area_5",
+   "object": "traffic_cone_1",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 1.0,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r20",
+   "type": "associated_with",
+   "subject": "area_5",
+   "object": "traffic_cone_3",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 1.0,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r21",
+   "type": "associated_with",
+   "subject": "area_5",
+   "object": "traffic_cone_5",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 0.911,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r22",
+   "type": "associated_with",
+   "subject": "area_5",
+   "object": "traffic_cone_6",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 0.826,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r23",
+   "type": "associated_with",
+   "subject": "area_5",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 1.0,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r24",
+   "type": "associated_with",
+   "subject": "area_5",
+   "object": "placement_floor",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 1.0,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r25",
+   "type": "associated_with",
+   "subject": "area_6",
+   "object": "robot",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "fraction_of_entity_inside_area_box": 1.0,
+    "contain_ratio": 0.8,
+    "limit": "locates the VLM area on observed entities; the area's FUNCTION stays VLM_INFERRED"
+   }
+  },
+  {
+   "id": "r26",
+   "type": "associated_with",
+   "subject": "truck_1",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "stored_check": "the verified truck's ground edge (bottom of its box) stands inside the region",
+    "value": 0.905,
+    "source": "stored bay localization (declared threshold 0.9)"
+   }
+  },
+  {
+   "id": "r27",
+   "type": "inside",
+   "subject": "placement_floor",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "by_construction": "geometric: semantic region minus detected object footprints and map obstacles/no-go, eroded by half the target size; placement surface and gripper reach UNMEASURED"
+   }
+  },
+  {
+   "id": "r28",
+   "type": "near",
+   "subject": "traffic_cone_1",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "gap_px": 103.6,
+    "near_px": 150
+   }
+  },
+  {
+   "id": "r29",
+   "type": "near",
+   "subject": "traffic_cone_2",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "gap_px": 116.0,
+    "near_px": 150
+   }
+  },
+  {
+   "id": "r30",
+   "type": "near",
+   "subject": "traffic_cone_3",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "gap_px": 88.2,
+    "near_px": 150
+   }
+  },
+  {
+   "id": "r31",
+   "type": "near",
+   "subject": "traffic_cone_4",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "gap_px": 77.0,
+    "near_px": 150
+   }
+  },
+  {
+   "id": "r32",
+   "type": "near",
+   "subject": "traffic_cone_5",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "gap_px": 73.0,
+    "near_px": 150
+   }
+  },
+  {
+   "id": "r33",
+   "type": "near",
+   "subject": "traffic_cone_6",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "image_2d",
+   "evidence": {
+    "gap_px": 73.1,
+    "near_px": 150
+   }
+  },
+  {
+   "id": "r34",
+   "type": "inside",
+   "subject": "Z03",
+   "object": "Z02",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "fraction_inside": 1.0,
+    "contain_ratio": 0.8
+   }
+  },
+  {
+   "id": "r35",
+   "type": "inside",
+   "subject": "Z04",
+   "object": "Z02",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "fraction_inside": 0.972,
+    "contain_ratio": 0.8
+   }
+  },
+  {
+   "id": "r36",
+   "type": "adjacent_to",
+   "subject": "Z02",
+   "object": "Z01",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "gap_cm": 1.5,
+    "adjacent_cm": 5
+   }
+  },
+  {
+   "id": "r37",
+   "type": "adjacent_to",
+   "subject": "Z02",
+   "object": "Z07",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "gap_cm": 0.5,
+    "adjacent_cm": 5
+   }
+  },
+  {
+   "id": "r38",
+   "type": "inside",
+   "subject": "placement_floor",
+   "object": "loading_bay",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "fraction_inside": 0.999,
+    "contain_ratio": 0.8
+   }
+  },
+  {
+   "id": "r39",
+   "type": "inside",
+   "subject": "robot",
+   "object": "Z02",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "start_cm": [
+     292.9,
+     156.3
+    ],
+    "body": "35x24 cm + margin fits on free floor at the start (fixed heading 0)",
+    "start_status": "ESTIMATED"
+   }
+  },
+  {
+   "id": "r40",
+   "type": "inside",
+   "subject": "cand_r1",
+   "object": "Z07",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     51.5,
+     92.6
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r41",
+   "type": "inside",
+   "subject": "cand_r4",
+   "object": "Z07",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     30.9,
+     89.1
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r42",
+   "type": "inside",
+   "subject": "cand_r5",
+   "object": "Z07",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     18.9,
+     87.9
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r43",
+   "type": "inside",
+   "subject": "cand_r17",
+   "object": "Z07",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     32.5,
+     135.7
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r44",
+   "type": "inside",
+   "subject": "cand_r19",
+   "object": "Z02",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     155.6,
+     119.2
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r45",
+   "type": "inside",
+   "subject": "cand_r19",
+   "object": "Z03",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     155.6,
+     119.2
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r46",
+   "type": "inside",
+   "subject": "cand_r30",
+   "object": "Z07",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     34.8,
+     115.6
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r47",
+   "type": "inside",
+   "subject": "cand_r31",
+   "object": "Z01",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     90.4,
+     51.9
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r48",
+   "type": "inside",
+   "subject": "cand_r34",
+   "object": "Z07",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     24.5,
+     88.7
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r49",
+   "type": "inside",
+   "subject": "cand_r35",
+   "object": "Z02",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     140.1,
+     113.3
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r50",
+   "type": "inside",
+   "subject": "cand_r35",
+   "object": "Z03",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     140.1,
+     113.3
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r51",
+   "type": "inside",
+   "subject": "cand_r38",
+   "object": "Z02",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     309.2,
+     119.1
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  },
+  {
+   "id": "r52",
+   "type": "inside",
+   "subject": "cand_r38",
+   "object": "Z04",
+   "provenance": "GEOMETRY_DERIVED",
+   "status": "SUPPORTED",
+   "basis": "floor_cm_provisional",
+   "evidence": {
+    "floor_projection_centre_cm": [
+     309.2,
+     119.1
+    ],
+    "limit": "projection of an object of UNKNOWN height: displaced by parallax"
+   }
+  }
+ ],
+ "vlm_mentions": [
+  {
+   "label": "robotic arm",
+   "count": 3,
+   "location_text": "top-left and bottom-left corners",
+   "matched_nodes": [],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text (not task-relevant / not grounded)"
+  },
+  {
+   "label": "truck",
+   "count": 1,
+   "location_text": "top-right",
+   "matched_nodes": [
+    "truck_1"
+   ],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text"
+  },
+  {
+   "label": "stack of boxes",
+   "count": 1,
+   "location_text": "center of the floor",
+   "matched_nodes": [],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text (not task-relevant / not grounded)"
+  },
+  {
+   "label": "cones",
+   "count": 12,
+   "location_text": "distributed across the floor",
+   "matched_nodes": [
+    "traffic_cone_1",
+    "traffic_cone_2",
+    "traffic_cone_3",
+    "traffic_cone_4",
+    "traffic_cone_5",
+    "traffic_cone_6"
+   ],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text"
+  },
+  {
+   "label": "barriers",
+   "count": 2,
+   "location_text": "top and bottom edges",
+   "matched_nodes": [],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text (not task-relevant / not grounded)"
+  },
+  {
+   "label": "battery charging station",
+   "count": 1,
+   "location_text": "bottom-right",
+   "matched_nodes": [],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text (not task-relevant / not grounded)"
+  },
+  {
+   "label": "whiteboard",
+   "count": 1,
+   "location_text": "bottom-center",
+   "matched_nodes": [],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text (not task-relevant / not grounded)"
+  },
+  {
+   "label": "pallets with containers",
+   "count": 1,
+   "location_text": "right side",
+   "matched_nodes": [],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text (not task-relevant / not grounded)"
+  },
+  {
+   "label": "robotic vehicle",
+   "count": 1,
+   "location_text": "bottom-right",
+   "matched_nodes": [
+    "robot"
+   ],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text"
+  },
+  {
+   "label": "conveyor belt",
+   "count": 1,
+   "location_text": "left side",
+   "matched_nodes": [
+    "conveyor_1"
+   ],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text"
+  },
+  {
+   "label": "grate",
+   "count": 1,
+   "location_text": "bottom-center",
+   "matched_nodes": [],
+   "provenance": "VLM_INFERRED",
+   "note": "no box in the reply; kept as text (not task-relevant / not grounded)"
+  }
+ ],
+ "conflicts": [
+  {
+   "vlm_statement": "The red cube is not visible in the image, so its location is unknown.",
+   "basis": "image",
+   "provenance": "VLM_INFERRED",
+   "versus": "38 detector candidates of the target class (3 PROBABLE)",
+   "handling": "kept as is; neither side is treated as ground truth"
+  },
+  {
+   "vlm_statement": "12 cones",
+   "versus": "6 cone boxes verified by detector + Qwen crop",
+   "handling": "count not used"
+  }
+ ],
+ "excluded": [
+  {
+   "id": "area_1",
+   "function_name": "loading/unloading zone",
+   "reason": "box covers the whole image (0,0,1000,1000): not localising"
+  }
+ ],
+ "unresolved": [],
+ "summary": {
+  "n_nodes": 60,
+  "nodes_by_kind": {
+   "task": 1,
+   "robot": 1,
+   "object": 8,
+   "floor_region": 2,
+   "vlm_functional_area": 5,
+   "map_zone": 5,
+   "target_candidate": 38
+  },
+  "n_relations": 52,
+  "relations_by_type": {
+   "source_referenced_by_instruction": 1,
+   "on": 6,
+   "near": 14,
+   "candidate_destination_for": 1,
+   "associated_with": 10,
+   "inside": 18,
+   "adjacent_to": 2
+  },
+  "relations_by_provenance": {
+   "INSTRUCTION_GIVEN": 1,
+   "GEOMETRY_DERIVED": 50,
+   "VLM_INFERRED": 1
+  },
+  "relations_by_status": {
+   "UNVERIFIED": 2,
+   "SUPPORTED": 50
+  }
+ },
+ "experiment_id": "semantic_navigation_integration",
+ "command": "컨베이어에서 생산된 빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+ "model_calls_this_run": 0,
+ "sources": {
+  "qwen_L2_reply": "20261118_203058_46d8 (sha256 d4635d4a54f5806c..., wording '빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.')",
+  "candidates": "/home/binci/vlm_ws/semantic_task_navigation/experiments/candidate_retention_policy/results/20261119_073841_retention",
+  "crop_views": "/home/binci/vlm_ws/semantic_task_navigation/experiments/qwen_crop_comparison/results/20261119_075541_crop_comparison",
+  "objects_map_bay": "task_route_integration.build_context (first_vlm_navigation_path, semantic_evidence_verification runs)"
+ },
+ "thresholds": {
+  "near_px": 150,
+  "contain_ratio": 0.8,
+  "source": "v0.2 config/planning.yaml relations",
+  "floor_adjacent_cm": 5
+ },
+ "accuracy": "NOT_COMPUTED (no human ground truth)"
+}

@@ -1,0 +1,48 @@
+{
+  "purpose": "Exploratory only: see how each installed model detects objects in one real photo. Not paper evidence, not a model-selection run (D2).",
+  "date": "2026-11-14",
+  "image": "/home/binci/vlm_ws/new_experiment_environment/final_experiment_picture.png",
+  "image_note": "1922x1119 RGBA screenshot of the OpenCV 'UNDISTORTED' window (title bar + borders included). Not a raw camera frame.",
+  "coordinate_system": "pixels of the input screenshot (x right, y down, origin top-left). Undistortion state as displayed in that window; not usable for homography.",
+  "vocabulary": ["truck", "pallet", "cardboard box", "storage rack", "workbench", "cart", "drum", "mobile robot", "robot arm", "conveyor belt", "safety fence", "traffic cone"],
+  "vocabulary_source": "scripts/run_yolo_world_integration.py VOCABULARY (reused unchanged)",
+  "models": {
+    "qwen": "Qwen/Qwen3-VL-4B-Instruct",
+    "dino": "IDEA-Research/grounding-dino-tiny",
+    "sam2": "facebook/sam2.1-hiera-tiny",
+    "florence_base": "florence-community/Florence-2-base",
+    "florence_large": "florence-community/Florence-2-large",
+    "yolo_world": "/home/binci/vlm_ws/new_experiment_environment/results/YOLO_WORLD_INTEGRATION_20260929T012518+0900/07_yolo_world/yolov8s-world.pt",
+    "yolo_world_clip_dir": "/home/binci/weights/clip",
+    "yoloe_pf": "/home/binci/weights/yoloe/yoloe-26s-seg-pf.pt"
+  },
+  "envs": {
+    "qwen_vl": ["qwen", "dino", "sam2", "florence", "render"],
+    "yolo_world": ["yolo_world", "yoloe_pf"]
+  },
+  "thresholds": {
+    "dino_box": 0.25,
+    "dino_text": 0.25,
+    "yolo_conf": 0.25,
+    "yolo_iou": 0.7,
+    "yolo_imgsz": 1280
+  },
+  "qwen": {
+    "dtype": "bfloat16",
+    "max_new_tokens": 2048,
+    "do_sample": false,
+    "prompt": "Detect every distinct physical object visible in this top-down photo of a miniature warehouse workspace. List each object instance separately. Return JSON only, no prose: {\"objects\": [{\"label\": \"<short noun phrase>\", \"bbox_2d\": [x1, y1, x2, y2]}]} where coordinates are integers normalized to 0-1000 relative to image width and height.",
+    "prompt_attempt02": "Detect every distinct physical object visible in this top-down photo of a miniature warehouse workspace. Do not include surfaces such as the floor, floor mats, painted zones, or tape lines. List each object instance separately and list each instance only once. Return JSON only, no prose: {\"objects\": [{\"label\": \"<short noun phrase>\", \"bbox_2d\": [x1, y1, x2, y2]}]} where coordinates are integers normalized to 0-1000 relative to image width and height.",
+    "attempt02_change": "attempt01 (prompt) collapsed into a repetition loop of 'concrete floor' [0,0,1000,1000] after 4 objects and hit max_new_tokens. attempt02 changes only the prompt (exclude surfaces, list each instance once); decoding unchanged.",
+    "attempt03_repetition_penalty": 1.05,
+    "attempt03_change": "attempt02 found 9 unique objects then looped on a 'barrel' box and hit max_new_tokens. attempt03 keeps prompt_attempt02 and greedy decoding, changes only repetition_penalty 1.0 -> 1.05."
+  },
+  "sam2": {"prompt_source": "dino", "multimask_output": false},
+  "florence": {
+    "dtype": "bfloat16",
+    "num_beams": 3,
+    "max_new_tokens": 1024,
+    "tasks": ["<OD>", "<DENSE_REGION_CAPTION>", "<OPEN_VOCABULARY_DETECTION>"],
+    "ovd_note": "<OPEN_VOCABULARY_DETECTION> is run once per vocabulary class"
+  }
+}

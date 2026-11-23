@@ -1,0 +1,23 @@
+{
+  // GUI/오케스트레이션: 새 conda env "stnav_gui". 모델 추론은 별도 worker 프로세스가 기존 qwen_vl env로 실행한다.
+  "python.defaultInterpreterPath": "/home/binci/miniconda3/envs/stnav_gui/bin/python",
+  "python.analysis.extraPaths": ["${workspaceFolder}/src"],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.cwd": "${workspaceFolder}",
+  "python.testing.pytestArgs": ["tests"],   // ROS pytest plugins are disabled in pytest.ini
+  "terminal.integrated.cwd": "${workspaceFolder}",
+  "terminal.integrated.env.linux": {
+    "PYTHONPATH": "${workspaceFolder}/src:${env:PYTHONPATH}"
+  },
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.pytest_cache": true
+  },
+  "search.exclude": {
+    "runs/**": true
+  },
+  "files.watcherExclude": {
+    "runs/**": true
+  }
+}

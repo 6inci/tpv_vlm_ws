@@ -1,0 +1,39 @@
+{
+  "case_id": "missing_target",
+  "category": "missing_target",
+  "core_metric": true,
+  "run": 1,
+  "instruction": "A구역으로 옮겨",
+  "raw_model_output": "{\"action_phrase\":\"옮겨\",\"target_phrase\":null,\"destination_phrase\":\"A구역\"}",
+  "parsed": {
+    "action_phrase": "옮겨",
+    "target_phrase": null,
+    "destination_phrase": "A구역"
+  },
+  "validated": {
+    "status": "TASK_INCOMPLETE",
+    "raw_instruction": "A구역으로 옮겨",
+    "error_code": "MISSING_TARGET",
+    "reason": "target is missing",
+    "parsed_fields": {
+      "action_phrase": "옮겨",
+      "target_phrase": null,
+      "destination_phrase": "A구역"
+    },
+    "action": {
+      "surface_phrase": "옮겨",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target_grounding_status": "NOT_RUN",
+    "zone_resolution_status": "NOT_RUN",
+    "path_status": "NOT_RUN"
+  },
+  "integrated": null,
+  "inference_sec": 5.510364826001023,
+  "expected": {
+    "status": "TASK_INCOMPLETE",
+    "error_code": "MISSING_TARGET"
+  },
+  "matches_expected": true
+}

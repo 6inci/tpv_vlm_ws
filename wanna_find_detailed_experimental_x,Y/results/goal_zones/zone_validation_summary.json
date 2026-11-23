@@ -1,0 +1,242 @@
+{
+  "result": "PASS",
+  "verification_type": "Offline Metric Goal Zone Definition + Verification",
+  "created_at": "2026-09-17T17:53:48.471451+09:00",
+  "zone_config": "/home/binci/vlm_ws/config/zones.json",
+  "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+  "unit": "m",
+  "zone_status": "OFFLINE_DEVELOPMENT_ZONE_SET",
+  "workspace_bounds": {
+    "x": [
+      0.0,
+      1.2
+    ],
+    "y": [
+      0.0,
+      1.8
+    ]
+  },
+  "grid_spacing": 0.6,
+  "zone_count": 6,
+  "validation": {
+    "unique_zone_ids": true,
+    "finite_polygons": true,
+    "polygons_within_workspace": true,
+    "centers_strictly_inside": true,
+    "duplicate_aliases": false,
+    "interior_overlap_m2": 0.0,
+    "shared_edges_allowed": true
+  },
+  "boundary_policy": "Return BOUNDARY with every touching zone ID; never select one silently.",
+  "alias_checks": [
+    {
+      "input": "A",
+      "result": "zone_A",
+      "expected": "zone_A"
+    },
+    {
+      "input": "A zone",
+      "result": "zone_A",
+      "expected": "zone_A"
+    },
+    {
+      "input": "zone A",
+      "result": "zone_A",
+      "expected": "zone_A"
+    },
+    {
+      "input": "A 구역",
+      "result": "zone_A",
+      "expected": "zone_A"
+    },
+    {
+      "input": "A구역",
+      "result": "zone_A",
+      "expected": "zone_A"
+    },
+    {
+      "input": "B",
+      "result": "zone_B",
+      "expected": "zone_B"
+    },
+    {
+      "input": "B zone",
+      "result": "zone_B",
+      "expected": "zone_B"
+    },
+    {
+      "input": "zone B",
+      "result": "zone_B",
+      "expected": "zone_B"
+    },
+    {
+      "input": "B 구역",
+      "result": "zone_B",
+      "expected": "zone_B"
+    },
+    {
+      "input": "B구역",
+      "result": "zone_B",
+      "expected": "zone_B"
+    },
+    {
+      "input": "C",
+      "result": "zone_C",
+      "expected": "zone_C"
+    },
+    {
+      "input": "C zone",
+      "result": "zone_C",
+      "expected": "zone_C"
+    },
+    {
+      "input": "zone C",
+      "result": "zone_C",
+      "expected": "zone_C"
+    },
+    {
+      "input": "C 구역",
+      "result": "zone_C",
+      "expected": "zone_C"
+    },
+    {
+      "input": "C구역",
+      "result": "zone_C",
+      "expected": "zone_C"
+    },
+    {
+      "input": "D",
+      "result": "zone_D",
+      "expected": "zone_D"
+    },
+    {
+      "input": "D zone",
+      "result": "zone_D",
+      "expected": "zone_D"
+    },
+    {
+      "input": "zone D",
+      "result": "zone_D",
+      "expected": "zone_D"
+    },
+    {
+      "input": "D 구역",
+      "result": "zone_D",
+      "expected": "zone_D"
+    },
+    {
+      "input": "D구역",
+      "result": "zone_D",
+      "expected": "zone_D"
+    },
+    {
+      "input": "E",
+      "result": "zone_E",
+      "expected": "zone_E"
+    },
+    {
+      "input": "E zone",
+      "result": "zone_E",
+      "expected": "zone_E"
+    },
+    {
+      "input": "zone E",
+      "result": "zone_E",
+      "expected": "zone_E"
+    },
+    {
+      "input": "E 구역",
+      "result": "zone_E",
+      "expected": "zone_E"
+    },
+    {
+      "input": "E구역",
+      "result": "zone_E",
+      "expected": "zone_E"
+    },
+    {
+      "input": "F",
+      "result": "zone_F",
+      "expected": "zone_F"
+    },
+    {
+      "input": "F zone",
+      "result": "zone_F",
+      "expected": "zone_F"
+    },
+    {
+      "input": "zone F",
+      "result": "zone_F",
+      "expected": "zone_F"
+    },
+    {
+      "input": "F 구역",
+      "result": "zone_F",
+      "expected": "zone_F"
+    },
+    {
+      "input": "F구역",
+      "result": "zone_F",
+      "expected": "zone_F"
+    }
+  ],
+  "unknown_alias_checks": [
+    {
+      "input": "저쪽",
+      "result": "ZONE_NOT_RESOLVED"
+    },
+    {
+      "input": "왼쪽",
+      "result": "ZONE_NOT_RESOLVED"
+    },
+    {
+      "input": "저기",
+      "result": "ZONE_NOT_RESOLVED"
+    },
+    {
+      "input": "가까운 곳",
+      "result": "ZONE_NOT_RESOLVED"
+    }
+  ],
+  "target_membership": [
+    {
+      "target": "gold trophy-like object",
+      "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/gold_trophy_like_object_run01.json",
+      "world_x": 0.6996735334396362,
+      "world_y": 1.46703040599823,
+      "unit": "m",
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "active_workspace_status": "INSIDE",
+      "zone_result": "ZONE_FOUND",
+      "zone_id": "zone_F",
+      "boundary_zone_ids": []
+    },
+    {
+      "target": "red cup",
+      "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/red_cup_run01.json",
+      "world_x": 0.26924043893814087,
+      "world_y": 0.6576284766197205,
+      "unit": "m",
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "active_workspace_status": "INSIDE",
+      "zone_result": "ZONE_FOUND",
+      "zone_id": "zone_C",
+      "boundary_zone_ids": []
+    },
+    {
+      "target": "white bag",
+      "source_result": "/home/binci/vlm_ws/results/task_conditioned_grounding/white_bag_run01.json",
+      "world_x": 1.3878140449523926,
+      "world_y": 0.5846943259239197,
+      "unit": "m",
+      "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+      "active_workspace_status": "OUTSIDE",
+      "zone_result": "OUTSIDE_WORKSPACE",
+      "zone_id": null,
+      "boundary_zone_ids": []
+    }
+  ],
+  "inverse_homography_usage": "visualization only",
+  "undistorted_visualization": "/home/binci/vlm_ws/results/goal_zones/photo_04_undistorted_zones.png",
+  "metric_visualization": "/home/binci/vlm_ws/results/goal_zones/goal_zones_metric.png"
+}

@@ -1,0 +1,138 @@
+{
+  "schema_version": "0.1",
+  "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+  "unit": "m",
+  "source_policy": {
+    "priority": [
+      "MEASURED_PHYSICAL_GEOMETRY",
+      "KNOWN_EXPERIMENT_OBJECT_GEOMETRY",
+      "PLANAR_GROUND_CONTACT_GEOMETRY",
+      "DEVELOPMENT_SYNTHETIC",
+      "UNKNOWN"
+    ],
+    "prohibited_sources": [
+      "IMAGE_BBOX",
+      "VLM_BBOX",
+      "SEMANTIC_LABEL",
+      "VLM_GENERATED_DIMENSIONS"
+    ]
+  },
+  "allowed_shape_types": [
+    "CIRCLE",
+    "AXIS_ALIGNED_RECTANGLE",
+    "POLYGON",
+    "UNKNOWN"
+  ],
+  "anchor_policy": {
+    "observed_bottom_center_is_footprint_center": false,
+    "unknown_anchor_blocks_world_placement": true,
+    "development_assumed_center_is_development_only": true
+  },
+  "orientation_policy": {
+    "image_angle_is_not_a_physical_orientation_source": true,
+    "vlm_orientation_is_not_allowed": true,
+    "unknown_required_orientation_blocks_world_placement": true
+  },
+  "layer_policy": {
+    "physical_geometry": "DEFINED_HERE",
+    "uncertainty": "SEPARATE_NOT_APPLIED",
+    "safety_margin": "SEPARATE_NOT_APPLIED",
+    "robot_inflation": "SEPARATE_NOT_APPLIED",
+    "planning_geometry": "NOT_GENERATED",
+    "planner_injection": "NOT_RUN"
+  },
+  "representative_observations": [
+    {
+      "image_id": "image_014_photo_08",
+      "track_id": "track_039",
+      "semantic_status": "VISIBLE_ENTITY_FOUND",
+      "semantic_label": "tennis racket",
+      "metric_point": {
+        "status": "AVAILABLE",
+        "world_xy": [0.7646719813346863, 0.713485598564148],
+        "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+        "unit": "m",
+        "ground_reference_policy": "BOTTOM_CENTER_OF_VISIBLE_BBOX",
+        "ground_reference_meaning": "DEVELOPMENT_GROUND_REFERENCE"
+      },
+      "physical_geometry": {
+        "object_id": "photo08_track039_tennis_racket",
+        "semantic_label": "tennis racket",
+        "geometry_source": "UNKNOWN",
+        "source_status": "UNKNOWN",
+        "shape_type": "UNKNOWN",
+        "dimensions_m": null,
+        "anchor": {
+          "type": "BOTTOM_CENTER_OF_VISIBLE_BBOX",
+          "status": "UNKNOWN",
+          "offset_local_m": null
+        },
+        "orientation_required": true,
+        "orientation": {
+          "status": "UNKNOWN",
+          "yaw_rad": null
+        },
+        "physical_footprint_local": null,
+        "uncertainty": {
+          "measurement_uncertainty_m": "UNKNOWN"
+        },
+        "planning_ready": false,
+        "planning_geometry": {
+          "status": "NOT_GENERATED"
+        },
+        "provenance": {
+          "source_type": "REPOSITORY_AUDIT_NO_MEASUREMENT",
+          "source_path": "/home/binci/vlm_ws and /home/binci/qwen_vision_test",
+          "source_detail": "No explicit tennis-racket length, width, ground footprint, or observed-point-to-footprint anchor measurement was found."
+        }
+      },
+      "observation_provenance": {
+        "step22d_summary": "/home/binci/vlm_ws/results/candidate_conditioned_vlm_revalidation_method_d/step22d_summary.json",
+        "parsed_result": "/home/binci/vlm_ws/results/candidate_conditioned_vlm_revalidation_method_d/parsed_result.json",
+        "metric_result": "/home/binci/vlm_ws/results/candidate_conditioned_vlm_revalidation_method_d/metric_result.json"
+      }
+    }
+  ],
+  "development_fixtures": [
+    {
+      "object_id": "dev_obstacle_01",
+      "semantic_label": "development synthetic rectangle",
+      "geometry_source": "DEVELOPMENT_SYNTHETIC",
+      "source_status": "DEVELOPMENT_SYNTHETIC",
+      "shape_type": "AXIS_ALIGNED_RECTANGLE",
+      "dimensions_m": {
+        "length_m": 0.2,
+        "width_m": 0.5
+      },
+      "anchor": {
+        "type": "FOOTPRINT_CENTER",
+        "status": "DEVELOPMENT_ASSUMED_CENTER",
+        "offset_local_m": [0.0, 0.0]
+      },
+      "orientation_required": false,
+      "orientation": {
+        "status": "NOT_REQUIRED",
+        "yaw_rad": null
+      },
+      "physical_footprint_local": [
+        [-0.1, -0.25],
+        [0.1, -0.25],
+        [0.1, 0.25],
+        [-0.1, 0.25]
+      ],
+      "fixture_world_anchor_xy": [0.55, 0.9],
+      "uncertainty": {
+        "measurement_uncertainty_m": "NOT_APPLICABLE_DEVELOPMENT_FIXTURE"
+      },
+      "planning_ready": false,
+      "planning_geometry": {
+        "status": "NOT_GENERATED"
+      },
+      "provenance": {
+        "source_type": "STEP14_EXISTING_DEVELOPMENT_SYNTHETIC",
+        "source_path": "/home/binci/vlm_ws/config/static_obstacles.json",
+        "source_detail": "Reuses STEP 14 dev_obstacle_01 bounds [0.45,0.65] x [0.65,1.15] only to verify source-to-local-to-world transforms; not an observed tennis-racket geometry."
+      }
+    }
+  ]
+}

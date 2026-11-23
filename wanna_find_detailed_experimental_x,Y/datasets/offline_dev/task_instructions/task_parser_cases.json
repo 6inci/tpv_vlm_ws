@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "status": "OFFLINE_DEVELOPMENT_INSTRUCTION_SET",
+  "cases": [
+    {
+      "id": "valid_ko_red_cup_zone_a",
+      "category": "valid",
+      "instruction": "빨간 컵을 A구역으로 옮겨",
+      "repeatability": true,
+      "expected": {"status": "VALID_TASK", "action": "reposition", "target_phrase": "red cup", "zone_id": "zone_A"}
+    },
+    {
+      "id": "valid_ko_white_bag_zone_b",
+      "category": "valid",
+      "instruction": "흰색 가방을 B구역으로 이동시켜",
+      "expected": {"status": "VALID_TASK", "action": "reposition", "target_phrase": "white bag", "zone_id": "zone_B"}
+    },
+    {
+      "id": "valid_ko_trophy_zone_f",
+      "category": "valid",
+      "instruction": "금색 트로피를 F구역으로 가져다 놔",
+      "repeatability": true,
+      "expected": {"status": "VALID_TASK", "action": "reposition", "target_phrase": "gold trophy-like object", "zone_id": "zone_F"}
+    },
+    {
+      "id": "valid_en_red_cup_zone_a",
+      "category": "valid",
+      "instruction": "Move the red cup to Zone A.",
+      "expected": {"status": "VALID_TASK", "action": "reposition", "target_phrase": "red cup", "zone_id": "zone_A"}
+    },
+    {
+      "id": "valid_en_white_bag_zone_b",
+      "category": "valid",
+      "instruction": "Move the white bag to Zone B.",
+      "repeatability": true,
+      "expected": {"status": "VALID_TASK", "action": "reposition", "target_phrase": "white bag", "zone_id": "zone_B"}
+    },
+    {
+      "id": "valid_en_trophy_zone_f",
+      "category": "valid",
+      "instruction": "Place the gold trophy in Zone F.",
+      "expected": {"status": "VALID_TASK", "action": "reposition", "target_phrase": "gold trophy-like object", "zone_id": "zone_F"}
+    },
+    {
+      "id": "missing_target",
+      "category": "missing_target",
+      "instruction": "A구역으로 옮겨",
+      "expected": {"status": "TASK_INCOMPLETE", "error_code": "MISSING_TARGET"}
+    },
+    {
+      "id": "missing_destination",
+      "category": "missing_destination",
+      "instruction": "빨간 컵을 옮겨",
+      "expected": {"status": "TASK_INCOMPLETE", "error_code": "MISSING_DESTINATION"}
+    },
+    {
+      "id": "unknown_destination",
+      "category": "unknown_destination",
+      "instruction": "빨간 컵을 왼쪽으로 옮겨",
+      "expected": {"status": "DESTINATION_NOT_RESOLVED", "error_code": "ZONE_NOT_RESOLVED"}
+    },
+    {
+      "id": "unsupported_action",
+      "category": "unsupported_action",
+      "instruction": "빨간 컵을 회전시켜",
+      "expected": {"status": "UNSUPPORTED_ACTION", "error_code": "UNSUPPORTED_ACTION"}
+    },
+    {
+      "id": "ambiguous_target",
+      "category": "ambiguous_target",
+      "instruction": "저걸 A구역으로 옮겨",
+      "expected": {"status": "TARGET_AMBIGUOUS", "error_code": "TARGET_AMBIGUOUS"}
+    },
+    {
+      "id": "unsupported_action_en_regression",
+      "category": "unsupported_action_regression",
+      "instruction": "Rotate the red cup.",
+      "core_metric": false,
+      "expected": {"status": "UNSUPPORTED_ACTION", "error_code": "UNSUPPORTED_ACTION"}
+    }
+  ]
+}

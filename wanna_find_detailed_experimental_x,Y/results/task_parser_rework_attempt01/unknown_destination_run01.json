@@ -1,0 +1,39 @@
+{
+  "case_id": "unknown_destination",
+  "category": "unknown_destination",
+  "core_metric": true,
+  "run": 1,
+  "instruction": "빨간 컵을 왼쪽으로 옮겨",
+  "raw_model_output": "{\"action_phrase\":\"옮겨\",\"target_phrase\":\"빨간 컵\",\"destination_phrase\":null}",
+  "parsed": {
+    "action_phrase": "옮겨",
+    "target_phrase": "빨간 컵",
+    "destination_phrase": null
+  },
+  "validated": {
+    "status": "TASK_INCOMPLETE",
+    "raw_instruction": "빨간 컵을 왼쪽으로 옮겨",
+    "error_code": "MISSING_DESTINATION",
+    "reason": "destination is missing",
+    "parsed_fields": {
+      "action_phrase": "옮겨",
+      "target_phrase": "빨간 컵",
+      "destination_phrase": null
+    },
+    "action": {
+      "surface_phrase": "옮겨",
+      "canonical": "reposition",
+      "resolution_status": "SUPPORTED_ACTION"
+    },
+    "target_grounding_status": "NOT_RUN",
+    "zone_resolution_status": "NOT_RUN",
+    "path_status": "NOT_RUN"
+  },
+  "integrated": null,
+  "inference_sec": 6.44769952599745,
+  "expected": {
+    "status": "DESTINATION_NOT_RESOLVED",
+    "error_code": "ZONE_NOT_RESOLVED"
+  },
+  "matches_expected": false
+}

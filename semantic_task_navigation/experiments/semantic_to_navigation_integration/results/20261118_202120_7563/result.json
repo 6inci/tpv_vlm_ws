@@ -1,0 +1,6989 @@
+{
+  "schema_version": "stnav-result-0.1",
+  "run_id": "20261118_202120_7563",
+  "analysis_mode": "LOCAL_ONLY",
+  "map_mode": "IMAGE_SPACE_DEMO",
+  "metric_output_enabled": false,
+  "command": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+  "frame": {
+    "frame_id": 1,
+    "timestamp": 1795000878.75297,
+    "timestamp_iso": "2026-11-18T20:21:18.752",
+    "source": {
+      "kind": "image",
+      "path": "/home/binci/vlm_ws/semantic_task_navigation/config/maps/reference_scene_map.reference_P01.jpg",
+      "camera_model": "HD Web Camera",
+      "camera_model_from": "EXIF Model tag",
+      "width": 1920,
+      "height": 1080
+    },
+    "width": 1920,
+    "height": 1080,
+    "coordinate_frame": "raw_image_px",
+    "raw_frame_png": "input/raw_frame.png",
+    "decoded_pixels_sha256": "fdfe0b90b287fe4f86d4f26e01f96bcf4099eb118f35aabe272a252a24ed944e",
+    "source_sha256": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df"
+  },
+  "calibration": {
+    "map_mode": "IMAGE_SPACE_DEMO",
+    "metric_output_enabled": false,
+    "undistort_view_available": true,
+    "undistort_view_note": "intrinsics validity for the current install is UNVERIFIED; view only",
+    "camera_model": "HD Web Camera",
+    "frame_size": [
+      1920,
+      1080
+    ],
+    "checks": [
+      {
+        "check": "resolution",
+        "expected": [
+          1920,
+          1080
+        ],
+        "actual": [
+          1920,
+          1080
+        ],
+        "ok": true
+      },
+      {
+        "check": "camera_model",
+        "expected": "HD Web Camera",
+        "actual": "HD Web Camera",
+        "ok": true
+      }
+    ],
+    "reasons": [
+      "intrinsics not validated for the current camera installation",
+      "homography status: not_available (no validated floor-plane transform)"
+    ],
+    "intrinsics": {
+      "file": "/home/binci/camera_calibration_1920x1080/calibration_result.json",
+      "sha256": "a947ebaefb60690bb60b817ca471af9a25b74e7e5d5b2be2e1dd18e9d7fbd34f",
+      "width": 1920,
+      "height": 1080,
+      "camera_matrix": [
+        [
+          1193.9285743624512,
+          0.0,
+          905.4672749500978
+        ],
+        [
+          0.0,
+          1191.56191006301,
+          513.000222084921
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "dist_coeffs": [
+        -0.20298479067273242,
+        0.13060299315148366,
+        0.027118263577020307,
+        0.003928149452520465,
+        -0.06119022290385212
+      ],
+      "rms_px": 0.20571622922708746,
+      "calibrated_on": "2026-08-14"
+    },
+    "homography_file": null,
+    "homography_status": "not_available"
+  },
+  "steps": [
+    {
+      "name": "parse_task",
+      "label": "명령 해석",
+      "status": "OK",
+      "model": "v0.2 keyword rules (target only)",
+      "input_summary": "빨간 큐브를 출하할 수 있는 적절한 장소로 옮겨줘.",
+      "output_summary": "transport_and_place: target=red cube; destination=UNSPECIFIED (left to the VLM)",
+      "duration_s": 0.0,
+      "error": null,
+      "next": "analyze_scene",
+      "started_at": "2026-11-18T20:21:20"
+    },
+    {
+      "name": "analyze_scene",
+      "label": "장면 이해",
+      "status": "NOT_RUN",
+      "model": "none",
+      "input_summary": null,
+      "output_summary": "not used by the integration",
+      "duration_s": 0.0,
+      "error": null,
+      "next": "detect_objects",
+      "started_at": "2026-11-18T20:21:20"
+    },
+    {
+      "name": "detect_objects",
+      "label": "객체 탐지·검증",
+      "status": "OK",
+      "model": "IDEA-Research/grounding-dino-tiny + Qwen/Qwen3-VL-4B-Instruct (verify)",
+      "input_summary": "full frame",
+      "output_summary": "accepted={'conveyor': 1, 'truck': 1}; candidates=56; start=manual_start_pose_from_map",
+      "duration_s": 30.405,
+      "error": null,
+      "next": "inspect_target",
+      "started_at": "2026-11-18T20:21:20"
+    },
+    {
+      "name": "inspect_target",
+      "label": "대상(빨간 큐브) 정밀 확인",
+      "status": "OK",
+      "model": "HSV/shape + DINO candidates; Qwen/Qwen3-VL-4B-Instruct verify",
+      "input_summary": "1 verified conveyor ROI(s)",
+      "output_summary": "ROIs=1, candidates=14, verified=8, accepted=1 -> TARGET_SELECTED",
+      "duration_s": 14.795,
+      "error": null,
+      "next": "build_scene_graph",
+      "started_at": "2026-11-18T20:21:51"
+    },
+    {
+      "name": "build_scene_graph",
+      "label": "공간 관계",
+      "status": "OK",
+      "model": "geometry (image px)",
+      "input_summary": "3 nodes",
+      "output_summary": "conveyor_1 near red_cube_1 [COMPUTED]; mobile_robot_unobserved located_at start_pose [MANUAL]",
+      "duration_s": 0.0,
+      "error": null,
+      "next": "build_navigation_map",
+      "started_at": "2026-11-18T20:22:05"
+    },
+    {
+      "name": "build_navigation_map",
+      "label": "지도 생성",
+      "status": "OK",
+      "model": "map_builder (manual map prior + detections)",
+      "input_summary": "reference_scene_2026-11-14_zone_draft_v2",
+      "output_summary": "alignment=ALIGNED; valid cells=5223/32400; dynamic obstacles=1; review=DRAFT_UNCONFIRMED",
+      "duration_s": 0.121,
+      "error": null,
+      "next": "infer_destination",
+      "started_at": "2026-11-18T20:22:05"
+    },
+    {
+      "name": "infer_destination",
+      "label": "의미적 하역장 추론",
+      "status": "UNCERTAIN",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": 46.777,
+      "error": "SEMANTIC_NOT_VERIFIED: V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules); V2 FAILED: the objects cited as evidence exist in the image (anchor object required); V4 NOT_RUN: v0.2 region_judge accepts the adopted region",
+      "next": "assess_placement",
+      "started_at": "2026-11-18T20:22:05"
+    },
+    {
+      "name": "assess_placement",
+      "label": "배치 가능 영역",
+      "status": "SKIPPED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "blocked: missing semantic_regions",
+      "next": "select_pickup_pose"
+    },
+    {
+      "name": "select_pickup_pose",
+      "label": "픽업 접근 위치",
+      "status": "OK",
+      "model": "goal_selector (Dijkstra cost + distance)",
+      "input_summary": "red_cube_1",
+      "output_summary": "pose=[636, 388] px, cost=381.26, reachable cells=164",
+      "duration_s": 0.033,
+      "error": null,
+      "next": "select_dropoff_pose",
+      "started_at": "2026-11-18T20:22:52"
+    },
+    {
+      "name": "select_dropoff_pose",
+      "label": "하역 접근 영역·목표",
+      "status": "SKIPPED",
+      "model": null,
+      "input_summary": null,
+      "output_summary": null,
+      "duration_s": null,
+      "error": "blocked: missing dropoff_anchor",
+      "next": "plan_path"
+    },
+    {
+      "name": "plan_path",
+      "label": "경로계획",
+      "status": "OK",
+      "model": "SAFETY_COST_ASTAR + line-of-sight simplification",
+      "input_summary": "1 path(s)",
+      "output_summary": "A: PATH_FOUND len=357.77px wp=2 (raw 45)",
+      "duration_s": 0.005,
+      "error": null,
+      "next": "validate_path",
+      "started_at": "2026-11-18T20:22:52"
+    },
+    {
+      "name": "validate_path",
+      "label": "경로 검증",
+      "status": "OK",
+      "model": "pixel-level clearance validator",
+      "input_summary": "1 path(s)",
+      "output_summary": "A: valid min clearance 64.12px",
+      "duration_s": 0.001,
+      "error": null,
+      "next": "create_handoff_request",
+      "started_at": "2026-11-18T20:22:52"
+    },
+    {
+      "name": "create_handoff_request",
+      "label": "작업 인계",
+      "status": "UNCERTAIN",
+      "model": "handoff (simulation; hardware disabled)",
+      "input_summary": "pickup",
+      "output_summary": "state=NOT_EXECUTABLE; path B=None",
+      "duration_s": 0.0,
+      "error": null,
+      "next": "save_results",
+      "started_at": "2026-11-18T20:22:52"
+    },
+    {
+      "name": "save_results",
+      "label": "결과 저장",
+      "status": "OK",
+      "model": "artifacts",
+      "input_summary": "run 20261118_202120_7563",
+      "output_summary": "/home/binci/vlm_ws/semantic_task_navigation/experiments/semantic_to_navigation_integration/results/20261118_202120_7563 (result.json, manifest.json, figures)",
+      "duration_s": null,
+      "error": null,
+      "next": null,
+      "started_at": "2026-11-18T20:22:52"
+    }
+  ],
+  "overall_status": "PARTIAL_PLAN",
+  "status_reasons": [
+    "infer_destination: SEMANTIC_NOT_VERIFIED: V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules); V2 FAILED: the objects cited as evidence exist in the image (anchor object required); V4 NOT_RUN: v0.2 region_judge accepts the adopted region",
+    "assess_placement: blocked: missing semantic_regions",
+    "select_dropoff_pose: blocked: missing dropoff_anchor"
+  ],
+  "status_note": "PLAN_COMPLETE = both approach poses and paths exist and passed validation in image space; it does not mean the robot moved or grasped anything.",
+  "task": {
+    "task_type": "transport_and_place",
+    "target": {
+      "class": "cube",
+      "color": "red",
+      "source_reference": null,
+      "source_relation": null
+    },
+    "destination": {
+      "region_type": "UNSPECIFIED (inferred by the VLM from image + instruction)",
+      "reference_object": null
+    },
+    "actions": [
+      "detect_target",
+      "locate_pickup_region",
+      "navigate_to_pickup",
+      "handoff_to_local_grasping",
+      "confirm_pickup",
+      "navigate_to_loading_area",
+      "handoff_to_placement",
+      "verify_completion"
+    ],
+    "actions_source": "fixed_template (not model output)",
+    "parser": {
+      "backend": "integration_adapter(v0.2 rule_based_parse for the target only)",
+      "model": null,
+      "prompt_id": null,
+      "raw_response": "{\"status\": \"missing_information\", \"task_type\": \"transport_and_place\", \"target\": {\"class\": \"cube\", \"color\": \"red\", \"count\": 1, \"source_reference\": null, \"source_relation\": null}, \"destination\": null, \"reason\": \"no destination keyword\"}",
+      "parsed_output": {
+        "status": "missing_information",
+        "task_type": "transport_and_place",
+        "target": {
+          "class": "cube",
+          "color": "red",
+          "count": 1,
+          "source_reference": null,
+          "source_relation": null
+        },
+        "destination": null,
+        "reason": "no destination keyword"
+      },
+      "normalization_notes": [
+        "destination deliberately not parsed: the instruction text goes to the VLM"
+      ]
+    }
+  },
+  "task_parse": null,
+  "scene_analysis": {
+    "status": "NOT_RUN",
+    "reason": "v0.2 never uses this output; its prompt would insert a v0.2 task summary naming a loading area near a truck"
+  },
+  "detections": {
+    "objects": [
+      {
+        "object_id": "conveyor_cand1",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1221.62,
+          492.07,
+          1764.29,
+          626.72
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.303,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "green",
+            "observed_object": "stacks of barrels and containers",
+            "reason": "The green box contains barrels and containers, not a conveyor or production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_1.png",
+            "crop_xyxy_raw": [
+              407,
+              0,
+              1920,
+              1080
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_1.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"stacks of barrels and containers\", \"reason\": \"The green box contains barrels and containers, not a conveyor or production line.\"}",
+            "latency_s": 2.487,
+            "n_output_tokens": 48,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.747,
+            "error": null
+          }
+        },
+        "phrase": "conveyor"
+      },
+      {
+        "object_id": "conveyor_cand2",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          843.37,
+          432.28,
+          958.8,
+          596.28
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2886,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "brown",
+            "observed_object": "stack of boxes",
+            "reason": "The green box contains stacked boxes, not a conveyor or production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_2.png",
+            "crop_xyxy_raw": [
+              597,
+              186,
+              1204,
+              842
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_2.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"brown\", \"observed_object\": \"stack of boxes\", \"reason\": \"The green box contains stacked boxes, not a conveyor or production line.\"}",
+            "latency_s": 1.348,
+            "n_output_tokens": 44,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.423,
+            "error": null
+          }
+        },
+        "phrase": "conveyor"
+      },
+      {
+        "object_id": "conveyor_cand3",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          498.47,
+          110.32,
+          870.29,
+          214.24
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2522,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor belt.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "green",
+            "observed_object": "robot arm",
+            "reason": "The green box contains a robot arm, not a conveyor or production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_3.png",
+            "crop_xyxy_raw": [
+              0,
+              0,
+              1428,
+              771
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_3.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"robot arm\", \"reason\": \"The green box contains a robot arm, not a conveyor or production line.\"}",
+            "latency_s": 1.587,
+            "n_output_tokens": 44,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.609,
+            "error": null
+          }
+        },
+        "phrase": "conveyor belt"
+      },
+      {
+        "object_id": "conveyor_1",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          225.25,
+          273.26,
+          518.4,
+          737.63
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2282,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": true,
+        "verification": {
+          "status": "yes",
+          "answer": {
+            "answer": "yes",
+            "observed_color": "green",
+            "observed_object": "conveyor",
+            "reason": "The green box encloses a conveyor belt with robotic arms, indicating a production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_4.png",
+            "crop_xyxy_raw": [
+              0,
+              0,
+              1214,
+              1080
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_4.png",
+            "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"green\", \"observed_object\": \"conveyor\", \"reason\": \"The green box encloses a conveyor belt with robotic arms, indicating a production line.\"}",
+            "latency_s": 1.762,
+            "n_output_tokens": 46,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.665,
+            "error": null
+          }
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand5",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1103.59,
+          79.02,
+          1194.31,
+          204.36
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2078,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "gray",
+            "observed_object": "structure",
+            "reason": "The object is a gray structure, not a conveyor or production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_5.png",
+            "crop_xyxy_raw": [
+              915,
+              0,
+              1382,
+              392
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_5.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"gray\", \"observed_object\": \"structure\", \"reason\": \"The object is a gray structure, not a conveyor or production line.\"}",
+            "latency_s": 1.215,
+            "n_output_tokens": 42,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.37,
+            "error": null
+          }
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand6",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1401.66,
+          494.02,
+          1482.46,
+          591.12
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1941,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "white",
+            "observed_object": "stack of crates",
+            "reason": "The green box contains a stack of white crates, not a conveyor or production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_6.png",
+            "crop_xyxy_raw": [
+              1256,
+              348,
+              1628,
+              736
+            ],
+            "scale": 1.1546,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_6.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"stack of crates\", \"reason\": \"The green box contains a stack of white crates, not a conveyor or production line.\"}",
+            "latency_s": 1.314,
+            "n_output_tokens": 47,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.37,
+            "error": null
+          }
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand7",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          901.36,
+          78.39,
+          987.67,
+          203.05
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1863,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "gray",
+            "observed_object": "structure",
+            "reason": "The object is a gray structure, not a conveyor or production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_7.png",
+            "crop_xyxy_raw": [
+              714,
+              0,
+              1174,
+              390
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_7.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"gray\", \"observed_object\": \"structure\", \"reason\": \"The object is a gray structure, not a conveyor or production line.\"}",
+            "latency_s": 1.18,
+            "n_output_tokens": 42,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.367,
+            "error": null
+          }
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand8",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1482.34,
+          493.11,
+          1572.34,
+          597.39
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1821,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "black",
+            "observed_object": "barrels",
+            "reason": "The green box contains black barrels, not a conveyor or production line."
+          },
+          "description": "a conveyor or a production line containing a conveyor (robot arms or machines beside the conveyor may also be inside the box)",
+          "crop": {
+            "path": "analysis/crops/verify_conveyor_8.png",
+            "crop_xyxy_raw": [
+              1325,
+              336,
+              1728,
+              753
+            ],
+            "scale": 1.0743,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "aedea2d909e2295d9bc3abda55058d466b83374396ce3efba5fb17b9ced33675",
+            "image_path": "analysis/crops/verify_conveyor_8.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"black\", \"observed_object\": \"barrels\", \"reason\": \"The green box contains black barrels, not a conveyor or production line.\"}",
+            "latency_s": 1.218,
+            "n_output_tokens": 43,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.374,
+            "error": null
+          }
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand9",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          632.85,
+          99.8,
+          1102.52,
+          315.9
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1774,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor belt.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "conveyor belt"
+      },
+      {
+        "object_id": "conveyor_cand10",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          426.93,
+          87.01,
+          514.35,
+          173.87
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1653,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand11",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1323.48,
+          510.31,
+          1404.16,
+          598.23
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1566,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "conveyor"
+      },
+      {
+        "object_id": "conveyor_cand12",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1395.71,
+          114.15,
+          1650.71,
+          236.71
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1548,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor belt.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "conveyor belt"
+      },
+      {
+        "object_id": "conveyor_cand13",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          649.25,
+          90.36,
+          852.67,
+          180.42
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1514,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand14",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1568.05,
+          501.02,
+          1666.58,
+          609.61
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1513,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand15",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1247.95,
+          514.49,
+          1325.28,
+          601.95
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1301,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand16",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1425.03,
+          74.08,
+          1622.83,
+          204.02
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1275,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "conveyor"
+      },
+      {
+        "object_id": "conveyor_cand17",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          317.03,
+          140.79,
+          413.39,
+          315.42
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1228,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand18",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          406.97,
+          264.28,
+          519.61,
+          385.5
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1223,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand19",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          803.73,
+          432.43,
+          1001.57,
+          626.39
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1094,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "conveyor"
+      },
+      {
+        "object_id": "conveyor_cand20",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          1223.09,
+          488.23,
+          1821.83,
+          1034.88
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1068,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller conveyor"
+      },
+      {
+        "object_id": "conveyor_cand21",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          173.6,
+          774.69,
+          543.82,
+          998.72
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1025,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "roller conveyor.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=8"
+        },
+        "phrase": "roller"
+      },
+      {
+        "object_id": "truck_1",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          1424.35,
+          73.52,
+          1623.06,
+          205.63
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.5598,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": true,
+        "verification": {
+          "status": "yes",
+          "answer": {
+            "answer": "yes",
+            "observed_color": "white and gray",
+            "observed_object": "truck",
+            "reason": "The green box encloses a toy truck with a cab and cargo bed."
+          },
+          "description": "a truck (a vehicle with a cab and a cargo bed; a toy or model truck counts)",
+          "crop": {
+            "path": "analysis/crops/verify_truck_1.png",
+            "crop_xyxy_raw": [
+              1126,
+              0,
+              1920,
+              503
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+            "image_path": "analysis/crops/verify_truck_1.png",
+            "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"white and gray\", \"observed_object\": \"truck\", \"reason\": \"The green box encloses a toy truck with a cab and cargo bed.\"}",
+            "latency_s": 1.348,
+            "n_output_tokens": 45,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.427,
+            "error": null
+          }
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand2",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          843.28,
+          432.81,
+          959.39,
+          597.71
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.3868,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "brown",
+            "observed_object": "stack of boxes on a pallet",
+            "reason": "The green box contains stacked boxes on a pallet, not a truck."
+          },
+          "description": "a truck (a vehicle with a cab and a cargo bed; a toy or model truck counts)",
+          "crop": {
+            "path": "analysis/crops/verify_truck_2.png",
+            "crop_xyxy_raw": [
+              595,
+              185,
+              1206,
+              845
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+            "image_path": "analysis/crops/verify_truck_2.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"brown\", \"observed_object\": \"stack of boxes on a pallet\", \"reason\": \"The green box contains stacked boxes on a pallet, not a truck.\"}",
+            "latency_s": 1.388,
+            "n_output_tokens": 47,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.427,
+            "error": null
+          }
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand3",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          1400.64,
+          495.3,
+          1483.11,
+          591.81
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.265,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "white",
+            "observed_object": "stack of pallets",
+            "reason": "The object is a stack of pallets, not a truck."
+          },
+          "description": "a truck (a vehicle with a cab and a cargo bed; a toy or model truck counts)",
+          "crop": {
+            "path": "analysis/crops/verify_truck_3.png",
+            "crop_xyxy_raw": [
+              1255,
+              350,
+              1627,
+              736
+            ],
+            "scale": 1.1606,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "95504eabfbdf78c9f47519eba5b039a85c385c6efde75a7b1f7d893abe1bccfa",
+            "image_path": "analysis/crops/verify_truck_3.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"stack of pallets\", \"reason\": \"The object is a stack of pallets, not a truck.\"}",
+            "latency_s": 1.242,
+            "n_output_tokens": 44,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.373,
+            "error": null
+          }
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand4",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          1323.52,
+          510.96,
+          1403.97,
+          600.68
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2602,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand5",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          1247.92,
+          514.94,
+          1325.9,
+          602.43
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2567,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand6",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          1103.86,
+          80.05,
+          1194.49,
+          205.11
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2006,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand7",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          317.77,
+          169.84,
+          401.93,
+          314.89
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1929,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand8",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          901.85,
+          79.18,
+          988.17,
+          203.64
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1734,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand9",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          225.23,
+          264.46,
+          519.75,
+          736.2
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1726,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand10",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          650.71,
+          89.44,
+          852.3,
+          180.03
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1658,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand11",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          226.58,
+          641.23,
+          325.4,
+          735.78
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1551,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand12",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          404.36,
+          264.32,
+          519.61,
+          386.49
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1436,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand13",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          1247.57,
+          495.62,
+          1483.59,
+          605.75
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1412,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand14",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          427.09,
+          76.06,
+          620.13,
+          196.82
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1368,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand15",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          427.03,
+          87.82,
+          514.45,
+          174.47
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1206,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand16",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          773.5,
+          89.55,
+          852.33,
+          179.89
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1193,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand17",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          302.96,
+          367.72,
+          469.56,
+          683.59
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1049,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand18",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          695.14,
+          860.01,
+          902.59,
+          999.9
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1036,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand19",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          305.64,
+          538.66,
+          430.73,
+          682.92
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1033,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "truck_cand20",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          511.68,
+          120.21,
+          591.43,
+          197.42
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1015,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "truck.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "truck"
+      },
+      {
+        "object_id": "mobile_robot_cand1",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          224.16,
+          262.32,
+          520.55,
+          736.91
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.53,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "mobile robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "white and purple",
+            "observed_object": "robot arm",
+            "reason": "The object is a stationary robot arm, not a wheeled mobile robot."
+          },
+          "description": "a wheeled mobile robot, i.e. a small ground vehicle that drives on the floor (not a fixed robot arm, not a truck, not a cart)",
+          "crop": {
+            "path": "analysis/crops/verify_mobile_robot_1.png",
+            "crop_xyxy_raw": [
+              0,
+              0,
+              1232,
+              1080
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+            "image_path": "analysis/crops/verify_mobile_robot_1.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white and purple\", \"observed_object\": \"robot arm\", \"reason\": \"The object is a stationary robot arm, not a wheeled mobile robot.\"}",
+            "latency_s": 1.778,
+            "n_output_tokens": 46,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.667,
+            "error": null
+          }
+        },
+        "phrase": "mobile robot"
+      },
+      {
+        "object_id": "mobile_robot_cand2",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          1422.71,
+          71.83,
+          1622.98,
+          207.17
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.4917,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "mobile robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "white and gray",
+            "observed_object": "truck",
+            "reason": "The object is a truck, not a wheeled mobile robot."
+          },
+          "description": "a wheeled mobile robot, i.e. a small ground vehicle that drives on the floor (not a fixed robot arm, not a truck, not a cart)",
+          "crop": {
+            "path": "analysis/crops/verify_mobile_robot_2.png",
+            "crop_xyxy_raw": [
+              1122,
+              0,
+              1920,
+              507
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+            "image_path": "analysis/crops/verify_mobile_robot_2.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white and gray\", \"observed_object\": \"truck\", \"reason\": \"The object is a truck, not a wheeled mobile robot.\"}",
+            "latency_s": 1.336,
+            "n_output_tokens": 43,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.43,
+            "error": null
+          }
+        },
+        "phrase": "mobile robot"
+      },
+      {
+        "object_id": "mobile_robot_cand3",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          649.52,
+          86.86,
+          853.34,
+          181.49
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.4571,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "mobile robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "white",
+            "observed_object": "robot arm",
+            "reason": "The object is a robot arm, not a wheeled mobile robot."
+          },
+          "description": "a wheeled mobile robot, i.e. a small ground vehicle that drives on the floor (not a fixed robot arm, not a truck, not a cart)",
+          "crop": {
+            "path": "analysis/crops/verify_mobile_robot_3.png",
+            "crop_xyxy_raw": [
+              343,
+              0,
+              1159,
+              487
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "8127a580f95bfc86e1bc172b4c249053639de8f05fe23c1482c29a137d8e98b3",
+            "image_path": "analysis/crops/verify_mobile_robot_3.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"robot arm\", \"reason\": \"The object is a robot arm, not a wheeled mobile robot.\"}",
+            "latency_s": 1.299,
+            "n_output_tokens": 43,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.428,
+            "error": null
+          }
+        },
+        "phrase": "mobile robot"
+      },
+      {
+        "object_id": "mobile_robot_cand4",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          426.1,
+          73.4,
+          622.91,
+          196.37
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.3851,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "mobile robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "mobile robot"
+      },
+      {
+        "object_id": "mobile_robot_cand5",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          842.3,
+          431.44,
+          959.41,
+          596.87
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.3094,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "wheeled robot"
+      },
+      {
+        "object_id": "mobile_robot_cand6",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          353.18,
+          262.75,
+          519.6,
+          435.46
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.2,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "wheeled robot"
+      },
+      {
+        "object_id": "mobile_robot_cand7",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          1103.21,
+          78.3,
+          1194.67,
+          204.77
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1874,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      },
+      {
+        "object_id": "mobile_robot_cand8",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          900.86,
+          64.22,
+          989.4,
+          203.92
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1514,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      },
+      {
+        "object_id": "mobile_robot_cand9",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          316.63,
+          143.37,
+          413.51,
+          315.25
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.15,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      },
+      {
+        "object_id": "mobile_robot_cand10",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          407.89,
+          263.4,
+          515.05,
+          366.85
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1429,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      },
+      {
+        "object_id": "mobile_robot_cand11",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          1246.25,
+          513.48,
+          1326.18,
+          603.84
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1396,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      },
+      {
+        "object_id": "mobile_robot_cand12",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          497.96,
+          74.03,
+          623.01,
+          150.79
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1371,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "mobile robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "mobile robot"
+      },
+      {
+        "object_id": "mobile_robot_cand13",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          1323.02,
+          509.44,
+          1403.91,
+          601.9
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.137,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      },
+      {
+        "object_id": "mobile_robot_cand14",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          1400.94,
+          493.91,
+          1482.91,
+          591.71
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1332,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      },
+      {
+        "object_id": "mobile_robot_cand15",
+        "class_name": "mobile_robot",
+        "bbox_xyxy": [
+          225.08,
+          515.89,
+          359.17,
+          734.85
+        ],
+        "coordinate_frame": "raw_image_px",
+        "score": 0.1331,
+        "score_note": "detector score; not a calibrated probability",
+        "image_frame_id": 1,
+        "model_name": "IDEA-Research/grounding-dino-tiny",
+        "model_version": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "prompt": "wheeled robot.",
+        "source": "grounding_dino",
+        "knowledge": "observed_by_model",
+        "accepted": false,
+        "verification": {
+          "status": "not_run",
+          "reason": "outside verify_top_k=3"
+        },
+        "phrase": "robot"
+      }
+    ],
+    "unverified_candidates": {
+      "red_cube": [
+        {
+          "bbox_xyxy": [
+            974.18,
+            857.13,
+            1012.38,
+            895.42
+          ],
+          "score": 0.4135,
+          "prompt": "small red block.",
+          "phrase": "small red block",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1105.56,
+            280.53,
+            1137.98,
+            318.86
+          ],
+          "score": 0.394,
+          "prompt": "small red block.",
+          "phrase": "small red block",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1628.69,
+            893.48,
+            1687.53,
+            942.52
+          ],
+          "score": 0.3709,
+          "prompt": "small red block.",
+          "phrase": "small red block",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1757.11,
+            844.05,
+            1791.06,
+            880.83
+          ],
+          "score": 0.3552,
+          "prompt": "small red block.",
+          "phrase": "small red block",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            975.73,
+            198.57,
+            1000.95,
+            234.08
+          ],
+          "score": 0.2878,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            599.49,
+            226.75,
+            631.7,
+            260.19
+          ],
+          "score": 0.2262,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            961.46,
+            516.01,
+            996.15,
+            564.0
+          ],
+          "score": 0.2014,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1294.44,
+            118.02,
+            1323.95,
+            156.59
+          ],
+          "score": 0.1855,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            842.9,
+            432.16,
+            959.08,
+            596.27
+          ],
+          "score": 0.1849,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1306.23,
+            190.46,
+            1336.3,
+            232.69
+          ],
+          "score": 0.1745,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1326.19,
+            283.96,
+            1357.58,
+            322.89
+          ],
+          "score": 0.1622,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1425.27,
+            287.42,
+            1455.23,
+            326.21
+          ],
+          "score": 0.1605,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            584.37,
+            269.1,
+            628.77,
+            311.52
+          ],
+          "score": 0.1596,
+          "prompt": "small red block.",
+          "phrase": "small red block",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            633.68,
+            99.45,
+            1101.34,
+            316.94
+          ],
+          "score": 0.1589,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1681.87,
+            506.26,
+            1760.59,
+            598.66
+          ],
+          "score": 0.1578,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1103.31,
+            78.96,
+            1194.83,
+            204.43
+          ],
+          "score": 0.157,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1649.33,
+            297.8,
+            1680.96,
+            337.62
+          ],
+          "score": 0.155,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            363.27,
+            566.31,
+            398.49,
+            636.52
+          ],
+          "score": 0.1428,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            695.3,
+            859.54,
+            897.9,
+            999.53
+          ],
+          "score": 0.1345,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            901.24,
+            76.77,
+            987.77,
+            202.85
+          ],
+          "score": 0.1339,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            590.86,
+            847.08,
+            646.64,
+            903.5
+          ],
+          "score": 0.1332,
+          "prompt": "small red block.",
+          "phrase": "small red block",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1521.4,
+            292.24,
+            1552.13,
+            330.1
+          ],
+          "score": 0.1321,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            596.34,
+            278.51,
+            616.38,
+            302.69
+          ],
+          "score": 0.1166,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1423.59,
+            73.75,
+            1622.64,
+            206.2
+          ],
+          "score": 0.1126,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            803.19,
+            431.73,
+            1001.09,
+            626.58
+          ],
+          "score": 0.1063,
+          "prompt": "red cube.",
+          "phrase": "red cube",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1582.15,
+            500.45,
+            1665.76,
+            592.29
+          ],
+          "score": 0.1056,
+          "prompt": "red cube.",
+          "phrase": "red",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1568.51,
+            548.91,
+            1661.56,
+            610.76
+          ],
+          "score": 0.1024,
+          "prompt": "small red block.",
+          "phrase": "red",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1491.95,
+            493.39,
+            1572.3,
+            590.6
+          ],
+          "score": 0.1014,
+          "prompt": "red cube.",
+          "phrase": "red",
+          "source": "grounding_dino"
+        },
+        {
+          "bbox_xyxy": [
+            1224.16,
+            491.9,
+            1762.74,
+            623.22
+          ],
+          "score": 0.1,
+          "prompt": "red cube.",
+          "phrase": "red",
+          "source": "grounding_dino"
+        }
+      ]
+    },
+    "detector_raw": {
+      "conveyor": {
+        "image_path": "input/raw_frame.png",
+        "image_size": [
+          1920,
+          1080
+        ],
+        "box_threshold": 0.1,
+        "text_threshold": 0.1,
+        "results": [
+          {
+            "prompt": "conveyor belt.",
+            "boxes_xyxy": [
+              [
+                156.87,
+                90.3,
+                1822.86,
+                1046.67
+              ],
+              [
+                498.47,
+                110.32,
+                870.29,
+                214.24
+              ],
+              [
+                1222.1,
+                491.72,
+                1764.19,
+                626.12
+              ],
+              [
+                842.71,
+                431.84,
+                959.62,
+                597.9
+              ],
+              [
+                632.85,
+                99.8,
+                1102.52,
+                315.9
+              ],
+              [
+                1402.01,
+                494.11,
+                1482.35,
+                591.4
+              ],
+              [
+                156.43,
+                92.62,
+                1820.09,
+                1046.71
+              ],
+              [
+                1103.83,
+                79.24,
+                1194.3,
+                204.11
+              ],
+              [
+                1482.26,
+                492.68,
+                1572.02,
+                598.18
+              ],
+              [
+                1568.25,
+                500.93,
+                1666.68,
+                609.67
+              ],
+              [
+                901.34,
+                78.74,
+                987.63,
+                203.21
+              ],
+              [
+                427.19,
+                86.8,
+                514.34,
+                174.01
+              ],
+              [
+                803.62,
+                432.48,
+                1001.61,
+                626.47
+              ],
+              [
+                1395.71,
+                114.15,
+                1650.71,
+                236.71
+              ],
+              [
+                226.92,
+                358.0,
+                470.32,
+                735.59
+              ],
+              [
+                1323.82,
+                510.2,
+                1404.53,
+                597.33
+              ]
+            ],
+            "scores": [
+              0.5574,
+              0.2522,
+              0.2953,
+              0.2142,
+              0.1774,
+              0.1525,
+              0.1176,
+              0.1556,
+              0.1467,
+              0.1329,
+              0.1415,
+              0.1289,
+              0.104,
+              0.1548,
+              0.1063,
+              0.1026
+            ],
+            "phrases": [
+              "conveyor belt",
+              "conveyor belt",
+              "conveyor belt",
+              "conveyor belt",
+              "conveyor belt",
+              "conveyor belt",
+              "convey belt",
+              "conveyor belt",
+              "conveyor belt",
+              "conveyor belt",
+              "conveyor belt",
+              "conveyor belt",
+              "convey",
+              "conveyor belt",
+              "conveyor",
+              "convey"
+            ],
+            "latency_s": 1.055
+          },
+          {
+            "prompt": "conveyor.",
+            "boxes_xyxy": [
+              [
+                153.9,
+                87.06,
+                1823.57,
+                1047.52
+              ],
+              [
+                843.37,
+                432.28,
+                958.8,
+                596.28
+              ],
+              [
+                1221.62,
+                492.07,
+                1764.29,
+                626.72
+              ],
+              [
+                498.33,
+                110.79,
+                869.97,
+                214.17
+              ],
+              [
+                1224.44,
+                488.5,
+                1822.58,
+                1035.4
+              ],
+              [
+                1401.98,
+                494.39,
+                1482.6,
+                591.07
+              ],
+              [
+                632.55,
+                100.03,
+                1102.42,
+                315.99
+              ],
+              [
+                1103.72,
+                79.37,
+                1194.17,
+                204.16
+              ],
+              [
+                225.49,
+                284.6,
+                517.85,
+                739.41
+              ],
+              [
+                427.06,
+                87.11,
+                514.4,
+                173.91
+              ],
+              [
+                1481.96,
+                493.25,
+                1572.14,
+                597.3
+              ],
+              [
+                901.55,
+                79.01,
+                987.41,
+                203.0
+              ],
+              [
+                1329.61,
+                548.78,
+                1404.07,
+                596.72
+              ],
+              [
+                222.62,
+                297.98,
+                556.53,
+                786.15
+              ],
+              [
+                1425.03,
+                74.08,
+                1622.83,
+                204.02
+              ],
+              [
+                1252.96,
+                551.07,
+                1325.19,
+                601.34
+              ],
+              [
+                1247.95,
+                514.46,
+                1325.36,
+                602.02
+              ],
+              [
+                1323.48,
+                510.31,
+                1404.16,
+                598.23
+              ],
+              [
+                1395.59,
+                115.95,
+                1650.45,
+                236.37
+              ],
+              [
+                226.9,
+                355.79,
+                470.13,
+                735.07
+              ],
+              [
+                1567.8,
+                501.49,
+                1666.12,
+                609.6
+              ],
+              [
+                803.73,
+                432.43,
+                1001.57,
+                626.39
+              ]
+            ],
+            "scores": [
+              0.5024,
+              0.2886,
+              0.303,
+              0.2203,
+              0.1047,
+              0.1901,
+              0.162,
+              0.2018,
+              0.1478,
+              0.1572,
+              0.1652,
+              0.1753,
+              0.1129,
+              0.1026,
+              0.1275,
+              0.1125,
+              0.1279,
+              0.1566,
+              0.1237,
+              0.1343,
+              0.1508,
+              0.1094
+            ],
+            "phrases": [
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "convey",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor",
+              "conveyor"
+            ],
+            "latency_s": 0.1919
+          },
+          {
+            "prompt": "roller conveyor.",
+            "boxes_xyxy": [
+              [
+                155.61,
+                85.33,
+                1823.83,
+                1047.99
+              ],
+              [
+                843.27,
+                432.14,
+                958.88,
+                596.46
+              ],
+              [
+                1222.12,
+                492.04,
+                1764.75,
+                625.99
+              ],
+              [
+                225.25,
+                273.26,
+                518.4,
+                737.63
+              ],
+              [
+                498.18,
+                109.82,
+                869.65,
+                213.84
+              ],
+              [
+                1401.66,
+                494.02,
+                1482.46,
+                591.12
+              ],
+              [
+                1223.09,
+                488.23,
+                1821.83,
+                1034.88
+              ],
+              [
+                1103.59,
+                79.02,
+                1194.31,
+                204.36
+              ],
+              [
+                1482.34,
+                493.11,
+                1572.34,
+                597.39
+              ],
+              [
+                632.52,
+                100.05,
+                1102.75,
+                316.21
+              ],
+              [
+                426.93,
+                87.01,
+                514.35,
+                173.87
+              ],
+              [
+                226.65,
+                358.11,
+                470.14,
+                735.44
+              ],
+              [
+                901.36,
+                78.39,
+                987.67,
+                203.05
+              ],
+              [
+                173.6,
+                774.69,
+                543.82,
+                998.72
+              ],
+              [
+                649.25,
+                90.36,
+                852.67,
+                180.42
+              ],
+              [
+                1581.27,
+                501.34,
+                1665.65,
+                592.17
+              ],
+              [
+                317.03,
+                140.79,
+                413.39,
+                315.42
+              ],
+              [
+                406.97,
+                264.28,
+                519.61,
+                385.5
+              ],
+              [
+                1425.28,
+                74.48,
+                1622.72,
+                204.23
+              ],
+              [
+                1247.95,
+                514.49,
+                1325.28,
+                601.95
+              ],
+              [
+                1323.35,
+                510.33,
+                1404.07,
+                598.24
+              ],
+              [
+                1395.58,
+                116.78,
+                1650.68,
+                236.33
+              ],
+              [
+                1568.05,
+                501.02,
+                1666.58,
+                609.61
+              ],
+              [
+                803.5,
+                431.74,
+                1000.93,
+                626.66
+              ],
+              [
+                496.82,
+                78.39,
+                868.45,
+                213.41
+              ]
+            ],
+            "scores": [
+              0.4914,
+              0.2879,
+              0.2902,
+              0.2282,
+              0.2094,
+              0.1941,
+              0.1068,
+              0.2078,
+              0.1821,
+              0.1502,
+              0.1653,
+              0.1884,
+              0.1863,
+              0.1025,
+              0.1514,
+              0.1022,
+              0.1228,
+              0.1223,
+              0.1225,
+              0.1301,
+              0.1497,
+              0.1362,
+              0.1513,
+              0.1023,
+              0.1011
+            ],
+            "phrases": [
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller",
+              "roller conveyor",
+              "roller",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller conveyor",
+              "roller",
+              "roller"
+            ],
+            "latency_s": 0.1915
+          }
+        ],
+        "model": "IDEA-Research/grounding-dino-tiny",
+        "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "allocated_gib": 0.744,
+        "peak_allocated_gib": 1.969
+      },
+      "truck": {
+        "image_path": "input/raw_frame.png",
+        "image_size": [
+          1920,
+          1080
+        ],
+        "box_threshold": 0.1,
+        "text_threshold": 0.1,
+        "results": [
+          {
+            "prompt": "truck.",
+            "boxes_xyxy": [
+              [
+                1424.35,
+                73.52,
+                1623.06,
+                205.63
+              ],
+              [
+                843.28,
+                432.81,
+                959.39,
+                597.71
+              ],
+              [
+                1400.64,
+                495.3,
+                1483.11,
+                591.81
+              ],
+              [
+                150.07,
+                71.58,
+                1824.74,
+                1046.65
+              ],
+              [
+                1252.8,
+                551.19,
+                1325.71,
+                602.52
+              ],
+              [
+                225.23,
+                264.46,
+                519.75,
+                736.2
+              ],
+              [
+                317.77,
+                169.84,
+                401.93,
+                314.89
+              ],
+              [
+                1103.86,
+                80.05,
+                1194.49,
+                205.11
+              ],
+              [
+                1323.52,
+                510.96,
+                1403.97,
+                600.68
+              ],
+              [
+                1247.92,
+                514.94,
+                1325.9,
+                602.43
+              ],
+              [
+                1330.14,
+                549.61,
+                1403.91,
+                599.92
+              ],
+              [
+                650.71,
+                89.44,
+                852.3,
+                180.03
+              ],
+              [
+                317.27,
+                139.96,
+                413.31,
+                315.66
+              ],
+              [
+                226.58,
+                641.23,
+                325.4,
+                735.78
+              ],
+              [
+                226.14,
+                360.67,
+                468.84,
+                735.39
+              ],
+              [
+                802.62,
+                431.88,
+                998.05,
+                624.12
+              ],
+              [
+                427.09,
+                76.06,
+                620.13,
+                196.82
+              ],
+              [
+                901.85,
+                79.18,
+                988.17,
+                203.64
+              ],
+              [
+                695.14,
+                860.01,
+                902.59,
+                999.9
+              ],
+              [
+                303.67,
+                381.9,
+                435.12,
+                683.71
+              ],
+              [
+                773.79,
+                114.06,
+                852.2,
+                179.41
+              ],
+              [
+                404.36,
+                264.32,
+                519.61,
+                386.49
+              ],
+              [
+                305.64,
+                538.66,
+                430.73,
+                682.92
+              ],
+              [
+                511.68,
+                120.21,
+                591.43,
+                197.42
+              ],
+              [
+                409.5,
+                264.54,
+                513.83,
+                365.27
+              ],
+              [
+                773.5,
+                89.55,
+                852.33,
+                179.89
+              ],
+              [
+                427.03,
+                87.82,
+                514.45,
+                174.47
+              ],
+              [
+                1247.57,
+                495.62,
+                1483.59,
+                605.75
+              ],
+              [
+                1247.69,
+                515.22,
+                1318.64,
+                574.44
+              ],
+              [
+                302.96,
+                367.72,
+                469.56,
+                683.59
+              ],
+              [
+                426.63,
+                85.41,
+                576.8,
+                177.36
+              ]
+            ],
+            "scores": [
+              0.5598,
+              0.3868,
+              0.265,
+              0.2126,
+              0.2224,
+              0.1726,
+              0.1929,
+              0.2006,
+              0.2602,
+              0.2567,
+              0.2099,
+              0.1658,
+              0.1536,
+              0.1551,
+              0.1487,
+              0.1321,
+              0.1368,
+              0.1734,
+              0.1036,
+              0.1042,
+              0.105,
+              0.1436,
+              0.1033,
+              0.1015,
+              0.1006,
+              0.1193,
+              0.1206,
+              0.1412,
+              0.149,
+              0.1049,
+              0.1028
+            ],
+            "phrases": [
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck",
+              "truck"
+            ],
+            "latency_s": 0.1962
+          }
+        ],
+        "model": "IDEA-Research/grounding-dino-tiny",
+        "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "allocated_gib": 0.744,
+        "peak_allocated_gib": 1.914
+      },
+      "mobile_robot": {
+        "image_path": "input/raw_frame.png",
+        "image_size": [
+          1920,
+          1080
+        ],
+        "box_threshold": 0.1,
+        "text_threshold": 0.1,
+        "results": [
+          {
+            "prompt": "mobile robot.",
+            "boxes_xyxy": [
+              [
+                224.16,
+                262.32,
+                520.55,
+                736.91
+              ],
+              [
+                1422.71,
+                71.83,
+                1622.98,
+                207.17
+              ],
+              [
+                649.52,
+                86.86,
+                853.34,
+                181.49
+              ],
+              [
+                426.1,
+                73.4,
+                622.91,
+                196.37
+              ],
+              [
+                497.37,
+                74.36,
+                622.86,
+                195.68
+              ],
+              [
+                841.71,
+                431.41,
+                960.25,
+                598.89
+              ],
+              [
+                224.95,
+                370.94,
+                468.41,
+                735.99
+              ],
+              [
+                352.81,
+                262.46,
+                519.95,
+                435.61
+              ],
+              [
+                160.18,
+                64.47,
+                1822.78,
+                1041.68
+              ],
+              [
+                405.21,
+                262.64,
+                518.37,
+                377.17
+              ],
+              [
+                352.05,
+                262.54,
+                520.71,
+                478.95
+              ],
+              [
+                1103.14,
+                78.29,
+                1194.89,
+                204.89
+              ],
+              [
+                224.78,
+                514.89,
+                359.48,
+                734.91
+              ],
+              [
+                316.62,
+                155.88,
+                413.19,
+                315.43
+              ],
+              [
+                803.42,
+                430.36,
+                999.78,
+                625.07
+              ],
+              [
+                497.96,
+                74.03,
+                623.01,
+                150.79
+              ]
+            ],
+            "scores": [
+              0.53,
+              0.4917,
+              0.4571,
+              0.3851,
+              0.1903,
+              0.2352,
+              0.2249,
+              0.1952,
+              0.1621,
+              0.142,
+              0.1459,
+              0.1199,
+              0.1298,
+              0.1039,
+              0.1541,
+              0.1371
+            ],
+            "phrases": [
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile robot",
+              "mobile",
+              "mobile robot",
+              "mobile robot"
+            ],
+            "latency_s": 0.2058
+          },
+          {
+            "prompt": "wheeled robot.",
+            "boxes_xyxy": [
+              [
+                1423.11,
+                72.26,
+                1622.67,
+                206.75
+              ],
+              [
+                224.81,
+                262.99,
+                519.83,
+                736.54
+              ],
+              [
+                649.71,
+                87.86,
+                852.87,
+                181.05
+              ],
+              [
+                842.3,
+                431.44,
+                959.41,
+                596.87
+              ],
+              [
+                225.46,
+                368.94,
+                468.39,
+                735.87
+              ],
+              [
+                426.01,
+                73.99,
+                622.28,
+                193.18
+              ],
+              [
+                353.18,
+                262.75,
+                519.6,
+                435.46
+              ],
+              [
+                498.19,
+                74.43,
+                622.61,
+                195.15
+              ],
+              [
+                1246.25,
+                513.48,
+                1326.18,
+                603.84
+              ],
+              [
+                1103.21,
+                78.3,
+                1194.67,
+                204.77
+              ],
+              [
+                407.89,
+                263.4,
+                515.05,
+                366.85
+              ],
+              [
+                498.01,
+                74.42,
+                622.36,
+                174.58
+              ],
+              [
+                1251.64,
+                549.66,
+                1325.4,
+                603.36
+              ],
+              [
+                352.63,
+                262.86,
+                520.61,
+                478.98
+              ],
+              [
+                157.26,
+                68.24,
+                1822.6,
+                1042.73
+              ],
+              [
+                225.08,
+                515.89,
+                359.17,
+                734.85
+              ],
+              [
+                316.63,
+                143.37,
+                413.51,
+                315.25
+              ],
+              [
+                900.86,
+                64.22,
+                989.4,
+                203.92
+              ],
+              [
+                401.48,
+                263.14,
+                519.57,
+                386.06
+              ],
+              [
+                1323.02,
+                509.44,
+                1403.91,
+                601.9
+              ],
+              [
+                1400.94,
+                493.91,
+                1482.91,
+                591.71
+              ],
+              [
+                803.64,
+                430.36,
+                999.01,
+                624.84
+              ],
+              [
+                498.28,
+                74.31,
+                622.92,
+                147.21
+              ]
+            ],
+            "scores": [
+              0.4846,
+              0.358,
+              0.4191,
+              0.3094,
+              0.262,
+              0.3056,
+              0.2,
+              0.1733,
+              0.1396,
+              0.1874,
+              0.1429,
+              0.153,
+              0.1042,
+              0.1507,
+              0.1481,
+              0.1331,
+              0.15,
+              0.1514,
+              0.1609,
+              0.137,
+              0.1332,
+              0.1443,
+              0.1196
+            ],
+            "phrases": [
+              "wheeled robot",
+              "wheeled robot",
+              "wheeled robot",
+              "wheeled robot",
+              "wheeled robot",
+              "wheeled robot",
+              "wheeled robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot",
+              "robot"
+            ],
+            "latency_s": 0.1923
+          }
+        ],
+        "model": "IDEA-Research/grounding-dino-tiny",
+        "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "allocated_gib": 0.744,
+        "peak_allocated_gib": 1.967
+      },
+      "red_cube": {
+        "image_path": "input/raw_frame.png",
+        "image_size": [
+          1920,
+          1080
+        ],
+        "box_threshold": 0.1,
+        "text_threshold": 0.1,
+        "results": [
+          {
+            "prompt": "red cube.",
+            "boxes_xyxy": [
+              [
+                1106.17,
+                281.36,
+                1137.12,
+                318.06
+              ],
+              [
+                1629.71,
+                894.94,
+                1686.93,
+                941.58
+              ],
+              [
+                974.89,
+                858.28,
+                1011.48,
+                894.51
+              ],
+              [
+                1758.29,
+                845.46,
+                1790.12,
+                879.98
+              ],
+              [
+                975.73,
+                198.57,
+                1000.95,
+                234.08
+              ],
+              [
+                169.16,
+                79.64,
+                1823.96,
+                1043.37
+              ],
+              [
+                599.49,
+                226.75,
+                631.7,
+                260.19
+              ],
+              [
+                1681.87,
+                506.26,
+                1760.59,
+                598.66
+              ],
+              [
+                961.46,
+                516.01,
+                996.15,
+                564.0
+              ],
+              [
+                842.9,
+                432.16,
+                959.08,
+                596.27
+              ],
+              [
+                1294.44,
+                118.02,
+                1323.95,
+                156.59
+              ],
+              [
+                1306.23,
+                190.46,
+                1336.3,
+                232.69
+              ],
+              [
+                1103.31,
+                78.96,
+                1194.83,
+                204.43
+              ],
+              [
+                1425.27,
+                287.42,
+                1455.23,
+                326.21
+              ],
+              [
+                363.27,
+                566.31,
+                398.49,
+                636.52
+              ],
+              [
+                1582.15,
+                500.45,
+                1665.76,
+                592.29
+              ],
+              [
+                695.3,
+                859.54,
+                897.9,
+                999.53
+              ],
+              [
+                1649.33,
+                297.8,
+                1680.96,
+                337.62
+              ],
+              [
+                1326.19,
+                283.96,
+                1357.58,
+                322.89
+              ],
+              [
+                1423.59,
+                73.75,
+                1622.64,
+                206.2
+              ],
+              [
+                901.24,
+                76.77,
+                987.77,
+                202.85
+              ],
+              [
+                1224.16,
+                491.9,
+                1762.74,
+                623.22
+              ],
+              [
+                1521.4,
+                292.24,
+                1552.13,
+                330.1
+              ],
+              [
+                1491.95,
+                493.39,
+                1572.3,
+                590.6
+              ],
+              [
+                596.34,
+                278.51,
+                616.38,
+                302.69
+              ],
+              [
+                633.68,
+                99.45,
+                1101.34,
+                316.94
+              ],
+              [
+                595.08,
+                269.89,
+                616.95,
+                302.89
+              ],
+              [
+                584.59,
+                269.58,
+                628.8,
+                311.05
+              ],
+              [
+                803.19,
+                431.73,
+                1001.09,
+                626.58
+              ]
+            ],
+            "scores": [
+              0.3685,
+              0.3371,
+              0.3561,
+              0.285,
+              0.2878,
+              0.2457,
+              0.2262,
+              0.1578,
+              0.2014,
+              0.1849,
+              0.1855,
+              0.1745,
+              0.157,
+              0.1605,
+              0.1428,
+              0.1056,
+              0.1345,
+              0.155,
+              0.1622,
+              0.1126,
+              0.1339,
+              0.1,
+              0.1321,
+              0.1014,
+              0.1166,
+              0.1589,
+              0.109,
+              0.1441,
+              0.1063
+            ],
+            "phrases": [
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red",
+              "red cube",
+              "red",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube",
+              "red cube"
+            ],
+            "latency_s": 0.195
+          },
+          {
+            "prompt": "small red block.",
+            "boxes_xyxy": [
+              [
+                1105.56,
+                280.53,
+                1137.98,
+                318.86
+              ],
+              [
+                974.18,
+                857.13,
+                1012.38,
+                895.42
+              ],
+              [
+                1628.69,
+                893.48,
+                1687.53,
+                942.52
+              ],
+              [
+                1757.11,
+                844.05,
+                1791.06,
+                880.83
+              ],
+              [
+                159.92,
+                80.08,
+                1825.38,
+                1046.26
+              ],
+              [
+                974.85,
+                197.78,
+                1002.03,
+                235.11
+              ],
+              [
+                598.85,
+                225.59,
+                632.3,
+                260.67
+              ],
+              [
+                584.37,
+                269.1,
+                628.77,
+                311.52
+              ],
+              [
+                1293.63,
+                117.95,
+                1324.73,
+                157.73
+              ],
+              [
+                1305.2,
+                189.82,
+                1337.19,
+                233.64
+              ],
+              [
+                1568.51,
+                548.91,
+                1661.56,
+                610.76
+              ],
+              [
+                1424.55,
+                286.47,
+                1456.16,
+                327.0
+              ],
+              [
+                1648.54,
+                297.5,
+                1682.47,
+                338.67
+              ],
+              [
+                1325.57,
+                283.14,
+                1358.63,
+                323.64
+              ],
+              [
+                1102.86,
+                78.09,
+                1195.97,
+                205.14
+              ],
+              [
+                841.72,
+                431.38,
+                960.4,
+                597.45
+              ],
+              [
+                590.86,
+                847.08,
+                646.64,
+                903.5
+              ],
+              [
+                1520.7,
+                291.27,
+                1553.04,
+                331.01
+              ],
+              [
+                632.76,
+                98.23,
+                1101.75,
+                318.75
+              ],
+              [
+                695.13,
+                858.11,
+                898.46,
+                1000.0
+              ]
+            ],
+            "scores": [
+              0.394,
+              0.4135,
+              0.3709,
+              0.3552,
+              0.2738,
+              0.2272,
+              0.2081,
+              0.1596,
+              0.1545,
+              0.1454,
+              0.1024,
+              0.145,
+              0.147,
+              0.1404,
+              0.1302,
+              0.1075,
+              0.1332,
+              0.1164,
+              0.1432,
+              0.1117
+            ],
+            "phrases": [
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "red",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block",
+              "small red block"
+            ],
+            "latency_s": 0.2186
+          }
+        ],
+        "model": "IDEA-Research/grounding-dino-tiny",
+        "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+        "allocated_gib": 0.744,
+        "peak_allocated_gib": 1.969
+      }
+    },
+    "qwen_fallback_calls": {},
+    "detector": {
+      "model": "IDEA-Research/grounding-dino-tiny",
+      "commit_hash": "a2bb814dd30d776dcf7e30523b00659f4f141c71",
+      "box_threshold": 0.1,
+      "text_threshold": 0.1,
+      "max_area_frac": 0.25,
+      "nms_iou": 0.5
+    }
+  },
+  "target_inspection": {
+    "rois": [
+      {
+        "roi_index": 1,
+        "anchor": "conveyor_1",
+        "transform": {
+          "from_frame": "roi_local_px",
+          "to_frame": "raw_image_px",
+          "crop_xyxy_raw": [
+            0,
+            0,
+            798,
+            1017
+          ],
+          "scale": 1.5732546705998034,
+          "zoom_size_wh": [
+            1255,
+            1600
+          ],
+          "formula": "raw = crop_offset + roi / scale"
+        },
+        "zoom_path": "analysis/roi/roi_1_zoom.png"
+      }
+    ],
+    "candidates": [
+      {
+        "bbox_roi": {
+          "xyxy": [
+            943,
+            454,
+            967,
+            473
+          ],
+          "frame": "roi_local_px"
+        },
+        "bbox_xyxy": [
+          599.39,
+          288.57,
+          614.65,
+          300.65
+        ],
+        "score": 0.3978,
+        "prompt": "small red block.",
+        "source": "hsv_color_shape",
+        "shape_stats": {
+          "area_raw_px": 122.0,
+          "aspect": 1.26,
+          "solidity": 0.891
+        },
+        "roi_index": 1,
+        "sources": [
+          "hsv_color_shape",
+          "grounding_dino_roi",
+          "grounding_dino_roi",
+          "grounding_dino_full_image",
+          "grounding_dino_full_image"
+        ],
+        "member_boxes": [
+          {
+            "source": "hsv_color_shape",
+            "bbox_xyxy": [
+              599.39,
+              288.57,
+              614.65,
+              300.65
+            ],
+            "score": null
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              583.86,
+              272.41,
+              629.26,
+              311.2
+            ],
+            "score": 0.3978
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              597.25,
+              282.2,
+              615.81,
+              302.53
+            ],
+            "score": 0.3446
+          },
+          {
+            "source": "grounding_dino_full_image",
+            "bbox_xyxy": [
+              584.37,
+              269.1,
+              628.77,
+              311.52
+            ],
+            "score": 0.1596
+          },
+          {
+            "source": "grounding_dino_full_image",
+            "bbox_xyxy": [
+              596.34,
+              278.51,
+              616.38,
+              302.69
+            ],
+            "score": 0.1166
+          }
+        ],
+        "candidate_id": "target_cand1",
+        "verification": {
+          "status": "yes",
+          "answer": {
+            "answer": "yes",
+            "observed_color": "red",
+            "observed_object": "cube",
+            "reason": "The green box encloses a red, cube-shaped object."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_1.png",
+            "crop_xyxy_raw": [
+              567,
+              256,
+              646,
+              332
+            ],
+            "scale": 5.6709,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_1.png",
+            "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"red\", \"observed_object\": \"cube\", \"reason\": \"The green box encloses a red, cube-shaped object.\"}",
+            "latency_s": 1.193,
+            "n_output_tokens": 40,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.366,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_roi": {
+          "xyxy": [
+            945,
+            387,
+            969,
+            403
+          ],
+          "frame": "roi_local_px"
+        },
+        "bbox_xyxy": [
+          600.67,
+          245.99,
+          615.92,
+          256.16
+        ],
+        "score": 0.3566,
+        "prompt": "small red block.",
+        "source": "hsv_color_shape",
+        "shape_stats": {
+          "area_raw_px": 59.2,
+          "aspect": 1.5,
+          "solidity": 0.64
+        },
+        "roi_index": 1,
+        "sources": [
+          "hsv_color_shape",
+          "grounding_dino_roi",
+          "grounding_dino_roi",
+          "grounding_dino_full_image"
+        ],
+        "member_boxes": [
+          {
+            "source": "hsv_color_shape",
+            "bbox_xyxy": [
+              600.67,
+              245.99,
+              615.92,
+              256.16
+            ],
+            "score": null
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              598.85,
+              226.17,
+              632.76,
+              260.24
+            ],
+            "score": 0.3566
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              603.51,
+              226.69,
+              620.03,
+              247.58
+            ],
+            "score": 0.1468
+          },
+          {
+            "source": "grounding_dino_full_image",
+            "bbox_xyxy": [
+              599.49,
+              226.75,
+              631.7,
+              260.19
+            ],
+            "score": 0.2262
+          }
+        ],
+        "candidate_id": "target_cand2",
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "orange",
+            "observed_object": "cone",
+            "reason": "The object is an orange traffic cone, not a red cube."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_2.png",
+            "crop_xyxy_raw": [
+              568,
+              213,
+              647,
+              288
+            ],
+            "scale": 5.6709,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_2.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"cone\", \"reason\": \"The object is an orange traffic cone, not a red cube.\"}",
+            "latency_s": 1.188,
+            "n_output_tokens": 41,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.366,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          362.76,
+          563.99,
+          398.87,
+          635.71
+        ],
+        "score": 0.295,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            570.72,
+            887.3,
+            627.52,
+            1000.14
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi",
+          "grounding_dino_roi",
+          "grounding_dino_roi",
+          "grounding_dino_full_image"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              362.76,
+              563.99,
+              398.87,
+              635.71
+            ],
+            "score": 0.295
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              361.84,
+              451.47,
+              436.19,
+              635.83
+            ],
+            "score": 0.1506
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              307.08,
+              560.67,
+              399.29,
+              635.35
+            ],
+            "score": 0.1011
+          },
+          {
+            "source": "grounding_dino_full_image",
+            "bbox_xyxy": [
+              363.27,
+              566.31,
+              398.49,
+              636.52
+            ],
+            "score": 0.1428
+          }
+        ],
+        "candidate_id": "target_cand3",
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "orange",
+            "observed_object": "rectangular block",
+            "reason": "The object is orange, not red, and is a rectangular block, not a cube."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_3.png",
+            "crop_xyxy_raw": [
+              255,
+              456,
+              506,
+              743
+            ],
+            "scale": 1.561,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_3.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"orange\", \"observed_object\": \"rectangular block\", \"reason\": \"The object is orange, not red, and is a rectangular block, not a cube.\"}",
+            "latency_s": 1.344,
+            "n_output_tokens": 48,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.363,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_roi": {
+          "xyxy": [
+            544,
+            337,
+            574,
+            384
+          ],
+          "frame": "roi_local_px"
+        },
+        "bbox_xyxy": [
+          345.78,
+          214.21,
+          364.85,
+          244.08
+        ],
+        "score": 0.2558,
+        "prompt": "small red block.",
+        "source": "hsv_color_shape",
+        "shape_stats": {
+          "area_raw_px": 357.0,
+          "aspect": 1.57,
+          "solidity": 0.871
+        },
+        "roi_index": 1,
+        "sources": [
+          "hsv_color_shape",
+          "grounding_dino_roi",
+          "grounding_dino_roi",
+          "grounding_dino_roi",
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "hsv_color_shape",
+            "bbox_xyxy": [
+              345.78,
+              214.21,
+              364.85,
+              244.08
+            ],
+            "score": null
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              318.19,
+              196.31,
+              400.9,
+              314.98
+            ],
+            "score": 0.2558
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              333.94,
+              200.16,
+              366.4,
+              252.86
+            ],
+            "score": 0.1707
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              360.85,
+              235.42,
+              383.19,
+              250.8
+            ],
+            "score": 0.1085
+          },
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              351.4,
+              251.96,
+              374.61,
+              273.5
+            ],
+            "score": 0.1002
+          }
+        ],
+        "candidate_id": "target_cand4",
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "red",
+            "observed_object": "rectangular object with multiple holes",
+            "reason": "The object is not a cube but a rectangular component with holes, likely a connector or socket."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_4.png",
+            "crop_xyxy_raw": [
+              300,
+              169,
+              409,
+              288
+            ],
+            "scale": 3.7647,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_4.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"red\", \"observed_object\": \"rectangular object with multiple holes\", \"reason\": \"The object is not a cube but a rectangular component with holes, likely a connector or socket.\"}",
+            "latency_s": 1.465,
+            "n_output_tokens": 52,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.366,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          591.21,
+          847.77,
+          646.41,
+          902.08
+        ],
+        "score": 0.1332,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            930.13,
+            1333.76,
+            1016.97,
+            1419.2
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi",
+          "grounding_dino_full_image"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              591.21,
+              847.77,
+              646.41,
+              902.08
+            ],
+            "score": 0.11
+          },
+          {
+            "source": "grounding_dino_full_image",
+            "bbox_xyxy": [
+              590.86,
+              847.08,
+              646.64,
+              903.5
+            ],
+            "score": 0.1332
+          }
+        ],
+        "candidate_id": "target_cand5",
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "gray",
+            "observed_object": "vent",
+            "reason": "The object is a gray vent, not a red cube."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_5.png",
+            "crop_xyxy_raw": [
+              508,
+              764,
+              729,
+              984
+            ],
+            "scale": 2.0271,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_5.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"gray\", \"observed_object\": \"vent\", \"reason\": \"The object is a gray vent, not a red cube.\"}",
+            "latency_s": 1.14,
+            "n_output_tokens": 40,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.37,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          634.42,
+          236.48,
+          753.25,
+          315.87
+        ],
+        "score": 0.2441,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            998.1,
+            372.05,
+            1185.06,
+            496.94
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              634.42,
+              236.48,
+              753.25,
+              315.87
+            ],
+            "score": 0.2441
+          }
+        ],
+        "candidate_id": "target_cand6",
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "green",
+            "observed_object": "sign",
+            "reason": "The object is a green sign with a white symbol, not a red cube."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_6.png",
+            "crop_xyxy_raw": [
+              456,
+              58,
+              931,
+              494
+            ],
+            "scale": 1.0,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_6.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"sign\", \"reason\": \"The object is a green sign with a white symbol, not a red cube.\"}",
+            "latency_s": 1.238,
+            "n_output_tokens": 44,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.374,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          426.79,
+          87.05,
+          514.17,
+          173.48
+        ],
+        "score": 0.2046,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            671.45,
+            136.95,
+            808.92,
+            272.93
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              426.79,
+              87.05,
+              514.17,
+              173.48
+            ],
+            "score": 0.2046
+          }
+        ],
+        "candidate_id": "target_cand7",
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "white",
+            "observed_object": "grid-like structure",
+            "reason": "The object is white and grid-like, not a red cube."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_7.png",
+            "crop_xyxy_raw": [
+              295,
+              0,
+              645,
+              304
+            ],
+            "scale": 1.28,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_7.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"white\", \"observed_object\": \"grid-like structure\", \"reason\": \"The object is white and grid-like, not a red cube.\"}",
+            "latency_s": 1.209,
+            "n_output_tokens": 43,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.363,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          745.02,
+          235.0,
+          796.66,
+          308.08
+        ],
+        "score": 0.1615,
+        "prompt": "small red block.",
+        "phrase": "small red block",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            1172.11,
+            369.72,
+            1253.35,
+            484.69
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              745.02,
+              235.0,
+              796.66,
+              308.08
+            ],
+            "score": 0.1615
+          }
+        ],
+        "candidate_id": "target_cand8",
+        "verification": {
+          "status": "no",
+          "answer": {
+            "answer": "no",
+            "observed_color": "green",
+            "observed_object": "rectangle",
+            "reason": "The object is green and rectangular, not a red cube."
+          },
+          "description": "a small red cube",
+          "crop": {
+            "path": "analysis/roi/verify_target_8.png",
+            "crop_xyxy_raw": [
+              635,
+              125,
+              906,
+              417
+            ],
+            "scale": 1.5342,
+            "marker": "green rectangle = candidate box"
+          },
+          "call": {
+            "model": "Qwen/Qwen3-VL-4B-Instruct",
+            "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+            "prompt_id": "verify_object_v1",
+            "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+            "image_path": "analysis/roi/verify_target_8.png",
+            "raw_response": "{\"answer\": \"no\", \"observed_color\": \"green\", \"observed_object\": \"rectangle\", \"reason\": \"The object is green and rectangular, not a red cube.\"}",
+            "latency_s": 1.139,
+            "n_output_tokens": 40,
+            "hit_max_new_tokens": false,
+            "peak_vram_gib": 8.366,
+            "error": null
+          }
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          387.82,
+          451.48,
+          436.79,
+          576.15
+        ],
+        "score": 0.1557,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            610.14,
+            710.29,
+            687.18,
+            906.43
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              387.82,
+              451.48,
+              436.79,
+              576.15
+            ],
+            "score": 0.1557
+          }
+        ],
+        "candidate_id": "target_cand9",
+        "verification": {
+          "status": "not_run",
+          "reason": "beyond max_candidates_to_verify=8"
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          353.8,
+          375.01,
+          390.52,
+          435.95
+        ],
+        "score": 0.1366,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            556.62,
+            589.99,
+            614.39,
+            685.86
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              353.8,
+              375.01,
+              390.52,
+              435.95
+            ],
+            "score": 0.1366
+          }
+        ],
+        "candidate_id": "target_cand10",
+        "verification": {
+          "status": "not_run",
+          "reason": "beyond max_candidates_to_verify=8"
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          345.97,
+          563.59,
+          379.88,
+          621.34
+        ],
+        "score": 0.1339,
+        "prompt": "red cube.",
+        "phrase": "red cube",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            544.3,
+            886.67,
+            597.65,
+            977.53
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              345.97,
+              563.59,
+              379.88,
+              621.34
+            ],
+            "score": 0.1339
+          }
+        ],
+        "candidate_id": "target_cand11",
+        "verification": {
+          "status": "not_run",
+          "reason": "beyond max_candidates_to_verify=8"
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          306.78,
+          562.78,
+          334.24,
+          622.47
+        ],
+        "score": 0.1048,
+        "prompt": "red cube.",
+        "phrase": "red",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            482.65,
+            885.4,
+            525.84,
+            979.31
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              306.78,
+              562.78,
+              334.24,
+              622.47
+            ],
+            "score": 0.1048
+          }
+        ],
+        "candidate_id": "target_cand12",
+        "verification": {
+          "status": "not_run",
+          "reason": "beyond max_candidates_to_verify=8"
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_xyxy": [
+          696.45,
+          859.0,
+          796.35,
+          994.54
+        ],
+        "score": 0.1023,
+        "prompt": "red cube.",
+        "phrase": "red",
+        "source": "grounding_dino_roi",
+        "bbox_roi": {
+          "xyxy": [
+            1095.7,
+            1351.42,
+            1252.86,
+            1564.67
+          ],
+          "frame": "roi_local_px"
+        },
+        "roi_index": 1,
+        "sources": [
+          "grounding_dino_roi"
+        ],
+        "member_boxes": [
+          {
+            "source": "grounding_dino_roi",
+            "bbox_xyxy": [
+              696.45,
+              859.0,
+              796.35,
+              994.54
+            ],
+            "score": 0.1023
+          }
+        ],
+        "candidate_id": "target_cand13",
+        "verification": {
+          "status": "not_run",
+          "reason": "beyond max_candidates_to_verify=8"
+        },
+        "coordinate_frame": "raw_image_px"
+      },
+      {
+        "bbox_roi": {
+          "xyxy": [
+            950,
+            361,
+            970,
+            378
+          ],
+          "frame": "roi_local_px"
+        },
+        "bbox_xyxy": [
+          603.84,
+          229.46,
+          616.56,
+          240.27
+        ],
+        "score": null,
+        "prompt": null,
+        "source": "hsv_color_shape",
+        "shape_stats": {
+          "area_raw_px": 89.3,
+          "aspect": 1.18,
+          "solidity": 0.857
+        },
+        "roi_index": 1,
+        "sources": [
+          "hsv_color_shape"
+        ],
+        "member_boxes": [
+          {
+            "source": "hsv_color_shape",
+            "bbox_xyxy": [
+              603.84,
+              229.46,
+              616.56,
+              240.27
+            ],
+            "score": null
+          }
+        ],
+        "candidate_id": "target_cand14",
+        "verification": {
+          "status": "not_run",
+          "reason": "beyond max_candidates_to_verify=8"
+        },
+        "coordinate_frame": "raw_image_px"
+      }
+    ],
+    "n_candidates": 14,
+    "n_verified": 8,
+    "n_accepted": 1,
+    "description": "a small red cube",
+    "notes": [],
+    "target": {
+      "object_id": "red_cube_1",
+      "class_name": "red_cube",
+      "bbox_xyxy": [
+        599.39,
+        288.57,
+        614.65,
+        300.65
+      ],
+      "coordinate_frame": "raw_image_px",
+      "score": 0.3978,
+      "score_note": "detector score; not a calibrated probability",
+      "image_frame_id": 1,
+      "model_name": "candidate:grounding_dino_full_image+grounding_dino_roi+hsv_color_shape",
+      "model_version": null,
+      "prompt": "small red block.",
+      "source": "hsv_color_shape",
+      "knowledge": "observed_by_model",
+      "accepted": true,
+      "verification": {
+        "status": "yes",
+        "answer": {
+          "answer": "yes",
+          "observed_color": "red",
+          "observed_object": "cube",
+          "reason": "The green box encloses a red, cube-shaped object."
+        },
+        "description": "a small red cube",
+        "crop": {
+          "path": "analysis/roi/verify_target_1.png",
+          "crop_xyxy_raw": [
+            567,
+            256,
+            646,
+            332
+          ],
+          "scale": 5.6709,
+          "marker": "green rectangle = candidate box"
+        },
+        "call": {
+          "model": "Qwen/Qwen3-VL-4B-Instruct",
+          "commit_hash": "ebb281ec70b05090aa6165b016eac8ec08e71b17",
+          "prompt_id": "verify_object_v1",
+          "prompt_sha256": "c27b30e46efab265acf93f0bb68c8d96bca302f31fd4caf28f23b8221a2de5cd",
+          "image_path": "analysis/roi/verify_target_1.png",
+          "raw_response": "{\"answer\": \"yes\", \"observed_color\": \"red\", \"observed_object\": \"cube\", \"reason\": \"The green box encloses a red, cube-shaped object.\"}",
+          "latency_s": 1.193,
+          "n_output_tokens": 40,
+          "hit_max_new_tokens": false,
+          "peak_vram_gib": 8.366,
+          "error": null
+        }
+      },
+      "candidate_sources": [
+        "grounding_dino_full_image",
+        "grounding_dino_roi",
+        "hsv_color_shape"
+      ],
+      "candidate_id": "target_cand1"
+    },
+    "status": "TARGET_SELECTED"
+  },
+  "start": {
+    "xy": [
+      700,
+      740
+    ],
+    "robot_ref": "mobile_robot_unobserved",
+    "method": "manual_start_pose_from_map",
+    "knowledge": "manual_prior",
+    "coordinate_frame": "raw_image_px",
+    "note": "No mobile robot is visible in the reference image; manual start for IMAGE_SPACE_DEMO only."
+  },
+  "start_error": null,
+  "scene_graph": {
+    "nodes": [
+      {
+        "id": "conveyor_1",
+        "kind": "object",
+        "class_name": "conveyor",
+        "bbox_xyxy": [
+          225.25,
+          273.26,
+          518.4,
+          737.63
+        ],
+        "frame": "raw_image_px",
+        "knowledge": "observed_by_model"
+      },
+      {
+        "id": "truck_1",
+        "kind": "object",
+        "class_name": "truck",
+        "bbox_xyxy": [
+          1424.35,
+          73.52,
+          1623.06,
+          205.63
+        ],
+        "frame": "raw_image_px",
+        "knowledge": "observed_by_model"
+      },
+      {
+        "id": "red_cube_1",
+        "kind": "object",
+        "class_name": "red_cube",
+        "bbox_xyxy": [
+          599.39,
+          288.57,
+          614.65,
+          300.65
+        ],
+        "frame": "raw_image_px",
+        "knowledge": "observed_by_model"
+      }
+    ],
+    "relations": [
+      {
+        "relation_id": "rel_1",
+        "type": "near",
+        "subject": "conveyor_1",
+        "object": "red_cube_1",
+        "method": "bbox_gap_image_px",
+        "evidence": {
+          "gap_px": 81.0,
+          "threshold_px": 150
+        },
+        "status": "COMPUTED",
+        "verified": false,
+        "knowledge": "observed_by_model"
+      },
+      {
+        "relation_id": "rel_2",
+        "type": "located_at",
+        "subject": "mobile_robot_unobserved",
+        "object": "start_pose",
+        "method": "manual_start_pose_from_map",
+        "evidence": {
+          "xy": [
+            700,
+            740
+          ],
+          "frame": "raw_image_px"
+        },
+        "status": "MANUAL",
+        "verified": false,
+        "knowledge": "manual_prior"
+      }
+    ],
+    "frame": "raw_image_px",
+    "note": "geometric relations use image-space boxes (IMAGE_SPACE_DEMO); distances are pixels, not metres"
+  },
+  "region_grounding": {
+    "status": "SEMANTIC_NOT_VERIFIED",
+    "reason": "V3 FAILED: region is geometrically associated with the verified anchor (v0.2 association rules); V2 FAILED: the objects cited as evidence exist in the image (anchor object required); V4 NOT_RUN: v0.2 region_judge accepts the adopted region",
+    "loading_area_candidates": [],
+    "semantic_regions": [],
+    "selected_loading_region": null,
+    "validated_loading_region": null,
+    "prior_zone_consistency": [],
+    "note": "integration: VLM free proposal + verification; nothing passed to placement"
+  },
+  "map": {
+    "spec": {
+      "schema_version": "stnav-map-0.1",
+      "map_id": "reference_scene_2026-11-14_zone_draft_v2",
+      "coordinate_frame": "raw_image_px",
+      "image_size": [
+        1920,
+        1080
+      ],
+      "review_status": "DRAFT_UNCONFIRMED",
+      "review_note": "Polygons are ported unchanged from a draft that says 'DRAFT - user must confirm'. A person must review them before experiments.",
+      "provenance": {
+        "source_file": "/home/binci/vlm_ws/new_experiment_environment/my_own_ws/2026-11-15_zone_draft/semantic_zones_draft_v2.json",
+        "source_sha256": "18d2b78b8e1e639edf3d4aea4b003283fbfdd15e05467789ffff4ff111a6c426",
+        "source_status": "DRAFT - user must confirm",
+        "ported_on": "2026-11-15",
+        "knowledge": "manual_prior"
+      },
+      "reference_image": "config/maps/reference_scene_map.reference_P01.jpg",
+      "reference_image_sha256": "448b5258edc058cebb4db4ee46da267d413e8405e377b8a96bfeed380a46d4df",
+      "reference_image_note": "Copy of EXP110 P01 (same fixed camera session 2026-11-14). The draft polygons were drawn on this frame.",
+      "alignment_check": {
+        "max_shift_px": 3.0,
+        "min_response": 0.3
+      },
+      "traversable": [
+        {
+          "id": "Z02",
+          "polygon": [
+            [
+              558,
+              323
+            ],
+            [
+              1693,
+              344
+            ],
+            [
+              1804,
+              825
+            ],
+            [
+              457,
+              824
+            ]
+          ],
+          "origin": "zone draft Z02 robot_drivable_outer_area (semantic_origin USER): area inside the yellow boundary",
+          "source": "manual_prior"
+        }
+      ],
+      "static_obstacles": [
+        {
+          "id": "Z03",
+          "polygon": [
+            [
+              816,
+              477
+            ],
+            [
+              998,
+              479
+            ],
+            [
+              1001,
+              625
+            ],
+            [
+              804,
+              623
+            ]
+          ],
+          "origin": "zone draft Z03 cargo_staging (INFERRED); routing_constraints_draft.robot_obstacle_islands",
+          "source": "manual_prior"
+        },
+        {
+          "id": "Z04",
+          "polygon": [
+            [
+              1222,
+              495
+            ],
+            [
+              1756,
+              503
+            ],
+            [
+              1769,
+              630
+            ],
+            [
+              1227,
+              625
+            ]
+          ],
+          "origin": "zone draft Z04 material_staging (INFERRED); routing_constraints_draft.robot_obstacle_islands",
+          "source": "manual_prior"
+        }
+      ],
+      "no_go": [
+        {
+          "id": "Z01",
+          "polygon": [
+            [
+              1002,
+              102
+            ],
+            [
+              1086,
+              102
+            ],
+            [
+              1103,
+              310
+            ],
+            [
+              636,
+              314
+            ],
+            [
+              648,
+              241
+            ],
+            [
+              997,
+              233
+            ]
+          ],
+          "origin": "zone draft Z01 pedestrian_route (USER); robot access unknown -> treated as no-go",
+          "source": "manual_prior"
+        },
+        {
+          "id": "Z07",
+          "polygon": [
+            [
+              341,
+              320
+            ],
+            [
+              556,
+              318
+            ],
+            [
+              455,
+              787
+            ],
+            [
+              193,
+              765
+            ]
+          ],
+          "origin": "zone draft Z07 robotic_workcell (INFERRED, robot: restricted)",
+          "source": "manual_prior"
+        }
+      ],
+      "start_pose": {
+        "xy": [
+          700,
+          740
+        ],
+        "source": "manual_prior",
+        "note": "No mobile robot is visible in the reference image; manual start for IMAGE_SPACE_DEMO only."
+      },
+      "semantic_reference_zones": [
+        {
+          "id": "Z06",
+          "role": "loading_bay",
+          "polygon": [
+            [
+              1402,
+              99
+            ],
+            [
+              1628,
+              99
+            ],
+            [
+              1655,
+              235
+            ],
+            [
+              1428,
+              226
+            ]
+          ],
+          "confirmed": false,
+          "semantic_origin": "USER_AND_VISUAL",
+          "use": "consistency check of the VLM-selected loading region only; never used for planning or given to the VLM"
+        }
+      ]
+    },
+    "source_file": "config/maps/reference_scene_map.json",
+    "spec_sha256": "079a304811e638733637b1043d6f4c3586af3193fb91cf969443f3ebf32ce486",
+    "alignment": {
+      "status": "ALIGNED",
+      "shift_px": [
+        0.0,
+        0.0
+      ],
+      "response": 1.0,
+      "thresholds": {
+        "max_shift_px": 3.0,
+        "min_response": 0.3
+      },
+      "reference_image": "config/maps/reference_scene_map.reference_P01.jpg"
+    },
+    "build_params": {
+      "cell_px": 8,
+      "robot_radius_px": 35,
+      "safety_margin_px": 40
+    },
+    "summary": {
+      "coordinate_frame": "raw_image_px",
+      "map_mode_note": "image space; not metric",
+      "cell_px": 8,
+      "rows": 135,
+      "cols": 240,
+      "robot_radius_px": 35,
+      "robot_footprint": "disc (assumed, image space)",
+      "safety_margin_px": 40,
+      "cell_counts": {
+        "traversable": 9522,
+        "static_obstacle": 1519,
+        "no_go": 2463,
+        "dynamic_obstacle": 2146,
+        "free": 7959,
+        "valid_robot_center": 5223
+      },
+      "layer_sha256": {
+        "traversable": "391d06a0f320aa1878b8be774cb4330f854e334e5bae84e37ccffdafbf3d11a7",
+        "static_obstacle": "12f56c2fa7a455d66dfbf5f8285812204c4988b4c4977ff762133a42c4492c4b",
+        "no_go": "383a9b9198c834e5772af635898099322df5877629a221d916d231fe775b36d5",
+        "dynamic_obstacle": "9119ecea389bca8544a757805711cbad863625d2ca67a7b283d959dc52819725",
+        "valid": "ae7c8477bb3bfaa1898c69fad24bc3a65ae58ef8af94f8661ba94ccefcb1e22b"
+      },
+      "dynamic_obstacles": [
+        {
+          "id": "conveyor_1",
+          "bbox_xyxy": [
+            225.25,
+            273.26,
+            518.4,
+            737.63
+          ],
+          "source": "grounding_dino",
+          "knowledge": "observed_by_model"
+        }
+      ]
+    }
+  },
+  "goals": {
+    "pickup": {
+      "purpose": "pickup_approach",
+      "anchor": "red_cube_1",
+      "anchor_polygon_xy": [
+        [
+          599.39,
+          288.57
+        ],
+        [
+          614.65,
+          288.57
+        ],
+        [
+          614.65,
+          300.65
+        ],
+        [
+          599.39,
+          300.65
+        ]
+      ],
+      "coordinate_frame": "raw_image_px",
+      "params": {
+        "max_dist_px": 140,
+        "min_dist_px": 0,
+        "distance_weight": 1.5,
+        "top_k_report": 5
+      },
+      "reach": {
+        "reach_px": 140,
+        "status": "PROVISIONAL",
+        "basis": "goal_selection.pickup.max_dist_px = 140 px (dev assumption; gripper reach and on-board camera view not measured)"
+      },
+      "pose": {
+        "purpose": "pickup_approach",
+        "xy": [
+          636.0,
+          388.0
+        ],
+        "cell": [
+          48,
+          79
+        ],
+        "heading_deg": -107.2,
+        "heading_note": "image-frame direction towards the anchor centroid (x right, y down); mecanum base does not need to rotate along the path",
+        "coordinate_frame": "raw_image_px",
+        "anchor": "red_cube_1",
+        "path_cost": 381.26,
+        "metric_valid": false
+      },
+      "accessible_cells": [
+        [
+          45,
+          73
+        ],
+        [
+          45,
+          74
+        ],
+        [
+          45,
+          75
+        ],
+        [
+          45,
+          76
+        ],
+        [
+          45,
+          77
+        ],
+        [
+          45,
+          78
+        ],
+        [
+          45,
+          79
+        ],
+        [
+          45,
+          80
+        ],
+        [
+          45,
+          81
+        ],
+        [
+          45,
+          82
+        ],
+        [
+          45,
+          83
+        ],
+        [
+          45,
+          84
+        ],
+        [
+          45,
+          85
+        ],
+        [
+          45,
+          86
+        ],
+        [
+          45,
+          87
+        ],
+        [
+          45,
+          88
+        ],
+        [
+          45,
+          89
+        ],
+        [
+          45,
+          90
+        ],
+        [
+          45,
+          91
+        ],
+        [
+          45,
+          92
+        ],
+        [
+          46,
+          73
+        ],
+        [
+          46,
+          74
+        ],
+        [
+          46,
+          75
+        ],
+        [
+          46,
+          76
+        ],
+        [
+          46,
+          77
+        ],
+        [
+          46,
+          78
+        ],
+        [
+          46,
+          79
+        ],
+        [
+          46,
+          80
+        ],
+        [
+          46,
+          81
+        ],
+        [
+          46,
+          82
+        ],
+        [
+          46,
+          83
+        ],
+        [
+          46,
+          84
+        ],
+        [
+          46,
+          85
+        ],
+        [
+          46,
+          86
+        ],
+        [
+          46,
+          87
+        ],
+        [
+          46,
+          88
+        ],
+        [
+          46,
+          89
+        ],
+        [
+          46,
+          90
+        ],
+        [
+          46,
+          91
+        ],
+        [
+          47,
+          73
+        ],
+        [
+          47,
+          74
+        ],
+        [
+          47,
+          75
+        ],
+        [
+          47,
+          76
+        ],
+        [
+          47,
+          77
+        ],
+        [
+          47,
+          78
+        ],
+        [
+          47,
+          79
+        ],
+        [
+          47,
+          80
+        ],
+        [
+          47,
+          81
+        ],
+        [
+          47,
+          82
+        ],
+        [
+          47,
+          83
+        ],
+        [
+          47,
+          84
+        ],
+        [
+          47,
+          85
+        ],
+        [
+          47,
+          86
+        ],
+        [
+          47,
+          87
+        ],
+        [
+          47,
+          88
+        ],
+        [
+          47,
+          89
+        ],
+        [
+          47,
+          90
+        ],
+        [
+          48,
+          73
+        ],
+        [
+          48,
+          74
+        ],
+        [
+          48,
+          75
+        ],
+        [
+          48,
+          76
+        ],
+        [
+          48,
+          77
+        ],
+        [
+          48,
+          78
+        ],
+        [
+          48,
+          79
+        ],
+        [
+          48,
+          80
+        ],
+        [
+          48,
+          81
+        ],
+        [
+          48,
+          82
+        ],
+        [
+          48,
+          83
+        ],
+        [
+          48,
+          84
+        ],
+        [
+          48,
+          85
+        ],
+        [
+          48,
+          86
+        ],
+        [
+          48,
+          87
+        ],
+        [
+          48,
+          88
+        ],
+        [
+          48,
+          89
+        ],
+        [
+          48,
+          90
+        ],
+        [
+          49,
+          72
+        ],
+        [
+          49,
+          73
+        ],
+        [
+          49,
+          74
+        ],
+        [
+          49,
+          75
+        ],
+        [
+          49,
+          76
+        ],
+        [
+          49,
+          77
+        ],
+        [
+          49,
+          78
+        ],
+        [
+          49,
+          79
+        ],
+        [
+          49,
+          80
+        ],
+        [
+          49,
+          81
+        ],
+        [
+          49,
+          82
+        ],
+        [
+          49,
+          83
+        ],
+        [
+          49,
+          84
+        ],
+        [
+          49,
+          85
+        ],
+        [
+          49,
+          86
+        ],
+        [
+          49,
+          87
+        ],
+        [
+          49,
+          88
+        ],
+        [
+          49,
+          89
+        ],
+        [
+          50,
+          72
+        ],
+        [
+          50,
+          73
+        ],
+        [
+          50,
+          74
+        ],
+        [
+          50,
+          75
+        ],
+        [
+          50,
+          76
+        ],
+        [
+          50,
+          77
+        ],
+        [
+          50,
+          78
+        ],
+        [
+          50,
+          79
+        ],
+        [
+          50,
+          80
+        ],
+        [
+          50,
+          81
+        ],
+        [
+          50,
+          82
+        ],
+        [
+          50,
+          83
+        ],
+        [
+          50,
+          84
+        ],
+        [
+          50,
+          85
+        ],
+        [
+          50,
+          86
+        ],
+        [
+          50,
+          87
+        ],
+        [
+          50,
+          88
+        ],
+        [
+          51,
+          72
+        ],
+        [
+          51,
+          73
+        ],
+        [
+          51,
+          74
+        ],
+        [
+          51,
+          75
+        ],
+        [
+          51,
+          76
+        ],
+        [
+          51,
+          77
+        ],
+        [
+          51,
+          78
+        ],
+        [
+          51,
+          79
+        ],
+        [
+          51,
+          80
+        ],
+        [
+          51,
+          81
+        ],
+        [
+          51,
+          82
+        ],
+        [
+          51,
+          83
+        ],
+        [
+          51,
+          84
+        ],
+        [
+          51,
+          85
+        ],
+        [
+          51,
+          86
+        ],
+        [
+          51,
+          87
+        ],
+        [
+          52,
+          72
+        ],
+        [
+          52,
+          73
+        ],
+        [
+          52,
+          74
+        ],
+        [
+          52,
+          75
+        ],
+        [
+          52,
+          76
+        ],
+        [
+          52,
+          77
+        ],
+        [
+          52,
+          78
+        ],
+        [
+          52,
+          79
+        ],
+        [
+          52,
+          80
+        ],
+        [
+          52,
+          81
+        ],
+        [
+          52,
+          82
+        ],
+        [
+          52,
+          83
+        ],
+        [
+          52,
+          84
+        ],
+        [
+          52,
+          85
+        ],
+        [
+          53,
+          71
+        ],
+        [
+          53,
+          72
+        ],
+        [
+          53,
+          73
+        ],
+        [
+          53,
+          74
+        ],
+        [
+          53,
+          75
+        ],
+        [
+          53,
+          76
+        ],
+        [
+          53,
+          77
+        ],
+        [
+          53,
+          78
+        ],
+        [
+          53,
+          79
+        ],
+        [
+          53,
+          80
+        ],
+        [
+          53,
+          81
+        ],
+        [
+          53,
+          82
+        ],
+        [
+          53,
+          83
+        ],
+        [
+          54,
+          71
+        ],
+        [
+          54,
+          72
+        ],
+        [
+          54,
+          73
+        ],
+        [
+          54,
+          74
+        ],
+        [
+          54,
+          75
+        ],
+        [
+          54,
+          76
+        ],
+        [
+          54,
+          77
+        ],
+        [
+          54,
+          78
+        ],
+        [
+          54,
+          79
+        ],
+        [
+          54,
+          80
+        ],
+        [
+          54,
+          81
+        ]
+      ],
+      "candidates_top_k": [
+        {
+          "cell": [
+            48,
+            79
+          ],
+          "xy": [
+            636.0,
+            388.0
+          ],
+          "path_cost": 381.26,
+          "distance_to_anchor_px": 89.5,
+          "score": 515.51
+        },
+        {
+          "cell": [
+            48,
+            80
+          ],
+          "xy": [
+            644.0,
+            388.0
+          ],
+          "path_cost": 378.0,
+          "distance_to_anchor_px": 91.71,
+          "score": 515.56
+        },
+        {
+          "cell": [
+            47,
+            79
+          ],
+          "xy": [
+            636.0,
+            380.0
+          ],
+          "path_cost": 393.03,
+          "distance_to_anchor_px": 81.74,
+          "score": 515.65
+        },
+        {
+          "cell": [
+            47,
+            78
+          ],
+          "xy": [
+            628.0,
+            380.0
+          ],
+          "path_cost": 395.82,
+          "distance_to_anchor_px": 80.06,
+          "score": 515.92
+        },
+        {
+          "cell": [
+            47,
+            80
+          ],
+          "xy": [
+            644.0,
+            380.0
+          ],
+          "path_cost": 389.8,
+          "distance_to_anchor_px": 84.15,
+          "score": 516.03
+        }
+      ],
+      "stats": {
+        "cells_in_reach": 1086,
+        "cells_in_reach_traversable": 313,
+        "cells_accessible_collision_free": 164,
+        "cells_reachable_from_start": 164,
+        "nearest_valid_cell_to_anchor_px": 63.0
+      },
+      "status": "GOAL_SELECTED"
+    }
+  },
+  "paths": {
+    "A": {
+      "path_id": "A_start_to_pickup",
+      "coordinate_frame": "raw_image_px",
+      "planner": "SAFETY_COST_ASTAR",
+      "simplification": "line_of_sight",
+      "start_xy": [
+        700,
+        740
+      ],
+      "goal_xy": [
+        636.0,
+        388.0
+      ],
+      "waypoints_xy": [
+        [
+          700.0,
+          740.0
+        ],
+        [
+          636.0,
+          388.0
+        ]
+      ],
+      "raw_cells": [
+        [
+          92,
+          87
+        ],
+        [
+          91,
+          87
+        ],
+        [
+          90,
+          87
+        ],
+        [
+          89,
+          87
+        ],
+        [
+          88,
+          87
+        ],
+        [
+          87,
+          87
+        ],
+        [
+          86,
+          87
+        ],
+        [
+          85,
+          87
+        ],
+        [
+          84,
+          87
+        ],
+        [
+          83,
+          87
+        ],
+        [
+          82,
+          87
+        ],
+        [
+          81,
+          87
+        ],
+        [
+          80,
+          87
+        ],
+        [
+          79,
+          87
+        ],
+        [
+          78,
+          87
+        ],
+        [
+          77,
+          87
+        ],
+        [
+          76,
+          87
+        ],
+        [
+          75,
+          87
+        ],
+        [
+          74,
+          87
+        ],
+        [
+          73,
+          87
+        ],
+        [
+          72,
+          87
+        ],
+        [
+          71,
+          87
+        ],
+        [
+          70,
+          87
+        ],
+        [
+          69,
+          87
+        ],
+        [
+          68,
+          87
+        ],
+        [
+          67,
+          87
+        ],
+        [
+          66,
+          87
+        ],
+        [
+          65,
+          87
+        ],
+        [
+          64,
+          86
+        ],
+        [
+          63,
+          86
+        ],
+        [
+          62,
+          85
+        ],
+        [
+          61,
+          85
+        ],
+        [
+          60,
+          84
+        ],
+        [
+          59,
+          84
+        ],
+        [
+          58,
+          84
+        ],
+        [
+          57,
+          83
+        ],
+        [
+          56,
+          83
+        ],
+        [
+          55,
+          82
+        ],
+        [
+          54,
+          82
+        ],
+        [
+          53,
+          81
+        ],
+        [
+          52,
+          81
+        ],
+        [
+          51,
+          80
+        ],
+        [
+          50,
+          79
+        ],
+        [
+          49,
+          79
+        ],
+        [
+          48,
+          79
+        ]
+      ],
+      "raw_waypoints_xy": [
+        [
+          700.0,
+          740.0
+        ],
+        [
+          700.0,
+          732.0
+        ],
+        [
+          700.0,
+          724.0
+        ],
+        [
+          700.0,
+          716.0
+        ],
+        [
+          700.0,
+          708.0
+        ],
+        [
+          700.0,
+          700.0
+        ],
+        [
+          700.0,
+          692.0
+        ],
+        [
+          700.0,
+          684.0
+        ],
+        [
+          700.0,
+          676.0
+        ],
+        [
+          700.0,
+          668.0
+        ],
+        [
+          700.0,
+          660.0
+        ],
+        [
+          700.0,
+          652.0
+        ],
+        [
+          700.0,
+          644.0
+        ],
+        [
+          700.0,
+          636.0
+        ],
+        [
+          700.0,
+          628.0
+        ],
+        [
+          700.0,
+          620.0
+        ],
+        [
+          700.0,
+          612.0
+        ],
+        [
+          700.0,
+          604.0
+        ],
+        [
+          700.0,
+          596.0
+        ],
+        [
+          700.0,
+          588.0
+        ],
+        [
+          700.0,
+          580.0
+        ],
+        [
+          700.0,
+          572.0
+        ],
+        [
+          700.0,
+          564.0
+        ],
+        [
+          700.0,
+          556.0
+        ],
+        [
+          700.0,
+          548.0
+        ],
+        [
+          700.0,
+          540.0
+        ],
+        [
+          700.0,
+          532.0
+        ],
+        [
+          700.0,
+          524.0
+        ],
+        [
+          692.0,
+          516.0
+        ],
+        [
+          692.0,
+          508.0
+        ],
+        [
+          684.0,
+          500.0
+        ],
+        [
+          684.0,
+          492.0
+        ],
+        [
+          676.0,
+          484.0
+        ],
+        [
+          676.0,
+          476.0
+        ],
+        [
+          676.0,
+          468.0
+        ],
+        [
+          668.0,
+          460.0
+        ],
+        [
+          668.0,
+          452.0
+        ],
+        [
+          660.0,
+          444.0
+        ],
+        [
+          660.0,
+          436.0
+        ],
+        [
+          652.0,
+          428.0
+        ],
+        [
+          652.0,
+          420.0
+        ],
+        [
+          644.0,
+          412.0
+        ],
+        [
+          636.0,
+          404.0
+        ],
+        [
+          636.0,
+          396.0
+        ],
+        [
+          636.0,
+          388.0
+        ]
+      ],
+      "length_px": 357.77,
+      "raw_length_px": 378.51,
+      "error": null,
+      "status": "PATH_FOUND",
+      "simplified_cells": [
+        [
+          92,
+          87
+        ],
+        [
+          48,
+          79
+        ]
+      ],
+      "astar_cost": 381.262,
+      "nodes_expanded": 441,
+      "planning_time_ms": 3.8,
+      "n_raw_waypoints": 45,
+      "n_waypoints": 2,
+      "start_cell": [
+        92,
+        87
+      ],
+      "goal_cell": [
+        48,
+        79
+      ],
+      "endpoint_snapping": "start/goal are snapped to their cell centres (<= cell_px/sqrt(2) px)"
+    }
+  },
+  "validation": {
+    "A": {
+      "valid": true,
+      "checks": [
+        {
+          "check": "non_empty",
+          "ok": true,
+          "detail": "2 waypoints"
+        },
+        {
+          "check": "starts_at_start",
+          "ok": true,
+          "detail": "0.00px (limit 5.66)"
+        },
+        {
+          "check": "ends_at_goal",
+          "ok": true,
+          "detail": "0.00px (limit 5.66)"
+        },
+        {
+          "check": "collision_free_footprint",
+          "ok": true,
+          "detail": "min clearance 64.12px, required >= 27.00px over 180 samples"
+        }
+      ],
+      "min_clearance_px": 64.12,
+      "required_clearance_px": 27,
+      "first_violation": null,
+      "n_samples": 180,
+      "raw_path_check": true,
+      "raw_vs_simplified": {
+        "raw_length_px": 378.51,
+        "simplified_length_px": 357.77,
+        "length_reduction_pct": 5.48,
+        "raw_waypoints": 45,
+        "simplified_waypoints": 2
+      }
+    }
+  },
+  "handoff": {
+    "task_type": "transport_and_place",
+    "state": "NOT_EXECUTABLE",
+    "path_b_status": null,
+    "requests": {
+      "pickup": {
+        "action": "PICKUP_HANDOFF",
+        "target_object_id": "red_cube_1",
+        "target_class": "cube",
+        "target_color": "red",
+        "approach_pose": {
+          "image_xy": [
+            636.0,
+            388.0
+          ],
+          "heading_deg": -107.2,
+          "frame": "raw_image_px"
+        },
+        "approach_pose_metric": null,
+        "coordinate_frame": "raw_image_px",
+        "metric_note": "metric approach pose requires a validated ground map; image-space pose only",
+        "status": "WAITING_FOR_LOCAL_CONTROLLER",
+        "hardware_executable": false,
+        "hardware_block_reason": "IMAGE_SPACE_DEMO: no validated metric frame; hardware disabled by configuration",
+        "mode": "simulation"
+      }
+    },
+    "history": [
+      {
+        "t": 1795000972.8135183,
+        "state": "NOT_EXECUTABLE",
+        "event": "created",
+        "source": "planner"
+      }
+    ],
+    "mode": "simulation",
+    "hardware_enabled": false,
+    "completed": false
+  },
+  "destination": {
+    "semantic_loading_region": null,
+    "semantic_regions_plausible": [],
+    "object_placement_region": null,
+    "robot_approach_region": null,
+    "selected_robot_goal": null,
+    "goal_reach_check": null,
+    "choice": null,
+    "chain": [],
+    "failed_stage": "semantic_region",
+    "final_stage_status": "SEMANTIC_NOT_VERIFIED",
+    "claims": {
+      "semantic_loading_region": "NONE",
+      "object_placement_region": "GEOMETRIC_ONLY (surface and gripper reach unmeasured)",
+      "robot_approach_region": "NOT_RUN reach: None",
+      "robot_task_success": "NOT_CLAIMABLE (image-space plan only; reach/placement unmeasured; no execution)"
+    }
+  },
+  "evaluation_record": {
+    "note": "automatic statuses only; accuracy needs ground truth (scripts/evaluate_run.py). Planning success is not robot execution success.",
+    "task_parsing": {
+      "backend": "integration_adapter(v0.2 rule_based_parse for the target only)",
+      "status": "OK",
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "object_grounding": {
+      "accepted": [
+        "conveyor_1",
+        "truck_1"
+      ],
+      "target_status": "TARGET_SELECTED",
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "semantic_grounding": {
+      "status": "SEMANTIC_NOT_VERIFIED",
+      "selected": null,
+      "prior_zone_consistency": [],
+      "input_provenance": "model",
+      "ground_truth": null
+    },
+    "destination_chain": {
+      "final_stage_status": "SEMANTIC_NOT_VERIFIED",
+      "failed_stage": "semantic_region",
+      "ground_truth": null
+    },
+    "goal_selection": {
+      "pickup": "GOAL_SELECTED",
+      "dropoff": null
+    },
+    "path_planning": {
+      "A": {
+        "status": "PATH_FOUND",
+        "valid": true,
+        "length_px": 357.77
+      }
+    },
+    "end_to_end_planning": {
+      "status": "PARTIAL_PLAN",
+      "uses_manual_inputs": [
+        "navigation map",
+        "robot start pose",
+        "robot footprint, reach distances"
+      ],
+      "automatic_perception": true,
+      "counts_as_automatic_e2e": false
+    }
+  },
+  "provenance": {
+    "manual_inputs": [
+      {
+        "item": "navigation map",
+        "source": "config/maps/reference_scene_map.json",
+        "review_status": "DRAFT_UNCONFIRMED",
+        "knowledge": "manual_prior"
+      },
+      {
+        "item": "robot start pose",
+        "source": "map.start_pose",
+        "knowledge": "manual_prior"
+      },
+      {
+        "item": "robot footprint, reach distances",
+        "source": "config/planning.yaml (image-space assumptions)",
+        "knowledge": "manual_prior"
+      }
+    ],
+    "auto_inferred": [
+      "task parse (LLM)",
+      "scene description (VLM)",
+      "object candidates (detector) + verification (VLM)",
+      "target selection",
+      "loading-area choice (VLM)"
+    ],
+    "deterministic": [
+      "coordinate transforms",
+      "relations",
+      "map",
+      "goal selection",
+      "A* + simplification",
+      "validation"
+    ]
+  },
+  "timing": {
+    "total_s": 92.228,
+    "per_step_s": {
+      "parse_task": 0.0,
+      "analyze_scene": 0.0,
+      "detect_objects": 30.405,
+      "inspect_target": 14.795,
+      "build_scene_graph": 0.0,
+      "build_navigation_map": 0.121,
+      "infer_destination": 46.777,
+      "assess_placement": null,
+      "select_pickup_pose": 0.033,
+      "select_dropoff_pose": null,
+      "plan_path": 0.005,
+      "validate_path": 0.001,
+      "create_handoff_request": 0.0,
+      "save_results": null
+    }
+  },
+  "internal_error": null,
+  "figures": {
+    "01_raw": "figures/01_raw.png",
+    "02_detections": "figures/02_detections.png",
+    "03_red_cube_roi": "figures/03_red_cube_roi.png",
+    "04_semantic_regions": "figures/04_semantic_regions.png",
+    "05_occupancy_map": "figures/05_occupancy_map.png",
+    "06_pickup_path": "figures/06_pickup_path.png",
+    "07_delivery_path": "figures/07_delivery_path.png",
+    "08_final_overview": "figures/08_final_overview.png",
+    "09_object_relationship": "figures/09_object_relationship.png",
+    "10_traversable_map": "figures/10_traversable_map.png",
+    "11_destination_chain": "figures/11_destination_chain.png"
+  }
+}

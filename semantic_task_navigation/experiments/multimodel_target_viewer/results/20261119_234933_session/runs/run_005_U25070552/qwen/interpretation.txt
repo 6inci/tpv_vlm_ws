@@ -1,0 +1,60 @@
+{
+  "purpose": "물건을 안전한 적재 장소로 이동",
+  "source_object": {
+    "name_en": "stacked boxes"
+  },
+  "source_reference": {
+    "name_en": "yellow bordered zone",
+    "bbox_2d": [400, 390, 500, 550]
+  },
+  "source_relation": "on",
+  "destination_meaning": "안전한 적재 장소",
+  "destination_reference": {
+    "name_en": "truck loading area",
+    "bbox_2d": [730, 0, 880, 150],
+    "inferred": true
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "로봇 주행 구역",
+      "visual_evidence": ["yellow outer boundary lines", "robot on black floor"],
+      "bbox_2d": [250, 280, 700, 700],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "보행자 통로",
+      "visual_evidence": ["green floor with footprints"],
+      "bbox_2d": [300, 50, 550, 270],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "컨베이어·로봇 팔 작업셀",
+      "visual_evidence": ["white bordered zones with conveyor/robot arm"],
+      "bbox_2d": [100, 260, 260, 700],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "화물 적치 구역",
+      "visual_evidence": ["yellow bordered zones with stacked boxes"],
+      "bbox_2d": [400, 390, 500, 550],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "자재 보관 구역",
+      "visual_evidence": ["yellow bordered zones with barrels and containers"],
+      "bbox_2d": [620, 430, 930, 550],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "트럭 하역장",
+      "visual_evidence": ["truck", "dotted white lines"],
+      "bbox_2d": [730, 0, 880, 150],
+      "robot_body_access": "unknown"
+    }
+  ],
+  "uncertainty": [
+    "그리퍼 도달 거리 확인 불가",
+    "목적지 '안전한 적재 장소'의 정확한 위치 추론 불가능"
+  ]
+}

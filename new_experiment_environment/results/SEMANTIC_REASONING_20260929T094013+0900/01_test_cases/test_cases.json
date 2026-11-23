@@ -1,0 +1,97 @@
+{
+  "status": "PASS",
+  "ground_truth_status": "NOT_AVAILABLE",
+  "coordinate_system": "original_image_pixels",
+  "test_cases": [
+    {
+      "task_id": "A01",
+      "task_type": "TYPE_A",
+      "instruction": "트럭 앞쪽의 이동 가능한 공간으로 이동해.",
+      "required_relation": "in_front_of"
+    },
+    {
+      "task_id": "A02",
+      "task_type": "TYPE_A",
+      "instruction": "카트 오른쪽의 이동 가능한 공간으로 이동해.",
+      "required_relation": "right_of"
+    },
+    {
+      "task_id": "B01",
+      "task_type": "TYPE_B",
+      "instruction": "트럭과 가장 가까운 팔레트 사이의 이동 가능한 공간으로 이동해.",
+      "required_relation": "between"
+    },
+    {
+      "task_id": "B02",
+      "task_type": "TYPE_B",
+      "instruction": "카트 옆 드럼통 근처의 이동 가능한 공간으로 이동해.",
+      "required_relation": "near|adjacent_to"
+    },
+    {
+      "task_id": "B03",
+      "task_type": "TYPE_B",
+      "instruction": "두 선반 사이의 통로를 찾아 이동해.",
+      "required_relation": "between"
+    },
+    {
+      "task_id": "B04",
+      "task_type": "TYPE_B",
+      "instruction": "트럭의 왼쪽이면서 가까운 팔레트 앞쪽인 빈 공간으로 이동해.",
+      "required_relation": "left_of|in_front_of"
+    },
+    {
+      "task_id": "B05",
+      "task_type": "TYPE_B",
+      "instruction": "워크벤치 뒤쪽의 이동 가능한 공간으로 이동해.",
+      "required_relation": "behind"
+    },
+    {
+      "task_id": "C01",
+      "task_type": "TYPE_C",
+      "instruction": "트럭 옆 하역 작업이 가능한 공간으로 이동해.",
+      "candidate_region": "Loading Area"
+    },
+    {
+      "task_id": "C02",
+      "task_type": "TYPE_C",
+      "instruction": "부품 보관 구역의 이동 가능한 공간으로 이동해.",
+      "candidate_region": "Storage Area"
+    },
+    {
+      "task_id": "C03",
+      "task_type": "TYPE_C",
+      "instruction": "로봇 작업 구역 앞으로 이동해.",
+      "candidate_region": "Work Area"
+    },
+    {
+      "task_id": "C04",
+      "task_type": "TYPE_C",
+      "instruction": "자재 보관 구역의 이동 가능한 공간으로 이동해.",
+      "candidate_region": "Material Area"
+    },
+    {
+      "task_id": "D01",
+      "task_type": "TYPE_D",
+      "instruction": "트럭에서 가장 가까운 팔레트 옆의 이동 가능한 공간으로 이동해.",
+      "required_relation": "nearest|adjacent_to"
+    },
+    {
+      "task_id": "D02",
+      "task_type": "TYPE_D",
+      "instruction": "컨베이어 옆 매니퓰레이터 앞의 이동 가능한 공간으로 이동해.",
+      "required_relation": "adjacent_to|in_front_of"
+    },
+    {
+      "task_id": "E01",
+      "task_type": "TYPE_E",
+      "instruction": "지게차 충전 구역으로 이동해.",
+      "insufficient_evidence_reason": "forklift/charging evidence not established"
+    },
+    {
+      "task_id": "E02",
+      "task_type": "TYPE_E",
+      "instruction": "아무 작업 구역으로 이동해.",
+      "insufficient_evidence_reason": "multiple functional work candidates"
+    }
+  ]
+}

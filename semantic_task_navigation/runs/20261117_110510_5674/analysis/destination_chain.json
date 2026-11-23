@@ -1,0 +1,300 @@
+{
+  "semantic_loading_region": {
+    "region_id": "loading_area_manual_1",
+    "region_type": "loading_area",
+    "polygon_xy": [
+      [
+        1402,
+        99
+      ],
+      [
+        1628,
+        99
+      ],
+      [
+        1655,
+        235
+      ],
+      [
+        1428,
+        226
+      ]
+    ],
+    "coordinate_frame": "raw_image_px",
+    "reference_objects": [
+      "truck_1"
+    ],
+    "evidence": [
+      "zone draft v2 Z06 'loading_bay' (semantic_origin USER_AND_VISUAL, access_confirmed false)"
+    ],
+    "verification_status": "manual_unconfirmed",
+    "source": "manual_test_data"
+  },
+  "semantic_regions_plausible": [
+    "loading_area_manual_1"
+  ],
+  "object_placement_region": {
+    "semantic_region_id": "loading_area_manual_1",
+    "polygons_xy": [
+      [
+        [
+          1632,
+          181
+        ],
+        [
+          1632,
+          222
+        ],
+        [
+          1640,
+          222
+        ]
+      ]
+    ],
+    "coordinate_frame": "raw_image_px",
+    "area_px": 210,
+    "margin_px": 12,
+    "margin_basis": "half of target red_cube_1 box size",
+    "excluded": [
+      {
+        "object_id": "truck_1",
+        "overlap_px": 24130
+      }
+    ],
+    "areas_px": {
+      "semantic": 30024,
+      "after_object_footprints": 5894,
+      "after_map_obstacles": 5894,
+      "after_margin_and_min_area": 210
+    },
+    "basis": "geometric: semantic region minus detected object footprints and map obstacles/no-go, eroded by half the target size; placement surface and gripper reach UNMEASURED",
+    "feasibility": "UNVERIFIED (surface and reach unmeasured)",
+    "status": "PLACEMENT_REGION_FOUND",
+    "reason": "1 component(s), 210 px"
+  },
+  "robot_approach_region": {
+    "cells_rc": [
+      [
+        47,
+        193
+      ],
+      [
+        47,
+        194
+      ],
+      [
+        47,
+        195
+      ],
+      [
+        47,
+        196
+      ],
+      [
+        47,
+        197
+      ],
+      [
+        47,
+        198
+      ],
+      [
+        47,
+        199
+      ],
+      [
+        47,
+        200
+      ],
+      [
+        47,
+        201
+      ],
+      [
+        47,
+        202
+      ],
+      [
+        47,
+        203
+      ],
+      [
+        47,
+        204
+      ],
+      [
+        47,
+        205
+      ],
+      [
+        47,
+        206
+      ],
+      [
+        47,
+        207
+      ],
+      [
+        48,
+        195
+      ],
+      [
+        48,
+        196
+      ],
+      [
+        48,
+        197
+      ],
+      [
+        48,
+        198
+      ],
+      [
+        48,
+        199
+      ],
+      [
+        48,
+        200
+      ],
+      [
+        48,
+        201
+      ],
+      [
+        48,
+        202
+      ],
+      [
+        48,
+        203
+      ],
+      [
+        48,
+        204
+      ],
+      [
+        48,
+        205
+      ],
+      [
+        48,
+        206
+      ],
+      [
+        48,
+        207
+      ],
+      [
+        49,
+        198
+      ],
+      [
+        49,
+        199
+      ],
+      [
+        49,
+        200
+      ],
+      [
+        49,
+        201
+      ],
+      [
+        49,
+        202
+      ],
+      [
+        49,
+        203
+      ],
+      [
+        49,
+        204
+      ],
+      [
+        49,
+        205
+      ],
+      [
+        49,
+        206
+      ],
+      [
+        49,
+        207
+      ],
+      [
+        49,
+        208
+      ]
+    ],
+    "frame": "grid_row_col",
+    "cell_px": 8,
+    "definition": "collision-free robot-centre cells within reach of the anchor AND reachable from the origin",
+    "stats": {
+      "cells_in_reach": 1852,
+      "cells_in_reach_traversable": 141,
+      "cells_accessible_collision_free": 39,
+      "cells_reachable_from_start": 39
+    },
+    "reach": {
+      "reach_px": 180,
+      "status": "PROVISIONAL",
+      "basis": "goal_selection.dropoff.max_dist_px = 180 px (dev assumption; gripper reach and on-board camera view not measured)"
+    }
+  },
+  "selected_robot_goal": {
+    "purpose": "dropoff_approach",
+    "xy": [
+      1548.0,
+      380.0
+    ],
+    "cell": [
+      47,
+      193
+    ],
+    "heading_deg": -63.2,
+    "heading_note": "image-frame direction towards the anchor centroid (x right, y down); mecanum base does not need to rotate along the path",
+    "coordinate_frame": "raw_image_px",
+    "anchor": "loading_area_manual_1",
+    "path_cost": 983.72,
+    "metric_valid": false
+  },
+  "choice": {
+    "selected": "loading_area_manual_1",
+    "feasible": [
+      "loading_area_manual_1"
+    ],
+    "rule": "only feasible region"
+  },
+  "chain": [
+    {
+      "region_id": "loading_area_manual_1",
+      "source": "manual_test_data",
+      "semantic": "manual",
+      "semantic_reason": null,
+      "placement": {
+        "status": "PLACEMENT_REGION_FOUND",
+        "area_px": 210,
+        "reason": "1 component(s), 210 px"
+      },
+      "approach": {
+        "status": "GOAL_SELECTED",
+        "collision_free_cells": 39,
+        "reachable_cells": 39,
+        "goal_score": 1252.13
+      }
+    }
+  ],
+  "failed_stage": null,
+  "final_stage_status": "DESTINATION_PLANNED",
+  "claims": {
+    "semantic_loading_region": "MANUAL_UNCONFIRMED",
+    "object_placement_region": "GEOMETRIC_ONLY (surface and gripper reach unmeasured)",
+    "robot_approach_region": "PROVISIONAL reach: goal_selection.dropoff.max_dist_px = 180 px (dev assumption; gripper reach and on-board camera view not measured)",
+    "robot_task_success": "NOT_CLAIMABLE (image-space plan only; reach/placement unmeasured; no execution)"
+  }
+}

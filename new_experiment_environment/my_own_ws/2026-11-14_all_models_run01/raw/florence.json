@@ -1,0 +1,515 @@
+{
+  "stage": "florence",
+  "models": {
+    "florence_base": {
+      "stage": "florence_base",
+      "model": "florence-community/Florence-2-base",
+      "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+      "torch": "2.13.0+cu130",
+      "timestamp": "2026-11-14T13:06:11.386824+09:00",
+      "input_image": "/home/binci/vlm_ws/new_experiment_environment/final_experiment_picture.png",
+      "input_sha256": "a543977af78ef4c92d9ed62f7c5058d14eb96913efeeb16805e6d6cf645d7a74",
+      "coordinate_system": "pixels of the input screenshot (x right, y down, origin top-left). Undistortion state as displayed in that window; not usable for homography.",
+      "latency_s": 1.4188,
+      "peak_vram_gib": 0.636,
+      "latency_s_per_task": {
+        "<OD>": 0.1218,
+        "<DENSE_REGION_CAPTION>": 0.1377,
+        "<OPEN_VOCABULARY_DETECTION>": 1.1593
+      }
+    },
+    "florence_large": {
+      "stage": "florence_large",
+      "model": "florence-community/Florence-2-large",
+      "python": "/home/binci/miniconda3/envs/qwen_vl/bin/python",
+      "torch": "2.13.0+cu130",
+      "timestamp": "2026-11-14T13:06:15.527668+09:00",
+      "input_image": "/home/binci/vlm_ws/new_experiment_environment/final_experiment_picture.png",
+      "input_sha256": "a543977af78ef4c92d9ed62f7c5058d14eb96913efeeb16805e6d6cf645d7a74",
+      "coordinate_system": "pixels of the input screenshot (x right, y down, origin top-left). Undistortion state as displayed in that window; not usable for homography.",
+      "latency_s": 2.4017,
+      "peak_vram_gib": 1.799,
+      "latency_s_per_task": {
+        "<OD>": 0.1981,
+        "<DENSE_REGION_CAPTION>": 0.2248,
+        "<OPEN_VOCABULARY_DETECTION>": 1.9788
+      }
+    }
+  },
+  "panels": {
+    "florence_base_OD": [
+      {
+        "label": "land vehicle",
+        "score": null,
+        "bbox_px": [
+          1457.0,
+          47.0,
+          1711.0,
+          197.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1626.0,
+          165.0,
+          1675.0,
+          194.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1507.0,
+          170.0,
+          1552.0,
+          195.0
+        ],
+        "prompt": null
+      }
+    ],
+    "florence_base_DENSE_REGION_CAPTION": [
+      {
+        "label": "3D model of forklift truck in parking lot",
+        "score": null,
+        "bbox_px": [
+          1457.0,
+          47.0,
+          1713.0,
+          197.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1626.0,
+          165.0,
+          1675.0,
+          194.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1507.0,
+          170.0,
+          1552.0,
+          194.0
+        ],
+        "prompt": null
+      }
+    ],
+    "florence_base_OPEN_VOCABULARY_DETECTION": [
+      {
+        "label": "truck",
+        "score": null,
+        "bbox_px": [
+          1455.0,
+          47.0,
+          1713.0,
+          198.0
+        ],
+        "prompt": "truck"
+      },
+      {
+        "label": "pallet",
+        "score": null,
+        "bbox_px": [
+          97.0,
+          56.0,
+          1919.0,
+          1088.0
+        ],
+        "prompt": "pallet"
+      },
+      {
+        "label": "cardboard box",
+        "score": null,
+        "bbox_px": [
+          844.0,
+          468.0,
+          963.0,
+          631.0
+        ],
+        "prompt": "cardboard box"
+      },
+      {
+        "label": "storage rack",
+        "score": null,
+        "bbox_px": [
+          1459.0,
+          46.0,
+          1711.0,
+          197.0
+        ],
+        "prompt": "storage rack"
+      },
+      {
+        "label": "workbench",
+        "score": null,
+        "bbox_px": [
+          1225.0,
+          511.0,
+          1840.0,
+          659.0
+        ],
+        "prompt": "workbench"
+      },
+      {
+        "label": "cart",
+        "score": null,
+        "bbox_px": [
+          179.0,
+          278.0,
+          512.0,
+          771.0
+        ],
+        "prompt": "cart"
+      },
+      {
+        "label": "drum",
+        "score": null,
+        "bbox_px": [
+          1158.0,
+          918.0,
+          1284.0,
+          1032.0
+        ],
+        "prompt": "drum"
+      },
+      {
+        "label": "mobile robot",
+        "score": null,
+        "bbox_px": [
+          179.0,
+          274.0,
+          512.0,
+          778.0
+        ],
+        "prompt": "mobile robot"
+      },
+      {
+        "label": "mobile robot",
+        "score": null,
+        "bbox_px": [
+          1459.0,
+          43.0,
+          1705.0,
+          208.0
+        ],
+        "prompt": "mobile robot"
+      },
+      {
+        "label": "robot arm",
+        "score": null,
+        "bbox_px": [
+          179.0,
+          278.0,
+          510.0,
+          772.0
+        ],
+        "prompt": "robot arm"
+      },
+      {
+        "label": "conveyor belt",
+        "score": null,
+        "bbox_px": [
+          1154.0,
+          917.0,
+          1282.0,
+          1032.0
+        ],
+        "prompt": "conveyor belt"
+      },
+      {
+        "label": "safety fence",
+        "score": null,
+        "bbox_px": [
+          900.0,
+          86.0,
+          996.0,
+          229.0
+        ],
+        "prompt": "safety fence"
+      },
+      {
+        "label": "traffic cone",
+        "score": null,
+        "bbox_px": [
+          1738.0,
+          522.0,
+          1836.0,
+          621.0
+        ],
+        "prompt": "traffic cone"
+      }
+    ],
+    "florence_large_OD": [
+      {
+        "label": "land vehicle",
+        "score": null,
+        "bbox_px": [
+          1457.0,
+          47.0,
+          1709.0,
+          195.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1628.0,
+          167.0,
+          1671.0,
+          193.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1509.0,
+          170.0,
+          1552.0,
+          194.0
+        ],
+        "prompt": null
+      }
+    ],
+    "florence_large_DENSE_REGION_CAPTION": [
+      {
+        "label": "white truck with cardboard box on back",
+        "score": null,
+        "bbox_px": [
+          1455.0,
+          47.0,
+          1709.0,
+          195.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1628.0,
+          167.0,
+          1671.0,
+          193.0
+        ],
+        "prompt": null
+      },
+      {
+        "label": "wheel",
+        "score": null,
+        "bbox_px": [
+          1509.0,
+          170.0,
+          1552.0,
+          194.0
+        ],
+        "prompt": null
+      }
+    ],
+    "florence_large_OPEN_VOCABULARY_DETECTION": [
+      {
+        "label": "truck",
+        "score": null,
+        "bbox_px": [
+          1455.0,
+          47.0,
+          1711.0,
+          196.0
+        ],
+        "prompt": "truck"
+      },
+      {
+        "label": "pallet",
+        "score": null,
+        "bbox_px": [
+          1225.0,
+          511.0,
+          1842.0,
+          661.0
+        ],
+        "prompt": "pallet"
+      },
+      {
+        "label": "cardboard box",
+        "score": null,
+        "bbox_px": [
+          842.0,
+          468.0,
+          965.0,
+          632.0
+        ],
+        "prompt": "cardboard box"
+      },
+      {
+        "label": "storage rack",
+        "score": null,
+        "bbox_px": [
+          279.0,
+          196.0,
+          369.0,
+          327.0
+        ],
+        "prompt": "storage rack"
+      },
+      {
+        "label": "workbench",
+        "score": null,
+        "bbox_px": [
+          93.0,
+          50.0,
+          1903.0,
+          1087.0
+        ],
+        "prompt": "workbench"
+      },
+      {
+        "label": "cart",
+        "score": null,
+        "bbox_px": [
+          1459.0,
+          45.0,
+          1701.0,
+          204.0
+        ],
+        "prompt": "cart"
+      },
+      {
+        "label": "drum",
+        "score": null,
+        "bbox_px": [
+          1156.0,
+          918.0,
+          1281.0,
+          1032.0
+        ],
+        "prompt": "drum"
+      },
+      {
+        "label": "mobile robot",
+        "score": null,
+        "bbox_px": [
+          179.0,
+          274.0,
+          510.0,
+          777.0
+        ],
+        "prompt": "mobile robot"
+      },
+      {
+        "label": "robot arm",
+        "score": null,
+        "bbox_px": [
+          177.0,
+          279.0,
+          510.0,
+          770.0
+        ],
+        "prompt": "robot arm"
+      },
+      {
+        "label": "conveyor belt",
+        "score": null,
+        "bbox_px": [
+          1455.0,
+          47.0,
+          1711.0,
+          196.0
+        ],
+        "prompt": "conveyor belt"
+      },
+      {
+        "label": "safety fence",
+        "score": null,
+        "bbox_px": [
+          1115.0,
+          84.0,
+          1209.0,
+          225.0
+        ],
+        "prompt": "safety fence"
+      },
+      {
+        "label": "traffic cone",
+        "score": null,
+        "bbox_px": [
+          1313.0,
+          112.0,
+          1357.0,
+          172.0
+        ],
+        "prompt": "traffic cone"
+      }
+    ]
+  },
+  "raw_generations": {
+    "florence_base_OD": {
+      "<OD>": "</s><s>land vehicle<loc_758><loc_42><loc_890><loc_176>wheel<loc_846><loc_147><loc_871><loc_173><loc_784><loc_152><loc_807><loc_174></s>"
+    },
+    "florence_base_DENSE_REGION_CAPTION": {
+      "<DENSE_REGION_CAPTION>": "</s><s>3D model of forklift truck in parking lot<loc_758><loc_42><loc_891><loc_176>wheel<loc_846><loc_147><loc_871><loc_173><loc_784><loc_152><loc_807><loc_173></s>"
+    },
+    "florence_base_OPEN_VOCABULARY_DETECTION": {
+      "truck": "</s><s>truck<loc_757><loc_42><loc_891><loc_177></s>",
+      "pallet": "</s><s>pallet<loc_50><loc_50><loc_998><loc_972></s>",
+      "cardboard box": "</s><s>cardboard box<loc_439><loc_418><loc_501><loc_564></s>",
+      "storage rack": "</s><s>storage rack<loc_759><loc_41><loc_890><loc_176></s>",
+      "workbench": "</s><s>workbench<loc_637><loc_457><loc_957><loc_589></s>",
+      "cart": "</s><s>cart<loc_93><loc_248><loc_266><loc_689></s>",
+      "drum": "</s><s>drum<loc_602><loc_820><loc_668><loc_922></s>",
+      "mobile robot": "</s><s>mobile robot<loc_93><loc_245><loc_266><loc_695>mobile robot<loc_759><loc_38><loc_887><loc_186></s>",
+      "robot arm": "</s><s>robot arm<loc_93><loc_248><loc_265><loc_690></s>",
+      "conveyor belt": "</s><s>conveyor belt<loc_600><loc_819><loc_667><loc_922></s>",
+      "safety fence": "</s><s>safety fence<loc_468><loc_77><loc_518><loc_205></s>",
+      "traffic cone": "</s><s>traffic cone<loc_904><loc_466><loc_955><loc_555></s>"
+    },
+    "florence_large_OD": {
+      "<OD>": "</s><s>land vehicle<loc_758><loc_42><loc_889><loc_174>wheel<loc_847><loc_149><loc_869><loc_172><loc_785><loc_152><loc_807><loc_173></s>"
+    },
+    "florence_large_DENSE_REGION_CAPTION": {
+      "<DENSE_REGION_CAPTION>": "</s><s>white truck with cardboard box on back<loc_757><loc_42><loc_889><loc_174>wheel<loc_847><loc_149><loc_869><loc_172><loc_785><loc_152><loc_807><loc_173></s>"
+    },
+    "florence_large_OPEN_VOCABULARY_DETECTION": {
+      "truck": "</s><s><s><s>truck<loc_757><loc_42><loc_890><loc_175></s>",
+      "pallet": "</s><s>pallet<loc_637><loc_457><loc_958><loc_591></s>",
+      "cardboard box": "</s><s>cardboard box<loc_438><loc_418><loc_502><loc_565></s>",
+      "storage rack": "</s><s><s><s>storage rack<loc_145><loc_175><loc_192><loc_292></s>",
+      "workbench": "</s><s><s><s>workbench<loc_48><loc_45><loc_990><loc_971></s>",
+      "cart": "</s><s><s><s>cart<loc_759><loc_40><loc_885><loc_182></s>",
+      "drum": "</s><s><s><s>drum<loc_601><loc_820><loc_666><loc_922></s>",
+      "mobile robot": "</s><s><s><s>mobile robot<loc_93><loc_245><loc_265><loc_694></s>",
+      "robot arm": "</s><s><s><s>robot arm<loc_92><loc_249><loc_265><loc_688></s>",
+      "conveyor belt": "</s><s><s><s>conveyor belt<loc_757><loc_42><loc_890><loc_175></s>",
+      "safety fence": "</s><s><s><s>safety fence<loc_580><loc_75><loc_629><loc_201></s>",
+      "traffic cone": "</s><s>traffic cone<loc_683><loc_100><loc_706><loc_154></s>"
+    }
+  },
+  "input_sha256": "a543977af78ef4c92d9ed62f7c5058d14eb96913efeeb16805e6d6cf645d7a74",
+  "coordinate_system": "pixels of the input screenshot (x right, y down, origin top-left). Undistortion state as displayed in that window; not usable for homography.",
+  "florence_config": {
+    "dtype": "bfloat16",
+    "num_beams": 3,
+    "max_new_tokens": 1024,
+    "tasks": [
+      "<OD>",
+      "<DENSE_REGION_CAPTION>",
+      "<OPEN_VOCABULARY_DETECTION>"
+    ],
+    "ovd_note": "<OPEN_VOCABULARY_DETECTION> is run once per vocabulary class"
+  }
+}

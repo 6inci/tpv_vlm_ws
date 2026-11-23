@@ -1,0 +1,116 @@
+{
+  "schema_version": "0.1",
+  "step_result": "PARTIAL",
+  "software": "PASS",
+  "semantic_metric_pipeline": "PARTIAL",
+  "input_group_id": "legacy_geometry_offline_group_01",
+  "trigger_policy": "SEMANTIC_TRIGGER_TRUE_CONFIRMED_CANDIDATES_ONLY",
+  "ordering_policy": "DETERMINISTIC_FILENAME_ORDER_NOT_REAL_CAPTURE_TIMELINE",
+  "triggered_frames": 5,
+  "triggered_candidates": 58,
+  "VISIBLE_ENTITY_FOUND": 1,
+  "NO_VISIBLE_ENTITY": 46,
+  "AMBIGUOUS": 0,
+  "ASSOCIATED": 0,
+  "WEAK_ASSOCIATION": 0,
+  "NOT_ASSOCIATED": 1,
+  "METRIC_GROUNDING_AVAILABLE": 0,
+  "METRIC_GROUNDING_NOT_ALLOWED": 0,
+  "INSIDE": 0,
+  "OUTSIDE": 0,
+  "parser_failures": 2,
+  "repeatability": [
+    {
+      "image_id": "image_002_photo_02",
+      "run_count": 2,
+      "both_parsed": false,
+      "candidate_comparisons": []
+    },
+    {
+      "image_id": "image_003_photo_03",
+      "run_count": 2,
+      "both_parsed": true,
+      "candidate_comparisons": [
+        {
+          "track_id": "track_011",
+          "status_equal": true,
+          "label_equal": true,
+          "association_equal": true,
+          "metric_status_equal": true,
+          "bbox_iou": null,
+          "world_xy_equal": true
+        },
+        {
+          "track_id": "track_021",
+          "status_equal": true,
+          "label_equal": true,
+          "association_equal": true,
+          "metric_status_equal": true,
+          "bbox_iou": null,
+          "world_xy_equal": true
+        },
+        {
+          "track_id": "track_017",
+          "status_equal": true,
+          "label_equal": true,
+          "association_equal": true,
+          "metric_status_equal": true,
+          "bbox_iou": null,
+          "world_xy_equal": true
+        },
+        {
+          "track_id": "track_026",
+          "status_equal": true,
+          "label_equal": true,
+          "association_equal": true,
+          "metric_status_equal": true,
+          "bbox_iou": null,
+          "world_xy_equal": true
+        },
+        {
+          "track_id": "track_027",
+          "status_equal": true,
+          "label_equal": true,
+          "association_equal": true,
+          "metric_status_equal": true,
+          "bbox_iou": null,
+          "world_xy_equal": true
+        }
+      ]
+    }
+  ],
+  "qwen_runtime": {
+    "model": "Qwen/Qwen3-VL-4B-Instruct",
+    "model_cache": "/home/binci/.cache/huggingface/hub/models--Qwen--Qwen3-VL-4B-Instruct",
+    "local_files_only": true,
+    "python": "3.10.20",
+    "torch": "2.13.0+cu130",
+    "transformers": "5.16.1",
+    "cuda_available": false,
+    "cuda_version": "13.0",
+    "device": "cpu",
+    "gpu": null,
+    "model_load_sec": 0.4084552389977034,
+    "inference_runs": 7,
+    "inference_sec": [
+      713.1549134629895,
+      652.5436618320091,
+      329.35207248800725,
+      329.58501129900105,
+      489.05134778498905,
+      1012.5439437839959,
+      1055.5378026349936
+    ]
+  },
+  "geometry": {
+    "coordinate_frame": "LEGACY_WORKSPACE_COORDINATE",
+    "unit": "m",
+    "pipeline": "RAW_BOTTOM_CENTER_PX_TO_STORED_UNDISTORTION_TO_LEGACY_HOMOGRAPHY",
+    "final_paper_accuracy_claim": false
+  },
+  "physical_geometry": "NOT_AVAILABLE",
+  "planning_role": "NOT_ASSIGNED",
+  "planner_injection": "NOT_RUN",
+  "a_star": "NOT_RUN",
+  "replanning": "NOT_RUN"
+}

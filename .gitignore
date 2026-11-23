@@ -1,0 +1,37 @@
+# vlm_ws: GitHub에는 코드, 설정, 문서, 기록(json/csv), 입력 사진만 올린다.
+# 결과 사진, 압축 파일, pdf, 모델 가중치, 미리 계산한 자료, 캐시는 올리지 않는다 (전체 13 GB, GitHub 한도 초과).
+
+# 1) 기본은 모두 제외
+*
+# 2) 폴더 안으로는 들어간다
+!*/
+# 3) 올릴 파일 종류
+!*.py
+!*.sh
+!*.yaml
+!*.yml
+!*.json
+!*.jsonl
+!*.md
+!*.txt
+!*.csv
+!*.js
+!*.html
+!*.css
+!*.npy
+!*.sha256
+!*.toml
+!*.cfg
+!*.ini
+!.gitignore
+!.env.example
+!SHA256SUMS
+!Codex_prompt
+# 4) 입력 사진: env2 공유 사진 묶음 (다른 PC에서 실행할 때 필요)
+!env2_photos_20261120/**
+# 5) 항상 제외
+__pycache__/
+.pytest_cache/
+.serena/
+.codex/
+.env

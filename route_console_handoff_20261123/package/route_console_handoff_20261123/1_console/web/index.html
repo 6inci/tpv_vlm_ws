@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>경로 계획 콘솔</title>
+<link rel="stylesheet" href="/web/style.css">
+</head>
+<body>
+
+<!-- 시작 화면: 장면을 어디서 가져올지 고른다 -->
+<section id="start" class="start" aria-labelledby="start-title">
+  <div class="start-inner">
+    <div class="brand brand-lg"><span class="tape-glyph" aria-hidden="true"></span>경로 계획 콘솔</div>
+    <h1 id="start-title">어떤 장면으로 경로를 만들까요?</h1>
+    <p class="lead">자연어로 지시하면 옮길 물체와 목적지를 스스로 찾고, 경유점이 담긴 경로를 만듭니다. 사용자가 위치를 찍을 필요가 없습니다.</p>
+
+    <ol class="flow" aria-label="처리 순서">
+      <li class="flow-step model"><b>지시 이해</b><span>무엇을 어디로 옮길까?</span></li>
+      <li class="flow-step model"><b>장면 인식</b><span>무엇이 어디에 있을까?</span></li>
+      <li class="flow-step rule"><b>대상 결정</b><span>어떤 물체와 목적지를 고를까?</span></li>
+      <li class="flow-step rule"><b>좌표 변환</b><span>지도에서 어디일까?</span></li>
+      <li class="flow-step rule"><b>경로 생성</b><span>어디에 서고 어떻게 이동할까?</span></li>
+    </ol>
+    <p class="flow-key"><span class="key model"></span>학습 모델 <span class="key rule"></span>규칙과 계산 <span class="key hold"></span>확신이 없으면 보류</p>
+
+    <div class="choices">
+      <button class="choice" data-mode="photo">
+        <span class="choice-title">저장된 사진</span>
+        <span class="choice-body">실험 사진 중 하나를 골라 계획합니다. 장면 인식을 미리 계산해 두어 몇 초면 끝납니다.</span>
+        <span class="choice-meta" id="choice-photo-meta">사진 폴더 확인 중</span>
+      </button>
+      <button class="choice" data-mode="live">
+        <span class="choice-title">실시간 카메라</span>
+        <span class="choice-body">연결된 카메라에서 지금 장면을 찍어 계획합니다. 장면 인식을 그 자리에서 계산해 1분쯤 걸립니다.</span>
+        <span class="choice-meta">카메라 자세가 실험 사진과 같아야 지도 좌표가 맞습니다</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- 콘솔 -->
+<div id="app" class="app" hidden>
+  <header class="top">
+    <div class="brand"><span class="tape-glyph" aria-hidden="true"></span>경로 계획 콘솔</div>
+    <div class="seg" role="tablist" aria-label="장면 출처">
+      <button role="tab" data-mode="photo">저장된 사진</button>
+      <button role="tab" data-mode="live">실시간 카메라</button>
+    </div>
+    <div class="status">
+      <span class="pill" id="pill-model"><i></i><span>모델 확인 중</span></span>
+      <span class="pill quiet" id="pill-gpu">GPU</span>
+    </div>
+  </header>
+
+  <aside class="source" aria-label="장면">
+    <div id="src-photo">
+      <h2 class="panel-h">사진 <span id="photo-count" class="count"></span></h2>
+      <div id="thumbs" class="thumbs" role="listbox" aria-label="사진 목록"></div>
+    </div>
+    <div id="src-live" hidden>
+      <h2 class="panel-h">실시간 카메라</h2>
+      <label class="field">카메라
+        <select id="dev"></select>
+      </label>
+      <div class="live-view"><img id="live-img" alt="카메라 화면"></div>
+      <button id="capture" class="btn">지금 장면 찍기</button>
+      <p id="capture-msg" class="note" aria-live="polite"></p>
+      <div id="captured" class="captured" hidden><img alt="찍은 장면"><span></span></div>
+    </div>
+  </aside>
+
+  <main class="work">
+    <form id="ask" class="ask" autocomplete="off">
+      <label for="instruction" class="sr">작업지시</label>
+      <input id="instruction" name="instruction" placeholder="예: 빨간 큐브를 비어 있는 팔레트로 옮겨줘.">
+      <button id="run" class="btn primary" type="submit">경로 만들기</button>
+    </form>
+    <div id="examples" class="examples" aria-label="예시 지시"></div>
+
+    <section class="viewer" aria-label="결과 보기">
+      <div class="viewer-bar">
+        <div class="tabs" role="tablist">
+          <button role="tab" data-view="photo" aria-selected="true">사진 위</button>
+          <button role="tab" data-view="map" aria-selected="false">지도</button>
+        </div>
+        <div class="layers" aria-label="표시">
+          <label><input type="checkbox" data-layer="zones" checked>구역</label>
+          <label><input type="checkbox" data-layer="cands">후보</label>
+          <label><input type="checkbox" data-layer="route" checked>경로</label>
+        </div>
+      </div>
+      <div class="stage" id="stage">
+        <div class="frame" id="frame-photo">
+          <p id="stage-empty" class="stage-empty" hidden>카메라에서 장면을 찍으면 여기에 나옵니다.<br>찍을 때 카메라 자세가 실험 사진과 같은지 먼저 확인합니다.</p>
+          <img id="photo" alt="선택한 장면">
+          <svg id="ov" viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+        </div>
+        <div class="frame map" id="frame-map" hidden>
+          <svg id="mapsvg" preserveAspectRatio="xMidYMid meet" aria-label="env2 지도"></svg>
+        </div>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend">
+        <span><i class="sw a"></i>옮길 것</span>
+        <span><i class="sw b"></i>놓을 곳</span>
+        <span><i class="sw l1"></i>경로 1</span>
+        <span><i class="sw l2"></i>경로 2</span>
+        <span><svg class="sw-robot" width="22" height="12" viewBox="0 0 22 12" aria-hidden="true"><rect x="1" y="1" width="14" height="10" rx="1.5" fill="none" stroke="#536173" stroke-width="1.5"/><line x1="18" y1="1" x2="18" y2="11" stroke="#f2c230" stroke-width="3" stroke-linecap="round"/></svg>로봇 자리, 노란 선은 그리퍼</span>
+      </div>
+    </section>
+
+    <section class="result" id="result" aria-live="polite">
+      <p class="empty">지시를 입력하고 <b>경로 만들기</b>를 누르면 여기에 경로와 경유점이 나옵니다.</p>
+    </section>
+  </main>
+
+  <aside class="trace" aria-label="추론 과정">
+    <h2 class="panel-h">추론 과정</h2>
+    <ol id="rail" class="rail"></ol>
+    <div id="hold" class="holdcard" hidden></div>
+    <p id="runmeta" class="note"></p>
+  </aside>
+</div>
+
+<script src="/web/app.js"></script>
+</body>
+</html>

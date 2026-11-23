@@ -1,0 +1,77 @@
+{
+  "purpose": "Move the red cube from the conveyor to the unloading area",
+  "source_object": {
+    "name_en": "red cube"
+  },
+  "source_reference": {
+    "name_en": "conveyor",
+    "bbox_2d": [110, 256, 230, 720]
+  },
+  "source_relation": "on",
+  "destination_meaning": "unloading area for trucks",
+  "destination_reference": {
+    "name_en": "truck",
+    "bbox_2d": [752, 0, 880, 145],
+    "inferred": false
+  },
+  "destination_relation": "next_to",
+  "zones_seen": [
+    {
+      "description": "Pedestrian walkway",
+      "visual_evidence": [
+        "green floor with footprints",
+        "no robot body allowed"
+      ],
+      "bbox_2d": [305, 58, 558, 280],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Robot travel zone",
+      "visual_evidence": [
+        "yellow border",
+        "robot body allowed"
+      ],
+      "bbox_2d": [100, 270, 970, 770],
+      "robot_body_access": "allowed"
+    },
+    {
+      "description": "Conveyor and robot arm workstation",
+      "visual_evidence": [
+        "white border",
+        "robot body forbidden"
+      ],
+      "bbox_2d": [75, 260, 270, 720],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Cargo storage area",
+      "visual_evidence": [
+        "yellow border",
+        "robot body not allowed, only access"
+      ],
+      "bbox_2d": [615, 430, 960, 550],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Truck unloading area",
+      "visual_evidence": [
+        "white dashed lines",
+        "truck parked"
+      ],
+      "bbox_2d": [752, 0, 880, 145],
+      "robot_body_access": "forbidden"
+    },
+    {
+      "description": "Safety cones and boundary lines",
+      "visual_evidence": [
+        "orange cones",
+        "white and yellow lines"
+      ],
+      "bbox_2d": [100, 0, 970, 950],
+      "robot_body_access": "unknown"
+    }
+  ],
+  "uncertainty": [
+    "The reach of the gripper is not confirmed, so whether the robot can pick up the red cube is uncertain."
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "tools": [
+    {
+      "name": "query_scene_graph",
+      "description": "Find scene nodes by label/category.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label"
+        ]
+      }
+    },
+    {
+      "name": "get_object_metric_position",
+      "description": "Return one object node and its representative metric XY.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "object_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "object_id"
+        ]
+      }
+    },
+    {
+      "name": "get_semantic_regions",
+      "description": "Return semantic-region records.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "get_metric_map",
+      "description": "Return metric-map metadata and artifact paths.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "get_traversability_map",
+      "description": "Return bbox/SAM traversability artifact paths.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ]
+}

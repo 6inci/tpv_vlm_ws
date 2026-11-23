@@ -1,0 +1,26 @@
+{
+  "implementation": "/home/binci/vlm_ws/src/vlm_reposition/planning/replanning.py",
+  "implementation_sha256": "31682ee0bc3b1d5ad32ac0cd2c19aace77b4bf937b2e9a97e14742e994603427",
+  "entry_api": "evaluate_event_and_replan",
+  "signature": "(config, scenario, planner_config, zones, physical, readiness, obstacle_state, active_path, path_history, event, previous_progress_index=None, apply_obstacle_update=True)",
+  "world_state_input": "obstacle_state with world_revision and obstacles",
+  "current_path_input": "active_path path_grid/path_world and path_revision",
+  "robot_progress": "event.robot_waypoint_index on the active path revision",
+  "goal": "scenario.goal in LEGACY_WORKSPACE_COORDINATE meters",
+  "trigger": "event with event_id/event_index/operation/robot_waypoint_index",
+  "world_update_mode": "apply_obstacle_update=False because STEP28N world revision 1 is already confirmed",
+  "planner": "existing SAFETY_COST_ASTAR via plan_path",
+  "acceptance": "existing validate_replanned_path must return VALID",
+  "success_revision": "old path SUPERSEDED; accepted active path revision = old revision + 1",
+  "failure_contract": {
+    "historical_source": "/home/binci/vlm_ws/results/automatic_replanning/scenario_results/R4_no_path_stop.json",
+    "replan_status": "REPLAN_FAILED",
+    "system_action": "STOP",
+    "stop_required": true,
+    "new_active_path": null
+  },
+  "dependencies": {
+    "step17": "dynamic world and current-path validity",
+    "step19": "persistent REPLAN_REQUIRED decision"
+  }
+}

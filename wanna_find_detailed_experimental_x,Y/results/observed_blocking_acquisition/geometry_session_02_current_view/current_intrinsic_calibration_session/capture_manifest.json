@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "session": "STEP31N_FRESH_CURRENT_INTRINSIC_CALIBRATION",
+  "created_at": "2026-09-21T04:36:12.569531+00:00",
+  "status": "CALIBRATION_CAPTURE_COVERAGE_INSUFFICIENT",
+  "camera_by_id": "/dev/v4l/by-id/usb-HD_Web_Camera_HD_Web_Camera_Ucamera001-video-index0",
+  "resolved_video_node_at_start": "/dev/video8",
+  "capture_mode": {
+    "width": 1920,
+    "height": 1080,
+    "input_pixel_format": "MJPG",
+    "fps": 30.0
+  },
+  "camera_controls_modified": false,
+  "camera_must_remain_fixed": true,
+  "target": {
+    "type": "CHECKERBOARD",
+    "inner_corners": [
+      5,
+      3
+    ],
+    "square_size_m": 0.04
+  },
+  "pre_calibration_static": {
+    "path": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/current_intrinsic_calibration_session/pre_calibration_static.png",
+    "sha256": "d0ba96e14c8271ee8cc9051d5c060928cc7b89015ba8e1c5e1c49ced3277f846"
+  },
+  "pre_calibration_pose_stability": {
+    "purpose": "CAMERA_MOTION_DIAGNOSTIC_ONLY_NOT_METRIC_GEOMETRY",
+    "reference_image": "results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+    "current_image": "results/observed_blocking_acquisition/geometry_session_02_current_view/current_intrinsic_calibration_session/pre_calibration_static.png",
+    "algorithm": "ORB + Lowe ratio 0.72 + projective RANSAC 2px",
+    "reference_keypoints": 10000,
+    "current_keypoints": 10000,
+    "ratio_test_matches": 2278,
+    "inliers": 1607,
+    "inlier_ratio": 0.7054433713784021,
+    "projective_H_reference_to_current": [
+      [
+        0.9994056550514955,
+        -4.3133095071366844e-05,
+        1.311148488151351
+      ],
+      [
+        6.10918385648067e-05,
+        0.9995581946521984,
+        0.769752160668111
+      ],
+      [
+        3.339786246013234e-07,
+        -4.4211539570147496e-07,
+        1.0
+      ]
+    ],
+    "center_displacement_px": [
+      0.638631097643156,
+      0.5455670987827261
+    ],
+    "center_displacement_magnitude_px": 0.8399363893480881,
+    "local_scale_x": 0.9990027002667407,
+    "local_scale_y": 0.9997158390760786,
+    "local_rotation_deg": -0.006849609246655766,
+    "inlier_residual_mean_px": 0.8750008344650269,
+    "inlier_residual_rmse_px": 0.9707103398935688,
+    "inlier_residual_max_px": 2.7647294998168945,
+    "interpretation_limit": "Scene content changed; only RANSAC-consistent background geometry is interpreted. Transform is not used for metric mapping."
+  },
+  "calibration_frames": [],
+  "accepted_calibration_frame_count": 0,
+  "frozen_validation_image": "/home/binci/vlm_ws/results/observed_blocking_acquisition/geometry_session_02_current_view/reference_aruco_recheck_01.png",
+  "frozen_validation_image_sha256": "eb85b06b3f8273463d1d994da1e88be768e1123041d259319162c4de828badcd",
+  "qwen_inference_runs": 0,
+  "planner_runs": 0,
+  "quality_rejection_counts": {
+    "target_not_detected": 710,
+    "camera_read_failure": 1
+  },
+  "coverage": {
+    "counts": {
+      "left": 0,
+      "right": 0,
+      "upper": 0,
+      "lower": 0,
+      "center": 0,
+      "small_far": 0,
+      "medium": 0,
+      "large_near": 0,
+      "low_tilt": 0,
+      "high_tilt": 0
+    },
+    "minimum_requirements": {
+      "left": 3,
+      "right": 3,
+      "upper": 3,
+      "lower": 3,
+      "center": 3,
+      "small_far": 3,
+      "medium": 5,
+      "large_near": 3,
+      "low_tilt": 3,
+      "high_tilt": 6
+    },
+    "missing": {
+      "left": 3,
+      "right": 3,
+      "upper": 3,
+      "lower": 3,
+      "center": 3,
+      "small_far": 3,
+      "medium": 5,
+      "large_near": 3,
+      "low_tilt": 3,
+      "high_tilt": 6
+    },
+    "passes": false
+  },
+  "capture_elapsed_s": 166.90745546200196,
+  "finalized_at": "2026-09-21T04:41:31.242068+00:00",
+  "calibration_attempted": false,
+  "new_intrinsics_created": false,
+  "frozen_image_ab_test_run": false
+}

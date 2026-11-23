@@ -1,0 +1,13 @@
+Analyze the industrial robotics image. Return JSON only, compact, under 700 tokens.
+Coordinates are integer 0..1000 in the original image. Known object IDs:
+obj_001 left rack; obj_002 right rack; obj_003 truck; obj_004 workbench;
+obj_005..007 cones; obj_008..010 manipulators; obj_011 mobile robot;
+obj_012 cart; obj_013 lower box pallet; obj_014 gray-block pallet;
+obj_015 drum pallet; obj_016 right box pallet.
+Schema:
+{"relations":[{"subject_id":"obj_...","predicate":"near|left_of|right_of|in_front_of|behind|on|contains|inside|adjacent_to","object_id":"obj_...","confidence":0.0}],
+"semantic_regions":[{"id":"region_storage|region_loading|region_work|region_material|region_robot_work","label":"Storage Area|Loading Area|Work Station|Material Area|No-Go Zone","polygon":[[x,y],[x,y],[x,y]],"confidence":0.0,"evidence_object_ids":["obj_..."],"reasoning":"brief"}],
+"traversable_area":{"polygon":[[x,y],[x,y],[x,y]],"confidence":0.0,"reasoning":"brief"},
+"restricted_areas":[{"polygon":[[x,y],[x,y],[x,y]],"reason":"brief"}],
+"unknown_areas":[{"polygon":[[x,y],[x,y],[x,y]],"reason":"brief"}]}
+Give at most 6 relations and exactly 5 semantic regions. Regions and traversability are approximate image-plane interpretations, not metric geometry or paths.

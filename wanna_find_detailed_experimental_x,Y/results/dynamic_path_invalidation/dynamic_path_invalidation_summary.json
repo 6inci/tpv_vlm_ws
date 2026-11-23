@@ -1,0 +1,57 @@
+{
+  "result": "PASS",
+  "verification_type": "Offline Dynamic State Update + Current Path Invalidation",
+  "sources": {
+    "dynamic_scenarios": "/home/binci/vlm_ws/config/dynamic_obstacle_scenarios.json",
+    "planner_config": "/home/binci/vlm_ws/config/planner_baseline.json"
+  },
+  "scenario_count": 6,
+  "event_count": 8,
+  "initial_planner_run_count": 6,
+  "post_event_planner_run_count": 0,
+  "expected_result_match_count": 8,
+  "final_path_states": {
+    "D1": "VALID",
+    "D2": "BLOCKED",
+    "D3": "BLOCKED",
+    "D4": "VALID",
+    "D5": "VALID",
+    "D6": "VALID"
+  },
+  "deterministic_event_sequences": {
+    "D1": true,
+    "D2": true,
+    "D3": true,
+    "D4": true,
+    "D5": true,
+    "D6": true
+  },
+  "current_paths_unchanged": true,
+  "hard_invalidation_policy": "COLLISION_ONLY",
+  "soft_safety_cost_change_policy": "DOES_NOT_INVALIDATE_PATH",
+  "collision_world_source": "RAW_METRIC_OBSTACLE_STATE",
+  "full_grid_rebuild_after_each_event": true,
+  "additional_inflation_m": 0.0,
+  "performance_metric_status": "VOLATILE_OBSERVATION_NOT_BENCHMARK",
+  "automatic_replanning": "NOT_RUN",
+  "live_camera": "NOT_RUN",
+  "aruco": "NOT_RUN",
+  "real_robot_execution": "NOT_RUN",
+  "manipulation": "NOT_RUN",
+  "visualizations": [
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D1_revision_0.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D1_revision_1.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D2_revision_0.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D2_revision_1.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D3_revision_0.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D3_revision_1.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D4_revision_0.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D4_revision_1.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D4_revision_2.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D5_revision_0.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D5_revision_1.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D5_revision_2.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D6_revision_0.png",
+    "/home/binci/vlm_ws/results/dynamic_path_invalidation/visualizations/D6_revision_1.png"
+  ]
+}
